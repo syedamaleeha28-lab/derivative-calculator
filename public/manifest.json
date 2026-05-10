@@ -1,0 +1,16 @@
+{
+  "name": "Derivio - Calculadora de Derivadas",
+  "short_name": "Derivio",
+  "description": "Calculadora de derivadas paso a paso online",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F19",
+  "theme_color": "#7C3AED",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
