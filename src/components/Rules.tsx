@@ -7,7 +7,7 @@ import katex from "katex";
 const RULES = [
   {
     name: "Regla de la Potencia",
-    href: "/rules/power-rule",
+    href: "/reglas/regla-de-la-potencia",
     formula: "\\dfrac{d}{dx}\\left[x^n\\right] = n \\cdot x^{n-1}",
     desc: "Aplica cuando x está elevado a una constante. El exponente baja y se reduce en 1.",
     color: "bg-violet-50 dark:bg-secondary/10 border-secondary/15 dark:border-secondary/20",

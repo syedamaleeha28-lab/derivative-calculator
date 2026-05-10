@@ -1,171 +1,115 @@
-import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Link from "next/link";
-import { AlertCircle, CheckCircle2, ChevronRight, HelpCircle } from "lucide-react";
-import katex from "katex";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Regla del Cociente | Derivada de una División | Derivio",
-  description: "Guía paso a paso sobre la regla del cociente. Aprende a derivar la división de dos funciones con ejemplos, fórmulas y consejos prácticos.",
-  keywords: "regla del cociente, derivada de un cociente, fórmulas de derivadas, cálculo diferencial, derivadas paso a paso",
-};
+import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
+import katex from "katex";
+import Link from "next/link";
 
 export default function QuotientRulePage() {
   const formula = "\\dfrac{d}{dx}\\left[\\dfrac{u}{v}\\right] = \\dfrac{u'v - uv'}{v^2}";
   
-  const examples = [
-    {
-      q: "f(x) = \\frac{x^2}{x+1}",
-      a: "f'(x) = \\frac{2x(x+1) - x^2(1)}{(x+1)^2} = \\frac{x^2+2x}{(x+1)^2}",
-      desc: "Identificamos u=x² y v=x+1. Aplicamos la fórmula: (u'v - uv') / v²."
-    },
-    {
-      q: "f(x) = \\frac{\\sin(x)}{x}",
-      a: "f'(x) = \\frac{\\cos(x) \\cdot x - \\sin(x) \\cdot 1}{x^2}",
-      desc: "Derivamos el seno (cos) y la x (1), luego organizamos según la regla del cociente."
-    },
-    {
-      q: "f(x) = \\frac{1}{x^3}",
-      a: "f'(x) = \\frac{0(x^3) - 1(3x^2)}{(x^3)^2} = \\frac{-3x^2}{x^6} = -3x^{-4}",
-      desc: "Aunque se puede usar la potencia, el cociente también funciona con u=1."
-    }
-  ];
+  const content = (
+    <div className="space-y-12">
+      <section>
+        <h2 id="que-es">¿Qué es la Regla del Cociente?</h2>
+        <p>
+          La <strong>regla del cociente</strong> es el método formal para encontrar la derivada de una función que es la división de otras dos funciones. Es una de las reglas que requiere más atención a los detalles, especialmente por el signo negativo en el numerador y el denominador al cuadrado.
+        </p>
+        <p className="mt-4">
+          Antes de dominar esta regla, asegúrate de entender bien la <Link href="/reglas/regla-del-producto" className="text-secondary font-bold">regla del producto</Link>, ya que son conceptos hermanos.
+        </p>
+      </section>
 
-  const faqs = [
-    {
-      q: "¿Por qué el signo menos en el numerador?",
-      a: "Es parte fundamental de la fórmula. A diferencia de la suma en el producto, el cociente requiere resta u'v - uv'."
-    },
-    {
-      q: "¿Qué pasa si el denominador es cero?",
-      a: "La derivada no existe en los puntos donde el denominador v(x) es igual a cero."
-    }
-  ];
+      <section>
+        <h2 id="formula">Fórmula de la Regla del Cociente</h2>
+        <p className="mb-6">Si tenemos una función racional de la forma $u/v$, su derivada se rige por la siguiente fórmula:</p>
+        <FormulaCard title="Fórmula General">
+          <div dangerouslySetInnerHTML={{ __html: katex.renderToString(formula, { displayMode: true }) }} />
+        </FormulaCard>
+        <TipCard>
+          Una forma mnemotécnica de recordarla es: "La derivada del de arriba por el de abajo, menos el de arriba por la derivada del de abajo, todo sobre el de abajo al cuadrado".
+        </TipCard>
+      </section>
+
+      <section>
+        <h2 id="ejemplos">Ejercicios Resueltos Paso a Paso</h2>
+        <div className="space-y-8">
+          <ExampleCard 
+            title="Ejemplo 1: Función Racional Simple"
+            steps={[
+              "Identificamos u = x² y v = x + 1.",
+              "Derivadas individuales: u' = 2x, v' = 1.",
+              "Aplicamos la fórmula: [2x(x+1) - (x²)(1)] / (x+1)².",
+              "Simplificamos el numerador: (2x² + 2x - x²) / (x+1)² = (x² + 2x) / (x+1)²."
+            ]}
+          >
+            <div className="text-center" dangerouslySetInnerHTML={{ __html: katex.renderToString("f(x) = \\frac{x^2}{x+1} \\implies f'(x) = \\frac{x^2+2x}{(x+1)^2}", { displayMode: true }) }} />
+          </ExampleCard>
+
+          <ExampleCard 
+            title="Ejemplo 2: Trigonométrica sobre Lineal"
+            steps={[
+              "u = sin(x), v = x.",
+              "Derivadas: u' = cos(x), v' = 1.",
+              "Aplicamos regla: [cos(x) \cdot x - sin(x) \cdot 1] / x².",
+              "Resultado: [x cos(x) - sin(x)] / x²."
+            ]}
+          >
+            <div className="text-center" dangerouslySetInnerHTML={{ __html: katex.renderToString("f(x) = \\frac{\\sin(x)}{x} \\implies f'(x) = \\frac{x\\cos(x) - \\sin(x)}{x^2}", { displayMode: true }) }} />
+          </ExampleCard>
+        </div>
+      </section>
+
+      <WarningCard>
+        ¡Cuidado con el orden! En el numerador de la regla del cociente, el signo negativo es crítico. Si intercambias los términos (uv' - u'v), obtendrás el resultado con el signo opuesto. Siempre empieza derivando el numerador ($u'$).
+      </WarningCard>
+
+      <section>
+        <h2 id="trucos">¿Cuándo evitar la regla del cociente?</h2>
+        <p>
+          A veces, es más fácil convertir una división en un producto con potencia negativa. Por ejemplo, $1/x^3$ se puede derivar más rápido como $x^{-3}$ usando la <Link href="/reglas/regla-de-la-potencia" className="text-secondary font-bold">regla de la potencia</Link>.
+        </p>
+      </section>
+
+      <section>
+        <h2 id="procedimiento">Usa el motor de Derivio</h2>
+        <p>
+          Si tienes una función muy compleja, nuestra <Link href="/#calculator" className="text-secondary font-bold">calculadora de derivadas online</Link> puede realizar todas las simplificaciones algebraicas por ti, mostrándote cada paso del proceso.
+        </p>
+        <p className="mt-4">
+          Consulta más variaciones en nuestra galería de <Link href="/derivative-examples" className="text-secondary font-bold">ejemplos resueltos</Link>.
+        </p>
+      </section>
+    </div>
+  );
 
   return (
-    <main className="flex min-h-screen flex-col bg-transparent">
-      <Navbar />
-      
-      <section className="pt-32 pb-16 bg-[#F8F6F2] dark:bg-[#0B0F19] border-b border-slate-100 dark:border-white/5">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 text-center">
-          <Link href="/reglas" className="inline-flex items-center gap-2 text-secondary dark:text-accent text-[0.85rem] font-bold uppercase tracking-wider mb-8 hover:opacity-80 transition-opacity">
-            <span className="text-[1.2rem] mb-0.5">← Volver a Reglas</span>
-          </Link>
-          <h1 className="heading-font text-[3rem] md:text-[4rem] text-slate-900 dark:text-white leading-tight mb-6">
-            Regla del <span className="text-secondary dark:text-accent">Cociente</span>
-          </h1>
-          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            La regla del cociente es la técnica estándar para derivar funciones que se encuentran en forma de fracción. Es una de las reglas que requiere más cuidado con los signos.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white dark:bg-[#0F1420]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="bg-slate-50 dark:bg-black/20 rounded-[2.5rem] p-12 border border-slate-100 dark:border-white/5 flex items-center justify-center shadow-inner">
-              <div 
-                className="text-3xl md:text-4xl text-slate-900 dark:text-white"
-                dangerouslySetInnerHTML={{ __html: katex.renderToString(formula, { displayMode: true }) }} 
-              />
-            </div>
-            <div className="space-y-6">
-              <h2 className="heading-font text-[2rem] text-slate-900 dark:text-white">Fórmula y Estructura</h2>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
-                La derivada de un cociente es: la derivada del de arriba por el de abajo sin derivar, MENOS el de arriba por la derivada del de abajo, todo sobre el de abajo al cuadrado.
-              </p>
-              <div className="flex flex-col gap-4">
-                <div className="flex gap-3">
-                  <CheckCircle2 className="text-secondary dark:text-accent shrink-0" />
-                  <span className="text-slate-700 dark:text-slate-300">Fracciones algebraicas</span>
-                </div>
-                <div className="flex gap-3">
-                  <CheckCircle2 className="text-secondary dark:text-accent shrink-0" />
-                  <span className="text-slate-700 dark:text-slate-300">Funciones racionales complejas</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-[#F8F6F2] dark:bg-[#0B0F19]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
-          <h2 className="heading-font text-[2.2rem] text-slate-900 dark:text-white mb-12 text-center">Ejercicios de Práctica</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {examples.map((ex, i) => (
-              <div key={i} className="bg-white dark:bg-[#131927] p-8 rounded-[2rem] border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-xl transition-all">
-                <div className="text-[0.7rem] font-bold text-secondary dark:text-accent uppercase tracking-widest mb-4">Ejemplo {i + 1}</div>
-                <div className="bg-slate-50 dark:bg-black/20 p-4 rounded-xl mb-4 text-center overflow-x-auto">
-                  <div dangerouslySetInnerHTML={{ __html: katex.renderToString(ex.q, { throwOnError: false }) }} />
-                </div>
-                <div className="flex items-center gap-2 mb-4">
-                  <ChevronRight size={14} className="text-secondary dark:text-accent" />
-                  <span className="text-[0.65rem] font-bold uppercase tracking-widest text-slate-400">Solución</span>
-                </div>
-                <div className="bg-secondary/5 dark:bg-secondary/10 p-4 rounded-xl mb-4 text-center overflow-x-auto text-secondary dark:text-accent font-bold">
-                  <div dangerouslySetInnerHTML={{ __html: katex.renderToString(ex.a, { throwOnError: false }) }} />
-                </div>
-                <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{ex.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white dark:bg-[#0F1420]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
-          <div className="bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 rounded-[2.5rem] p-10 md:p-14">
-            <div className="flex items-center gap-4 mb-8">
-              <AlertCircle className="text-red-500" size={32} />
-              <h2 className="heading-font text-[2rem] text-slate-900 dark:text-white">Peligros de esta regla</h2>
-            </div>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <li className="space-y-2">
-                <strong className="text-red-600 dark:text-red-400">Invertir el orden de la resta:</strong>
-                <p className="text-slate-600 dark:text-slate-400">Si haces uv' - u'v en el numerador, el resultado tendrá el signo opuesto al correcto.</p>
-              </li>
-              <li className="space-y-2">
-                <strong className="text-red-600 dark:text-red-400">Olvidar el cuadrado del denominador:</strong>
-                <p className="text-slate-600 dark:text-slate-400">Es muy común olvidar elevar 'v' al cuadrado al final del procedimiento.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-[#F8F6F2] dark:bg-[#0B0F19]">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="heading-font text-[2rem] text-slate-900 dark:text-white mb-10 text-center">Dudas sobre el Cociente</h2>
-          <div className="space-y-4">
-            {faqs.map((f, i) => (
-              <div key={i} className="bg-white dark:bg-[#131927] p-8 rounded-2xl border border-slate-100 dark:border-white/5">
-                <h3 className="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                  <HelpCircle size={18} className="text-secondary dark:text-accent" /> {f.q}
-                </h3>
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{f.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white dark:bg-[#0F1420]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 text-center">
-          <h2 className="heading-font text-[2rem] text-slate-900 dark:text-white mb-8">Calcula tu derivada en un segundo</h2>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/" className="bg-primary hover:bg-slate-700 dark:bg-secondary dark:hover:bg-indigo-500 text-white px-8 py-3.5 rounded-xl font-bold transition-all shadow-lg">
-              Calculadora Gratis
-            </Link>
-            <Link href="/ejercicios-resueltos" className="bg-white dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 px-8 py-3.5 rounded-xl font-bold hover:bg-slate-50 transition-all">
-              Catálogo de Ejercicios
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+    <ArticleLayout
+      title="Regla del Cociente: Guía de Derivación de Fracciones"
+      description="Aprende a resolver la derivada de una división de funciones. Fórmula de la regla del cociente, ejemplos paso a paso y consejos para evitar errores comunes."
+      date="10 de Mayo, 2026"
+      readTime="10 min"
+      category="Reglas"
+      tags={["Calculus", "Regla del Cociente", "Fracciones"]}
+      author={{
+        name: "Academia Derivio",
+        role: "Departamento de Matemáticas"
+      }}
+      breadcrumbs={[
+        { label: "Inicio", href: "/" },
+        { label: "Reglas", href: "/reglas" },
+        { label: "Regla del Cociente", href: "/reglas/regla-del-cociente" }
+      ]}
+      content={content}
+      faqs={[
+        { question: "¿Qué pasa si el denominador es una constante?", answer: "En ese caso no necesitas la regla del cociente. Solo deriva el numerador y mantén el denominador igual." },
+        { question: "¿Es obligatorio simplificar el resultado?", answer: "En la mayoría de los exámenes sí. Nuestra calculadora te muestra la forma más simplificada posible." },
+        { question: "¿Puedo usar la regla de la cadena aquí?", answer: "Sí, es muy común que el numerador o el denominador requieran la regla de la cadena por sí mismos." }
+      ]}
+      relatedPosts={[
+        { title: "Regla del Producto", slug: "reglas/regla-del-producto" },
+        { title: "Regla de la Cadena", slug: "reglas/regla-de-la-cadena" },
+        { title: "Tabla de Fórmulas", slug: "basic-derivative-formulas" }
+      ]}
+    />
   );
 }

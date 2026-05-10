@@ -7,10 +7,9 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 
 const NAV_LINKS = [
-  { name: "Ejemplos", href: "/ejercicios-resueltos" },
+  { name: "Cómo funciona", href: "/how-it-works" },
+  { name: "Ejemplos", href: "/derivative-examples" },
   { name: "Reglas", href: "/reglas" },
-  { name: "Demonstraciones", href: "/demonstraciones" },
-  { name: "FAQ", href: "/preguntas-frecuentes" },
   { name: "Blog", href: "/blog" },
 ];
 

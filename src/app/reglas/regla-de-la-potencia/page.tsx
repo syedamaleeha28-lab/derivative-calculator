@@ -1,181 +1,108 @@
-import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Link from "next/link";
-import { AlertCircle, CheckCircle2, ChevronRight, HelpCircle } from "lucide-react";
-import katex from "katex";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Regla de la Potencia | Derivada de una Potencia | Derivio",
-  description: "Aprende la regla de la potencia para derivar funciones paso a paso. Ejemplos resueltos, fórmulas y explicaciones para estudiantes de cálculo.",
-  keywords: "regla de la potencia, derivada de una potencia, fórmulas de derivadas, cálculo diferencial, derivadas paso a paso",
-};
+import ArticleLayout, { FormulaCard, TipCard, WarningCard, ExampleCard } from "@/components/EducationalArticle";
+import katex from "katex";
 
 export default function PowerRulePage() {
   const formula = "\\dfrac{d}{dx}\\left[x^n\\right] = n \\cdot x^{n-1}";
   
-  const examples = [
-    {
-      q: "f(x) = x^5",
-      a: "f'(x) = 5x^{5-1} = 5x^4",
-      desc: "El exponente 5 baja multiplicando y se resta 1 al exponente original."
-    },
-    {
-      q: "f(x) = x^2 + 4x",
-      a: "f'(x) = 2x + 4",
-      desc: "Derivamos cada término por separado usando la regla de la potencia."
-    },
-    {
-      q: "f(x) = \\sqrt{x}",
-      a: "f(x) = x^{1/2} \\implies f'(x) = \\frac{1}{2}x^{-1/2} = \\frac{1}{2\\sqrt{x}}",
-      desc: "Convertimos la raíz en exponente fraccionario antes de derivar."
-    }
-  ];
+  const content = (
+    <div className="space-y-12">
+      <section>
+        <h2 id="intro">¿Qué es la Regla de la Potencia?</h2>
+        <p>
+          La <strong>regla de la potencia</strong> es una de las fórmulas más utilizadas en el cálculo diferencial. Nos permite encontrar la derivada de funciones de la forma $f(x) = x^n$ de manera rápida y eficiente. Es el primer paso para dominar <Link href="/what-is-a-derivative" className="text-secondary font-bold">qué es una derivada</Link> en la práctica.
+        </p>
+        <p className="mt-4">
+          Si estás buscando <strong>cómo resolver derivadas de potencias</strong>, esta es la primera regla que debes aprender antes de pasar a temas más complejos como la <Link href="/reglas/regla-de-la-cadena" className="text-secondary font-bold">regla de la cadena</Link>.
+        </p>
+      </section>
 
-  const faqs = [
-    {
-      q: "¿Qué pasa si el exponente es negativo?",
-      a: "La regla sigue siendo la misma. Por ejemplo, la derivada de x⁻² es -2x⁻³."
-    },
-    {
-      q: "¿Se aplica a raíces?",
-      a: "Sí, siempre que conviertas la raíz a un exponente fraccionario (ej: √x = x¹/²)."
-    }
-  ];
+      <section>
+        <h2 id="formula">Fórmula de la Regla de la Potencia</h2>
+        <p className="mb-6">
+          La fórmula establece que para derivar una potencia de x, bajamos el exponente $n$ multiplicando a la base y restamos uno al exponente. Esta es una de las <Link href="/basic-derivative-formulas" className="text-secondary font-bold">fórmulas de derivadas</Link> más fundamentales.
+        </p>
+        <FormulaCard title="Fórmula de la Potencia">
+          <div dangerouslySetInnerHTML={{ __html: katex.renderToString(formula, { displayMode: true }) }} />
+        </FormulaCard>
+      </section>
+
+      <section>
+        <h2 id="ejemplos">Ejemplos Resueltos Paso a Paso</h2>
+        <p className="mb-8">Aquí te mostramos cómo aplicar la regla en diferentes escenarios. Para más casos, visita nuestra sección de <Link href="/derivative-examples" className="text-secondary font-bold">ejemplos de derivadas</Link>.</p>
+        
+        <ExampleCard 
+          title="Derivada de una potencia simple: x⁵"
+          steps={[
+            "Identificamos el exponente n = 5.",
+            "Bajamos el 5 multiplicando delante de la x.",
+            "Restamos 1 al exponente: 5 - 1 = 4.",
+            "Resultado: 5x⁴."
+          ]}
+        >
+          <div className="text-center" dangerouslySetInnerHTML={{ __html: katex.renderToString("\\dfrac{d}{dx} x^5 = 5x^4", { displayMode: true }) }} />
+        </ExampleCard>
+
+        <ExampleCard 
+          title="Derivada de una raíz: √x"
+          steps={[
+            "Convertimos la raíz en exponente fraccionario: x¹/².",
+            "Bajamos el exponente 1/2 multiplicando.",
+            "Restamos 1: 1/2 - 1 = -1/2.",
+            "Simplificamos volviendo a notación de raíz: 1 / (2√x)."
+          ]}
+        >
+          <div className="text-center" dangerouslySetInnerHTML={{ __html: katex.renderToString("\\dfrac{d}{dx} \\sqrt{x} = \\dfrac{1}{2\\sqrt{x}}", { displayMode: true }) }} />
+        </ExampleCard>
+      </section>
+
+      <section>
+        <h2 id="errores">Errores Comunes y Consejos</h2>
+        <WarningCard>
+          <strong>No restar 1 al exponente:</strong> Un error muy común es bajar el exponente pero dejar el número original arriba. ¡Recuerda siempre restar 1! Si tienes dudas, usa nuestra <Link href="/#calculator" className="text-secondary font-bold">calculadora paso a paso</Link> para verificar.
+        </WarningCard>
+        <TipCard>
+          Para variables en el denominador como $1/x^2$, conviértelas primero en potencias negativas ($x^{-2}$) antes de aplicar la regla. Esto facilita mucho el cálculo.
+        </TipCard>
+      </section>
+
+      <section>
+        <h2 id="aplicaciones">Aplicaciones en el mundo real</h2>
+        <p>
+          En física, si tienes una función de posición $s(t) = t^2$, la regla de la potencia te permite encontrar la velocidad instantánea $v(t) = 2t$ al derivar respecto al tiempo. Este concepto es vital en <Link href="/partial-derivatives" className="text-secondary font-bold">cálculo multivariable</Link> también.
+        </p>
+      </section>
+    </div>
+  );
 
   return (
-    <main className="flex min-h-screen flex-col bg-transparent">
-      <Navbar />
-      
-      {/* ─── Hero Section ─────────────────────────────────────────────── */}
-      <section className="pt-32 pb-16 bg-[#F8F6F2] dark:bg-[#0B0F19] border-b border-slate-100 dark:border-white/5">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 text-center">
-          <Link href="/reglas" className="inline-flex items-center gap-2 text-secondary dark:text-accent text-[0.85rem] font-bold uppercase tracking-wider mb-8 hover:opacity-80 transition-opacity">
-            <span className="text-[1.2rem] mb-0.5">←</span> Volver a Reglas
-          </Link>
-          <h1 className="heading-font text-[3rem] md:text-[4rem] text-slate-900 dark:text-white leading-tight mb-6">
-            Regla de la <span className="text-secondary dark:text-accent">Potencia</span>
-          </h1>
-          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            La regla de la potencia es la base fundamental del cálculo diferencial. Se utiliza para derivar cualquier función donde la variable x está elevada a una constante n.
-          </p>
-        </div>
-      </section>
-
-      {/* ─── Formula & Definition ─────────────────────────────────────── */}
-      <section className="py-20 bg-white dark:bg-[#0F1420]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="bg-slate-50 dark:bg-black/20 rounded-[2.5rem] p-12 border border-slate-100 dark:border-white/5 flex items-center justify-center shadow-inner">
-              <div 
-                className="text-4xl md:text-5xl text-slate-900 dark:text-white"
-                dangerouslySetInnerHTML={{ __html: katex.renderToString(formula, { displayMode: true }) }} 
-              />
-            </div>
-            <div className="space-y-6">
-              <h2 className="heading-font text-[2rem] text-slate-900 dark:text-white">¿Qué es y cuándo usarla?</h2>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
-                Esta regla establece que para derivar una potencia de x, simplemente bajamos el exponente multiplicando a la base y luego restamos una unidad al exponente original.
-              </p>
-              <div className="flex flex-col gap-4">
-                <div className="flex gap-3">
-                  <CheckCircle2 className="text-secondary dark:text-accent shrink-0" />
-                  <span className="text-slate-700 dark:text-slate-300">Funciones polinómicas simples (ej: x², x³)</span>
-                </div>
-                <div className="flex gap-3">
-                  <CheckCircle2 className="text-secondary dark:text-accent shrink-0" />
-                  <span className="text-slate-700 dark:text-slate-300">Funciones con raíces (convertidas a potencias)</span>
-                </div>
-                <div className="flex gap-3">
-                  <CheckCircle2 className="text-secondary dark:text-accent shrink-0" />
-                  <span className="text-slate-700 dark:text-slate-300">Variables en el denominador (ej: 1/x = x⁻¹)</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Solved Examples ─────────────────────────────────────────── */}
-      <section className="py-24 bg-[#F8F6F2] dark:bg-[#0B0F19]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
-          <h2 className="heading-font text-[2.2rem] text-slate-900 dark:text-white mb-12 text-center">Ejercicios Resueltos Paso a Paso</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {examples.map((ex, i) => (
-              <div key={i} className="bg-white dark:bg-[#131927] p-8 rounded-[2rem] border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-xl transition-all">
-                <div className="text-[0.7rem] font-bold text-secondary dark:text-accent uppercase tracking-widest mb-4">Ejemplo {i + 1}</div>
-                <div className="bg-slate-50 dark:bg-black/20 p-4 rounded-xl mb-4 text-center overflow-x-auto">
-                  <div dangerouslySetInnerHTML={{ __html: katex.renderToString(ex.q, { throwOnError: false }) }} />
-                </div>
-                <div className="flex items-center gap-2 mb-4">
-                  <ChevronRight size={14} className="text-secondary dark:text-accent" />
-                  <span className="text-[0.65rem] font-bold uppercase tracking-widest text-slate-400">Solución</span>
-                </div>
-                <div className="bg-secondary/5 dark:bg-secondary/10 p-4 rounded-xl mb-4 text-center overflow-x-auto text-secondary dark:text-accent font-bold">
-                  <div dangerouslySetInnerHTML={{ __html: katex.renderToString(ex.a, { throwOnError: false }) }} />
-                </div>
-                <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{ex.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Common Mistakes ─────────────────────────────────────────── */}
-      <section className="py-20 bg-white dark:bg-[#0F1420]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
-          <div className="bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 rounded-[2.5rem] p-10 md:p-14">
-            <div className="flex items-center gap-4 mb-8">
-              <AlertCircle className="text-red-500" size={32} />
-              <h2 className="heading-font text-[2rem] text-slate-900 dark:text-white">Errores Comunes</h2>
-            </div>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <li className="space-y-2">
-                <strong className="text-red-600 dark:text-red-400">Olvidar restar 1 al exponente:</strong>
-                <p className="text-slate-600 dark:text-slate-400">Es común bajar el exponente pero dejar el original intacto (ej: d/dx x³ ≠ 3x³).</p>
-              </li>
-              <li className="space-y-2">
-                <strong className="text-red-600 dark:text-red-400">Confundir con la regla de la cadena:</strong>
-                <p className="text-slate-600 dark:text-slate-400">Cuando la base no es simplemente 'x' (ej: (sin x)²), se requiere la regla de la cadena, no solo la potencia.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── FAQ ──────────────────────────────────────────────────────── */}
-      <section className="py-24 bg-[#F8F6F2] dark:bg-[#0B0F19]">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="heading-font text-[2rem] text-slate-900 dark:text-white mb-10 text-center">Preguntas Frecuentes</h2>
-          <div className="space-y-4">
-            {faqs.map((f, i) => (
-              <div key={i} className="bg-white dark:bg-[#131927] p-8 rounded-2xl border border-slate-100 dark:border-white/5">
-                <h3 className="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                  <HelpCircle size={18} className="text-secondary dark:text-accent" /> {f.q}
-                </h3>
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{f.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Bottom CTA ───────────────────────────────────────────────── */}
-      <section className="py-20 bg-white dark:bg-[#0F1420]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 text-center">
-          <h2 className="heading-font text-[2rem] text-slate-900 dark:text-white mb-8">¿Listo para practicar?</h2>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/" className="bg-primary hover:bg-slate-700 dark:bg-secondary dark:hover:bg-indigo-500 text-white px-8 py-3.5 rounded-xl font-bold transition-all shadow-lg">
-              Usar Calculadora
-            </Link>
-            <Link href="/ejercicios-resueltos" className="bg-white dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 px-8 py-3.5 rounded-xl font-bold hover:bg-slate-50 transition-all">
-              Ver más Ejemplos
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+    <ArticleLayout 
+      title="Regla de la Potencia: Fórmula, Ejemplos y Guía Completa"
+      description="Aprende a derivar potencias con pasos detallados. Domina la regla de la potencia con ejemplos resueltos, aplicaciones y errores comunes a evitar."
+      date="10 de Mayo, 2026"
+      readTime="5 min"
+      category="Reglas de Derivación"
+      tags={["Básico", "Polinomios", "Cálculo"]}
+      author={{
+        name: "Prof. Alberto Ruiz",
+        role: "Educador Matemático"
+      }}
+      breadcrumbs={[
+        { label: "Inicio", href: "/" },
+        { label: "Reglas", href: "/reglas" },
+        { label: "Regla de la Potencia", href: "/reglas/regla-de-la-potencia" }
+      ]}
+      content={content}
+      faqs={[
+        { question: "¿Se aplica a exponentes negativos?", answer: "Sí, la regla es universal. Por ejemplo, la derivada de x⁻³ es -3x⁻⁴." },
+        { question: "¿Funciona con exponentes fraccionarios?", answer: "Totalmente. Es la forma estándar de derivar raíces cuadradas, cúbicas y de cualquier grado." }
+      ]}
+      relatedPosts={[
+        { title: "Regla de la Cadena", slug: "reglas/regla-de-la-cadena" },
+        { title: "Regla del Producto", slug: "reglas/regla-del-producto" },
+        { title: "Tabla de Fórmulas", slug: "basic-derivative-formulas" }
+      ]}
+    />
   );
 }

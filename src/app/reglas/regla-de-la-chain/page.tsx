@@ -100,7 +100,7 @@ export default function ChainRulePage() {
       breadcrumbs={[
         { label: "Inicio", href: "/" },
         { label: "Reglas", href: "/reglas" },
-        { label: "Regla de la Cadena", href: "/reglas/regla-de-la-cadena" }
+        { label: "Regla de la Cadena", href: "/reglas/regla-de-la-chain" }
       ]}
       content={content}
       faqs={[

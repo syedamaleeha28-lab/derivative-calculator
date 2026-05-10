@@ -1,126 +1,122 @@
-import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Link from "next/link";
-import { AlertCircle, CheckCircle2, ChevronRight, HelpCircle } from "lucide-react";
-import katex from "katex";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Derivadas Trigonométricas | Tabla y Ejemplos Resueltos | Derivio",
-  description: "Aprende las derivadas de seno, coseno, tangente y sus inversas. Guía completa con tabla de fórmulas y ejercicios explicados paso a paso.",
-  keywords: "derivadas trigonométricas, derivada de seno, derivada de coseno, fórmulas de derivadas, cálculo diferencial, derivadas paso a paso",
-};
+import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
+import katex from "katex";
+import Link from "next/link";
 
 export default function TrigDerivativesPage() {
-  const formulas = [
-    { name: "Seno", f: "\\dfrac{d}{dx}\\left[\\sin(x)\\right] = \\cos(x)" },
-    { name: "Coseno", f: "\\dfrac{d}{dx}\\left[\\cos(x)\\right] = -\\sin(x)" },
-    { name: "Tangente", f: "\\dfrac{d}{dx}\\left[\\tan(x)\\right] = \\sec^2(x)" }
-  ];
-  
-  const examples = [
-    {
-      q: "f(x) = \\sin(5x)",
-      a: "f'(x) = \\cos(5x) \\cdot 5 = 5\\cos(5x)",
-      desc: "Usamos la regla de la cadena: derivada del seno por la derivada del argumento (5x)."
-    },
-    {
-      q: "f(x) = x \\cdot \\cos(x)",
-      a: "f'(x) = 1 \\cdot \\cos(x) + x \\cdot (-\\sin(x)) = \\cos(x) - x\\sin(x)",
-      desc: "Aplicamos la regla del producto entre x y cos(x)."
-    },
-    {
-      q: "f(x) = \\tan(x^2)",
-      a: "f'(x) = \\sec^2(x^2) \\cdot (2x) = 2x\\sec^2(x^2)",
-      desc: "Derivada de la tangente por la derivada de x²."
-    }
-  ];
+  const content = (
+    <div className="space-y-12">
+      <section>
+        <h2 id="que-es">¿Cómo derivar funciones trigonométricas?</h2>
+        <p>
+          Las <strong>derivadas trigonométricas</strong> son un conjunto de reglas que nos permiten encontrar la tasa de cambio de funciones como seno, coseno y tangente. Estas funciones son cíclicas y sus derivadas reflejan este comportamiento oscilatorio.
+        </p>
+        <p className="mt-4">
+          Para resolver funciones más complejas como $\sin(x^2)$, necesitarás combinar estas fórmulas con la <Link href="/reglas/regla-de-la-cadena" className="text-secondary font-bold">regla de la cadena</Link>.
+        </p>
+      </section>
 
-  const faqs = [
-    {
-      q: "¿Por qué el coseno tiene signo negativo?",
-      a: "Es una propiedad fundamental de las funciones trigonométricas. La pendiente del coseno es negativa en su fase inicial positiva."
-    },
-    {
-      q: "¿Cómo derivar funciones inversas?",
-      a: "Las funciones como arcsin(x) tienen fórmulas específicas que involucran raíces cuadradas. Nuestra calculadora las soporta todas."
-    }
-  ];
+      <section>
+        <h2 id="tabla">Tabla de Fórmulas Fundamentales</h2>
+        <p className="mb-6">Memorizar estas tres fórmulas te permitirá resolver la gran mayoría de los ejercicios escolares:</p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="p-6 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 flex flex-col items-center">
+            <span className="text-[0.7rem] font-bold text-secondary mb-2 uppercase">Seno</span>
+            <div dangerouslySetInnerHTML={{ __html: katex.renderToString("\\frac{d}{dx}\\sin x = \\cos x", { displayMode: true }) }} />
+          </div>
+          <div className="p-6 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 flex flex-col items-center">
+            <span className="text-[0.7rem] font-bold text-secondary mb-2 uppercase">Coseno</span>
+            <div dangerouslySetInnerHTML={{ __html: katex.renderToString("\\frac{d}{dx}\\cos x = -\\sin x", { displayMode: true }) }} />
+          </div>
+          <div className="p-6 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 flex flex-col items-center">
+            <span className="text-[0.7rem] font-bold text-secondary mb-2 uppercase">Tangente</span>
+            <div dangerouslySetInnerHTML={{ __html: katex.renderToString("\\frac{d}{dx}\\tan x = \\sec^2 x", { displayMode: true }) }} />
+          </div>
+        </div>
+        <p className="mt-6">
+          Puedes encontrar el resto de funciones (secante, cosecante, cotangente) en nuestro <Link href="/basic-derivative-formulas" className="text-secondary font-bold">formulario completo de derivadas</Link>.
+        </p>
+      </section>
+
+      <section>
+        <h2 id="ejemplos">Ejemplos Paso a Paso</h2>
+        <div className="space-y-8">
+          <ExampleCard 
+            title="Ejemplo 1: Regla de la Cadena con Seno"
+            steps={[
+              "Función f(x) = sin(5x).",
+              "La derivada de sin(u) es cos(u).",
+              "Multiplicamos por la derivada del ángulo (5x), que es 5.",
+              "Resultado final: 5 cos(5x)."
+            ]}
+          >
+            <div className="text-center" dangerouslySetInnerHTML={{ __html: katex.renderToString("f(x) = \\sin(5x) \\implies f'(x) = 5\\cos(5x)", { displayMode: true }) }} />
+          </ExampleCard>
+
+          <ExampleCard 
+            title="Ejemplo 2: Producto con Coseno"
+            steps={[
+              "Función f(x) = x * cos(x).",
+              "Aplicamos la regla del producto (u'v + uv').",
+              "u' = 1, v = cos(x).",
+              "u = x, v' = -sin(x).",
+              "Resultado: cos(x) - x sin(x)."
+            ]}
+          >
+            <div className="text-center" dangerouslySetInnerHTML={{ __html: katex.renderToString("f(x) = x\\cos(x) \\implies f'(x) = \\cos(x) - x\\sin(x)", { displayMode: true }) }} />
+          </ExampleCard>
+        </div>
+      </section>
+
+      <WarningCard>
+        Uno de los errores más frecuentes es olvidar el signo negativo al derivar el <strong>coseno</strong>. Recuerda: la derivada del seno es positiva, pero la del coseno siempre es negativa ($-\sin x$).
+      </WarningCard>
+
+      <section>
+        <h2 id="avanzado">Funciones Trigonométricas Inversas</h2>
+        <p>
+          Las derivadas de $\arcsin(x)$, $\arccos(x)$ y $\arctan(x)$ son fundamentales para integrar mediante sustitución trigonométrica. Nuestra <Link href="/#calculator" className="text-secondary font-bold">calculadora de derivadas</Link> también resuelve estas funciones con procedimiento detallado.
+        </p>
+      </section>
+
+      <section>
+        <h2 id="recursos">Más recursos de estudio</h2>
+        <p>
+          Si quieres practicar más, visita nuestra galería de <Link href="/derivative-examples" className="text-secondary font-bold">ejercicios resueltos de trigonometría</Link> o repasa las <Link href="/reglas" className="text-secondary font-bold">reglas generales de derivación</Link>.
+        </p>
+      </section>
+    </div>
+  );
 
   return (
-    <main className="flex min-h-screen flex-col bg-transparent">
-      <Navbar />
-      
-      <section className="pt-32 pb-16 bg-[#F8F6F2] dark:bg-[#0B0F19] border-b border-slate-100 dark:border-white/5">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 text-center">
-          <Link href="/reglas" className="inline-flex items-center gap-2 text-secondary dark:text-accent text-[0.85rem] font-bold uppercase tracking-wider mb-8 hover:opacity-80 transition-opacity">
-            <span className="text-[1.2rem] mb-0.5">← Volver a Reglas</span>
-          </Link>
-          <h1 className="heading-font text-[3rem] md:text-[4rem] text-slate-900 dark:text-white leading-tight mb-6">
-            Derivadas <span className="text-secondary dark:text-accent">Trigonométricas</span>
-          </h1>
-          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            Las funciones trigonométricas son cíclicas y sus derivadas también lo son. Aprender estas reglas es vital para problemas de física y oscilaciones.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white dark:bg-[#0F1420]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
-          <h2 className="heading-font text-[2rem] text-slate-900 dark:text-white mb-10 text-center">Tabla de Fórmulas Básicas</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {formulas.map((form, idx) => (
-              <div key={idx} className="bg-slate-50 dark:bg-black/20 p-8 rounded-2xl border border-slate-100 dark:border-white/5 flex flex-col items-center gap-4">
-                <span className="text-[0.7rem] font-bold text-secondary dark:text-accent uppercase tracking-widest">{form.name}</span>
-                <div 
-                  className="text-xl text-slate-900 dark:text-white"
-                  dangerouslySetInnerHTML={{ __html: katex.renderToString(form.f, { displayMode: true }) }} 
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-[#F8F6F2] dark:bg-[#0B0F19]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
-          <h2 className="heading-font text-[2.2rem] text-slate-900 dark:text-white mb-12 text-center">Ejemplos de Cálculo Trigonométrico</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {examples.map((ex, i) => (
-              <div key={i} className="bg-white dark:bg-[#131927] p-8 rounded-[2rem] border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-xl transition-all">
-                <div className="text-[0.7rem] font-bold text-secondary dark:text-accent uppercase tracking-widest mb-4">Ejemplo {i + 1}</div>
-                <div className="bg-slate-50 dark:bg-black/20 p-4 rounded-xl mb-4 text-center overflow-x-auto">
-                  <div dangerouslySetInnerHTML={{ __html: katex.renderToString(ex.q, { throwOnError: false }) }} />
-                </div>
-                <div className="flex items-center gap-2 mb-4">
-                  <ChevronRight size={14} className="text-secondary dark:text-accent" />
-                  <span className="text-[0.65rem] font-bold uppercase tracking-widest text-slate-400">Solución</span>
-                </div>
-                <div className="bg-secondary/5 dark:bg-secondary/10 p-4 rounded-xl mb-4 text-center overflow-x-auto text-secondary dark:text-accent font-bold">
-                  <div dangerouslySetInnerHTML={{ __html: katex.renderToString(ex.a, { throwOnError: false }) }} />
-                </div>
-                <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{ex.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white dark:bg-[#0F1420]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 text-center">
-          <h2 className="heading-font text-[2rem] text-slate-900 dark:text-white mb-8">Obtén el resultado con pasos</h2>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/" className="bg-primary hover:bg-slate-700 dark:bg-secondary dark:hover:bg-indigo-500 text-white px-8 py-3.5 rounded-xl font-bold transition-all shadow-lg">
-              Calculadora de Derivadas
-            </Link>
-            <Link href="/ejercicios-resueltos" className="bg-white dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 px-8 py-3.5 rounded-xl font-bold hover:bg-slate-50 transition-all">
-              Ejercicios Resueltos
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+    <ArticleLayout
+      title="Derivadas Trigonométricas: Fórmulas y Ejercicios Resueltos"
+      description="Domina las derivadas de seno, coseno, tangente y más. Guía completa con tabla de fórmulas, regla de la cadena aplicada y ejemplos paso a paso."
+      date="10 de Mayo, 2026"
+      readTime="10 min"
+      category="Reglas"
+      tags={["Calculus", "Trigonometría", "Derivadas"]}
+      author={{
+        name: "Academia Derivio",
+        role: "Expertos en Cálculo"
+      }}
+      breadcrumbs={[
+        { label: "Inicio", href: "/" },
+        { label: "Reglas", href: "/reglas" },
+        { label: "Derivadas Trigonométricas", href: "/reglas/derivadas-trigonometricas" }
+      ]}
+      content={content}
+      faqs={[
+        { question: "¿Cuál es la derivada de la tangente?", answer: "La derivada de tan(x) es sec²(x). También se puede expresar como 1 + tan²(x) dependiendo de la identidad que prefieras." },
+        { question: "¿Cómo se derivan ángulos en grados?", answer: "En cálculo, siempre debemos trabajar en radianes. Si el ángulo está en grados, primero debes convertirlo multiplicando por π/180." },
+        { question: "¿Existen derivadas de funciones hiperbólicas?", answer: "Sí, como sinh(x) y cosh(x). Sus reglas son muy similares pero los signos cambian ligeramente." }
+      ]}
+      relatedPosts={[
+        { title: "Regla de la Cadena", slug: "reglas/regla-de-la-cadena" },
+        { title: "Regla del Producto", slug: "reglas/regla-del-producto" },
+        { title: "Tabla de Fórmulas", slug: "basic-derivative-formulas" }
+      ]}
+    />
   );
 }

@@ -1,146 +1,228 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Link from "next/link";
-import { Clock, Calendar, ArrowLeft, ChevronRight, CheckCircle2, AlertTriangle, HelpCircle } from "lucide-react";
-import katex from "katex";
 import { notFound } from "next/navigation";
+import ArticleLayout, { FormulaCard, TipCard, WarningCard, ExampleCard } from "@/components/EducationalArticle";
+import katex from "katex";
+import Link from "next/link";
 
-interface BlogPost {
-  title: string;
-  slug: string;
-  description: string;
-  date: string;
-  read: string;
-  category: string;
-  content: React.ReactNode;
-}
+// ─── Post Data (In a real app, this would come from a CMS or DB) ───────────
 
-const POSTS: Record<string, BlogPost> = {
+const POSTS: Record<string, any> = {
   "como-aprender-derivadas-desde-cero": {
-    title: "Cómo aprender derivadas desde cero",
+    title: "Cómo aprender derivadas desde cero: Guía Completa para Estudiantes",
     slug: "como-aprender-derivadas-desde-cero",
-    description: "Una guía completa para principiantes que quieren entender el concepto de derivada sin complicaciones.",
-    date: "10 May 2026",
-    read: "5 min",
-    category: "Tutorial",
+    description: "Domina el cálculo diferencial con esta guía paso a paso. Aprende qué es una derivada, cómo resolver ejercicios y utiliza nuestra calculadora de derivadas online.",
+    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=800",
+    date: "10 de Mayo, 2026",
+    readTime: "8 min",
+    category: "Tutorial Básico",
+    tags: ["Calculus", "Derivadas", "Matemáticas"],
+    author: {
+      name: "Prof. Alberto Ruiz",
+      role: "Ph.D. en Matemáticas Aplicadas"
+    },
+    breadcrumbs: [
+      { label: "Inicio", href: "/" },
+      { label: "Blog", href: "/blog" },
+      { label: "Aprender desde cero", href: "/blog/como-aprender-derivadas-desde-cero" }
+    ],
+    faqs: [
+      {
+        question: "¿Cuál es la regla de derivación más importante?",
+        answer: "Sin duda, la Regla de la Cadena. Es fundamental para resolver funciones compuestas, que son las más comunes en los ejercicios de cálculo."
+      },
+      {
+        question: "¿Necesito saber álgebra para aprender derivadas?",
+        answer: "Sí, el álgebra sólida es la base del cálculo. Simplificar expresiones y manejar potencias es clave para obtener el resultado correcto."
+      }
+    ],
+    relatedPosts: [
+      { title: "Los 5 errores más comunes al derivar", slug: "errores-comunes-al-derivar" },
+      { title: "Entendiendo la Regla de la Cadena", slug: "entendiendo-regla-de-la-cadena" }
+    ],
     content: (
-      <div className="space-y-10">
+      <div className="space-y-12 text-slate-600 dark:text-slate-300 leading-relaxed">
         <section>
-          <h2 className="heading-font text-3xl text-slate-900 dark:text-white mb-6">Introducción al Cálculo Diferencial</h2>
-          <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
-            Aprender derivadas puede parecer intimidante al principio, pero en esencia, una derivada es simplemente una medida de <strong>cómo cambia algo</strong>. Si estás en un coche, la derivada de tu posición es tu velocidad. Si estás en una montaña rusa, la derivada es la inclinación de la vía en cada punto.
+          <h2 id="intro">Introducción al concepto de derivada</h2>
+          <p>
+            Si has llegado hasta aquí, probablemente estés buscando resolver dudas sobre <strong>cómo resolver derivadas</strong>. El cálculo diferencial es una de las ramas más fascinantes de las matemáticas porque nos permite entender el movimiento y el cambio. En Derivio, nuestra <Link href="/#calculator" className="text-secondary font-bold">calculadora de derivadas paso a paso</Link> está diseñada para que este proceso sea lo más sencillo posible.
+          </p>
+          <p className="mt-4">
+            Antes de empezar con los ejercicios, es recomendable repasar las <Link href="/reglas" className="text-secondary font-bold">reglas de derivación</Link> básicas que rigen todo el cálculo.
           </p>
         </section>
 
-        <section className="bg-slate-50 dark:bg-[#0f172a] p-8 rounded-3xl border border-slate-100 dark:border-[#1e293b]">
-          <h3 className="font-bold text-slate-900 dark:text-white text-xl mb-4">La Definición Visual</h3>
-          <p className="text-slate-600 dark:text-slate-400 mb-6">
-            Imagina una curva en un gráfico. La derivada en un punto específico es la pendiente de la línea que apenas toca ese punto (la recta tangente).
+        <section>
+          <h2 id="definicion">¿Qué es una derivada en matemáticas?</h2>
+          <p>
+            Desde un punto de vista geométrico, la derivada de una función en un punto dado es la pendiente de la recta tangente a la gráfica de la función en dicho punto. Representa la <strong>tasa de cambio instantánea</strong> de una variable respecto a otra.
           </p>
-          <div className="bg-white dark:bg-black/40 p-6 rounded-2xl text-center overflow-x-auto shadow-inner">
-             <div dangerouslySetInnerHTML={{ __html: katex.renderToString("f'(x) = \\lim_{h \\to 0} \\dfrac{f(x+h) - f(x)}{h}", { displayMode: true }) }} />
-          </div>
+          <TipCard>
+            Piensa en la derivada como un "velocímetro" de funciones. Si tienes una función que describe tu posición, su derivada te diría tu velocidad en cada segundo exacto. Puedes leer más sobre esto en nuestra guía detallada <Link href="/what-is-a-derivative" className="text-secondary font-bold underline decoration-secondary/30">¿Qué es una derivada?</Link>.
+          </TipCard>
         </section>
 
         <section>
-          <h2 className="heading-font text-3xl text-slate-900 dark:text-white mb-6">Pasos para Dominar las Derivadas</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-             <div className="p-6 bg-white dark:bg-[#131927] border border-slate-100 dark:border-white/5 rounded-2xl shadow-sm">
-                <CheckCircle2 className="text-secondary mb-4" />
-                <h4 className="font-bold text-slate-900 dark:text-white mb-2">Entiende la pendiente</h4>
-                <p className="text-slate-500 dark:text-slate-400 text-sm">Antes de las fórmulas, entiende que buscas la inclinación de una curva.</p>
-             </div>
-             <div className="p-6 bg-white dark:bg-[#131927] border border-slate-100 dark:border-white/5 rounded-2xl shadow-sm">
-                <CheckCircle2 className="text-secondary mb-4" />
-                <h4 className="font-bold text-slate-900 dark:text-white mb-2">Aprende las reglas básicas</h4>
-                <p className="text-slate-500 dark:text-slate-400 text-sm">Empieza por la regla de la potencia y las constantes. Son los pilares.</p>
-             </div>
-          </div>
+          <h2 id="formula">La Definición Formal de la Derivada</h2>
+          <p>
+            La definición de la derivada mediante límites es la base de todo el cálculo diferencial. Aunque hoy en día usamos <Link href="/basic-derivative-formulas" className="text-secondary font-bold">fórmulas de derivadas</Link> rápidas, entender esta fórmula es vital para comprender la lógica matemática.
+          </p>
+          <FormulaCard title="Definición por Límites">
+            <div dangerouslySetInnerHTML={{ __html: katex.renderToString("f'(x) = \\lim_{h \\to 0} \\dfrac{f(x+h) - f(x)}{h}", { displayMode: true }) }} />
+          </FormulaCard>
+        </section>
+
+        <section>
+          <h2 id="paso-a-paso">Pasos para resolver ejercicios de derivadas</h2>
+          <p>
+            Cuando te enfrentas a un problema de diferenciación, seguir un orden lógico te ahorrará muchos errores. Aquí te explicamos el proceso que sigue nuestro motor matemático:
+          </p>
+          <ul className="space-y-4 list-none pl-0">
+            <li className="flex gap-3">
+              <span className="shrink-0 w-6 h-6 rounded-full bg-secondary text-white text-[0.7rem] font-bold flex items-center justify-center">1</span>
+              <span><strong>Identifica la estructura:</strong> Observa si tienes una potencia, un producto, un cociente o una función compuesta.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="shrink-0 w-6 h-6 rounded-full bg-secondary text-white text-[0.7rem] font-bold flex items-center justify-center">2</span>
+              <span><strong>Aplica la regla correspondiente:</strong> Utiliza fórmulas conocidas como la <Link href="/reglas/regla-de-la-potencia" className="text-secondary font-bold">regla de la potencia</Link> o la derivada del seno/coseno.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="shrink-0 w-6 h-6 rounded-full bg-secondary text-white text-[0.7rem] font-bold flex items-center justify-center">3</span>
+              <span><strong>Usa la regla de la cadena:</strong> Si tienes funciones anidadas, deriva de afuera hacia adentro. Mira nuestro <Link href="/reglas/regla-de-la-cadena" className="text-secondary font-bold">tutorial de la regla de la cadena</Link>.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="shrink-0 w-6 h-6 rounded-full bg-secondary text-white text-[0.7rem] font-bold flex items-center justify-center">4</span>
+              <span><strong>Simplifica:</strong> Realiza las operaciones algebraicas finales para obtener la respuesta más limpia.</span>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 id="ejemplo">Ejemplo Práctico de Derivación</h2>
+          <p>Veamos cómo resolver una función polinómica básica paso a paso. Si quieres ver más variedad, visita nuestra galería de <Link href="/derivative-examples" className="text-secondary font-bold">ejemplos de derivadas resueltos</Link>.</p>
+          <ExampleCard 
+            title="Derivar f(x) = 3x² + 5x - 7"
+            steps={[
+              "Aplicamos la regla de la potencia a 3x², bajando el 2: 3 * 2 * x¹ = 6x.",
+              "Derivamos 5x, cuya derivada es simplemente el coeficiente: 5.",
+              "La derivada de la constante -7 es 0.",
+              "Sumamos los resultados: f'(x) = 6x + 5."
+            ]}
+          >
+            <div className="text-center" dangerouslySetInnerHTML={{ __html: katex.renderToString("f(x) = 3x^2 + 5x - 7 \\implies f'(x) = 6x + 5", { displayMode: true }) }} />
+          </ExampleCard>
+        </section>
+
+        <section>
+          <h2 id="errores">Errores comunes que debes evitar</h2>
+          <WarningCard>
+            Uno de los fallos más típicos es derivar el producto de dos funciones simplemente derivando cada una por separado. Recuerda que para u·v debes aplicar la <Link href="/reglas/regla-del-producto" className="text-secondary font-bold underline">regla del producto</Link>: (u'v + uv').
+          </WarningCard>
+          <p>
+            Otro error frecuente ocurre con las <Link href="/reglas/derivadas-trigonometricas" className="text-secondary font-bold">derivadas trigonométricas</Link>, como olvidar que la derivada del coseno de x es menos el seno de x. El signo negativo es crítico.
+          </p>
+        </section>
+
+        <section>
+          <h2 id="conclusion">Conclusión</h2>
+          <p>
+            Aprender cálculo requiere práctica constante. Utiliza nuestra <strong>calculadora de derivadas con pasos</strong> para verificar tus ejercicios y entender la lógica detrás de cada paso. No te desanimes por la complejidad inicial, con paciencia dominarás las derivadas online.
+          </p>
         </section>
       </div>
     )
   },
   "errores-comunes-al-derivar": {
-    title: "Los 5 errores más comunes al derivar",
+    title: "Los 5 errores más comunes al derivar y cómo evitarlos",
     slug: "errores-comunes-al-derivar",
-    description: "Evita estos fallos típicos en tus exámenes de cálculo. Analizamos la regla de la cadena y el producto.",
-    date: "08 May 2026",
-    read: "8 min",
-    category: "Tips",
+    description: "Análisis de los fallos más frecuentes en exámenes de cálculo. Aprende a aplicar correctamente la regla de la cadena y el producto.",
+    image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&q=80&w=800",
+    date: "08 de Mayo, 2026",
+    readTime: "6 min",
+    category: "Consejos",
+    tags: ["Exámenes", "Calculus", "Guía"],
+    author: {
+      name: "Dra. Elena Martínez",
+      role: "Catedrática de Análisis Matemático"
+    },
+    breadcrumbs: [
+      { label: "Inicio", href: "/" },
+      { label: "Blog", href: "/blog" },
+      { label: "Errores Comunes", href: "/blog/errores-comunes-al-derivar" }
+    ],
+    faqs: [
+      { question: "¿Cómo evito errores de signos?", answer: "Usa paréntesis en cada paso de la derivación, especialmente cuando aplicas la regla del cociente." }
+    ],
+    relatedPosts: [
+      { title: "Cómo aprender derivadas desde cero", slug: "como-aprender-derivadas-desde-cero" }
+    ],
     content: (
-      <div className="space-y-10">
-        <section>
-          <h2 className="heading-font text-3xl text-slate-900 dark:text-white mb-6">¿Por qué fallamos en Cálculo?</h2>
-          <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
-            Incluso los mejores estudiantes cometen errores por descuido. Aquí analizamos los "pecados capitales" de la derivación para que nunca te pase a ti.
-          </p>
-        </section>
-
-        <section className="space-y-6">
-          <div className="flex gap-4 p-8 bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 rounded-3xl">
-             <AlertTriangle className="text-red-500 shrink-0" size={28} />
-             <div>
-                <h3 className="font-bold text-slate-900 dark:text-white text-xl mb-2">1. La trampa del producto</h3>
-                <p className="text-slate-600 dark:text-slate-400">Creer que la derivada de u·v es u'·v'. ¡Error! Siempre usa la fórmula u'v + uv'.</p>
-             </div>
-          </div>
-          <div className="flex gap-4 p-8 bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 rounded-3xl">
-             <AlertTriangle className="text-red-500 shrink-0" size={28} />
-             <div>
-                <h3 className="font-bold text-slate-900 dark:text-white text-xl mb-2">2. Olvidar la Regla de la Cadena</h3>
-                <p className="text-slate-600 dark:text-slate-400">Derivar sin(x²) como cos(x²) sin multiplicar por el 2x interior. La capa interior siempre importa.</p>
-             </div>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="heading-font text-3xl text-slate-900 dark:text-white mb-6">Cómo evitar estos errores</h2>
-          <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-            La mejor forma de verificar tus resultados es usar una <strong>calculadora de derivadas online</strong> que muestre los pasos. Esto te permite comparar tu procedimiento con el camino correcto.
-          </p>
-        </section>
-      </div>
+       <div className="space-y-12 text-slate-600 dark:text-slate-300 leading-relaxed">
+          <section>
+             <h2 id="intro">¿Por qué cometemos errores en Cálculo?</h2>
+             <p>El cálculo diferencial requiere una atención meticulosa a los detalles. A menudo, el problema no es la falta de comprensión, sino pequeños descuidos que arruinan un ejercicio completo.</p>
+             <p className="mt-4">
+               Muchos de estos errores se pueden evitar consultando una <Link href="/basic-derivative-formulas" className="text-secondary font-bold">tabla de fórmulas</Link> confiable.
+             </p>
+          </section>
+          <section>
+             <h2 id="error1">Error 1: Fallos en la Regla del Producto</h2>
+             <p>Este es el error número uno. Muchos estudiantes creen que la derivada de un producto es el producto de las derivadas. Para corregirlo, estudia nuestra guía de la <Link href="/reglas/regla-del-producto" className="text-secondary font-bold">regla del producto</Link>.</p>
+             <WarningCard>
+                Fórmula correcta: (u·v)' = u'v + uv'. Nunca simplemente u'·v'.
+             </WarningCard>
+          </section>
+          <section>
+             <h2 id="error2">Error 2: Olvidar la Regla de la Cadena</h2>
+             <p>Al derivar funciones compuestas como sin(x²), es común olvidar derivar el interior. Aprende a identificar estas funciones con nuestro <Link href="/reglas/regla-de-la-cadena" className="text-secondary font-bold">tutorial de regla de la cadena</Link>.</p>
+          </section>
+          <section>
+             <h2 id="conclusion">Usa herramientas de apoyo</h2>
+             <p>Para evitar estos fallos, lo ideal es usar una <Link href="/#calculator" className="text-secondary font-bold">calculadora de derivadas paso a paso</Link> que te permita ver en qué punto exacto te has desviado del camino correcto.</p>
+          </section>
+       </div>
     )
   },
   "entendiendo-regla-de-la-cadena": {
-    title: "Entendiendo la Regla de la Cadena",
+    title: "Entendiendo la Regla de la Cadena: Guía Definitiva",
     slug: "entendiendo-regla-de-la-cadena",
-    description: "Explicación visual y sencilla de la regla más utilizada en el cálculo de derivadas online.",
-    date: "05 May 2026",
-    read: "6 min",
-    category: "Tutorial",
+    description: "La explicación más clara sobre la regla de la cadena. Ejemplos resueltos, pasos detallados y aplicaciones en derivadas complejas.",
+    image: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=800",
+    date: "05 de Mayo, 2026",
+    readTime: "10 min",
+    category: "Tutorial Avanzado",
+    tags: ["Regla de la Cadena", "Diferenciación"],
+    author: {
+      name: "Prof. Alberto Ruiz",
+      role: "Ph.D. en Matemáticas"
+    },
+    breadcrumbs: [
+      { label: "Inicio", href: "/" },
+      { label: "Blog", href: "/blog" },
+      { label: "Regla de la Cadena", href: "/blog/entendiendo-regla-de-la-cadena" }
+    ],
     content: (
-      <div className="space-y-10">
-        <section>
-          <h2 className="heading-font text-3xl text-slate-900 dark:text-white mb-6">La Regla de la Cadena Desmitificada</h2>
-          <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
-            Si hay una regla que genera dudas, es esta. Pero una vez que entiendes el concepto de "composición de funciones", todo se vuelve lógico.
-          </p>
-        </section>
-
-        <section className="bg-violet-50 dark:bg-secondary/5 p-10 rounded-[3rem] border border-secondary/10">
-          <h3 className="font-bold text-slate-900 dark:text-white text-2xl mb-6">La Metáfora de la Cebolla</h3>
-          <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-            Imagina una función como sin(x²). El "seno" es la capa exterior y el "x²" es el corazón. Para derivar, pelamos la primera capa (coseno) y luego multiplicamos por la derivada del corazón (2x).
-          </p>
-          <div className="bg-white dark:bg-black/40 p-6 rounded-2xl text-center shadow-sm">
-             <div dangerouslySetInnerHTML={{ __html: katex.renderToString("\\dfrac{d}{dx} f(g(x)) = f'(g(x)) \\cdot g'(x)", { displayMode: true }) }} />
-          </div>
-        </section>
-
-        <section>
-           <h2 className="heading-font text-3xl text-slate-900 dark:text-white mb-6">Preguntas Frecuentes</h2>
-           <div className="space-y-4">
-              <div className="p-6 bg-white dark:bg-[#0f172a] border border-slate-100 dark:border-[#1e293b] rounded-2xl">
-                 <h4 className="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                    <HelpCircle size={18} className="text-secondary" /> ¿Cuándo debo usarla?
-                 </h4>
-                 <p className="text-slate-500 dark:text-slate-400 text-sm">Siempre que tengas una función dentro de otra. Ejemplos: log(x²), (3x-1)⁵, e^{"{"}cos x{"}"}.</p>
-              </div>
-           </div>
-        </section>
-      </div>
+       <div className="space-y-12 text-slate-600 dark:text-slate-300 leading-relaxed">
+          <section>
+             <h2 id="intro">El corazón de la diferenciación</h2>
+             <p>La regla de la cadena es, sin duda, la herramienta más potente que aprenderás en cálculo diferencial. Te permite derivar funciones dentro de funciones, algo que verás constantemente en <Link href="/derivative-examples" className="text-secondary font-bold">ejercicios avanzados</Link>.</p>
+          </section>
+          <section>
+             <h2 id="formula">La Fórmula de la Cadena</h2>
+             <p>Esta regla establece que la derivada de una función compuesta es la derivada de la función exterior evaluada en la interior, multiplicada por la derivada de la función interior.</p>
+             <FormulaCard>
+                <div dangerouslySetInnerHTML={{ __html: katex.renderToString("\\dfrac{d}{dx} f(g(x)) = f'(g(x)) \\cdot g'(x)", { displayMode: true }) }} />
+             </FormulaCard>
+             <p className="mt-4">
+               Si esto te parece complicado, no te preocupes. Nuestra <Link href="/#calculator" className="text-secondary font-bold">herramienta online</Link> desglosa cada aplicación de esta regla para que la entiendas visualmente.
+             </p>
+          </section>
+          <section>
+            <h2 id="ejemplos">Más Recursos</h2>
+            <p>
+              Dominar la cadena te permitirá entender luego las <Link href="/partial-derivatives" className="text-secondary font-bold">derivadas parciales</Link> y otros conceptos de cálculo multivariable.
+            </p>
+          </section>
+       </div>
     )
   }
 };
@@ -155,8 +237,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const post = POSTS[params.slug];
   if (!post) return {};
   return {
-    title: `${post.title} | Blog de Cálculo | Derivio`,
+    title: `${post.title} | Derivio`,
     description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      publishedTime: post.date,
+      authors: [post.author.name],
+      tags: post.tags,
+    }
   };
 }
 
@@ -164,74 +254,5 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = POSTS[params.slug];
   if (!post) notFound();
 
-  return (
-    <main className="flex min-h-screen flex-col bg-white dark:bg-[#07111f]">
-      <Navbar />
-      
-      {/* ─── Breadcrumbs & Header ───────────────────────────────────── */}
-      <section className="pt-32 pb-16 bg-[#F8F6F2] dark:bg-[#07111f] border-b border-slate-100 dark:border-[#1e293b]">
-        <div className="max-w-[800px] mx-auto px-6">
-          <nav className="flex items-center gap-2 text-[0.8rem] font-bold text-slate-400 uppercase tracking-widest mb-10">
-            <Link href="/" className="hover:text-secondary transition-colors">Inicio</Link>
-            <ChevronRight size={12} />
-            <Link href="/blog" className="hover:text-secondary transition-colors">Blog</Link>
-            <ChevronRight size={12} />
-            <span className="text-slate-900 dark:text-white truncate">{post.title}</span>
-          </nav>
-          
-          <div className="flex items-center gap-4 mb-6">
-            <span className="bg-secondary/10 dark:bg-secondary/20 text-secondary dark:text-accent px-3 py-1 rounded-full text-[0.7rem] font-bold uppercase tracking-widest">
-              {post.category}
-            </span>
-            <div className="flex items-center gap-2 text-slate-400 text-[0.8rem]">
-              <Calendar size={14} /> {post.date}
-            </div>
-            <div className="flex items-center gap-2 text-slate-400 text-[0.8rem]">
-              <Clock size={14} /> {post.read} lectura
-            </div>
-          </div>
-
-          <h1 className="heading-font text-[3rem] md:text-[3.8rem] text-slate-900 dark:text-white leading-[1.1] tracking-tight mb-8">
-            {post.title}
-          </h1>
-        </div>
-      </section>
-
-      {/* ─── Article Content ────────────────────────────────────────── */}
-      <article className="py-20">
-        <div className="max-w-[800px] mx-auto px-6">
-          <div className="prose prose-slate dark:prose-invert max-w-none">
-            {post.content}
-          </div>
-
-          {/* ─── Internal Linking ────────────────────────────────────── */}
-          <div className="mt-20 pt-12 border-t border-slate-100 dark:border-[#1e293b]">
-             <h3 className="heading-font text-2xl text-slate-900 dark:text-white mb-8">Sigue aprendiendo</h3>
-             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Link href="/rules" className="p-6 bg-slate-50 dark:bg-[#0f172a] rounded-2xl border border-slate-100 dark:border-[#1e293b] hover:border-secondary/30 transition-all group">
-                   <span className="text-[0.65rem] font-bold text-secondary uppercase tracking-widest mb-1 block">Reglas</span>
-                   <p className="text-slate-900 dark:text-white font-bold">Ver reglas de derivación</p>
-                </Link>
-                <Link href="/demonstraciones" className="p-6 bg-slate-50 dark:bg-[#0f172a] rounded-2xl border border-slate-100 dark:border-[#1e293b] hover:border-secondary/30 transition-all group">
-                   <span className="text-[0.65rem] font-bold text-secondary uppercase tracking-widest mb-1 block">Academia</span>
-                   <p className="text-slate-900 dark:text-white font-bold">Ver demonstraciones paso a paso</p>
-                </Link>
-             </div>
-          </div>
-        </div>
-      </article>
-
-      {/* ─── Bottom CTA ───────────────────────────────────────────────── */}
-      <section className="py-24 bg-[#F8F6F2] dark:bg-[#07111f] border-t border-slate-100 dark:border-[#1e293b]">
-        <div className="max-w-[1280px] mx-auto px-6 text-center">
-           <h2 className="heading-font text-[2.5rem] text-slate-900 dark:text-white mb-8">¿Listo para calcular?</h2>
-           <Link href="/" className="bg-slate-900 dark:bg-secondary hover:bg-slate-800 dark:hover:bg-accent text-white px-10 py-4 rounded-xl font-bold transition-all shadow-xl active:scale-95">
-              Ir a la Calculadora de Derivadas
-           </Link>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
-  );
+  return <ArticleLayout {...post} />;
 }

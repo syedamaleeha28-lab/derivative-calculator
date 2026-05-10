@@ -10,36 +10,42 @@ export default function SEOContent() {
       desc: "La derivada representa la tasa de cambio instantánea de una función. Es la pendiente de la recta tangente en un punto específico. Fundamental para entender el movimiento y optimización en cálculo diferencial.",
       icon: <HelpCircle className="text-primary" />,
       link: "Aprende el concepto base →",
+      href: "/what-is-a-derivative",
     },
     {
       title: "Cómo usar la calculadora",
       desc: "Simplemente ingresa tu expresión matemática usando nuestro teclado especializado. Obtendrás no solo el resultado final, sino la resolución de derivadas paso a paso con las reglas aplicadas.",
       icon: <LayoutGrid className="text-secondary" />,
       link: "Ver tutorial rápido →",
+      href: "/how-to-use-derivative-calculator",
     },
     {
       title: "Reglas de Derivación",
       desc: "Domina las reglas esenciales: regla de la potencia, regla del producto, cociente y la regla de la cadena. Nuestra plataforma identifica y explica cada regla al resolver derivadas online.",
       icon: <BookOpen className="text-accent" />,
       link: "Estudiar reglas →",
+      href: "/reglas",
     },
     {
-      title: "Ejemplos Comunes",
+      title: "Ejemplos de Derivadas",
       desc: "Explora nuestra biblioteca de ejercicios resueltos. Desde polinomios simples hasta complejas derivadas trigonométricas y exponenciales para practicar y comprobar tus conocimientos.",
       icon: <FunctionSquare className="text-primary" />,
       link: "Ver galería de ejemplos →",
+      href: "/derivative-examples",
     },
     {
       title: "Derivadas Parciales",
       desc: "Avanza hacia el cálculo multivariable. Aprende a mantener variables constantes mientras derivas respecto a otra. Próximamente incluiremos una calculadora específica para esto.",
       icon: <Layers className="text-secondary" />,
       link: "Conceptos avanzados →",
+      href: "/partial-derivatives",
     },
     {
-      title: "Fórmulas Básicas",
+      title: "Fórmulas de Derivadas",
       desc: "Accede a nuestra tabla de derivadas y fórmulas trigonométricas interactivas. Un recurso imprescindible para exámenes y tareas de nivel preparatoria y universidad.",
       icon: <Sigma className="text-accent" />,
-      link: "Descargar formulario →",
+      link: "Ver formulario completo →",
+      href: "/basic-derivative-formulas",
     }
   ];
 
@@ -49,10 +55,10 @@ export default function SEOContent() {
         
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="heading-font text-3xl md:text-4xl text-slate-900 dark:text-white mb-5">
-            Domina el Cálculo Diferencial
+            Tu Calculadora de Derivadas Online y Gratuita
           </h2>
           <p className="text-lg text-slate-600 dark:text-[#cbd5e1] leading-relaxed">
-            Nuestra plataforma educativa está diseñada para ayudarte a <strong className="font-semibold text-slate-800 dark:text-[#f8fafc]">resolver derivadas online</strong> y comprender la lógica detrás de cada procedimiento matemático.
+            Nuestra plataforma educativa está diseñada para ayudarte a <strong className="font-semibold text-slate-800 dark:text-[#f8fafc]">resolver derivadas con pasos</strong> y comprender la lógica matemática detrás de cada función diferencial de forma rápida y sencilla.
           </p>
         </div>
 
@@ -75,7 +81,7 @@ export default function SEOContent() {
               <p className="text-slate-500 dark:text-[#cbd5e1] leading-relaxed mb-6 flex-grow">
                 {card.desc}
               </p>
-              <a href="#" className="inline-block mt-auto text-sm font-semibold text-secondary dark:text-accent group-hover:opacity-80 transition-opacity">
+              <a href={card.href} className="inline-block mt-auto text-sm font-semibold text-secondary dark:text-accent group-hover:opacity-80 transition-opacity">
                 {card.link}
               </a>
             </motion.div>

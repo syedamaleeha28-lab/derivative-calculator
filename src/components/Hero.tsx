@@ -86,10 +86,20 @@ function TrustPill({ icon, text }: { icon: React.ReactNode; text: string }) {
 }
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
+import { useRef } from "react";
+import { CalculatorHandle } from "./CalculatorCard";
+
 export default function Hero() {
+  const calculatorRef = useRef<CalculatorHandle>(null);
+
+  const handleCalculateClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    calculatorRef.current?.focusAndCalculate();
+  };
+
   return (
     <section
-      id="hero"
+      id="calculator"
       className="relative overflow-hidden pt-20 pb-16 md:pt-24 md:pb-24 min-h-screen flex flex-col justify-center"
     >
       {/* Ambient background blobs — very subtle */}
@@ -117,7 +127,7 @@ export default function Hero() {
               <h1 className="heading-font text-[2.8rem] md:text-[3.4rem] lg:text-[3.8rem] leading-[1.04] text-slate-900 dark:text-[#f8fafc] tracking-tight mb-5">
                 Calculadora de Derivadas{" "}
                 <span className="relative inline-block">
-                  <span className="relative z-10 text-secondary dark:text-accent">Paso a Paso</span>
+                  <span className="relative z-10 text-secondary dark:text-accent">con Pasos</span>
                   <motion.span
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
@@ -125,25 +135,25 @@ export default function Hero() {
                     className="absolute bottom-1 left-0 right-0 h-[3px] bg-secondary/20 dark:bg-accent/20 rounded-full origin-left"
                   />
                 </span>
-                {" "}para Resolver Funciones.
+                {" "}para Resolver Online.
               </h1>
               <p className="text-[1.1rem] md:text-[1.18rem] text-slate-600 dark:text-[#cbd5e1] leading-relaxed max-w-[520px]">
-                Obtén resultados simbólicos exactos y explicaciones detalladas. Nuestra herramienta te ayuda a derivar funciones trigonométricas, logarítmicas y compuestas de forma gratuita y educativa.
+                Nuestra <strong>calculadora de derivadas paso a paso</strong> te permite obtener resultados simbólicos exactos y explicaciones detalladas. Deriva funciones trigonométricas, logarítmicas y compuestas de forma gratuita.
               </p>
             </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <motion.a
-                href="#hero"
-                whileHover={{ scale: 1.02 }}
+              <motion.button
+                onClick={handleCalculateClick}
+                whileHover={{ scale: 1.02, backgroundColor: "#0f172a" }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-2 bg-[#16213e] hover:bg-[#8b5cf6] text-white px-8 py-4 rounded-xl font-semibold text-[1rem] shadow-xl shadow-slate-900/10 hover:shadow-secondary/20 transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-[#16213e] dark:bg-white text-white dark:text-[#0f172a] px-8 py-4 rounded-xl font-black text-[0.95rem] uppercase tracking-wider shadow-xl shadow-slate-900/10 transition-all border border-white/5"
               >
                 Calcular Ahora <ArrowRight size={17} />
-              </motion.a>
+              </motion.button>
               <motion.a
-                href="#como-funciona"
+                href="/how-it-works"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center justify-center gap-2 bg-white text-[#0f172a] border-2 border-[#cbd5e1] hover:border-[#8b5cf6] px-8 py-4 rounded-xl font-semibold text-[1rem] hover:bg-slate-50 transition-all shadow-sm"
@@ -198,7 +208,7 @@ export default function Hero() {
               {/* Subtle glow behind calculator */}
               <div className="absolute inset-0 bg-secondary/6 dark:bg-secondary/10 rounded-[2.5rem] blur-3xl -z-10 scale-95" />
 
-              <CalculatorCard />
+              <CalculatorCard ref={calculatorRef} />
             </div>
           </motion.div>
 
@@ -207,3 +217,4 @@ export default function Hero() {
     </section>
   );
 }
+
