@@ -27,14 +27,14 @@ export default function WhatIsADerivative() {
         <p>
           {"Visualmente, si graficas una función $f(x)$, la derivada en un punto específico representa la <strong>pendiente de la recta tangente</strong> a la curva en ese punto exacto. Esta pendiente nos indica si la función está subiendo o bajando y con qué rapidez lo hace."}
         </p>
-        <div className="my-8 relative w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+        <div className="my-8 max-w-3xl mx-auto relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
           <Image
-            src="/images/grafica-derivada-tangente.svg"
+            src="/images/grafica-derivada-tangente.webp"
             alt="Ilustración matemática que muestra la gráfica de una función f(x) y su recta tangente, representando el concepto de derivada y pendiente."
             title="Gráfica de Derivada y Recta Tangente"
             fill
             className="object-cover"
-            sizes="(max-width: 768px) 100vw, 800px"
+            sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
           />
         </div>
         <p className="text-sm text-center text-slate-500 mt-2 mb-6">La pendiente de la recta tangente es la derivada de la función en ese punto.</p>
@@ -51,6 +51,20 @@ export default function WhatIsADerivative() {
         <p>
           A diferencia de la velocidad promedio (que se calcula entre dos puntos distantes), la derivada nos da la <strong>velocidad instantánea</strong>. Es lo que marca el velocímetro de un coche en un segundo preciso.
         </p>
+        <figure className="my-8 max-w-3xl mx-auto">
+          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+            <Image
+              src="/images/limite-secante-definicion-derivada.webp"
+              alt="Diagrama educativo que muestra una curva, una recta secante punteada y la recta tangente, ilustrando cómo el límite define la derivada en un punto."
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+            />
+          </div>
+          <figcaption className="text-sm text-center text-slate-500 dark:text-slate-400 mt-3 px-2">
+            La pendiente de la secante tiende a la pendiente de la tangente cuando el incremento se hace muy pequeño.
+          </figcaption>
+        </figure>
         <FormulaCard title="Definición Formal por Límites">
           <div dangerouslySetInnerHTML={{ __html: katex.renderToString("f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}", { displayMode: true }) }} />
         </FormulaCard>

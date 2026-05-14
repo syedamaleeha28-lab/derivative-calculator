@@ -1,6 +1,7 @@
-import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
+import ArticleLayout, { TipCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -31,6 +32,17 @@ export default function ReglasPage() {
         <p className="mt-4">
           Si eres nuevo en esto, te recomendamos empezar por entender <Link href="/what-is-a-derivative" className="text-secondary font-bold underline decoration-secondary/30 hover:decoration-secondary">qué es una derivada</Link> antes de memorizar las fórmulas.
         </p>
+        <figure className="my-10 max-w-3xl mx-auto">
+          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+            <Image
+              src="/images/guia-reglas-derivacion-matematicas.webp"
+              alt="Infografía educativa en tonos violeta que resume las reglas de derivación: potencia, cadena, producto y cociente, con fórmulas básicas."
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+            />
+          </div>
+        </figure>
       </section>
 
       <section>

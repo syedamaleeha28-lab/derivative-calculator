@@ -1,5 +1,5 @@
 import ArticleLayout, { ExampleCard, TipCard, WarningCard } from "@/components/EducationalArticle";
-import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -16,6 +16,17 @@ export default function HowItWorks() {
         <p className="mb-8">
           Usar nuestra <strong>calculadora de derivadas online</strong> es sumamente sencillo. Hemos diseñado la interfaz para que sea intuitiva tanto para estudiantes principiantes como para usuarios avanzados.
         </p>
+        <figure className="mb-10 max-w-3xl mx-auto">
+          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+            <Image
+              src="/images/interfaz-calculadora-matematica.webp"
+              alt="Ilustración de la interfaz de una calculadora de derivadas en línea con campo de función, botón Calcular y resultado en tonos violeta y oscuro."
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+            />
+          </div>
+        </figure>
         <div className="flex flex-col gap-8">
           {[
             {

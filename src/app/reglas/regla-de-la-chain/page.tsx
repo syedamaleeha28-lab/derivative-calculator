@@ -3,6 +3,7 @@
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ChainRulePage() {
   const formula = "\\dfrac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x)";
@@ -17,6 +18,17 @@ export default function ChainRulePage() {
         <p className="mt-4">
           Si necesitas un repaso de las bases, consulta nuestra <Link href="/basic-derivative-formulas" className="text-secondary font-bold">tabla de fórmulas básicas</Link>.
         </p>
+        <figure className="my-8 max-w-3xl mx-auto">
+          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+            <Image
+              src="/images/funciones-anidadas-regla-cadena.webp"
+              alt="Diagrama educativo de funciones compuestas para la regla de la cadena: capas exterior e interior y la idea de multiplicar la derivada exterior por la derivada interior, en tonos violeta."
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+            />
+          </div>
+        </figure>
       </section>
 
       <section>

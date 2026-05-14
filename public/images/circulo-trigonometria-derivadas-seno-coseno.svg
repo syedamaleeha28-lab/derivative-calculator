@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="t-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#t-bg)" rx="16"/>
+  <text x="400" y="46" text-anchor="middle" fill="#ede9fe" font-family="system-ui,sans-serif" font-size="22" font-weight="700">Derivadas trigonometricas</text>
+  <text x="400" y="76" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="14">Seno y coseno en la circunferencia unitaria</text>
+  <circle cx="400" cy="280" r="140" fill="none" stroke="#5b21b6" stroke-width="2" stroke-opacity="0.6"/>
+  <line x1="400" y1="280" x2="520" y2="180" stroke="#a78bfa" stroke-width="3"/>
+  <circle cx="400" cy="280" r="5" fill="#c4b5fd"/>
+  <text x="535" y="175" fill="#ddd6fe" font-family="Georgia,serif" font-size="18">cos theta</text>
+  <text x="400" y="425" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="15">(sin x)' = cos x</text>
+  <text x="400" y="448" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="15">(cos x)' = -sin x</text>
+  <text x="400" y="475" text-anchor="middle" fill="#8b5cf6" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Patron ciclico: memoriza signos</text>
+</svg>

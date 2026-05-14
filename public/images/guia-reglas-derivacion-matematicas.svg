@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="g-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="g-card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#g-bg)" rx="16"/>
+  <g stroke="#ffffff" stroke-opacity="0.06" stroke-width="1">
+    <path d="M0,80 L800,80 M0,160 L800,160 M0,240 L800,240 M0,320 L800,320"/>
+    <path d="M80,0 L80,500 M160,0 L160,500 M240,0 L240,500 M320,0 L320,500 M400,0 L400,500"/>
+  </g>
+  <text x="400" y="48" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="22" font-weight="700">Reglas de derivacion</text>
+  <text x="400" y="78" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="14">Potencia, cadena, producto y cociente</text>
+  <rect x="60" y="120" width="300" height="150" rx="16" fill="url(#g-card)" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="210" y="168" text-anchor="middle" fill="#e9d5ff" font-family="Georgia,serif" font-size="26">d/dx x^n</text>
+  <text x="210" y="200" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="14">Regla de la potencia</text>
+  <text x="210" y="235" text-anchor="middle" fill="#cbd5e1" font-family="system-ui,sans-serif" font-size="13">n x^(n-1)</text>
+  <rect x="440" y="120" width="300" height="150" rx="16" fill="url(#g-card)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="590" y="168" text-anchor="middle" fill="#e9d5ff" font-family="Georgia,serif" font-size="22">f(g(x))</text>
+  <text x="590" y="200" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="14">Regla de la cadena</text>
+  <text x="590" y="235" text-anchor="middle" fill="#cbd5e1" font-family="system-ui,sans-serif" font-size="13">f prime times g prime</text>
+  <rect x="60" y="300" width="300" height="150" rx="16" fill="url(#g-card)" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="210" y="348" text-anchor="middle" fill="#e9d5ff" font-family="Georgia,serif" font-size="24">u times v</text>
+  <text x="210" y="378" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="14">Regla del producto</text>
+  <text x="210" y="412" text-anchor="middle" fill="#cbd5e1" font-family="system-ui,sans-serif" font-size="13">u'v + uv'</text>
+  <rect x="440" y="300" width="300" height="150" rx="16" fill="url(#g-card)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="590" y="348" text-anchor="middle" fill="#e9d5ff" font-family="Georgia,serif" font-size="26">u / v</text>
+  <text x="590" y="378" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="14">Regla del cociente</text>
+  <text x="590" y="412" text-anchor="middle" fill="#cbd5e1" font-family="system-ui,sans-serif" font-size="12">(u'v - uv') / v^2</text>
+</svg>

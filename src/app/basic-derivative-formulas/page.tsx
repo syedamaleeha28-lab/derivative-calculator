@@ -32,16 +32,17 @@ export default function BasicFormulas() {
         <p className="mt-4">
           Si necesitas ver cómo se aplican estas fórmulas en problemas reales, consulta nuestra sección de <Link href="/derivative-examples" className="text-secondary font-bold">ejemplos de derivadas</Link>.
         </p>
-        <div className="my-8 relative w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+        <div className="my-8 max-w-3xl mx-auto relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
           <Image
-            src="/images/formulas-calculo-diferencial.svg"
+            src="/images/formulas-calculo-diferencial.webp"
             alt="Ilustración que muestra las principales fórmulas del cálculo diferencial flotando en un espacio 3D, incluyendo la regla de la potencia y derivadas trigonométricas."
             title="Fórmulas Fundamentales del Cálculo Diferencial"
             fill
             className="object-cover"
-            sizes="(max-width: 768px) 100vw, 800px"
+            sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
           />
         </div>
+      </section>
 
       <section>
         <h2 id="tabla">Tabla de Derivadas Básicas</h2>

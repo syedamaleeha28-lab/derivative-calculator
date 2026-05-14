@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="f-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#f-bg)" rx="16"/>
+  <text x="400" y="48" text-anchor="middle" fill="#ede9fe" font-family="system-ui,sans-serif" font-size="22" font-weight="700">Derivar distintos tipos de funciones</text>
+  <text x="400" y="78" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="14">Algebraicas, trascendentes, compuestas, implicitas</text>
+  <path d="M 100 360 L 180 220 L 280 320 L 400 160 L 520 300 L 620 200 L 700 340" fill="none" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 100 360 L 180 220 L 280 320 L 400 160 L 520 300 L 620 200 L 700 340" fill="none" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.7"/>
+  <text x="400" y="420" text-anchor="middle" fill="#ddd6fe" font-family="system-ui,sans-serif" font-size="16">La pendiente depende de las reglas que combines</text>
+  <rect x="250" y="115" width="300" height="44" rx="10" fill="#8b5cf6" fill-opacity="0.2" stroke="#a78bfa"/>
+  <text x="400" y="144" text-anchor="middle" fill="#f5f3ff" font-family="Georgia,serif" font-size="20">f'(x) = tasa de cambio</text>
+</svg>

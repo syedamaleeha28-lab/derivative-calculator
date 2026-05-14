@@ -3,6 +3,7 @@
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function DefinitionDerivativesPage() {
   const formula = "f'(x) = \\lim_{h \\to 0} \\dfrac{f(x+h) - f(x)}{h}";
@@ -28,6 +29,17 @@ export default function DefinitionDerivativesPage() {
         <p className="mt-4">
           Este cociente representa la pendiente de una recta secante que se convierte en tangente a medida que $h$ se acerca a cero.
         </p>
+        <figure className="my-8 max-w-3xl mx-auto">
+          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+            <Image
+              src="/images/limite-secante-definicion-derivada.webp"
+              alt="Gráfico educativo de la definición de derivada: curva, recta secante que se aproxima a la tangente y el punto de contacto, en colores violeta y lavanda."
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+            />
+          </div>
+        </figure>
       </section>
 
       <section>

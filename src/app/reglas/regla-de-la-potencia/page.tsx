@@ -1,6 +1,7 @@
 import ArticleLayout, { FormulaCard, TipCard, WarningCard, ExampleCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -21,6 +22,17 @@ export default function PowerRulePage() {
         <p className="mt-4">
           Si estás buscando <strong>cómo resolver derivadas de potencias</strong>, esta es la primera regla que debes aprender antes de pasar a temas más complejos como la <Link href="/reglas/regla-de-la-cadena" className="text-secondary font-bold">regla de la cadena</Link>.
         </p>
+        <figure className="my-8 max-w-3xl mx-auto">
+          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+            <Image
+              src="/images/potencia-exponente-regla-derivada.webp"
+              alt="Ilustración educativa de la regla de la potencia: curva tipo x elevado a n y la fórmula d sobre d x de x a la n igual a n por x a la n menos uno, en colores violeta y lavanda."
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+            />
+          </div>
+        </figure>
       </section>
 
       <section>

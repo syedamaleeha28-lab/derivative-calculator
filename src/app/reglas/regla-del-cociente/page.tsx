@@ -1,6 +1,7 @@
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -21,6 +22,17 @@ export default function QuotientRulePage() {
         <p className="mt-4">
           Antes de dominar esta regla, asegúrate de entender bien la <Link href="/reglas/regla-del-producto" className="text-secondary font-bold">regla del producto</Link>, ya que son conceptos hermanos.
         </p>
+        <figure className="my-8 max-w-3xl mx-auto">
+          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+            <Image
+              src="/images/cociente-fraccion-regla-derivada.webp"
+              alt="Ilustración de la regla del cociente con fracción u entre v y la fórmula de su derivada con denominador al cuadrado, en paleta violeta educativa."
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+            />
+          </div>
+        </figure>
       </section>
 
       <section>

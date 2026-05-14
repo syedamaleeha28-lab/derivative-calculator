@@ -1,6 +1,7 @@
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,6 +20,17 @@ export default function GeneralFunctionsPage() {
         <p className="mt-4">
           Nuestra <Link href="/#calculator" className="text-secondary font-bold">calculadora de derivadas con pasos</Link> está diseñada para resolver prácticamente cualquier tipo de función matemática, proporcionando un desglose educativo de cada regla aplicada.
         </p>
+        <figure className="my-10 max-w-3xl mx-auto">
+          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+            <Image
+              src="/images/tipos-funciones-derivar-educativo.webp"
+              alt="Ilustración educativa que representa distintos tipos de funciones y la idea de la derivada como tasa de cambio, con paleta violeta y lavanda."
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+            />
+          </div>
+        </figure>
       </section>
 
       <section>

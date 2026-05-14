@@ -11,7 +11,10 @@ const POSTS: Record<string, any> = {
     title: "Cómo aprender derivadas desde cero: Guía Completa para Estudiantes",
     slug: "como-aprender-derivadas-desde-cero",
     description: "Domina el cálculo diferencial con esta guía paso a paso. Aprende qué es una derivada, cómo resolver ejercicios y utiliza nuestra calculadora de derivadas online.",
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=800",
+    image:
+      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&h=630&q=75",
+    heroImageAlt:
+      "Pizarra con símbolos matemáticos y fórmulas de cálculo, evocando un aula donde se enseñan derivadas desde cero.",
     date: "10 de Mayo, 2026",
     readTime: "8 min",
     category: "Tutorial Básico",
@@ -135,7 +138,10 @@ const POSTS: Record<string, any> = {
     title: "Los 5 errores más comunes al derivar y cómo evitarlos",
     slug: "errores-comunes-al-derivar",
     description: "Análisis de los fallos más frecuentes en exámenes de cálculo. Aprende a aplicar correctamente la regla de la cadena y el producto.",
-    image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&q=80&w=800",
+    image:
+      "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&h=630&q=75",
+    heroImageAlt:
+      "Material de estudio: lápices de colores y cuaderno, sugiriendo preparación de exámenes de cálculo y revisión de derivadas.",
     date: "08 de Mayo, 2026",
     readTime: "6 min",
     category: "Consejos",
@@ -186,7 +192,10 @@ const POSTS: Record<string, any> = {
     title: "Entendiendo la Regla de la Cadena: Guía Definitiva",
     slug: "entendiendo-regla-de-la-cadena",
     description: "La explicación más clara sobre la regla de la cadena. Ejemplos resueltos, pasos detallados y aplicaciones en derivadas complejas.",
-    image: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=800",
+    image:
+      "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&w=1200&h=630&q=75",
+    heroImageAlt:
+      "Fondo abstracto con tonos cálidos y formas geométricas, como metáfora visual de funciones compuestas y la regla de la cadena.",
     date: "05 de Mayo, 2026",
     readTime: "10 min",
     category: "Tutorial Avanzado",
@@ -246,7 +255,15 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       publishedTime: post.date,
       authors: [post.author.name],
       tags: post.tags,
-    }
+      images: [
+        {
+          url: post.image,
+          width: 1200,
+          height: 630,
+          alt: post.heroImageAlt ?? post.title,
+        },
+      ],
+    },
   };
 }
 

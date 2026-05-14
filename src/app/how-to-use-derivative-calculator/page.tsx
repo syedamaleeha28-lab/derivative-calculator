@@ -32,14 +32,14 @@ export default function HowToUseCalculator() {
             </div>
           ))}
         </div>
-        <div className="my-8 relative w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+        <div className="my-8 max-w-3xl mx-auto relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
           <Image
-            src="/images/interfaz-calculadora-matematica.svg"
+            src="/images/interfaz-calculadora-matematica.webp"
             alt="Ilustración de la interfaz de la calculadora de derivadas, mostrando la entrada de una ecuación matemática y el resultado paso a paso."
             title="Interfaz de la Calculadora Matemática"
             fill
             className="object-cover"
-            sizes="(max-width: 768px) 100vw, 800px"
+            sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
           />
         </div>
         <p className="mt-8">

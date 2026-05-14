@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -59,6 +60,8 @@ interface ArticleProps {
     href: string;
   }[];
   image?: string;
+  /** Texto alternativo en español para la imagen hero (SEO y accesibilidad). */
+  heroImageAlt?: string;
   canonical?: string;
 }
 
@@ -153,6 +156,7 @@ export default function ArticleLayout({
   relatedPosts,
   breadcrumbs,
   image,
+  heroImageAlt,
   canonical
 }: ArticleProps) {
   const [headings, setHeadings] = useState<Heading[]>([]);
@@ -213,7 +217,15 @@ export default function ArticleLayout({
     "@type": "Article",
     "headline": title,
     "description": description,
-    "image": image || "https://derivio.app/og-image.jpg",
+    "image": image
+      ? {
+          "@type": "ImageObject",
+          "url": image,
+          "width": 1200,
+          "height": 630,
+          "caption": heroImageAlt?.trim() || title,
+        }
+      : "https://derivio.app/og-image.jpg",
     "datePublished": date,
     "author": {
       "@type": "Person",
@@ -312,8 +324,18 @@ export default function ArticleLayout({
 
             {image && (
               <div className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white dark:border-white/5 rotate-2">
-                <img src={image} alt={title} className="w-full h-full object-cover" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <Image
+                  src={image}
+                  alt={
+                    heroImageAlt?.trim() ||
+                    `Fotografía o ilustración de portada del artículo «${title}», relacionada con matemáticas y derivadas.`
+                  }
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) min(92vw, 600px), 450px"
+                  priority={false}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
               </div>
             )}
           </div>

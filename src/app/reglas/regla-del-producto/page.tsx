@@ -1,6 +1,7 @@
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -21,6 +22,17 @@ export default function ProductRulePage() {
         <p className="mt-4">
           Es una de las reglas fundamentales que verás en cualquier curso de <Link href="/what-is-a-derivative" className="text-secondary font-bold">Cálculo Diferencial</Link> y es el paso previo para entender la <Link href="/reglas/regla-del-cociente" className="text-secondary font-bold">regla del cociente</Link>.
         </p>
+        <figure className="my-8 max-w-3xl mx-auto">
+          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+            <Image
+              src="/images/producto-funciones-uv-derivada.webp"
+              alt="Ilustración de la regla del producto con dos bloques u y v y la fórmula de la derivada u prima v más u v prima, en estilo educativo violeta y lavanda."
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+            />
+          </div>
+        </figure>
       </section>
 
       <section>

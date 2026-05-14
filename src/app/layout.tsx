@@ -21,13 +21,6 @@ export const metadata: Metadata = {
     "Resuelve derivadas paso a paso con nuestra calculadora online gratuita. Soporta funciones trigonométricas, exponenciales, logarítmicas y compuestas. Ideal para ejercicios de cálculo diferencial.",
   keywords:
     "calculadora de derivadas, derivadas paso a paso, calcular derivadas online, derivada de x, derivada de sin x, derivada de ln x, regla de la cadena, regla del producto, derivadas con procedimiento, derivar funciones gratis",
-  icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
-  },
   manifest: "/manifest.json",
   openGraph: {
     title: "Derivio — Calculadora de Derivadas Online con Procedimiento",

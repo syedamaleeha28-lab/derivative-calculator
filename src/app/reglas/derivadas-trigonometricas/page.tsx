@@ -1,6 +1,7 @@
-import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
+import ArticleLayout, { ExampleCard, TipCard, WarningCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,6 +20,17 @@ export default function TrigDerivativesPage() {
         <p className="mt-4">
           Para resolver funciones más complejas como $\sin(x^2)$, necesitarás combinar estas fórmulas con la <Link href="/reglas/regla-de-la-cadena" className="text-secondary font-bold">regla de la cadena</Link>.
         </p>
+        <figure className="my-8 max-w-3xl mx-auto">
+          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+            <Image
+              src="/images/circulo-trigonometria-derivadas-seno-coseno.webp"
+              alt="Ilustración de la circunferencia unitaria y la relación entre seno y coseno para recordar las derivadas trigonométricas básicas, con estética violeta."
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+            />
+          </div>
+        </figure>
       </section>
 
       <section>

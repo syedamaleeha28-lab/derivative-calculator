@@ -1,6 +1,7 @@
-import ArticleLayout, { ExampleCard, TipCard, WarningCard } from "@/components/EducationalArticle";
+import ArticleLayout, { ExampleCard, TipCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -52,6 +53,17 @@ export default function DerivativeExamples() {
         <p className="mt-4">
           Antes de sumergirte en los ejercicios, asegúrate de conocer las <Link href="/reglas" className="text-secondary font-bold">reglas de derivación</Link> fundamentales que se aplican en cada paso.
         </p>
+        <figure className="my-10 max-w-3xl mx-auto">
+          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+            <Image
+              src="/images/cuaderno-ejemplos-resueltos.webp"
+              alt="Ilustración de un cuaderno con un ejemplo resuelto de derivada paso a paso, usando la regla del producto en tonos violeta y lavanda."
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+            />
+          </div>
+        </figure>
       </section>
 
       <section>

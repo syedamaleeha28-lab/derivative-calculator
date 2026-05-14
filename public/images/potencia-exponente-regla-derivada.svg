@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="p-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="p-curve" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#c4b5fd"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#p-bg)" rx="16"/>
+  <text x="400" y="52" text-anchor="middle" fill="#ddd6fe" font-family="system-ui,sans-serif" font-size="22" font-weight="700">Regla de la potencia</text>
+  <text x="400" y="82" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="15">Exponente como factor; exponente menos 1</text>
+  <path d="M 80 380 Q 200 120 400 200 T 720 100" fill="none" stroke="url(#p-curve)" stroke-width="4" stroke-linecap="round"/>
+  <text x="700" y="95" fill="#a78bfa" font-family="Georgia,serif" font-size="20">y = x^n</text>
+  <rect x="120" y="320" width="560" height="120" rx="14" fill="#020617" fill-opacity="0.55" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="400" y="365" text-anchor="middle" fill="#f5f3ff" font-family="Georgia,serif" font-size="24">d/dx (x^n) = n x^(n-1)</text>
+  <text x="400" y="405" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="16">Polinomios y potencias racionales</text>
+</svg>

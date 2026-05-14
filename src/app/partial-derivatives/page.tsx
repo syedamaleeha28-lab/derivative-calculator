@@ -69,14 +69,14 @@ export default function PartialDerivatives() {
         <p>
           Mientras que la derivada ordinaria es la pendiente de una línea en un plano 2D, la derivada parcial representa la pendiente de la superficie en la dirección de uno de los ejes coordenados. Es como cortar una superficie 3D con un plano paralelo a los ejes.
         </p>
-        <div className="my-8 relative w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+        <div className="my-8 max-w-3xl mx-auto relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
           <Image
-            src="/images/superficie-derivadas-parciales.svg"
+            src="/images/superficie-derivadas-parciales.webp"
             alt="Ilustración 3D de una superficie matemática con derivadas parciales, mostrando las tangentes en las direcciones x e y."
             title="Superficie 3D de Derivadas Parciales"
             fill
             className="object-cover"
-            sizes="(max-width: 768px) 100vw, 800px"
+            sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
           />
         </div>
         <p className="text-sm text-center text-slate-500 mt-2 mb-6">Las derivadas parciales indican las pendientes en los ejes x e y respectivamente.</p>
