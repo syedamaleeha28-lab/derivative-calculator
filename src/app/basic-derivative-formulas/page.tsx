@@ -1,8 +1,14 @@
-"use client";
-
 import ArticleLayout, { FormulaCard, TipCard, ExampleCard, WarningCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import Image from "next/image";
+import { ChevronRight } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Fórmulas de Derivadas: Tabla Completa y Reglas de Operación",
+  description: "El formulario definitivo de derivadas para estudiantes. Consulta todas las fórmulas de funciones trigonométricas, exponenciales y logarítmicas con explicaciones claras.",
+};
 
 export default function BasicFormulas() {
   const formulas = [
@@ -26,7 +32,16 @@ export default function BasicFormulas() {
         <p className="mt-4">
           Si necesitas ver cómo se aplican estas fórmulas en problemas reales, consulta nuestra sección de <Link href="/derivative-examples" className="text-secondary font-bold">ejemplos de derivadas</Link>.
         </p>
-      </section>
+        <div className="my-8 relative w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+          <Image
+            src="/images/formulas-calculo-diferencial.svg"
+            alt="Ilustración que muestra las principales fórmulas del cálculo diferencial flotando en un espacio 3D, incluyendo la regla de la potencia y derivadas trigonométricas."
+            title="Fórmulas Fundamentales del Cálculo Diferencial"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 800px"
+          />
+        </div>
 
       <section>
         <h2 id="tabla">Tabla de Derivadas Básicas</h2>

@@ -1,7 +1,11 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard } from "@/components/EducationalArticle";
 import { CheckCircle2 } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cómo funciona nuestra Calculadora de Derivadas | Guía de Uso",
+  description: "Guía completa sobre el uso de Derivio. Aprende a ingresar funciones, interpretar los pasos y dominar el cálculo diferencial online.",
+};
 
 export default function HowItWorks() {
   const content = (

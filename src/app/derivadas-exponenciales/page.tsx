@@ -1,8 +1,12 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Derivadas Exponenciales: Fórmulas y Ejercicios Paso a Paso",
+  description: "Aprende a resolver derivadas exponenciales con cualquier base. Guía detallada con la derivada de e^x, ejemplos resueltos y aplicaciones de la regla de la cadena.",
+};
 
 export default function ExponentialDerivativesPage() {
   const formula = "\\dfrac{d}{dx}[e^u] = e^u \\cdot u'";
@@ -71,7 +75,7 @@ export default function ExponentialDerivativesPage() {
           Casi todas las <strong>derivadas exponenciales</strong> en exámenes involucran la <Link href="/reglas/regla-de-la-cadena" className="text-secondary font-bold">regla de la cadena</Link>. Siempre que el exponente sea más que una simple 'x', debes multiplicar el resultado por la derivada de ese exponente.
         </p>
         <TipCard>
-          Si tienes una función como $e^{\sin x}$, la derivada es $e^{\sin x} \cdot \cos x$. Mantienes la exponencial intacta y multiplicas por la derivada de lo que está "arriba".
+          {'Si tienes una función como $e^{\\sin x}$, la derivada es $e^{\\sin x} \\cdot \\cos x$. Mantienes la exponencial intacta y multiplicas por la derivada de lo que está "arriba".'}
         </TipCard>
       </section>
 

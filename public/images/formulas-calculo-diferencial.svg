@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <filter id="glow-heavy">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg-grad2)" rx="16" />
+  
+  <g filter="url(#glow-heavy)" fill="none" stroke-width="2" stroke-opacity="0.3">
+    <circle cx="400" cy="250" r="180" stroke="#a855f7" />
+    <circle cx="400" cy="250" r="140" stroke="#38bdf8" />
+    <circle cx="400" cy="250" r="100" stroke="#ec4899" />
+  </g>
+
+  <!-- Formulas -->
+  <g font-family="math, serif" font-size="32" font-style="italic" font-weight="bold" fill="#ffffff">
+    <text x="250" y="150" fill="#a855f7" filter="url(#glow-heavy)">d/dx [x^n] = n·x^(n-1)</text>
+    <text x="200" y="270" fill="#38bdf8" filter="url(#glow-heavy)">d/dx [sin(x)] = cos(x)</text>
+    <text x="350" y="400" fill="#ec4899" filter="url(#glow-heavy)">d/dx [e^x] = e^x</text>
+    
+    <text x="500" y="210" fill="#facc15" filter="url(#glow-heavy)">d/dx [u·v] = u'v + uv'</text>
+  </g>
+</svg>

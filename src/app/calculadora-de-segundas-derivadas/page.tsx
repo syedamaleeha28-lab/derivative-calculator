@@ -1,8 +1,12 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Calculadora de Segundas Derivadas: Guía y Concavidad",
+  description: "Aprende a calcular la segunda derivada de cualquier función. Guía sobre derivadas de orden superior, concavidad, puntos de inflexión y ejercicios resueltos.",
+};
 
 export default function HigherOrderDerivativesPage() {
   const formula = "f''(x) = \\dfrac{d}{dx} [f'(x)]";
@@ -57,7 +61,7 @@ export default function HigherOrderDerivativesPage() {
       <section>
         <h2 id="concavidad">Concavidad y Puntos de Inflexión</h2>
         <p>
-          Si $f''(x) > 0$, la función es cóncava hacia arriba (como una U). Si $f''(x) < 0$, es cóncava hacia abajo. Los puntos donde la segunda derivada cambia de signo se llaman <strong>puntos de inflexión</strong>.
+          Si $f''(x) &gt; 0$, la función es cóncava hacia arriba (como una U). Si $f''(x) &lt; 0$, es cóncava hacia abajo. Los puntos donde la segunda derivada cambia de signo se llaman <strong>puntos de inflexión</strong>.
         </p>
         <TipCard>
           Usa la segunda derivada para confirmar si un punto crítico encontrado con la primera derivada es un máximo o un mínimo local (Criterio de la Segunda Derivada).

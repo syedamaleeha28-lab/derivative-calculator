@@ -1,8 +1,13 @@
-"use client";
-
 import ArticleLayout, { FormulaCard, TipCard, WarningCard, ExampleCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Derivadas Parciales: Guía Completa de Cálculo Multivariable",
+  description: "Aprende a resolver derivadas parciales paso a paso. Conceptos, notación, interpretación geométrica y aplicaciones en física e ingeniería.",
+};
 
 export default function PartialDerivatives() {
   const content = (
@@ -64,6 +69,17 @@ export default function PartialDerivatives() {
         <p>
           Mientras que la derivada ordinaria es la pendiente de una línea en un plano 2D, la derivada parcial representa la pendiente de la superficie en la dirección de uno de los ejes coordenados. Es como cortar una superficie 3D con un plano paralelo a los ejes.
         </p>
+        <div className="my-8 relative w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+          <Image
+            src="/images/superficie-derivadas-parciales.svg"
+            alt="Ilustración 3D de una superficie matemática con derivadas parciales, mostrando las tangentes en las direcciones x e y."
+            title="Superficie 3D de Derivadas Parciales"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 800px"
+          />
+        </div>
+        <p className="text-sm text-center text-slate-500 mt-2 mb-6">Las derivadas parciales indican las pendientes en los ejes x e y respectivamente.</p>
         <TipCard>
           Imagina que estás en una montaña (una superficie $z=f(x,y)$). La derivada parcial respecto a $x$ es la inclinación si solo caminas hacia el Este, y respecto a $y$ es la inclinación si solo caminas hacia el Norte.
         </TipCard>

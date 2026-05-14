@@ -1,8 +1,12 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Regla del Producto: Guía Completa con Fórmulas y Ejemplos",
+  description: "Aprende a derivar la multiplicación de dos o más funciones. Explicaciones detalladas, fórmula de la regla del producto y ejercicios resueltos paso a paso.",
+};
 
 export default function ProductRulePage() {
   const formula = "\\dfrac{d}{dx}[u \\cdot v] = u'v + uv'";

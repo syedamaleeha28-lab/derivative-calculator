@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <filter id="glow-text">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg-grad5)" rx="16" />
+  
+  <!-- Notebook paper -->
+  <rect x="200" y="50" width="400" height="400" rx="8" fill="#1e293b" stroke="#334155" stroke-width="2" />
+  
+  <!-- Lines -->
+  <g stroke="#334155" stroke-width="1" stroke-dasharray="4,4">
+    <line x1="220" y1="120" x2="580" y2="120" />
+    <line x1="220" y1="180" x2="580" y2="180" />
+    <line x1="220" y1="240" x2="580" y2="240" />
+    <line x1="220" y1="300" x2="580" y2="300" />
+    <line x1="220" y1="360" x2="580" y2="360" />
+    <line x1="220" y1="420" x2="580" y2="420" />
+  </g>
+  <line x1="260" y1="50" x2="260" y2="450" stroke="#ef4444" stroke-width="1" stroke-opacity="0.5" />
+
+  <!-- Math Writing -->
+  <g font-family="math, serif" font-size="20" fill="#e2e8f0">
+    <text x="280" y="100" fill="#a855f7" font-weight="bold">Problema 1:</text>
+    <text x="280" y="140">Calcular la derivada de <tspan fill="#38bdf8">f(x) = x³ ln(x)</tspan></text>
+    
+    <text x="280" y="200" fill="#facc15" font-weight="bold">Paso 1:</text>
+    <text x="280" y="240">Usar la regla del producto (u·v)' = u'v + uv'</text>
+    <text x="280" y="280">u = x³   →   u' = 3x²</text>
+    <text x="280" y="320">v = ln(x) →   v' = 1/x</text>
+    
+    <text x="280" y="380" fill="#22c55e" font-weight="bold">Solución:</text>
+    <text x="280" y="420">f'(x) = 3x² ln(x) + x³(1/x) = <tspan fill="#ec4899">x²(3ln(x) + 1)</tspan></text>
+  </g>
+</svg>

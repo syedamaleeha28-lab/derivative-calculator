@@ -1,8 +1,12 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Calculadora de Derivadas Trigonométricas con Pasos | Gratis",
+  description: "Resuelve derivadas de seno, coseno, tangente y más con nuestra calculadora online. Obtén el procedimiento paso a paso y aprende las reglas de derivación.",
+};
 
 export default function TrigCalculadoraPage() {
   const content = (

@@ -45,7 +45,8 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} ${dmSerif.variable} h-full`}
+      className={`${inter.variable} ${dmSerif.variable} h-full scroll-smooth`}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans transition-colors duration-300 antialiased">

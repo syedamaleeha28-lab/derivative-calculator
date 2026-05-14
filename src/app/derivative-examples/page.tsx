@@ -1,8 +1,12 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ejemplos de Derivadas Resueltos: Guía Práctica Paso a Paso",
+  description: "Explora una amplia variedad de ejercicios de derivadas resueltos. Aprende paso a paso con ejemplos de funciones polinómicas, trigonométricas y logarítmicas.",
+};
 
 export default function DerivativeExamples() {
   const examples = [

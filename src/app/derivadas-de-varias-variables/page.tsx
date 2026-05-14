@@ -1,8 +1,12 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Derivadas de Varias Variables: Guía de Cálculo Multivariable",
+  description: "Aprende a resolver derivadas de varias variables o derivadas parciales. Guía completa con ejemplos resueltos, gradientes y aplicaciones avanzadas.",
+};
 
 export default function MultivariableDerivativesPage() {
   const content = (

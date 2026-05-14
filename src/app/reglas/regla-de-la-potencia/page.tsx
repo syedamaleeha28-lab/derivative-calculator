@@ -1,7 +1,12 @@
-"use client";
-
 import ArticleLayout, { FormulaCard, TipCard, WarningCard, ExampleCard } from "@/components/EducationalArticle";
 import katex from "katex";
+import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Regla de la Potencia: Fórmula, Ejemplos y Guía Completa",
+  description: "Aprende a derivar potencias con pasos detallados. Domina la regla de la potencia con ejemplos resueltos, aplicaciones y errores comunes a evitar.",
+};
 
 export default function PowerRulePage() {
   const formula = "\\dfrac{d}{dx}\\left[x^n\\right] = n \\cdot x^{n-1}";

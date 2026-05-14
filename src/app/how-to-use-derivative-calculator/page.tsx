@@ -1,8 +1,13 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard } from "@/components/EducationalArticle";
 import Link from "next/link";
+import Image from "next/image";
 import { Calculator, List, Zap, BookOpen } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cómo usar la Calculadora de Derivadas: Guía y Sintaxis",
+  description: "Domina nuestra herramienta de cálculo paso a paso. Aprende la sintaxis correcta para funciones trigonométricas, logarítmicas y compuestas con esta guía detallada.",
+};
 
 export default function HowToUseCalculator() {
   const content = (
@@ -26,6 +31,16 @@ export default function HowToUseCalculator() {
               <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{step.d}</p>
             </div>
           ))}
+        </div>
+        <div className="my-8 relative w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+          <Image
+            src="/images/interfaz-calculadora-matematica.svg"
+            alt="Ilustración de la interfaz de la calculadora de derivadas, mostrando la entrada de una ecuación matemática y el resultado paso a paso."
+            title="Interfaz de la Calculadora Matemática"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 800px"
+          />
         </div>
         <p className="mt-8">
           Si eres nuevo en el tema, te recomendamos leer primero nuestra guía sobre <Link href="/what-is-a-derivative" className="text-secondary font-bold">qué es una derivada</Link> para entender la lógica detrás de los cálculos.

@@ -1,8 +1,12 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Derivadas Logarítmicas: Fórmulas, Ejemplos y Técnicas",
+  description: "Aprende a resolver derivadas logarítmicas paso a paso. Guía completa sobre la derivada de ln(x), técnica de derivación logarítmica y ejercicios resueltos.",
+};
 
 export default function LogarithmicDerivativesPage() {
   const formula = "\\dfrac{d}{dx}[\\ln(u)] = \\dfrac{u'}{u}";

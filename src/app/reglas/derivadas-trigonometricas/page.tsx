@@ -1,8 +1,12 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Derivadas Trigonométricas: Fórmulas y Ejercicios Resueltos",
+  description: "Domina las derivadas de seno, coseno, tangente y más. Guía completa con tabla de fórmulas, regla de la cadena aplicada y ejemplos paso a paso.",
+};
 
 export default function TrigDerivativesPage() {
   const content = (

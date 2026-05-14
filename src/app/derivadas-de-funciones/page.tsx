@@ -1,8 +1,12 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Derivadas de Funciones: Guía Completa de Cálculo Diferencial",
+  description: "Domina el arte de derivar funciones. Guía completa sobre tipos de funciones, reglas de derivación y ejemplos resueltos paso a paso para estudiantes.",
+};
 
 export default function GeneralFunctionsPage() {
   const content = (

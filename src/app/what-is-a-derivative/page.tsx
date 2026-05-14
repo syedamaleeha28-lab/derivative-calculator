@@ -1,8 +1,13 @@
-"use client";
-
 import ArticleLayout, { FormulaCard, TipCard, ExampleCard, WarningCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "¿Qué es una derivada? Concepto, Definición y Guía Completa",
+  description: "Descubre qué es una derivada de forma sencilla. Exploramos su definición geométrica como pendiente, su aplicación como tasa de cambio y ejemplos prácticos de cálculo.",
+};
 
 export default function WhatIsADerivative() {
   const content = (
@@ -20,8 +25,19 @@ export default function WhatIsADerivative() {
       <section>
         <h2 id="definicion-geometrica">La Definición Geométrica</h2>
         <p>
-          Visualmente, si graficas una función $f(x)$, la derivada en un punto específico representa la <strong>pendiente de la recta tangente</strong> a la curva en ese punto exacto. Esta pendiente nos indica si la función está subiendo o bajando y con qué rapidez lo hace.
+          {"Visualmente, si graficas una función $f(x)$, la derivada en un punto específico representa la <strong>pendiente de la recta tangente</strong> a la curva en ese punto exacto. Esta pendiente nos indica si la función está subiendo o bajando y con qué rapidez lo hace."}
         </p>
+        <div className="my-8 relative w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
+          <Image
+            src="/images/grafica-derivada-tangente.svg"
+            alt="Ilustración matemática que muestra la gráfica de una función f(x) y su recta tangente, representando el concepto de derivada y pendiente."
+            title="Gráfica de Derivada y Recta Tangente"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 800px"
+          />
+        </div>
+        <p className="text-sm text-center text-slate-500 mt-2 mb-6">La pendiente de la recta tangente es la derivada de la función en ese punto.</p>
         <TipCard>
           Si la curva fuera una montaña rusa, la derivada te diría qué tan inclinada está la pista en cada metro del recorrido. Una derivada positiva significa subida, negativa bajada, y cero un punto plano.
         </TipCard>
@@ -49,9 +65,9 @@ export default function WhatIsADerivative() {
           En matemáticas, existen diferentes formas de escribir una derivada. Las más comunes son:
         </p>
         <ul className="list-disc pl-6 space-y-3 mt-4">
-          <li><strong>Notación de Leibniz:</strong> $dy/dx$ (ideal para entender cambios relativos).</li>
-          <li><strong>Notación de Lagrange:</strong> $f'(x)$ (la más usada en secundaria).</li>
-          <li><strong>Notación de Newton:</strong> $\dot{y}$ (común en física para derivadas respecto al tiempo).</li>
+          <li><strong>Notación de Leibniz:</strong> {"$dy/dx$"} (ideal para entender cambios relativos).</li>
+          <li><strong>Notación de Lagrange:</strong> {"$f'(x)$"} (la más usada en secundaria).</li>
+          <li><strong>Notación de Newton:</strong> {"$\\dot{y}$"} (común en física para derivadas respecto al tiempo).</li>
         </ul>
         <p className="mt-4">
           Nuestra <Link href="/#calculator" className="text-secondary font-bold">calculadora de derivadas paso a paso</Link> utiliza principalmente la notación de Leibniz y Lagrange para facilitar la comprensión.

@@ -22,7 +22,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Head from "next/head";
+
 
 interface Heading {
   id: string;
@@ -255,17 +255,24 @@ export default function ArticleLayout({
 
   return (
     <main className="flex min-h-screen flex-col bg-slate-50 dark:bg-[#07111f]">
-      {/* SEO Tags */}
-      {canonical && (
-        <Head>
-          <link rel="canonical" href={canonical} />
-        </Head>
-      )}
-
       {/* Schema Scripts */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script
+        id="article-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      {faqSchema && (
+        <script
+          id="faq-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      <script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       <Navbar />
 
@@ -479,7 +486,11 @@ export default function ArticleLayout({
                   <h4 className="text-[0.7rem] font-black text-slate-400 uppercase tracking-[0.2em] mb-6">Artículos Relacionados</h4>
                   <div className="flex flex-col gap-6">
                     {relatedPosts.map((post, i) => (
-                      <Link key={i} href={`/blog/${post.slug}`} className="group block">
+                    <Link 
+                      key={i} 
+                      href={post.slug.startsWith("/") ? post.slug : `/blog/${post.slug}`} 
+                      className="group block"
+                    >
                         <h5 className="text-[0.95rem] font-bold text-slate-900 dark:text-white leading-snug group-hover:text-secondary transition-colors">
                           {post.title}
                         </h5>
@@ -508,7 +519,11 @@ export default function ArticleLayout({
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {(relatedPosts || []).slice(0, 3).map((post, i) => (
-              <Link key={i} href={`/blog/${post.slug}`} className="group p-8 rounded-[2.5rem] bg-slate-50 dark:bg-[#1e293b] border border-slate-100 dark:border-white/5 hover:border-secondary/30 transition-all h-full flex flex-col">
+              <Link 
+                key={i} 
+                href={post.slug.startsWith("/") ? post.slug : `/blog/${post.slug}`} 
+                className="group p-8 rounded-[2.5rem] bg-slate-50 dark:bg-[#1e293b] border border-slate-100 dark:border-white/5 hover:border-secondary/30 transition-all h-full flex flex-col"
+              >
                 <span className="text-[0.65rem] font-black text-secondary uppercase tracking-[0.2em] mb-4 block">Calculus Tips</span>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white leading-tight mb-4 group-hover:text-secondary transition-colors">
                   {post.title}

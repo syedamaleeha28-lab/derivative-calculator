@@ -1,9 +1,13 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Reglas de Derivación: Guía Completa para Estudiantes",
+  description: "Domina todas las reglas de diferenciación. Desde la regla de la potencia hasta la cadena, con explicaciones detalladas, fórmulas y ejemplos prácticos paso a paso.",
+};
 
 const RULES_LIST = [
   { name: "Regla de la Potencia", slug: "regla-de-la-potencia", desc: "La base fundamental para derivar polinomios y funciones algebraicas simples." },

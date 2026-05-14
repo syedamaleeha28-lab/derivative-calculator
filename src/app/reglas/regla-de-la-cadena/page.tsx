@@ -1,8 +1,12 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Regla de la Cadena: Guía Definitiva y Ejemplos",
+  description: "Aprende a dominar la regla de la cadena para funciones compuestas. Explicaciones paso a paso, fórmulas y ejercicios resueltos para aprobar cálculo.",
+};
 
 export default function ChainRulePage() {
   const formula = "\\dfrac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x)";

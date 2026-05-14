@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { BookOpen, HelpCircle, Layers, FunctionSquare, LayoutGrid, Sigma } from "lucide-react";
+import Link from "next/link";
 
 export default function SEOContent() {
   const cards = [
@@ -81,9 +82,9 @@ export default function SEOContent() {
               <p className="text-slate-500 dark:text-[#cbd5e1] leading-relaxed mb-6 flex-grow">
                 {card.desc}
               </p>
-              <a href={card.href} className="inline-block mt-auto text-sm font-semibold text-secondary dark:text-accent group-hover:opacity-80 transition-opacity">
+              <Link href={card.href} className="inline-block mt-auto text-sm font-semibold text-secondary dark:text-accent group-hover:opacity-80 transition-opacity">
                 {card.link}
-              </a>
+              </Link>
             </motion.div>
           ))}
         </div>

@@ -1,8 +1,12 @@
-"use client";
-
 import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@/components/EducationalArticle";
 import katex from "katex";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Calculadora de Derivadas Implícitas: Guía y Ejemplos",
+  description: "Aprende a resolver derivadas implícitas paso a paso. Guía completa con la técnica de derivación implícita, ejemplos resueltos y aplicaciones prácticas.",
+};
 
 export default function ImplicitDerivativesPage() {
   const content = (
