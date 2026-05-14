@@ -69,7 +69,7 @@ export default function SEOContent() {
           <h2 className="heading-font text-3xl md:text-4xl text-slate-900 dark:text-white mb-5">
             Tu Calculadora de Derivadas Online y Gratuita
           </h2>
-          <p className="text-lg text-slate-600 dark:text-[#cbd5e1] leading-relaxed">
+          <p className="text-lg text-slate-600 dark:text-slate-200 leading-relaxed">
             Nuestra plataforma educativa está diseñada para ayudarte a <strong className="font-semibold text-slate-800 dark:text-[#f8fafc]">resolver derivadas con pasos</strong> y comprender la lógica matemática detrás de cada función diferencial de forma rápida y sencilla.
           </p>
         </div>
@@ -96,7 +96,7 @@ export default function SEOContent() {
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                 {card.title}
               </h3>
-              <p className="text-slate-500 dark:text-[#cbd5e1] leading-relaxed mb-6 flex-grow">
+              <p className="text-slate-500 dark:text-slate-200 leading-relaxed mb-6 flex-grow">
                 {card.desc}
               </p>
               <Link

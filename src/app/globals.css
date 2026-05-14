@@ -19,8 +19,8 @@
   .dark {
     --background: #07111f;
     --foreground: #f8fafc;
-    --foreground-secondary: #cbd5e1;
-    --muted: #94a3b8;
+    --foreground-secondary: #e2e8f0;
+    --muted: #cbd5e1;
     --card: #0f172a;
     --border: #1e293b;
     --accent-glow: rgba(139, 92, 246, 0.35);
@@ -93,7 +93,7 @@
   }
 
   .dark .text-gradient {
-    background-image: linear-gradient(to bottom right, #ffffff, #8B5CF6);
+    background-image: linear-gradient(to bottom right, #f1f5f9, #8B5CF6);
   }
 
   .heading-font {
@@ -118,7 +118,7 @@
   }
 
   .dark .calc-label {
-    color: #64748B;
+    color: #94a3b8;
   }
 
   .scrollbar-hide {

@@ -71,7 +71,7 @@ export default function StepByStep() {
                 </div>
                 
                 {idx < steps.length - 1 && (
-                  <div className="absolute left-[15px] -bottom-6 text-slate-300 dark:text-slate-600">
+                  <div className="absolute left-[15px] -bottom-6 text-slate-300 dark:text-slate-500">
                     <ChevronDown size={20} />
                   </div>
                 )}

@@ -41,7 +41,7 @@ export default function Home() {
       {/* Sticky Mobile Calculate Button */}
       <div className="fixed bottom-0 left-0 w-full p-4 bg-white/90 dark:bg-[#020617]/90 backdrop-blur-xl border-t border-slate-200/50 dark:border-white/5 md:hidden z-40 shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
         <a 
-          href="#hero" 
+          href="#calculator" 
           className="w-full bg-[#0f172a] dark:bg-white text-white dark:text-[#0f172a] py-3.5 rounded-[14px] text-[0.9rem] font-black uppercase tracking-[0.05em] shadow-xl flex justify-center items-center gap-2 transition-all active:scale-95 border border-white/5"
         >
           <Calculator size={16} />

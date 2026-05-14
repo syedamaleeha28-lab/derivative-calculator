@@ -271,5 +271,5 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = POSTS[params.slug];
   if (!post) notFound();
 
-  return <ArticleLayout {...post} />;
+  return <ArticleLayout {...post} showArticleMeta />;
 }

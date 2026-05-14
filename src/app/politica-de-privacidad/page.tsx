@@ -19,7 +19,7 @@ export default function PrivacyPage() {
           <span className="text-slate-900 dark:text-white">Privacidad</span>
         </nav>
         <h1 className="heading-font text-[3rem] text-slate-900 dark:text-white mb-10">Política de Privacidad</h1>
-        <div className="prose prose-slate dark:prose-invert max-w-none space-y-8 text-slate-600 dark:text-[#cbd5e1]">
+        <div className="prose prose-slate dark:prose-invert max-w-none space-y-8 text-slate-600 dark:text-slate-200">
           <section>
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">1. Introducción</h2>
             <p>

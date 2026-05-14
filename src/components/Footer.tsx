@@ -46,7 +46,7 @@ export default function Footer() {
               <BrandLogoLink variant="footer" className="group-hover:opacity-95 transition-opacity" />
             </div>
 
-            <p className="text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm mb-8 text-[0.95rem]">
+            <p className="text-slate-500 dark:text-slate-300 leading-relaxed max-w-sm mb-8 text-[0.95rem]">
               La plataforma educativa moderna diseñada para simplificar el aprendizaje del cálculo diferencial. Resuelve derivadas complejas con explicaciones detalladas y gratuitas.
             </p>
 
@@ -56,7 +56,7 @@ export default function Footer() {
                 <a
                   key={i}
                   href="#"
-                  className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 flex items-center justify-center text-slate-400 hover:text-secondary dark:hover:text-accent hover:border-secondary/30 dark:hover:border-secondary/30 transition-all duration-300"
+                  className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 flex items-center justify-center text-slate-400 dark:text-slate-300 hover:text-secondary dark:hover:text-accent hover:border-secondary/30 dark:hover:border-secondary/30 transition-all duration-300"
                 >
                   <Icon size={18} />
                 </a>
@@ -75,7 +75,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-[0.92rem] text-slate-500 dark:text-slate-400 hover:text-secondary dark:hover:text-accent transition-all duration-300 flex items-center group"
+                      className="text-[0.92rem] text-slate-500 dark:text-slate-300 hover:text-secondary dark:hover:text-accent transition-all duration-300 flex items-center group"
                     >
                       <span className="w-0 group-hover:w-2 h-px bg-secondary dark:bg-accent mr-0 group-hover:mr-2 transition-all duration-300" />
                       {link.label}
@@ -90,11 +90,11 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-slate-100 dark:border-white/5 flex flex-col sm:flex-row justify-between items-center gap-6">
-          <p className="text-slate-400 dark:text-slate-500 text-[0.85rem]">
+          <p className="text-slate-400 dark:text-slate-300 text-[0.85rem]">
             © {new Date().getFullYear()} Derivio. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-6">
-             <p className="text-slate-400 dark:text-slate-500 text-[0.85rem] flex items-center gap-2">
+             <p className="text-slate-400 dark:text-slate-300 text-[0.85rem] flex items-center gap-2">
                 Hecho con <span className="text-secondary">♥</span> por educadores.
              </p>
           </div>

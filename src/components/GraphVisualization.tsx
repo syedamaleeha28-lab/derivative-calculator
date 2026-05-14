@@ -19,7 +19,7 @@ export default function GraphVisualization() {
             <h2 className="heading-font text-4xl md:text-5xl text-slate-900 dark:text-white leading-[1.1]">
               Visualiza el Cambio
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
+            <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
               La derivada representa la tasa de cambio instantánea. Nuestra herramienta gráfica te permite ver simultáneamente la función original y su derivada para que comprendas su relación geométrica y matemática.
             </p>
             <ul className="mt-4 flex flex-col gap-4">

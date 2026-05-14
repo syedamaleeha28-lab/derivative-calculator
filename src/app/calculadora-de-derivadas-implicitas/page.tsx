@@ -24,7 +24,7 @@ export default function ImplicitDerivativesPage() {
       <section>
         <h2 id="pasos">Pasos para Resolver Derivadas Implícitas</h2>
         <p className="mb-6">Sigue este procedimiento lógico para no perderte en el proceso:</p>
-        <ol className="list-decimal pl-6 space-y-4 text-slate-600 dark:text-[#cbd5e1]">
+        <ol className="list-decimal pl-6 space-y-4 text-slate-600 dark:text-slate-200">
           <li><strong>Deriva ambos lados:</strong> Diferencia cada término respecto a $x$.</li>
           <li><strong>Regla de la cadena para 'y':</strong> Cada vez que derives un término que contenga $y$, multiplica por $y'$ (o $dy/dx$).</li>
           <li><strong>Agrupa términos:</strong> Coloca todos los términos con $y'$ en un lado de la ecuación.</li>

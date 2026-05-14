@@ -1,8 +1,9 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Zap, BookOpen } from "lucide-react";
-import CalculatorCard from "./CalculatorCard";
+import CalculatorCard, { type CalculatorHandle } from "./CalculatorCard";
 
 // ─── Inline SVG mascot robot ──────────────────────────────────────────────────
 function MascotRobot() {
@@ -78,7 +79,7 @@ function MascotRobot() {
 // ─── Trust pill ───────────────────────────────────────────────────────────────
 function TrustPill({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className="flex items-center gap-2 text-[0.82rem] font-medium text-slate-500 dark:text-slate-400">
+    <div className="flex items-center gap-2 text-[0.82rem] font-medium text-slate-500 dark:text-slate-300">
       <span className="text-secondary dark:text-accent">{icon}</span>
       {text}
     </div>
@@ -86,8 +87,6 @@ function TrustPill({ icon, text }: { icon: React.ReactNode; text: string }) {
 }
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
-import { useRef } from "react";
-import { CalculatorHandle } from "./CalculatorCard";
 
 export default function Hero() {
   const calculatorRef = useRef<CalculatorHandle>(null);
@@ -100,118 +99,115 @@ export default function Hero() {
   return (
     <section
       id="calculator"
-      className="relative overflow-hidden pt-20 pb-16 md:pt-24 md:pb-24 min-h-screen flex flex-col justify-center"
+      className="relative overflow-hidden pt-24 pb-10 md:pt-28 md:pb-14 scroll-mt-24"
+      aria-labelledby="hero-heading"
     >
       {/* Ambient background blobs — very subtle */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/3 -z-10" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-secondary/4 rounded-full blur-[100px] pointer-events-none translate-x-1/3 translate-y-1/3 -z-10" />
+      <div className="absolute top-0 left-0 w-[420px] h-[420px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 -translate-y-1/4 -z-10" />
+      <div className="absolute bottom-0 right-0 w-[360px] h-[360px] bg-secondary/4 rounded-full blur-[90px] pointer-events-none translate-x-1/3 translate-y-1/3 -z-10" />
 
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-12 w-full mt-16 md:mt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-12 xl:gap-20 items-start">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-12 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(280px,480px)] xl:grid-cols-[1fr_500px] gap-8 lg:gap-10 xl:gap-12 items-start">
+        {/* 1 — Compact hero copy */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="max-w-3xl mx-auto lg:mx-0 text-center lg:text-left mb-2 lg:mb-0 flex flex-col gap-5 md:gap-5"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/8 dark:bg-secondary/10 border border-secondary/20 text-secondary dark:text-accent text-[0.68rem] font-bold tracking-widest uppercase w-fit shadow-sm mx-auto lg:mx-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-secondary dark:bg-accent animate-pulse" />
+            Herramienta Académica Gratuita
+          </div>
 
-          {/* ─── LEFT — Copy ──────────────────────────────────────────────── */}
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="flex flex-col gap-8"
-          >
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary/8 dark:bg-secondary/10 border border-secondary/20 text-secondary dark:text-accent text-[0.72rem] font-bold tracking-widest uppercase w-fit shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary dark:bg-accent animate-pulse" />
-              Herramienta Académica Gratuita
-            </div>
-
-            {/* Headline */}
-            <div>
-              <h1 className="heading-font text-[2.8rem] md:text-[3.4rem] lg:text-[3.8rem] leading-[1.04] text-slate-900 dark:text-[#f8fafc] tracking-tight mb-5">
-                Calculadora de Derivadas{" "}
-                <span className="relative inline-block">
-                  <span className="relative z-10 text-secondary dark:text-accent">con Pasos</span>
-                  <motion.span
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 0.5, delay: 0.7, ease: "easeOut" }}
-                    className="absolute bottom-1 left-0 right-0 h-[3px] bg-secondary/20 dark:bg-accent/20 rounded-full origin-left"
-                  />
-                </span>
-                {" "}para Resolver Online.
-              </h1>
-              <p className="text-[1.1rem] md:text-[1.18rem] text-slate-600 dark:text-[#cbd5e1] leading-relaxed max-w-[520px]">
-                Nuestra <strong>calculadora de derivadas paso a paso</strong> te permite obtener resultados simbólicos exactos y explicaciones detalladas. Deriva funciones trigonométricas, logarítmicas y compuestas de forma gratuita.
-              </p>
-            </div>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <motion.button
-                onClick={handleCalculateClick}
-                whileHover={{ scale: 1.02, backgroundColor: "#0f172a" }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-2 bg-[#16213e] dark:bg-white text-white dark:text-[#0f172a] px-8 py-4 rounded-xl font-black text-[0.95rem] uppercase tracking-wider shadow-xl shadow-slate-900/10 transition-all border border-white/5"
-              >
-                Calcular Ahora <ArrowRight size={17} />
-              </motion.button>
-              <motion.a
-                href="/how-it-works"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-2 bg-white text-[#0f172a] border-2 border-[#cbd5e1] hover:border-[#8b5cf6] px-8 py-4 rounded-xl font-semibold text-[1rem] hover:bg-slate-50 transition-all shadow-sm"
-              >
-                <BookOpen size={16} className="text-secondary" /> Cómo funciona
-              </motion.a>
-            </div>
-
-            {/* Trust indicators */}
-            <div className="flex flex-wrap gap-x-6 gap-y-3 pt-1 border-t border-slate-100 dark:border-white/5">
-              <TrustPill icon={<Check size={14} />} text="Precisión simbólica exacta" />
-              <TrustPill icon={<Zap size={14} />} text="Resultado instantáneo" />
-              <TrustPill icon={<BookOpen size={14} />} text="Explicación paso a paso" />
-            </div>
-
-            {/* Social proof */}
-            <p className="text-[0.78rem] text-slate-400 dark:text-slate-500 font-medium">
-              Más de <span className="text-slate-600 dark:text-[#f8fafc] font-bold">50,000</span> estudiantes y profesores confían en esta herramienta.
+          <div>
+            <h1
+              id="hero-heading"
+              className="heading-font text-[2.15rem] sm:text-[2.45rem] md:text-[2.75rem] lg:text-[3rem] leading-[1.08] text-slate-900 dark:text-[#f8fafc] tracking-tight mb-3 md:mb-4"
+            >
+              Calculadora de Derivadas{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10 text-secondary dark:text-accent">con Pasos</span>
+                <motion.span
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.45, delay: 0.35, ease: "easeOut" }}
+                  className="absolute bottom-0.5 left-0 right-0 h-[2px] md:h-[3px] bg-secondary/20 dark:bg-accent/20 rounded-full origin-left"
+                />
+              </span>
+              {" "}para Resolver Online.
+            </h1>
+            <p
+              id="hero-description"
+              className="text-[1rem] md:text-[1.06rem] text-slate-600 dark:text-slate-200 leading-relaxed max-w-[34rem] mx-auto lg:mx-0"
+            >
+              Nuestra <strong>calculadora de derivadas paso a paso</strong> te permite obtener resultados simbólicos exactos y explicaciones detalladas. Deriva funciones trigonométricas, logarítmicas y compuestas de forma gratuita.
             </p>
-          </motion.div>
+          </div>
 
-          {/* ─── RIGHT — Calculator + Mascot ─────────────────────────────── */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.12, ease: "easeOut" }}
-            className="relative w-full flex justify-center lg:justify-end"
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-2.5 sm:gap-3">
+            <motion.button
+              type="button"
+              onClick={handleCalculateClick}
+              whileHover={{ scale: 1.02, backgroundColor: "#0f172a" }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center justify-center gap-2 bg-[#16213e] dark:bg-white text-white dark:text-[#0f172a] px-6 py-3.5 md:px-7 md:py-3.5 rounded-xl font-black text-[0.88rem] sm:text-[0.9rem] uppercase tracking-wider shadow-xl shadow-slate-900/10 transition-all border border-white/5"
+            >
+              Calcular Ahora <ArrowRight size={16} />
+            </motion.button>
+            <motion.a
+              href="/how-it-works"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center justify-center gap-2 bg-white text-[#0f172a] border-2 border-[#cbd5e1] hover:border-[#8b5cf6] px-6 py-3.5 md:px-7 md:py-3.5 rounded-xl font-semibold text-[0.95rem] hover:bg-slate-50 transition-all shadow-sm dark:bg-[#0f172a] dark:text-slate-100 dark:border-slate-600 dark:hover:border-secondary dark:hover:bg-[#1e293b]"
+            >
+              <BookOpen size={15} className="text-secondary dark:text-accent shrink-0" /> Cómo funciona
+            </motion.a>
+          </div>
+
+          <div className="flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2 pt-1 border-t border-slate-100 dark:border-white/5">
+            <TrustPill icon={<Check size={13} />} text="Precisión simbólica exacta" />
+            <TrustPill icon={<Zap size={13} />} text="Resultado instantáneo" />
+            <TrustPill icon={<BookOpen size={13} />} text="Explicación paso a paso" />
+          </div>
+
+          <p className="text-[0.76rem] text-slate-400 dark:text-slate-300 font-medium">
+            Más de <span className="text-slate-600 dark:text-[#f8fafc] font-bold">50,000</span> estudiantes y profesores confían en esta herramienta.
+          </p>
+        </motion.div>
+
+        {/* 2 — Calculator + result (width capped by column on desktop) */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.08, ease: "easeOut" }}
+          className="relative w-full max-w-lg mx-auto lg:max-w-none lg:mx-0 lg:justify-self-end"
+        >
+          <div
+            className="absolute -top-5 left-1 sm:-top-6 sm:left-2 lg:left-0 w-[48px] sm:w-[56px] z-20 drop-shadow-lg pointer-events-none select-none"
+            aria-hidden="true"
           >
-            {/* Calculator wrapper */}
-            <div className="relative w-full max-w-[700px]">
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <MascotRobot />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8, duration: 0.35 }}
+              className="absolute left-full top-1 ml-1.5 sm:ml-2 whitespace-nowrap bg-white dark:bg-[#1e293b] text-slate-700 dark:text-[#f8fafc] text-[9px] sm:text-[10px] font-bold px-2 py-1 rounded-md border border-slate-200 dark:border-[#1e293b] shadow-md hidden sm:block"
+            >
+              ¡Listo!
+              <div className="absolute right-full top-1/2 -translate-y-1/2 border-[5px] border-transparent border-r-white dark:border-r-[#1e293b]" />
+            </motion.div>
+          </div>
 
-              {/* Mascot robot — floats to the top-left of the calculator */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-12 -left-2 md:-top-16 md:-left-10 w-[64px] md:w-[88px] z-20 drop-shadow-xl pointer-events-none select-none"
-                aria-hidden="true"
-              >
-                <MascotRobot />
-                {/* Speech bubble */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.2, duration: 0.4 }}
-                    className="absolute -top-1 left-full ml-2 whitespace-nowrap bg-white dark:bg-[#1e293b] text-slate-700 dark:text-[#f8fafc] text-[10px] font-bold px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-[#1e293b] shadow-md"
-                  >
-                    ¡Listo para calcular!
-                    <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-white dark:border-r-[#1e293b]" />
-                  </motion.div>
-              </motion.div>
+          <div className="absolute inset-0 bg-secondary/5 dark:bg-secondary/10 rounded-[2rem] blur-2xl -z-10 scale-[0.94] opacity-80" />
 
-              {/* Subtle glow behind calculator */}
-              <div className="absolute inset-0 bg-secondary/6 dark:bg-secondary/10 rounded-[2.5rem] blur-3xl -z-10 scale-95" />
-
-              <CalculatorCard ref={calculatorRef} />
-            </div>
-          </motion.div>
-
+          <CalculatorCard ref={calculatorRef} />
+        </motion.div>
         </div>
       </div>
     </section>

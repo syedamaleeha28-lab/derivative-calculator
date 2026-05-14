@@ -19,7 +19,7 @@ export default function TermsPage() {
           <span className="text-slate-900 dark:text-white">Términos</span>
         </nav>
         <h1 className="heading-font text-[3rem] text-slate-900 dark:text-white mb-10">Términos de Servicio</h1>
-        <div className="prose prose-slate dark:prose-invert max-w-none space-y-8 text-slate-600 dark:text-[#cbd5e1]">
+        <div className="prose prose-slate dark:prose-invert max-w-none space-y-8 text-slate-600 dark:text-slate-200">
           <section>
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">1. Uso del Servicio</h2>
             <p>

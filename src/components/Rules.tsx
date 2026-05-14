@@ -60,7 +60,7 @@ export default function Rules() {
           <h2 className="heading-font text-[2.2rem] md:text-[2.6rem] text-slate-900 dark:text-white leading-[1.1] tracking-tight mb-4">
             Reglas de <span className="text-secondary dark:text-accent">Derivación</span> Fundamentales
           </h2>
-          <p className="text-slate-600 dark:text-[#cbd5e1] text-[1.05rem] leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-200 text-[1.05rem] leading-relaxed">
 Domina las técnicas esenciales del cálculo. Haz clic en cualquier regla para ver ejemplos resueltos paso a paso.
           </p>
         </div>
@@ -101,7 +101,7 @@ Domina las técnicas esenciales del cálculo. Haz clic en cualquier regla para v
                 </div>
 
                 {/* Description */}
-                <p className="text-[0.88rem] text-slate-500 dark:text-[#cbd5e1] leading-relaxed">
+                <p className="text-[0.88rem] text-slate-500 dark:text-slate-200 leading-relaxed">
                   {rule.desc}
                 </p>
                 

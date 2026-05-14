@@ -54,7 +54,7 @@ export default function BlogPage() {
             <h1 className="heading-font text-[2.8rem] md:text-[3.5rem] text-slate-900 dark:text-white mb-6">
               Blog de <span className="text-secondary dark:text-accent">Cálculo</span>
             </h1>
-            <p className="text-slate-600 dark:text-[#cbd5e1] text-lg">
+            <p className="text-slate-600 dark:text-slate-200 text-lg">
               Artículos diseñados para que aprender derivadas sea una experiencia fácil y entretenida.
             </p>
           </div>
@@ -63,7 +63,7 @@ export default function BlogPage() {
             {POSTS.map((post, idx) => (
               <Link key={idx} href={`/blog/${post.slug}`}>
                 <article className="h-full bg-white dark:bg-[#0f172a] border border-slate-100 dark:border-[#1e293b] rounded-[2rem] p-8 hover:shadow-xl transition-all group cursor-pointer flex flex-col">
-                  <div className="flex items-center gap-3 text-[0.75rem] text-slate-400 dark:text-slate-500 mb-6 font-semibold">
+                  <div className="flex items-center gap-3 text-[0.75rem] text-slate-400 dark:text-slate-300 mb-6 font-semibold">
                     <div className="flex items-center gap-1.5">
                       <Clock size={14} /> {post.read}
                     </div>
@@ -73,7 +73,7 @@ export default function BlogPage() {
                   <h2 className="heading-font text-[1.4rem] text-slate-900 dark:text-white mb-4 group-hover:text-secondary dark:group-hover:text-accent transition-colors leading-snug">
                     {post.title}
                   </h2>
-                  <p className="text-slate-500 dark:text-[#cbd5e1] text-[0.95rem] leading-relaxed mb-8">
+                  <p className="text-slate-500 dark:text-slate-200 text-[0.95rem] leading-relaxed mb-8">
                     {post.desc}
                   </p>
                   <div className="mt-auto flex items-center gap-2 text-secondary dark:text-accent font-bold text-[0.9rem]">

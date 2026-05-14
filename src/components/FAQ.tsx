@@ -159,7 +159,7 @@ export default function FAQ() {
                     className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
                       isOpen
                         ? "bg-secondary text-white rotate-180"
-                        : "bg-slate-100 dark:bg-[#1e293b] text-slate-400 dark:text-slate-500"
+                        : "bg-slate-100 dark:bg-[#1e293b] text-slate-400 dark:text-slate-300"
                     }`}
                   >
                     {isOpen ? <Minus size={14} /> : <Plus size={14} />}
@@ -175,7 +175,7 @@ export default function FAQ() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.28, ease: "easeInOut" }}
                     >
-                      <div className="px-7 pb-6 pt-0 text-slate-600 dark:text-[#cbd5e1] leading-relaxed text-[0.93rem]">
+                      <div className="px-7 pb-6 pt-0 text-slate-600 dark:text-slate-200 leading-relaxed text-[0.93rem]">
                         <div className="h-px bg-slate-100 dark:bg-[#1e293b] mb-4" />
                         {faq.a}
                       </div>

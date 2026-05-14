@@ -66,7 +66,7 @@ export default function DefinitionDerivativesPage() {
 
       <section>
         <h2 id="pasos">Pasos generales para resolver</h2>
-        <ol className="list-decimal pl-6 space-y-4 text-slate-600 dark:text-[#cbd5e1]">
+        <ol className="list-decimal pl-6 space-y-4 text-slate-600 dark:text-slate-200">
           <li><strong>Evalúa f(x+h):</strong> Sustituye cada 'x' en la función original por '(x+h)'.</li>
           <li><strong>Sustituye en la fórmula:</strong> Coloca f(x+h) y f(x) en el numerador.</li>
           <li><strong>Simplifica el numerador:</strong> Elimina términos opuestos para que todo lo que quede tenga una 'h'.</li>

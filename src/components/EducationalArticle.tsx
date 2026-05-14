@@ -5,8 +5,6 @@ import {
   Clock, 
   Calendar, 
   ChevronRight, 
-  User, 
-  Tag, 
   List, 
   ChevronDown,
   ArrowRight,
@@ -63,6 +61,8 @@ interface ArticleProps {
   /** Texto alternativo en español para la imagen hero (SEO y accesibilidad). */
   heroImageAlt?: string;
   canonical?: string;
+  /** Solo artículos del blog: muestra categoría, fecha y tiempo de lectura en el hero. */
+  showArticleMeta?: boolean;
 }
 
 // ─── Content Blocks ──────────────────────────────────────────────────────────
@@ -122,7 +122,7 @@ export const ExampleCard = ({ title, children, steps }: { title: string; childre
               <span className="shrink-0 w-6 h-6 rounded-full bg-secondary/10 text-secondary text-[0.7rem] font-bold flex items-center justify-center">
                 {i + 1}
               </span>
-              <p className="text-[0.9rem] text-slate-600 dark:text-slate-400 leading-relaxed">{step}</p>
+              <p className="text-[0.9rem] text-slate-600 dark:text-slate-300 leading-relaxed">{step}</p>
             </div>
           ))}
         </div>
@@ -157,7 +157,8 @@ export default function ArticleLayout({
   breadcrumbs,
   image,
   heroImageAlt,
-  canonical
+  canonical,
+  showArticleMeta = false,
 }: ArticleProps) {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
@@ -303,21 +304,25 @@ export default function ArticleLayout({
 
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_450px] gap-12 items-center">
             <div className="max-w-[900px]">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="bg-secondary/10 text-secondary dark:text-accent px-4 py-1.5 rounded-full text-[0.75rem] font-black uppercase tracking-widest">
-                  {category}
-                </span>
-                <div className="h-4 w-px bg-slate-200 dark:bg-white/10" />
-                <div className="flex items-center gap-4 text-slate-400 text-[0.8rem] font-medium">
-                  <div className="flex items-center gap-1.5"><Calendar size={14} /> {date}</div>
-                  <div className="flex items-center gap-1.5"><Clock size={14} /> {readTime} de lectura</div>
+              {showArticleMeta ? (
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="bg-secondary/10 text-secondary dark:text-accent px-4 py-1.5 rounded-full text-[0.75rem] font-black uppercase tracking-widest">
+                    {category}
+                  </span>
+                  <div className="h-4 w-px bg-slate-200 dark:bg-white/10" />
+                  <div className="flex items-center gap-4 text-slate-400 text-[0.8rem] font-medium">
+                    <div className="flex items-center gap-1.5"><Calendar size={14} /> {date}</div>
+                    <div className="flex items-center gap-1.5"><Clock size={14} /> {readTime} de lectura</div>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="mb-6 min-h-[2.25rem]" aria-hidden />
+              )}
 
               <h1 className="heading-font text-[3rem] md:text-[4.5rem] text-slate-900 dark:text-white leading-[1] tracking-tight mb-8">
                 {title}
               </h1>
-              <p className="text-[1.25rem] text-slate-600 dark:text-slate-400 leading-relaxed max-w-[800px]">
+              <p className="text-[1.25rem] text-slate-600 dark:text-slate-300 leading-relaxed max-w-[800px]">
                 {description}
               </p>
             </div>
@@ -373,7 +378,7 @@ export default function ArticleLayout({
                         <button
                           key={h.id}
                           onClick={() => scrollTo(h.id)}
-                          className={`text-left text-[0.9rem] ${h.level === 3 ? "pl-4 text-[0.85rem]" : "font-bold"} ${activeId === h.id ? "text-secondary" : "text-slate-500 dark:text-slate-400"}`}
+                          className={`text-left text-[0.9rem] ${h.level === 3 ? "pl-4 text-[0.85rem]" : "font-bold"} ${activeId === h.id ? "text-secondary dark:text-accent" : "text-slate-500 dark:text-slate-300"}`}
                         >
                           {h.text}
                         </button>
@@ -403,7 +408,7 @@ export default function ArticleLayout({
                           <ChevronDown size={16} />
                         </div>
                       </summary>
-                      <div className="px-6 pb-6 pt-2 text-slate-600 dark:text-slate-400 leading-relaxed text-[0.95rem]">
+                      <div className="px-6 pb-6 pt-2 text-slate-600 dark:text-slate-300 leading-relaxed text-[0.95rem]">
                         {faq.answer}
                       </div>
                     </details>
@@ -420,7 +425,7 @@ export default function ArticleLayout({
               <div className="text-center md:text-left">
                 <span className="text-[0.65rem] font-bold text-secondary uppercase tracking-[0.2em] mb-1 block">Escrito por</span>
                 <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{author.name}</h4>
-                <p className="text-slate-500 dark:text-slate-400 text-[0.9rem] leading-relaxed mb-4">
+                <p className="text-slate-500 dark:text-slate-300 text-[0.9rem] leading-relaxed mb-4">
                   {author.role}. Especialista en educación matemática y creador de contenido pedagógico para estudiantes de secundaria y universidad.
                 </p>
                 <div className="flex flex-wrap justify-center md:justify-start gap-2">
@@ -453,7 +458,7 @@ export default function ArticleLayout({
                       } ${
                         activeId === h.id 
                           ? "text-secondary" 
-                          : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                          : "text-slate-500 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                       }`}
                     >
                       {activeId === h.id && (
@@ -495,7 +500,7 @@ export default function ArticleLayout({
               <div className="p-8 rounded-[2rem] bg-secondary/5 border border-secondary/10 relative overflow-hidden">
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-secondary/10 rounded-full blur-2xl" />
                 <h5 className="font-bold text-secondary dark:text-accent mb-4 relative z-10">¿Te ha servido?</h5>
-                <p className="text-[0.8rem] text-slate-500 dark:text-slate-400 mb-6 leading-relaxed relative z-10">
+                <p className="text-[0.8rem] text-slate-500 dark:text-slate-300 mb-6 leading-relaxed relative z-10">
                   Calcula cualquier derivada al instante con nuestra herramienta online.
                 </p>
                 <Link href="/#calculator" className="flex items-center justify-center w-full bg-secondary text-white py-3 rounded-xl font-bold text-[0.85rem] shadow-lg shadow-secondary/20 hover:scale-[1.02] transition-all relative z-10">
@@ -550,7 +555,7 @@ export default function ArticleLayout({
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white leading-tight mb-4 group-hover:text-secondary transition-colors">
                   {post.title}
                 </h3>
-                <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed line-clamp-3 mb-6">
+                <p className="text-slate-500 dark:text-slate-300 text-sm leading-relaxed line-clamp-3 mb-6">
                   Aprende paso a paso cómo resolver ejercicios complejos y domina el cálculo diferencial rápidamente con nuestras guías interactivas.
                 </p>
                 <div className="mt-auto flex items-center gap-2 text-slate-900 dark:text-white font-bold text-[0.8rem]">

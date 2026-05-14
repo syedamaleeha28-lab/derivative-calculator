@@ -61,7 +61,7 @@ export default function WhatIsADerivative() {
               sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
             />
           </div>
-          <figcaption className="text-sm text-center text-slate-500 dark:text-slate-400 mt-3 px-2">
+          <figcaption className="text-sm text-center text-slate-500 dark:text-slate-300 mt-3 px-2">
             La pendiente de la secante tiende a la pendiente de la tangente cuando el incremento se hace muy pequeño.
           </figcaption>
         </figure>

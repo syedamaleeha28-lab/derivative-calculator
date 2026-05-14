@@ -26,13 +26,13 @@ export default function MultivariableDerivativesPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="p-6 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5">
             <h3 className="font-bold text-slate-900 dark:text-white mb-3">Derivada Parcial</h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-500 dark:text-slate-300 leading-relaxed">
               La pendiente de la función en la dirección de uno de los ejes coordenados. Se denota con el símbolo $\partial$.
             </p>
           </div>
           <div className="p-6 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5">
             <h3 className="font-bold text-slate-900 dark:text-white mb-3">Gradiente</h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-500 dark:text-slate-300 leading-relaxed">
               Un vector que contiene todas las derivadas parciales de la función. Indica la dirección de máximo crecimiento.
             </p>
           </div>

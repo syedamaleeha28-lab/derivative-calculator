@@ -64,7 +64,7 @@ function SectionHeader({
       <h2 className="heading-font text-[2.2rem] md:text-[2.6rem] text-slate-900 dark:text-white leading-[1.1] tracking-tight mb-4">
         {title}
       </h2>
-      <p className="text-slate-600 dark:text-slate-400 text-[1.05rem] leading-relaxed">
+      <p className="text-slate-600 dark:text-slate-300 text-[1.05rem] leading-relaxed">
         {subtitle}
       </p>
     </div>
@@ -109,9 +109,9 @@ export default function PopularExamples() {
               <div className="flex items-center gap-2 px-1 mb-3">
                 <ArrowRight
                   size={14}
-                  className="text-slate-300 dark:text-slate-600 group-hover:text-secondary dark:group-hover:text-accent transition-colors group-hover:translate-x-0.5 transition-transform"
+                  className="text-slate-300 dark:text-slate-400 group-hover:text-secondary dark:group-hover:text-accent transition-colors group-hover:translate-x-0.5 transition-transform"
                 />
-                <span className="text-[0.65rem] text-slate-400 dark:text-slate-500 font-semibold uppercase tracking-widest">derivada</span>
+                <span className="text-[0.65rem] text-slate-400 dark:text-slate-300 font-semibold uppercase tracking-widest">derivada</span>
               </div>
 
               {/* Result */}
@@ -146,7 +146,7 @@ export default function PopularExamples() {
                   <span className="w-1.5 h-6 bg-secondary dark:bg-accent rounded-full" />
                   Ejemplos de Derivadas Paso a Paso
                 </h3>
-                <p className="text-slate-600 dark:text-[#cbd5e1] leading-relaxed text-[1rem]">
+                <p className="text-slate-600 dark:text-slate-200 leading-relaxed text-[1rem]">
                   Estudiar <strong>derivadas resueltas</strong> es la forma más efectiva de comprender cómo se aplican las 
                   <Link href="/reglas" className="text-secondary dark:text-accent hover:underline ml-1 font-medium">reglas de derivación</Link>. 
                   Nuestra lista de <strong>ejemplos de derivadas</strong> cubre desde funciones constantes hasta complejas 
@@ -160,7 +160,7 @@ export default function PopularExamples() {
                   <span className="w-1.5 h-6 bg-secondary dark:bg-accent rounded-full" />
                   Cómo Resolver Derivadas Online
                 </h3>
-                <p className="text-slate-600 dark:text-[#cbd5e1] leading-relaxed text-[1rem]">
+                <p className="text-slate-600 dark:text-slate-200 leading-relaxed text-[1rem]">
                   Si necesitas <strong>resolver derivadas online</strong> con precisión académica, Derivio es tu mejor aliado. 
                   Más allá de darte una respuesta, te ofrecemos <strong>derivadas paso a paso</strong> con notación clara 
                   y profesional. Puedes practicar con nuestros <strong>ejercicios de derivadas</strong> o introducir tus 
@@ -171,7 +171,7 @@ export default function PopularExamples() {
               </div>
             </div>
             
-            <p className="mt-10 text-slate-500 dark:text-slate-500 text-[0.95rem] italic border-l-2 border-slate-200 dark:border-slate-800 pl-6 py-1">
+            <p className="mt-10 text-slate-500 dark:text-slate-400 text-[0.95rem] italic border-l-2 border-slate-200 dark:border-slate-800 pl-6 py-1">
               "El cálculo no se trata de memorizar fórmulas, sino de entender cómo cambian las cosas. 
               Nuestra misión es hacer ese proceso visible y comprensible para todos."
             </p>

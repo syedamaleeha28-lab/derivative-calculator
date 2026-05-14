@@ -58,7 +58,7 @@ export default function BasicFormulas() {
             <tbody className="divide-y divide-slate-100 dark:divide-white/5">
               {formulas.map((item, i) => (
                 <tr key={i} className="hover:bg-slate-50/50 dark:hover:bg-white/[0.02] transition-colors">
-                  <td className="px-6 py-4 font-mono text-slate-600 dark:text-slate-400">
+                  <td className="px-6 py-4 font-mono text-slate-600 dark:text-slate-300">
                     <span dangerouslySetInnerHTML={{ __html: katex.renderToString(item.f) }} />
                   </td>
                   <td className="px-6 py-4 font-mono text-slate-900 dark:text-white font-bold">

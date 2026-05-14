@@ -55,7 +55,7 @@ export default function ReglasPage() {
                 {rule.name}
                 <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+              <p className="text-sm text-slate-500 dark:text-slate-300 leading-relaxed mb-6">
                 {rule.desc}
               </p>
               <div className="mt-auto text-secondary font-bold text-[0.8rem] flex items-center gap-1">

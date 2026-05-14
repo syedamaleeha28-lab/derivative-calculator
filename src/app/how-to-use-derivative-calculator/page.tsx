@@ -28,7 +28,7 @@ export default function HowToUseCalculator() {
                 {step.icon}
               </div>
               <h4 className="font-bold text-slate-900 dark:text-white">{step.t}</h4>
-              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{step.d}</p>
+              <p className="text-sm text-slate-500 dark:text-slate-300 leading-relaxed">{step.d}</p>
             </div>
           ))}
         </div>

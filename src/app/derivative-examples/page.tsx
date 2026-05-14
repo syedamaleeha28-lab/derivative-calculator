@@ -79,7 +79,7 @@ export default function DerivativeExamples() {
                 <div className="text-secondary font-bold text-xl">↓</div>
                 <div dangerouslySetInnerHTML={{ __html: katex.renderToString(ex.res, { displayMode: true }) }} />
               </div>
-              <p className="text-sm text-slate-500 dark:text-slate-400 border-t border-slate-50 dark:border-white/5 pt-4">
+              <p className="text-sm text-slate-500 dark:text-slate-300 border-t border-slate-50 dark:border-white/5 pt-4">
                 {ex.desc}
               </p>
             </ExampleCard>
@@ -100,7 +100,7 @@ export default function DerivativeExamples() {
                 <div className="text-secondary font-bold text-xl">↓</div>
                 <div dangerouslySetInnerHTML={{ __html: katex.renderToString(ex.res, { displayMode: true }) }} />
               </div>
-              <p className="text-sm text-slate-500 dark:text-slate-400 border-t border-slate-50 dark:border-white/5 pt-4">
+              <p className="text-sm text-slate-500 dark:text-slate-300 border-t border-slate-50 dark:border-white/5 pt-4">
                 {ex.desc}
               </p>
             </ExampleCard>

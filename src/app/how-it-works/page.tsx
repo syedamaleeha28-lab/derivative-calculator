@@ -52,7 +52,7 @@ export default function HowItWorks() {
               </div>
               <div>
                 <h3 className="text-[1.2rem] font-bold text-slate-900 dark:text-white mb-2">{step.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{step.desc}</p>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{step.desc}</p>
               </div>
             </div>
           ))}
@@ -68,7 +68,7 @@ export default function HowItWorks() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="p-8 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5">
             <h4 className="font-bold text-secondary mb-4 uppercase tracking-widest text-[0.7rem]">Trigonométricas</h4>
-            <ul className="space-y-3 font-mono text-[0.9rem] text-slate-600 dark:text-slate-400">
+            <ul className="space-y-3 font-mono text-[0.9rem] text-slate-600 dark:text-slate-300">
               <li className="flex justify-between"><span>Seno:</span> <span className="text-slate-900 dark:text-white font-bold">sin(x)</span></li>
               <li className="flex justify-between"><span>Coseno:</span> <span className="text-slate-900 dark:text-white font-bold">cos(x)</span></li>
               <li className="flex justify-between"><span>Tangente:</span> <span className="text-slate-900 dark:text-white font-bold">tan(x)</span></li>
@@ -77,7 +77,7 @@ export default function HowItWorks() {
           </div>
           <div className="p-8 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5">
             <h4 className="font-bold text-secondary mb-4 uppercase tracking-widest text-[0.7rem]">Especiales</h4>
-            <ul className="space-y-3 font-mono text-[0.9rem] text-slate-600 dark:text-slate-400">
+            <ul className="space-y-3 font-mono text-[0.9rem] text-slate-600 dark:text-slate-300">
               <li className="flex justify-between"><span>Log. Natural:</span> <span className="text-slate-900 dark:text-white font-bold">ln(x)</span></li>
               <li className="flex justify-between"><span>Exponencial:</span> <span className="text-slate-900 dark:text-white font-bold">e^(x)</span></li>
               <li className="flex justify-between"><span>Raíz:</span> <span className="text-slate-900 dark:text-white font-bold">sqrt(x)</span></li>
