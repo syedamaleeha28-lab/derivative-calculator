@@ -4,6 +4,11 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Zap, BookOpen } from "lucide-react";
 import CalculatorCard, { type CalculatorHandle } from "./CalculatorCard";
+import { usePathname } from "next/navigation";
+import { dictionaries, Lang } from "@/lib/dictionaries";
+import LanguageLink from "@/components/LanguageLink";
+
+const MotionLink = motion(LanguageLink);
 
 // ─── Inline SVG mascot robot ──────────────────────────────────────────────────
 function MascotRobot() {
@@ -13,7 +18,7 @@ function MascotRobot() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="w-full h-full"
-      aria-label="Mascota robot Derivio"
+      aria-label="Mascota robot Calculadora Derivadas"
     >
       <defs>
         <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -79,8 +84,8 @@ function MascotRobot() {
 // ─── Trust pill ───────────────────────────────────────────────────────────────
 function TrustPill({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className="flex items-center gap-2 text-[0.82rem] font-medium text-slate-500 dark:text-slate-300">
-      <span className="text-secondary dark:text-accent">{icon}</span>
+    <div className="flex items-center gap-2 text-[0.82rem] font-medium text-slate-500">
+      <span className="text-secondary">{icon}</span>
       {text}
     </div>
   );
@@ -90,6 +95,10 @@ function TrustPill({ icon, text }: { icon: React.ReactNode; text: string }) {
 
 export default function Hero() {
   const calculatorRef = useRef<CalculatorHandle>(null);
+  const pathname = usePathname() || "";
+  const currentLang = (pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es") as Lang;
+  const t = dictionaries[currentLang].hero;
+  const calcT = dictionaries[currentLang].calculator;
 
   const handleCalculateClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -99,7 +108,7 @@ export default function Hero() {
   return (
     <section
       id="calculator"
-      className="relative overflow-hidden pt-24 pb-10 md:pt-28 md:pb-14 scroll-mt-24"
+      className="relative overflow-hidden pt-24 pb-10 md:pt-28 md:pb-14 scroll-mt-24 bg-white"
       aria-labelledby="hero-heading"
     >
       {/* Ambient background blobs — very subtle */}
@@ -115,33 +124,33 @@ export default function Hero() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="max-w-3xl mx-auto lg:mx-0 text-center lg:text-left mb-2 lg:mb-0 flex flex-col gap-5 md:gap-5"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/8 dark:bg-secondary/10 border border-secondary/20 text-secondary dark:text-accent text-[0.68rem] font-bold tracking-widest uppercase w-fit shadow-sm mx-auto lg:mx-0">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary dark:bg-accent animate-pulse" />
-            Herramienta Académica Gratuita
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/8 border border-secondary/20 text-secondary text-[0.68rem] font-bold tracking-widest uppercase w-fit shadow-sm mx-auto lg:mx-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+            {t.tag}
           </div>
 
           <div>
             <h1
               id="hero-heading"
-              className="heading-font text-[2.15rem] sm:text-[2.45rem] md:text-[2.75rem] lg:text-[3rem] leading-[1.08] text-slate-900 dark:text-[#f8fafc] tracking-tight mb-3 md:mb-4"
+              className="heading-font text-[2.15rem] sm:text-[2.45rem] md:text-[2.75rem] lg:text-[3rem] leading-[1.08] text-slate-900 tracking-tight mb-3 md:mb-4"
             >
-              Calculadora de Derivadas{" "}
+              {t.title1}{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-secondary dark:text-accent">con Pasos</span>
+                <span className="relative z-10 text-secondary">{t.title2}</span>
                 <motion.span
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.45, delay: 0.35, ease: "easeOut" }}
-                  className="absolute bottom-0.5 left-0 right-0 h-[2px] md:h-[3px] bg-secondary/20 dark:bg-accent/20 rounded-full origin-left"
+                  className="absolute bottom-0.5 left-0 right-0 h-[2px] md:h-[3px] bg-secondary/20 rounded-full origin-left"
                 />
               </span>
-              {" "}para Resolver Online.
+              {" "}{t.title3}
             </h1>
             <p
               id="hero-description"
-              className="text-[1rem] md:text-[1.06rem] text-slate-600 dark:text-slate-200 leading-relaxed max-w-[34rem] mx-auto lg:mx-0"
+              className="text-[1rem] md:text-[1.06rem] text-slate-600 leading-relaxed max-w-[34rem] mx-auto lg:mx-0"
             >
-              Nuestra <strong>calculadora de derivadas paso a paso</strong> te permite obtener resultados simbólicos exactos y explicaciones detalladas. Deriva funciones trigonométricas, logarítmicas y compuestas de forma gratuita.
+              {t.desc}
             </p>
           </div>
 
@@ -151,28 +160,28 @@ export default function Hero() {
               onClick={handleCalculateClick}
               whileHover={{ scale: 1.02, backgroundColor: "#0f172a" }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center justify-center gap-2 bg-[#16213e] dark:bg-white text-white dark:text-[#0f172a] px-6 py-3.5 md:px-7 md:py-3.5 rounded-xl font-black text-[0.88rem] sm:text-[0.9rem] uppercase tracking-wider shadow-xl shadow-slate-900/10 transition-all border border-white/5"
+              className="inline-flex items-center justify-center gap-2 bg-[#16213e] text-white px-6 py-3.5 md:px-7 md:py-3.5 rounded-xl font-black text-[0.88rem] sm:text-[0.9rem] uppercase tracking-wider shadow-xl shadow-slate-900/10 transition-all border border-white/5"
             >
-              Calcular Ahora <ArrowRight size={16} />
+              {t.calcBtn} <ArrowRight size={16} />
             </motion.button>
-            <motion.a
+            <MotionLink
               href="/how-it-works"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center justify-center gap-2 bg-white text-[#0f172a] border-2 border-[#cbd5e1] hover:border-[#8b5cf6] px-6 py-3.5 md:px-7 md:py-3.5 rounded-xl font-semibold text-[0.95rem] hover:bg-slate-50 transition-all shadow-sm dark:bg-[#0f172a] dark:text-slate-100 dark:border-slate-600 dark:hover:border-secondary dark:hover:bg-[#1e293b]"
+              className="inline-flex items-center justify-center gap-2 bg-white text-[#0f172a] border-2 border-[#cbd5e1] hover:border-[#8b5cf6] px-6 py-3.5 md:px-7 md:py-3.5 rounded-xl font-semibold text-[0.95rem] hover:bg-slate-50 transition-all shadow-sm"
             >
-              <BookOpen size={15} className="text-secondary dark:text-accent shrink-0" /> Cómo funciona
-            </motion.a>
+              <BookOpen size={15} className="text-secondary shrink-0" /> {t.howBtn}
+            </MotionLink>
           </div>
 
-          <div className="flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2 pt-1 border-t border-slate-100 dark:border-white/5">
-            <TrustPill icon={<Check size={13} />} text="Precisión simbólica exacta" />
-            <TrustPill icon={<Zap size={13} />} text="Resultado instantáneo" />
-            <TrustPill icon={<BookOpen size={13} />} text="Explicación paso a paso" />
+          <div className="flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2 pt-1 border-t border-slate-100">
+            <TrustPill icon={<Check size={13} />} text={t.trust1} />
+            <TrustPill icon={<Zap size={13} />} text={t.trust2} />
+            <TrustPill icon={<BookOpen size={13} />} text={t.trust3} />
           </div>
 
-          <p className="text-[0.76rem] text-slate-400 dark:text-slate-300 font-medium">
-            Más de <span className="text-slate-600 dark:text-[#f8fafc] font-bold">50,000</span> estudiantes y profesores confían en esta herramienta.
+          <p className="text-[0.76rem] text-slate-400 font-medium">
+            {t.stats}
           </p>
         </motion.div>
 
@@ -197,14 +206,14 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 0.35 }}
-              className="absolute left-full top-1 ml-1.5 sm:ml-2 whitespace-nowrap bg-white dark:bg-[#1e293b] text-slate-700 dark:text-[#f8fafc] text-[9px] sm:text-[10px] font-bold px-2 py-1 rounded-md border border-slate-200 dark:border-[#1e293b] shadow-md hidden sm:block"
+              className="absolute left-full top-1 ml-1.5 sm:ml-2 whitespace-nowrap bg-white text-slate-700 text-[9px] sm:text-[10px] font-bold px-2 py-1 rounded-md border border-slate-200 shadow-md hidden sm:block"
             >
-              ¡Listo!
-              <div className="absolute right-full top-1/2 -translate-y-1/2 border-[5px] border-transparent border-r-white dark:border-r-[#1e293b]" />
+              {calcT.ready}
+              <div className="absolute right-full top-1/2 -translate-y-1/2 border-[5px] border-transparent border-r-white" />
             </motion.div>
           </div>
 
-          <div className="absolute inset-0 bg-secondary/5 dark:bg-secondary/10 rounded-[2rem] blur-2xl -z-10 scale-[0.94] opacity-80" />
+          <div className="absolute inset-0 bg-secondary/5 rounded-[2rem] blur-2xl -z-10 scale-[0.94] opacity-80" />
 
           <CalculatorCard ref={calculatorRef} />
         </motion.div>
@@ -213,4 +222,3 @@ export default function Hero() {
     </section>
   );
 }
-

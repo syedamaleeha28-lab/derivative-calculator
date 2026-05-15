@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/LanguageLink";
+import { usePathname } from "next/navigation";
 
 const LOGO_ALT =
-  "Derivio — logotipo de la calculadora de derivadas en línea con notación d/dx.";
+  "Calculadora Derivadas — logotipo de la calculadora de derivadas en línea con notación d/dx.";
 
 type BrandLogoVariant = "nav" | "footer" | "mobile";
 
@@ -39,13 +40,15 @@ export function BrandLogoLink({
   variant: BrandLogoVariant;
   onNavigate?: () => void;
   className?: string;
-  /** Muestra el texto «Derivio Calculator» junto al logo (solo barra de navegación principal). */
+  /** Muestra el texto «Calculadora Derivadas» junto al logo. */
   showWordmark?: boolean;
 }) {
   const v = variantClass[variant];
   const isNavWordmark = showWordmark && variant === "nav";
   const wrapClass = isNavWordmark ? NAV_WORDMARK_LOGO_WRAP : v.wrap;
   const imgSizes = isNavWordmark ? "(max-width: 768px) 76px, 90px" : v.sizes;
+  const pathname = usePathname() || "";
+  const lang = pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es";
 
   return (
     <Link
@@ -53,7 +56,7 @@ export function BrandLogoLink({
       onClick={onNavigate}
       className={
         isNavWordmark
-          ? `flex items-center gap-1 sm:gap-1.5 min-w-0 rounded-lg py-1 pl-1 pr-1.5 -my-1 -ml-0.5 transition-colors hover:bg-slate-100/70 dark:hover:bg-white/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#07111f] ${className}`
+          ? `flex items-center gap-1 sm:gap-1.5 min-w-0 rounded-lg py-1 pl-1 pr-1.5 -my-1 -ml-0.5 transition-colors hover:bg-slate-100/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${className}`
           : `inline-flex items-center group select-none ${className}`
       }
     >
@@ -72,10 +75,10 @@ export function BrandLogoLink({
         />
       </div>
       {isNavWordmark && (
-        <span className="flex min-w-0 shrink items-center leading-none" lang="en">
-          <span className="heading-font whitespace-nowrap text-[0.75rem] font-semibold tracking-tight text-slate-900 dark:text-white sm:text-[0.875rem] md:text-[0.9375rem]">
-            Derivio{" "}
-            <span className="font-bold text-secondary dark:text-accent">Calculator</span>
+        <span className="flex min-w-0 shrink items-center leading-none" lang={lang}>
+          <span className="heading-font whitespace-nowrap text-[0.75rem] font-semibold tracking-tight text-slate-900 sm:text-[0.875rem] md:text-[0.9375rem]">
+            Calculadora{" "}
+            <span className="font-bold text-secondary">Derivadas</span>
           </span>
         </span>
       )}

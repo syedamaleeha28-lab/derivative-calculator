@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Delete, CornerDownLeft, Sparkles, AlertCircle, ChevronDown, BookOpen, CheckCircle2, Settings2, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { dictionaries, Lang } from "@/lib/dictionaries";
 // @ts-ignore
 import nerdamer from "nerdamer/all.min";
 import katex from "katex";
@@ -11,57 +13,7 @@ import katex from "katex";
 type Variant = "func" | "op" | "num" | "special";
 type BtnDef  = { label: string; insert: string; tip: string; variant?: Variant };
 
-// ─── Button Definitions ───────────────────────────────────────────────────────
-
-// Row A: Trig
-const ROW_TRIG: BtnDef[] = [
-  { label: "sin",   insert: "sin(",   tip: "Seno" },
-  { label: "cos",   insert: "cos(",   tip: "Coseno" },
-  { label: "tan",   insert: "tan(",   tip: "Tangente" },
-  { label: "sec",   insert: "sec(",   tip: "Secante" },
-  { label: "csc",   insert: "csc(",   tip: "Cosecante" },
-  { label: "cot",   insert: "cot(",   tip: "Cotangente" },
-  { label: "sin⁻¹", insert: "asin(",  tip: "Arcoseno" },
-  { label: "cos⁻¹", insert: "acos(",  tip: "Arcocoseno" },
-  { label: "tan⁻¹", insert: "atan(",  tip: "Arcotangente" },
-  { label: "sinh",  insert: "sinh(",  tip: "Seno hip." },
-  { label: "cosh",  insert: "cosh(",  tip: "Coseno hip." },
-  { label: "tanh",  insert: "tanh(",  tip: "Tan hip." },
-];
-
-const ROW_FUNC: BtnDef[] = [
-  { label: "ln",    insert: "ln(",    tip: "Log. natural" },
-  { label: "log",   insert: "log(",   tip: "Log. base 10" },
-  { label: "eˣ",    insert: "e^(",    tip: "Exponencial" },
-  { label: "xⁿ",    insert: "^(",     tip: "Potencia" },
-  { label: "√",     insert: "sqrt(",  tip: "Raíz",           variant: "special" },
-  { label: "π",     insert: "pi",     tip: "Pi",             variant: "special" },
-];
-
-const NUMPAD: BtnDef[] = [
-  { label: "7",  insert: "7",       tip: "",               variant: "num" },
-  { label: "8",  insert: "8",       tip: "",               variant: "num" },
-  { label: "9",  insert: "9",       tip: "",               variant: "num" },
-  { label: "(",  insert: "(",       tip: "Abrir paréntesis", variant: "special" },
-  { label: ")",  insert: ")",       tip: "Cerrar paréntesis", variant: "special" },
-  { label: "⌫",  insert: "__del__", tip: "Borrar",         variant: "op"  },
-  
-  { label: "4",  insert: "4",       tip: "",               variant: "num" },
-  { label: "5",  insert: "5",       tip: "",               variant: "num" },
-  { label: "6",  insert: "6",       tip: "",               variant: "num" },
-  { label: "+",  insert: "+",       tip: "Suma",           variant: "op"  },
-  { label: "−",  insert: "-",       tip: "Resta",          variant: "op"  },
-  { label: "÷",  insert: "/",       tip: "Dividir",        variant: "op"  },
-
-  { label: "1",  insert: "1",       tip: "",               variant: "num" },
-  { label: "2",  insert: "2",       tip: "",               variant: "num" },
-  { label: "3",  insert: "3",       tip: "",               variant: "num" },
-  { label: "0",  insert: "0",       tip: "",               variant: "num" },
-  { label: ".",  insert: ".",       tip: "Punto decimal",  variant: "num" },
-  { label: "×",  insert: "*",       tip: "Multiplicar",    variant: "op"  },
-];
-
-const EXAMPLES = ["sin(x)^2", "ln(x)/x", "e^(x^2)", "tan(x) − x"];
+const EXAMPLES = ["sin(x)^2", "ln(x)/x", "e^(x^2)", "tan(x) - x"];
 
 // ─── Variant color map ────────────────────────────────────────────────────────
 const COLOR: Record<Variant, string> = {
@@ -85,10 +37,10 @@ function Tip({ tip, children }: { tip: string; children: React.ReactNode }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 5, scale: 0.95 }}
             transition={{ duration: 0.12 }}
-            className="absolute bottom-full mb-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-[10px] font-bold px-2 py-1 rounded shadow-xl z-50 pointer-events-none"
+            className="absolute bottom-full mb-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded shadow-xl z-50 pointer-events-none"
           >
             {tip}
-            <div className="absolute top-full left-1/2 -translate-x-1/2 border-[5px] border-transparent border-t-slate-900 dark:border-t-slate-100" />
+            <div className="absolute top-full left-1/2 -translate-x-1/2 border-[5px] border-transparent border-t-slate-900" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -99,8 +51,8 @@ function Tip({ tip, children }: { tip: string; children: React.ReactNode }) {
 // ─── Section label ────────────────────────────────────────────────────────────
 function Label({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[0.62rem] font-bold text-slate-400 dark:text-slate-300 uppercase tracking-[0.15em] mb-2 flex items-center gap-2">
-      <span className="inline-block w-3 h-px bg-slate-200 dark:bg-slate-700 rounded" />
+    <p className="text-[0.62rem] font-bold text-slate-400 uppercase tracking-[0.15em] mb-2 flex items-center gap-2">
+      <span className="inline-block w-3 h-px bg-slate-200 rounded" />
       {children}
     </p>
   );
@@ -260,6 +212,58 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
   const [simplify, setSimplify]           = useState(true);
   const [variable, setVariable]           = useState("x");
 
+  const pathname = usePathname() || "";
+  const currentLang = (pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es") as Lang;
+  const t = dictionaries[currentLang].calculator;
+
+  // ─── Dynamic Button Definitions ───────────────────────────────────────────────
+  const ROW_TRIG: BtnDef[] = [
+    { label: "sin",   insert: "sin(",   tip: t.tips.sin },
+    { label: "cos",   insert: "cos(",   tip: t.tips.cos },
+    { label: "tan",   insert: "tan(",   tip: t.tips.tan },
+    { label: "sec",   insert: "sec(",   tip: t.tips.sec },
+    { label: "csc",   insert: "csc(",   tip: t.tips.csc },
+    { label: "cot",   insert: "cot(",   tip: t.tips.cot },
+    { label: "sin⁻¹", insert: "asin(",  tip: t.tips.asin },
+    { label: "cos⁻¹", insert: "acos(",  tip: t.tips.acos },
+    { label: "tan⁻¹", insert: "atan(",  tip: t.tips.atan },
+    { label: "sinh",  insert: "sinh(",  tip: t.tips.sinh },
+    { label: "cosh",  insert: "cosh(",  tip: t.tips.cosh },
+    { label: "tanh",  insert: "tanh(",  tip: t.tips.tanh },
+  ];
+
+  const ROW_FUNC: BtnDef[] = [
+    { label: "ln",    insert: "ln(",    tip: t.tips.ln },
+    { label: "log",   insert: "log(",   tip: t.tips.log },
+    { label: "eˣ",    insert: "e^(",    tip: t.tips.exp },
+    { label: "xⁿ",    insert: "^(",     tip: t.tips.power },
+    { label: "√",     insert: "sqrt(",  tip: t.tips.root,           variant: "special" },
+    { label: "π",     insert: "pi",     tip: t.tips.pi,             variant: "special" },
+  ];
+
+  const NUMPAD: BtnDef[] = [
+    { label: "7",  insert: "7",       tip: "",               variant: "num" },
+    { label: "8",  insert: "8",       tip: "",               variant: "num" },
+    { label: "9",  insert: "9",       tip: "",               variant: "num" },
+    { label: "(",  insert: "(",       tip: t.tips.openPar,   variant: "special" },
+    { label: ")",  insert: ")",       tip: t.tips.closePar,  variant: "special" },
+    { label: "⌫",  insert: "__del__", tip: t.tips.delete,    variant: "op"  },
+    
+    { label: "4",  insert: "4",       tip: "",               variant: "num" },
+    { label: "5",  insert: "5",       tip: "",               variant: "num" },
+    { label: "6",  insert: "6",       tip: "",               variant: "num" },
+    { label: "+",  insert: "+",       tip: t.tips.sum,       variant: "op"  },
+    { label: "−",  insert: "-",       tip: t.tips.sub,       variant: "op"  },
+    { label: "÷",  insert: "/",       tip: t.tips.div,       variant: "op"  },
+
+    { label: "1",  insert: "1",       tip: "",               variant: "num" },
+    { label: "2",  insert: "2",       tip: "",               variant: "num" },
+    { label: "3",  insert: "3",       tip: "",               variant: "num" },
+    { label: "0",  insert: "0",       tip: "",               variant: "num" },
+    { label: ".",  insert: ".",       tip: t.tips.point,     variant: "num" },
+    { label: "×",  insert: "*",       tip: t.tips.mul,       variant: "op"  },
+  ];
+
   const inputRef = useRef<HTMLInputElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const resultRef = useRef<HTMLDivElement>(null);
@@ -315,7 +319,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
         setLatexResult(toExactTeX(derivative));
         setShowResult(true);
       } catch (err) {
-        setError("Expresión inválida. Revisa la sintaxis e inténtalo de nuevo.");
+        setError(t.invalidExpr);
       } finally {
         setIsCalculating(false);
       }
@@ -329,20 +333,19 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
 
   return (
     <div ref={cardRef} className="w-full flex flex-col gap-2.5 relative scroll-mt-24">
-      <div className={`absolute -inset-6 bg-secondary/10 rounded-[2.5rem] blur-2xl transition-opacity duration-700 ${isFocused ? "opacity-100" : "opacity-0"} pointer-events-none -z-10 hidden dark:block`} />
-      <div className="glass-card overflow-hidden flex flex-col w-full max-w-lg mx-auto relative z-10 border border-slate-200/50 dark:border-white/5 shadow-2xl">
+      <div className="glass-card overflow-hidden flex flex-col w-full max-w-lg mx-auto relative z-10 border border-slate-200/50 shadow-2xl bg-white">
         {/* Input Header */}
-        <div className="px-4 pt-5 pb-4 md:px-6 md:pt-5 md:pb-5 border-b border-slate-200 dark:border-[#1e293b] bg-white/40 dark:bg-[#0f172a]/50">
+        <div className="px-4 pt-5 pb-4 md:px-6 md:pt-5 md:pb-5 border-b border-slate-200 bg-white/40">
           <AnimatePresence>
             {latexPreview && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="mb-3 px-3 py-2 bg-slate-50/80 dark:bg-white/5 rounded-[12px] border border-slate-100 dark:border-white/5 overflow-x-auto text-center"
+                className="mb-3 px-3 py-2 bg-slate-50/80 rounded-[12px] border border-slate-100 overflow-x-auto text-center"
               >
                 <div
-                  className="text-slate-500 dark:text-slate-300"
+                  className="text-slate-500"
                   dangerouslySetInnerHTML={{ __html: katex.renderToString(latexPreview, { throwOnError: false, displayMode: false }) }}
                 />
               </motion.div>
@@ -351,10 +354,10 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
           <p id="calc-field-help" className="sr-only">
             Escribe una función de {variable}. Usa sin, cos, exp, sqrt y paréntesis. Pulsa Calcular o Intro para ver la derivada debajo.
           </p>
-          <div className={`relative flex items-center bg-white dark:bg-[#07111f] rounded-[14px] border transition-all duration-300 shadow-sm overflow-hidden ${
-            isFocused ? "border-secondary/60 ring-3 ring-secondary/10 dark:ring-secondary/15" : "border-slate-200 dark:border-[#1e293b]"
+          <div className={`relative flex items-center bg-white rounded-[14px] border transition-all duration-300 shadow-sm overflow-hidden ${
+            isFocused ? "border-secondary/60 ring-3 ring-secondary/10" : "border-slate-200"
           }`}>
-            <div className="pl-4 pr-3 py-3 text-slate-400 dark:text-slate-300 font-serif italic text-[1rem] border-r border-slate-200 dark:border-[#1e293b] bg-slate-100/50 select-none shrink-0 leading-none">
+            <div className="pl-4 pr-3 py-3 text-slate-400 font-serif italic text-[1rem] border-r border-slate-200 bg-slate-100/50 select-none shrink-0 leading-none">
               d/d{variable}
             </div>
             <input
@@ -364,23 +367,23 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
               onChange={e => { setInput(e.target.value); setShowResult(false); setError(""); }}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
-              placeholder={`Ej: sin(${variable})² + ${variable}³`}
-              className="w-full min-w-0 bg-transparent py-3.5 px-4 text-[1.05rem] md:text-[1.15rem] font-mono text-slate-900 dark:text-white outline-none placeholder:text-slate-300 dark:placeholder:text-slate-500"
+              placeholder={t.placeholder.replace("x", variable)}
+              className="w-full min-w-0 bg-transparent py-3.5 px-4 text-[1.05rem] md:text-[1.15rem] font-mono text-slate-900 outline-none placeholder:text-slate-300"
               onKeyDown={e => e.key === "Enter" && handleCalculate()}
               aria-label="Función a derivar"
               aria-describedby="calc-field-help"
             />
             {input && (
-              <button onClick={clearAll} className="pr-4 text-slate-300 hover:text-red-400 dark:text-slate-500 dark:hover:text-red-400 transition-colors shrink-0" aria-label="Borrar todo">
+              <button onClick={clearAll} className="pr-4 text-slate-300 hover:text-red-400 transition-colors shrink-0" aria-label="Borrar todo">
                 <X size={17} />
               </button>
             )}
           </div>
           <div className="flex items-center gap-1.5 mt-2.5 overflow-x-auto pb-0.5 no-scrollbar">
-            <span className="text-[0.6rem] font-black text-slate-400 dark:text-slate-300 uppercase tracking-widest shrink-0">Ejemplos</span>
+            <span className="text-[0.6rem] font-black text-slate-400 uppercase tracking-widest shrink-0">{t.examples}</span>
             {EXAMPLES.map(ex => (
               <button key={ex} onClick={() => { setInput(ex); setShowResult(false); setError(""); }}
-                className="whitespace-nowrap px-2.5 py-1 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 text-[0.7rem] font-bold text-slate-500 dark:text-slate-300 hover:border-secondary/50 hover:text-secondary dark:hover:text-accent transition-all active:scale-95 shadow-sm shrink-0">
+                className="whitespace-nowrap px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-[0.7rem] font-bold text-slate-500 hover:border-secondary/50 hover:text-secondary transition-all active:scale-95 shadow-sm shrink-0">
                 {ex}
               </button>
             ))}
@@ -388,13 +391,13 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
         </div>
 
         {/* Settings Bar */}
-        <div className="px-4 md:px-6 py-2 border-b border-slate-200 dark:border-[#1e293b] bg-slate-50/50 flex items-center gap-3 flex-wrap">
+        <div className="px-4 md:px-6 py-2 border-b border-slate-200 bg-slate-50/50 flex items-center gap-3 flex-wrap">
           <button
             onClick={() => setShowSettings(s => !s)}
-            className={`flex items-center gap-1.5 text-[0.72rem] font-bold transition-colors ${showSettings ? "text-secondary dark:text-accent" : "text-slate-400 dark:text-slate-300 hover:text-secondary dark:hover:text-accent"}`}
+            className={`flex items-center gap-1.5 text-[0.72rem] font-bold transition-colors ${showSettings ? "text-secondary" : "text-slate-400 hover:text-secondary"}`}
             aria-expanded={showSettings}
           >
-            <Settings2 size={11} /> OPCIONES
+            <Settings2 size={11} /> {t.advanced.toUpperCase()}
           </button>
           <AnimatePresence>
             {showSettings && (
@@ -402,15 +405,15 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
                 className="flex items-center gap-4 flex-wrap">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <div onClick={() => setSimplify(s => !s)}
-                    className={`relative w-7.5 h-4 rounded-full transition-colors duration-200 cursor-pointer ${simplify ? "bg-secondary" : "bg-slate-300 dark:bg-slate-600"}`}>
+                    className={`relative w-7.5 h-4 rounded-full transition-colors duration-200 cursor-pointer ${simplify ? "bg-secondary" : "bg-slate-300"}`}>
                     <div className={`absolute top-0.5 left-0.5 w-3 h-3 bg-white rounded-full shadow transition-transform duration-200 ${simplify ? "translate-x-3.5" : ""}`} />
                   </div>
-                  <span className="text-[0.7rem] text-slate-600 dark:text-slate-300 font-bold uppercase tracking-wide">Simplificar</span>
+                  <span className="text-[0.7rem] text-slate-600 font-bold uppercase tracking-wide">{t.simplify}</span>
                 </label>
                 <label className="flex items-center gap-2">
-                  <span className="text-[0.7rem] text-slate-500 dark:text-slate-300 font-bold uppercase tracking-wide">Var</span>
+                  <span className="text-[0.7rem] text-slate-500 font-bold uppercase tracking-wide">{t.variable}</span>
                   <select value={variable} onChange={e => setVariable(e.target.value)}
-                    className="text-[0.7rem] bg-white dark:bg-[#07111f] border border-slate-200 dark:border-[#1e293b] rounded-md px-1.5 py-0.5 font-bold text-slate-700 dark:text-slate-200 outline-none cursor-pointer">
+                    className="text-[0.7rem] bg-white border border-slate-200 rounded-md px-1.5 py-0.5 font-bold text-slate-700 outline-none cursor-pointer">
                     {["x", "y", "t", "u", "v"].map(v => <option key={v}>{v}</option>)}
                   </select>
                 </label>
@@ -422,17 +425,17 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
         <AnimatePresence>
           {error && (
             <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}
-              className="bg-red-50 dark:bg-red-900/10 px-4 md:px-6 py-2.5 border-b border-red-100 dark:border-red-900/20 flex items-center gap-2 text-[0.75rem] font-medium text-red-600 dark:text-red-400">
+              className="bg-red-50 px-4 md:px-6 py-2.5 border-b border-red-100 flex items-center gap-2 text-[0.75rem] font-medium text-red-600">
               <AlertCircle size={14} /> {error}
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* ─── KEYBOARD Redesign ─────────────────────────────────────────── */}
-        <div className="px-3.5 md:px-6 pt-3 pb-4 md:pt-4 md:pb-5 flex flex-col gap-3.5 bg-slate-50/30 dark:bg-transparent">
+        <div className="px-3.5 md:px-6 pt-3 pb-4 md:pt-4 md:pb-5 flex flex-col gap-3.5 bg-slate-50/30">
           
           <div>
-            <Label>Funciones Científicas</Label>
+            <Label>{currentLang === "en" ? "Scientific Functions" : currentLang === "pt" ? "Funções Científicas" : "Funciones Científicas"}</Label>
             <div className="grid grid-cols-4 sm:grid-cols-6 gap-1.5">
               {ROW_TRIG.map(b => <CalcBtn key={b.label} btn={b} onClick={handleBtn} />)}
               {ROW_FUNC.map(b => <CalcBtn key={b.label} btn={b} onClick={handleBtn} />)}
@@ -440,7 +443,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
           </div>
 
           <div>
-            <Label>Teclado Numérico</Label>
+            <Label>{currentLang === "en" ? "Numeric Keypad" : currentLang === "pt" ? "Teclado Numérico" : "Teclado Numérico"}</Label>
             <div className="grid grid-cols-4 sm:grid-cols-6 gap-1.5">
               {NUMPAD.map(b => (
                 <CalcBtn key={b.label} btn={b} onClick={handleBtn} />
@@ -453,7 +456,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
             whileTap={{ scale: 0.985 }}
             onClick={handleCalculate}
             disabled={!input.trim() || isCalculating}
-            className="w-full h-[50px] bg-[#0f172a] dark:bg-[#020617] text-white rounded-[12px] text-[1rem] font-bold tracking-wider flex items-center justify-center gap-2.5 shadow-lg hover:shadow-secondary/20 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 border border-white/5"
+            className="w-full h-[50px] bg-[#0f172a] text-white rounded-[12px] text-[1rem] font-bold tracking-wider flex items-center justify-center gap-2.5 shadow-lg hover:shadow-secondary/20 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 border border-white/5"
           >
             {isCalculating ? (
               <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 0.9, ease: "linear" }}>
@@ -461,7 +464,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
               </motion.div>
             ) : (
               <>
-                <span className="uppercase text-[0.85rem] tracking-[0.08em]">Calcular Derivada</span>
+                <span className="uppercase text-[0.85rem] tracking-[0.08em]">{t.calculate}</span>
                 <CornerDownLeft size={16} className="opacity-70" />
               </>
             )}
@@ -483,31 +486,31 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
             transition={{ type: "spring", stiffness: 260, damping: 24 }}
             className="w-full max-w-lg mx-auto"
           >
-            <div className="bg-white dark:bg-[#0f172a] border border-slate-200/50 dark:border-[#1e293b] rounded-[20px] px-4 pt-5 pb-4 md:px-6 md:pt-6 md:pb-5 shadow-xl">
+            <div className="bg-white border border-slate-200/50 rounded-[20px] px-4 pt-5 pb-4 md:px-6 md:pt-6 md:pb-5 shadow-xl">
 
               <div className="flex items-center justify-between mb-3">
-                <span id="derivative-result-heading" className="font-bold text-slate-400 dark:text-slate-300 text-[0.62rem] uppercase tracking-[0.15em]">Resultado</span>
+                <span id="derivative-result-heading" className="font-bold text-slate-400 text-[0.62rem] uppercase tracking-[0.15em]">{t.result}</span>
                 <span className="text-[0.6rem] font-bold bg-secondary/10 text-secondary px-2.5 py-1 rounded-full border border-secondary/20 uppercase tracking-wider">
-                  {simplify ? "Simplificado" : "Expandido"}
+                  {simplify ? t.simplified : t.expanded}
                 </span>
               </div>
 
-              <div className="bg-slate-50/50 dark:bg-[#07111f] rounded-[14px] border border-slate-100 dark:border-[#1e293b] px-4 py-5 overflow-x-auto flex items-center justify-center gap-3 shadow-inner min-h-[72px]">
-                <span className="text-slate-400 dark:text-slate-300 font-serif italic text-base shrink-0 select-none">
+              <div className="bg-slate-50/50 rounded-[14px] border border-slate-100 px-4 py-5 overflow-x-auto flex items-center justify-center gap-3 shadow-inner min-h-[72px]">
+                <span className="text-slate-400 font-serif italic text-base shrink-0 select-none">
                   f'({variable}) =
                 </span>
                 <div
-                  className="text-slate-900 dark:text-white"
+                  className="text-slate-900"
                   dangerouslySetInnerHTML={{ __html: katex.renderToString(latexResult || "", { throwOnError: false, displayMode: true }) }}
                 />
               </div>
 
               <button
                 onClick={() => setShowSteps(s => !s)}
-                className="w-full mt-3 text-[0.78rem] font-bold text-secondary dark:text-accent flex items-center justify-center gap-2 py-3 rounded-[12px] hover:bg-secondary/5 transition-all border border-transparent hover:border-secondary/10"
+                className="w-full mt-3 text-[0.78rem] font-bold text-secondary flex items-center justify-center gap-2 py-3 rounded-[12px] hover:bg-secondary/5 transition-all border border-transparent hover:border-secondary/10"
               >
                 <BookOpen size={15} />
-                {showSteps ? "OCULTAR PASOS" : "VER SOLUCIÓN PASO A PASO"}
+                {showSteps ? t.hideSteps : t.showSteps}
                 <motion.div animate={{ rotate: showSteps ? 180 : 0 }} transition={{ duration: 0.3 }}>
                   <ChevronDown size={15} />
                 </motion.div>
@@ -523,33 +526,33 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
                     className="overflow-hidden"
                   >
                     <div className="pt-6 flex flex-col gap-5">
-                      <div className="h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-white/10 to-transparent" />
+                      <div className="h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
                       {[
                         {
-                          t: "1. Identificar la estructura",
-                          d: `Expresión diferenciable respecto a ${variable}. Identificamos las reglas aplicables: potencia, cadena, producto, cociente.`,
+                          t: t.steps.step1.t,
+                          d: t.steps.step1.d.replace("variable", variable),
                           f: `\\frac{d}{d${variable}}\\left[\\text{expresión}\\right]`,
                         },
                         {
-                          t: "2. Aplicar reglas de derivación",
-                          d: "Se diferencia cada término según las reglas correspondientes y se aplica la regla de la cadena donde sea necesario.",
+                          t: t.steps.step2.t,
+                          d: t.steps.step2.d,
                           f: latexResult,
                         },
                         {
-                          t: "3. Simplificar el resultado",
-                          d: "Se combinan términos semejantes y se reduce la expresión a su forma mínima.",
+                          t: t.steps.step3.t,
+                          d: t.steps.step3.d,
                           f: latexResult,
                         },
                       ].map((step, i) => (
                         <div key={i} className="flex gap-4 items-start">
-                          <div className="w-6.5 h-6.5 rounded-full bg-secondary/10 dark:bg-secondary/20 flex items-center justify-center shrink-0 mt-0.5">
-                            <CheckCircle2 size={12} className="text-secondary dark:text-accent" />
+                          <div className="w-6.5 h-6.5 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 mt-0.5">
+                            <CheckCircle2 size={12} className="text-secondary" />
                           </div>
                           <div className="flex flex-col gap-2 min-w-0">
-                            <h4 className="font-bold text-slate-900 dark:text-white text-[0.85rem] uppercase tracking-tight">{step.t}</h4>
-                            <p className="text-[0.78rem] text-slate-500 dark:text-slate-300 leading-relaxed">{step.d}</p>
-                            <div className="bg-slate-50/50 dark:bg-white/5 p-4 rounded-[14px] border border-slate-100 dark:border-white/5 overflow-x-auto">
+                            <h4 className="font-bold text-slate-900 text-[0.85rem] uppercase tracking-tight">{step.t}</h4>
+                            <p className="text-[0.78rem] text-slate-500 leading-relaxed">{step.d}</p>
+                            <div className="bg-slate-50/50 p-4 rounded-[14px] border border-slate-100 overflow-x-auto">
                               <div dangerouslySetInnerHTML={{ __html: katex.renderToString(step.f, { throwOnError: false, displayMode: false }) }} />
                             </div>
                           </div>
@@ -569,5 +572,3 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
 
 CalculatorCard.displayName = "CalculatorCard";
 export default CalculatorCard;
-
-
