@@ -66,19 +66,19 @@ export const SITEMAP_ROUTES: SitemapRouteConfig[] = [
   },
   {
     id: "how-it-works",
-    paths: { es: "/how-it-works", en: "/how-it-works", pt: "/how-it-works" },
+    paths: { es: "/como-funciona", en: "/how-it-works", pt: "/como-funciona" },
     changeFrequency: "monthly",
     priority: 0.9,
   },
   {
     id: "examples",
-    paths: { es: "/derivative-examples", en: "/derivative-examples", pt: "/derivative-examples" },
+    paths: { es: "/ejemplos", en: "/examples", pt: "/exemplos" },
     changeFrequency: "weekly",
     priority: 0.9,
   },
   {
     id: "rules",
-    paths: { es: "/reglas", en: "/reglas", pt: "/reglas" },
+    paths: { es: "/reglas", en: "/rules", pt: "/regras" },
     changeFrequency: "weekly",
     priority: 0.95,
   },

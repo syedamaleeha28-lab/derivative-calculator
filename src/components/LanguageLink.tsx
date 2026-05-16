@@ -14,7 +14,10 @@ export default function LanguageLink({ href, ...props }: ComponentProps<typeof L
     const firstSegment = href.split("/").filter(Boolean)[0];
     const hasLocale = firstSegment === "en" || firstSegment === "pt" || firstSegment === "es";
     if (!hasLocale) {
-      localizedHref = localePath(currentLang, href);
+      // Find if this is an internal path that needs localization
+      const { getLocalizedPath } = require("@/lib/routes");
+      const logicalPath = getLocalizedPath(href, currentLang);
+      localizedHref = localePath(currentLang, logicalPath);
     }
   }
 

@@ -7,11 +7,15 @@ import type { Metadata } from "next";
 import { dictionaries, Lang } from "@/lib/dictionaries";
 import { metadataFromEntry, normalizeLang } from "@/lib/seo";
 
+import { LOCALIZED_ROUTES } from "@/lib/routes";
+
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const currentLang = normalizeLang(lang);
   const t = dictionaries[currentLang].rulesPage;
-  return metadataFromEntry(currentLang, "/reglas", { title: t.title, description: t.description });
+  return metadataFromEntry(currentLang, "/rules", { title: t.title, description: t.description }, {
+    localizedPaths: LOCALIZED_ROUTES["/rules"]
+  });
 }
 
 export default async function ReglasPage({ params }: { params: Promise<{ lang: string }> }) {
@@ -119,7 +123,7 @@ export default async function ReglasPage({ params }: { params: Promise<{ lang: s
       faqs={t.faqs}
       relatedPosts={[
         { title: currentLang === "en" ? "Formulas Table" : currentLang === "pt" ? "Tabela de Fórmulas" : "Tabla de Fórmulas", slug: "basic-derivative-formulas" },
-        { title: currentLang === "en" ? "Calculus Examples" : currentLang === "pt" ? "Exemplos de Cálculo" : "Ejemplos de Cálculo", slug: "derivative-examples" },
+        { title: currentLang === "en" ? "Calculus Examples" : currentLang === "pt" ? "Exemplos de Cálculo" : "Ejemplos de Cálculo", slug: "examples" },
         { title: currentLang === "en" ? "What is a Derivative?" : currentLang === "pt" ? "O que é uma Derivada?" : "¿Qué es una Derivada?", slug: "what-is-a-derivative" }
       ]}
     />

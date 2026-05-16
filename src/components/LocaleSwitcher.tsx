@@ -24,8 +24,13 @@ export function LocaleSwitcher({ variant = "dropdown", onNavigate }: LocaleSwitc
   const switchLocale = (target: Lang) => {
     if (target === currentLang) return;
     setLocaleCookie(target);
-    const logicalPath = stripLocalePrefix(pathname);
-    router.push(localePath(target, logicalPath));
+    const currentLogicalPath = stripLocalePrefix(pathname);
+    // Find the internal path based on current lang
+    const { getInternalPath, getLocalizedPath } = require("@/lib/routes");
+    const internalPath = getInternalPath(currentLogicalPath, currentLang);
+    // Find the target localized path
+    const targetLogicalPath = getLocalizedPath(internalPath, target);
+    router.push(localePath(target, targetLogicalPath));
     onNavigate?.();
   };
 

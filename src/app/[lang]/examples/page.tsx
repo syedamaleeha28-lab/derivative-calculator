@@ -5,12 +5,15 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { dictionaries, Lang } from "@/lib/dictionaries";
 import { metadataFromEntry, normalizeLang } from "@/lib/seo";
+import { LOCALIZED_ROUTES } from "@/lib/routes";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const currentLang = normalizeLang(lang);
   const t = dictionaries[currentLang].examplesPage;
-  return metadataFromEntry(currentLang, "/derivative-examples", { title: t.title, description: t.description });
+  return metadataFromEntry(currentLang, "/examples", { title: t.title, description: t.description }, {
+    localizedPaths: LOCALIZED_ROUTES["/examples"]
+  });
 }
 
 export default async function DerivativeExamples({ params }: { params: Promise<{ lang: string }> }) {
@@ -59,7 +62,7 @@ export default async function DerivativeExamples({ params }: { params: Promise<{
           {t.sections.intro.p1}
         </p>
         <p className="mt-4">
-          {t.sections.intro.p2.replace("reglas de derivación", "").trim()} <Link href="/reglas" className="text-secondary font-bold">{currentLang === "en" ? "fundamental differentiation rules" : currentLang === "pt" ? "regras de derivação fundamentais" : "reglas de derivación fundamentales"}</Link>.
+          {t.sections.intro.p2.replace("reglas de derivación", "").trim()} <Link href="/rules" className="text-secondary font-bold">{currentLang === "en" ? "fundamental differentiation rules" : currentLang === "pt" ? "regras de derivação fundamentais" : "reglas de derivación fundamentales"}</Link>.
         </p>
         <figure className="my-10 max-w-3xl mx-auto">
           <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 shadow-lg">
