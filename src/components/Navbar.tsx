@@ -7,6 +7,7 @@ import Link from "@/components/LanguageLink";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandLogoLink } from "./BrandLogo";
+import FacebookSocialLink from "./FacebookSocialLink";
 import { dictionaries, Lang } from "@/lib/dictionaries";
 
 export default function Navbar() {
@@ -83,7 +84,8 @@ export default function Navbar() {
 
         {/* ─── Desktop actions ──────────────────────────────────────────── */}
         <div className="hidden md:flex items-center gap-2">
-          
+          <FacebookSocialLink className="h-9 w-9" iconSize={16} />
+
           {/* ─── Language Switcher (Desktop) ─── */}
           <div className="relative">
             <button
@@ -132,7 +134,8 @@ export default function Navbar() {
         </div>
 
         {/* ─── Mobile toggles ────────────────────────────────────────────── */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-1.5 md:hidden">
+          <FacebookSocialLink className="h-9 w-9" iconSize={16} />
           <button
             onClick={() => setLangOpen(!langOpen)}
             className="p-2 text-slate-500 flex items-center gap-1"

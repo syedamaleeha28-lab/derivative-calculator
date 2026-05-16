@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, forwardRef, useImperativeHandle, useMemo }
 import { motion, AnimatePresence } from "framer-motion";
 import { CornerDownLeft, Sparkles, AlertCircle, ChevronDown, BookOpen, CheckCircle2, Settings2, X } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { dictionaries, Lang } from "@/lib/dictionaries";
+import { dictionaries, Lang, type TranslationDictionary } from "@/lib/dictionaries";
 // @ts-ignore
 import nerdamer from "nerdamer/all.min";
 import katex from "katex";
@@ -74,7 +74,7 @@ function CalcBtn({ btn, onClick }: { btn: BtnDef; onClick: (b: BtnDef) => void }
 
 function buildKeypad(
   variable: string,
-  tips: (typeof dictionaries)["es"]["calculator"]["tips"]
+  tips: TranslationDictionary["calculator"]["tips"]
 ): BtnDef[] {
   const fn = (label: string, insert: string, tip: string, variant: Variant = "func"): BtnDef => ({
     label,

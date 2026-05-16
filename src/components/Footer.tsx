@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "@/components/LanguageLink";
-import { Globe, Mail, Share2 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { BrandLogoLink } from "./BrandLogo";
+import FacebookSocialLink from "./FacebookSocialLink";
 import { dictionaries, Lang } from "@/lib/dictionaries";
 
 export default function Footer() {
@@ -24,22 +24,11 @@ export default function Footer() {
               <BrandLogoLink variant="footer" className="group-hover:opacity-95 transition-opacity" />
             </div>
 
-            <p className="text-slate-500 leading-relaxed max-w-sm mb-8 text-[0.95rem]">
+            <p className="text-slate-500 leading-relaxed max-w-sm mb-6 text-[0.95rem]">
               {t.desc}
             </p>
 
-            {/* Social icons */}
-            <div className="flex items-center gap-3">
-              {[Globe, Mail, Share2].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-secondary hover:border-secondary/30 transition-all duration-300"
-                >
-                  <Icon size={18} />
-                </a>
-              ))}
-            </div>
+            <FacebookSocialLink className="h-10 w-10" />
           </div>
 
           {/* Nav columns */}

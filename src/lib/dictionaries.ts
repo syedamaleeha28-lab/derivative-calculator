@@ -1,4 +1,6 @@
-export const dictionaries = {
+import type { DeepStringify, Lang } from "./dictionary-types";
+
+const dictionariesData = {
   es: {
     nav: {
       works: "Cómo funciona",
@@ -1702,6 +1704,10 @@ export const dictionaries = {
       accept: "Aceitar e Ir ao Início"
     }
   }
-} as const;
+};
 
-export type Lang = keyof typeof dictionaries;
+export type TranslationDictionary = DeepStringify<typeof dictionariesData.es>;
+
+export const dictionaries = dictionariesData as Record<Lang, TranslationDictionary>;
+
+export type { Lang };
