@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "@/components/LanguageLink";
-import { dictionaries, Lang } from "@/lib/dictionaries";
+import { dictionaries } from "@/lib/dictionaries";
 import { metadataFromEntry, normalizeLang } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -14,15 +14,17 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
 export default async function PrivacyPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
+  const currentLang = normalizeLang(lang);
   const t = dictionaries[currentLang].privacy;
+  const c = dictionaries[currentLang].common;
+  const home = dictionaries[currentLang].breadcrumbs.home;
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
       <Navbar />
       <div className="pt-32 pb-24 max-w-4xl mx-auto px-6">
         <nav className="flex items-center gap-2 text-[0.8rem] font-bold text-slate-400 uppercase tracking-widest mb-10">
-          <Link href="/" className="hover:text-secondary transition-colors">{currentLang === 'en' ? 'Home' : currentLang === 'pt' ? 'Início' : 'Inicio'}</Link>
+          <Link href="/" className="hover:text-secondary transition-colors">{home}</Link>
           <span className="opacity-30">/</span>
           <span className="text-slate-900">{t.title}</span>
         </nav>
@@ -36,15 +38,8 @@ export default async function PrivacyPage({ params }: { params: Promise<{ lang: 
           ))}
           
           <section>
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">{currentLang === 'en' ? '4. Contact' : currentLang === 'pt' ? '4. Contato' : '4. Contacto'}</h2>
-            <p>
-              {currentLang === 'en' 
-                ? 'If you have questions about this policy, you can contact us through our blog or official social media.'
-                : currentLang === 'pt'
-                ? 'Se você tiver dúvidas sobre esta política, pode entrar em contato conosco através do nosso blog ou redes sociais oficiais.'
-                : 'Si tienes preguntas sobre esta política, puedes contactarnos a través de nuestro blog o redes sociales oficiales.'
-              }
-            </p>
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">{c.contactTitle}</h2>
+            <p>{c.contactBody}</p>
           </section>
         </div>
         

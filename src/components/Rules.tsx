@@ -3,13 +3,11 @@
 import { motion } from "framer-motion";
 import Link from "@/components/LanguageLink";
 import katex from "katex";
-import { usePathname } from "next/navigation";
-import { dictionaries, Lang } from "@/lib/dictionaries";
+import { useLang } from "@/contexts/I18nContext";
 
 export default function Rules() {
-  const pathname = usePathname() || "";
-  const currentLang = (pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es") as Lang;
-  const t = dictionaries[currentLang].rules;
+  const { dict } = useLang();
+  const t = dict.rules;
 
   const RULES = [
     {

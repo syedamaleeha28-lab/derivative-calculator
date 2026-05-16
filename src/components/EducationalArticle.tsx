@@ -21,8 +21,8 @@ import Link from "@/components/LanguageLink";
 import Image from "next/image";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { usePathname } from "next/navigation";
-import { dictionaries, Lang } from "@/lib/dictionaries";
+import type { Lang } from "@/lib/dictionary-types";
+import { useLang } from "@/contexts/I18nContext";
 import { getAbsoluteUrl } from "@/lib/seo-urls";
 
 interface Heading {
@@ -108,9 +108,8 @@ export const WarningCard = ({ children }: { children: React.ReactNode }) => (
 );
 
 export const ExampleCard = ({ title, children, steps }: { title: string; children: React.ReactNode; steps?: readonly string[] }) => {
-  const pathname = usePathname() || "";
-  const currentLang = (pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es") as Lang;
-  const t = dictionaries[currentLang].article;
+  const { lang: currentLang, dict } = useLang();
+  const t = dict.article;
 
   return (
     <div className="my-10 rounded-[2.5rem] bg-white border border-slate-200/60 shadow-xl overflow-hidden">
@@ -163,9 +162,8 @@ export default function ArticleLayout({
   const [isTocOpen, setIsTocOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const pathname = usePathname() || "";
-  const currentLang = (pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es") as Lang;
-  const t = dictionaries[currentLang].article;
+  const { lang: currentLang, dict } = useLang();
+  const t = dict.article;
 
   useEffect(() => {
     if (contentRef.current) {

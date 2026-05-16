@@ -4,23 +4,19 @@ import { useState, useEffect } from "react";
 import { Menu, X, Globe, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "@/components/LanguageLink";
-import NextLink from "next/link";
-import { usePathname } from "next/navigation";
 import { BrandLogoLink } from "./BrandLogo";
 import FacebookSocialLink from "./FacebookSocialLink";
-import { dictionaries } from "@/lib/dictionaries";
-import type { Lang } from "@/lib/dictionary-types";
-import { getLangFromPathname, LANG_BADGE } from "@/lib/locale";
+import { LocaleSwitcher } from "./LocaleSwitcher";
+import { useLang } from "@/contexts/I18nContext";
+import { LANG_BADGE } from "@/lib/locale";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const pathname = usePathname() || "";
-
-  const currentLang = getLangFromPathname(pathname);
-  const t = dictionaries[currentLang].nav;
+  const { lang: currentLang, dict } = useLang();
+  const t = dict.nav;
 
   const NAV_LINKS = [
     { name: t.works, href: "/how-it-works" },
@@ -28,18 +24,6 @@ export default function Navbar() {
     { name: t.rules, href: "/reglas" },
     { name: t.blog, href: "/blog" },
   ];
-
-  const languages = [
-    { code: "en", label: "English (EN)", prefix: "/en" },
-    { code: "es", label: "Español (ES)", prefix: "" },
-    { code: "pt", label: "Português (PT)", prefix: "/pt" },
-  ];
-
-  const currentPathWithoutLocale = pathname.replace(/^\/(en|pt|es)/, "") || "/";
-  const getLangHref = (prefix: string) => {
-    if (!prefix) return currentPathWithoutLocale;
-    return `${prefix}${currentPathWithoutLocale === "/" ? "" : currentPathWithoutLocale}`;
-  };
 
   useEffect(() => {
     setMounted(true);
@@ -97,7 +81,7 @@ export default function Navbar() {
               aria-label="Cambiar idioma"
             >
               <Globe size={17} />
-              <span className="min-w-[1.5rem] text-center text-xs font-semibold tracking-wide text-slate-700 font-sans">
+              <span className="lang-badge min-w-[1.75rem] text-center text-xs font-bold text-slate-700">
                 {LANG_BADGE[currentLang]}
               </span>
               <ChevronDown size={14} className={`transition-transform ${langOpen ? "rotate-180" : ""}`} />
@@ -112,19 +96,7 @@ export default function Navbar() {
                   transition={{ duration: 0.15 }}
                   className="absolute right-0 mt-2 w-40 bg-white border border-slate-100 shadow-lg rounded-xl overflow-hidden py-1 z-50"
                 >
-                  {languages.map((lang) => (
-                    <NextLink
-                      key={lang.code}
-                      href={getLangHref(lang.prefix)}
-                      className={`block px-4 py-2 text-sm transition-colors ${
-                        currentLang === lang.code
-                          ? "bg-slate-100 text-primary font-medium"
-                          : "text-slate-600 hover:bg-slate-50"
-                      }`}
-                    >
-                      {lang.label}
-                    </NextLink>
-                  ))}
+                  <LocaleSwitcher onNavigate={() => setLangOpen(false)} />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -145,7 +117,7 @@ export default function Navbar() {
             className="p-2 text-slate-500 flex items-center gap-1"
           >
             <Globe size={18} />
-            <span className="min-w-[1.25rem] text-center text-[0.65rem] font-semibold tracking-wide text-slate-700 font-sans">
+            <span className="lang-badge min-w-[1.75rem] text-center text-[0.65rem] font-bold text-slate-700">
               {LANG_BADGE[currentLang]}
             </span>
           </button>
@@ -206,25 +178,13 @@ export default function Navbar() {
                     exit={{ opacity: 0, height: 0 }}
                     className="overflow-hidden border-t border-slate-100 mt-2 pt-2"
                   >
-                    <div className="grid grid-cols-3 gap-2">
-                      {languages.map((lang) => (
-                        <NextLink
-                          key={lang.code}
-                          href={getLangHref(lang.prefix)}
-                          onClick={() => {
-                            setMobileOpen(false);
-                            setLangOpen(false);
-                          }}
-                          className={`text-center py-2 rounded-lg text-sm transition-colors ${
-                            currentLang === lang.code
-                              ? "bg-slate-100 text-primary font-medium"
-                              : "text-slate-600 hover:bg-slate-50"
-                          }`}
-                        >
-                          {LANG_BADGE[lang.code as Lang]}
-                        </NextLink>
-                      ))}
-                    </div>
+                    <LocaleSwitcher
+                      variant="grid"
+                      onNavigate={() => {
+                        setMobileOpen(false);
+                        setLangOpen(false);
+                      }}
+                    />
                   </motion.li>
                 )}
               </AnimatePresence>

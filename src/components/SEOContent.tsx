@@ -3,15 +3,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "@/components/LanguageLink";
-import { usePathname } from "next/navigation";
-import { dictionaries } from "@/lib/dictionaries";
-import { getLangFromPathname } from "@/lib/locale";
+import { useLang } from "@/contexts/I18nContext";
 import PopularSearches from "./PopularSearches";
 
 export default function SEOContent() {
-  const pathname = usePathname() || "";
-  const currentLang = getLangFromPathname(pathname);
-  const t = dictionaries[currentLang].seoCards;
+  const { dict } = useLang();
+  const t = dict.seoCards;
 
   // Since we only have some cards in dictionary, we'll map them
   // We should ideally have all 6 cards in dictionary for full localization

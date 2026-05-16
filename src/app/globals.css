@@ -75,6 +75,13 @@
     background-image: linear-gradient(to bottom right, #0f172a, #8B5CF6);
   }
 
+  .lang-badge {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.06em;
+    text-transform: none;
+  }
+
   .heading-font {
     font-family: var(--font-dm-serif), Georgia, serif;
     font-weight: 400;

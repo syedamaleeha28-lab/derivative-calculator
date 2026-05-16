@@ -3,13 +3,12 @@
 import { useState, useRef, useEffect, forwardRef, useImperativeHandle, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CornerDownLeft, Sparkles, AlertCircle, ChevronDown, BookOpen, CheckCircle2, Settings2, X } from "lucide-react";
-import { usePathname } from "next/navigation";
-import { dictionaries, type TranslationDictionary } from "@/lib/dictionaries";
 import {
   CALCULATOR_SET_INPUT,
   type CalculatorSetInputDetail,
 } from "@/lib/calculator-events";
-import { getLangFromPathname } from "@/lib/locale";
+import { useLang } from "@/contexts/I18nContext";
+import type { TranslationDictionary } from "@/lib/dictionaries";
 // @ts-ignore
 import nerdamer from "nerdamer/all.min";
 import katex from "katex";
@@ -211,9 +210,8 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
   const [simplify, setSimplify] = useState(true);
   const [variable, setVariable] = useState("x");
 
-  const pathname = usePathname() || "";
-  const currentLang = getLangFromPathname(pathname);
-  const t = dictionaries[currentLang].calculator;
+  const { dict } = useLang();
+  const t = dict.calculator;
 
   const keypad = useMemo(() => buildKeypad(variable, t.tips), [variable, t.tips]);
 
@@ -538,7 +536,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
                   <Sparkles size={16} />
                 </motion.div>
                 <span className="text-[0.75rem] uppercase tracking-wider">
-                  {currentLang === "en" ? "Calculating…" : currentLang === "pt" ? "Calculando…" : "Calculando…"}
+                  {t.calculating}
                 </span>
               </>
             ) : (
@@ -589,7 +587,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
                     {copied ? (
                       <>
                         <CheckCircle2 size={10} />
-                        {currentLang === "en" ? "Copied!" : "¡Copiado!"}
+                        {t.copied}
                       </>
                     ) : (
                       "COPY"

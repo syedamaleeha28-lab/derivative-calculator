@@ -8,7 +8,8 @@ import { Calculator } from "lucide-react";
 import HomeJsonLd from "@/components/HomeJsonLd";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
-import { dictionaries, Lang } from "@/lib/dictionaries";
+import { dictionaries } from "@/lib/dictionaries";
+import type { Lang } from "@/lib/dictionary-types";
 import { buildPageMetadata, normalizeLang } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
+  const currentLang = normalizeLang(lang);
   const t = dictionaries[currentLang].nav;
   const tStep = dictionaries[currentLang].stepByStep;
   const tGraph = dictionaries[currentLang].graph;

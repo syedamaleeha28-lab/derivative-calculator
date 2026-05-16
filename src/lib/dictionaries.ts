@@ -77,6 +77,8 @@ const dictionariesData = {
       error: "Error en la ecuación",
       invalidExpr: "Expresión inválida. Revisa la sintaxis e inténtalo de nuevo.",
       examples: "Ejemplos",
+      calculating: "Calculando…",
+      copied: "¡Copiado!",
       simplify: "Simplificar",
       result: "Resultado",
       simplified: "Simplificado",
@@ -230,6 +232,15 @@ const dictionariesData = {
     },
     breadcrumbs: {
       home: "Inicio"
+    },
+    common: {
+      solvedExamples: "Ejemplos Resueltos",
+      contactTitle: "4. Contacto",
+      contactBody:
+        "Si tienes preguntas sobre esta política, puedes contactarnos a través de nuestro blog o redes sociales oficiales.",
+      liabilityTitle: "4. Limitación de Responsabilidad",
+      liabilityBody:
+        "Calculadora Derivadas no será responsable de ningún daño derivado del uso o la imposibilidad de uso de la calculadora, incluyendo errores en el cálculo de derivadas o pérdida de datos.",
     },
     article: {
       readTime: "de lectura",
@@ -638,6 +649,8 @@ const dictionariesData = {
       error: "Equation error",
       invalidExpr: "Invalid expression. Check the syntax and try again.",
       examples: "Examples",
+      calculating: "Calculating…",
+      copied: "Copied!",
       simplify: "Simplify",
       result: "Result",
       simplified: "Simplified",
@@ -791,6 +804,15 @@ const dictionariesData = {
     },
     breadcrumbs: {
       home: "Home"
+    },
+    common: {
+      solvedExamples: "Solved Examples",
+      contactTitle: "4. Contact",
+      contactBody:
+        "If you have questions about this policy, you can contact us through our blog or official social media.",
+      liabilityTitle: "4. Limitation of Liability",
+      liabilityBody:
+        "Calculadora Derivadas will not be liable for any damages arising from the use or inability to use the calculator, including errors in the calculation of derivatives or loss of data.",
     },
     article: {
       readTime: "read",
@@ -1199,6 +1221,8 @@ const dictionariesData = {
       error: "Erro na equação",
       invalidExpr: "Expressão inválida. Verifique a sintaxe e tente novamente.",
       examples: "Exemplos",
+      calculating: "Calculando…",
+      copied: "Copiado!",
       simplify: "Simplificar",
       result: "Resultado",
       simplified: "Simplificado",
@@ -1348,6 +1372,15 @@ const dictionariesData = {
     },
     breadcrumbs: {
       home: "Início"
+    },
+    common: {
+      solvedExamples: "Exemplos Resolvidos",
+      contactTitle: "4. Contato",
+      contactBody:
+        "Se você tiver dúvidas sobre esta política, pode entrar em contato conosco através do nosso blog ou redes sociais oficiais.",
+      liabilityTitle: "4. Limitação de Responsabilidade",
+      liabilityBody:
+        "Calculadora Derivadas não será responsável por quaisquer danos decorrentes do uso ou da incapacidade de usar a calculadora, incluindo erros no cálculo de derivadas ou perda de dados.",
     },
     article: {
       readTime: "de leitura",

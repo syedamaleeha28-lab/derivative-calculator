@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, DM_Serif_Display } from "next/font/google";
-import { SITE_NAME, SITE_URL } from "@/lib/seo";
+import { I18nProvider } from "@/contexts/I18nContext";
+import { SITE_NAME, SITE_URL, normalizeLang } from "@/lib/seo";
 import "../globals.css";
 
 const inter = Inter({
@@ -34,14 +35,15 @@ export default async function RootLayout({
   params,
 }: Readonly<{ children: React.ReactNode; params: Promise<{ lang: string }> }>) {
   const { lang } = await params;
+  const locale = normalizeLang(lang);
   return (
     <html
-      lang={lang || "es"}
+      lang={locale}
       className={`${inter.variable} ${dmSerif.variable} h-full scroll-smooth`}
       data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col font-sans antialiased bg-white text-slate-900">
-        {children}
+        <I18nProvider lang={locale}>{children}</I18nProvider>
       </body>
     </html>
   );

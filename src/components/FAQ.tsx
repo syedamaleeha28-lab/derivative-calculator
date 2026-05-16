@@ -3,15 +3,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
-import { usePathname } from "next/navigation";
-import { dictionaries } from "@/lib/dictionaries";
-import { getLangFromPathname } from "@/lib/locale";
+import { useLang } from "@/contexts/I18nContext";
 
 export default function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
-  const pathname = usePathname() || "";
-  const currentLang = getLangFromPathname(pathname);
-  const t = dictionaries[currentLang].faqsPage;
+  const { dict } = useLang();
+  const t = dict.faqsPage;
 
   return (
     <section

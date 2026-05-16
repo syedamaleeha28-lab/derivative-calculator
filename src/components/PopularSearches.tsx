@@ -1,14 +1,11 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import { dictionaries } from "@/lib/dictionaries";
 import { dispatchCalculatorInput } from "@/lib/calculator-events";
-import { getLangFromPathname } from "@/lib/locale";
+import { useLang } from "@/contexts/I18nContext";
 
 export default function PopularSearches() {
-  const pathname = usePathname() || "";
-  const currentLang = getLangFromPathname(pathname);
-  const t = dictionaries[currentLang].popularSearches;
+  const { dict } = useLang();
+  const t = dict.popularSearches;
 
   if (!t?.functions?.length) return null;
 

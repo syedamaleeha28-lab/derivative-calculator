@@ -4,8 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, FlaskConical } from "lucide-react";
 import Link from "@/components/LanguageLink";
 import katex from "katex";
-import { usePathname } from "next/navigation";
-import { dictionaries, Lang } from "@/lib/dictionaries";
+import { useLang } from "@/contexts/I18nContext";
 
 // ─── Section header ────────────────────────────────────────────────────────────
 function SectionHeader({
@@ -29,9 +28,8 @@ function SectionHeader({
 }
 
 export default function PopularExamples() {
-  const pathname = usePathname() || "";
-  const currentLang = (pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es") as Lang;
-  const t = dictionaries[currentLang].popularExamples;
+  const { lang: currentLang, dict } = useLang();
+  const t = dict.popularExamples;
 
   const EXAMPLES = [
     {

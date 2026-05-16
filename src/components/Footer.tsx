@@ -1,15 +1,12 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import LanguageLink from "@/components/LanguageLink";
 import FacebookSocialLink from "@/components/FacebookSocialLink";
-import { dictionaries } from "@/lib/dictionaries";
-import { getLangFromPathname } from "@/lib/locale";
+import { useLang } from "@/contexts/I18nContext";
 
 export default function Footer() {
-  const pathname = usePathname() || "";
-  const currentLang = getLangFromPathname(pathname);
-  const t = dictionaries[currentLang].footer;
+  const { dict } = useLang();
+  const t = dict.footer;
 
   return (
     <footer className="bg-white border-t border-slate-200 py-6 md:py-8">

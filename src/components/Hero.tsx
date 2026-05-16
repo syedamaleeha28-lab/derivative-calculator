@@ -4,9 +4,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Zap, BookOpen } from "lucide-react";
 import CalculatorCard, { type CalculatorHandle } from "./CalculatorCard";
-import { usePathname } from "next/navigation";
-import { dictionaries } from "@/lib/dictionaries";
-import { getLangFromPathname } from "@/lib/locale";
+import { useLang } from "@/contexts/I18nContext";
 import LanguageLink from "@/components/LanguageLink";
 
 const MotionLink = motion(LanguageLink);
@@ -22,9 +20,8 @@ function TrustPill({ icon, text }: { icon: React.ReactNode; text: string }) {
 
 export default function Hero() {
   const calculatorRef = useRef<CalculatorHandle>(null);
-  const pathname = usePathname() || "";
-  const currentLang = getLangFromPathname(pathname);
-  const t = dictionaries[currentLang].hero;
+  const { dict } = useLang();
+  const t = dict.hero;
 
   const handleCalculateClick = (e: React.MouseEvent) => {
     e.preventDefault();

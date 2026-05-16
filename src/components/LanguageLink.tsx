@@ -1,22 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ComponentProps } from "react";
-import { getLangFromPathname } from "@/lib/locale";
+import { localePath } from "@/lib/locale";
+import { useLang } from "@/contexts/I18nContext";
 
 export default function LanguageLink({ href, ...props }: ComponentProps<typeof Link>) {
-  const pathname = usePathname() || "";
-  const currentLang = getLangFromPathname(pathname);
-  const locales = ["en", "pt"] as const;
+  const { lang: currentLang } = useLang();
 
   let localizedHref = href;
 
-  if (currentLang !== "es" && typeof href === "string" && href.startsWith("/")) {
-    // Only prepend if not already prepended
-    const hrefSegments = href.split("/");
-    if (!locales.includes(hrefSegments[1] as (typeof locales)[number])) {
-      localizedHref = `/${currentLang}${href === "/" ? "" : href}`;
+  if (typeof href === "string" && href.startsWith("/")) {
+    const firstSegment = href.split("/").filter(Boolean)[0];
+    const hasLocale = firstSegment === "en" || firstSegment === "pt" || firstSegment === "es";
+    if (!hasLocale) {
+      localizedHref = localePath(currentLang, href);
     }
   }
 
