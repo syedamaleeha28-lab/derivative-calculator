@@ -101,7 +101,8 @@ export const dictionaries = {
         sinh: "Seno hip.", cosh: "Coseno hip.", tanh: "Tan hip.",
         ln: "Log. natural", log: "Log. base 10", exp: "Exponencial", power: "Potencia", root: "Raíz", pi: "Pi",
         openPar: "Abrir paréntesis", closePar: "Cerrar paréntesis", delete: "Borrar",
-        sum: "Suma", sub: "Resta", div: "Dividir", mul: "Multiplicar", point: "Punto decimal"
+        sum: "Suma", sub: "Resta", div: "Dividir", mul: "Multiplicar", point: "Punto decimal",
+        var: "Variable", euler: "Número e", clearAll: "Borrar todo", slash: "División"
       }
     },
     popularExamples: {
@@ -668,7 +669,8 @@ export const dictionaries = {
         sinh: "Sinh", cosh: "Cosh", tanh: "Tanh",
         ln: "Natural log", log: "Base 10 log", exp: "Exponential", power: "Power", root: "Root", pi: "Pi",
         openPar: "Open parenthesis", closePar: "Close parenthesis", delete: "Delete",
-        sum: "Sum", sub: "Subtract", div: "Divide", mul: "Multiply", point: "Decimal point"
+        sum: "Sum", sub: "Subtract", div: "Divide", mul: "Multiply", point: "Decimal point",
+        var: "Variable", euler: "Euler's number e", clearAll: "Clear all", slash: "Division"
       }
     },
     popularExamples: {
@@ -1235,7 +1237,8 @@ export const dictionaries = {
         sinh: "Seno hip.", cosh: "Cosseno hip.", tanh: "Tan hip.",
         ln: "Log. natural", log: "Log. base 10", exp: "Exponencial", power: "Potência", root: "Raiz", pi: "Pi",
         openPar: "Abrir parênteses", closePar: "Fechar parênteses", delete: "Apagar",
-        sum: "Soma", sub: "Subtração", div: "Dividir", mul: "Multiplicar", point: "Ponto decimal"
+        sum: "Soma", sub: "Subtração", div: "Dividir", mul: "Multiplicar", point: "Ponto decimal",
+        var: "Variável", euler: "Número e", clearAll: "Apagar tudo", slash: "Divisão"
       }
     },
     popularExamples: {
