@@ -36,6 +36,9 @@ const dictionariesData = {
       legal: "Legal",
       privacy: "Política de Privacidad",
       terms: "Términos de Servicio",
+      disclaimer: "Aviso Legal",
+      about: "Acerca de",
+      contact: "Contacto",
       cols: {
         calculators: {
           title: "Calculadoras",
@@ -635,6 +638,9 @@ const dictionariesData = {
       legal: "Legal",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
+      disclaimer: "Disclaimer",
+      about: "About Us",
+      contact: "Contact",
       cols: {
         calculators: {
           title: "Calculators",
@@ -1234,6 +1240,9 @@ const dictionariesData = {
       legal: "Legal",
       privacy: "Política de Privacidade",
       terms: "Termos de Serviço",
+      disclaimer: "Aviso Legal",
+      about: "Sobre Nós",
+      contact: "Contato",
       cols: {
         calculators: {
           title: "Calculadoras",

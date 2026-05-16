@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import SimpleLegalPage from "@/components/SimpleLegalPage";
-import { generateMetadataForPath } from "@/lib/generate-page-metadata";
+import LegalTrustPage from "@/components/LegalTrustPage";
+import { generateLegalMetadata } from "@/lib/generate-legal-metadata";
 
 export async function generateMetadata({
   params,
@@ -8,10 +8,10 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  return generateMetadataForPath(lang, "/contact");
+  return generateLegalMetadata(lang, "contact");
 }
 
 export default async function ContactPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
-  return <SimpleLegalPage lang={lang} pageKey="contactPage" />;
+  return <LegalTrustPage lang={lang} pageId="contact" />;
 }
