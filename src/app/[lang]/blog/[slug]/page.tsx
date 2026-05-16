@@ -10,6 +10,8 @@ import { dictionaries, Lang } from "@/lib/dictionaries";
 const getPostData = (slug: string, lang: Lang) => {
   const posts: Record<string, any> = {
     "como-aprender-derivadas-desde-cero": {
+      id: "como-aprender-derivadas-desde-cero",
+      slugs: { es: "como-aprender-derivadas-desde-cero", en: "how-to-learn-derivatives-from-scratch", pt: "como-aprender-derivadas-do-zero" },
       es: {
         title: "Cómo aprender derivadas desde cero: Guía Completa",
         description: "Domina el cálculo diferencial con esta guía paso a paso. Aprende qué es una derivada y cómo resolver ejercicios.",
@@ -105,6 +107,8 @@ const getPostData = (slug: string, lang: Lang) => {
       }
     },
     "errores-comunes-al-derivar": {
+      id: "errores-comunes-al-derivar",
+      slugs: { es: "errores-comunes-al-derivar", en: "common-mistakes-when-differentiating", pt: "erros-comuns-ao-derivar" },
       es: {
         title: "Los 5 errores más comunes al derivar",
         description: "Análisis de los fallos más frecuentes en exámenes de cálculo. Aprende a evitarlos.",
@@ -182,6 +186,8 @@ const getPostData = (slug: string, lang: Lang) => {
       }
     },
     "entendiendo-regla-de-la-cadena": {
+      id: "entendiendo-regla-de-la-cadena",
+      slugs: { es: "entendiendo-regla-de-la-cadena", en: "understanding-the-chain-rule", pt: "entendendo-regra-da-cadeia" },
       es: {
         title: "Entendiendo la Regla de la Cadena",
         description: "La explicación más clara sobre la regla de la cadena para funciones compuestas.",
@@ -260,13 +266,18 @@ const getPostData = (slug: string, lang: Lang) => {
     }
   };
 
-  const post = posts[slug];
-  if (!post) return null;
-  return post[lang] || post['es'];
+  const postEntry = Object.values(posts).find(p => 
+    Object.values(p.slugs).includes(slug)
+  );
+
+  if (!postEntry) return null;
+  return postEntry[lang] || postEntry['es'];
 };
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: string; slug: string }> }): Promise<Metadata> {
-  const { lang, slug } = await params;
+export async function generateMetadata(props: { params: Promise<{ lang: string; slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await props.params;
+  const lang = resolvedParams.lang;
+  const slug = resolvedParams.slug;
   const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
   const post = getPostData(slug, currentLang);
   
@@ -286,8 +297,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   };
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
-  const { lang, slug } = await params;
+export default async function BlogPostPage(props: { params: Promise<{ lang: string; slug: string }> }) {
+  const resolvedParams = await props.params;
+  const lang = resolvedParams.lang;
+  const slug = resolvedParams.slug;
   const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
   const post = getPostData(slug, currentLang);
   

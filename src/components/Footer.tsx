@@ -43,13 +43,13 @@ export default function Footer() {
           </div>
 
           {/* Nav columns */}
-          {NAV_COLS.map(col => (
+          {NAV_COLS.map((col: any) => (
             <div key={col.title}>
               <h4 className="font-bold text-slate-900 mb-6 text-[0.75rem] uppercase tracking-[0.2em] opacity-80">
                 {col.title}
               </h4>
               <ul className="space-y-4">
-                {col.links.map(link => (
+                {col.links.map((link: any) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}

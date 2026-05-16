@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "@/components/LanguageLink";
 import { usePathname } from "next/navigation";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import PopularSearches from "./PopularSearches";
 
 export default function SEOContent() {
   const pathname = usePathname() || "";
@@ -88,6 +89,7 @@ export default function SEOContent() {
             </motion.div>
           ))}
         </div>
+        <PopularSearches />
       </div>
     </section>
   );

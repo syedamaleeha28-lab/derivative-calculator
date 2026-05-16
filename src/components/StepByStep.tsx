@@ -9,10 +9,10 @@ interface StepByStepProps {
     badge: string;
     title: string;
     desc: string;
-    steps: Array<{
-      title: string;
-      desc: string;
-    }>;
+    steps: readonly {
+      readonly title: string;
+      readonly desc: string;
+    }[];
   };
 }
 

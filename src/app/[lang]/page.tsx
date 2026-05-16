@@ -5,6 +5,7 @@ import SEOContent from "@/components/SEOContent";
 import StepByStep from "@/components/StepByStep";
 import GraphVisualization from "@/components/GraphVisualization";
 import { Calculator } from "lucide-react";
+import Schema from "@/components/Schema";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import { dictionaries, Lang } from "@/lib/dictionaries";
@@ -49,6 +50,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <StepByStep t={tStep} />
       <GraphVisualization t={tGraph} />
       <FAQ />
+      <Schema />
       <Footer />
       
       {/* Sticky Mobile Calculate Button */}

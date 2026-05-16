@@ -46,15 +46,15 @@ interface ArticleProps {
     avatar?: string;
   };
   category: string;
-  tags: string[];
+  tags: readonly string[];
   content: React.ReactNode;
-  faqs?: FAQItem[];
-  relatedPosts?: {
+  faqs?: readonly FAQItem[];
+  relatedPosts?: readonly {
     title: string;
     slug: string;
     image?: string;
   }[];
-  breadcrumbs: {
+  breadcrumbs: readonly {
     label: string;
     href: string;
   }[];
@@ -106,7 +106,7 @@ export const WarningCard = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-export const ExampleCard = ({ title, children, steps }: { title: string; children: React.ReactNode; steps?: string[] }) => {
+export const ExampleCard = ({ title, children, steps }: { title: string; children: React.ReactNode; steps?: readonly string[] }) => {
   const pathname = usePathname() || "";
   const currentLang = (pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es") as Lang;
   const t = dictionaries[currentLang].article;

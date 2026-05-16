@@ -52,11 +52,11 @@ export default function Navbar() {
       initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-400 ${
+      className={`w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/90 backdrop-blur-2xl border-b border-slate-100 shadow-sm py-3"
-          : "bg-transparent py-4"
-      }`}
+          ? "sticky top-0 bg-white/95 backdrop-blur-xl border-b border-slate-100 shadow-sm py-2"
+          : "relative py-3"
+      } md:relative md:bg-transparent md:border-none md:shadow-none md:py-4`}
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12 flex items-center justify-between">
 
@@ -69,7 +69,7 @@ export default function Navbar() {
 
         {/* ─── Desktop nav ──────────────────────────────────────────────── */}
         <ul className="hidden md:flex items-center gap-1">
-          {NAV_LINKS.map(link => (
+          {NAV_LINKS.map((link: { name: string; href: string }) => (
             <li key={link.name}>
               <Link
                 href={link.href}
@@ -167,7 +167,7 @@ export default function Navbar() {
               />
             </div>
             <ul className="flex flex-col px-6 py-5 gap-1">
-              {NAV_LINKS.map(link => (
+              {NAV_LINKS.map((link: { name: string; href: string }) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}

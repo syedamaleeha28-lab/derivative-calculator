@@ -12,30 +12,11 @@ export default function FAQ() {
   const currentLang = (pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es") as Lang;
   const t = dictionaries[currentLang].faqsPage;
 
-  // FAQ Schema JSON-LD
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": t.list.map(faq => ({
-      "@type": "Question",
-      "name": faq.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.a
-      }
-    }))
-  };
-
   return (
     <section
       id="faq"
-      className="py-24 md:py-32 bg-[#F8F6F2] border-t border-slate-100"
+      className="py-16 md:py-20 bg-[#F8F6F2] border-t border-slate-100"
     >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      
       <div className="max-w-3xl mx-auto px-6">
 
         {/* Header */}

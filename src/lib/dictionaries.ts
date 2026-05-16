@@ -221,6 +221,17 @@ export const dictionaries = {
         }
       ]
     },
+    popularSearches: {
+      title: "Búsquedas Populares de Derivadas",
+      list: [
+        { label: "Derivada de sin(x)", href: "/#calculator", input: "sin(x)" },
+        { label: "Derivada de ln(x)", href: "/#calculator", input: "ln(x)" },
+        { label: "Derivada de e^x", href: "/#calculator", input: "e^x" },
+        { label: "Derivada de x^2", href: "/#calculator", input: "x^2" },
+        { label: "Derivada de tan(x)", href: "/#calculator", input: "tan(x)" },
+        { label: "Derivadas Parciales", href: "/partial-derivatives" }
+      ]
+    },
     breadcrumbs: {
       home: "Inicio"
     },
@@ -753,7 +764,7 @@ export const dictionaries = {
       posts: [
         {
           title: "How to learn derivatives from scratch",
-          slug: "como-aprender-derivadas-desde-cero",
+          slug: "how-to-learn-derivatives-from-scratch",
           desc: "A complete guide for beginners who want to understand the concept of derivative without complications.",
           date: "10 May 2026",
           read: "5 min",
@@ -761,7 +772,7 @@ export const dictionaries = {
         },
         {
           title: "The 5 most common mistakes when differentiating",
-          slug: "errores-comunes-al-derivar",
+          slug: "common-mistakes-when-differentiating",
           desc: "Avoid these typical failures in your calculus exams. We analyze the chain rule and the product rule.",
           date: "08 May 2026",
           read: "8 min",
@@ -769,12 +780,23 @@ export const dictionaries = {
         },
         {
           title: "Understanding the Chain Rule",
-          slug: "entendiendo-regla-de-la-cadena",
+          slug: "understanding-the-chain-rule",
           desc: "Simple and visual explanation of the most used rule in online derivative calculation.",
           date: "05 May 2026",
           read: "6 min",
           category: "Theory"
         }
+      ]
+    },
+    popularSearches: {
+      title: "Popular Derivative Searches",
+      list: [
+        { label: "Derivative of sin(x)", href: "/#calculator", input: "sin(x)" },
+        { label: "Derivative of ln(x)", href: "/#calculator", input: "ln(x)" },
+        { label: "Derivative of e^x", href: "/#calculator", input: "e^x" },
+        { label: "Derivative of x^2", href: "/#calculator", input: "x^2" },
+        { label: "Derivative of tan(x)", href: "/#calculator", input: "tan(x)" },
+        { label: "Partial Derivatives", href: "/partial-derivatives" }
       ]
     },
     breadcrumbs: {
@@ -1098,7 +1120,7 @@ export const dictionaries = {
         { title: "2. Information we collect", content: "We are a free tool. We do not require registration. We collect anonymous technical data to improve performance." },
         { title: "3. Use of Cookies", content: "We use cookies to analyze traffic and personalize content through Google AdSense." }
       ],
-      back: "Back to Home"
+      back: "Go Back to Start"
     },
     terms: {
       title: "Terms of Service",
@@ -1309,19 +1331,19 @@ export const dictionaries = {
       posts: [
         {
           title: "Como aprender derivadas do zero",
-          slug: "como-aprender-derivadas-desde-cero",
-          desc: "Um guia completo para iniciantes que querem entender o conceito de derivada sem complicações.",
-          date: "10 Mai 2026",
+          slug: "como-aprender-derivadas-do-zero",
+          desc: "Um guia completo para iniciantes que desejam entender o conceito de derivada sem complicações.",
+          date: "10 Maio 2026",
           read: "5 min",
           category: "Guia"
         },
         {
           title: "Os 5 erros mais comuns ao derivar",
-          slug: "errores-comunes-al-derivar",
-          desc: "Evite estas falhas típicas em seus exames de cálculo. Analisamos a regra da cadeia e do produto.",
-          date: "08 Mai 2026",
+          slug: "erros-comuns-ao-derivar",
+          desc: "Evite essas falhas típicas em seus exames de cálculo. Analisamos a regra da cadeia e do produto.",
+          date: "08 Maio 2026",
           read: "8 min",
-          category: "Conselhos"
+          category: "Dicas"
         },
         {
           title: "Entendendo a Regra da Cadeia",
@@ -1655,6 +1677,16 @@ export const dictionaries = {
         { title: "3. Uso de Cookies", content: "Usamos cookies para analisar o tráfego e personalizar o conteúdo através do Google AdSense." }
       ],
       back: "Voltar ao Início"
+    },
+    popularSearches: {
+      title: "Pesquisas Populares",
+      list: [
+        { label: "Derivada de x", href: "/#calculator" },
+        { label: "Derivada de sin(x)", href: "/reglas/derivadas-trigonometricas" },
+        { label: "Regra da Cadeia", href: "/reglas/regla-de-la-cadena" },
+        { label: "Derivada de ln(x)", href: "/derivadas-logaritmicas" },
+        { label: "Diferenciação Implícita", href: "/calculadora-de-derivadas-implicitas" }
+      ]
     },
     terms: {
       title: "Termos de Serviço",

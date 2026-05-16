@@ -13,7 +13,7 @@ import katex from "katex";
 type Variant = "func" | "op" | "num" | "special";
 type BtnDef  = { label: string; insert: string; tip: string; variant?: Variant };
 
-const EXAMPLES = ["sin(x)^2", "ln(x)/x", "e^(x^2)", "tan(x) - x"];
+const EXAMPLES = ["sin(x)", "x^2", "ln(x)", "e^(x)", "tan(x) - x"];
 
 // ─── Variant color map ────────────────────────────────────────────────────────
 const COLOR: Record<Variant, string> = {
@@ -135,46 +135,16 @@ function normalizeRmTrig(tex: string): string {
 function simplifyTeXScalarMultiplication(tex: string): string {
   const NUM = "-?\\d+(?:\\.\\d+)?";
   const VAR = "[xytuv]";
-  const TRIG_ALT = "sin|cos|tan|sec|csc|cot|ln|exp|log|asin|acos|atan|sinh|cosh|tanh";
-  const TRIG_NAMES = [
-    "sin", "cos", "tan", "sec", "csc", "cot", "ln", "exp", "log",
-    "asin", "acos", "atan", "sinh", "cosh", "tanh",
-  ] as const;
-  const trigFnPattern = TRIG_NAMES.map((n) => "\\\\" + n).join("|");
-  const TRIG_BLOCK = `(?:${trigFnPattern})\\s*(?:\\\\left\\([^()]+\\\\right\\)|\\([^()]+\\))`;
-  const reCoefTrigVar = new RegExp(
-    `(${NUM})\\s*\\\\cdot\\s*(${TRIG_BLOCK})\\s*\\\\cdot\\s*(${VAR})(\\^\\{[^}]*\\})?)`,
-    "g"
-  );
-  const reCoefVarTrig = new RegExp(
-    `(${NUM})\\s*\\\\cdot\\s*(${VAR})(\\^\\{[^}]*\\})?)\\s*\\\\cdot\\s*(${TRIG_BLOCK})`,
-    "g"
-  );
-
+  const trigFnPattern = "sin|cos|tan|sec|csc|cot|ln|exp|log|asin|acos|atan|sinh|cosh|tanh";
+  
   let s = normalizeRmTrig(tex);
-  let prev = "";
-  for (let i = 0; i < 24 && s !== prev; i++) {
-    prev = s;
-    s = s.replace(reCoefTrigVar, (_m, n: string, fn: string, v: string, pow: string | undefined) => `${n}${v}${pow ?? ""}${fn}`);
-    s = s.replace(reCoefVarTrig, (_m, n: string, v: string, pow: string | undefined, fn: string) => `${n}${v}${pow ?? ""}${fn}`);
-    // coeff · π
-    s = s.replace(new RegExp(`(${NUM})\\s*\\\\cdot\\s*\\\\pi`, "g"), (_, n: string) => `${n}\\pi`);
-    // coeff · e^{...} or e^...
-    s = s.replace(new RegExp(`(${NUM})\\s*\\\\cdot\\s*e(\\^|\\{)`, "g"), (_, n: string, brace: string) => `${n}e${brace}`);
-    // coeff · √(…)
-    s = s.replace(new RegExp(`(${NUM})\\s*\\\\cdot\\s*\\\\sqrt`, "g"), (_, n: string) => `${n}\\sqrt`);
-    // coeff · trig / log / exp-style names
-    s = s.replace(new RegExp(`(${NUM})\\s*\\\\cdot\\s*\\\\(${TRIG_ALT})\\b`, "g"), (_, n: string, fn: string) => `${n}\\${fn}`);
-    // coeff · ( … ) — \left( or (
-    s = s.replace(new RegExp(`(${NUM})\\s*\\\\cdot\\s*(?=\\\\left\\(|\\()`, "g"), "$1");
-    // coeff · x, x^{n}, etc.
-    s = s.replace(new RegExp(`(${NUM})\\s*\\\\cdot\\s*(${VAR})(\\^\\{[^}]*\\})?`, "g"), "$1$2$3");
-    // x^{n} · coeff — reorder to coeff x^{n}
-    s = s.replace(
-      new RegExp(`(${VAR})(\\^\\{[^}]*\\})?\\s*\\\\cdot\\s*(${NUM})(?![0-9.])`, "g"),
-      (_, v: string, pow: string | undefined, n: string) => `${n}${v}${pow ?? ""}`
-    );
-  }
+  
+  // Remove ALL \cdot occurrences that are used for multiplication
+  s = s.replace(/\\cdot/g, "");
+  
+  // Clean up any double spaces that might remain
+  s = s.replace(/\s+/g, " ");
+  
   return s;
 }
 
@@ -203,12 +173,15 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
   const [input, setInput]                 = useState("");
   const [latexPreview, setLatexPreview]   = useState("");
   const [latexResult, setLatexResult]     = useState("");
+  const [textResult, setTextResult]       = useState("");
   const [showResult, setShowResult]       = useState(false);
   const [isFocused, setIsFocused]         = useState(false);
   const [isCalculating, setIsCalculating] = useState(false);
   const [error, setError]                 = useState("");
   const [showSteps, setShowSteps]         = useState(false);
   const [showSettings, setShowSettings]   = useState(false);
+  const [showScientific, setShowScientific] = useState(false);
+  const [copied, setCopied]               = useState(false);
   const [simplify, setSimplify]           = useState(true);
   const [variable, setVariable]           = useState("x");
 
@@ -218,26 +191,26 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
 
   // ─── Dynamic Button Definitions ───────────────────────────────────────────────
   const ROW_TRIG: BtnDef[] = [
-    { label: "sin",   insert: "sin(",   tip: t.tips.sin },
-    { label: "cos",   insert: "cos(",   tip: t.tips.cos },
-    { label: "tan",   insert: "tan(",   tip: t.tips.tan },
-    { label: "sec",   insert: "sec(",   tip: t.tips.sec },
-    { label: "csc",   insert: "csc(",   tip: t.tips.csc },
-    { label: "cot",   insert: "cot(",   tip: t.tips.cot },
-    { label: "sin⁻¹", insert: "asin(",  tip: t.tips.asin },
-    { label: "cos⁻¹", insert: "acos(",  tip: t.tips.acos },
-    { label: "tan⁻¹", insert: "atan(",  tip: t.tips.atan },
-    { label: "sinh",  insert: "sinh(",  tip: t.tips.sinh },
-    { label: "cosh",  insert: "cosh(",  tip: t.tips.cosh },
-    { label: "tanh",  insert: "tanh(",  tip: t.tips.tanh },
+    { label: "sin",   insert: "sin()",  tip: t.tips.sin },
+    { label: "cos",   insert: "cos()",  tip: t.tips.cos },
+    { label: "tan",   insert: "tan()",  tip: t.tips.tan },
+    { label: "sec",   insert: "sec()",  tip: t.tips.sec },
+    { label: "csc",   insert: "csc()",  tip: t.tips.csc },
+    { label: "cot",   insert: "cot()",  tip: t.tips.cot },
+    { label: "sin⁻¹", insert: "asin()", tip: t.tips.asin },
+    { label: "cos⁻¹", insert: "acos()", tip: t.tips.acos },
+    { label: "tan⁻¹", insert: "atan()", tip: t.tips.atan },
+    { label: "sinh",  insert: "sinh()", tip: t.tips.sinh },
+    { label: "cosh",  insert: "cosh()", tip: t.tips.cosh },
+    { label: "tanh",  insert: "tanh()", tip: t.tips.tanh },
   ];
 
   const ROW_FUNC: BtnDef[] = [
-    { label: "ln",    insert: "ln(",    tip: t.tips.ln },
-    { label: "log",   insert: "log(",   tip: t.tips.log },
-    { label: "eˣ",    insert: "e^(",    tip: t.tips.exp },
-    { label: "xⁿ",    insert: "^(",     tip: t.tips.power },
-    { label: "√",     insert: "sqrt(",  tip: t.tips.root,           variant: "special" },
+    { label: "ln",    insert: "ln()",   tip: t.tips.ln },
+    { label: "log",   insert: "log()",  tip: t.tips.log },
+    { label: "eˣ",    insert: "e^()",   tip: t.tips.exp },
+    { label: "xⁿ",    insert: "^",      tip: t.tips.power },
+    { label: "√",     insert: "sqrt()", tip: t.tips.root,           variant: "special" },
     { label: "π",     insert: "pi",     tip: t.tips.pi,             variant: "special" },
   ];
 
@@ -296,14 +269,61 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
   }, [input]);
 
   const handleBtn = (btn: BtnDef) => {
+    if (!inputRef.current) return;
+    const start = inputRef.current.selectionStart || 0;
+    const end = inputRef.current.selectionEnd || 0;
+    const val = input;
+
     if (btn.insert === "__del__") {
-      setInput(p => p.slice(0, -1));
+      if (start === end) {
+        // Backspace behavior
+        const newVal = val.slice(0, Math.max(0, start - 1)) + val.slice(end);
+        setInput(newVal);
+        setTimeout(() => {
+          if (inputRef.current) {
+            const pos = Math.max(0, start - 1);
+            inputRef.current.setSelectionRange(pos, pos);
+          }
+        }, 0);
+      } else {
+        // Delete selection
+        const newVal = val.slice(0, start) + val.slice(end);
+        setInput(newVal);
+        setTimeout(() => {
+          if (inputRef.current) {
+            inputRef.current.setSelectionRange(start, start);
+          }
+        }, 0);
+      }
     } else {
-      setInput(p => p + btn.insert);
+      let newVal: string;
+      let finalPos: number;
+
+      if (start !== end && btn.insert.endsWith("()")) {
+        // Wrap selection: "sin(" + selection + ")"
+        const fnName = btn.insert.slice(0, -1); // "sin("
+        newVal = val.slice(0, start) + fnName + val.slice(start, end) + ")" + val.slice(end);
+        finalPos = start + fnName.length + (end - start) + 1;
+      } else {
+        newVal = val.slice(0, start) + btn.insert + val.slice(end);
+        const newPos = start + btn.insert.length;
+        finalPos = newPos;
+        if (btn.insert.endsWith("()")) {
+          finalPos = newPos - 1;
+        }
+      }
+
+      setInput(newVal);
+
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.setSelectionRange(finalPos, finalPos);
+          inputRef.current.focus();
+        }
+      }, 0);
     }
     setShowResult(false);
     setError("");
-    inputRef.current?.focus();
   };
 
   const handleCalculate = () => {
@@ -317,6 +337,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
         const clean = sanitize(input);
         const derivative = nerdamer(`diff(${clean}, ${variable})`);
         setLatexResult(toExactTeX(derivative));
+        setTextResult(derivative.text());
         setShowResult(true);
       } catch (err) {
         setError(t.invalidExpr);
@@ -432,36 +453,58 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
         </AnimatePresence>
 
         {/* ─── KEYBOARD Redesign ─────────────────────────────────────────── */}
-        <div className="px-3.5 md:px-6 pt-3 pb-4 md:pt-4 md:pb-5 flex flex-col gap-3.5 bg-slate-50/30">
+        <div className="px-3.5 md:px-6 pt-3 pb-4 md:pt-4 md:pb-5 flex flex-col gap-3 bg-slate-50/30">
           
           <div>
-            <Label>{currentLang === "en" ? "Scientific Functions" : currentLang === "pt" ? "Funções Científicas" : "Funciones Científicas"}</Label>
-            <div className="grid grid-cols-4 sm:grid-cols-6 gap-1.5">
-              {ROW_TRIG.map(b => <CalcBtn key={b.label} btn={b} onClick={handleBtn} />)}
-              {ROW_FUNC.map(b => <CalcBtn key={b.label} btn={b} onClick={handleBtn} />)}
-            </div>
-          </div>
-
-          <div>
-            <Label>{currentLang === "en" ? "Numeric Keypad" : currentLang === "pt" ? "Teclado Numérico" : "Teclado Numérico"}</Label>
-            <div className="grid grid-cols-4 sm:grid-cols-6 gap-1.5">
+            <Label>{currentLang === "en" ? "Numbers & Operators" : currentLang === "pt" ? "Números e Operadores" : "Números y Operadores"}</Label>
+            <div className="grid grid-cols-6 gap-1 md:gap-1.5">
               {NUMPAD.map(b => (
                 <CalcBtn key={b.label} btn={b} onClick={handleBtn} />
               ))}
             </div>
           </div>
 
+          <button
+            onClick={() => setShowScientific(!showScientific)}
+            className="flex items-center justify-between w-full px-1 py-1 text-[0.65rem] font-black text-slate-400 uppercase tracking-[0.15em] hover:text-secondary transition-colors"
+          >
+            <span className="flex items-center gap-2">
+              <span className="inline-block w-3 h-px bg-slate-200 rounded" />
+              {currentLang === "en" ? "Scientific Functions" : currentLang === "pt" ? "Funções Científicas" : "Funciones Científicas"}
+            </span>
+            <ChevronDown size={14} className={`transition-transform duration-300 ${showScientific ? "rotate-180" : ""}`} />
+          </button>
+
+          <AnimatePresence>
+            {showScientific && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="grid grid-cols-4 sm:grid-cols-6 gap-1 md:gap-1.5 pt-1">
+                  {ROW_TRIG.map(b => <CalcBtn key={b.label} btn={b} onClick={handleBtn} />)}
+                  {ROW_FUNC.map(b => <CalcBtn key={b.label} btn={b} onClick={handleBtn} />)}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <motion.button
             whileHover={{ scale: 1.005, backgroundColor: "#07111f" }}
             whileTap={{ scale: 0.985 }}
             onClick={handleCalculate}
             disabled={!input.trim() || isCalculating}
-            className="w-full h-[50px] bg-[#0f172a] text-white rounded-[12px] text-[1rem] font-bold tracking-wider flex items-center justify-center gap-2.5 shadow-lg hover:shadow-secondary/20 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 border border-white/5"
+            className="w-full h-[52px] bg-[#0f172a] text-white rounded-xl text-[1rem] font-bold tracking-wider flex items-center justify-center gap-3 shadow-lg disabled:opacity-40 transition-all duration-300 border border-white/5 mt-1"
           >
             {isCalculating ? (
-              <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 0.9, ease: "linear" }}>
-                <Sparkles size={18} />
-              </motion.div>
+              <div className="flex items-center gap-3">
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 0.9, ease: "linear" }}>
+                  <Sparkles size={18} />
+                </motion.div>
+                <span className="text-[0.85rem] uppercase tracking-widest">{currentLang === "en" ? "Calculating..." : currentLang === "pt" ? "Calculando..." : "Calculando..."}</span>
+              </div>
             ) : (
               <>
                 <span className="uppercase text-[0.85rem] tracking-[0.08em]">{t.calculate}</span>
@@ -483,35 +526,49 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ type: "spring", stiffness: 260, damping: 24 }}
-            className="w-full max-w-lg mx-auto"
+            className="w-full max-w-4xl mx-auto"
           >
             <div className="bg-white border border-slate-200/50 rounded-[20px] px-4 pt-5 pb-4 md:px-6 md:pt-6 md:pb-5 shadow-xl">
-
               <div className="flex items-center justify-between mb-3">
                 <span id="derivative-result-heading" className="font-bold text-slate-400 text-[0.62rem] uppercase tracking-[0.15em]">{t.result}</span>
-                <span className="text-[0.6rem] font-bold bg-secondary/10 text-secondary px-2.5 py-1 rounded-full border border-secondary/20 uppercase tracking-wider">
-                  {simplify ? t.simplified : t.expanded}
-                </span>
+                <div className="flex items-center gap-2">
+                  <button 
+                    onClick={() => {
+                      navigator.clipboard.writeText(textResult);
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 2000);
+                    }}
+                    className={`flex items-center gap-1.5 text-[0.65rem] font-bold px-2.5 py-1 rounded-full border transition-all ${copied ? "bg-green-50 text-green-600 border-green-200" : "bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100"}`}
+                  >
+                    {copied ? (
+                      <><CheckCircle2 size={11} /> {currentLang === "en" ? "Copied!" : "¡Copiado!"}</>
+                    ) : (
+                      <>COPY RESULT</>
+                    )}
+                  </button>
+                  <span className="text-[0.6rem] font-bold bg-secondary/10 text-secondary px-2.5 py-1 rounded-full border border-secondary/20 uppercase tracking-wider">
+                    {simplify ? t.simplified : t.expanded}
+                  </span>
+                </div>
               </div>
 
-              <div className="bg-slate-50/50 rounded-[14px] border border-slate-100 px-4 py-5 overflow-x-auto flex items-center justify-center gap-3 shadow-inner min-h-[72px]">
-                <span className="text-slate-400 font-serif italic text-base shrink-0 select-none">
+              <div className="bg-slate-50/50 rounded-[14px] border border-slate-100 px-4 py-6 overflow-x-auto flex flex-col sm:flex-row items-center justify-center gap-3 shadow-inner min-h-[80px]">
+                <span className="text-slate-400 font-serif italic text-lg shrink-0 select-none">
                   f'({variable}) =
                 </span>
                 <div
-                  className="text-slate-900"
+                  className="text-slate-900 text-xl md:text-2xl"
                   dangerouslySetInnerHTML={{ __html: katex.renderToString(latexResult || "", { throwOnError: false, displayMode: true }) }}
                 />
               </div>
 
               <button
                 onClick={() => setShowSteps(s => !s)}
-                className="w-full mt-3 text-[0.78rem] font-bold text-secondary flex items-center justify-center gap-2 py-3 rounded-[12px] hover:bg-secondary/5 transition-all border border-transparent hover:border-secondary/10"
+                className="w-full mt-3 text-[0.78rem] font-bold text-secondary flex items-center justify-center gap-2 py-3.5 rounded-xl hover:bg-secondary/5 transition-all border border-transparent hover:border-secondary/10"
               >
                 <BookOpen size={15} />
                 {showSteps ? t.hideSteps : t.showSteps}
-                <motion.div animate={{ rotate: showSteps ? 180 : 0 }} transition={{ duration: 0.3 }}>
+                <motion.div animate={{ rotate: showSteps ? 180 : 0 }}>
                   <ChevronDown size={15} />
                 </motion.div>
               </button>
