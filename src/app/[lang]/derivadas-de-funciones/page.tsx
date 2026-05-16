@@ -4,21 +4,11 @@ import Link from "@/components/LanguageLink";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
-  
-  const titles = {
-    es: "Derivadas de Funciones: Guía Completa de Cálculo Diferencial",
-    en: "Derivatives of Functions: Complete Guide to Differential Calculus",
-    pt: "Derivadas de Funções: Guia Completo de Cálculo Diferencial"
-  };
-  
-  return {
-    title: titles[currentLang],
-    description: "",
-  };
+  return generateMetadataForPath(lang, "/derivadas-de-funciones");
 }
 
 export default async function GeneralFunctionsPage({ params }: { params: Promise<{ lang: string }> }) {

@@ -23,6 +23,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { usePathname } from "next/navigation";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { getAbsoluteUrl } from "@/lib/seo-urls";
 
 interface Heading {
   id: string;
@@ -259,12 +260,12 @@ export default function ArticleLayout({
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": breadcrumbs.map((b, i) => ({
+    itemListElement: breadcrumbs.map((b, i) => ({
       "@type": "ListItem",
-      "position": i + 1,
-      "name": b.label,
-      "item": `https://calculadoraderivadas.app${b.href}`
-    }))
+      position: i + 1,
+      name: b.label,
+      item: getAbsoluteUrl(currentLang, b.href),
+    })),
   };
 
   const INTERNAL_LINKS = [
@@ -273,7 +274,8 @@ export default function ArticleLayout({
     { label: currentLang === "en" ? "Calculus Formulas" : currentLang === "pt" ? "Fórmulas de Cálculo" : "Fórmulas de Cálculo", href: "/basic-derivative-formulas", icon: <List size={14} /> },
     { label: currentLang === "en" ? "Solved Examples" : currentLang === "pt" ? "Exemplos Resolvidos" : "Ejemplos Resueltos", href: "/derivative-examples", icon: <CheckCircle2 size={14} /> },
     { label: currentLang === "en" ? "Basic Concepts" : currentLang === "pt" ? "Conceitos Básicos" : "Conceptos Básicos", href: "/what-is-a-derivative", icon: <HelpCircle size={14} /> },
-    { label: currentLang === "en" ? "Partial Derivatives" : currentLang === "pt" ? "Derivadas Parciais" : "Derivadas Parciais", href: "/partial-derivatives", icon: <ExternalLink size={14} /> },
+    { label: currentLang === "en" ? "Math Blog" : currentLang === "pt" ? "Blog de Matemática" : "Blog de Matemáticas", href: "/blog", icon: <ExternalLink size={14} /> },
+    { label: currentLang === "en" ? "How It Works" : currentLang === "pt" ? "Como Funciona" : "Cómo Funciona", href: "/how-it-works", icon: <List size={14} /> },
   ];
 
   return (
@@ -348,7 +350,7 @@ export default function ArticleLayout({
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) min(92vw, 600px), 450px"
-                  priority={false}
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
               </div>

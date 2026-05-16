@@ -2,16 +2,14 @@ import ArticleLayout, { ExampleCard, TipCard, WarningCard } from "@/components/E
 import Image from "next/image";
 import type { Metadata } from "next";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { metadataFromEntry, normalizeLang } from "@/lib/seo";
+import HowToJsonLd from "@/components/HowToJsonLd";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
+  const currentLang = normalizeLang(lang);
   const t = dictionaries[currentLang].howItWorks;
-
-  return {
-    title: t.title,
-    description: t.description,
-  };
+  return metadataFromEntry(currentLang, "/how-it-works", { title: t.title, description: t.description });
 }
 
 export default async function HowItWorks({ params }: { params: Promise<{ lang: string }> }) {
@@ -108,6 +106,14 @@ export default async function HowItWorks({ params }: { params: Promise<{ lang: s
   );
 
   return (
+    <>
+      <HowToJsonLd
+        lang={currentLang}
+        name={t.title}
+        description={t.description}
+        path="/how-it-works"
+        steps={t.sections.steps.items}
+      />
     <ArticleLayout 
       title={t.title}
       description={t.description}
@@ -123,5 +129,6 @@ export default async function HowItWorks({ params }: { params: Promise<{ lang: s
       content={content}
       faqs={t.faqs}
     />
+    </>
   );
 }

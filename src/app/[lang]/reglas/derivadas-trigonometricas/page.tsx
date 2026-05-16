@@ -3,11 +3,16 @@ import katex from "katex";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
-export const metadata: Metadata = {
-  title: "Derivadas Trigonométricas: Fórmulas y Ejercicios Resueltos",
-  description: "Domina las derivadas de seno, coseno, tangente y más. Guía completa con tabla de fórmulas, regla de la cadena aplicada y ejemplos paso a paso.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  return generateMetadataForPath(lang, "/reglas/derivadas-trigonometricas");
+}
 
 export default function TrigDerivativesPage() {
   const content = (

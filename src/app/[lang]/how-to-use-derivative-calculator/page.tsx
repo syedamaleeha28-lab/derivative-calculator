@@ -4,16 +4,17 @@ import Image from "next/image";
 import { Calculator, List, Zap, BookOpen } from "lucide-react";
 import type { Metadata } from "next";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { metadataFromEntry, normalizeLang } from "@/lib/seo";
+import HowToJsonLd from "@/components/HowToJsonLd";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
+  const currentLang = normalizeLang(lang);
   const t = dictionaries[currentLang].howToUsePage;
-
-  return {
+  return metadataFromEntry(currentLang, "/how-to-use-derivative-calculator", {
     title: t.title,
     description: t.description,
-  };
+  });
 }
 
 export default async function HowToUseCalculator({ params }: { params: Promise<{ lang: string }> }) {
@@ -83,8 +84,21 @@ export default async function HowToUseCalculator({ params }: { params: Promise<{
     </div>
   );
 
+  const howToSteps = [t.sections.steps.s1, t.sections.steps.s2, t.sections.steps.s3].map((s) => ({
+    title: s.t,
+    desc: s.d,
+  }));
+
   return (
-    <ArticleLayout
+    <>
+      <HowToJsonLd
+        lang={currentLang}
+        name={t.title}
+        description={t.description}
+        path="/how-to-use-derivative-calculator"
+        steps={howToSteps}
+      />
+    <ArticleLayout 
       title={t.title}
       description={t.description}
       date={t.date}
@@ -99,5 +113,6 @@ export default async function HowToUseCalculator({ params }: { params: Promise<{
       content={content}
       faqs={t.faqs}
     />
+    </>
   );
 }

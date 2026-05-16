@@ -3,11 +3,16 @@ import katex from "katex";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
-export const metadata: Metadata = {
-  title: "Regla de la Cadena: Guía Definitiva y Ejemplos",
-  description: "Aprende a dominar la regla de la cadena para funciones compuestas. Explicaciones paso a paso, fórmulas y ejercicios resueltos para aprobar cálculo.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  return generateMetadataForPath(lang, "/reglas/regla-de-la-cadena");
+}
 
 export default function ChainRulePage() {
   const formula = "\\dfrac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x)";

@@ -2,11 +2,16 @@ import ArticleLayout, { ExampleCard, TipCard, WarningCard, FormulaCard } from "@
 import katex from "katex";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
-export const metadata: Metadata = {
-  title: "Calculadora de Derivadas Trigonométricas con Pasos | Gratis",
-  description: "Resuelve derivadas de seno, coseno, tangente y más con nuestra calculadora online. Obtén el procedimiento paso a paso y aprende las reglas de derivación.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  return generateMetadataForPath(lang, "/calculadora-de-derivadas-trigonometricas");
+}
 
 export default function TrigCalculadoraPage() {
   const content = (

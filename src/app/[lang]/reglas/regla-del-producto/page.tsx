@@ -3,11 +3,16 @@ import katex from "katex";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
-export const metadata: Metadata = {
-  title: "Regla del Producto: Guía Completa con Fórmulas y Ejemplos",
-  description: "Aprende a derivar la multiplicación de dos o más funciones. Explicaciones detalladas, fórmula de la regla del producto y ejercicios resueltos paso a paso.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  return generateMetadataForPath(lang, "/reglas/regla-del-producto");
+}
 
 export default function ProductRulePage() {
   const formula = "\\dfrac{d}{dx}[u \\cdot v] = u'v + uv'";

@@ -3,21 +3,11 @@ import katex from "katex";
 import Link from "@/components/LanguageLink";
 import type { Metadata } from "next";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
-  
-  const titles = {
-    es: "Derivadas Logarítmicas: Fórmulas, Ejemplos y Técnicas",
-    en: "Logarithmic Derivatives: Formulas, Examples, and Techniques",
-    pt: "Derivadas Logarítmicas: Fórmulas, Exemplos e Técnicas"
-  };
-  
-  return {
-    title: titles[currentLang],
-    description: "",
-  };
+  return generateMetadataForPath(lang, "/derivadas-logaritmicas");
 }
 
 export default async function LogarithmicDerivativesPage({ params }: { params: Promise<{ lang: string }> }) {

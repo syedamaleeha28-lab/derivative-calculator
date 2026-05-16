@@ -3,11 +3,16 @@ import katex from "katex";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
-export const metadata: Metadata = {
-  title: "Regla del Cociente: Guía de Derivación de Fracciones",
-  description: "Aprende a resolver la derivada de una división de funciones. Fórmula de la regla del cociente, ejemplos paso a paso y consejos para evitar errores comunes.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  return generateMetadataForPath(lang, "/reglas/regla-del-cociente");
+}
 
 export default function QuotientRulePage() {
   const formula = "\\dfrac{d}{dx}\\left[\\dfrac{u}{v}\\right] = \\dfrac{u'v - uv'}{v^2}";

@@ -4,21 +4,11 @@ import Link from "@/components/LanguageLink";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
-  
-  const titles = {
-    es: "Derivada por Definición: Fórmulas y Límites Paso a Paso",
-    en: "Derivative by Definition: Formulas and Limits Step by Step",
-    pt: "Derivada por Definição: Fórmulas e Limites Passo a Passo"
-  };
-  
-  return {
-    title: titles[currentLang],
-    description: "",
-  };
+  return generateMetadataForPath(lang, "/derivadas-por-definicion");
 }
 
 export default async function DefinitionDerivativesPage({ params }: { params: Promise<{ lang: string }> }) {

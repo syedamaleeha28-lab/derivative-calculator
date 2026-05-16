@@ -71,6 +71,7 @@ export default function SEOContent() {
                   alt={card.title}
                   fill
                   sizes="(max-width: 768px) 112px, 128px"
+                  loading="lazy"
                   className="object-contain p-2 transition-transform duration-300 group-hover:scale-[1.03]"
                 />
               </div>

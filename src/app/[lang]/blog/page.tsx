@@ -4,16 +4,16 @@ import Footer from "@/components/Footer";
 import Link from "@/components/LanguageLink";
 import { Clock, ChevronRight } from "lucide-react";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { metadataFromEntry, normalizeLang } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
+  const currentLang = normalizeLang(lang);
   const t = dictionaries[currentLang].blog;
-
-  return {
-    title: `${t.title1}${t.title2} | Calculadora Derivadas`,
+  return metadataFromEntry(currentLang, "/blog", {
+    title: `${t.title1}${t.title2}`,
     description: t.subtitle,
-  };
+  });
 }
 
 export default async function BlogPage({ params }: { params: Promise<{ lang: string }> }) {

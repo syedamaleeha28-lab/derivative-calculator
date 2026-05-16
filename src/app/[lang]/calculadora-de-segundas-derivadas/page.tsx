@@ -3,21 +3,11 @@ import katex from "katex";
 import Link from "@/components/LanguageLink";
 import type { Metadata } from "next";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
-  
-  const titles = {
-    es: "Calculadora de Segundas Derivadas: Guía y Concavidad",
-    en: "Second Derivative Calculator: Guide and Concavity",
-    pt: "Calculadora de Segundas Derivadas: Guia e Concavidade"
-  };
-  
-  return {
-    title: titles[currentLang],
-    description: "",
-  };
+  return generateMetadataForPath(lang, "/calculadora-de-segundas-derivadas");
 }
 
 export default async function HigherOrderDerivativesPage({ params }: { params: Promise<{ lang: string }> }) {

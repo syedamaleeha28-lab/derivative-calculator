@@ -3,16 +3,13 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "@/components/LanguageLink";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { metadataFromEntry, normalizeLang } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
+  const currentLang = normalizeLang(lang);
   const t = dictionaries[currentLang].terms;
-
-  return {
-    title: `${t.title} | Calculadora Derivadas`,
-    description: t.subtitle,
-  };
+  return metadataFromEntry(currentLang, "/terminos-de-servicio", { title: t.title, description: t.subtitle });
 }
 
 export default async function TermsPage({ params }: { params: Promise<{ lang: string }> }) {

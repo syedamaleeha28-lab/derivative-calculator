@@ -3,21 +3,11 @@ import katex from "katex";
 import Link from "@/components/LanguageLink";
 import type { Metadata } from "next";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
-  
-  const titles = {
-    es: "Derivadas de Varias Variables: Guía de Cálculo Multivariable",
-    en: "Multivariable Derivatives: Guide to Multivariable Calculus",
-    pt: "Derivadas de Várias Variáveis: Guia de Cálculo Multivariável"
-  };
-  
-  return {
-    title: titles[currentLang],
-    description: "",
-  };
+  return generateMetadataForPath(lang, "/derivadas-de-varias-variables");
 }
 
 export default async function MultivariableDerivativesPage({ params }: { params: Promise<{ lang: string }> }) {

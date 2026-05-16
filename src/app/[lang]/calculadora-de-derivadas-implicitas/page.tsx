@@ -3,27 +3,11 @@ import katex from "katex";
 import Link from "@/components/LanguageLink";
 import type { Metadata } from "next";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
-  
-  const titles = {
-    es: "Calculadora de Derivadas Implícitas: Guía y Ejemplos",
-    en: "Implicit Differentiation Calculator: Guide and Examples",
-    pt: "Calculadora de Derivadas Implícitas: Guia e Exemplos"
-  };
-  
-  const descs = {
-    es: "Aprende a resolver derivadas implícitas paso a paso. Guía completa con la técnica de derivación implícita y ejercicios resueltos.",
-    en: "Learn to solve implicit derivatives step by step. Complete guide with the implicit differentiation technique and solved exercises.",
-    pt: "Aprenda a resolver derivadas implícitas passo a passo. Guia completo com a técnica de diferenciação implícita e exercícios resolvidos."
-  };
-
-  return {
-    title: titles[currentLang],
-    description: descs[currentLang],
-  };
+  return generateMetadataForPath(lang, "/calculadora-de-derivadas-implicitas");
 }
 
 export default async function ImplicitDerivativesPage({ params }: { params: Promise<{ lang: string }> }) {

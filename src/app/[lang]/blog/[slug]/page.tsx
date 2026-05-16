@@ -4,6 +4,8 @@ import ArticleLayout, { FormulaCard, TipCard, WarningCard, ExampleCard } from "@
 import katex from "katex";
 import Link from "@/components/LanguageLink";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { buildPageMetadata, normalizeLang } from "@/lib/seo";
+import { BLOG_POSTS } from "@/lib/site-routes";
 
 // ─── Post Data (Localized) ─────────────────────────────────────────────────
 
@@ -278,23 +280,28 @@ export async function generateMetadata(props: { params: Promise<{ lang: string; 
   const resolvedParams = await props.params;
   const lang = resolvedParams.lang;
   const slug = resolvedParams.slug;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
+  const currentLang = normalizeLang(lang);
   const post = getPostData(slug, currentLang);
-  
+
   if (!post) return {};
-  
-  return {
-    title: `${post.title} | Calculadora Derivadas`,
+  const postEntry = BLOG_POSTS.find((p) => Object.values(p.slugs).includes(slug));
+  const localizedPaths = postEntry
+    ? {
+        es: `/blog/${postEntry.slugs.es}`,
+        en: `/blog/${postEntry.slugs.en}`,
+        pt: `/blog/${postEntry.slugs.pt}`,
+      }
+    : undefined;
+
+  return buildPageMetadata({
+    lang: currentLang,
+    path: `/blog/${slug}`,
+    title: post.title,
     description: post.description,
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: "article",
-      publishedTime: post.date,
-      authors: [post.author.name],
-      tags: post.tags,
-    },
-  };
+    ogType: "article",
+    localizedPaths,
+    publishedTime: post.date,
+  });
 }
 
 export default async function BlogPostPage(props: { params: Promise<{ lang: string; slug: string }> }) {

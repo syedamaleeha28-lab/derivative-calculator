@@ -5,34 +5,24 @@ import SEOContent from "@/components/SEOContent";
 import StepByStep from "@/components/StepByStep";
 import GraphVisualization from "@/components/GraphVisualization";
 import { Calculator } from "lucide-react";
-import Schema from "@/components/Schema";
+import HomeJsonLd from "@/components/HomeJsonLd";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { buildPageMetadata, normalizeLang } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
+  const currentLang = normalizeLang(lang);
   const t = dictionaries[currentLang].metadata.home;
-  
-  return {
+
+  return buildPageMetadata({
+    lang: currentLang,
+    path: "/",
     title: t.title,
     description: t.description,
     keywords: t.keywords,
-    openGraph: {
-      title: t.title,
-      description: t.description,
-      url: `https://calculadoraderivadas.app/${currentLang === 'es' ? '' : currentLang}`,
-      siteName: "Calculadora Derivadas",
-      locale: currentLang === "es" ? "es_ES" : currentLang === "pt" ? "pt_BR" : "en_US",
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: t.title,
-      description: t.description,
-    },
-  };
+  });
 }
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
@@ -50,7 +40,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <StepByStep t={tStep} />
       <GraphVisualization t={tGraph} />
       <FAQ />
-      <Schema />
+      <HomeJsonLd lang={currentLang} />
       <Footer />
       
       {/* Sticky Mobile Calculate Button */}

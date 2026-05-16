@@ -4,16 +4,13 @@ import Link from "@/components/LanguageLink";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { dictionaries, Lang } from "@/lib/dictionaries";
+import { metadataFromEntry, normalizeLang } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const currentLang = (lang === "en" || lang === "pt" ? lang : "es") as Lang;
+  const currentLang = normalizeLang(lang);
   const t = dictionaries[currentLang].partialPage;
-
-  return {
-    title: t.title,
-    description: t.description,
-  };
+  return metadataFromEntry(currentLang, "/partial-derivatives", { title: t.title, description: t.description });
 }
 
 export default async function PartialDerivatives({ params }: { params: Promise<{ lang: string }> }) {
