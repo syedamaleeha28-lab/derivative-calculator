@@ -225,15 +225,8 @@ const dictionariesData = {
       ]
     },
     popularSearches: {
-      title: "Búsquedas Populares de Derivadas",
-      list: [
-        { label: "Derivada de sin(x)", href: "/#calculator", input: "sin(x)" },
-        { label: "Derivada de ln(x)", href: "/#calculator", input: "ln(x)" },
-        { label: "Derivada de e^x", href: "/#calculator", input: "e^x" },
-        { label: "Derivada de x^2", href: "/#calculator", input: "x^2" },
-        { label: "Derivada de tan(x)", href: "/#calculator", input: "tan(x)" },
-        { label: "Derivadas Parciales", href: "/partial-derivatives" }
-      ]
+      title: "Funciones Más Calculadas",
+      functions: ["sin(x)", "ln(x)", "e^x", "x^2", "tan(x)", "cos(x)"],
     },
     breadcrumbs: {
       home: "Inicio"
@@ -793,15 +786,8 @@ const dictionariesData = {
       ]
     },
     popularSearches: {
-      title: "Popular Derivative Searches",
-      list: [
-        { label: "Derivative of sin(x)", href: "/#calculator", input: "sin(x)" },
-        { label: "Derivative of ln(x)", href: "/#calculator", input: "ln(x)" },
-        { label: "Derivative of e^x", href: "/#calculator", input: "e^x" },
-        { label: "Derivative of x^2", href: "/#calculator", input: "x^2" },
-        { label: "Derivative of tan(x)", href: "/#calculator", input: "tan(x)" },
-        { label: "Partial Derivatives", href: "/partial-derivatives" }
-      ]
+      title: "Most Calculated Functions",
+      functions: ["sin(x)", "ln(x)", "e^x", "x^2", "tan(x)", "cos(x)"],
     },
     breadcrumbs: {
       home: "Home"
@@ -1684,14 +1670,8 @@ const dictionariesData = {
       back: "Voltar ao Início"
     },
     popularSearches: {
-      title: "Pesquisas Populares",
-      list: [
-        { label: "Derivada de x", href: "/#calculator" },
-        { label: "Derivada de sin(x)", href: "/reglas/derivadas-trigonometricas" },
-        { label: "Regra da Cadeia", href: "/reglas/regla-de-la-cadena" },
-        { label: "Derivada de ln(x)", href: "/derivadas-logaritmicas" },
-        { label: "Diferenciação Implícita", href: "/calculadora-de-derivadas-implicitas" }
-      ]
+      title: "Funções Mais Calculadas",
+      functions: ["sin(x)", "ln(x)", "e^x", "x^2", "tan(x)", "cos(x)"],
     },
     terms: {
       title: "Termos de Serviço",

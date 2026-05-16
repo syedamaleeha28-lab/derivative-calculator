@@ -3,13 +3,12 @@
 import { usePathname } from "next/navigation";
 import LanguageLink from "@/components/LanguageLink";
 import FacebookSocialLink from "@/components/FacebookSocialLink";
-import { dictionaries, Lang } from "@/lib/dictionaries";
+import { dictionaries } from "@/lib/dictionaries";
+import { getLangFromPathname } from "@/lib/locale";
 
 export default function Footer() {
   const pathname = usePathname() || "";
-  const currentLang = (
-    pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es"
-  ) as Lang;
+  const currentLang = getLangFromPathname(pathname);
   const t = dictionaries[currentLang].footer;
 
   return (

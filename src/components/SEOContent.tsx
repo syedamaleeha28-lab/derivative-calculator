@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "@/components/LanguageLink";
 import { usePathname } from "next/navigation";
-import { dictionaries, Lang } from "@/lib/dictionaries";
+import { dictionaries } from "@/lib/dictionaries";
+import { getLangFromPathname } from "@/lib/locale";
 import PopularSearches from "./PopularSearches";
 
 export default function SEOContent() {
   const pathname = usePathname() || "";
-  const currentLang = (pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es") as Lang;
+  const currentLang = getLangFromPathname(pathname);
   const t = dictionaries[currentLang].seoCards;
 
   // Since we only have some cards in dictionary, we'll map them

@@ -1,35 +1,46 @@
 "use client";
 
-import Link from "@/components/LanguageLink";
 import { usePathname } from "next/navigation";
-import { dictionaries, Lang } from "@/lib/dictionaries";
-import { Search } from "lucide-react";
+import { dictionaries } from "@/lib/dictionaries";
+import { dispatchCalculatorInput } from "@/lib/calculator-events";
+import { getLangFromPathname } from "@/lib/locale";
 
 export default function PopularSearches() {
   const pathname = usePathname() || "";
-  const currentLang = (pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es") as Lang;
-  const dict = dictionaries[currentLang] as any;
-  const t = dict.popularSearches;
+  const currentLang = getLangFromPathname(pathname);
+  const t = dictionaries[currentLang].popularSearches;
 
-  if (!t) return null;
+  if (!t?.functions?.length) return null;
+
+  const handleSelect = (expr: string) => {
+    dispatchCalculatorInput(expr);
+    const el = document.getElementById("calculator");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
-    <div className="mt-16 pt-12 border-t border-slate-100">
-      <h3 className="text-slate-900 font-bold text-lg mb-6 flex items-center gap-2">
-        <Search size={20} className="text-secondary" />
+    <section
+      className="mt-8 border-t border-slate-100 pt-6"
+      aria-labelledby="popular-functions-heading"
+    >
+      <h3
+        id="popular-functions-heading"
+        className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500"
+      >
         {t.title}
       </h3>
-      <div className="flex flex-wrap gap-3">
-        {t.list.map((item: { label: string; href: string }, i: number) => (
-          <Link
-            key={i}
-            href={item.href}
-            className="px-4 py-2 bg-slate-50 border border-slate-200 rounded-full text-sm font-medium text-slate-600 hover:bg-white hover:border-secondary/30 hover:text-secondary transition-all"
+      <div className="flex flex-wrap gap-2">
+        {t.functions.map((expr) => (
+          <button
+            key={expr}
+            type="button"
+            onClick={() => handleSelect(expr)}
+            className="rounded-lg border border-slate-200 bg-slate-50/80 px-3 py-1.5 font-mono text-[0.8125rem] font-medium text-slate-700 transition-colors hover:border-violet-300 hover:bg-violet-50 hover:text-violet-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/40"
           >
-            {item.label}
-          </Link>
+            {expr}
+          </button>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

@@ -4,7 +4,12 @@ import { useState, useRef, useEffect, forwardRef, useImperativeHandle, useMemo }
 import { motion, AnimatePresence } from "framer-motion";
 import { CornerDownLeft, Sparkles, AlertCircle, ChevronDown, BookOpen, CheckCircle2, Settings2, X } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { dictionaries, Lang, type TranslationDictionary } from "@/lib/dictionaries";
+import { dictionaries, type TranslationDictionary } from "@/lib/dictionaries";
+import {
+  CALCULATOR_SET_INPUT,
+  type CalculatorSetInputDetail,
+} from "@/lib/calculator-events";
+import { getLangFromPathname } from "@/lib/locale";
 // @ts-ignore
 import nerdamer from "nerdamer/all.min";
 import katex from "katex";
@@ -207,7 +212,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
   const [variable, setVariable] = useState("x");
 
   const pathname = usePathname() || "";
-  const currentLang = (pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es") as Lang;
+  const currentLang = getLangFromPathname(pathname);
   const t = dictionaries[currentLang].calculator;
 
   const keypad = useMemo(() => buildKeypad(variable, t.tips), [variable, t.tips]);
@@ -221,6 +226,21 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
       resultRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   }, [showResult, isCalculating]);
+
+  useEffect(() => {
+    const onSetInput = (event: Event) => {
+      const { expression, scroll } = (event as CustomEvent<CalculatorSetInputDetail>).detail;
+      setInput(expression);
+      setShowResult(false);
+      setError("");
+      if (scroll) {
+        cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        setTimeout(() => inputRef.current?.focus(), 300);
+      }
+    };
+    window.addEventListener(CALCULATOR_SET_INPUT, onSetInput);
+    return () => window.removeEventListener(CALCULATOR_SET_INPUT, onSetInput);
+  }, []);
 
   useImperativeHandle(ref, () => ({
     focusAndCalculate: () => {

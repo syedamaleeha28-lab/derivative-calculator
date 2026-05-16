@@ -8,7 +8,9 @@ import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandLogoLink } from "./BrandLogo";
 import FacebookSocialLink from "./FacebookSocialLink";
-import { dictionaries, Lang } from "@/lib/dictionaries";
+import { dictionaries } from "@/lib/dictionaries";
+import type { Lang } from "@/lib/dictionary-types";
+import { getLangFromPathname, LANG_BADGE } from "@/lib/locale";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,7 +19,7 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname() || "";
 
-  const currentLang = (pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es") as Lang;
+  const currentLang = getLangFromPathname(pathname);
   const t = dictionaries[currentLang].nav;
 
   const NAV_LINKS = [
@@ -95,7 +97,9 @@ export default function Navbar() {
               aria-label="Cambiar idioma"
             >
               <Globe size={17} />
-              <span className="text-sm font-medium uppercase">{currentLang}</span>
+              <span className="min-w-[1.5rem] text-center text-xs font-semibold tracking-wide text-slate-700 font-sans">
+                {LANG_BADGE[currentLang]}
+              </span>
               <ChevronDown size={14} className={`transition-transform ${langOpen ? "rotate-180" : ""}`} />
             </button>
             
@@ -141,7 +145,9 @@ export default function Navbar() {
             className="p-2 text-slate-500 flex items-center gap-1"
           >
             <Globe size={18} />
-            <span className="text-xs font-medium uppercase">{currentLang}</span>
+            <span className="min-w-[1.25rem] text-center text-[0.65rem] font-semibold tracking-wide text-slate-700 font-sans">
+              {LANG_BADGE[currentLang]}
+            </span>
           </button>
           <button
             onClick={() => setMobileOpen(o => !o)}
@@ -215,7 +221,7 @@ export default function Navbar() {
                               : "text-slate-600 hover:bg-slate-50"
                           }`}
                         >
-                          {lang.code.toUpperCase()}
+                          {LANG_BADGE[lang.code as Lang]}
                         </NextLink>
                       ))}
                     </div>
