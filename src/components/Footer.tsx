@@ -1,39 +1,29 @@
 "use client";
-import Link from 'next/link';
-import { Facebook } from 'lucide-react';
-import { useI18n } from '@/lib/i18n';
+
+import { usePathname } from "next/navigation";
+import LanguageLink from "@/components/LanguageLink";
+import FacebookSocialLink from "@/components/FacebookSocialLink";
+import { dictionaries, Lang } from "@/lib/dictionaries";
 
 export default function Footer() {
-  const { t } = useI18n();
+  const pathname = usePathname() || "";
+  const currentLang = (
+    pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es"
+  ) as Lang;
+  const t = dictionaries[currentLang].footer;
+
   return (
     <footer className="bg-white border-t border-slate-200 py-6 md:py-8">
       <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between text-sm text-slate-600">
         <nav className="flex flex-wrap gap-4 mb-4 md:mb-0">
-          <Link href="/privacy-policy" className="hover:underline">
-            {t.footer.privacy}
-          </Link>
-          <Link href="/about" className="hover:underline">
-            {t.footer.about}
-          </Link>
-          <Link href="/contact" className="hover:underline">
-            {t.footer.contact}
-          </Link>
-          <Link href="/terms" className="hover:underline">
-            {t.footer.terms}
-          </Link>
-          <Link href="/disclaimer" className="hover:underline">
-            {t.footer.disclaimer}
-          </Link>
+          <LanguageLink href="/politica-de-privacidad" className="hover:underline">
+            {t.privacy}
+          </LanguageLink>
+          <LanguageLink href="/terminos-de-servicio" className="hover:underline">
+            {t.terms}
+          </LanguageLink>
         </nav>
-        <a
-          href="https://www.facebook.com/profile.php?id=61590109041520"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Facebook"
-          className="text-slate-600 hover:text-primary transition-colors"
-        >
-          <Facebook size={20} />
-        </a>
+        <FacebookSocialLink iconSize={20} className="border-0 bg-transparent hover:bg-transparent hover:border-0 p-0" />
       </div>
     </footer>
   );
