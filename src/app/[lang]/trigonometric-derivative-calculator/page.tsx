@@ -10,7 +10,7 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  return generateMetadataForPath(lang, "/calculadora-de-derivadas-trigonometricas");
+  return generateMetadataForPath(lang, "/trigonometric-derivative-calculator");
 }
 
 export default function TrigCalculadoraPage() {
@@ -71,10 +71,10 @@ export default function TrigCalculadoraPage() {
       <section>
         <h2 id="por-que-usar">¿Por qué usar nuestro calculador online?</h2>
         <p>
-          A diferencia de una simple tabla, nuestra <strong>calculadora de derivadas trigonométricas</strong> maneja la <Link href="/reglas/regla-de-la-cadena" className="text-secondary font-bold">regla de la cadena</Link> automáticamente. Esto es vital cuando el argumento de la función no es solo 'x', sino una expresión más compleja.
+          A diferencia de una simple tabla, nuestra <strong>calculadora de derivadas trigonométricas</strong> maneja la <Link href="/rules/regla-de-la-cadena" className="text-secondary font-bold">regla de la cadena</Link> automáticamente. Esto es vital cuando el argumento de la función no es solo 'x', sino una expresión más compleja.
         </p>
         <TipCard>
-          Si tienes una división de funciones trigonométricas, recuerda que también puedes aplicar la <Link href="/reglas/regla-del-cociente" className="text-secondary font-bold">regla del cociente</Link> para llegar al resultado.
+          Si tienes una división de funciones trigonométricas, recuerda que también puedes aplicar la <Link href="/rules/regla-del-cociente" className="text-secondary font-bold">regla del cociente</Link> para llegar al resultado.
         </TipCard>
       </section>
 
@@ -113,7 +113,7 @@ export default function TrigCalculadoraPage() {
       relatedPosts={[
         { title: "Derivadas Trigonométricas (Teoría)", slug: "reglas/derivadas-trigonometricas" },
         { title: "Regla de la Cadena", slug: "reglas/regla-de-la-cadena" },
-        { title: "Ejemplos de Derivadas", slug: "derivative-examples" }
+        { title: "Ejemplos de Derivadas", slug: "/examples" }
       ]}
     />
   );

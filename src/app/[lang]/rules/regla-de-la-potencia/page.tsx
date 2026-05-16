@@ -5,7 +5,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
-const PAGE_PATH = "/reglas/regla-de-la-potencia";
+const PAGE_PATH = "/rules/regla-de-la-potencia";
 
 export async function generateMetadata({
   params,
@@ -32,7 +32,7 @@ export default function PowerRulePage() {
         </p>
         <p className="mt-4">
           Si estás buscando <strong>cómo resolver derivadas de potencias</strong>, esta es la primera regla que debes aprender antes de pasar a temas más complejos como la{" "}
-          <Link href="/reglas/regla-de-la-cadena" className="text-secondary font-bold">
+          <Link href="/rules/regla-de-la-cadena" className="text-secondary font-bold">
             regla de la cadena
           </Link>
           .
@@ -118,7 +118,7 @@ export default function PowerRulePage() {
             calculadora de derivadas paso a paso
           </Link>{" "}
           para verificar tus ejercicios de potencias y explorar más ejemplos en{" "}
-          <Link href="/derivative-examples" className="text-secondary font-bold">
+          <Link href="/examples" className="text-secondary font-bold">
             ejercicios resueltos
           </Link>
           .
@@ -144,7 +144,7 @@ export default function PowerRulePage() {
       }}
       breadcrumbs={[
         { label: "Inicio", href: "/" },
-        { label: "Reglas", href: "/reglas" },
+        { label: "Reglas", href: "/rules" },
         { label: "Regla de la Potencia", href: PAGE_PATH },
       ]}
       content={content}
@@ -163,9 +163,9 @@ export default function PowerRulePage() {
         },
       ]}
       relatedPosts={[
-        { title: "Regla de la Cadena", slug: "reglas/regla-de-la-cadena" },
-        { title: "Regla del Producto", slug: "reglas/regla-del-producto" },
-        { title: "Tabla de Fórmulas", slug: "basic-derivative-formulas" },
+        { title: "Regla de la Cadena", slug: "/rules/regla-de-la-cadena" },
+        { title: "Regla del Producto", slug: "/rules/regla-del-producto" },
+        { title: "Tabla de Fórmulas", slug: "/basic-derivative-formulas" },
       ]}
     />
   );

@@ -7,7 +7,7 @@ import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  return generateMetadataForPath(lang, "/calculadora-de-derivadas-implicitas");
+  return generateMetadataForPath(lang, "/implicit-derivative-calculator");
 }
 
 export default async function ImplicitDerivativesPage({ params }: { params: Promise<{ lang: string }> }) {

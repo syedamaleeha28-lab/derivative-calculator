@@ -23,11 +23,11 @@ export default function SEOContent() {
       src: "/images/como-usar-calculadora-de-derivadas.png",
       alt: "How to use calculator"
     },
-    "/reglas": {
+    "/rules": {
       src: "/images/reglas-de-derivacion.png",
       alt: "Differentiation rules"
     },
-    "/derivative-examples": {
+    "/examples": {
       src: "/images/ejemplos-de-derivadas-resueltas.png",
       alt: "Derivative examples"
     },
@@ -93,3 +93,4 @@ export default function SEOContent() {
     </section>
   );
 }
+

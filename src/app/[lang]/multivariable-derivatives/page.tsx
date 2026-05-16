@@ -7,7 +7,7 @@ import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  return generateMetadataForPath(lang, "/derivadas-de-varias-variables");
+  return generateMetadataForPath(lang, "/multivariable-derivatives");
 }
 
 export default async function MultivariableDerivativesPage({ params }: { params: Promise<{ lang: string }> }) {

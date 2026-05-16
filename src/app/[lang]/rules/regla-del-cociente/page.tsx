@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  return generateMetadataForPath(lang, "/reglas/regla-del-cociente");
+  return generateMetadataForPath(lang, "/rules/regla-del-cociente");
 }
 
 export default function QuotientRulePage() {
@@ -25,7 +25,7 @@ export default function QuotientRulePage() {
           La <strong>regla del cociente</strong> es el método formal para encontrar la derivada de una función que es la división de otras dos funciones. Es una de las reglas que requiere más atención a los detalles, especialmente por el signo negativo en el numerador y el denominador al cuadrado.
         </p>
         <p className="mt-4">
-          Antes de dominar esta regla, asegúrate de entender bien la <Link href="/reglas/regla-del-producto" className="text-secondary font-bold">regla del producto</Link>, ya que son conceptos hermanos.
+          Antes de dominar esta regla, asegúrate de entender bien la <Link href="/rules/regla-del-producto" className="text-secondary font-bold">regla del producto</Link>, ya que son conceptos hermanos.
         </p>
         <figure className="my-8 max-w-3xl mx-auto">
           <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
@@ -87,7 +87,7 @@ export default function QuotientRulePage() {
       <section>
         <h2 id="trucos">¿Cuándo evitar la regla del cociente?</h2>
         <p>
-          A veces, es más fácil convertir una división en un producto con potencia negativa. Por ejemplo, $1/x^3$ se puede derivar más rápido como $x^{-3}$ usando la <Link href="/reglas/regla-de-la-potencia" className="text-secondary font-bold">regla de la potencia</Link>.
+          A veces, es más fácil convertir una división en un producto con potencia negativa. Por ejemplo, $1/x^3$ se puede derivar más rápido como $x^{-3}$ usando la <Link href="/rules/regla-de-la-potencia" className="text-secondary font-bold">regla de la potencia</Link>.
         </p>
       </section>
 
@@ -97,7 +97,7 @@ export default function QuotientRulePage() {
           Si tienes una función muy compleja, nuestra <Link href="/#calculator" className="text-secondary font-bold">calculadora de derivadas online</Link> puede realizar todas las simplificaciones algebraicas por ti, mostrándote cada paso del proceso.
         </p>
         <p className="mt-4">
-          Consulta más variaciones en nuestra galería de <Link href="/derivative-examples" className="text-secondary font-bold">ejemplos resueltos</Link>.
+          Consulta más variaciones en nuestra galería de <Link href="/examples" className="text-secondary font-bold">ejemplos resueltos</Link>.
         </p>
       </section>
     </div>
@@ -117,8 +117,8 @@ export default function QuotientRulePage() {
       }}
       breadcrumbs={[
         { label: "Inicio", href: "/" },
-        { label: "Reglas", href: "/reglas" },
-        { label: "Regla del Cociente", href: "/reglas/regla-del-cociente" }
+        { label: "Reglas", href: "/rules" },
+        { label: "Regla del Cociente", href: "/rules/regla-del-cociente" }
       ]}
       content={content}
       faqs={[
@@ -127,9 +127,9 @@ export default function QuotientRulePage() {
         { question: "¿Puedo usar la regla de la cadena aquí?", answer: "Sí, es muy común que el numerador o el denominador requieran la regla de la cadena por sí mismos." }
       ]}
       relatedPosts={[
-        { title: "Regla del Producto", slug: "reglas/regla-del-producto" },
-        { title: "Regla de la Cadena", slug: "reglas/regla-de-la-cadena" },
-        { title: "Tabla de Fórmulas", slug: "basic-derivative-formulas" }
+        { title: "Regla del Producto", slug: "/rules/regla-del-producto" },
+        { title: "Regla de la Cadena", slug: "/rules/regla-de-la-cadena" },
+        { title: "Tabla de Fórmulas", slug: "/basic-derivative-formulas" }
       ]}
     />
   );

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { buildPageMetadata, normalizeLang } from "./seo";
 import { getLegalPageContent, type LegalPageKey } from "./legal-pages";
-import { LEGAL_PATHS, type LegalPageId } from "./legal-routes";
+import { getLocalizedPathsRecord } from "./routes";
+import { getLegalInternalPath, type LegalPageId } from "./legal-routes";
 
 const PAGE_KEY_MAP: Record<LegalPageId, LegalPageKey> = {
   privacy: "privacy",
@@ -17,13 +18,13 @@ export function generateLegalMetadata(
 ): Metadata {
   const lang = normalizeLang(langParam);
   const content = getLegalPageContent(lang, PAGE_KEY_MAP[pageId]);
-  const path = LEGAL_PATHS[pageId][lang];
+  const internalPath = getLegalInternalPath(pageId);
 
   return buildPageMetadata({
     lang,
-    path,
+    path: internalPath,
     title: content.title,
     description: content.subtitle,
-    localizedPaths: LEGAL_PATHS[pageId],
+    localizedPaths: getLocalizedPathsRecord(internalPath),
   });
 }

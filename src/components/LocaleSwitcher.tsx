@@ -9,6 +9,7 @@ import {
   setLocaleCookie,
   stripLocalePrefix,
 } from "@/lib/locale";
+import { getLocalizedPath, resolveToInternalPath } from "@/lib/routes";
 import { useLang } from "@/contexts/I18nContext";
 
 type LocaleSwitcherProps = {
@@ -25,10 +26,7 @@ export function LocaleSwitcher({ variant = "dropdown", onNavigate }: LocaleSwitc
     if (target === currentLang) return;
     setLocaleCookie(target);
     const currentLogicalPath = stripLocalePrefix(pathname);
-    // Find the internal path based on current lang
-    const { getInternalPath, getLocalizedPath } = require("@/lib/routes");
-    const internalPath = getInternalPath(currentLogicalPath, currentLang);
-    // Find the target localized path
+    const internalPath = resolveToInternalPath(currentLogicalPath);
     const targetLogicalPath = getLocalizedPath(internalPath, target);
     router.push(localePath(target, targetLogicalPath));
     onNavigate?.();

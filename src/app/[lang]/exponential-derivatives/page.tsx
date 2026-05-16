@@ -7,7 +7,7 @@ import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  return generateMetadataForPath(lang, "/derivadas-exponenciales");
+  return generateMetadataForPath(lang, "/exponential-derivatives");
 }
 
 export default async function ExponentialDerivativesPage({ params }: { params: Promise<{ lang: string }> }) {

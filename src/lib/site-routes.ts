@@ -5,6 +5,31 @@ import {
   educationalPagePath,
 } from "./educational-derivative-pages";
 import { absoluteUrl, hreflangAlternates } from "./seo";
+import { getLocalizedPathsRecord } from "./routes";
+
+function sitemapEntry(
+  id: string,
+  internalPath: string,
+  changeFrequency: SitemapRouteConfig["changeFrequency"],
+  priority: number,
+  lastModified?: string
+): SitemapRouteConfig {
+  return {
+    id,
+    paths: getLocalizedPathsRecord(internalPath),
+    changeFrequency,
+    priority,
+    lastModified,
+  };
+}
+
+const RULE_SUBPAGE_SLUGS = [
+  "regla-de-la-potencia",
+  "regla-de-la-cadena",
+  "regla-del-producto",
+  "regla-del-cociente",
+  "derivadas-trigonometricas",
+] as const;
 
 export const SITEMAP_LANGS: Lang[] = ["es", "en", "pt"];
 
@@ -88,76 +113,15 @@ export const SITEMAP_ROUTES: SitemapRouteConfig[] = [
     changeFrequency: "weekly",
     priority: 0.8,
   },
-  {
-    id: "privacy",
-    paths: {
-      es: "/politica-de-privacidad",
-      en: "/privacy-policy",
-      pt: "/politica-de-privacidad",
-    },
-    changeFrequency: "yearly",
-    priority: 0.3,
-  },
-  {
-    id: "terms",
-    paths: {
-      es: "/terminos-de-servicio",
-      en: "/terms",
-      pt: "/terminos-de-servicio",
-    },
-    changeFrequency: "yearly",
-    priority: 0.3,
-  },
-  {
-    id: "disclaimer",
-    paths: { es: "/disclaimer", en: "/disclaimer", pt: "/disclaimer" },
-    changeFrequency: "yearly",
-    priority: 0.25,
-  },
-  {
-    id: "about",
-    paths: { es: "/about", en: "/about", pt: "/about" },
-    changeFrequency: "yearly",
-    priority: 0.4,
-  },
-  {
-    id: "contact",
-    paths: { es: "/contact", en: "/contact", pt: "/contact" },
-    changeFrequency: "yearly",
-    priority: 0.4,
-  },
-  {
-    id: "how-to-use-calculator",
-    paths: {
-      es: "/how-to-use-derivative-calculator",
-      en: "/how-to-use-derivative-calculator",
-      pt: "/how-to-use-derivative-calculator",
-    },
-    changeFrequency: "monthly",
-    priority: 0.9,
-  },
-  {
-    id: "what-is-derivative",
-    paths: { es: "/what-is-a-derivative", en: "/what-is-a-derivative", pt: "/what-is-a-derivative" },
-    changeFrequency: "monthly",
-    priority: 0.9,
-  },
-  {
-    id: "basic-formulas",
-    paths: {
-      es: "/basic-derivative-formulas",
-      en: "/basic-derivative-formulas",
-      pt: "/basic-derivative-formulas",
-    },
-    changeFrequency: "monthly",
-    priority: 0.9,
-  },
-  {
-    id: "partial-derivatives",
-    paths: { es: "/partial-derivatives", en: "/partial-derivatives", pt: "/partial-derivatives" },
-    changeFrequency: "monthly",
-    priority: 0.85,
-  },
+  sitemapEntry("privacy", "/privacy-policy", "yearly", 0.3),
+  sitemapEntry("terms", "/terms", "yearly", 0.3),
+  sitemapEntry("disclaimer", "/disclaimer", "yearly", 0.25),
+  sitemapEntry("about", "/about", "yearly", 0.4),
+  sitemapEntry("contact", "/contact", "yearly", 0.4),
+  sitemapEntry("how-to-use-calculator", "/how-to-use-derivative-calculator", "monthly", 0.9),
+  sitemapEntry("what-is-derivative", "/what-is-a-derivative", "monthly", 0.9),
+  sitemapEntry("basic-formulas", "/basic-derivative-formulas", "monthly", 0.9),
+  sitemapEntry("partial-derivatives", "/partial-derivatives", "monthly", 0.85),
   ...EDUCATIONAL_DERIVATIVE_PAGES.map((page) => ({
     id: `derivative-${page.slug}`,
     paths: {
@@ -168,136 +132,17 @@ export const SITEMAP_ROUTES: SitemapRouteConfig[] = [
     changeFrequency: "monthly" as const,
     priority: 0.88,
   })),
-  {
-    id: "rule-power",
-    paths: {
-      es: "/reglas/regla-de-la-potencia",
-      en: "/reglas/regla-de-la-potencia",
-      pt: "/reglas/regla-de-la-potencia",
-    },
-    changeFrequency: "monthly",
-    priority: 0.85,
-  },
-  {
-    id: "rule-chain",
-    paths: {
-      es: "/reglas/regla-de-la-cadena",
-      en: "/reglas/regla-de-la-cadena",
-      pt: "/reglas/regla-de-la-cadena",
-    },
-    changeFrequency: "monthly",
-    priority: 0.85,
-  },
-  {
-    id: "rule-product",
-    paths: {
-      es: "/reglas/regla-del-producto",
-      en: "/reglas/regla-del-producto",
-      pt: "/reglas/regla-del-producto",
-    },
-    changeFrequency: "monthly",
-    priority: 0.85,
-  },
-  {
-    id: "rule-quotient",
-    paths: {
-      es: "/reglas/regla-del-cociente",
-      en: "/reglas/regla-del-cociente",
-      pt: "/reglas/regla-del-cociente",
-    },
-    changeFrequency: "monthly",
-    priority: 0.85,
-  },
-  {
-    id: "rule-trig",
-    paths: {
-      es: "/reglas/derivadas-trigonometricas",
-      en: "/reglas/derivadas-trigonometricas",
-      pt: "/reglas/derivadas-trigonometricas",
-    },
-    changeFrequency: "monthly",
-    priority: 0.85,
-  },
-  {
-    id: "derivadas-funciones",
-    paths: {
-      es: "/derivadas-de-funciones",
-      en: "/derivadas-de-funciones",
-      pt: "/derivadas-de-funciones",
-    },
-    changeFrequency: "monthly",
-    priority: 0.8,
-  },
-  {
-    id: "derivadas-varias",
-    paths: {
-      es: "/derivadas-de-varias-variables",
-      en: "/derivadas-de-varias-variables",
-      pt: "/derivadas-de-varias-variables",
-    },
-    changeFrequency: "monthly",
-    priority: 0.75,
-  },
-  {
-    id: "derivadas-exponenciales",
-    paths: {
-      es: "/derivadas-exponenciales",
-      en: "/derivadas-exponenciales",
-      pt: "/derivadas-exponenciales",
-    },
-    changeFrequency: "monthly",
-    priority: 0.8,
-  },
-  {
-    id: "derivadas-logaritmicas",
-    paths: {
-      es: "/derivadas-logaritmicas",
-      en: "/derivadas-logaritmicas",
-      pt: "/derivadas-logaritmicas",
-    },
-    changeFrequency: "monthly",
-    priority: 0.8,
-  },
-  {
-    id: "derivadas-definicion",
-    paths: {
-      es: "/derivadas-por-definicion",
-      en: "/derivadas-por-definicion",
-      pt: "/derivadas-por-definicion",
-    },
-    changeFrequency: "monthly",
-    priority: 0.8,
-  },
-  {
-    id: "segundas-derivadas",
-    paths: {
-      es: "/calculadora-de-segundas-derivadas",
-      en: "/calculadora-de-segundas-derivadas",
-      pt: "/calculadora-de-segundas-derivadas",
-    },
-    changeFrequency: "monthly",
-    priority: 0.85,
-  },
-  {
-    id: "implicitas",
-    paths: {
-      es: "/calculadora-de-derivadas-implicitas",
-      en: "/calculadora-de-derivadas-implicitas",
-      pt: "/calculadora-de-derivadas-implicitas",
-    },
-    changeFrequency: "monthly",
-    priority: 0.85,
-  },
-  {
-    id: "trigonometricas",
-    paths: {
-      es: "/calculadora-de-derivadas-trigonometricas",
-      en: "/calculadora-de-derivadas-trigonometricas",
-      pt: "/calculadora-de-derivadas-trigonometricas",
-    },
-    changeFrequency: "monthly",
-    priority: 0.85,
-  },
+  ...RULE_SUBPAGE_SLUGS.map((slug) =>
+    sitemapEntry(`rule-${slug}`, `/rules/${slug}`, "monthly", 0.85)
+  ),
+  sitemapEntry("derivadas-funciones", "/derivatives-of-functions", "monthly", 0.8),
+  sitemapEntry("derivadas-varias", "/multivariable-derivatives", "monthly", 0.75),
+  sitemapEntry("derivadas-exponenciales", "/exponential-derivatives", "monthly", 0.8),
+  sitemapEntry("derivadas-logaritmicas", "/logarithmic-derivatives", "monthly", 0.8),
+  sitemapEntry("derivadas-definicion", "/derivative-by-definition", "monthly", 0.8),
+  sitemapEntry("segundas-derivadas", "/second-derivative-calculator", "monthly", 0.85),
+  sitemapEntry("implicitas", "/implicit-derivative-calculator", "monthly", 0.85),
+  sitemapEntry("trigonometricas", "/trigonometric-derivative-calculator", "monthly", 0.85),
 ];
 
 /** @deprecated Use SITEMAP_ROUTES — kept for any legacy imports */

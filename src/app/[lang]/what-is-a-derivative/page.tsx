@@ -26,7 +26,7 @@ export default async function WhatIsADerivative({ params }: { params: Promise<{ 
           {t.sections.intro.p1}
         </p>
         <p className="mt-4">
-           <Link href="/reglas" className="text-secondary font-bold underline decoration-secondary/30 hover:decoration-secondary">{currentLang === "en" ? "Differentiation rules" : currentLang === "pt" ? "Regras de derivação" : "Reglas de derivación"}</Link> {currentLang === "en" ? "are the key to mastering calculus." : currentLang === "pt" ? "são a chave para dominar o cálculo." : "son la clave para dominar el cálculo."}
+           <Link href="/rules" className="text-secondary font-bold underline decoration-secondary/30 hover:decoration-secondary">{currentLang === "en" ? "Differentiation rules" : currentLang === "pt" ? "Regras de derivação" : "Reglas de derivación"}</Link> {currentLang === "en" ? "are the key to mastering calculus." : currentLang === "pt" ? "são a chave para dominar o cálculo." : "son la clave para dominar el cálculo."}
         </p>
       </section>
 

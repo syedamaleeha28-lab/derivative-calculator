@@ -5,12 +5,15 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { dictionaries, Lang } from "@/lib/dictionaries";
 import { metadataFromEntry, normalizeLang } from "@/lib/seo";
+import { LOCALIZED_ROUTES } from "@/lib/routes";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const currentLang = normalizeLang(lang);
   const t = dictionaries[currentLang].partialPage;
-  return metadataFromEntry(currentLang, "/partial-derivatives", { title: t.title, description: t.description });
+  return metadataFromEntry(currentLang, "/partial-derivatives", { title: t.title, description: t.description }, {
+    localizedPaths: LOCALIZED_ROUTES["/partial-derivatives"],
+  });
 }
 
 export default async function PartialDerivatives({ params }: { params: Promise<{ lang: string }> }) {

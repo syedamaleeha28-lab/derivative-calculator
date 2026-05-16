@@ -8,7 +8,7 @@ import { generateMetadataForPath } from "@/lib/generate-page-metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  return generateMetadataForPath(lang, "/derivadas-de-funciones");
+  return generateMetadataForPath(lang, "/derivatives-of-functions");
 }
 
 export default async function GeneralFunctionsPage({ params }: { params: Promise<{ lang: string }> }) {

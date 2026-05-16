@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  return generateMetadataForPath(lang, "/reglas/regla-del-producto");
+  return generateMetadataForPath(lang, "/rules/regla-del-producto");
 }
 
 export default function ProductRulePage() {
@@ -25,7 +25,7 @@ export default function ProductRulePage() {
           La <strong>regla del producto</strong> es una fórmula utilizada para encontrar la derivada de la multiplicación de dos funciones. A diferencia de lo que muchos piensan inicialmente, la derivada de un producto no es simplemente el producto de las derivadas.
         </p>
         <p className="mt-4">
-          Es una de las reglas fundamentales que verás en cualquier curso de <Link href="/what-is-a-derivative" className="text-secondary font-bold">Cálculo Diferencial</Link> y es el paso previo para entender la <Link href="/reglas/regla-del-cociente" className="text-secondary font-bold">regla del cociente</Link>.
+          Es una de las reglas fundamentales que verás en cualquier curso de <Link href="/what-is-a-derivative" className="text-secondary font-bold">Cálculo Diferencial</Link> y es el paso previo para entender la <Link href="/rules/regla-del-cociente" className="text-secondary font-bold">regla del cociente</Link>.
         </p>
         <figure className="my-8 max-w-3xl mx-auto">
           <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
@@ -100,7 +100,7 @@ export default function ProductRulePage() {
           ¿No estás seguro de tu resultado? Nuestra <Link href="/#calculator" className="text-secondary font-bold">calculadora de derivadas con procedimiento</Link> te mostrará paso a paso cómo se aplicó la regla del producto en tu ejercicio específico.
         </p>
         <TipCard>
-          Si tu función es una división, te recomendamos leer nuestra guía sobre la <Link href="/reglas/regla-del-cociente" className="text-secondary font-bold">regla del cociente</Link>, que es una extensión de este concepto.
+          Si tu función es una división, te recomendamos leer nuestra guía sobre la <Link href="/rules/regla-del-cociente" className="text-secondary font-bold">regla del cociente</Link>, que es una extensión de este concepto.
         </TipCard>
       </section>
     </div>
@@ -120,8 +120,8 @@ export default function ProductRulePage() {
       }}
       breadcrumbs={[
         { label: "Inicio", href: "/" },
-        { label: "Reglas", href: "/reglas" },
-        { label: "Regla del Producto", href: "/reglas/regla-del-producto" }
+        { label: "Reglas", href: "/rules" },
+        { label: "Regla del Producto", href: "/rules/regla-del-producto" }
       ]}
       content={content}
       faqs={[
@@ -130,9 +130,9 @@ export default function ProductRulePage() {
         { question: "¿Qué regla es más importante, producto o cadena?", answer: "Ambas son vitales. A menudo tendrás que usar la regla de la cadena dentro de un problema de regla del producto." }
       ]}
       relatedPosts={[
-        { title: "Regla del Cociente", slug: "reglas/regla-del-cociente" },
-        { title: "Regla de la Cadena", slug: "reglas/regla-de-la-cadena" },
-        { title: "Ejemplos de Derivadas", slug: "derivative-examples" }
+        { title: "Regla del Cociente", slug: "/rules/regla-del-cociente" },
+        { title: "Regla de la Cadena", slug: "/rules/regla-de-la-cadena" },
+        { title: "Ejemplos de Derivadas", slug: "/examples" }
       ]}
     />
   );

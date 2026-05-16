@@ -46,16 +46,16 @@ const dictionariesData = {
             { label: "Calculadora de Derivadas", href: "/#calculator" },
             { label: "Calculadora de Pasos", href: "/how-to-use-derivative-calculator" },
             { label: "Derivadas Parciales", href: "/partial-derivatives" },
-            { label: "Reglas de Derivación", href: "/reglas" },
+            { label: "Reglas de Derivación", href: "/rules" },
           ]
         },
         learning: {
           title: "Aprendizaje",
           links: [
             { label: "Concepto de Derivada", href: "/what-is-a-derivative" },
-            { label: "Regla de la Cadena", href: "/reglas/regla-de-la-cadena" },
+            { label: "Regla de la Cadena", href: "/rules/regla-de-la-cadena" },
             { label: "Formulario de Derivadas", href: "/basic-derivative-formulas" },
-            { label: "Ejercicios Resueltos", href: "/derivative-examples" },
+            { label: "Ejercicios Resueltos", href: "/examples" },
           ]
         },
         resources: {
@@ -311,8 +311,8 @@ const dictionariesData = {
       authorRole: "Departamento de Matemáticas",
       breadcrumbs: [
         { label: "Inicio", href: "/" },
-        { label: "Aprender", href: "/reglas" },
-        { label: "Reglas de Derivación", href: "/reglas" }
+        { label: "Aprender", href: "/rules" },
+        { label: "Reglas de Derivación", href: "/rules" }
       ],
       sections: {
         importance: {
@@ -347,8 +347,8 @@ const dictionariesData = {
       authorRole: "Docente de Cálculo",
       breadcrumbs: [
         { label: "Inicio", href: "/" },
-        { label: "Práctica", href: "/derivative-examples" },
-        { label: "Ejemplos Resueltos", href: "/derivative-examples" }
+        { label: "Práctica", href: "/examples" },
+        { label: "Ejemplos Resueltos", href: "/examples" }
       ],
       sections: {
         intro: {
@@ -416,7 +416,7 @@ const dictionariesData = {
       authorRole: "Educador de Calculadora Derivadas",
       breadcrumbs: [
         { label: "Inicio", href: "/" },
-        { label: "Aprender", href: "/reglas" },
+        { label: "Aprender", href: "/rules" },
         { label: "¿Qué es una derivada?", href: "/what-is-a-derivative" }
       ],
       sections: {
@@ -533,13 +533,13 @@ const dictionariesData = {
           title: "Reglas de Derivación",
           desc: "Domina las reglas esenciales: regla de la potencia, regla del producto, cociente y la regla de la cadena.",
           link: "Estudar reglas →",
-          href: "/reglas"
+          href: "/rules"
         },
         {
           title: "Ejemplos de Derivadas",
           desc: "Explora nuestra biblioteca de ejercicios resueltos. Desde polinomios simples hasta complejas derivadas trigonométricas.",
           link: "Ver galería de ejemplos →",
-          href: "/derivative-examples"
+          href: "/examples"
         },
         {
           title: "Derivadas Parciales",
@@ -648,16 +648,16 @@ const dictionariesData = {
             { label: "Derivative Calculator", href: "/#calculator" },
             { label: "Step-by-Step Calculator", href: "/how-to-use-derivative-calculator" },
             { label: "Partial Derivatives", href: "/partial-derivatives" },
-            { label: "Differentiation Rules", href: "/reglas" },
+            { label: "Differentiation Rules", href: "/rules" },
           ]
         },
         learning: {
           title: "Learning",
           links: [
             { label: "Derivative Concept", href: "/what-is-a-derivative" },
-            { label: "Chain Rule", href: "/reglas/regla-de-la-cadena" },
+            { label: "Chain Rule", href: "/rules/regla-de-la-cadena" },
             { label: "Derivatives Formula", href: "/basic-derivative-formulas" },
-            { label: "Solved Exercises", href: "/derivative-examples" },
+            { label: "Solved Exercises", href: "/examples" },
           ]
         },
         resources: {
@@ -913,8 +913,8 @@ const dictionariesData = {
       authorRole: "Mathematics Department",
       breadcrumbs: [
         { label: "Home", href: "/" },
-        { label: "Learn", href: "/reglas" },
-        { label: "Differentiation Rules", href: "/reglas" }
+        { label: "Learn", href: "/rules" },
+        { label: "Differentiation Rules", href: "/rules" }
       ],
       sections: {
         importance: {
@@ -949,8 +949,8 @@ const dictionariesData = {
       authorRole: "Calculus Teacher",
       breadcrumbs: [
         { label: "Home", href: "/" },
-        { label: "Practice", href: "/derivative-examples" },
-        { label: "Solved Examples", href: "/derivative-examples" }
+        { label: "Practice", href: "/examples" },
+        { label: "Solved Examples", href: "/examples" }
       ],
       sections: {
         intro: {
@@ -1018,7 +1018,7 @@ const dictionariesData = {
       authorRole: "Derivative Calculator Educator",
       breadcrumbs: [
         { label: "Home", href: "/" },
-        { label: "Learn", href: "/reglas" },
+        { label: "Learn", href: "/rules" },
         { label: "What is a derivative?", href: "/what-is-a-derivative" }
       ],
       sections: {
@@ -1135,13 +1135,13 @@ const dictionariesData = {
           title: "Differentiation Rules",
           desc: "Master the essential rules: power rule, product rule, quotient, and the chain rule.",
           link: "Study rules →",
-          href: "/reglas"
+          href: "/rules"
         },
         {
           title: "Derivative Examples",
           desc: "Explore our library of solved exercises. From simple polynomials to complex trigonometric derivatives.",
           link: "See examples gallery →",
-          href: "/derivative-examples"
+          href: "/examples"
         },
         {
           title: "Partial Derivatives",
@@ -1250,16 +1250,16 @@ const dictionariesData = {
             { label: "Calculadora de Derivadas", href: "/#calculator" },
             { label: "Calculadora Passo a Passo", href: "/how-to-use-derivative-calculator" },
             { label: "Derivadas Parciais", href: "/partial-derivatives" },
-            { label: "Regras de Derivação", href: "/reglas" },
+            { label: "Regras de Derivação", href: "/rules" },
           ]
         },
         learning: {
           title: "Aprendizagem",
           links: [
             { label: "Conceito de Derivada", href: "/what-is-a-derivative" },
-            { label: "Regra da Cadeia", href: "/reglas/regla-de-la-cadena" },
+            { label: "Regra da Cadeia", href: "/rules/regla-de-la-cadena" },
             { label: "Formulário de Derivadas", href: "/basic-derivative-formulas" },
-            { label: "Exercícios Resolvidos", href: "/derivative-examples" },
+            { label: "Exercícios Resolvidos", href: "/examples" },
           ]
         },
         resources: {
@@ -1511,8 +1511,8 @@ const dictionariesData = {
       authorRole: "Departamento de Matemática",
       breadcrumbs: [
         { label: "Início", href: "/" },
-        { label: "Aprender", href: "/reglas" },
-        { label: "Regras de Derivação", href: "/reglas" }
+        { label: "Aprender", href: "/rules" },
+        { label: "Regras de Derivação", href: "/rules" }
       ],
       sections: {
         importance: {
@@ -1547,8 +1547,8 @@ const dictionariesData = {
       authorRole: "Professor de Cálculo",
       breadcrumbs: [
         { label: "Início", href: "/" },
-        { label: "Prática", href: "/derivative-examples" },
-        { label: "Exemplos Resolvidos", href: "/derivative-examples" }
+        { label: "Prática", href: "/examples" },
+        { label: "Exemplos Resolvidos", href: "/examples" }
       ],
       sections: {
         intro: {
@@ -1616,7 +1616,7 @@ const dictionariesData = {
       authorRole: "Educador da Calculadora Derivadas",
       breadcrumbs: [
         { label: "Início", href: "/" },
-        { label: "Aprender", href: "/reglas" },
+        { label: "Aprender", href: "/rules" },
         { label: "O que é uma derivada?", href: "/what-is-a-derivative" }
       ],
       sections: {
@@ -1733,13 +1733,13 @@ const dictionariesData = {
           title: "Regras de Derivação",
           desc: "Domine as regras essenciais: regra da potência, regra do produto, quociente e a regra da cadeia.",
           link: "Estudar regras →",
-          href: "/reglas"
+          href: "/rules"
         },
         {
           title: "Exemplos de Derivadas",
           desc: "Explore nossa biblioteca de exercícios resolvidos. Desde polinômios simples até complexas derivadas trigonométricas.",
           link: "Ver galeria de exemplos →",
-          href: "/derivative-examples"
+          href: "/examples"
         },
         {
           title: "Derivadas Parciais",
@@ -1814,3 +1814,4 @@ export type TranslationDictionary = DeepStringify<typeof dictionariesData.es>;
 export const dictionaries = dictionariesData as Record<Lang, TranslationDictionary>;
 
 export type { Lang };
+

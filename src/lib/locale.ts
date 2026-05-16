@@ -16,7 +16,7 @@ export function stripLocalePrefix(pathname: string): string {
   return stripped === "" ? "/" : stripped;
 }
 
-/** Public URL for a locale + logical path (Spanish has no `/es` prefix). */
+/** Public URL for a locale + logical path (`/es/`, `/en/`, `/pt/`). */
 export function localePath(lang: Lang, path: string): string {
   return seoLocalePath(lang, path);
 }

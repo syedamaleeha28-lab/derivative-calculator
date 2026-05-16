@@ -149,7 +149,7 @@ export const PAGE_SEO: Record<string, LocalizedPageSeo> = {
         "Tabela e exemplos de derivadas trigonométricas. Use a calculadora para resultados exatos com passos.",
     },
   },
-  "/reglas/regla-de-la-potencia": {
+  "/rules/regla-de-la-potencia": {
     es: {
       title: "Regla de la Potencia: Fórmula, Ejemplos y Guía Completa",
       description:
@@ -166,7 +166,7 @@ export const PAGE_SEO: Record<string, LocalizedPageSeo> = {
         "Aprenda a derivar potências com passos detalhados. Domine a regra da potência com exemplos resolvidos.",
     },
   },
-  "/reglas/regla-de-la-cadena": {
+  "/rules/regla-de-la-cadena": {
     es: {
       title: "Regla de la Cadena: Derivadas Compuestas Paso a Paso",
       description:
@@ -183,7 +183,7 @@ export const PAGE_SEO: Record<string, LocalizedPageSeo> = {
         "Guia completa da regra da cadeia com fórmula, exemplos resolvidos e estratégias para funções aninhadas.",
     },
   },
-  "/reglas/regla-del-producto": {
+  "/rules/regla-del-producto": {
     es: {
       title: "Regla del Producto: Fórmula (uv)' y Ejemplos",
       description:
@@ -200,7 +200,7 @@ export const PAGE_SEO: Record<string, LocalizedPageSeo> = {
         "Aprenda a derivar produtos de funções com a regra do produto. Exemplos detalhados e links para a calculadora.",
     },
   },
-  "/reglas/regla-del-cociente": {
+  "/rules/regla-del-cociente": {
     es: {
       title: "Regla del Cociente: Derivadas de Fracciones",
       description:
@@ -217,7 +217,7 @@ export const PAGE_SEO: Record<string, LocalizedPageSeo> = {
         "Domine a regra do quociente para derivar frações. Fórmula, exemplos e procedimento passo a passo.",
     },
   },
-  "/reglas/derivadas-trigonometricas": {
+  "/rules/derivadas-trigonometricas": {
     es: {
       title: "Derivadas Trigonométricas: Tabla y Reglas",
       description:
@@ -306,6 +306,20 @@ export const PAGE_SEO: Record<string, LocalizedPageSeo> = {
   },
 };
 
+/** Map canonical internal paths to PAGE_SEO registry keys. */
+export const PAGE_SEO_PATH_ALIASES: Record<string, string> = {
+  "/derivatives-of-functions": "/derivadas-de-funciones",
+  "/multivariable-derivatives": "/derivadas-de-varias-variables",
+  "/exponential-derivatives": "/derivadas-exponenciales",
+  "/logarithmic-derivatives": "/derivadas-logaritmicas",
+  "/derivative-by-definition": "/derivadas-por-definicion",
+  "/second-derivative-calculator": "/calculadora-de-segundas-derivadas",
+  "/implicit-derivative-calculator": "/calculadora-de-derivadas-implicitas",
+  "/trigonometric-derivative-calculator": "/calculadora-de-derivadas-trigonometricas",
+};
+
 export function getPageSeo(path: string, lang: Lang): PageSeoEntry | undefined {
-  return PAGE_SEO[path]?.[lang];
+  const key = PAGE_SEO_PATH_ALIASES[path] ?? path;
+  return PAGE_SEO[key]?.[lang];
 }
+

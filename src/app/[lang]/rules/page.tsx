@@ -52,7 +52,7 @@ export default async function ReglasPage({ params }: { params: Promise<{ lang: s
         <p className="mb-8">{t.sections.catalog.desc}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {Object.entries(rules).map(([key, rule], i) => (
-            <Link key={i} href={`/reglas/${key === 'power' ? 'regla-de-la-potencia' : key === 'chain' ? 'regla-de-la-cadena' : key === 'product' ? 'regla-del-producto' : key === 'quotient' ? 'regla-del-cociente' : key === 'trig' ? 'derivadas-trigonometricas' : ''}`} className="group p-8 rounded-[2.5rem] bg-white border border-slate-200 hover:border-secondary transition-all shadow-sm flex flex-col h-full">
+            <Link key={i} href={`/rules/${key === 'power' ? 'regla-de-la-potencia' : key === 'chain' ? 'regla-de-la-cadena' : key === 'product' ? 'regla-del-producto' : key === 'quotient' ? 'regla-del-cociente' : key === 'trig' ? 'derivadas-trigonometricas' : ''}`} className="group p-8 rounded-[2.5rem] bg-white border border-slate-200 hover:border-secondary transition-all shadow-sm flex flex-col h-full">
               <h3 className="font-bold text-slate-900 text-xl mb-3 flex items-center justify-between group-hover:text-secondary transition-colors">
                 {rule.name}
                 <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -122,9 +122,9 @@ export default async function ReglasPage({ params }: { params: Promise<{ lang: s
       content={content}
       faqs={t.faqs}
       relatedPosts={[
-        { title: currentLang === "en" ? "Formulas Table" : currentLang === "pt" ? "Tabela de Fórmulas" : "Tabla de Fórmulas", slug: "basic-derivative-formulas" },
-        { title: currentLang === "en" ? "Calculus Examples" : currentLang === "pt" ? "Exemplos de Cálculo" : "Ejemplos de Cálculo", slug: "examples" },
-        { title: currentLang === "en" ? "What is a Derivative?" : currentLang === "pt" ? "O que é uma Derivada?" : "¿Qué es una Derivada?", slug: "what-is-a-derivative" }
+        { title: currentLang === "en" ? "Formulas Table" : currentLang === "pt" ? "Tabela de Fórmulas" : "Tabla de Fórmulas", slug: "/basic-derivative-formulas" },
+        { title: currentLang === "en" ? "Calculus Examples" : currentLang === "pt" ? "Exemplos de Cálculo" : "Ejemplos de Cálculo", slug: "/examples" },
+        { title: currentLang === "en" ? "What is a Derivative?" : currentLang === "pt" ? "O que é uma Derivada?" : "¿Qué es una Derivada?", slug: "/what-is-a-derivative" }
       ]}
     />
   );

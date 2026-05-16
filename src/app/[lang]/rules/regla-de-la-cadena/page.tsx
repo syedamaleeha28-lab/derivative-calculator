@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  return generateMetadataForPath(lang, "/reglas/regla-de-la-cadena");
+  return generateMetadataForPath(lang, "/rules/regla-de-la-cadena");
 }
 
 export default function ChainRulePage() {
@@ -100,7 +100,7 @@ export default function ChainRulePage() {
           La regla de la cadena es vital para entender las <Link href="/partial-derivatives" className="text-secondary font-bold">derivadas parciales</Link> y es el motor detrás del algoritmo de <em>Backpropagation</em> en el entrenamiento de Inteligencia Artificial.
         </p>
         <p className="mt-4">
-          Puedes practicar más ejercicios en nuestra sección de <Link href="/derivative-examples" className="text-secondary font-bold">ejemplos de derivadas</Link>.
+          Puedes practicar más ejercicios en nuestra sección de <Link href="/examples" className="text-secondary font-bold">ejemplos de derivadas</Link>.
         </p>
       </section>
     </div>
@@ -120,8 +120,8 @@ export default function ChainRulePage() {
       }}
       breadcrumbs={[
         { label: "Inicio", href: "/" },
-        { label: "Reglas", href: "/reglas" },
-        { label: "Regla de la Cadena", href: "/reglas/regla-de-la-cadena" }
+        { label: "Reglas", href: "/rules" },
+        { label: "Regla de la Cadena", href: "/rules/regla-de-la-cadena" }
       ]}
       content={content}
       faqs={[
@@ -130,9 +130,9 @@ export default function ChainRulePage() {
         { question: "¿Es lo mismo que la derivada del producto?", answer: "No. El producto es para f(x) * g(x). La cadena es para f(g(x)). Son estructuras matemáticas distintas." }
       ]}
       relatedPosts={[
-        { title: "Regla del Producto", slug: "reglas/regla-del-producto" },
-        { title: "Derivadas Trigonométricas", slug: "reglas/derivadas-trigonometricas" },
-        { title: "Tabla de Fórmulas", slug: "basic-derivative-formulas" }
+        { title: "Regla del Producto", slug: "/rules/regla-del-producto" },
+        { title: "Derivadas Trigonométricas", slug: "/rules/derivadas-trigonometricas" },
+        { title: "Tabla de Fórmulas", slug: "/basic-derivative-formulas" }
       ]}
     />
   );

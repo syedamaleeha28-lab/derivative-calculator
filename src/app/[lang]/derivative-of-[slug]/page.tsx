@@ -108,7 +108,7 @@ export default async function DerivativeOfPage({
       author={{ name: "Calculadora Derivadas Team", role: "Expert" }}
       breadcrumbs={[
         { label: home, href: "/" },
-        { label: solvedLabel, href: "/derivative-examples" },
+        { label: solvedLabel, href: "/examples" },
         { label: page.expression, href: educationalPagePath(slug) },
       ]}
       content={content}

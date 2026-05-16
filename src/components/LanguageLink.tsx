@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ComponentProps } from "react";
 import { localePath } from "@/lib/locale";
+import { getLocalizedPath, resolveToInternalPath } from "@/lib/routes";
 import { useLang } from "@/contexts/I18nContext";
 
 export default function LanguageLink({ href, ...props }: ComponentProps<typeof Link>) {
@@ -14,9 +15,8 @@ export default function LanguageLink({ href, ...props }: ComponentProps<typeof L
     const firstSegment = href.split("/").filter(Boolean)[0];
     const hasLocale = firstSegment === "en" || firstSegment === "pt" || firstSegment === "es";
     if (!hasLocale) {
-      // Find if this is an internal path that needs localization
-      const { getLocalizedPath } = require("@/lib/routes");
-      const logicalPath = getLocalizedPath(href, currentLang);
+      const internalPath = resolveToInternalPath(href);
+      const logicalPath = getLocalizedPath(internalPath, currentLang);
       localizedHref = localePath(currentLang, logicalPath);
     }
   }

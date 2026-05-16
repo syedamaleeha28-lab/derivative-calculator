@@ -22,54 +22,42 @@ export function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/_next") ||
     pathname.includes("/api/") ||
-    pathname.match(/\.(.*)$/)
+    pathname.match(/\.(.*)$/) ||
+    pathname === "/sitemap.xml" ||
+    pathname === "/robots.txt"
   ) {
     return;
   }
 
-  // Canonical Spanish URLs omit /es — redirect explicit /es paths
-  if (pathname.startsWith("/es/") || pathname === "/es") {
-    const canonical = pathname.replace(/^\/es/, "") || "/";
-    return NextResponse.redirect(new URL(canonical, request.url));
-  }
-
   const pathLocale = localeFromPathname(pathname);
 
-  // If path has no locale and no cookie, or has cookie, handle preferred locale
+  // If path has no locale, redirect to preferred locale
   if (!pathLocale) {
     const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value;
     const preferred: Locale = isLocale(cookieLocale) ? cookieLocale : DEFAULT_LOCALE;
 
-    // English / Portuguese: redirect to prefixed URL so pathname matches locale
-    if (preferred === "en" || preferred === "pt") {
-      // Before redirecting, check if the path needs localization translation
-      const logical = pathname === "/" ? "/" : pathname;
-      const correctLocal = getCorrectLocalizedPath(logical, preferred) || logical;
-      
-      const response = NextResponse.redirect(
-        new URL(`/${preferred}${correctLocal === "/" ? "" : correctLocal}`, request.url)
-      );
-      response.cookies.set(LOCALE_COOKIE, preferred, {
-        path: "/",
-        maxAge: 60 * 60 * 24 * 365,
-        sameSite: "lax",
-      });
-      return response;
-    }
+    // Check if the path needs localization translation
+    const logical = pathname === "/" ? "/" : pathname;
+    const correctLocal = getCorrectLocalizedPath(logical, preferred) || logical;
+    
+    const response = NextResponse.redirect(
+      new URL(`/${preferred}${correctLocal === "/" ? "" : correctLocal}`, request.url)
+    );
+    response.cookies.set(LOCALE_COOKIE, preferred, {
+      path: "/",
+      maxAge: 60 * 60 * 24 * 365,
+      sameSite: "lax",
+    });
+    return response;
   }
 
-  const actualLocale = pathLocale || DEFAULT_LOCALE;
-  let logicalPath = pathname;
-  if (pathLocale) {
-    logicalPath = pathname.replace(`/${pathLocale}`, "") || "/";
-  }
+  const actualLocale = pathLocale;
+  const logicalPath = pathname.replace(`/${pathLocale}`, "") || "/";
 
-  // 1. Redirect if the path is a mismatched localized slug (e.g. /es/rules -> /reglas)
+  // 1. Redirect if the path is a mismatched localized slug (e.g. /es/rules -> /es/reglas)
   const correctLocalizedPath = getCorrectLocalizedPath(logicalPath, actualLocale);
   if (correctLocalizedPath !== null) {
-    const targetUrl = actualLocale === "es" 
-      ? correctLocalizedPath 
-      : `/${actualLocale}${correctLocalizedPath === "/" ? "" : correctLocalizedPath}`;
+    const targetUrl = `/${actualLocale}${correctLocalizedPath === "/" ? "" : correctLocalizedPath}`;
     const response = NextResponse.redirect(new URL(targetUrl, request.url));
     response.cookies.set(LOCALE_COOKIE, actualLocale, {
       path: "/",

@@ -38,7 +38,7 @@ export default async function BasicFormulas({ params }: { params: Promise<{ lang
           {t.sections.intro.p1}
         </p>
         <p className="mt-4">
-          {t.sections.intro.p2.replace("ejemplos de derivadas", "").trim()} <Link href="/derivative-examples" className="text-secondary font-bold">{currentLang === "en" ? "derivatives examples" : currentLang === "pt" ? "exemplos de derivadas" : "ejemplos de derivadas"}</Link>.
+          {t.sections.intro.p2.replace("ejemplos de derivadas", "").trim()} <Link href="/examples" className="text-secondary font-bold">{currentLang === "en" ? "derivatives examples" : currentLang === "pt" ? "exemplos de derivadas" : "ejemplos de derivadas"}</Link>.
         </p>
         <div className="my-8 max-w-3xl mx-auto relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 shadow-lg">
           <Image

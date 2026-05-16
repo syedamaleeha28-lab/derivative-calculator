@@ -22,10 +22,9 @@ export function normalizeLang(lang: string | undefined): Lang {
   return "es";
 }
 
-/** Build public path for a locale (Spanish uses no /es prefix). */
+/** Build public path for a locale. All languages use explicit prefixes now. */
 export function localePath(lang: Lang, path: string): string {
   const clean = path.startsWith("/") ? path : `/${path}`;
-  if (lang === "es") return clean === "/" ? "/" : clean;
   return clean === "/" ? `/${lang}` : `/${lang}${clean}`;
 }
 

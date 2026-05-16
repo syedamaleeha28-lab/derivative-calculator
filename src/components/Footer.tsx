@@ -3,7 +3,7 @@
 import LanguageLink from "@/components/LanguageLink";
 import FacebookSocialLink from "@/components/FacebookSocialLink";
 import { useLang } from "@/contexts/I18nContext";
-import { FOOTER_LEGAL_PAGES, getLegalPath } from "@/lib/legal-routes";
+import { FOOTER_LEGAL_PAGES, getLegalInternalPath } from "@/lib/legal-routes";
 
 const FOOTER_LABEL_KEY = {
   privacy: "privacy",
@@ -27,7 +27,7 @@ export default function Footer() {
               {FOOTER_LEGAL_PAGES.map((pageId) => (
                 <li key={pageId}>
                   <LanguageLink
-                    href={getLegalPath(pageId, lang)}
+                    href={getLegalInternalPath(pageId)}
                     className="hover:text-secondary hover:underline transition-colors"
                   >
                     {t[FOOTER_LABEL_KEY[pageId]]}

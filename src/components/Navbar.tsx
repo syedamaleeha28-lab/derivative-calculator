@@ -20,8 +20,8 @@ export default function Navbar() {
 
   const NAV_LINKS = [
     { name: t.works, href: "/how-it-works" },
-    { name: t.examples, href: "/derivative-examples" },
-    { name: t.rules, href: "/reglas" },
+    { name: t.examples, href: "/examples" },
+    { name: t.rules, href: "/rules" },
     { name: t.blog, href: "/blog" },
   ];
 

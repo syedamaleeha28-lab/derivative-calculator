@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  return generateMetadataForPath(lang, "/reglas/derivadas-trigonometricas");
+  return generateMetadataForPath(lang, "/rules/derivadas-trigonometricas");
 }
 
 export default function TrigDerivativesPage() {
@@ -23,7 +23,7 @@ export default function TrigDerivativesPage() {
           Las <strong>derivadas trigonométricas</strong> son un conjunto de reglas que nos permiten encontrar la tasa de cambio de funciones como seno, coseno y tangente. Estas funciones son cíclicas y sus derivadas reflejan este comportamiento oscilatorio.
         </p>
         <p className="mt-4">
-          Para resolver funciones más complejas como $\sin(x^2)$, necesitarás combinar estas fórmulas con la <Link href="/reglas/regla-de-la-cadena" className="text-secondary font-bold">regla de la cadena</Link>.
+          Para resolver funciones más complejas como $\sin(x^2)$, necesitarás combinar estas fórmulas con la <Link href="/rules/regla-de-la-cadena" className="text-secondary font-bold">regla de la cadena</Link>.
         </p>
         <figure className="my-8 max-w-3xl mx-auto">
           <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-lg">
@@ -104,7 +104,7 @@ export default function TrigDerivativesPage() {
       <section>
         <h2 id="recursos">Más recursos de estudio</h2>
         <p>
-          Si quieres practicar más, visita nuestra galería de <Link href="/derivative-examples" className="text-secondary font-bold">ejercicios resueltos de trigonometría</Link> o repasa las <Link href="/reglas" className="text-secondary font-bold">reglas generales de derivación</Link>.
+          Si quieres practicar más, visita nuestra galería de <Link href="/examples" className="text-secondary font-bold">ejercicios resueltos de trigonometría</Link> o repasa las <Link href="/rules" className="text-secondary font-bold">reglas generales de derivación</Link>.
         </p>
       </section>
     </div>
@@ -124,8 +124,8 @@ export default function TrigDerivativesPage() {
       }}
       breadcrumbs={[
         { label: "Inicio", href: "/" },
-        { label: "Reglas", href: "/reglas" },
-        { label: "Derivadas Trigonométricas", href: "/reglas/derivadas-trigonometricas" }
+        { label: "Reglas", href: "/rules" },
+        { label: "Derivadas Trigonométricas", href: "/rules/derivadas-trigonometricas" }
       ]}
       content={content}
       faqs={[
@@ -134,9 +134,9 @@ export default function TrigDerivativesPage() {
         { question: "¿Existen derivadas de funciones hiperbólicas?", answer: "Sí, como sinh(x) y cosh(x). Sus reglas son muy similares pero los signos cambian ligeramente." }
       ]}
       relatedPosts={[
-        { title: "Regla de la Cadena", slug: "reglas/regla-de-la-cadena" },
-        { title: "Regla del Producto", slug: "reglas/regla-del-producto" },
-        { title: "Tabla de Fórmulas", slug: "basic-derivative-formulas" }
+        { title: "Regla de la Cadena", slug: "/rules/regla-de-la-cadena" },
+        { title: "Regla del Producto", slug: "/rules/regla-del-producto" },
+        { title: "Tabla de Fórmulas", slug: "/basic-derivative-formulas" }
       ]}
     />
   );

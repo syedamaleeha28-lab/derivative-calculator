@@ -268,9 +268,9 @@ export default function ArticleLayout({
 
   const INTERNAL_LINKS = [
     { label: currentLang === "en" ? "Derivative Calculator" : currentLang === "pt" ? "Calculadora de Derivadas" : "Calculadora de Derivadas", href: "/#calculator", icon: <Calculator size={14} /> },
-    { label: currentLang === "en" ? "Differentiation Rules" : currentLang === "pt" ? "Regras de Derivação" : "Reglas de Derivación", href: "/reglas", icon: <BookOpen size={14} /> },
+    { label: currentLang === "en" ? "Differentiation Rules" : currentLang === "pt" ? "Regras de Derivação" : "Reglas de Derivación", href: "/rules", icon: <BookOpen size={14} /> },
     { label: currentLang === "en" ? "Calculus Formulas" : currentLang === "pt" ? "Fórmulas de Cálculo" : "Fórmulas de Cálculo", href: "/basic-derivative-formulas", icon: <List size={14} /> },
-    { label: currentLang === "en" ? "Solved Examples" : currentLang === "pt" ? "Exemplos Resolvidos" : "Ejemplos Resueltos", href: "/derivative-examples", icon: <CheckCircle2 size={14} /> },
+    { label: currentLang === "en" ? "Solved Examples" : currentLang === "pt" ? "Exemplos Resolvidos" : "Ejemplos Resueltos", href: "/examples", icon: <CheckCircle2 size={14} /> },
     { label: currentLang === "en" ? "Basic Concepts" : currentLang === "pt" ? "Conceitos Básicos" : "Conceptos Básicos", href: "/what-is-a-derivative", icon: <HelpCircle size={14} /> },
     { label: currentLang === "en" ? "Math Blog" : currentLang === "pt" ? "Blog de Matemática" : "Blog de Matemáticas", href: "/blog", icon: <ExternalLink size={14} /> },
     { label: currentLang === "en" ? "How It Works" : currentLang === "pt" ? "Como Funciona" : "Cómo Funciona", href: "/how-it-works", icon: <List size={14} /> },
