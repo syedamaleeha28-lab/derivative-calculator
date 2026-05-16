@@ -1,13 +1,16 @@
 import type { MetadataRoute } from "next";
+import { NON_INDEXABLE_PREFIXES } from "@/lib/site-routes";
 import { SITE_URL } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: ["/api/", "/_next/"],
-    },
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: NON_INDEXABLE_PREFIXES,
+      },
+    ],
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,
   };

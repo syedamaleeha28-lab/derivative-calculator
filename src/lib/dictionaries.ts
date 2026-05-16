@@ -552,6 +552,33 @@ const dictionariesData = {
         }
       ]
     },
+    aboutPage: {
+      title: "Acerca de Calculadora Derivadas",
+      subtitle: "Herramienta educativa gratuita para aprender cálculo diferencial.",
+      sections: [
+        { title: "Nuestra misión", content: "Ofrecemos una calculadora de derivadas paso a paso para estudiantes y docentes que necesitan resultados exactos con explicaciones claras." },
+        { title: "Qué ofrecemos", content: "Cálculo simbólico, reglas de derivación, ejemplos resueltos, blog educativo y recursos en español, inglés y portugués." },
+      ],
+      back: "Volver al Inicio",
+    },
+    contactPage: {
+      title: "Contacto",
+      subtitle: "¿Tienes preguntas o sugerencias? Escríbenos.",
+      sections: [
+        { title: "Canales", content: "Puedes contactarnos a través de nuestro blog, redes sociales oficiales o comentarios en publicaciones educativas." },
+        { title: "Tiempo de respuesta", content: "Intentamos responder en un plazo de 2 a 5 días hábiles." },
+      ],
+      back: "Volver al Inicio",
+    },
+    disclaimerPage: {
+      title: "Aviso Legal",
+      subtitle: "Información sobre el uso educativo de esta herramienta.",
+      sections: [
+        { title: "Uso educativo", content: "Los resultados son orientativos. Verifica siempre con tu docente o material de referencia antes de entregas evaluadas." },
+        { title: "Sin garantía", content: "No garantizamos ausencia total de errores en cálculos simbólicos complejos." },
+      ],
+      back: "Volver al Inicio",
+    },
     privacy: {
       title: "Política de Privacidad",
       subtitle: "Información sobre el manejo de datos y cumplimiento.",
@@ -1124,6 +1151,33 @@ const dictionariesData = {
         }
       ]
     },
+    aboutPage: {
+      title: "About Derivative Calculator",
+      subtitle: "Free educational tool for learning differential calculus.",
+      sections: [
+        { title: "Our mission", content: "We provide a step-by-step derivative calculator for students and teachers who need exact results with clear explanations." },
+        { title: "What we offer", content: "Symbolic computation, differentiation rules, solved examples, an educational blog, and resources in Spanish, English, and Portuguese." },
+      ],
+      back: "Back to Home",
+    },
+    contactPage: {
+      title: "Contact",
+      subtitle: "Questions or suggestions? Get in touch.",
+      sections: [
+        { title: "Channels", content: "Reach us through our blog, official social media, or comments on educational posts." },
+        { title: "Response time", content: "We aim to respond within 2 to 5 business days." },
+      ],
+      back: "Back to Home",
+    },
+    disclaimerPage: {
+      title: "Disclaimer",
+      subtitle: "Information about the educational use of this tool.",
+      sections: [
+        { title: "Educational use", content: "Results are for guidance. Always verify with your instructor or reference material before graded submissions." },
+        { title: "No warranty", content: "We do not guarantee complete absence of errors in complex symbolic calculations." },
+      ],
+      back: "Back to Home",
+    },
     privacy: {
       title: "Privacy Policy",
       subtitle: "Information about data handling and compliance.",
@@ -1691,6 +1745,33 @@ const dictionariesData = {
           href: "/basic-derivative-formulas"
         }
       ]
+    },
+    aboutPage: {
+      title: "Sobre a Calculadora Derivadas",
+      subtitle: "Ferramenta educacional gratuita para aprender cálculo diferencial.",
+      sections: [
+        { title: "Nossa missão", content: "Oferecemos uma calculadora de derivadas passo a passo para estudantes e professores que precisam de resultados exatos com explicações claras." },
+        { title: "O que oferecemos", content: "Cálculo simbólico, regras de derivação, exemplos resolvidos, blog educativo e recursos em espanhol, inglês e português." },
+      ],
+      back: "Voltar ao Início",
+    },
+    contactPage: {
+      title: "Contato",
+      subtitle: "Dúvidas ou sugestões? Entre em contato.",
+      sections: [
+        { title: "Canais", content: "Você pode nos contatar pelo blog, redes sociais oficiais ou comentários em publicações educativas." },
+        { title: "Tempo de resposta", content: "Procuramos responder em 2 a 5 dias úteis." },
+      ],
+      back: "Voltar ao Início",
+    },
+    disclaimerPage: {
+      title: "Aviso Legal",
+      subtitle: "Informações sobre o uso educativo desta ferramenta.",
+      sections: [
+        { title: "Uso educativo", content: "Os resultados são orientativos. Verifique sempre com seu professor ou material de referência antes de entregas avaliadas." },
+        { title: "Sem garantia", content: "Não garantimos ausência total de erros em cálculos simbólicos complexos." },
+      ],
+      back: "Voltar ao Início",
     },
     privacy: {
       title: "Política de Privacidade",

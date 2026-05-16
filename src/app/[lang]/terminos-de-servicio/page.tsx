@@ -9,7 +9,18 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const { lang } = await params;
   const currentLang = normalizeLang(lang);
   const t = dictionaries[currentLang].terms;
-  return metadataFromEntry(currentLang, "/terminos-de-servicio", { title: t.title, description: t.subtitle });
+  return metadataFromEntry(
+    currentLang,
+    "/terminos-de-servicio",
+    { title: t.title, description: t.subtitle },
+    {
+      localizedPaths: {
+        es: "/terminos-de-servicio",
+        en: "/terms",
+        pt: "/terminos-de-servicio",
+      },
+    }
+  );
 }
 
 export default async function TermsPage({ params }: { params: Promise<{ lang: string }> }) {

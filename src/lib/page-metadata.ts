@@ -234,6 +234,76 @@ export const PAGE_SEO: Record<string, LocalizedPageSeo> = {
         "Consulte derivadas de seno, cosseno, tangente e funções trigonométricas inversas com exemplos práticos.",
     },
   },
+  "/about": {
+    es: {
+      title: "Acerca de Calculadora Derivadas",
+      description: "Conoce nuestra misión: calculadora de derivadas gratuita con pasos para estudiantes y docentes.",
+    },
+    en: {
+      title: "About Derivative Calculator",
+      description: "Learn about our mission: free step-by-step derivative calculator for students and teachers.",
+    },
+    pt: {
+      title: "Sobre a Calculadora Derivadas",
+      description: "Conheça nossa missão: calculadora de derivadas gratuita com passos para estudantes e professores.",
+    },
+  },
+  "/contact": {
+    es: {
+      title: "Contacto | Calculadora Derivadas",
+      description: "Ponte en contacto con el equipo de Calculadora Derivadas. Dudas, sugerencias y colaboraciones.",
+    },
+    en: {
+      title: "Contact | Derivative Calculator",
+      description: "Contact the Derivative Calculator team. Questions, suggestions, and collaborations.",
+    },
+    pt: {
+      title: "Contato | Calculadora Derivadas",
+      description: "Entre em contato com a equipe da Calculadora Derivadas. Dúvidas, sugestões e colaborações.",
+    },
+  },
+  "/disclaimer": {
+    es: {
+      title: "Aviso Legal | Calculadora Derivadas",
+      description: "Aviso legal y descargo de responsabilidad sobre el uso educativo de la calculadora.",
+    },
+    en: {
+      title: "Disclaimer | Derivative Calculator",
+      description: "Legal notice and disclaimer regarding educational use of the calculator.",
+    },
+    pt: {
+      title: "Aviso Legal | Calculadora Derivadas",
+      description: "Aviso legal e isenção de responsabilidade sobre o uso educativo da calculadora.",
+    },
+  },
+  "/privacy-policy": {
+    es: {
+      title: "Privacy Policy",
+      description: "Privacy policy for Derivative Calculator — data handling and compliance.",
+    },
+    en: {
+      title: "Privacy Policy | Derivative Calculator",
+      description: "Privacy policy describing how we handle data when you use our calculator and resources.",
+    },
+    pt: {
+      title: "Política de Privacidade",
+      description: "Política de privacidade da Calculadora Derivadas — tratamento de dados e conformidade.",
+    },
+  },
+  "/terms": {
+    es: {
+      title: "Terms of Service",
+      description: "Terms of service for using the derivative calculator.",
+    },
+    en: {
+      title: "Terms of Service | Derivative Calculator",
+      description: "Terms and conditions for using the online derivative calculator.",
+    },
+    pt: {
+      title: "Termos de Serviço",
+      description: "Termos de serviço para uso da calculadora de derivadas online.",
+    },
+  },
 };
 
 export function getPageSeo(path: string, lang: Lang): PageSeoEntry | undefined {

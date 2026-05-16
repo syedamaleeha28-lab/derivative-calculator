@@ -9,7 +9,18 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const { lang } = await params;
   const currentLang = normalizeLang(lang);
   const t = dictionaries[currentLang].privacy;
-  return metadataFromEntry(currentLang, "/politica-de-privacidad", { title: t.title, description: t.subtitle });
+  return metadataFromEntry(
+    currentLang,
+    "/politica-de-privacidad",
+    { title: t.title, description: t.subtitle },
+    {
+      localizedPaths: {
+        es: "/politica-de-privacidad",
+        en: "/privacy-policy",
+        pt: "/politica-de-privacidad",
+      },
+    }
+  );
 }
 
 export default async function PrivacyPage({ params }: { params: Promise<{ lang: string }> }) {
