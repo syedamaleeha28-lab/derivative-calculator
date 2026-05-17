@@ -27,7 +27,7 @@ const variantClass: Record<BrandLogoVariant, { wrap: string; sizes: string; prio
 };
 
 const NAV_WORDMARK_LOGO_WRAP =
-  "relative flex h-8 w-[4.625rem] shrink-0 items-center justify-end sm:h-9 sm:w-[5.125rem] md:w-[5.5rem]";
+  "relative flex h-7 w-[3.5rem] shrink-0 items-center justify-end min-[375px]:w-[3.75rem] sm:h-8 sm:w-[4.625rem] md:h-9 md:w-[5.5rem]";
 
 export function BrandLogoLink({
   variant,
@@ -51,7 +51,7 @@ export function BrandLogoLink({
       onClick={onNavigate}
       className={
         isNavWordmark
-          ? `flex items-center gap-1 sm:gap-1.5 min-w-0 rounded-lg py-1 pl-1 pr-1.5 -my-1 -ml-0.5 transition-colors hover:bg-slate-100/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${className}`
+          ? `flex min-w-0 items-center gap-1.5 rounded-lg py-1 pl-0.5 pr-1 -my-1 transition-colors hover:bg-slate-100/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:gap-1.5 md:pl-1 md:pr-1.5 md:-ml-0.5 ${className}`
           : `inline-flex items-center group select-none ${className}`
       }
     >
@@ -66,8 +66,8 @@ export function BrandLogoLink({
         />
       </div>
       {isNavWordmark && (
-        <span className="flex min-w-0 shrink items-center leading-none" lang="es">
-          <span className="heading-font whitespace-nowrap text-[0.75rem] font-semibold tracking-tight text-slate-900 sm:text-[0.875rem] md:text-[0.9375rem]">
+        <span className="flex min-w-0 items-center leading-none" lang="es">
+          <span className="heading-font truncate text-xs font-semibold tracking-tight text-slate-900 sm:text-sm md:whitespace-nowrap md:text-[0.9375rem]">
             Calculadora{" "}
             <span className="font-bold text-secondary">Derivadas</span>
           </span>
