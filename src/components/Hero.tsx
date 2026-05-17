@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Check, Zap, BookOpen } from "lucide-react";
 import CalculatorCard, { type CalculatorHandle } from "./CalculatorCard";
-import MathAssistantMascot from "./MathAssistantMascot";
 import { dict } from "@/lib/dictionaries";
 import { ROUTES } from "@/lib/routes";
 
@@ -39,7 +38,7 @@ export default function Hero() {
   return (
     <section
       id="calculator"
-      className="relative overflow-hidden pt-10 pb-12 md:pt-14 md:pb-16 scroll-mt-20 bg-gradient-to-b from-white via-indigo-50/30 to-violet-50/40 hero-mesh"
+      className="relative overflow-hidden pt-10 pb-12 md:pt-14 md:pb-16 scroll-mt-20 bg-gradient-to-b from-white via-indigo-50/30 to-violet-50/40 hero-mesh hero-mesh-animated"
       aria-labelledby="hero-heading"
     >
       <motion.div
@@ -62,21 +61,21 @@ export default function Hero() {
       />
 
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+        className="pointer-events-none absolute inset-0 opacity-[0.4]"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 30%, rgba(139,92,246,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(34,211,238,0.08) 0%, transparent 45%)",
+            "radial-gradient(circle at 20% 30%, rgba(139,92,246,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(34,211,238,0.1) 0%, transparent 45%)",
         }}
         aria-hidden
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 xl:gap-14 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="flex flex-col gap-5 sm:gap-6 lg:pr-4"
+            className="flex flex-col gap-5 sm:gap-6 lg:pr-2 xl:pr-6"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-violet-200/80 text-violet-700 text-[0.65rem] sm:text-[0.7rem] font-bold tracking-widest uppercase w-fit shadow-sm backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 animate-pulse" />
@@ -129,10 +128,20 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut", delay: 0.08 }}
-            className="relative w-full lg:sticky lg:top-20"
+            className="relative flex w-full justify-center lg:justify-end"
           >
-            <MathAssistantMascot className="absolute -top-4 -right-2 sm:-top-6 sm:right-0 lg:-top-8 lg:-right-4 z-20" />
-            <div className="relative z-10 pt-8 sm:pt-10 lg:pt-12">
+            <motion.div
+              className="pointer-events-none absolute inset-0 flex items-center justify-center"
+              aria-hidden
+            >
+              <motion.div
+                className="hero-calc-glow h-[min(88%,480px)] w-[min(100%,560px)] rounded-[2rem]"
+                animate={{ opacity: [0.55, 0.85, 0.55], scale: [0.98, 1.02, 0.98] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </motion.div>
+
+            <div className="relative z-10 w-full max-w-[600px] lg:max-w-[580px]">
               <CalculatorCard ref={calculatorRef} />
             </div>
           </motion.div>

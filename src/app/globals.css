@@ -90,6 +90,36 @@
     background-size: 32px 32px;
   }
 
+  .hero-mesh-animated {
+    animation: hero-mesh-drift 24s linear infinite;
+  }
+
+  @keyframes hero-mesh-drift {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 32px 32px;
+    }
+  }
+
+  .hero-calc-glow {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(139, 92, 246, 0.35) 0%,
+      rgba(99, 102, 241, 0.2) 35%,
+      rgba(34, 211, 238, 0.12) 60%,
+      transparent 72%
+    );
+    filter: blur(28px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-mesh-animated {
+      animation: none;
+    }
+  }
+
   .text-gradient {
     background-clip: text;
     -webkit-background-clip: text;

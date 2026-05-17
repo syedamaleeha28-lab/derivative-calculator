@@ -355,7 +355,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
   return (
     <motion.div
       ref={cardRef}
-      className="w-full max-w-[560px] mx-auto lg:max-w-none flex flex-col gap-3 scroll-mt-20"
+      className="w-full flex flex-col gap-3 scroll-mt-20"
     >
       <div className="calc-shell overflow-hidden flex flex-col w-full relative z-10 rounded-3xl">
         {/* Input */}
