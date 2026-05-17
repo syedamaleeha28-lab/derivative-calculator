@@ -29,7 +29,7 @@ const es: Record<string, LegalPageContent> = {
         id: "intro",
         title: "1. Introducción",
         paragraphs: [
-          "Calculadora Derivadas («nosotros», «el sitio») es una herramienta educativa gratuita de cálculo diferencial disponible en www.calculadora-derivadas.org.",
+          "Calculadora Derivadas («nosotros», «el sitio») es una herramienta educativa gratuita de cálculo diferencial disponible en calculadora-derivadas.org.",
           "Esta Política de Privacidad explica qué datos podemos recopilar, cómo los utilizamos y qué opciones tienes. Al usar el sitio, aceptas las prácticas descritas aquí.",
         ],
       },
@@ -289,7 +289,7 @@ const en: Record<string, LegalPageContent> = {
         id: "intro",
         title: "1. Introduction",
         paragraphs: [
-          "Derivative Calculator («we», «the site») is a free educational differential calculus tool at www.calculadora-derivadas.org.",
+          "Derivative Calculator («we», «the site») is a free educational differential calculus tool at calculadora-derivadas.org.",
           "This Privacy Policy explains what data we may collect, how we use it, and your choices. By using the site, you agree to the practices described here.",
         ],
       },
@@ -548,7 +548,7 @@ const pt: Record<string, LegalPageContent> = {
         id: "intro",
         title: "1. Introdução",
         paragraphs: [
-          "A Calculadora Derivadas («nós», «o site») é uma ferramenta educacional gratuita de cálculo diferencial em www.calculadora-derivadas.org.",
+          "A Calculadora Derivadas («nós», «o site») é uma ferramenta educacional gratuita de cálculo diferencial em calculadora-derivadas.org.",
           "Esta Política de Privacidade explica quais dados podemos coletar, como os usamos e suas opções. Ao usar o site, você concorda com as práticas aqui descritas.",
         ],
       },

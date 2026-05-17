@@ -1,0 +1,22 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.calculadora-derivadas.org" }],
+      "destination": "https://calculadora-derivadas.org/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "calculadoraderivadas.app" }],
+      "destination": "https://calculadora-derivadas.org/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.calculadoraderivadas.app" }],
+      "destination": "https://calculadora-derivadas.org/:path*",
+      "permanent": true
+    }
+  ]
+}

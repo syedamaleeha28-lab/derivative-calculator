@@ -11,10 +11,18 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  /**
+   * Legacy English slug redirects only (single hop → Spanish route).
+   * No /en, /es, or /pt locale prefixes — those return 404 to avoid redirect chains.
+   */
   async redirects() {
     return [
       { source: "/how-it-works", destination: "/como-funciona", permanent: true },
-      { source: "/how-to-use-derivative-calculator", destination: "/como-funciona", permanent: true },
+      {
+        source: "/how-to-use-derivative-calculator",
+        destination: "/como-funciona",
+        permanent: true,
+      },
       { source: "/what-is-a-derivative", destination: "/como-funciona", permanent: true },
       { source: "/derivative-examples", destination: "/ejemplos", permanent: true },
       { source: "/examples", destination: "/ejemplos", permanent: true },
@@ -25,12 +33,6 @@ const nextConfig: NextConfig = {
       { source: "/terminos-de-servicio", destination: "/terms-of-service", permanent: true },
       { source: "/contact", destination: "/contacto", permanent: true },
       { source: "/about", destination: "/acerca-de", permanent: true },
-      { source: "/es", destination: "/", permanent: true },
-      { source: "/es/:path*", destination: "/:path*", permanent: true },
-      { source: "/en", destination: "/", permanent: true },
-      { source: "/en/:path*", destination: "/:path*", permanent: true },
-      { source: "/pt", destination: "/", permanent: true },
-      { source: "/pt/:path*", destination: "/:path*", permanent: true },
     ];
   },
 };

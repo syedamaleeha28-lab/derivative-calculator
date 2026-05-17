@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
-/** Canonical production origin (include www). */
+/** Canonical production origin (apex, no www). */
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ??
   process.env.SITE_URL ??
-  "https://www.calculadora-derivadas.org"
+  "https://calculadora-derivadas.org"
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "Calculadora Derivadas";
