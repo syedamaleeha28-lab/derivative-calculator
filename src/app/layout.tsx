@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, DM_Serif_Display } from "next/font/google";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
@@ -39,6 +40,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col font-sans antialiased bg-white text-slate-900">
+        <GoogleAnalytics />
         {children}
       </body>
     </html>
