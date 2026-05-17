@@ -2,9 +2,10 @@ type JsonLdProps = {
   data: Record<string, unknown> | Record<string, unknown>[];
 };
 
-/** Server-safe JSON-LD script (no client hydration). */
+/** Server-safe JSON-LD for layout body (valid for Google rich results). */
 export default function JsonLd({ data }: JsonLdProps) {
   const payload = Array.isArray(data) ? data : [data];
+
   return (
     <>
       {payload.map((item, i) => (

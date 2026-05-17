@@ -12,7 +12,7 @@ export const SITE_NAME = "Calculadora Derivadas";
 /** Absolute canonical URL for a page. */
 export function absoluteUrl(path: string): string {
   const clean = path.startsWith("/") ? path : `/${path}`;
-  if (clean === "/") return SITE_URL;
+  if (clean === "/") return `${SITE_URL}/`;
   return `${SITE_URL}${clean}`;
 }
 

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import HomeSeoSections from "@/components/HomeSeoSections";
+import HomeEducationalCards from "@/components/HomeEducationalCards";
+import HomeLongFormSeo from "@/components/HomeLongFormSeo";
 import { Calculator } from "lucide-react";
-import HomeJsonLd from "@/components/HomeJsonLd";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import { dict } from "@/lib/dictionaries";
@@ -28,9 +28,9 @@ export default function Home() {
     <main className="flex min-h-screen flex-col bg-white">
       <Navbar />
       <Hero />
-      <HomeSeoSections />
+      <HomeEducationalCards />
+      <HomeLongFormSeo />
       <FAQ />
-      <HomeJsonLd />
       <Footer />
 
       <div className="fixed bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-xl border-t border-slate-200/50 md:hidden z-40 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] pb-[max(1rem,env(safe-area-inset-bottom))]">
