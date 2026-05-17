@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import SEOContent from "@/components/SEOContent";
+import HomeSeoSections from "@/components/HomeSeoSections";
 import StepByStep from "@/components/StepByStep";
 import GraphVisualization from "@/components/GraphVisualization";
 import { Calculator } from "lucide-react";
@@ -9,7 +10,7 @@ import HomeJsonLd from "@/components/HomeJsonLd";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import { dict } from "@/lib/dictionaries";
-import { buildPageMetadata } from "@/lib/seo";
+import { absoluteUrl, buildPageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
     const t = dict.metadata.home;
@@ -19,6 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: t.title,
     description: t.description,
     keywords: t.keywords,
+    ogImage: absoluteUrl("/images/interfaz-calculadora-matematica.webp"),
   });
 }
 
@@ -31,6 +33,7 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col bg-white">
       <Navbar />
       <Hero />
+      <HomeSeoSections />
       <SEOContent />
       <StepByStep t={tStep} />
       <GraphVisualization t={tGraph} />

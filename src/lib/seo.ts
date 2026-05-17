@@ -24,6 +24,7 @@ export type PageMetadataInput = {
   ogType?: "website" | "article";
   publishedTime?: string;
   noindex?: boolean;
+  ogImage?: string;
 };
 
 /** Build Next.js Metadata with canonical, Open Graph, and Twitter cards. */
@@ -36,10 +37,14 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
     ogType = "website",
     noindex = false,
     publishedTime,
+    ogImage,
   } = input;
 
   const canonical = absoluteUrl(path);
   const ogTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+  const ogImages = ogImage
+    ? [{ url: ogImage, width: 1200, height: 630, alt: title }]
+    : undefined;
 
   return {
     title,
@@ -53,12 +58,14 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
       siteName: SITE_NAME,
       locale: "es_ES",
       type: ogType,
+      ...(ogImages ? { images: ogImages } : {}),
       ...(publishedTime && ogType === "article" ? { publishedTime } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: ogTitle,
       description,
+      ...(ogImages ? { images: [ogImages[0].url] } : {}),
     },
     robots: noindex
       ? { index: false, follow: false }

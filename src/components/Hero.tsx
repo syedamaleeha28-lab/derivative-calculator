@@ -63,8 +63,7 @@ export default function Hero() {
                 id="hero-heading"
                 className="heading-font text-[1.65rem] sm:text-[2rem] lg:text-[2.35rem] xl:text-[2.5rem] leading-[1.12] text-slate-900 tracking-tight mb-2.5"
               >
-                {t.title1}{" "}
-                <span className="text-violet-600">{t.title2}</span> {t.title3}
+                {t.h1}
               </h1>
               <p
                 id="hero-description"

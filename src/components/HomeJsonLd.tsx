@@ -1,17 +1,18 @@
 import JsonLd from "./JsonLd";
-import { SITE_NAME, SITE_URL } from "@/lib/seo";
+import { SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/seo";
 import { dict } from "@/lib/dictionaries";
 import { SOCIAL_PROFILE_URLS } from "@/lib/social-links";
 
 export default function HomeJsonLd() {
   const faqs = dict.faqsPage?.list ?? [];
+  const meta = dict.metadata.home;
 
   const website = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE_NAME,
     url: SITE_URL,
-    description: dict.metadata.home.description,
+    description: meta.description,
     inLanguage: "es",
     potentialAction: {
       "@type": "SearchAction",
@@ -32,6 +33,28 @@ export default function HomeJsonLd() {
     sameAs: [...SOCIAL_PROFILE_URLS],
   };
 
+  const softwareApplication = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: meta.title,
+    applicationCategory: "EducationalApplication",
+    operatingSystem: "Web",
+    url: SITE_URL,
+    description: meta.description,
+    inLanguage: "es",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    image: absoluteUrl("/images/interfaz-calculadora-matematica.webp"),
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+  };
+
   const faqPage =
     faqs.length > 0
       ? {
@@ -45,6 +68,11 @@ export default function HomeJsonLd() {
         }
       : null;
 
-  const schemas = [website, organization, ...(faqPage ? [faqPage] : [])];
+  const schemas = [
+    website,
+    organization,
+    softwareApplication,
+    ...(faqPage ? [faqPage] : []),
+  ];
   return <JsonLd data={schemas} />;
 }

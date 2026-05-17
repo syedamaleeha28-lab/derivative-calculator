@@ -11,10 +11,8 @@ const dictionaryData = {
     },
     hero: {
       tag: "Herramienta Académica Gratuita",
-      title1: "Calculadora de Derivadas",
-      title2: "con Pasos",
-      title3: "para Resolver Online.",
-      desc: "Nuestra calculadora de derivadas paso a paso te permite obtener resultados simbólicos exactos y explicaciones detalladas. Deriva funciones trigonométricas, logarítmicas y compuestas de forma gratuita.",
+      h1: "Calculadora de Derivadas con Pasos Online",
+      desc: "Nuestra calculadora de derivadas online te ayuda a resolver funciones matemáticas con explicaciones paso a paso. Calcula derivadas trigonométricas, implícitas, parciales y logarítmicas de forma rápida y gratuita.",
       calcBtn: "Calcular Ahora",
       howBtn: "Cómo funciona",
       trust1: "Precisión simbólica exacta",
@@ -24,9 +22,11 @@ const dictionaryData = {
     },
     metadata: {
       home: {
-        title: "Calculadora de Derivadas Paso a Paso | Resuelve Online Gratis",
-        description: "Usa nuestra calculadora de derivadas online para obtener el resultado con procedimiento detallado. Resuelve derivadas con pasos de funciones trigonométricas, logarítmicas y parciales gratis.",
-        keywords: "calculadora de derivadas, calculadora de derivadas con pasos, calculadora de derivadas online, calculadora de derivadas paso a paso, resolver derivadas online, derivadas paso a paso gratis"
+        title: "Calculadora de Derivadas con Pasos Online Gratis",
+        description:
+          "Calculadora de derivadas online gratis con solución paso a paso. Resuelve derivadas parciales, implícitas, trigonométricas y logarítmicas fácilmente.",
+        keywords:
+          "calculadora de derivadas, calculadora de derivadas con pasos, calculadora de derivadas online, derivadas parciales, derivadas implícitas, derivadas trigonométricas, resolver derivadas gratis",
       }
     },
     footer: {
@@ -499,18 +499,71 @@ const dictionaryData = {
     },
     faqsPage: {
       title: "Preguntas Frecuentes",
-      subtitle: "Resuelve tus dudas sobre nuestra calculadora de derivadas online y aprende cálculo diferencial paso a paso.",
+      subtitle:
+        "Respuestas claras sobre cómo usar nuestra calculadora de derivadas online y qué tipos de funciones puedes resolver.",
       badge: "Centro de Ayuda",
       list: [
         {
-          q: "¿Cómo funciona la calculadora de derivadas con pasos de Calculadora Derivadas?",
-          a: "Nuestra calculadora de derivadas utiliza un motor matemático simbólico avanzado que procesa tus expresiones matemáticas de forma analítica. Al introducir una función, el sistema aplica las reglas de derivación y genera una solución detallada paso a paso."
+          q: "¿Qué hace una calculadora de derivadas?",
+          a: "Una calculadora de derivadas resuelve automáticamente derivadas matemáticas y muestra el procedimiento paso a paso.",
         },
         {
-          q: "¿La calculadora de derivadas paso a paso es gratuita?",
-          a: "Absolutamente. Calculadora Derivadas es una plataforma educativa de acceso libre diseñada para democratizar el aprendizaje de las matemáticas. Puedes realizar consultas ilimitadas de forma gratuita."
-        }
-      ]
+          q: "¿La calculadora de derivadas es gratuita?",
+          a: "Sí, nuestra calculadora online es completamente gratuita y funciona desde cualquier dispositivo.",
+        },
+        {
+          q: "¿Puedo resolver derivadas parciales?",
+          a: "Sí, la herramienta admite derivadas parciales para funciones multivariables.",
+        },
+        {
+          q: "¿Funciona con funciones trigonométricas?",
+          a: "Sí, puedes calcular derivadas de sen(x), cos(x), tan(x) y muchas otras funciones trigonométricas.",
+        },
+      ],
+    },
+    homeSeo: {
+      whatIs: {
+        title: "¿Qué es una derivada?",
+        content:
+          "Una derivada representa la tasa de cambio instantánea de una función matemática. En cálculo diferencial, las derivadas se utilizan para analizar pendientes, velocidades, máximos, mínimos y comportamiento de funciones. Nuestra calculadora de derivadas permite obtener resultados exactos y simplificados automáticamente.",
+        linkLabel: "Aprende más sobre derivadas",
+        href: "/como-funciona",
+      },
+      howToUse: {
+        title: "¿Cómo usar la calculadora de derivadas?",
+        steps: [
+          "Escribe la función matemática en el campo de entrada.",
+          "Selecciona funciones como sen, cos, ln o potencias usando el teclado matemático.",
+          "Haz clic en “Calcular Derivada”.",
+          "Obtén el resultado junto con la resolución paso a paso.",
+        ],
+        linkLabel: "Ver guía completa",
+        href: "/como-funciona",
+      },
+      types: {
+        title: "Tipos de derivadas compatibles",
+        items: [
+          "Derivadas trigonométricas",
+          "Derivadas logarítmicas",
+          "Derivadas implícitas",
+          "Derivadas parciales",
+          "Derivadas exponenciales",
+          "Regla de la cadena",
+          "Regla del producto",
+          "Regla del cociente",
+        ],
+        linkLabel: "Explorar reglas de derivación",
+        href: "/reglas",
+      },
+      internalLinks: {
+        title: "Recursos educativos",
+        links: [
+          { label: "Cómo funciona", href: "/como-funciona", description: "Guía paso a paso" },
+          { label: "Ejemplos resueltos", href: "/ejemplos", description: "Ejercicios con solución" },
+          { label: "Reglas de derivación", href: "/reglas", description: "Fórmulas y técnicas" },
+          { label: "Blog educativo", href: "/blog", description: "Artículos de cálculo" },
+        ],
+      },
     },
     seoCards: {
       title: "Tu Calculadora de Derivadas Online y Gratuita",
