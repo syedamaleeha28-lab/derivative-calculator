@@ -39,10 +39,18 @@ export default function HomeSeoSections() {
   return (
     <section
       id="guia-derivadas"
-      className="border-t border-slate-100 bg-gradient-to-b from-violet-50/40 to-white"
+      className="border-t border-slate-100 bg-gradient-to-b from-violet-50/30 via-white to-white"
       aria-label="Guía sobre derivadas y uso de la calculadora"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 space-y-14 md:space-y-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <motion.header {...fadeUp} className="max-w-2xl mb-12 md:mb-16">
+          <p className="text-sm font-semibold uppercase tracking-wider text-violet-600 mb-3">
+            Guía educativa
+          </p>
+          <p className="text-lg md:text-xl text-slate-600 leading-relaxed">{t.intro}</p>
+        </motion.header>
+
+        <div className="space-y-12 md:space-y-16">
         <motion.article {...fadeUp} className="max-w-3xl">
           <SectionHeading icon={<BookOpen size={20} aria-hidden />} title={t.whatIs.title} />
           <p className="text-slate-600 text-[1.02rem] leading-relaxed mb-5">
@@ -140,6 +148,7 @@ export default function HomeSeoSections() {
             ))}
           </div>
         </motion.nav>
+        </div>
       </div>
     </section>
   );

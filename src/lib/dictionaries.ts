@@ -522,6 +522,8 @@ const dictionaryData = {
       ],
     },
     homeSeo: {
+      intro:
+        "Aprende a usar la calculadora y repasa los conceptos esenciales del cálculo diferencial en español.",
       whatIs: {
         title: "¿Qué es una derivada?",
         content:
@@ -564,54 +566,6 @@ const dictionaryData = {
           { label: "Blog educativo", href: "/blog", description: "Artículos de cálculo" },
         ],
       },
-    },
-    seoCards: {
-      title: "Tu Calculadora de Derivadas Online y Gratuita",
-      subtitle: "Nuestra plataforma educativa está diseñada para ayudarte a resolver derivadas con pasos y comprender la lógica matemática detrás de cada función diferencial de forma rápida y sencilla.",
-      cards: [
-        {
-          id: "que-es-derivada",
-          title: "¿Qué es una derivada?",
-          desc: "La derivada representa la tasa de cambio instantánea de una función. Es la pendiente de la recta tangente en un punto específico.",
-          link: "Aprende el concepto base →",
-          href: "/como-funciona",
-        },
-        {
-          id: "como-usar-calculadora",
-          title: "Cómo usar la calculadora",
-          desc: "Simplemente ingresa tu expresión matemática usando nuestro teclado especializado. Obtendrás no solo el resultado final, sino la resolución paso a paso.",
-          link: "Ver tutorial rápido →",
-          href: "/como-funciona",
-        },
-        {
-          id: "reglas-derivacion",
-          title: "Reglas de Derivación",
-          desc: "Domina las reglas esenciales: regla de la potencia, regla del producto, cociente y la regla de la cadena.",
-          link: "Estudar reglas →",
-          href: "/reglas",
-        },
-        {
-          id: "ejemplos-derivadas",
-          title: "Ejemplos de Derivadas",
-          desc: "Explora nuestra biblioteca de ejercicios resueltos. Desde polinomios simples hasta complejas derivadas trigonométricas.",
-          link: "Ver galería de ejemplos →",
-          href: "/ejemplos",
-        },
-        {
-          id: "derivadas-parciales",
-          title: "Derivadas Parciales",
-          desc: "Avanza hacia el cálculo multivariable. Aprende a mantener variables constantes mientras derivas respecto a otra.",
-          link: "Conceptos avanzados →",
-          href: "/reglas",
-        },
-        {
-          id: "formulas-derivadas",
-          title: "Fórmulas de Derivadas",
-          desc: "Accede a nuestra tabla de derivadas y fórmulas trigonométricas interactivas.",
-          link: "Ver formulario completo →",
-          href: "/reglas",
-        },
-      ]
     },
     aboutPage: {
       title: "Acerca de Calculadora Derivadas",
