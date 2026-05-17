@@ -1,6 +1,5 @@
 /**
- * Recursively widens string literal types to `string` so each locale
- * can use different copy without cross-language assignability errors.
+ * Recursively widens string literal types to `string` for flexible copy.
  */
 export type DeepStringify<T> = T extends string
   ? string
@@ -9,5 +8,3 @@ export type DeepStringify<T> = T extends string
     : T extends object
       ? { [K in keyof T]: DeepStringify<T[K]> }
       : T;
-
-export type Lang = "es" | "en" | "pt";

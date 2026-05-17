@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, FlaskConical } from "lucide-react";
-import Link from "@/components/LanguageLink";
+import Link from "next/link";
 import katex from "katex";
-import { useLang } from "@/contexts/I18nContext";
+import { dict } from "@/lib/dictionaries";
 
 // ─── Section header ────────────────────────────────────────────────────────────
 function SectionHeader({
@@ -28,7 +28,6 @@ function SectionHeader({
 }
 
 export default function PopularExamples() {
-  const { lang: currentLang, dict } = useLang();
   const t = dict.popularExamples;
 
   const EXAMPLES = [
@@ -103,7 +102,7 @@ export default function PopularExamples() {
                   size={14}
                   className="text-slate-300 group-hover:text-secondary transition-colors group-hover:translate-x-0.5 transition-transform"
                 />
-                <span className="text-[0.65rem] text-slate-400 font-semibold uppercase tracking-widest">{currentLang === "en" ? "derivative" : currentLang === "pt" ? "derivada" : "derivada"}</span>
+                <span className="text-[0.65rem] text-slate-400 font-semibold uppercase tracking-widest">derivada</span>
               </div>
 
               {/* Result */}

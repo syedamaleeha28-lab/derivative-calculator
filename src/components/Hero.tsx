@@ -2,12 +2,12 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight, Check, Zap, BookOpen } from "lucide-react";
 import CalculatorCard, { type CalculatorHandle } from "./CalculatorCard";
-import { useLang } from "@/contexts/I18nContext";
-import LanguageLink from "@/components/LanguageLink";
+import { dict } from "@/lib/dictionaries";
 
-const MotionLink = motion(LanguageLink);
+const MotionLink = motion(Link);
 
 function TrustPill({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
@@ -20,7 +20,6 @@ function TrustPill({ icon, text }: { icon: React.ReactNode; text: string }) {
 
 export default function Hero() {
   const calculatorRef = useRef<CalculatorHandle>(null);
-  const { dict } = useLang();
   const t = dict.hero;
 
   const handleCalculateClick = (e: React.MouseEvent) => {
@@ -58,7 +57,7 @@ export default function Hero() {
               {t.tag}
             </div>
 
-            <div>
+            <motion.div>
               <h1
                 id="hero-heading"
                 className="heading-font text-[1.65rem] sm:text-[2rem] lg:text-[2.35rem] xl:text-[2.5rem] leading-[1.12] text-slate-900 tracking-tight mb-2.5"
@@ -72,7 +71,7 @@ export default function Hero() {
               >
                 {t.desc}
               </p>
-            </div>
+            </motion.div>
 
             <div className="flex flex-wrap items-center gap-2.5">
               <motion.button
@@ -85,7 +84,7 @@ export default function Hero() {
                 {t.calcBtn} <ArrowRight size={15} />
               </motion.button>
               <MotionLink
-                href="/how-it-works"
+                href="/como-funciona"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center justify-center gap-2 bg-white text-slate-900 border border-slate-200 hover:border-violet-300 px-5 py-2.5 rounded-xl font-bold text-[0.78rem] uppercase tracking-wider hover:bg-slate-50 transition-colors"

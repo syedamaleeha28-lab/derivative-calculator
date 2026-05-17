@@ -1,11 +1,10 @@
 "use client";
 
 import { dispatchCalculatorInput } from "@/lib/calculator-events";
-import { useLang } from "@/contexts/I18nContext";
+import { dict } from "@/lib/dictionaries";
 
 export default function PopularSearches() {
-  const { dict } = useLang();
-  const t = dict.popularSearches;
+    const t = dict.popularSearches;
 
   if (!t?.functions?.length) return null;
 

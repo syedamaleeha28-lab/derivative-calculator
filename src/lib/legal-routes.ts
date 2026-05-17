@@ -1,41 +1,18 @@
-import type { Lang } from "./dictionary-types";
-
 export type LegalPageId = "privacy" | "terms" | "disclaimer" | "about" | "contact";
 
-/** Canonical public paths per locale (Spanish uses unprefixed URLs). */
-export const LEGAL_PATHS: Record<LegalPageId, Record<Lang, string>> = {
-  privacy: {
-    es: "/politica-de-privacidad",
-    en: "/privacy-policy",
-    pt: "/politica-de-privacidad",
-  },
-  terms: {
-    es: "/terminos-de-servicio",
-    en: "/terms",
-    pt: "/terminos-de-servicio",
-  },
-  disclaimer: {
-    es: "/disclaimer",
-    en: "/disclaimer",
-    pt: "/disclaimer",
-  },
-  about: {
-    es: "/about",
-    en: "/about",
-    pt: "/about",
-  },
-  contact: {
-    es: "/contact",
-    en: "/contact",
-    pt: "/contact",
-  },
+/** Canonical Spanish public paths. */
+export const LEGAL_PATHS: Record<LegalPageId, string> = {
+  privacy: "/privacy-policy",
+  terms: "/terms-of-service",
+  disclaimer: "/disclaimer",
+  about: "/acerca-de",
+  contact: "/contacto",
 };
 
-export function getLegalPath(page: LegalPageId, lang: Lang): string {
-  return LEGAL_PATHS[page][lang];
+export function getLegalPath(page: LegalPageId): string {
+  return LEGAL_PATHS[page];
 }
 
-/** Footer link order for trust / legal navigation. */
 export const FOOTER_LEGAL_PAGES: LegalPageId[] = [
   "about",
   "contact",

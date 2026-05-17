@@ -17,13 +17,12 @@ import {
   Calculator
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "@/components/LanguageLink";
+import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import type { Lang } from "@/lib/dictionary-types";
-import { useLang } from "@/contexts/I18nContext";
-import { getAbsoluteUrl } from "@/lib/seo-urls";
+import { dict } from "@/lib/dictionaries";
+import { absoluteUrl } from "@/lib/seo";
 
 interface Heading {
   id: string;
@@ -108,7 +107,6 @@ export const WarningCard = ({ children }: { children: React.ReactNode }) => (
 );
 
 export const ExampleCard = ({ title, children, steps }: { title: string; children: React.ReactNode; steps?: readonly string[] }) => {
-  const { lang: currentLang, dict } = useLang();
   const t = dict.article;
 
   return (
@@ -162,7 +160,6 @@ export default function ArticleLayout({
   const [isTocOpen, setIsTocOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const { lang: currentLang, dict } = useLang();
   const t = dict.article;
 
   useEffect(() => {
@@ -262,18 +259,18 @@ export default function ArticleLayout({
       "@type": "ListItem",
       position: i + 1,
       name: b.label,
-      item: getAbsoluteUrl(currentLang, b.href),
+      item: absoluteUrl(b.href),
     })),
   };
 
   const INTERNAL_LINKS = [
-    { label: currentLang === "en" ? "Derivative Calculator" : currentLang === "pt" ? "Calculadora de Derivadas" : "Calculadora de Derivadas", href: "/#calculator", icon: <Calculator size={14} /> },
-    { label: currentLang === "en" ? "Differentiation Rules" : currentLang === "pt" ? "Regras de Derivação" : "Reglas de Derivación", href: "/reglas", icon: <BookOpen size={14} /> },
-    { label: currentLang === "en" ? "Calculus Formulas" : currentLang === "pt" ? "Fórmulas de Cálculo" : "Fórmulas de Cálculo", href: "/basic-derivative-formulas", icon: <List size={14} /> },
-    { label: currentLang === "en" ? "Solved Examples" : currentLang === "pt" ? "Exemplos Resolvidos" : "Ejemplos Resueltos", href: "/derivative-examples", icon: <CheckCircle2 size={14} /> },
-    { label: currentLang === "en" ? "Basic Concepts" : currentLang === "pt" ? "Conceitos Básicos" : "Conceptos Básicos", href: "/what-is-a-derivative", icon: <HelpCircle size={14} /> },
-    { label: currentLang === "en" ? "Math Blog" : currentLang === "pt" ? "Blog de Matemática" : "Blog de Matemáticas", href: "/blog", icon: <ExternalLink size={14} /> },
-    { label: currentLang === "en" ? "How It Works" : currentLang === "pt" ? "Como Funciona" : "Cómo Funciona", href: "/how-it-works", icon: <List size={14} /> },
+    { label: "Calculadora de Derivadas", href: "/#calculator", icon: <Calculator size={14} /> },
+    { label: "Reglas de Derivación", href: "/reglas", icon: <BookOpen size={14} /> },
+    { label: "Fórmulas de Cálculo", href: "/reglas", icon: <List size={14} /> },
+    { label: "Ejemplos Resueltos", href: "/ejemplos", icon: <CheckCircle2 size={14} /> },
+    { label: "Conceptos Básicos", href: "/como-funciona", icon: <HelpCircle size={14} /> },
+    { label: "Blog de Matemáticas", href: "/blog", icon: <ExternalLink size={14} /> },
+    { label: "Cómo Funciona", href: "/como-funciona", icon: <List size={14} /> },
   ];
 
   return (
@@ -532,7 +529,7 @@ export default function ArticleLayout({
                           {post.title}
                         </h5>
                         <div className="flex items-center gap-1 text-[0.75rem] text-secondary font-bold mt-2 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all">
-                          {currentLang === "en" ? "Read more" : currentLang === "pt" ? "Ler mais" : "Leer más"} <ArrowRight size={12} />
+                          "Leer más" <ArrowRight size={12} />
                         </div>
                       </Link>
                     ))}
@@ -566,10 +563,10 @@ export default function ArticleLayout({
                   {post.title}
                 </h3>
                 <p className="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-6">
-                  {currentLang === "en" ? "Learn step by step how to solve complex exercises and master differential calculus quickly with our interactive guides." : currentLang === "pt" ? "Aprenda passo a passo como resolver exercícios complexos e domine o cálculo diferencial rapidamente com nossos guias interativos." : "Aprende paso a paso cómo resolver ejercicios complejos y domina el cálculo diferencial rápidamente con nuestras guías interactivas."}
+                  "Aprende paso a paso cómo resolver ejercicios complejos y domina el cálculo diferencial rápidamente con nuestras guías interactivas."
                 </p>
                 <div className="mt-auto flex items-center gap-2 text-slate-900 font-bold text-[0.8rem]">
-                   {currentLang === "en" ? "Read article" : currentLang === "pt" ? "Ler artigo" : "Leer artículo"} <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                   "Leer artículo" <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
             ))}

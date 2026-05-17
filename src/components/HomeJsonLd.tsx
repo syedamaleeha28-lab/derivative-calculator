@@ -1,10 +1,8 @@
 import JsonLd from "./JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
-import type { Lang } from "@/lib/dictionary-types";
-import { dictionaries } from "@/lib/dictionaries";
+import { dict } from "@/lib/dictionaries";
 
-export default function HomeJsonLd({ lang }: { lang: Lang }) {
-  const dict = dictionaries[lang];
+export default function HomeJsonLd() {
   const faqs = dict.faqsPage?.list ?? [];
 
   const website = {
@@ -13,12 +11,12 @@ export default function HomeJsonLd({ lang }: { lang: Lang }) {
     name: SITE_NAME,
     url: SITE_URL,
     description: dict.metadata.home.description,
-    inLanguage: lang === "es" ? "es" : lang === "pt" ? "pt-BR" : "en",
+    inLanguage: "es",
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}${lang === "es" ? "" : `/${lang}`}/?q={search_term_string}`,
+        urlTemplate: `${SITE_URL}/?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },

@@ -2,12 +2,11 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "@/components/LanguageLink";
-import { useLang } from "@/contexts/I18nContext";
+import Link from "next/link";
+import { dict } from "@/lib/dictionaries";
 import PopularSearches from "./PopularSearches";
 
 export default function SEOContent() {
-  const { dict } = useLang();
   const t = dict.seoCards;
 
   // Since we only have some cards in dictionary, we'll map them
@@ -15,30 +14,18 @@ export default function SEOContent() {
   // For now, I'll use the dictionary cards and fallback if needed
   
   const IMAGES: Record<string, { src: string; alt: string }> = {
-    "/what-is-a-derivative": {
+    "/como-funciona": {
       src: "/images/que-es-una-derivada.png",
-      alt: "Concept of derivative"
-    },
-    "/how-to-use-derivative-calculator": {
-      src: "/images/como-usar-calculadora-de-derivadas.png",
-      alt: "How to use calculator"
+      alt: "Concepto de derivada",
     },
     "/reglas": {
       src: "/images/reglas-de-derivacion.png",
-      alt: "Differentiation rules"
+      alt: "Reglas de derivación",
     },
-    "/derivative-examples": {
+    "/ejemplos": {
       src: "/images/ejemplos-de-derivadas-resueltas.png",
-      alt: "Derivative examples"
+      alt: "Ejemplos de derivadas resueltas",
     },
-    "/partial-derivatives": {
-      src: "/images/derivadas-parciales.png",
-      alt: "Partial derivatives"
-    },
-    "/basic-derivative-formulas": {
-      src: "/images/formulas-de-derivadas.png",
-      alt: "Derivative formulas"
-    }
   };
 
   return (

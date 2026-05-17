@@ -1,8 +1,8 @@
 "use client";
 
-import LanguageLink from "@/components/LanguageLink";
+import Link from "next/link";
 import FacebookSocialLink from "@/components/FacebookSocialLink";
-import { useLang } from "@/contexts/I18nContext";
+import { dict } from "@/lib/dictionaries";
 import { FOOTER_LEGAL_PAGES, getLegalPath } from "@/lib/legal-routes";
 
 const FOOTER_LABEL_KEY = {
@@ -14,7 +14,6 @@ const FOOTER_LABEL_KEY = {
 } as const;
 
 export default function Footer() {
-  const { lang, dict } = useLang();
   const t = dict.footer;
 
   return (
@@ -26,12 +25,12 @@ export default function Footer() {
             <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-slate-600">
               {FOOTER_LEGAL_PAGES.map((pageId) => (
                 <li key={pageId}>
-                  <LanguageLink
-                    href={getLegalPath(pageId, lang)}
+                  <Link
+                    href={getLegalPath(pageId)}
                     className="hover:text-secondary hover:underline transition-colors"
                   >
                     {t[FOOTER_LABEL_KEY[pageId]]}
-                  </LanguageLink>
+                  </Link>
                 </li>
               ))}
             </ul>

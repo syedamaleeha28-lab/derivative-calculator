@@ -1,46 +1,45 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "@/components/LanguageLink";
+import Link from "next/link";
 import katex from "katex";
-import { useLang } from "@/contexts/I18nContext";
+import { dict } from "@/lib/dictionaries";
 
 export default function Rules() {
-  const { dict } = useLang();
   const t = dict.rules;
 
   const RULES = [
     {
       name: t.list.power.name,
-      href: "/reglas/regla-de-la-potencia",
+      href: "/reglas",
       formula: "\\dfrac{d}{dx}\\left[x^n\\right] = n \\cdot x^{n-1}",
       desc: t.list.power.desc,
       color: "bg-violet-50 border-secondary/15",
     },
     {
       name: t.list.product.name,
-      href: "/reglas/regla-del-producto",
+      href: "/reglas",
       formula: "\\dfrac{d}{dx}\\left[u \\cdot v\\right] = u'v + uv'",
       desc: t.list.product.desc,
       color: "bg-slate-50 border-slate-200/60",
     },
     {
       name: t.list.quotient.name,
-      href: "/reglas/regla-del-cociente",
+      href: "/reglas",
       formula: "\\dfrac{d}{dx}\\left[\\dfrac{u}{v}\\right] = \\dfrac{u'v - uv'}{v^2}",
       desc: t.list.quotient.desc,
       color: "bg-slate-50 border-slate-200/60",
     },
     {
       name: t.list.chain.name,
-      href: "/reglas/regla-de-la-cadena",
+      href: "/reglas",
       formula: "\\dfrac{d}{dx}\\left[f(g(x))\\right] = f'(g(x)) \\cdot g'(x)",
       desc: t.list.chain.desc,
       color: "bg-violet-50 border-secondary/15",
     },
     {
       name: t.list.trig.name,
-      href: "/reglas/derivadas-trigonometricas",
+      href: "/reglas",
       formula: "\\dfrac{d}{dx}\\left[\\sin(x)\\right] = \\cos(x)",
       desc: t.list.trig.desc,
       color: "bg-slate-50 border-slate-200/60",

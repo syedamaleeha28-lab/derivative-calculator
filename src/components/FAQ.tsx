@@ -3,12 +3,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
-import { useLang } from "@/contexts/I18nContext";
+import { dict } from "@/lib/dictionaries";
 
 export default function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
-  const { dict } = useLang();
-  const t = dict.faqsPage;
+    const t = dict.faqsPage;
 
   return (
     <section

@@ -1,29 +1,26 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
-import LanguageLink from "@/components/LanguageLink";
-import { dictionaries } from "@/lib/dictionaries";
-import type { Lang } from "@/lib/dictionary-types";
+import Link from "next/link";
+import { dict } from "@/lib/dictionaries";
 import {
   FOOTER_LEGAL_PAGES,
   getLegalPath,
   type LegalPageId,
 } from "@/lib/legal-routes";
 import { getLegalPageContent } from "@/lib/legal-pages";
-import { absoluteUrl, normalizeLang, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 type LegalTrustPageProps = {
-  lang: string;
   pageId: LegalPageId;
 };
 
-export default function LegalTrustPage({ lang, pageId }: LegalTrustPageProps) {
-  const currentLang = normalizeLang(lang) as Lang;
-  const content = getLegalPageContent(currentLang, pageId);
-  const home = dictionaries[currentLang].breadcrumbs.home;
-  const footer = dictionaries[currentLang].footer;
-  const path = getLegalPath(pageId, currentLang);
-  const canonical = absoluteUrl(currentLang, path);
+export default function LegalTrustPage({ pageId }: LegalTrustPageProps) {
+  const content = getLegalPageContent(pageId);
+  const home = dict.breadcrumbs.home;
+  const footer = dict.footer;
+  const path = getLegalPath(pageId);
+  const canonical = absoluteUrl(path);
 
   const schemaType =
     pageId === "about"
@@ -39,7 +36,7 @@ export default function LegalTrustPage({ lang, pageId }: LegalTrustPageProps) {
       name: content.title,
       description: content.subtitle,
       url: canonical,
-      inLanguage: currentLang === "es" ? "es" : currentLang === "pt" ? "pt-BR" : "en",
+      inLanguage: "es",
       dateModified: content.lastUpdated,
       isPartOf: {
         "@type": "WebSite",
@@ -64,7 +61,7 @@ export default function LegalTrustPage({ lang, pageId }: LegalTrustPageProps) {
 
   const relatedLinks = FOOTER_LEGAL_PAGES.filter((id) => id !== pageId).map((id) => ({
     id,
-    href: getLegalPath(id, currentLang),
+    href: getLegalPath(id),
     label: footer[footerLabelKey[id]],
   }));
 
@@ -80,9 +77,9 @@ export default function LegalTrustPage({ lang, pageId }: LegalTrustPageProps) {
             aria-label="Breadcrumb"
             className="flex flex-wrap items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-wider text-slate-400 mb-8"
           >
-            <LanguageLink href="/" className="hover:text-secondary transition-colors">
+            <Link href="/" className="hover:text-secondary transition-colors">
               {home}
-            </LanguageLink>
+            </Link>
             <span aria-hidden className="opacity-40">
               /
             </span>
@@ -100,12 +97,7 @@ export default function LegalTrustPage({ lang, pageId }: LegalTrustPageProps) {
             </h1>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">{content.subtitle}</p>
             <p className="mt-4 text-xs text-slate-400">
-              {currentLang === "en"
-                ? "Last updated"
-                : currentLang === "pt"
-                  ? "Última atualização"
-                  : "Última actualización"}
-              : {content.lastUpdated}
+              Última actualización: {content.lastUpdated}
             </p>
           </header>
 
@@ -129,34 +121,30 @@ export default function LegalTrustPage({ lang, pageId }: LegalTrustPageProps) {
             <ul className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3">
               {relatedLinks.map((link) => (
                 <li key={link.id}>
-                  <LanguageLink
+                  <Link
                     href={link.href}
                     className="text-sm font-medium text-secondary hover:underline"
                   >
                     {link.label}
-                  </LanguageLink>
+                  </Link>
                 </li>
               ))}
             </ul>
           </aside>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-3">
-            <LanguageLink
+            <Link
               href={ctaHref}
               className="inline-flex justify-center items-center bg-secondary text-white px-8 py-3 rounded-xl font-semibold text-sm shadow-md hover:opacity-95 transition-opacity"
             >
               {content.ctaLabel}
-            </LanguageLink>
-            <LanguageLink
-              href="/how-it-works"
+            </Link>
+            <Link
+              href="/como-funciona"
               className="inline-flex justify-center items-center border border-slate-200 bg-white text-slate-700 px-8 py-3 rounded-xl font-semibold text-sm hover:border-secondary/40 transition-colors"
             >
-              {currentLang === "en"
-                ? "How it works"
-                : currentLang === "pt"
-                  ? "Como funciona"
-                  : "Cómo funciona"}
-            </LanguageLink>
+              Cómo funciona
+            </Link>
           </div>
         </div>
       </article>

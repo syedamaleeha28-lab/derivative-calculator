@@ -7,7 +7,7 @@ import {
   CALCULATOR_SET_INPUT,
   type CalculatorSetInputDetail,
 } from "@/lib/calculator-events";
-import { useLang } from "@/contexts/I18nContext";
+import { dict } from "@/lib/dictionaries";
 import type { TranslationDictionary } from "@/lib/dictionaries";
 // @ts-ignore
 import nerdamer from "nerdamer/all.min";
@@ -210,8 +210,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
   const [simplify, setSimplify] = useState(true);
   const [variable, setVariable] = useState("x");
 
-  const { dict } = useLang();
-  const t = dict.calculator;
+    const t = dict.calculator;
 
   const keypad = useMemo(() => buildKeypad(variable, t.tips), [variable, t.tips]);
 

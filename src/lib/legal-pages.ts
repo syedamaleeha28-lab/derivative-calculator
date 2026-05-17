@@ -1,4 +1,3 @@
-import type { Lang } from "./dictionary-types";
 
 export type LegalSection = {
   id: string;
@@ -766,13 +765,8 @@ const pt: Record<string, LegalPageContent> = {
   },
 };
 
-const BY_LANG: Record<Lang, Record<string, LegalPageContent>> = { es, en, pt };
-
 export type LegalPageKey = keyof typeof es;
 
-export function getLegalPageContent(
-  lang: Lang,
-  page: LegalPageKey
-): LegalPageContent {
-  return BY_LANG[lang][page];
+export function getLegalPageContent(page: LegalPageKey): LegalPageContent {
+  return es[page];
 }

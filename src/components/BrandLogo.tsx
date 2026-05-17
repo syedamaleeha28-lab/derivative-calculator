@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "@/components/LanguageLink";
-import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const LOGO_ALT =
   "Calculadora Derivadas — logotipo de la calculadora de derivadas en línea con notación d/dx.";
@@ -27,7 +26,6 @@ const variantClass: Record<BrandLogoVariant, { wrap: string; sizes: string; prio
   },
 };
 
-/** Logo compacto y alineado a la derecha del recuadro para acercarlo al wordmark. */
 const NAV_WORDMARK_LOGO_WRAP =
   "relative flex h-8 w-[4.625rem] shrink-0 items-center justify-end sm:h-9 sm:w-[5.125rem] md:w-[5.5rem]";
 
@@ -40,15 +38,12 @@ export function BrandLogoLink({
   variant: BrandLogoVariant;
   onNavigate?: () => void;
   className?: string;
-  /** Muestra el texto «Calculadora Derivadas» junto al logo. */
   showWordmark?: boolean;
 }) {
   const v = variantClass[variant];
   const isNavWordmark = showWordmark && variant === "nav";
   const wrapClass = isNavWordmark ? NAV_WORDMARK_LOGO_WRAP : v.wrap;
   const imgSizes = isNavWordmark ? "(max-width: 768px) 76px, 90px" : v.sizes;
-  const pathname = usePathname() || "";
-  const lang = pathname.startsWith("/en") ? "en" : pathname.startsWith("/pt") ? "pt" : "es";
 
   return (
     <Link
@@ -65,17 +60,13 @@ export function BrandLogoLink({
           src="/images/derivio-calculator-logo.webp"
           alt={isNavWordmark ? "" : LOGO_ALT}
           fill
-          className={
-            isNavWordmark
-              ? "object-contain object-right"
-              : "object-contain object-left"
-          }
+          className={isNavWordmark ? "object-contain object-right" : "object-contain object-left"}
           sizes={imgSizes}
           priority={v.priority}
         />
       </div>
       {isNavWordmark && (
-        <span className="flex min-w-0 shrink items-center leading-none" lang={lang}>
+        <span className="flex min-w-0 shrink items-center leading-none" lang="es">
           <span className="heading-font whitespace-nowrap text-[0.75rem] font-semibold tracking-tight text-slate-900 sm:text-[0.875rem] md:text-[0.9375rem]">
             Calculadora{" "}
             <span className="font-bold text-secondary">Derivadas</span>
