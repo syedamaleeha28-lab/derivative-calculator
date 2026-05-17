@@ -288,6 +288,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
     path: `/blog/${slug}`,
     title: post.title,
     description: post.description,
+    keywords: dict.metadata.blog.keywords,
     ogType: "article",
     publishedTime: post.date,
   });

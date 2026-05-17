@@ -6,8 +6,12 @@ import { metadataFromEntry } from "@/lib/seo";
 import HowToJsonLd from "@/components/HowToJsonLd";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = dict.howItWorks;
-  return metadataFromEntry("/como-funciona", { title: t.title, description: t.description });
+  const m = dict.metadata.comoFunciona;
+  return metadataFromEntry("/como-funciona", {
+    title: m.title,
+    description: m.description,
+    keywords: m.keywords,
+  });
 }
 
 export default async function ComoFuncionaPage() {

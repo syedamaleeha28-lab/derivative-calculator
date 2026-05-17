@@ -211,33 +211,43 @@ export default function ArticleLayout({
   };
 
   // ─── Schema JSON-LD ───────────────────────────────────────────────────────
+  const pageUrl = canonical ?? breadcrumbs.at(-1)?.href
+    ? absoluteUrl(breadcrumbs.at(-1)!.href)
+    : SITE_URL;
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": title,
-    "description": description,
-    "image": image
+    headline: title,
+    description,
+    inLanguage: "es",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl,
+    },
+    image: image
       ? {
           "@type": "ImageObject",
-          "url": image,
-          "width": 1200,
-          "height": 630,
-          "caption": heroImageAlt?.trim() || title,
+          url: image,
+          width: 1200,
+          height: 630,
+          caption: heroImageAlt?.trim() || title,
         }
       : absoluteUrl("/images/interfaz-calculadora-matematica.webp"),
-    "datePublished": date,
-    "author": {
+    datePublished: date,
+    author: {
       "@type": "Person",
-      "name": author.name
+      name: author.name,
     },
-    "publisher": {
+    publisher: {
       "@type": "Organization",
-      "name": "Calculadora Derivadas",
-      "logo": {
+      name: "Calculadora Derivadas",
+      url: SITE_URL,
+      logo: {
         "@type": "ImageObject",
-        "url": `${SITE_URL}/images/derivio-calculator-logo.webp`
-      }
-    }
+        url: `${SITE_URL}/images/derivio-calculator-logo.webp`,
+      },
+    },
   };
 
   const faqSchema = faqs ? {

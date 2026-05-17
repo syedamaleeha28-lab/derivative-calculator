@@ -7,10 +7,11 @@ import { dict } from "@/lib/dictionaries";
 import { metadataFromEntry } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = dict.blog;
+  const m = dict.metadata.blog;
   return metadataFromEntry("/blog", {
-    title: `${t.title1}${t.title2}`,
-    description: t.subtitle,
+    title: m.title,
+    description: m.description,
+    keywords: m.keywords,
   });
 }
 

@@ -8,8 +8,12 @@ import { dict } from "@/lib/dictionaries";
 import { metadataFromEntry } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = dict.rulesPage;
-  return metadataFromEntry("/reglas", { title: t.title, description: t.description });
+  const m = dict.metadata.reglas;
+  return metadataFromEntry("/reglas", {
+    title: m.title,
+    description: m.description,
+    keywords: m.keywords,
+  });
 }
 
 export default async function ReglasPage() {

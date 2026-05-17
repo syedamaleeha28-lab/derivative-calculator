@@ -37,7 +37,7 @@ export default function FAQ() {
             const isOpen = openIdx === idx;
             return (
               <motion.div
-                key={idx}
+                key={faq.q}
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}

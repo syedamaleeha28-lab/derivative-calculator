@@ -6,8 +6,12 @@ import type { Metadata } from "next";
 import { dict } from "@/lib/dictionaries";
 import { metadataFromEntry } from "@/lib/seo";
 export async function generateMetadata(): Promise<Metadata> {
-  const t = dict.examplesPage;
-  return metadataFromEntry("/ejemplos", { title: t.title, description: t.description });
+  const m = dict.metadata.ejemplos;
+  return metadataFromEntry("/ejemplos", {
+    title: m.title,
+    description: m.description,
+    keywords: m.keywords,
+  });
 }
 
 export default async function DerivativeExamples() {

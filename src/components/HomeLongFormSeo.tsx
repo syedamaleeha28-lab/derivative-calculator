@@ -45,6 +45,22 @@ export default function HomeLongFormSeo() {
                 ))}
               </div>
             ))}
+            {"relatedLinks" in section && section.relatedLinks && section.relatedLinks.length > 0 && (
+              <p className="text-sm text-slate-600 mt-4">
+                <span className="font-medium text-slate-800">Recursos relacionados: </span>
+                {section.relatedLinks.map((link, i) => (
+                  <span key={link.href}>
+                    {i > 0 && " · "}
+                    <Link
+                      href={link.href}
+                      className="text-violet-600 hover:text-violet-700 font-medium underline-offset-2 hover:underline"
+                    >
+                      {link.label}
+                    </Link>
+                  </span>
+                ))}
+              </p>
+            )}
           </div>
         ))}
 
