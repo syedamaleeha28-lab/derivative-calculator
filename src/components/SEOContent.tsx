@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { dict } from "@/lib/dictionaries";
+import { getEducationalCardImageById } from "@/lib/educational-card-images";
 import PopularSearches from "./PopularSearches";
 
 export default function SEOContent() {
@@ -22,9 +23,11 @@ export default function SEOContent() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {t.cards.map((card, idx) => (
+          {t.cards.map((card, idx) => {
+            const image = getEducationalCardImageById(card.id);
+            return (
             <motion.div
-              key={`${card.title}-${idx}`}
+              key={card.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -33,8 +36,8 @@ export default function SEOContent() {
             >
               <div className="relative mx-auto mb-5 h-28 w-28 shrink-0 overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm sm:h-32 sm:w-32">
                 <Image
-                  src={card.image}
-                  alt={card.imageAlt ?? card.title}
+                  src={image.src}
+                  alt={image.alt}
                   fill
                   sizes="(max-width: 768px) 112px, 128px"
                   loading="lazy"
@@ -54,7 +57,8 @@ export default function SEOContent() {
                 {card.link}
               </Link>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
         <PopularSearches />
       </div>
