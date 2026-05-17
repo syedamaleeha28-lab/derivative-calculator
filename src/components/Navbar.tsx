@@ -7,13 +7,12 @@ import Link from "next/link";
 import { BrandLogoLink } from "./BrandLogo";
 import FacebookSocialLink from "./FacebookSocialLink";
 import { dict } from "@/lib/dictionaries";
+import { NAV_LINKS as NAV_ROUTE_LINKS, ROUTES } from "@/lib/routes";
 
-const NAV_LINKS = [
-  { name: dict.nav.works, href: "/como-funciona" },
-  { name: dict.nav.examples, href: "/ejemplos" },
-  { name: dict.nav.rules, href: "/reglas" },
-  { name: dict.nav.blog, href: "/blog" },
-];
+const NAV_LINKS = NAV_ROUTE_LINKS.map((link) => ({
+  name: dict.nav[link.nameKey],
+  href: link.href,
+}));
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -60,7 +59,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-2">
           <FacebookSocialLink className="h-9 w-9" iconSize={16} />
           <Link
-            href="/"
+            href={ROUTES.home}
             className="ml-1 bg-[#16213e] hover:bg-[#8b5cf6] text-white px-5 py-2.5 rounded-lg text-[0.9rem] font-semibold transition-all shadow-md hover:shadow-lg active:scale-95"
           >
             {t.calculate}
@@ -108,7 +107,7 @@ export default function Navbar() {
               ))}
               <li className="pt-3 mt-1 border-t border-slate-100">
                 <Link
-                  href="/"
+                  href={ROUTES.home}
                   onClick={() => setMobileOpen(false)}
                   className="flex justify-center w-full bg-[#16213e] hover:bg-[#8b5cf6] text-white py-3 rounded-xl font-semibold text-[0.95rem] shadow-md transition-all active:scale-95"
                 >

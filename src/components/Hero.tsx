@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Check, Zap, BookOpen } from "lucide-react";
 import CalculatorCard, { type CalculatorHandle } from "./CalculatorCard";
 import { dict } from "@/lib/dictionaries";
+import { ROUTES } from "@/lib/routes";
 
 const MotionLink = motion(Link);
 
@@ -84,7 +85,7 @@ export default function Hero() {
                 {t.calcBtn} <ArrowRight size={15} />
               </motion.button>
               <MotionLink
-                href="/como-funciona"
+                href={ROUTES.comoFunciona}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center justify-center gap-2 bg-white text-slate-900 border border-slate-200 hover:border-violet-300 px-5 py-2.5 rounded-xl font-bold text-[0.78rem] uppercase tracking-wider hover:bg-slate-50 transition-colors"

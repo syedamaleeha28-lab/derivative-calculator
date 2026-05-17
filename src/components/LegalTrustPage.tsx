@@ -10,6 +10,7 @@ import {
 } from "@/lib/legal-routes";
 import { getLegalPageContent } from "@/lib/legal-pages";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { ROUTES } from "@/lib/routes";
 
 type LegalTrustPageProps = {
   pageId: LegalPageId;
@@ -140,7 +141,7 @@ export default function LegalTrustPage({ pageId }: LegalTrustPageProps) {
               {content.ctaLabel}
             </Link>
             <Link
-              href="/como-funciona"
+              href={ROUTES.comoFunciona}
               className="inline-flex justify-center items-center border border-slate-200 bg-white text-slate-700 px-8 py-3 rounded-xl font-semibold text-sm hover:border-secondary/40 transition-colors"
             >
               Cómo funciona

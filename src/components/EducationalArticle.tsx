@@ -23,6 +23,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { dict } from "@/lib/dictionaries";
 import { absoluteUrl } from "@/lib/seo";
+import { ROUTES } from "@/lib/routes";
 
 interface Heading {
   id: string;
@@ -265,12 +266,12 @@ export default function ArticleLayout({
 
   const INTERNAL_LINKS = [
     { label: "Calculadora de Derivadas", href: "/#calculator", icon: <Calculator size={14} /> },
-    { label: "Reglas de Derivación", href: "/reglas", icon: <BookOpen size={14} /> },
-    { label: "Fórmulas de Cálculo", href: "/reglas", icon: <List size={14} /> },
-    { label: "Ejemplos Resueltos", href: "/ejemplos", icon: <CheckCircle2 size={14} /> },
-    { label: "Conceptos Básicos", href: "/como-funciona", icon: <HelpCircle size={14} /> },
-    { label: "Blog de Matemáticas", href: "/blog", icon: <ExternalLink size={14} /> },
-    { label: "Cómo Funciona", href: "/como-funciona", icon: <List size={14} /> },
+    { label: "Reglas de Derivación", href: ROUTES.reglas, icon: <BookOpen size={14} /> },
+    { label: "Fórmulas de Cálculo", href: ROUTES.reglas, icon: <List size={14} /> },
+    { label: "Ejemplos Resueltos", href: ROUTES.ejemplos, icon: <CheckCircle2 size={14} /> },
+    { label: "Conceptos Básicos", href: ROUTES.comoFunciona, icon: <HelpCircle size={14} /> },
+    { label: "Blog de Matemáticas", href: ROUTES.blog, icon: <ExternalLink size={14} /> },
+    { label: "Cómo Funciona", href: ROUTES.comoFunciona, icon: <List size={14} /> },
   ];
 
   return (
