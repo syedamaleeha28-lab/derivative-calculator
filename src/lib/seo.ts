@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://calculadoraderivadas.app";
+/** Canonical production origin (include www). */
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.SITE_URL ??
+  "https://www.calculadora-derivadas.org"
+).replace(/\/$/, "");
+
 export const SITE_NAME = "Calculadora Derivadas";
 
 /** Absolute canonical URL for a page. */

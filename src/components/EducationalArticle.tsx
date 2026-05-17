@@ -22,7 +22,7 @@ import Image from "next/image";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { dict } from "@/lib/dictionaries";
-import { absoluteUrl } from "@/lib/seo";
+import { absoluteUrl, SITE_URL } from "@/lib/seo";
 import { ROUTES } from "@/lib/routes";
 
 interface Heading {
@@ -224,7 +224,7 @@ export default function ArticleLayout({
           "height": 630,
           "caption": heroImageAlt?.trim() || title,
         }
-      : "https://calculadoraderivadas.app/og-image.jpg",
+      : absoluteUrl("/images/interfaz-calculadora-matematica.webp"),
     "datePublished": date,
     "author": {
       "@type": "Person",
@@ -235,7 +235,7 @@ export default function ArticleLayout({
       "name": "Calculadora Derivadas",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://calculadoraderivadas.app/logo.png"
+        "url": `${SITE_URL}/images/derivio-calculator-logo.webp`
       }
     }
   };
