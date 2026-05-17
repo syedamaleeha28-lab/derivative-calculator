@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { BrandLogoLink } from "./BrandLogo";
-import FacebookSocialLink from "./FacebookSocialLink";
+import SocialLinks from "./SocialLinks";
 import { dict } from "@/lib/dictionaries";
 import { NAV_LINKS as NAV_ROUTE_LINKS, ROUTES } from "@/lib/routes";
 
@@ -57,7 +57,7 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden md:flex items-center gap-2">
-          <FacebookSocialLink className="h-9 w-9" iconSize={16} />
+          <SocialLinks variant="navbar" iconSize={16} />
           <Link
             href={ROUTES.home}
             className="ml-1 bg-[#16213e] hover:bg-[#8b5cf6] text-white px-5 py-2.5 rounded-lg text-[0.9rem] font-semibold transition-all shadow-md hover:shadow-lg active:scale-95"
@@ -67,7 +67,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-1.5 md:hidden">
-          <FacebookSocialLink className="h-9 w-9" iconSize={16} />
+          <SocialLinks variant="navbar" iconSize={16} />
           <button
             onClick={() => setMobileOpen((o) => !o)}
             className="p-2 text-slate-800"

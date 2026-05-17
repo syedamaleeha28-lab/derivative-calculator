@@ -1,6 +1,7 @@
 import JsonLd from "./JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 import { dict } from "@/lib/dictionaries";
+import { SOCIAL_PROFILE_URLS } from "@/lib/social-links";
 
 export default function HomeJsonLd() {
   const faqs = dict.faqsPage?.list ?? [];
@@ -28,7 +29,7 @@ export default function HomeJsonLd() {
     name: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/images/interfaz-calculadora-matematica.webp`,
-    sameAs: ["https://www.facebook.com/profile.php?id=61590109041520"],
+    sameAs: [...SOCIAL_PROFILE_URLS],
   };
 
   const faqPage =

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import FacebookSocialLink from "@/components/FacebookSocialLink";
+import SocialLinks from "@/components/SocialLinks";
 import { dict } from "@/lib/dictionaries";
 import { FOOTER_LEGAL_PAGES, getLegalPath } from "@/lib/legal-routes";
 
@@ -35,9 +35,10 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
-          <FacebookSocialLink
+          <SocialLinks
+            variant="footer"
             iconSize={20}
-            className="shrink-0 border-0 bg-transparent hover:bg-transparent hover:border-0 p-0 self-start md:self-center"
+            className="shrink-0 self-start md:self-center"
           />
         </div>
       </div>
