@@ -19,11 +19,16 @@ type BtnDef = { label: string; insert: string; tip: string; variant?: Variant };
 const EXAMPLES = ["sin(x)", "x^2", "ln(x)", "e^(x)", "tan(x) - x"];
 
 const COLOR: Record<Variant, string> = {
-  func: "bg-slate-50 text-violet-700 border-violet-200/80 hover:bg-violet-600 hover:text-white hover:border-violet-600",
-  op: "bg-white text-slate-800 border-slate-200 hover:bg-slate-50 hover:border-violet-400",
-  num: "bg-white text-slate-900 border-slate-200 hover:bg-slate-50 hover:border-violet-400",
-  special: "bg-violet-50/80 text-violet-700 border-violet-200/70 hover:bg-violet-600 hover:text-white hover:border-violet-600",
-  clear: "bg-rose-50 text-rose-600 border-rose-200 hover:bg-rose-500 hover:text-white hover:border-rose-500",
+  func:
+    "bg-gradient-to-br from-cyan-500 to-sky-600 text-white border-cyan-400/40 shadow-[0_2px_8px_rgba(34,211,238,0.35)] hover:from-cyan-400 hover:to-sky-500 hover:shadow-[0_4px_14px_rgba(34,211,238,0.45)]",
+  op:
+    "bg-gradient-to-br from-indigo-500 to-violet-600 text-white border-indigo-400/40 shadow-[0_2px_8px_rgba(99,102,241,0.35)] hover:from-indigo-400 hover:to-violet-500 hover:shadow-[0_4px_14px_rgba(99,102,241,0.45)]",
+  num:
+    "bg-white text-slate-900 border-slate-200/90 shadow-sm font-bold hover:bg-violet-50/80 hover:border-violet-300 hover:shadow-md",
+  special:
+    "bg-gradient-to-br from-violet-500 to-purple-600 text-white border-violet-400/35 shadow-[0_2px_8px_rgba(139,92,246,0.35)] hover:from-violet-400 hover:to-purple-500",
+  clear:
+    "bg-gradient-to-br from-rose-400 to-pink-500 text-white border-rose-300/40 shadow-[0_2px_8px_rgba(244,63,94,0.3)] hover:from-rose-500 hover:to-pink-600",
 };
 
 function Tip({ tip, children }: { tip: string; children: React.ReactNode }) {
@@ -68,7 +73,7 @@ function CalcBtn({ btn, onClick }: { btn: BtnDef; onClick: (b: BtnDef) => void }
         whileTap={{ scale: 0.93 }}
         onClick={() => onClick(btn)}
         aria-label={btn.tip || btn.label}
-        className={`w-full h-[34px] sm:h-[38px] flex items-center justify-center select-none rounded-lg font-semibold border transition-colors duration-100 ${COLOR[v]}`}
+        className={`w-full h-[40px] sm:h-[44px] flex items-center justify-center select-none rounded-xl font-semibold border transition-all duration-150 ${COLOR[v]}`}
       >
         <span className={`${font} px-0.5 text-center leading-none truncate`}>{btn.label}</span>
       </motion.button>
@@ -350,11 +355,11 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
   return (
     <motion.div
       ref={cardRef}
-      className="w-full flex flex-col gap-2 scroll-mt-20"
+      className="w-full max-w-[560px] mx-auto lg:max-w-none flex flex-col gap-3 scroll-mt-20"
     >
-      <div className="calc-shell overflow-hidden flex flex-col w-full relative z-10">
+      <div className="calc-shell overflow-hidden flex flex-col w-full relative z-10 rounded-3xl">
         {/* Input */}
-        <motion.div className="px-2.5 pt-3 pb-2 sm:px-3 sm:pt-3.5 sm:pb-2.5 border-b border-slate-100 bg-white">
+        <div className="px-3 pt-4 pb-3 sm:px-4 sm:pt-5 sm:pb-3.5 border-b border-white/60 bg-white/70 backdrop-blur-sm">
           <AnimatePresence>
             {latexPreview && (
               <motion.div
@@ -381,13 +386,11 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
           </p>
 
           <div
-            className={`relative flex items-center bg-white rounded-xl border transition-all duration-200 ${
-              isFocused
-                ? "border-violet-400 ring-2 ring-violet-100"
-                : "border-slate-200 shadow-sm"
+            className={`calc-input-glow relative flex items-center bg-white rounded-2xl border-2 transition-all duration-200 ${
+              isFocused ? "border-violet-400" : "border-slate-200/90 shadow-inner"
             }`}
           >
-            <div className="pl-2.5 pr-2 py-2 text-slate-400 font-serif italic text-sm border-r border-slate-100 bg-slate-50/80 select-none shrink-0">
+            <div className="pl-3 pr-2.5 py-3 text-violet-600 font-serif italic text-base sm:text-lg font-semibold border-r border-violet-100 bg-gradient-to-b from-violet-50 to-indigo-50/80 select-none shrink-0">
               d/d{variable}
             </div>
             <input
@@ -402,7 +405,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
               placeholder={t.placeholder.replace("x", variable)}
-              className="w-full min-w-0 bg-transparent py-2 px-2.5 text-[0.95rem] sm:text-base font-mono text-slate-900 outline-none placeholder:text-slate-300"
+              className="w-full min-w-0 bg-transparent py-3 px-3 text-base sm:text-lg font-mono font-medium text-slate-900 outline-none placeholder:text-slate-400"
               onKeyDown={(e) => e.key === "Enter" && handleCalculate()}
               aria-label="Function to differentiate"
               aria-describedby="calc-field-help"
@@ -433,7 +436,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
                     setShowResult(false);
                     setError("");
                   }}
-                  className="whitespace-nowrap px-1.5 py-0.5 rounded-md bg-white border border-slate-200 text-[0.62rem] font-semibold text-slate-500 hover:border-violet-300 hover:text-violet-600 transition-colors shrink-0"
+                  className="whitespace-nowrap px-2 py-1 rounded-lg bg-white/90 border border-violet-100 text-[0.65rem] font-semibold text-slate-600 hover:border-cyan-300 hover:text-violet-700 hover:shadow-sm transition-all shrink-0"
                 >
                   {ex}
                 </button>
@@ -494,7 +497,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.div>
+        </div>
 
         <AnimatePresence>
           {error && (
@@ -502,7 +505,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="bg-rose-50 px-3 py-1.5 border-b border-rose-100 flex items-center gap-1.5 text-[0.7rem] font-medium text-rose-600"
+              className="bg-rose-50/90 px-4 py-2 border-b border-rose-100 flex items-center gap-1.5 text-[0.75rem] font-medium text-rose-600"
             >
               <AlertCircle size={12} />
               {error}
@@ -511,8 +514,8 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
         </AnimatePresence>
 
         {/* Unified keypad + calculate */}
-        <div className="px-2 pb-2.5 pt-2 sm:px-2.5 sm:pb-3 sm:pt-2 bg-slate-50/60">
-          <div className="grid grid-cols-6 gap-[3px] sm:gap-1">
+        <div className="px-3 pb-4 pt-3 sm:px-4 sm:pb-5 sm:pt-3.5 bg-gradient-to-b from-indigo-50/40 via-violet-50/30 to-cyan-50/20">
+          <div className="grid grid-cols-6 gap-1.5 sm:gap-2">
             {keypad.map((b) => (
               <CalcBtn key={`${b.label}-${b.insert}`} btn={b} onClick={handleBtn} />
             ))}
@@ -524,7 +527,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
             whileTap={{ scale: 0.98 }}
             onClick={handleCalculate}
             disabled={!input.trim() || isCalculating}
-            className="w-full h-[42px] sm:h-[44px] mt-1.5 sm:mt-2 bg-slate-900 text-white rounded-xl text-[0.85rem] font-bold tracking-wide flex items-center justify-center gap-2 shadow-md disabled:opacity-40 transition-all"
+            className="w-full h-[48px] sm:h-[52px] mt-3 sm:mt-3.5 rounded-2xl text-[0.9rem] font-bold tracking-wide flex items-center justify-center gap-2 text-white bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 shadow-[0_8px_24px_-4px_rgba(99,102,241,0.55)] hover:shadow-[0_12px_28px_-4px_rgba(139,92,246,0.65)] disabled:opacity-40 disabled:shadow-none transition-all"
           >
             {isCalculating ? (
               <>
@@ -561,8 +564,8 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
             exit={{ opacity: 0, y: -8 }}
             className="w-full"
           >
-            <div className="bg-white border border-slate-200 rounded-2xl px-3 pt-4 pb-3 sm:px-4 shadow-lg">
-              <motion.div className="flex items-center justify-between mb-2">
+            <div className="bg-gradient-to-br from-white via-violet-50/30 to-cyan-50/20 border border-violet-100/80 rounded-3xl px-4 pt-5 pb-4 sm:px-5 shadow-[0_16px_40px_-12px_rgba(99,102,241,0.25)]">
+              <div className="flex items-center justify-between mb-3">
                 <span
                   id="derivative-result-heading"
                   className="font-bold text-slate-400 text-[0.58rem] uppercase tracking-widest"
@@ -596,9 +599,9 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
                     {simplify ? t.simplified : t.expanded}
                   </span>
                 </div>
-              </motion.div>
+              </div>
 
-              <div className="bg-slate-50 rounded-xl border border-slate-100 px-3 py-4 overflow-x-auto flex flex-col sm:flex-row items-center justify-center gap-2 min-h-[64px]">
+              <div className="bg-white/80 rounded-2xl border border-indigo-100/80 px-4 py-5 overflow-x-auto flex flex-col sm:flex-row items-center justify-center gap-2 min-h-[72px] shadow-inner">
                 <span className="text-slate-400 font-serif italic text-base shrink-0 select-none">
                   f&apos;({variable}) =
                 </span>
@@ -616,7 +619,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
               <button
                 type="button"
                 onClick={() => setShowSteps((s) => !s)}
-                className="w-full mt-2 text-[0.72rem] font-bold text-violet-600 flex items-center justify-center gap-1.5 py-2.5 rounded-lg hover:bg-violet-50 transition-colors"
+                className="w-full mt-3 text-[0.75rem] font-bold text-violet-600 flex items-center justify-center gap-1.5 py-3 rounded-xl hover:bg-violet-100/60 transition-colors"
               >
                 <BookOpen size={14} />
                 {showSteps ? t.hideSteps : t.showSteps}
