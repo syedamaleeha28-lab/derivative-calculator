@@ -87,10 +87,10 @@ export default function SocialLinks({
   const isNavbar = variant === "navbar";
 
   const buttonClass = isNavbar
-    ? "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-400 transition-all duration-300 hover:border-violet-300 hover:bg-violet-50 hover:text-violet-600 hover:scale-105 active:scale-95 md:h-9 md:w-9"
+    ? "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-400 transition-all duration-300 hover:border-violet-300 hover:bg-violet-50 hover:text-violet-600 hover:scale-105 active:scale-95 min-[375px]:h-8 min-[375px]:w-8 min-[375px]:rounded-xl md:h-9 md:w-9"
     : "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-slate-400 transition-all duration-300 hover:text-violet-600 hover:scale-105 active:scale-95";
 
-  const gapClass = isNavbar ? "gap-2 md:gap-1.5" : "gap-2";
+  const gapClass = isNavbar ? "gap-1 min-[375px]:gap-1.5 md:gap-1.5" : "gap-2";
 
   return (
     <div

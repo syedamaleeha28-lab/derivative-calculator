@@ -27,7 +27,7 @@ const variantClass: Record<BrandLogoVariant, { wrap: string; sizes: string; prio
 };
 
 const NAV_WORDMARK_LOGO_WRAP =
-  "relative flex h-7 w-[3.5rem] shrink-0 items-center justify-end min-[375px]:w-[3.75rem] sm:h-8 sm:w-[4.625rem] md:h-9 md:w-[5.5rem]";
+  "relative flex h-6 w-8 shrink-0 items-center justify-end min-[360px]:h-7 min-[360px]:w-9 sm:h-8 sm:w-[4.625rem] md:h-9 md:w-[5.5rem]";
 
 export function BrandLogoLink({
   variant,
@@ -43,7 +43,7 @@ export function BrandLogoLink({
   const v = variantClass[variant];
   const isNavWordmark = showWordmark && variant === "nav";
   const wrapClass = isNavWordmark ? NAV_WORDMARK_LOGO_WRAP : v.wrap;
-  const imgSizes = isNavWordmark ? "(max-width: 768px) 76px, 90px" : v.sizes;
+  const imgSizes = isNavWordmark ? "(max-width: 768px) 56px, 90px" : v.sizes;
 
   return (
     <Link
@@ -51,7 +51,7 @@ export function BrandLogoLink({
       onClick={onNavigate}
       className={
         isNavWordmark
-          ? `flex min-w-0 items-center gap-1.5 rounded-lg py-1 pl-0.5 pr-1 -my-1 transition-colors hover:bg-slate-100/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:gap-1.5 md:pl-1 md:pr-1.5 md:-ml-0.5 ${className}`
+          ? `flex min-w-0 items-center gap-1 rounded-lg py-0.5 pl-0 pr-0.5 -my-1 transition-colors hover:bg-slate-100/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:gap-1.5 sm:py-1 sm:pl-0.5 md:pl-1 md:pr-1.5 md:-ml-0.5 ${className}`
           : `inline-flex items-center group select-none ${className}`
       }
     >
@@ -67,7 +67,7 @@ export function BrandLogoLink({
       </div>
       {isNavWordmark && (
         <span className="flex min-w-0 items-center leading-none" lang="es">
-          <span className="heading-font truncate text-xs font-semibold tracking-tight text-slate-900 sm:text-sm md:whitespace-nowrap md:text-[0.9375rem]">
+          <span className="heading-font whitespace-nowrap text-[0.625rem] font-semibold tracking-tight text-slate-900 min-[360px]:text-[0.6875rem] sm:text-sm md:text-[0.9375rem]">
             Calculadora{" "}
             <span className="font-bold text-secondary">Derivadas</span>
           </span>

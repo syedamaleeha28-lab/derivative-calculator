@@ -40,11 +40,11 @@ export default function Navbar() {
           : "relative py-3"
       } md:relative md:bg-transparent md:border-none md:shadow-none md:py-4`}
     >
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-3 px-4 sm:px-6 md:gap-4 md:px-6 lg:px-12">
+      <div className="mx-auto flex max-w-[1280px] items-center gap-2 px-2.5 sm:gap-3 sm:px-4 md:justify-between md:gap-4 md:px-6 lg:px-12">
         <BrandLogoLink
           variant="nav"
           showWordmark
-          className="min-w-0 max-w-[calc(100%-10.5rem)] shrink pr-2 select-none sm:max-w-[calc(100%-11rem)] md:max-w-none md:shrink-0 md:pr-0"
+          className="min-w-0 flex-1 md:flex-none"
         />
 
         <ul className="hidden md:flex items-center gap-1">
@@ -70,16 +70,16 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <div className="flex shrink-0 items-center gap-2 md:hidden">
-          <SocialLinks variant="navbar" iconSize={16} className="gap-2" />
+        <div className="flex shrink-0 items-center gap-1 sm:gap-1.5 md:hidden">
+          <SocialLinks variant="navbar" iconSize={14} className="gap-1 sm:gap-1.5" />
           <button
             type="button"
             onClick={() => setMobileOpen((o) => !o)}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-800 transition-colors hover:bg-slate-100 active:bg-slate-200"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-slate-800 transition-colors hover:bg-slate-100 active:bg-slate-200"
             aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={mobileOpen}
           >
-            {mobileOpen ? <X size={22} aria-hidden /> : <Menu size={22} aria-hidden />}
+            {mobileOpen ? <X size={20} aria-hidden /> : <Menu size={20} aria-hidden />}
           </button>
         </div>
       </div>
