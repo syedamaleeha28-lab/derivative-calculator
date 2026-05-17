@@ -520,38 +520,50 @@ const dictionaryData = {
           title: "¿Qué es una derivada?",
           desc: "La derivada representa la tasa de cambio instantánea de una función. Es la pendiente de la recta tangente en un punto específico.",
           link: "Aprende el concepto base →",
-          href: "/como-funciona"
+          href: "/como-funciona",
+          image: "/images/que-es-una-derivada.png",
+          imageAlt: "Gráfica de una función con recta tangente que ilustra el concepto de derivada",
         },
         {
           title: "Cómo usar la calculadora",
           desc: "Simplemente ingresa tu expresión matemática usando nuestro teclado especializado. Obtendrás no solo el resultado final, sino la resolución paso a paso.",
           link: "Ver tutorial rápido →",
-          href: "/como-funciona"
+          href: "/como-funciona",
+          image: "/images/como-usar-calculadora-de-derivadas.png",
+          imageAlt: "Interfaz de la calculadora de derivadas con teclado matemático",
         },
         {
           title: "Reglas de Derivación",
           desc: "Domina las reglas esenciales: regla de la potencia, regla del producto, cociente y la regla de la cadena.",
           link: "Estudar reglas →",
-          href: "/reglas"
+          href: "/reglas",
+          image: "/images/reglas-de-derivacion.png",
+          imageAlt: "Guía visual de reglas de derivación: potencia, producto, cociente y cadena",
         },
         {
           title: "Ejemplos de Derivadas",
           desc: "Explora nuestra biblioteca de ejercicios resueltos. Desde polinomios simples hasta complejas derivadas trigonométricas.",
           link: "Ver galería de ejemplos →",
-          href: "/ejemplos"
+          href: "/ejemplos",
+          image: "/images/ejemplos-de-derivadas-resueltas.png",
+          imageAlt: "Cuaderno con ejemplos de derivadas resueltos paso a paso",
         },
         {
           title: "Derivadas Parciales",
           desc: "Avanza hacia el cálculo multivariable. Aprende a mantener variables constantes mientras derivas respecto a otra.",
           link: "Conceptos avanzados →",
-          href: "/reglas"
+          href: "/reglas",
+          image: "/images/derivadas-parciales.png",
+          imageAlt: "Superficie 3D que representa derivadas parciales en varias variables",
         },
         {
           title: "Fórmulas de Derivadas",
           desc: "Accede a nuestra tabla de derivadas y fórmulas trigonométricas interactivas.",
           link: "Ver formulario completo →",
-          href: "/reglas"
-        }
+          href: "/reglas",
+          image: "/images/formulas-de-derivadas.png",
+          imageAlt: "Tabla de fórmulas de derivadas y funciones trigonométricas",
+        },
       ]
     },
     aboutPage: {
