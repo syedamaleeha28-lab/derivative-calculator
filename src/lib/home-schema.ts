@@ -65,12 +65,14 @@ export function buildHomePageSchemaGraph() {
   };
 
   const softwareApplication = {
-    "@type": "SoftwareApplication",
+    "@type": ["SoftwareApplication", "WebApplication"],
     "@id": `${SITE_URL}/#software`,
     name: "Calculadora de Derivadas",
     alternateName: SITE_NAME,
     applicationCategory: "EducationalApplication",
+    applicationSubCategory: "MathematicsApplication",
     operatingSystem: "Web",
+    browserRequirements: "Requires JavaScript. Requires HTML5.",
     url: canonical,
     description: meta.description,
     inLanguage: "es",
@@ -79,23 +81,40 @@ export function buildHomePageSchemaGraph() {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
+    audience: {
+      "@type": "EducationalAudience",
+      educationalRole: "student",
     },
     featureList: [
-      "Calculadora de derivadas",
-      "Derivadas online",
+      "Calculadora de derivadas con pasos",
+      "Calculadora de derivadas online gratis",
       "Derivadas paso a paso",
       "Derivadas parciales",
-      "Reglas de derivación",
-      "Cálculo diferencial",
-      "Derivadas matemáticas",
-      "Derivada de sin x",
-      "Derivada de ln x",
+      "Derivadas implícitas",
       "Derivadas trigonométricas",
-      "Derivadas resueltas",
+      "Reglas de derivación",
       "Resolver derivadas online",
-      "Calculadora matemática",
+      "Calculadora de cálculo diferencial",
+      "Ejemplos de derivadas resueltas",
     ],
     publisher: { "@id": `${SITE_URL}/#organization` },
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+  };
+
+  const learningResource = {
+    "@type": "LearningResource",
+    "@id": `${SITE_URL}/#learning-resource`,
+    name: "Guía y calculadora de derivadas en español",
+    description: meta.description,
+    inLanguage: "es",
+    learningResourceType: "Interactive Resource",
+    educationalLevel: "Secondary school and undergraduate",
+    teaches: "Cálculo diferencial y derivadas",
+    url: canonical,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    provider: { "@id": `${SITE_URL}/#organization` },
   };
 
   const breadcrumbList = {
@@ -132,6 +151,7 @@ export function buildHomePageSchemaGraph() {
     organization,
     website,
     softwareApplication,
+    learningResource,
     breadcrumbList,
     mainNavigation,
     ...(faqPage ? [faqPage] : []),

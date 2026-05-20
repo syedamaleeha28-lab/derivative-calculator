@@ -90,6 +90,17 @@ export default function FAQ() {
             );
           })}
         </div>
+
+        {/* Full FAQ text for crawlers and accessibility (accordion keeps UX) */}
+        <div className="sr-only">
+          <h3>Preguntas frecuentes completas</h3>
+          {t.list.map((faq) => (
+            <div key={`seo-${faq.q}`}>
+              <h4>{faq.q}</h4>
+              <p>{faq.a}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

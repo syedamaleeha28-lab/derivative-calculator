@@ -22,39 +22,44 @@ const dictionaryData = {
     },
     metadata: {
       home: {
-        title: "Calculadora de Derivadas Online Gratis | Paso a Paso",
+        title:
+          "Calculadora de Derivadas con Pasos Online Gratis | Parciales e Implícitas",
         description:
-          "Calculadora de derivadas online con solución paso a paso. Resuelve derivadas trigonométricas, parciales, ln(x), sin(x) y más. Herramienta educativa gratuita en español.",
+          "Calculadora de derivadas online gratis con pasos detallados. Resuelve derivadas trigonométricas, parciales, implícitas y logarítmicas. Herramienta de cálculo diferencial para estudiantes.",
         keywords:
-          "calculadora de derivadas, derivadas online, derivadas paso a paso, derivadas parciales, reglas de derivación, cálculo diferencial, derivadas matemáticas, derivada de sin x, derivada de ln x, derivadas trigonométricas, derivadas resueltas, resolver derivadas online, calculadora matemática",
+          "calculadora de derivadas, calculadora de derivadas con pasos, calculadora de derivadas online gratis, derivadas paso a paso, derivadas parciales, derivadas implícitas, resolver derivadas online, calculadora diferencial",
       },
       comoFunciona: {
-        title: "Cómo Usar la Calculadora de Derivadas | Guía Completa",
+        title:
+          "Cómo Usar la Calculadora de Derivadas Online | Tutorial Paso a Paso",
         description:
-          "Aprende a usar nuestra calculadora de derivadas online: sintaxis, teclado matemático, pasos detallados y consejos para obtener derivadas correctas en segundos.",
+          "Guía para usar la calculadora de derivadas con pasos: sintaxis, teclado matemático, derivadas implícitas y consejos para resolver derivadas online con precisión.",
         keywords:
-          "cómo usar calculadora de derivadas, tutorial derivadas online, calculadora matemática paso a paso, guía cálculo diferencial",
+          "cómo usar calculadora de derivadas, calculadora de derivadas con pasos, resolver derivadas online, tutorial cálculo diferencial, calculadora matemática online",
       },
       ejemplos: {
-        title: "Ejemplos de Derivadas Resueltas | Ejercicios Paso a Paso",
+        title:
+          "Ejemplos de Derivadas Resueltas | Ejercicios con Pasos en Español",
         description:
-          "Galería de derivadas resueltas: polinomios, trigonométricas, logarítmicas y compuestas. Practica cálculo diferencial con procedimientos claros en español.",
+          "Ejemplos de derivadas resueltas paso a paso: polinomios, trigonométricas, logarítmicas y compuestas. Practica ejercicios de derivadas para universidad y bachillerato.",
         keywords:
-          "ejemplos de derivadas, derivadas resueltas, ejercicios de derivadas, derivada paso a paso, derivadas trigonométricas ejemplos",
+          "ejemplos de derivadas resueltas, derivadas paso a paso, ejercicios de derivadas, derivadas trigonométricas ejemplos, cómo derivar funciones",
       },
       reglas: {
-        title: "Reglas de Derivación | Guía Completa con Fórmulas",
+        title:
+          "Reglas de Derivación | Cadena, Producto, Cociente y Fórmulas",
         description:
-          "Domina las reglas de derivación: potencia, producto, cociente y cadena. Fórmulas, explicaciones y ejemplos para estudiar cálculo diferencial.",
+          "Reglas de derivación explicadas: potencia, producto, cociente y regla de la cadena. Fórmulas de derivadas trigonométricas y logarítmicas para estudiar cálculo diferencial.",
         keywords:
-          "reglas de derivación, regla de la cadena, regla del producto, fórmulas de derivadas, cálculo diferencial reglas",
+          "reglas de derivación, regla de la cadena, derivada del producto, derivada del cociente, derivadas trigonométricas, fórmulas de derivadas",
       },
       blog: {
-        title: "Blog de Cálculo Diferencial y Derivadas | Guías en Español",
+        title:
+          "Blog de Derivadas y Cálculo Diferencial | Aprender a Derivar",
         description:
-          "Artículos educativos sobre derivadas, regla de la cadena, errores comunes y técnicas de estudio. Recursos en español para estudiantes de matemáticas.",
+          "Artículos sobre derivadas explicadas, regla de la cadena, derivadas implícitas y errores comunes. Guías para estudiantes que quieren dominar el cálculo diferencial.",
         keywords:
-          "blog derivadas, aprender derivadas, cálculo diferencial blog, matemáticas educativas",
+          "derivadas explicadas, derivadas para principiantes, aprender derivadas, blog cálculo diferencial, derivadas universitarias",
       },
     },
     footer: {
@@ -526,9 +531,9 @@ const dictionaryData = {
       ]
     },
     faqsPage: {
-      title: "Preguntas Frecuentes sobre Derivadas",
+      title: "Preguntas Frecuentes sobre Derivadas y la Calculadora",
       subtitle:
-        "Resolvemos dudas habituales sobre la calculadora de derivadas online, reglas de derivación, ejemplos y cálculo diferencial para estudiantes.",
+        "Respuestas claras sobre derivadas con pasos, parciales, implícitas, cálculo diferencial y cómo usar la calculadora de derivadas online gratis.",
       badge: "Centro de Ayuda",
       list: [
         {
@@ -579,6 +584,42 @@ const dictionaryData = {
           q: "¿Dónde encuentro más ejemplos y artículos?",
           a: "Visita la sección de ejemplos de derivadas, las reglas de derivación y el blog, donde publicamos guías sobre técnicas, errores frecuentes y la regla de la cadena.",
         },
+        {
+          q: "¿Puedo calcular derivadas implícitas con esta calculadora?",
+          a: "Puedes introducir ecuaciones que dependan de x y obtener la derivada de la expresión. Para relaciones implícitas clásicas, revisa el procedimiento paso a paso y contrasta con la guía de cómo funciona y los ejemplos resueltos.",
+        },
+        {
+          q: "¿Qué es una calculadora diferencial y en qué se diferencia?",
+          a: "Una calculadora diferencial trabaja con tasas de cambio y derivadas. La nuestra está especializada en derivadas con explicaciones educativas, no solo en mostrar un número final.",
+        },
+        {
+          q: "¿Sirve para derivadas parciales con pasos?",
+          a: "Sí, puedes elegir la variable de derivación y trabajar expresiones multivariables básicas. Es útil como apoyo en cálculo multivariable junto con la teoría de tu curso.",
+        },
+        {
+          q: "¿Cómo estudiar derivadas trigonométricas con la herramienta?",
+          a: "Practica con sin(x), cos(x) y composiciones como sin(2x). Compara tu resultado manual con las derivadas paso a paso y repasa las reglas en la página de reglas de derivación.",
+        },
+        {
+          q: "¿La calculadora de derivadas online gratis tiene límites diarios?",
+          a: "No imponemos un límite estricto de uso educativo. Puedes practicar ejercicios de derivadas las veces que necesites desde el navegador.",
+        },
+        {
+          q: "¿Puedo usarla para ejercicios de derivadas universitarios?",
+          a: "Sí, está pensada para nivel universitario introductorio y cursos de cálculo diferencial. Verifica siempre los requisitos de tu profesor sobre herramientas permitidas en exámenes.",
+        },
+        {
+          q: "¿Cómo derivar funciones con regla del producto o del cociente?",
+          a: "Escribe el producto o cociente con paréntesis claros. El motor identifica la estructura y aplica la regla correspondiente; el desglose te muestra cada factor derivado.",
+        },
+        {
+          q: "¿Ofrece derivadas explicadas para principiantes?",
+          a: "Sí. Cada resultado incluye pasos intermedios en lenguaje claro. Combínalo con las tarjetas educativas de la página de inicio y el blog para reforzar conceptos.",
+        },
+        {
+          q: "¿Es una herramienta matemática online segura para usar en clase?",
+          a: "Funciona en HTTPS y no requiere registro. Es una herramienta matemática online orientada al estudio; no sustituye la demostración formal que pida tu docente.",
+        },
       ],
     },
     seoCards: {
@@ -594,7 +635,7 @@ const dictionaryData = {
           href: "/como-funciona",
           image: "/images/que-es-una-derivada.png",
           imageAlt:
-            "Ilustración educativa: gráfica de una función con recta tangente que explica qué es una derivada",
+            "Gráfica educativa que explica qué es una derivada y la pendiente de la tangente",
         },
         {
           id: "como-usar-calculadora",
@@ -604,7 +645,7 @@ const dictionaryData = {
           href: "/como-funciona",
           image: "/images/como-usar-calculadora-de-derivadas.png",
           imageAlt:
-            "Captura de la calculadora de derivadas online con teclado matemático y campo de expresión",
+            "Calculadora de derivadas con pasos online y teclado matemático integrado",
         },
         {
           id: "reglas-derivacion",
@@ -614,7 +655,7 @@ const dictionaryData = {
           href: "/reglas",
           image: "/images/reglas-de-derivacion.png",
           imageAlt:
-            "Guía visual de reglas de derivación: potencia, producto, cociente y regla de la cadena",
+            "Reglas de derivación matemática: potencia, producto, cociente y regla de la cadena",
         },
         {
           id: "ejemplos-derivadas",
@@ -624,7 +665,7 @@ const dictionaryData = {
           href: "/ejemplos",
           image: "/images/ejemplos-de-derivadas-resueltas.png",
           imageAlt:
-            "Ejemplos de derivadas resueltas paso a paso en formato educativo",
+            "Ejemplos de derivadas resueltas con procedimiento paso a paso",
         },
         {
           id: "derivadas-parciales",
@@ -634,7 +675,7 @@ const dictionaryData = {
           href: "/reglas",
           image: "/images/derivadas-parciales.png",
           imageAlt:
-            "Ilustración de derivadas parciales y funciones de varias variables en cálculo multivariable",
+            "Calculadora de derivadas parciales y funciones de varias variables",
         },
         {
           id: "formulas-derivadas",
@@ -644,7 +685,7 @@ const dictionaryData = {
           href: "/reglas",
           image: "/images/formulas-de-derivadas.png",
           imageAlt:
-            "Tabla de fórmulas de derivadas y funciones trigonométricas para consulta",
+            "Fórmulas de derivadas y tabla de funciones trigonométricas para estudiar",
         },
       ],
     },
@@ -652,8 +693,65 @@ const dictionaryData = {
       badge: "Guía completa",
       title: "Guía educativa: calculadora de derivadas y cálculo diferencial",
       lead:
-        "Este contenido amplía la herramienta interactiva con contexto pedagógico. Aquí encontrarás conceptos, buenas prácticas y enlaces a recursos del sitio, sin repetir los textos breves de las tarjetas visuales superiores.",
+        "Esta guía complementa la calculadora interactiva con explicaciones claras sobre derivadas, tipos de problemas y buenas prácticas de estudio. Todo el contenido está en español y enlaza a recursos internos del sitio.",
       sections: [
+        {
+          id: "que-es",
+          h2: "Qué es una derivada y por qué importa en cálculo diferencial",
+          paragraphs: [
+            "La derivada de una función describe cómo cambia esa función en un punto: geométricamente, coincide con la pendiente de la recta tangente. En física y economía representa velocidad instantánea, tasas marginales y sensibilidad de un modelo.",
+            "Comprender qué es una derivada es el primer paso antes de usar cualquier calculadora de derivadas: la herramienta acelera el cálculo, pero el aprendizaje real ocurre cuando relacionas el resultado con el concepto de límite y tasa de cambio.",
+          ],
+          relatedLinks: [
+            { label: "Concepto y uso de la calculadora", href: "/como-funciona" },
+          ],
+        },
+        {
+          id: "como-usar",
+          h2: "Cómo usar la calculadora de derivadas con pasos",
+          paragraphs: [
+            "Escribe la función en el campo principal usando el teclado matemático o el teclado del dispositivo. Usa paréntesis para agrupar términos, el símbolo ^ para potencias y nombres estándar: sin, cos, tan, ln, exp.",
+            "Selecciona la variable (habitualmente x), activa la simplificación si lo deseas y pulsa Calcular. Revisa las derivadas paso a paso antes de copiar el resultado: cada línea indica qué regla de derivación se aplicó.",
+            "Para funciones compuestas o implícitas, conviene descomponer mentalmente la expresión en capas externa e interna; así entenderás mejor por qué aparece la regla de la cadena en el procedimiento.",
+          ],
+          relatedLinks: [
+            { label: "Tutorial completo", href: "/como-funciona" },
+            { label: "Ir a la calculadora", href: "/#calculator" },
+          ],
+        },
+        {
+          id: "tipos",
+          h2: "Tipos de derivadas que puedes resolver online",
+          paragraphs: [
+            "En un curso típico de cálculo diferencial encontrarás derivadas de polinomios, funciones racionales, trigonométricas, exponenciales y logarítmicas. Muchas combinan varias reglas en un solo ejercicio.",
+            "Las derivadas parciales aparecen cuando la función depende de más de una variable; la calculadora permite elegir respecto a cuál derivar. Las derivadas implícitas surgen cuando la relación entre variables no está despejada explícitamente.",
+            "Resolver derivadas online con una herramienta educativa te ayuda a contrastar métodos: ordinarias, parciales básicas y composiciones con cadena, producto o cociente.",
+          ],
+          relatedLinks: [
+            { label: "Reglas de derivación", href: "/reglas" },
+            { label: "Derivadas parciales (guía)", href: "/reglas" },
+          ],
+        },
+        {
+          id: "beneficios",
+          h2: "Beneficios para estudiantes de matemáticas y universidad",
+          paragraphs: [
+            "Una calculadora de derivadas online gratis reduce el tiempo de verificación: detectas errores de signo o de cadena incompleta al comparar con el desglose automático.",
+            "Las derivadas explicadas paso a paso favorecen el estudio activo: puedes pausar en cada transformación y preguntarte si la regla aplicada es coherente con el enunciado.",
+            "Es una herramienta matemática online accesible desde móvil, ideal para repasar antes de un parcial o para practicar ejercicios de derivadas sin instalar software pesado.",
+          ],
+        },
+        {
+          id: "ejemplos-rapidos",
+          h2: "Ejemplos rápidos para practicar",
+          paragraphs: [
+            "Prueba expresiones sencillas como x^2, sin(x) o ln(x) y observa cómo cambia el procedimiento. Luego avanza a productos (x·e^x), cocientes ((x+1)/(x-2)) y composiciones (sin(x^2)).",
+            "Cada ejemplo refuerza un patrón distinto de las reglas de derivación. La galería de ejemplos de derivadas resueltas del sitio amplía esta práctica con enunciados comentados.",
+          ],
+          relatedLinks: [
+            { label: "Galería de ejemplos resueltos", href: "/ejemplos" },
+          ],
+        },
         {
           id: "online",
           h2: "Por qué usar una calculadora de derivadas online",

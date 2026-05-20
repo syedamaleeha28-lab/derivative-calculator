@@ -9,6 +9,9 @@ export const SITE_URL = (
 
 export const SITE_NAME = "Calculadora Derivadas";
 
+/** Default Open Graph image (absolute path under /public). */
+export const DEFAULT_OG_IMAGE = "/images/interfaz-calculadora-matematica.webp";
+
 /** Absolute canonical URL for a page. */
 export function absoluteUrl(path: string): string {
   const clean = path.startsWith("/") ? path : `/${path}`;
@@ -42,9 +45,15 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
 
   const canonical = absoluteUrl(path);
   const ogTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
-  const ogImages = ogImage
-    ? [{ url: ogImage, width: 1200, height: 630, alt: title }]
-    : undefined;
+  const resolvedOgImage = ogImage ?? absoluteUrl(DEFAULT_OG_IMAGE);
+  const ogImages = [
+    {
+      url: resolvedOgImage.startsWith("http") ? resolvedOgImage : absoluteUrl(resolvedOgImage),
+      width: 1200,
+      height: 630,
+      alt: title,
+    },
+  ];
 
   return {
     title,

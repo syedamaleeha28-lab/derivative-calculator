@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import { dict } from "@/lib/dictionaries";
 import { buildHomePageSchemaGraph } from "@/lib/home-schema";
-import { absoluteUrl, buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 
 const homeJsonLd = JSON.stringify(buildHomePageSchemaGraph()).replace(/</g, "\\u003c");
 
@@ -21,7 +21,6 @@ export async function generateMetadata(): Promise<Metadata> {
     title: t.title,
     description: t.description,
     keywords: t.keywords,
-    ogImage: absoluteUrl("/images/interfaz-calculadora-matematica.webp"),
   });
 }
 
