@@ -2,6 +2,7 @@ import type { DeepStringify } from "./dictionary-types";
 
 const dictionaryData = {
     nav: {
+      home: "Inicio",
       works: "Cómo funciona",
       examples: "Ejemplos",
       rules: "Reglas",

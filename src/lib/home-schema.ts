@@ -134,15 +134,12 @@ export function buildHomePageSchemaGraph() {
     "@type": "ItemList",
     "@id": `${SITE_URL}/#navigation`,
     name: "Navegación principal",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Inicio", url: SITE_URL },
-      ...NAV_LINKS.map((link, index) => ({
-        "@type": "ListItem",
-        position: index + 2,
-        name: dict.nav[link.nameKey],
-        url: absoluteUrl(link.href),
-      })),
-    ],
+    itemListElement: NAV_LINKS.map((link, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: dict.nav[link.nameKey],
+      url: absoluteUrl(link.href),
+    })),
   };
 
   const faqPage = buildFaqPageSchema(faqs);

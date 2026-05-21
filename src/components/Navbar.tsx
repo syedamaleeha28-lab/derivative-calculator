@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BrandLogoLink } from "./BrandLogo";
 import SocialLinks from "./SocialLinks";
 import { dict } from "@/lib/dictionaries";
@@ -14,7 +15,30 @@ const NAV_LINKS = NAV_ROUTE_LINKS.map((link) => ({
   href: link.href,
 }));
 
+function isNavLinkActive(pathname: string, href: string): boolean {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function navLinkClassName(active: boolean, variant: "desktop" | "mobile"): string {
+  const base =
+    variant === "desktop"
+      ? "text-[0.9rem] font-medium px-3 py-2 rounded-lg transition-all"
+      : "block text-[1rem] font-medium py-2.5 transition-colors";
+
+  if (active) {
+    return variant === "desktop"
+      ? `${base} text-violet-600 bg-violet-50 font-semibold`
+      : `${base} text-violet-600 font-semibold`;
+  }
+
+  return variant === "desktop"
+    ? `${base} text-slate-600 hover:text-violet-600 hover:bg-slate-100`
+    : `${base} text-slate-700 hover:text-violet-600`;
+}
+
 export default function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -39,32 +63,42 @@ export default function Navbar() {
           ? "sticky top-0 bg-white/95 backdrop-blur-xl border-b border-slate-100 shadow-sm py-2"
           : "relative py-3"
       } md:relative md:bg-transparent md:border-none md:shadow-none md:py-4`}
+      aria-label="Navegación principal"
     >
-      <div className="mx-auto flex max-w-[1280px] items-center gap-2 px-2.5 sm:gap-3 sm:px-4 md:justify-between md:gap-4 md:px-6 lg:px-12">
+      <div className="mx-auto flex max-w-[1280px] items-center gap-2 px-2.5 sm:gap-3 sm:px-4 md:justify-between md:gap-3 md:px-6 lg:px-12">
         <BrandLogoLink
           variant="nav"
           showWordmark
           className="min-w-0 flex-1 md:flex-none"
         />
 
-        <ul className="hidden md:flex items-center gap-1">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-[0.92rem] font-medium text-slate-600 hover:text-secondary px-3.5 py-2 rounded-lg hover:bg-slate-100 transition-all"
-              >
-                {link.name}
-              </Link>
-            </li>
-          ))}
+        <ul className="hidden md:flex items-center gap-0.5 lg:gap-1">
+          {NAV_LINKS.map((link) => {
+            const active = isNavLinkActive(pathname, link.href);
+            return (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className={navLinkClassName(active, "desktop")}
+                  aria-label={
+                    link.href === "/"
+                      ? "Ir a la página de inicio de la calculadora de derivadas"
+                      : undefined
+                  }
+                  aria-current={active ? "page" : undefined}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2 shrink-0">
           <SocialLinks variant="navbar" iconSize={16} />
           <Link
             href={ROUTES.home}
-            className="ml-1 bg-[#16213e] hover:bg-[#8b5cf6] text-white px-5 py-2.5 rounded-lg text-[0.9rem] font-semibold transition-all shadow-md hover:shadow-lg active:scale-95"
+            className="ml-0.5 bg-[#16213e] hover:bg-[#8b5cf6] text-white px-4 lg:px-5 py-2.5 rounded-lg text-[0.88rem] lg:text-[0.9rem] font-semibold transition-all shadow-md hover:shadow-lg active:scale-95 whitespace-nowrap"
           >
             {t.calculate}
           </Link>
@@ -76,8 +110,9 @@ export default function Navbar() {
             type="button"
             onClick={() => setMobileOpen((o) => !o)}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-slate-800 transition-colors hover:bg-slate-100 active:bg-slate-200"
-            aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-label={mobileOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
             aria-expanded={mobileOpen}
+            aria-controls="mobile-nav-menu"
           >
             {mobileOpen ? <X size={20} aria-hidden /> : <Menu size={20} aria-hidden />}
           </button>
@@ -87,6 +122,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-nav-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -99,23 +135,33 @@ export default function Navbar() {
                 className="w-fit"
               />
             </div>
-            <ul className="flex flex-col px-6 py-5 gap-1">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block text-[1rem] font-medium text-slate-700 py-2.5 hover:text-secondary transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+            <ul className="flex flex-col px-6 py-5 gap-1" role="list">
+              {NAV_LINKS.map((link) => {
+                const active = isNavLinkActive(pathname, link.href);
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className={navLinkClassName(active, "mobile")}
+                      aria-label={
+                        link.href === "/"
+                          ? "Ir a la página de inicio de la calculadora de derivadas"
+                          : undefined
+                      }
+                      aria-current={active ? "page" : undefined}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                );
+              })}
               <li className="pt-3 mt-1 border-t border-slate-100">
                 <Link
                   href={ROUTES.home}
                   onClick={() => setMobileOpen(false)}
                   className="flex justify-center w-full bg-[#16213e] hover:bg-[#8b5cf6] text-white py-3 rounded-xl font-semibold text-[0.95rem] shadow-md transition-all active:scale-95"
+                  aria-label="Ir a la calculadora y calcular derivada"
                 >
                   {t.calcNow}
                 </Link>

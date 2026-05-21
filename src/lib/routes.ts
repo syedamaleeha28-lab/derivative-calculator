@@ -13,6 +13,7 @@ export const ROUTES = {
 } as const;
 
 export const NAV_LINKS = [
+  { nameKey: "home" as const, href: ROUTES.home },
   { nameKey: "works" as const, href: ROUTES.comoFunciona },
   { nameKey: "examples" as const, href: ROUTES.ejemplos },
   { nameKey: "rules" as const, href: ROUTES.reglas },
