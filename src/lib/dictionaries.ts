@@ -888,6 +888,9 @@ const dictionaryData = {
         { label: "Ejemplos", href: "/ejemplos" },
         { label: "Reglas", href: "/reglas" },
         { label: "Blog", href: "/blog" },
+        { label: "Derivada de sin(x)", href: "/blog/derivada-de-sin-x" },
+        { label: "Regla de la cadena", href: "/blog/regla-de-la-cadena-ejercicios" },
+        { label: "Derivadas para principiantes", href: "/blog/derivadas-para-principiantes" },
       ],
     },
     aboutPage: {

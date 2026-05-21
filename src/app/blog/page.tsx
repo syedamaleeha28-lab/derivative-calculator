@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import BlogSeoSection from "@/components/BlogSeoSection";
+import BlogHub from "@/components/BlogHub";
 import Link from "next/link";
-import { Clock, ChevronRight } from "lucide-react";
 import { dict } from "@/lib/dictionaries";
+import { getBlogListingPosts } from "@/lib/blog-posts";
 import { buildBlogCollectionSchema } from "@/lib/blog-seo";
 import { metadataFromEntry } from "@/lib/seo";
 
@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function BlogPage() {
   const t = dict.blog;
-  const posts = t.posts ?? [];
+  const posts = getBlogListingPosts();
   const blogJsonLd = JSON.stringify(buildBlogCollectionSchema(posts)).replace(
     /</g,
     "\\u003c"
@@ -37,58 +37,58 @@ export default async function BlogPage() {
       <Navbar />
       <div className="pt-32 pb-24 bg-[#F8F6F2]">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-secondary font-bold tracking-widest uppercase text-[0.7rem] mb-4 block">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="text-violet-600 font-bold tracking-widest uppercase text-[0.7rem] mb-4 block">
               {t.badge}
             </span>
-            <h1 className="heading-font text-[2.8rem] md:text-[3.5rem] text-slate-900 mb-6">
-              {t.title1} <span className="text-secondary">{t.title2}</span>
+            <h1 className="heading-font text-[2.5rem] md:text-[3.2rem] text-slate-900 mb-6">
+              {t.title1} <span className="text-violet-600">{t.title2}</span>
             </h1>
             <p className="text-slate-600 text-lg leading-relaxed">{t.subtitle}</p>
             <p className="text-slate-500 text-[0.95rem] mt-4 leading-relaxed">
-              Aprende derivadas paso a paso, regla de la cadena, derivadas trigonométricas y
-              técnicas para resolver derivadas online. Todos los artículos enlazan a nuestra{" "}
-              <Link href="/" className="text-violet-600 font-medium hover:underline">
-                calculadora de derivadas
+              Guías sobre{" "}
+              <strong className="text-slate-700 font-medium">derivada de sin x</strong>,{" "}
+              <strong className="text-slate-700 font-medium">regla de la cadena</strong>,{" "}
+              <strong className="text-slate-700 font-medium">derivadas implícitas</strong> y{" "}
+              <strong className="text-slate-700 font-medium">derivadas parciales</strong>.
+              Practica con nuestra{" "}
+              <Link href="/#calculator" className="text-violet-600 font-medium hover:underline">
+                calculadora de derivadas con pasos
               </Link>
-              , los{" "}
-              <Link href="/ejemplos" className="text-violet-600 font-medium hover:underline">
-                ejemplos resueltos
-              </Link>{" "}
-              y las{" "}
+              , consulta{" "}
               <Link href="/reglas" className="text-violet-600 font-medium hover:underline">
                 reglas de derivación
+              </Link>{" "}
+              y explora{" "}
+              <Link href="/ejemplos" className="text-violet-600 font-medium hover:underline">
+                ejemplos de derivadas resueltas
               </Link>
               .
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`}>
-                <article className="h-full bg-white border border-slate-100 rounded-[2rem] p-8 hover:shadow-xl transition-all group cursor-pointer flex flex-col">
-                  <div className="flex items-center gap-3 text-[0.75rem] text-slate-400 mb-6 font-semibold">
-                    <div className="flex items-center gap-1.5">
-                      <Clock size={14} /> {post.read}
-                    </div>
-                    <span className="w-1 h-1 rounded-full bg-slate-300" />
-                    {post.date}
-                  </div>
-                  <h2 className="heading-font text-[1.4rem] text-slate-900 mb-4 group-hover:text-secondary transition-colors leading-snug">
-                    {post.title}
-                  </h2>
-                  <p className="text-slate-500 text-[0.95rem] leading-relaxed mb-8 flex-grow">
-                    {post.desc}
-                  </p>
-                  <div className="mt-auto flex items-center gap-2 text-secondary font-bold text-[0.9rem]">
-                    {t.readMore} <ChevronRight size={16} />
-                  </div>
-                </article>
+          <BlogHub posts={posts} readMoreLabel={t.readMore} />
+
+          <nav
+            className="mt-16 pt-10 border-t border-slate-200 flex flex-wrap justify-center gap-3"
+            aria-label="Recursos relacionados del sitio"
+          >
+            {[
+              { label: "Calculadora", href: "/#calculator" },
+              { label: "Cómo funciona", href: "/como-funciona" },
+              { label: "Reglas", href: "/reglas" },
+              { label: "Ejemplos", href: "/ejemplos" },
+              { label: "Inicio", href: "/" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-violet-300 hover:text-violet-600 transition-colors"
+              >
+                {link.label}
               </Link>
             ))}
-          </div>
-
-          <BlogSeoSection />
+          </nav>
         </div>
       </div>
       <Footer />

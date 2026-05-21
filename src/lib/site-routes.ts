@@ -1,16 +1,13 @@
 import type { MetadataRoute } from "next";
+import { BLOG_POST_ENTRIES } from "./blog-posts";
 import { absoluteUrl } from "./seo";
 
 export const NON_INDEXABLE_PREFIXES = ["/api/", "/_next/", "/icon", "/favicon"];
 
-export const BLOG_POSTS: {
-  slug: string;
-  lastModified?: string;
-}[] = [
-  { slug: "como-aprender-derivadas-desde-cero", lastModified: "2026-05-10" },
-  { slug: "errores-comunes-al-derivar", lastModified: "2026-05-08" },
-  { slug: "entendiendo-regla-de-la-cadena", lastModified: "2026-05-05" },
-];
+/** Blog slugs for sitemap — synced from blog-posts registry. */
+export const BLOG_POSTS: { slug: string; lastModified?: string }[] = BLOG_POST_ENTRIES.map(
+  (p) => ({ slug: p.slug, lastModified: p.dateIso })
+);
 
 export const SITEMAP_ROUTES: {
   path: string;
@@ -22,7 +19,7 @@ export const SITEMAP_ROUTES: {
   { path: "/como-funciona", changeFrequency: "monthly", priority: 0.9 },
   { path: "/ejemplos", changeFrequency: "weekly", priority: 0.9 },
   { path: "/reglas", changeFrequency: "weekly", priority: 0.95 },
-  { path: "/blog", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/blog", changeFrequency: "weekly", priority: 0.85 },
   { path: "/privacy-policy", changeFrequency: "yearly", priority: 0.3 },
   { path: "/terms-of-service", changeFrequency: "yearly", priority: 0.3 },
   { path: "/disclaimer", changeFrequency: "yearly", priority: 0.25 },
