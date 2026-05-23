@@ -435,6 +435,21 @@ export function getBlogListingPosts() {
   }));
 }
 
+/** Recent posts for homepage (newest first). */
+export function getRecentBlogPosts(limit = 6) {
+  return [...BLOG_POST_ENTRIES]
+    .sort((a, b) => b.dateIso.localeCompare(a.dateIso))
+    .slice(0, limit)
+    .map((p) => ({
+      title: p.title,
+      slug: p.slug,
+      description: p.description,
+      date: p.date,
+      readTime: p.readTime,
+      category: p.category,
+    }));
+}
+
 export const BLOG_CATEGORIES = [
   "Todos",
   "Trigonometría",

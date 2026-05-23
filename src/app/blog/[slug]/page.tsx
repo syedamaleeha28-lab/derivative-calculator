@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ArticleLayout from "@/components/EducationalArticle";
 import { getBlogPostBySlug, getAllBlogSlugs } from "@/lib/blog-posts";
+import { getRelatedArticlesForPost } from "@/lib/blog-posts/related";
 import { buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -43,7 +44,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
       tags={post.tags}
       content={<Content />}
       faqs={post.faqs}
-      relatedPosts={post.relatedPosts}
+      relatedPosts={getRelatedArticlesForPost(slug)}
       breadcrumbs={post.breadcrumbs}
       heroImageAlt={post.heroImageAlt}
       showArticleMeta

@@ -1,10 +1,13 @@
 import ArticleLayout, { ExampleCard, TipCard } from "@/components/EducationalArticle";
+import InternalLinksSection from "@/components/InternalLinksSection";
 import katex from "katex";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { dict } from "@/lib/dictionaries";
 import { metadataFromEntry } from "@/lib/seo";
+import { EJEMPLOS_INTERNAL_LINKS } from "@/lib/internal-links";
+import { internalLinksToRelated } from "@/lib/blog-posts/related";
 export async function generateMetadata(): Promise<Metadata> {
   const m = dict.metadata.ejemplos;
   return metadataFromEntry("/ejemplos", {
@@ -129,7 +132,20 @@ export default async function DerivativeExamples() {
             Ir a la Calculadora
           </Link>
         </div>
+        <p className="mt-8 text-center text-slate-600">
+          Amplía la práctica con{" "}
+          <Link href="/blog/ejemplos-de-derivadas-resueltas" className="text-secondary font-bold hover:underline">
+            más ejemplos de derivadas resueltas
+          </Link>{" "}
+          y{" "}
+          <Link href="/blog/derivadas-implicitas-paso-a-paso" className="text-secondary font-bold hover:underline">
+            derivadas implícitas resueltas
+          </Link>
+          .
+        </p>
       </section>
+
+      <InternalLinksSection title="Artículos relacionados" links={EJEMPLOS_INTERNAL_LINKS} />
     </div>
   );
 
@@ -148,6 +164,7 @@ export default async function DerivativeExamples() {
       breadcrumbs={t.breadcrumbs}
       content={content}
       faqs={t.faqs}
+      relatedPosts={internalLinksToRelated(EJEMPLOS_INTERNAL_LINKS)}
     />
   );
 }

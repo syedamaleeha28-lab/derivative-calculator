@@ -53,6 +53,8 @@ interface ArticleProps {
   relatedPosts?: readonly {
     title: string;
     slug: string;
+    description?: string;
+    anchorText?: string;
     image?: string;
   }[];
   breadcrumbs: readonly {
@@ -537,10 +539,15 @@ export default function ArticleLayout({
                       className="group block"
                     >
                         <h5 className="text-[0.95rem] font-bold text-slate-900 leading-snug group-hover:text-secondary transition-colors">
-                          {post.title}
+                          {post.anchorText ?? post.title}
                         </h5>
+                        {post.description && (
+                          <p className="text-[0.8rem] text-slate-500 mt-1 leading-relaxed line-clamp-2">
+                            {post.description}
+                          </p>
+                        )}
                         <div className="flex items-center gap-1 text-[0.75rem] text-secondary font-bold mt-2 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all">
-                          "Leer más" <ArrowRight size={12} />
+                          {t.readMore} <ArrowRight size={12} />
                         </div>
                       </Link>
                     ))}
@@ -553,37 +560,49 @@ export default function ArticleLayout({
         </div>
       </section>
 
-      {/* Related Articles Bottom */}
-      <section className="py-24 border-t border-slate-200 bg-white">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="flex items-center justify-between mb-12">
-            <h2 className="heading-font text-[2rem] text-slate-900">{t.recommended}</h2>
-            <Link href="/blog" className="text-secondary font-bold text-[0.9rem] flex items-center gap-2 hover:gap-3 transition-all">
-              {t.viewAll} <ArrowRight size={18} />
-            </Link>
+      {/* Artículos relacionados */}
+      {relatedPosts && relatedPosts.length > 0 && (
+        <section
+          className="py-24 border-t border-slate-200 bg-white"
+          aria-labelledby="related-articles-bottom"
+        >
+          <div className="max-w-[1280px] mx-auto px-6">
+            <div className="flex items-center justify-between mb-12">
+              <h2 id="related-articles-bottom" className="heading-font text-[2rem] text-slate-900">
+                {showArticleMeta ? t.relatedBottom : t.recommended}
+              </h2>
+              {showArticleMeta && (
+                <Link
+                  href={ROUTES.blog}
+                  className="text-secondary font-bold text-[0.9rem] flex items-center gap-2 hover:gap-3 transition-all"
+                >
+                  {t.viewAll} <ArrowRight size={18} />
+                </Link>
+              )}
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {relatedPosts.slice(0, 4).map((post, i) => (
+                <Link
+                  key={i}
+                  href={post.slug.startsWith("/") ? post.slug : `/blog/${post.slug}`}
+                  className="group p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:border-secondary/30 transition-all h-full flex flex-col"
+                >
+                  <h3 className="text-lg font-bold text-slate-900 leading-tight mb-3 group-hover:text-secondary transition-colors">
+                    {post.anchorText ?? post.title}
+                  </h3>
+                  <p className="text-slate-500 text-sm leading-relaxed line-clamp-4 mb-6 flex-1">
+                    {post.description ?? post.title}
+                  </p>
+                  <div className="mt-auto flex items-center gap-2 text-slate-900 font-bold text-[0.8rem]">
+                    {t.readArticle}{" "}
+                    <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {(relatedPosts || []).slice(0, 3).map((post, i) => (
-              <Link 
-                key={i} 
-                href={post.slug.startsWith("/") ? post.slug : `/blog/${post.slug}`} 
-                className="group p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:border-secondary/30 transition-all h-full flex flex-col"
-              >
-                <span className="text-[0.65rem] font-black text-secondary uppercase tracking-[0.2em] mb-4 block">Calculus Tips</span>
-                <h3 className="text-xl font-bold text-slate-900 leading-tight mb-4 group-hover:text-secondary transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-6">
-                  "Aprende paso a paso cómo resolver ejercicios complejos y domina el cálculo diferencial rápidamente con nuestras guías interactivas."
-                </p>
-                <div className="mt-auto flex items-center gap-2 text-slate-900 font-bold text-[0.8rem]">
-                   "Leer artículo" <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <Footer />
     </main>

@@ -1,9 +1,13 @@
 import ArticleLayout, { ExampleCard, TipCard, WarningCard } from "@/components/EducationalArticle";
+import InternalLinksSection from "@/components/InternalLinksSection";
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { dict } from "@/lib/dictionaries";
 import { metadataFromEntry } from "@/lib/seo";
 import HowToJsonLd from "@/components/HowToJsonLd";
+import { COMO_FUNCIONA_INTERNAL_LINKS } from "@/lib/internal-links";
+import { internalLinksToRelated } from "@/lib/blog-posts/related";
 
 export async function generateMetadata(): Promise<Metadata> {
   const m = dict.metadata.comoFunciona;
@@ -101,7 +105,20 @@ export default async function ComoFuncionaPage() {
         <WarningCard>
           {t.sections.tips.warning}
         </WarningCard>
+        <p className="mt-6">
+          Después de practicar con la herramienta, revisa{" "}
+          <Link href="/blog/derivada-de-sin-x" className="text-secondary font-bold hover:underline">
+            aprende la derivada de sin x paso a paso
+          </Link>{" "}
+          o los{" "}
+          <Link href="/blog/regla-de-la-cadena-ejercicios" className="text-secondary font-bold hover:underline">
+            ejercicios de regla de la cadena
+          </Link>
+          .
+        </p>
       </section>
+
+      <InternalLinksSection title="Artículos relacionados" links={COMO_FUNCIONA_INTERNAL_LINKS} />
     </div>
   );
 
@@ -128,6 +145,7 @@ export default async function ComoFuncionaPage() {
       breadcrumbs={t.breadcrumbs}
       content={content}
       faqs={t.faqs}
+      relatedPosts={internalLinksToRelated(COMO_FUNCIONA_INTERNAL_LINKS)}
     />
     </>
   );

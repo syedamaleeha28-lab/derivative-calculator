@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import HomeEducationalCards from "@/components/HomeEducationalCards";
 import HomeLongFormSeo from "@/components/HomeLongFormSeo";
+import HomeFeaturedBlogLinks from "@/components/HomeFeaturedBlogLinks";
+import HomeRecentArticles from "@/components/HomeRecentArticles";
 import { Calculator } from "lucide-react";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
@@ -39,6 +41,8 @@ export default function Home() {
         <Navbar />
         <Hero />
         <HomeEducationalCards />
+        <HomeFeaturedBlogLinks />
+        <HomeRecentArticles />
         <HomeLongFormSeo />
         <FAQ />
         <Footer />

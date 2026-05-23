@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, forwardRef, useImperativeHandle, useMemo } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { CornerDownLeft, Sparkles, AlertCircle, ChevronDown, BookOpen, CheckCircle2, Settings2, X } from "lucide-react";
 import {
@@ -8,6 +9,7 @@ import {
   type CalculatorSetInputDetail,
 } from "@/lib/calculator-events";
 import { dict } from "@/lib/dictionaries";
+import { trackCalculatorUsed } from "@/lib/gtag";
 import type { TranslationDictionary } from "@/lib/dictionaries";
 // @ts-ignore
 import nerdamer from "nerdamer/all.min";
@@ -201,6 +203,7 @@ export interface CalculatorHandle {
 }
 
 const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
+  const pathname = usePathname();
   const [input, setInput] = useState("");
   const [latexPreview, setLatexPreview] = useState("");
   const [latexResult, setLatexResult] = useState("");
@@ -333,6 +336,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
 
   const handleCalculate = () => {
     if (!input.trim()) return;
+    trackCalculatorUsed(pathname, input);
     setIsCalculating(true);
     setShowResult(false);
     setShowSteps(false);

@@ -1,4 +1,5 @@
 import ArticleLayout, { TipCard, FormulaCard } from "@/components/EducationalArticle";
+import InternalLinksSection from "@/components/InternalLinksSection";
 import katex from "katex";
 import Link from "next/link";
 import Image from "next/image";
@@ -6,6 +7,8 @@ import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import { dict } from "@/lib/dictionaries";
 import { metadataFromEntry } from "@/lib/seo";
+import { REGLAS_INTERNAL_LINKS } from "@/lib/internal-links";
+import { internalLinksToRelated } from "@/lib/blog-posts/related";
 
 export async function generateMetadata(): Promise<Metadata> {
   const m = dict.metadata.reglas;
@@ -95,7 +98,20 @@ export default async function ReglasPage() {
         <TipCard>
           Si tienes una división de funciones, siempre es preferible usar la regla del cociente, pero a veces puedes subir el denominador como potencia negativa y usar el producto.
         </TipCard>
+        <p className="mt-6">
+          Profundiza con{" "}
+          <Link href="/blog/regla-de-la-cadena-ejercicios" className="text-secondary font-bold hover:underline">
+            ejercicios de regla de la cadena
+          </Link>{" "}
+          y la guía de{" "}
+          <Link href="/blog/derivada-de-sin-x" className="text-secondary font-bold hover:underline">
+            derivada de sin x paso a paso
+          </Link>
+          .
+        </p>
       </section>
+
+      <InternalLinksSection title="Artículos relacionados" links={REGLAS_INTERNAL_LINKS} />
     </div>
   );
 
@@ -114,11 +130,7 @@ export default async function ReglasPage() {
       breadcrumbs={t.breadcrumbs}
       content={content}
       faqs={t.faqs}
-      relatedPosts={[
-        { title: "Tabla de Fórmulas", slug: "/reglas" },
-        { title: "Ejemplos de Cálculo", slug: "/ejemplos" },
-        { title: "¿Qué es una Derivada?", slug: "/como-funciona" },
-      ]}
+      relatedPosts={internalLinksToRelated(REGLAS_INTERNAL_LINKS)}
     />
   );
 }

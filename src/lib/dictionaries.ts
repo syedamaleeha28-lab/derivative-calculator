@@ -286,6 +286,9 @@ const dictionaryData = {
       authorRole: "Especialista en educación matemática y creador de contenido pedagógico para estudiantes de secundaria y universidad.",
       relatedPosts: "Artículos Relacionados",
       recommended: "Artículos Recomendados",
+      relatedBottom: "Artículos relacionados",
+      readMore: "Leer más",
+      readArticle: "Leer artículo",
       viewAll: "Ver todos",
       resources: "Recursos",
       tocLabel: "Contenido",
@@ -690,6 +693,18 @@ const dictionaryData = {
         },
       ],
     },
+    homeInternalLinks: {
+      featuredBadge: "Blog educativo",
+      featuredTitle: "Guías de derivadas paso a paso",
+      featuredLead:
+        "Artículos con fórmulas, ejercicios resueltos y enlaces a la calculadora para practicar sin(x), regla de la cadena, derivadas implícitas y más.",
+      recentBadge: "Últimas publicaciones",
+      recentTitle: "Artículos recientes",
+      recentLead:
+        "Todas las guías del blog sobre cálculo diferencial, actualizadas y enlazadas desde la página principal.",
+      readMore: "Leer guía",
+      viewAllBlog: "Ver todo el blog",
+    },
     homeLongForm: {
       badge: "Guía completa",
       title: "Guía educativa: calculadora de derivadas y cálculo diferencial",
@@ -807,6 +822,8 @@ const dictionaryData = {
             "Para practicar variaciones, combina esta guía con ejercicios de la sección de ejemplos, donde verás funciones trigonométricas mezcladas con polinomios y productos.",
           ],
           relatedLinks: [
+            { label: "Aprende la derivada de sin x paso a paso", href: "/blog/derivada-de-sin-x" },
+            { label: "Derivada de cos x explicada", href: "/blog/derivada-de-cos-x" },
             { label: "Reglas de derivación", href: "/reglas" },
             { label: "Ejemplos trigonométricos", href: "/ejemplos" },
           ],
@@ -889,9 +906,11 @@ const dictionaryData = {
         { label: "Ejemplos", href: "/ejemplos" },
         { label: "Reglas", href: "/reglas" },
         { label: "Blog", href: "/blog" },
-        { label: "Derivada de sin(x)", href: "/blog/derivada-de-sin-x" },
-        { label: "Regla de la cadena", href: "/blog/regla-de-la-cadena-ejercicios" },
-        { label: "Derivadas para principiantes", href: "/blog/derivadas-para-principiantes" },
+        { label: "Derivada de sin x paso a paso", href: "/blog/derivada-de-sin-x" },
+        { label: "Derivada de cos x", href: "/blog/derivada-de-cos-x" },
+        { label: "Regla de la cadena (ejercicios)", href: "/blog/regla-de-la-cadena-ejercicios" },
+        { label: "Derivadas implícitas resueltas", href: "/blog/derivadas-implicitas-paso-a-paso" },
+        { label: "Ejemplos de derivadas resueltas", href: "/blog/ejemplos-de-derivadas-resueltas" },
       ],
     },
     aboutPage: {
