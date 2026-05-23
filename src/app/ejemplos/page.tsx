@@ -6,6 +6,8 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { dict } from "@/lib/dictionaries";
 import { metadataFromEntry } from "@/lib/seo";
+import { CONTENT_FIGURE } from "@/lib/image-sizes";
+import cuadernoEjemplosImg from "../../../public/images/cuaderno-ejemplos-resueltos.webp";
 import { EJEMPLOS_INTERNAL_LINKS } from "@/lib/internal-links";
 import { internalLinksToRelated } from "@/lib/blog-posts/related";
 export async function generateMetadata(): Promise<Metadata> {
@@ -68,15 +70,15 @@ export default async function DerivativeExamples() {
           .
         </p>
         <figure className="my-10 max-w-3xl mx-auto">
-          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 shadow-lg">
-            <Image
-              src="/images/cuaderno-ejemplos-resueltos.webp"
-              alt={t.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
-            />
-          </div>
+          <Image
+            src={cuadernoEjemplosImg}
+            alt={t.title}
+            width={CONTENT_FIGURE.width}
+            height={CONTENT_FIGURE.height}
+            loading="lazy"
+            className="w-full h-auto rounded-2xl border border-slate-100 shadow-lg object-cover"
+            sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+          />
         </figure>
       </section>
 

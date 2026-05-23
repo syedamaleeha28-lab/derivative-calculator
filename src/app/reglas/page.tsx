@@ -1,3 +1,4 @@
+import "katex/dist/katex.min.css";
 import ArticleLayout, { TipCard, FormulaCard } from "@/components/EducationalArticle";
 import InternalLinksSection from "@/components/InternalLinksSection";
 import katex from "katex";
@@ -7,6 +8,8 @@ import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import { dict } from "@/lib/dictionaries";
 import { metadataFromEntry } from "@/lib/seo";
+import { CONTENT_FIGURE } from "@/lib/image-sizes";
+import guiaReglasImg from "../../../public/images/guia-reglas-derivacion-matematicas.webp";
 import { REGLAS_INTERNAL_LINKS } from "@/lib/internal-links";
 import { internalLinksToRelated } from "@/lib/blog-posts/related";
 
@@ -38,15 +41,15 @@ export default async function ReglasPage() {
           antes de memorizar las fórmulas.
         </p>
         <figure className="my-10 max-w-3xl mx-auto">
-          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 shadow-lg">
-            <Image
-              src="/images/guia-reglas-derivacion-matematicas.webp"
-              alt={t.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
-            />
-          </div>
+          <Image
+            src={guiaReglasImg}
+            alt={t.title}
+            width={CONTENT_FIGURE.width}
+            height={CONTENT_FIGURE.height}
+            loading="lazy"
+            className="w-full h-auto rounded-2xl border border-slate-100 shadow-lg object-cover"
+            sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+          />
         </figure>
       </section>
 

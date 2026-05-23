@@ -5,9 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { dict } from "@/lib/dictionaries";
 import { resolveEducationalCardImage } from "@/lib/educational-card-images";
-
-const CARD_IMAGE_BOX =
-  "relative mx-auto mb-5 h-28 w-28 shrink-0 overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm sm:h-32 sm:w-32";
+import { EDUCATIONAL_CARD_DISPLAY } from "@/lib/image-sizes";
 
 export default function HomeEducationalCards() {
   const t = dict.seoCards;
@@ -32,7 +30,6 @@ export default function HomeEducationalCards() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {t.cards.map((card, idx) => {
             const image = resolveEducationalCardImage(card);
-            const isPriority = idx < 2;
 
             return (
               <motion.article
@@ -43,15 +40,19 @@ export default function HomeEducationalCards() {
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
                 className="group flex flex-col h-full p-6 rounded-2xl bg-slate-50 border border-slate-200/60 hover:bg-white hover:border-violet-200/80 hover:shadow-md transition-all duration-300"
               >
-                <div className={CARD_IMAGE_BOX}>
+                <div className="mx-auto mb-5 shrink-0 overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm">
                   <Image
                     src={image.src}
                     alt={image.alt}
-                    fill
+                    width={image.src.width}
+                    height={image.src.height}
+                    loading="lazy"
                     sizes="(max-width: 768px) 112px, 128px"
-                    priority={isPriority}
-                    loading={isPriority ? "eager" : "lazy"}
-                    className="object-contain object-center p-2 transition-transform duration-300 group-hover:scale-[1.03]"
+                    className="w-28 h-28 sm:w-32 sm:h-32 object-contain object-center p-2 transition-transform duration-300 group-hover:scale-[1.03]"
+                    style={{
+                      maxWidth: EDUCATIONAL_CARD_DISPLAY.width,
+                      maxHeight: EDUCATIONAL_CARD_DISPLAY.height,
+                    }}
                   />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3 text-center md:text-left">

@@ -2,32 +2,37 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import logo from "../../public/images/derivio-calculator-logo.webp";
 
 const LOGO_ALT =
   "Calculadora Derivadas — logotipo de la calculadora de derivadas en línea con notación d/dx.";
 
 type BrandLogoVariant = "nav" | "footer" | "mobile";
 
-const variantClass: Record<BrandLogoVariant, { wrap: string; sizes: string; priority: boolean }> = {
+const variantClass: Record<
+  BrandLogoVariant,
+  { wrap: string; sizes: string; priority: boolean; imgClass: string }
+> = {
   nav: {
-    wrap: "relative h-9 w-[9.25rem] sm:w-40 shrink-0",
-    sizes: "160px",
+    wrap: "flex h-9 shrink-0 items-center min-[360px]:h-10 sm:h-9 md:h-9",
+    sizes: "(max-width: 768px) 56px, 90px",
     priority: true,
+    imgClass:
+      "h-6 w-auto min-[360px]:h-7 sm:h-8 md:h-9 max-w-[5.5rem] object-contain object-right",
   },
   footer: {
-    wrap: "relative h-10 w-44 sm:w-48 shrink-0",
+    wrap: "flex h-10 shrink-0 items-center sm:h-10",
     sizes: "192px",
     priority: false,
+    imgClass: "h-10 w-auto max-w-[12rem] object-contain object-left",
   },
   mobile: {
-    wrap: "relative h-9 w-40 shrink-0",
+    wrap: "flex h-9 shrink-0 items-center",
     sizes: "160px",
     priority: false,
+    imgClass: "h-9 w-auto max-w-[10rem] object-contain object-left",
   },
 };
-
-const NAV_WORDMARK_LOGO_WRAP =
-  "relative flex h-6 w-8 shrink-0 items-center justify-end min-[360px]:h-7 min-[360px]:w-9 sm:h-8 sm:w-[4.625rem] md:h-9 md:w-[5.5rem]";
 
 export function BrandLogoLink({
   variant,
@@ -42,8 +47,6 @@ export function BrandLogoLink({
 }) {
   const v = variantClass[variant];
   const isNavWordmark = showWordmark && variant === "nav";
-  const wrapClass = isNavWordmark ? NAV_WORDMARK_LOGO_WRAP : v.wrap;
-  const imgSizes = isNavWordmark ? "(max-width: 768px) 56px, 90px" : v.sizes;
 
   return (
     <Link
@@ -55,14 +58,16 @@ export function BrandLogoLink({
           : `inline-flex items-center group select-none ${className}`
       }
     >
-      <div className={wrapClass} {...(isNavWordmark ? { "aria-hidden": true } : {})}>
+      <div className={v.wrap} {...(isNavWordmark ? { "aria-hidden": true } : {})}>
         <Image
-          src="/images/derivio-calculator-logo.webp"
+          src={logo}
           alt={isNavWordmark ? "" : LOGO_ALT}
-          fill
-          className={isNavWordmark ? "object-contain object-right" : "object-contain object-left"}
-          sizes={imgSizes}
+          width={logo.width}
+          height={logo.height}
           priority={v.priority}
+          loading={v.priority ? "eager" : "lazy"}
+          sizes={v.sizes}
+          className={v.imgClass}
         />
       </div>
       {isNavWordmark && (

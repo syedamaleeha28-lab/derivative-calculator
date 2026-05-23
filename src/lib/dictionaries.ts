@@ -637,7 +637,7 @@ const dictionaryData = {
           desc: "Comprende la pendiente instantánea y el significado geométrico de la derivada en una función.",
           link: "Aprende el concepto base →",
           href: "/como-funciona",
-          image: "/images/que-es-una-derivada.png",
+          image: "/images/que-es-una-derivada.webp",
           imageAlt:
             "Gráfica educativa que explica qué es una derivada y la pendiente de la tangente",
         },
@@ -647,7 +647,7 @@ const dictionaryData = {
           desc: "Introduce tu expresión con el teclado matemático y obtén el resultado con pasos detallados.",
           link: "Ver tutorial rápido →",
           href: "/como-funciona",
-          image: "/images/como-usar-calculadora-de-derivadas.png",
+          image: "/images/como-usar-calculadora-de-derivadas.webp",
           imageAlt:
             "Calculadora de derivadas con pasos online y teclado matemático integrado",
         },
@@ -657,7 +657,7 @@ const dictionaryData = {
           desc: "Potencia, producto, cociente y cadena explicadas para aplicar cada regla con seguridad.",
           link: "Estudiar reglas →",
           href: "/reglas",
-          image: "/images/reglas-de-derivacion.png",
+          image: "/images/reglas-de-derivacion.webp",
           imageAlt:
             "Reglas de derivación matemática: potencia, producto, cociente y regla de la cadena",
         },
@@ -667,7 +667,7 @@ const dictionaryData = {
           desc: "Ejercicios resueltos desde polinomios básicos hasta funciones trigonométricas compuestas.",
           link: "Ver galería de ejemplos →",
           href: "/ejemplos",
-          image: "/images/ejemplos-de-derivadas-resueltas.png",
+          image: "/images/ejemplos-de-derivadas-resueltas.webp",
           imageAlt:
             "Ejemplos de derivadas resueltas con procedimiento paso a paso",
         },
@@ -677,7 +677,7 @@ const dictionaryData = {
           desc: "Introducción al cálculo multivariable y derivación respecto a una variable manteniendo las demás fijas.",
           link: "Conceptos avanzados →",
           href: "/reglas",
-          image: "/images/derivadas-parciales.png",
+          image: "/images/derivadas-parciales.webp",
           imageAlt:
             "Calculadora de derivadas parciales y funciones de varias variables",
         },
@@ -687,7 +687,7 @@ const dictionaryData = {
           desc: "Consulta tablas de derivadas y fórmulas trigonométricas para estudiar o verificar resultados.",
           link: "Ver formulario completo →",
           href: "/reglas",
-          image: "/images/formulas-de-derivadas.png",
+          image: "/images/formulas-de-derivadas.webp",
           imageAlt:
             "Fórmulas de derivadas y tabla de funciones trigonométricas para estudiar",
         },

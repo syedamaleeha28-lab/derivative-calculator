@@ -1,17 +1,17 @@
 import type { StaticImageData } from "next/image";
-import queEsUnaDerivada from "../../public/images/que-es-una-derivada.png";
-import comoUsarCalculadora from "../../public/images/como-usar-calculadora-de-derivadas.png";
-import reglasDeDerivacion from "../../public/images/reglas-de-derivacion.png";
-import ejemplosDerivadas from "../../public/images/ejemplos-de-derivadas-resueltas.png";
-import derivadasParciales from "../../public/images/derivadas-parciales.png";
-import formulasDeDerivadas from "../../public/images/formulas-de-derivadas.png";
+import queEsUnaDerivada from "../../public/images/que-es-una-derivada.webp";
+import comoUsarCalculadora from "../../public/images/como-usar-calculadora-de-derivadas.webp";
+import reglasDeDerivacion from "../../public/images/reglas-de-derivacion.webp";
+import ejemplosDerivadas from "../../public/images/ejemplos-de-derivadas-resueltas.webp";
+import derivadasParciales from "../../public/images/derivadas-parciales.webp";
+import formulasDeDerivadas from "../../public/images/formulas-de-derivadas.webp";
 
 export type EducationalCardImage = {
   src: StaticImageData;
   alt: string;
 };
 
-/** Unique PNG per card (never map by href — several cards share routes). */
+/** Unique WebP per card (never map by href — several cards share routes). */
 export const EDUCATIONAL_CARD_IMAGES = {
   "que-es-derivada": {
     src: queEsUnaDerivada,

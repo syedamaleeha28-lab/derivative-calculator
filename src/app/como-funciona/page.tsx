@@ -6,6 +6,8 @@ import type { Metadata } from "next";
 import { dict } from "@/lib/dictionaries";
 import { metadataFromEntry } from "@/lib/seo";
 import HowToJsonLd from "@/components/HowToJsonLd";
+import { CONTENT_FIGURE } from "@/lib/image-sizes";
+import interfazCalculadoraImg from "../../../public/images/interfaz-calculadora-matematica.webp";
 import { COMO_FUNCIONA_INTERNAL_LINKS } from "@/lib/internal-links";
 import { internalLinksToRelated } from "@/lib/blog-posts/related";
 
@@ -30,15 +32,15 @@ export default async function ComoFuncionaPage() {
           {t.sections.steps.desc}
         </p>
         <figure className="mb-10 max-w-3xl mx-auto">
-          <div className="relative w-full aspect-[8/5] rounded-2xl overflow-hidden border border-slate-100 shadow-lg">
-            <Image
-              src="/images/interfaz-calculadora-matematica.webp"
-              alt={t.title}
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
-            />
-          </div>
+          <Image
+            src={interfazCalculadoraImg}
+            alt={t.title}
+            width={CONTENT_FIGURE.width}
+            height={CONTENT_FIGURE.height}
+            loading="lazy"
+            className="w-full h-auto rounded-2xl border border-slate-100 shadow-lg object-cover object-top"
+            sizes="(max-width: 768px) 100vw, min(768px, 85vw), 800px"
+          />
         </figure>
         <div className="flex flex-col gap-8">
           {t.sections.steps.items.map((step, i) => (
