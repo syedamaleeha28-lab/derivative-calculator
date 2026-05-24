@@ -3,6 +3,7 @@ import { NAV_LINKS } from "@/lib/routes";
 import {
   FACEBOOK_URL,
   INSTAGRAM_URL,
+  PINTEREST_URL,
   SOCIAL_PROFILE_URLS,
   X_URL,
 } from "@/lib/social-links";
@@ -165,4 +166,5 @@ export const ORGANIZATION_SOCIAL = {
   facebook: FACEBOOK_URL,
   instagram: INSTAGRAM_URL,
   x: X_URL,
+  pinterest: PINTEREST_URL,
 } as const;

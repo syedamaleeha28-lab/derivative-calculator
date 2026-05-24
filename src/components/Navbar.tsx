@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandLogoLink } from "./BrandLogo";
-import SocialLinks from "./SocialLinks";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { dict } from "@/lib/dictionaries";
 import { dictEn } from "@/lib/dictionaries-en";
@@ -101,7 +100,6 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-2 shrink-0">
           <LocaleSwitcher variant="desktop" />
-          <SocialLinks variant="navbar" iconSize={16} />
           <Link
             href={calcHref}
             className="ml-0.5 bg-[#16213e] hover:bg-[#8b5cf6] text-white px-4 lg:px-5 py-2.5 rounded-lg text-[0.88rem] lg:text-[0.9rem] font-semibold transition-all shadow-md hover:shadow-lg active:scale-95 whitespace-nowrap"
@@ -158,13 +156,6 @@ export default function Navbar() {
                 );
               })}
               <li className="pt-4 mt-2 border-t border-slate-100">
-                <SocialLinks
-                  variant="footer"
-                  iconSize={20}
-                  className="justify-center gap-3"
-                />
-              </li>
-              <li className="pt-3">
                 <Link
                   href={calcHref}
                   onClick={() => setMobileOpen(false)}

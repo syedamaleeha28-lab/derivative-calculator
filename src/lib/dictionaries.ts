@@ -72,6 +72,7 @@ const dictionaryData = {
       disclaimer: "Aviso Legal",
       about: "Acerca de",
       contact: "Contacto",
+      social: "Síguenos",
       cols: {
         calculators: {
           title: "Calculadoras",

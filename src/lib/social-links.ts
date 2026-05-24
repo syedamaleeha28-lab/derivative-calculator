@@ -6,4 +6,12 @@ export const INSTAGRAM_URL =
 
 export const X_URL = "https://x.com/derivadas_dx";
 
-export const SOCIAL_PROFILE_URLS = [FACEBOOK_URL, INSTAGRAM_URL, X_URL] as const;
+export const PINTEREST_URL =
+  "https://www.pinterest.com/calculadoraderivadasdx/";
+
+export const SOCIAL_PROFILE_URLS = [
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  X_URL,
+  PINTEREST_URL,
+] as const;

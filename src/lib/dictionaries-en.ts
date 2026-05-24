@@ -44,6 +44,7 @@ export const dictEn: TranslationDictionary = {
     disclaimer: "Disclaimer",
     about: "About",
     contact: "Contact",
+    social: "Follow us",
     cols: {
       calculators: {
         title: "Calculators",
