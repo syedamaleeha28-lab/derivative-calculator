@@ -36,13 +36,13 @@ const FEATURED_CALCULATORS = [
     desc: "Multivariable functions and ∂f/∂x computations.",
   },
   {
-    title: "Implicit Derivative Calculator",
-    href: EN_ROUTES.implicitDerivativeCalculator,
+    title: "Implicit Differentiation Calculator",
+    href: EN_ROUTES.implicitDifferentiationCalculator,
     desc: "Find dy/dx without solving for y first.",
   },
   {
     title: "Chain Rule Calculator",
-    href: EN_ROUTES.chainRuleDerivativeCalculator,
+    href: EN_ROUTES.chainRuleCalculator,
     desc: "Composite functions and nested differentiation.",
   },
   {

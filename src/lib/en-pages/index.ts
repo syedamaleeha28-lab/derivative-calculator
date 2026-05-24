@@ -1,38 +1,10 @@
 import { EN_ROUTES } from "../en-routes";
+import type { CalculatorPageConfig, FaqItem } from "../calculator-pages/types";
 
-export type EnWorkedExample = {
-  title: string;
-  problem: string;
-  steps: string[];
-  result: string;
-};
+export type EnFaqItem = FaqItem;
+export type EnCalculatorPageConfig = CalculatorPageConfig;
 
-export type EnFaqItem = { q: string; a: string };
-
-export type EnRelatedCalculator = {
-  label: string;
-  href: string;
-  description: string;
-};
-
-export type EnCalculatorPageConfig = {
-  slug: string;
-  path: string;
-  h1: string;
-  intro: string[];
-  meta: {
-    title: string;
-    description: string;
-    keywords: string;
-  };
-  defaultExamples: string[];
-  defaultVariable?: string;
-  examples: EnWorkedExample[];
-  faqs: EnFaqItem[];
-  relatedCalculators: EnRelatedCalculator[];
-  internalLinks: { label: string; href: string }[];
-  educationalSections: { h2: string; paragraphs: string[] }[];
-};
+const BREADCRUMB_HOME = { label: "Home", path: EN_ROUTES.home };
 
 const SHARED_INTERNAL_LINKS = [
   { label: "View derivative examples (Spanish)", href: "/ejemplos" },
@@ -68,6 +40,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
   derivativeCalculator: {
     slug: "derivative-calculator",
     path: EN_ROUTES.derivativeCalculator,
+    breadcrumbHome: BREADCRUMB_HOME,
     h1: "Derivative Calculator — Step-by-Step Online Tool",
     intro: [
       "This derivative calculator computes exact symbolic derivatives and walks you through each algebraic step. Whether you are reviewing for a calculus exam or exploring a new function type, the tool handles polynomials, rationals, trigonometric expressions, exponentials, and logarithms.",
@@ -140,7 +113,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
       {
         label: "Chain rule derivative calculator",
-        href: EN_ROUTES.chainRuleDerivativeCalculator,
+        href: EN_ROUTES.chainRuleCalculator,
         description: "Practice nested functions where the chain rule is essential.",
       },
       {
@@ -150,8 +123,8 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
     ],
     internalLinks: [
-      { label: "Try our implicit derivative calculator", href: EN_ROUTES.implicitDerivativeCalculator },
-      { label: "Learn chain rule differentiation", href: EN_ROUTES.chainRuleDerivativeCalculator },
+      { label: "Try our implicit derivative calculator", href: EN_ROUTES.implicitDifferentiationCalculator },
+      { label: "Learn chain rule differentiation", href: EN_ROUTES.chainRuleCalculator },
       { label: "View derivative examples", href: "/ejemplos" },
       ...SHARED_INTERNAL_LINKS,
     ],
@@ -176,6 +149,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
   partialDerivativeCalculator: {
     slug: "partial-derivative-calculator",
     path: EN_ROUTES.partialDerivativeCalculator,
+    breadcrumbHome: BREADCRUMB_HOME,
     h1: "Partial Derivative Calculator for Multivariable Functions",
     intro: [
       "Partial derivatives describe how a function of several variables changes when you vary one variable while holding the others fixed. This partial derivative calculator helps you compute ∂f/∂x, ∂f/∂y, and similar results with clear symbolic steps.",
@@ -252,7 +226,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
       {
         label: "Implicit derivative calculator",
-        href: EN_ROUTES.implicitDerivativeCalculator,
+        href: EN_ROUTES.implicitDifferentiationCalculator,
         description: "Handle equations where y is not isolated.",
       },
     ],
@@ -280,16 +254,17 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
     ],
   },
 
-  implicitDerivativeCalculator: {
-    slug: "implicit-derivative-calculator",
-    path: EN_ROUTES.implicitDerivativeCalculator,
-    h1: "Implicit Derivative Calculator with Step-by-Step Solutions",
+  implicitDifferentiationCalculator: {
+    slug: "implicit-differentiation-calculator",
+    path: EN_ROUTES.implicitDifferentiationCalculator,
+    breadcrumbHome: BREADCRUMB_HOME,
+    h1: "Implicit Differentiation Calculator with Step-by-Step Solutions",
     intro: [
       "Implicit differentiation finds dy/dx when y is not written explicitly as a function of x—think circles, ellipses, or equations like x² + y² = 25. This implicit derivative calculator applies the chain rule to every term containing y.",
       "Instead of solving for y first, differentiate both sides with respect to x, treat y as y(x), and solve for dy/dx. Our tool automates the symbolic work and shows the reasoning.",
     ],
     meta: {
-      title: "Implicit Derivative Calculator — dy/dx Step-by-Step",
+      title: "Implicit Differentiation Calculator — dy/dx Step-by-Step",
       description:
         "Free implicit derivative calculator online. Differentiate equations like x²+y²=r² and find dy/dx with clear steps. Perfect for calculus I and II.",
       keywords:
@@ -349,7 +324,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
     relatedCalculators: [
       {
         label: "Chain rule derivative calculator",
-        href: EN_ROUTES.chainRuleDerivativeCalculator,
+        href: EN_ROUTES.chainRuleCalculator,
         description: "Master the chain rule—the core technique behind implicit differentiation.",
       },
       {
@@ -365,7 +340,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
     ],
     internalLinks: [
       { label: "Implicit derivatives guide (Spanish)", href: "/blog/derivadas-implicitas-paso-a-paso" },
-      { label: "Learn chain rule differentiation", href: EN_ROUTES.chainRuleDerivativeCalculator },
+      { label: "Learn chain rule differentiation", href: EN_ROUTES.chainRuleCalculator },
       { label: "View derivative examples", href: "/ejemplos" },
       ...SHARED_INTERNAL_LINKS,
     ],
@@ -390,6 +365,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
   secondDerivativeCalculator: {
     slug: "second-derivative-calculator",
     path: EN_ROUTES.secondDerivativeCalculator,
+    breadcrumbHome: BREADCRUMB_HOME,
     h1: "Second Derivative Calculator — Find f″(x) Online",
     intro: [
       "The second derivative f″(x) tells you how the slope itself is changing—essential for concavity, inflection points, and acceleration in physics. This second derivative calculator differentiates twice and shows each stage.",
@@ -466,7 +442,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
       {
         label: "Chain rule calculator",
-        href: EN_ROUTES.chainRuleDerivativeCalculator,
+        href: EN_ROUTES.chainRuleCalculator,
         description: "Needed when the first derivative itself is composite.",
       },
     ],
@@ -494,16 +470,17 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
     ],
   },
 
-  chainRuleDerivativeCalculator: {
-    slug: "chain-rule-derivative-calculator",
-    path: EN_ROUTES.chainRuleDerivativeCalculator,
-    h1: "Chain Rule Derivative Calculator — Composite Functions",
+  chainRuleCalculator: {
+    slug: "chain-rule-calculator",
+    path: EN_ROUTES.chainRuleCalculator,
+    breadcrumbHome: BREADCRUMB_HOME,
+    h1: "Chain Rule Calculator — Composite Function Derivatives",
     intro: [
       "The chain rule handles composite functions: an outer function applied to an inner function. If h(x) = f(g(x)), then h′(x) = f′(g(x))·g′(x). This chain rule derivative calculator identifies nested structure and applies the rule automatically.",
       "From sin(3x) to ln(x²+1) and (2x+1)⁵, most ‘hard’ first-semester problems involve the chain rule at least once. Practice recognizing the inner and outer layers before you differentiate.",
     ],
     meta: {
-      title: "Chain Rule Derivative Calculator — Composite Functions Online",
+      title: "Chain Rule Calculator — Composite Functions Online",
       description:
         "Free chain rule derivative calculator with steps. Differentiate sin(2x), ln(x²+1), and nested functions. Learn composite differentiation online.",
       keywords:
@@ -568,7 +545,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
       {
         label: "Implicit derivative calculator",
-        href: EN_ROUTES.implicitDerivativeCalculator,
+        href: EN_ROUTES.implicitDifferentiationCalculator,
         description: "Implicit differentiation relies heavily on the chain rule.",
       },
       {
@@ -580,7 +557,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
     internalLinks: [
       { label: "Chain rule exercises (Spanish)", href: "/blog/regla-de-la-cadena-ejercicios" },
       { label: "Understanding the chain rule (Spanish)", href: "/blog/entendiendo-regla-de-la-cadena" },
-      { label: "Try our implicit derivative calculator", href: EN_ROUTES.implicitDerivativeCalculator },
+      { label: "Try our implicit derivative calculator", href: EN_ROUTES.implicitDifferentiationCalculator },
       { label: "View derivative examples", href: "/ejemplos" },
       ...SHARED_INTERNAL_LINKS,
     ],

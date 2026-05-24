@@ -1,4 +1,5 @@
 import { EN_ROUTES } from "./en-routes";
+import { ES_CALCULATOR_ROUTES } from "./es-routes";
 import { ROUTES } from "./routes";
 
 export type Locale = "es" | "en";
@@ -15,10 +16,18 @@ export const LANG_OPTIONS = [
 export const LOCALE_ROUTE_PAIRS: { es: string; en: string }[] = [
   { es: ROUTES.home, en: EN_ROUTES.home },
   { es: ROUTES.home, en: EN_ROUTES.derivativeCalculator },
-  { es: ROUTES.reglas, en: EN_ROUTES.partialDerivativeCalculator },
-  { es: ROUTES.reglas, en: EN_ROUTES.secondDerivativeCalculator },
-  { es: "/blog/derivadas-implicitas-paso-a-paso", en: EN_ROUTES.implicitDerivativeCalculator },
-  { es: "/blog/entendiendo-regla-de-la-cadena", en: EN_ROUTES.chainRuleDerivativeCalculator },
+  {
+    es: ES_CALCULATOR_ROUTES.partialDerivatives,
+    en: EN_ROUTES.partialDerivativeCalculator,
+  },
+  {
+    es: ES_CALCULATOR_ROUTES.chainRule,
+    en: EN_ROUTES.chainRuleCalculator,
+  },
+  {
+    es: ES_CALCULATOR_ROUTES.implicitDerivatives,
+    en: EN_ROUTES.implicitDifferentiationCalculator,
+  },
 ];
 
 function normalizePath(path: string): string {

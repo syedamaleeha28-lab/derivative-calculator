@@ -50,8 +50,8 @@ export const dictEn: TranslationDictionary = {
         links: [
           { label: "Derivative Calculator", href: "/en/derivative-calculator" },
           { label: "Partial Derivatives", href: "/en/partial-derivative-calculator" },
-          { label: "Implicit Derivatives", href: "/en/implicit-derivative-calculator" },
-          { label: "Chain Rule Calculator", href: "/en/chain-rule-derivative-calculator" },
+          { label: "Implicit Differentiation", href: "/en/implicit-differentiation-calculator" },
+          { label: "Chain Rule Calculator", href: "/en/chain-rule-calculator" },
         ],
       },
       learning: {

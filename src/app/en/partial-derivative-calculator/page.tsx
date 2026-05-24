@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import EnglishCalculatorPage from "@/components/EnglishCalculatorPage";
+import CalculatorLandingPage from "@/components/CalculatorLandingPage";
 import { EN_CALCULATOR_PAGES } from "@/lib/en-pages";
-import { buildEnPageMetadata } from "@/lib/en-metadata";
+import { buildCalculatorPageMetadata } from "@/lib/calculator-pages/metadata";
 
 const page = EN_CALCULATOR_PAGES.partialDerivativeCalculator;
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildEnPageMetadata(page);
+  return buildCalculatorPageMetadata(page, "en");
 }
 
 export default function PartialDerivativeCalculatorPage() {
-  return <EnglishCalculatorPage page={page} />;
+  return <CalculatorLandingPage locale="en" page={page} />;
 }

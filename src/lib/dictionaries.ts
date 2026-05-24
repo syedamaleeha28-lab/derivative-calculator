@@ -77,8 +77,9 @@ const dictionaryData = {
           title: "Calculadoras",
           links: [
             { label: "Calculadora de Derivadas", href: "/#calculator" },
-            { label: "Calculadora de Pasos", href: "/como-funciona" },
-            { label: "Derivadas Parciales", href: "/reglas" },
+            { label: "Derivadas Parciales", href: "/calculadora-de-derivadas-parciales" },
+            { label: "Regla de la Cadena", href: "/calculadora-regla-de-la-cadena" },
+            { label: "Derivadas Implícitas", href: "/calculadora-de-derivadas-implicitas" },
             { label: "Reglas de Derivación", href: "/reglas" },
           ]
         },

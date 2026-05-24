@@ -33,6 +33,16 @@ const nextConfig: NextConfig = {
       { source: "/terminos-de-servicio", destination: "/terms-of-service", permanent: true },
       { source: "/contact", destination: "/contacto", permanent: true },
       { source: "/about", destination: "/acerca-de", permanent: true },
+      {
+        source: "/en/chain-rule-derivative-calculator",
+        destination: "/en/chain-rule-calculator",
+        permanent: true,
+      },
+      {
+        source: "/en/implicit-derivative-calculator",
+        destination: "/en/implicit-differentiation-calculator",
+        permanent: true,
+      },
     ];
   },
 };
