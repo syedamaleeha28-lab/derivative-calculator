@@ -157,7 +157,14 @@ export default function Navbar() {
                   </li>
                 );
               })}
-              <li className="pt-3 mt-1 border-t border-slate-100">
+              <li className="pt-4 mt-2 border-t border-slate-100">
+                <SocialLinks
+                  variant="footer"
+                  iconSize={20}
+                  className="justify-center gap-3"
+                />
+              </li>
+              <li className="pt-3">
                 <Link
                   href={calcHref}
                   onClick={() => setMobileOpen(false)}
