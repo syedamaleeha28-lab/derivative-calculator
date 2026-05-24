@@ -3,7 +3,9 @@
 import Link from "next/link";
 import SocialLinks from "@/components/SocialLinks";
 import { dict } from "@/lib/dictionaries";
+import { dictEn } from "@/lib/dictionaries-en";
 import { FOOTER_LEGAL_PAGES, getLegalPath } from "@/lib/legal-routes";
+import type { Locale } from "@/lib/locale";
 
 const FOOTER_LABEL_KEY = {
   privacy: "privacy",
@@ -13,8 +15,12 @@ const FOOTER_LABEL_KEY = {
   contact: "contact",
 } as const;
 
-export default function Footer() {
-  const t = dict.footer;
+type FooterProps = {
+  locale?: Locale;
+};
+
+export default function Footer({ locale = "es" }: FooterProps) {
+  const t = locale === "en" ? dictEn.footer : dict.footer;
 
   return (
     <footer className="bg-white border-t border-slate-200 py-8 md:py-10">

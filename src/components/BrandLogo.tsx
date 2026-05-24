@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { EN_ROUTES } from "@/lib/en-routes";
+import { getLocaleFromPathname } from "@/lib/locale";
 import logo from "../../public/images/derivio-calculator-logo.webp";
 
 const LOGO_ALT =
@@ -47,10 +50,12 @@ export function BrandLogoLink({
 }) {
   const v = variantClass[variant];
   const isNavWordmark = showWordmark && variant === "nav";
+  const pathname = usePathname();
+  const homeHref = getLocaleFromPathname(pathname) === "en" ? EN_ROUTES.home : "/";
 
   return (
     <Link
-      href="/"
+      href={homeHref}
       onClick={onNavigate}
       className={
         isNavWordmark

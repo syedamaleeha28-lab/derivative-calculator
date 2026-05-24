@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Inter, DM_Serif_Display } from "next/font/google";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
@@ -30,12 +31,15 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.ico" },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const headersList = await headers();
+  const locale = headersList.get("x-locale") === "en" ? "en" : "es";
+
   return (
     <html
-      lang="es"
+      lang={locale}
       className={`${inter.variable} ${dmSerif.variable} h-full scroll-smooth`}
       data-scroll-behavior="smooth"
     >

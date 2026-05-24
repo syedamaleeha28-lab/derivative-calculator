@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getHreflangAlternates } from "./locale";
 
 /** Canonical production origin (www). */
 export const SITE_URL = (
@@ -28,6 +29,12 @@ export type PageMetadataInput = {
   publishedTime?: string;
   noindex?: boolean;
   ogImage?: string;
+  /** Open Graph locale override (defaults to es_ES). */
+  ogLocale?: string;
+  /** When false, skip automatic hreflang alternates. */
+  hreflang?: boolean;
+  /** Manual hreflang map (path → locale code). Overrides auto-detection when set. */
+  alternateLanguages?: Record<string, string>;
 };
 
 /** Build Next.js Metadata with canonical, Open Graph, and Twitter cards. */
@@ -41,6 +48,9 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
     noindex = false,
     publishedTime,
     ogImage,
+    ogLocale = "es_ES",
+    hreflang = true,
+    alternateLanguages,
   } = input;
 
   const canonical = absoluteUrl(path);
@@ -55,17 +65,28 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
     },
   ];
 
+  const languageAlternates = hreflang
+  ? Object.fromEntries(
+      Object.entries(alternateLanguages ?? getHreflangAlternates(path)).map(
+        ([lang, altPath]) => [lang, absoluteUrl(altPath)]
+      )
+    )
+  : undefined;
+
   return {
     title,
     description,
     ...(keywords ? { keywords } : {}),
-    alternates: { canonical },
+    alternates: {
+      canonical,
+      ...(languageAlternates ? { languages: languageAlternates } : {}),
+    },
     openGraph: {
       title: ogTitle,
       description,
       url: canonical,
       siteName: SITE_NAME,
-      locale: "es_ES",
+      locale: ogLocale,
       type: ogType,
       ...(ogImages ? { images: ogImages } : {}),
       ...(publishedTime && ogType === "article" ? { publishedTime } : {}),

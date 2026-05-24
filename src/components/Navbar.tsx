@@ -7,16 +7,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandLogoLink } from "./BrandLogo";
 import SocialLinks from "./SocialLinks";
+import LocaleSwitcher from "./LocaleSwitcher";
 import { dict } from "@/lib/dictionaries";
+import { dictEn } from "@/lib/dictionaries-en";
+import { EN_NAV_LINKS, EN_ROUTES } from "@/lib/en-routes";
+import { getLocaleFromPathname } from "@/lib/locale";
 import { NAV_LINKS as NAV_ROUTE_LINKS, ROUTES } from "@/lib/routes";
 
-const NAV_LINKS = NAV_ROUTE_LINKS.map((link) => ({
+const SPANISH_NAV_LINKS = NAV_ROUTE_LINKS.map((link) => ({
   name: dict.nav[link.nameKey],
   href: link.href,
 }));
 
 function isNavLinkActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
+  if (href === EN_ROUTES.home) return pathname === EN_ROUTES.home;
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
@@ -39,10 +44,15 @@ function navLinkClassName(active: boolean, variant: "desktop" | "mobile"): strin
 
 export default function Navbar() {
   const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  const isEnglish = locale === "en";
+  const navLinks = isEnglish ? EN_NAV_LINKS : SPANISH_NAV_LINKS;
+  const calcHref = isEnglish ? `${EN_ROUTES.home}#calculator` : ROUTES.home;
+  const t = isEnglish ? dictEn.nav : dict.nav;
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const t = dict.nav;
 
   useEffect(() => {
     setMounted(true);
@@ -63,7 +73,7 @@ export default function Navbar() {
           ? "sticky top-0 bg-white/95 backdrop-blur-xl border-b border-slate-100 shadow-sm py-2"
           : "relative py-3"
       } md:relative md:bg-transparent md:border-none md:shadow-none md:py-4`}
-      aria-label="Navegación principal"
+      aria-label={isEnglish ? "Main navigation" : "Navegación principal"}
     >
       <div className="mx-auto flex max-w-[1280px] items-center gap-2 px-2.5 sm:gap-3 sm:px-4 md:justify-between md:gap-3 md:px-6 lg:px-12">
         <BrandLogoLink
@@ -72,19 +82,14 @@ export default function Navbar() {
           className="min-w-0 flex-1 md:flex-none"
         />
 
-        <ul className="hidden md:flex items-center gap-0.5 lg:gap-1">
-          {NAV_LINKS.map((link) => {
+        <ul className="hidden lg:flex items-center gap-0.5">
+          {navLinks.map((link) => {
             const active = isNavLinkActive(pathname, link.href);
             return (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   className={navLinkClassName(active, "desktop")}
-                  aria-label={
-                    link.href === "/"
-                      ? "Ir a la página de inicio de la calculadora de derivadas"
-                      : undefined
-                  }
                   aria-current={active ? "page" : undefined}
                 >
                   {link.name}
@@ -95,9 +100,10 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden md:flex items-center gap-2 shrink-0">
+          <LocaleSwitcher variant="desktop" />
           <SocialLinks variant="navbar" iconSize={16} />
           <Link
-            href={ROUTES.home}
+            href={calcHref}
             className="ml-0.5 bg-[#16213e] hover:bg-[#8b5cf6] text-white px-4 lg:px-5 py-2.5 rounded-lg text-[0.88rem] lg:text-[0.9rem] font-semibold transition-all shadow-md hover:shadow-lg active:scale-95 whitespace-nowrap"
           >
             {t.calculate}
@@ -105,12 +111,13 @@ export default function Navbar() {
         </div>
 
         <div className="flex shrink-0 items-center gap-1 sm:gap-1.5 md:hidden">
+          <LocaleSwitcher variant="desktop" />
           <SocialLinks variant="navbar" iconSize={14} className="gap-1 sm:gap-1.5" />
           <button
             type="button"
             onClick={() => setMobileOpen((o) => !o)}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-slate-800 transition-colors hover:bg-slate-100 active:bg-slate-200"
-            aria-label={mobileOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
+            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav-menu"
           >
@@ -136,7 +143,7 @@ export default function Navbar() {
               />
             </div>
             <ul className="flex flex-col px-6 py-5 gap-1" role="list">
-              {NAV_LINKS.map((link) => {
+              {navLinks.map((link) => {
                 const active = isNavLinkActive(pathname, link.href);
                 return (
                   <li key={link.href}>
@@ -144,11 +151,6 @@ export default function Navbar() {
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
                       className={navLinkClassName(active, "mobile")}
-                      aria-label={
-                        link.href === "/"
-                          ? "Ir a la página de inicio de la calculadora de derivadas"
-                          : undefined
-                      }
                       aria-current={active ? "page" : undefined}
                     >
                       {link.name}
@@ -158,10 +160,9 @@ export default function Navbar() {
               })}
               <li className="pt-3 mt-1 border-t border-slate-100">
                 <Link
-                  href={ROUTES.home}
+                  href={calcHref}
                   onClick={() => setMobileOpen(false)}
                   className="flex justify-center w-full bg-[#16213e] hover:bg-[#8b5cf6] text-white py-3 rounded-xl font-semibold text-[0.95rem] shadow-md transition-all active:scale-95"
-                  aria-label="Ir a la calculadora y calcular derivada"
                 >
                   {t.calcNow}
                 </Link>

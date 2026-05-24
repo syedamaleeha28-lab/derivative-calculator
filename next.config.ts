@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
   },
   /**
    * Legacy English slug redirects only (single hop → Spanish route).
-   * No /en, /es, or /pt locale prefixes — those return 404 to avoid redirect chains.
+   * Active English pages live under /en/* — not redirected here.
    */
   async redirects() {
     return [

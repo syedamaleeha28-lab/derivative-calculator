@@ -18,7 +18,13 @@ import katex from "katex";
 type Variant = "func" | "op" | "num" | "special" | "clear";
 type BtnDef = { label: string; insert: string; tip: string; variant?: Variant };
 
-const EXAMPLES = ["sin(x)", "x^2", "ln(x)", "e^(x)", "tan(x) - x"];
+const DEFAULT_EXAMPLES = ["sin(x)", "x^2", "ln(x)", "e^(x)", "tan(x) - x"];
+
+export type CalculatorCardProps = {
+  dictionary?: TranslationDictionary["calculator"];
+  examplePresets?: string[];
+  initialVariable?: string;
+};
 
 const COLOR: Record<Variant, string> = {
   func:
@@ -202,7 +208,8 @@ export interface CalculatorHandle {
   focusAndCalculate: () => void;
 }
 
-const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
+const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props, ref) => {
+  const { dictionary, examplePresets, initialVariable } = props;
   const pathname = usePathname();
   const [input, setInput] = useState("");
   const [latexPreview, setLatexPreview] = useState("");
@@ -216,9 +223,10 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
   const [showSettings, setShowSettings] = useState(false);
   const [copied, setCopied] = useState(false);
   const [simplify, setSimplify] = useState(true);
-  const [variable, setVariable] = useState("x");
+  const [variable, setVariable] = useState(initialVariable ?? "x");
 
-    const t = dict.calculator;
+  const t = dictionary ?? dict.calculator;
+  const examples = examplePresets ?? DEFAULT_EXAMPLES;
 
   const keypad = useMemo(() => buildKeypad(variable, t.tips), [variable, t.tips]);
 
@@ -431,7 +439,7 @@ const CalculatorCard = forwardRef<CalculatorHandle>((props, ref) => {
               <span className="text-[0.55rem] font-bold text-slate-400 uppercase tracking-wider shrink-0">
                 {t.examples}
               </span>
-              {EXAMPLES.map((ex) => (
+              {examples.map((ex) => (
                 <button
                   key={ex}
                   type="button"

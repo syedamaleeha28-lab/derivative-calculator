@@ -1,5 +1,8 @@
 import type { MetadataRoute } from "next";
 import { BLOG_POST_ENTRIES } from "./blog-posts";
+import { EN_PAGE_LIST } from "./en-pages";
+import { EN_ROUTES } from "./en-routes";
+import { getHreflangAlternates } from "./locale";
 import { absoluteUrl } from "./seo";
 
 export const NON_INDEXABLE_PREFIXES = ["/api/", "/_next/", "/icon", "/favicon"];
@@ -27,6 +30,26 @@ export const SITEMAP_ROUTES: {
   { path: "/contacto", changeFrequency: "yearly", priority: 0.4 },
 ];
 
+export const EN_SITEMAP_ROUTES: {
+  path: string;
+  changeFrequency: NonNullable<MetadataRoute.Sitemap[0]["changeFrequency"]>;
+  priority: number;
+}[] = [
+  { path: EN_ROUTES.home, changeFrequency: "weekly", priority: 0.95 },
+  { path: EN_ROUTES.derivativeCalculator, changeFrequency: "weekly", priority: 0.9 },
+  { path: EN_ROUTES.partialDerivativeCalculator, changeFrequency: "weekly", priority: 0.88 },
+  { path: EN_ROUTES.implicitDerivativeCalculator, changeFrequency: "weekly", priority: 0.88 },
+  { path: EN_ROUTES.secondDerivativeCalculator, changeFrequency: "weekly", priority: 0.86 },
+  { path: EN_ROUTES.chainRuleDerivativeCalculator, changeFrequency: "weekly", priority: 0.88 },
+];
+
+function sitemapLanguageAlternates(path: string): Record<string, string> {
+  const alts = getHreflangAlternates(path);
+  return Object.fromEntries(
+    Object.entries(alts).map(([lang, altPath]) => [lang, absoluteUrl(altPath)])
+  );
+}
+
 export function buildSitemapEntries(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
   const now = new Date();
@@ -37,6 +60,17 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
       lastModified: route.lastModified ? new Date(route.lastModified) : now,
       changeFrequency: route.changeFrequency,
       priority: route.priority,
+      alternates: { languages: sitemapLanguageAlternates(route.path) },
+    });
+  }
+
+  for (const route of EN_SITEMAP_ROUTES) {
+    entries.push({
+      url: absoluteUrl(route.path),
+      lastModified: now,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+      alternates: { languages: sitemapLanguageAlternates(route.path) },
     });
   }
 
@@ -46,6 +80,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
       lastModified: post.lastModified ? new Date(post.lastModified) : now,
       changeFrequency: "monthly",
       priority: 0.75,
+      alternates: { languages: sitemapLanguageAlternates(`/blog/${post.slug}`) },
     });
   }
 
@@ -54,8 +89,13 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
 
 export function getAllIndexablePaths(): string[] {
   const paths = SITEMAP_ROUTES.map((r) => r.path);
+  for (const route of EN_SITEMAP_ROUTES) {
+    paths.push(route.path);
+  }
   for (const post of BLOG_POSTS) {
     paths.push(`/blog/${post.slug}`);
   }
   return paths.sort();
 }
+
+export { EN_PAGE_LIST };
