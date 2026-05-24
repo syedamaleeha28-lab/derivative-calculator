@@ -75,11 +75,11 @@ export default function Navbar() {
       } md:relative md:bg-transparent md:border-none md:shadow-none md:py-4`}
       aria-label={isEnglish ? "Main navigation" : "Navegación principal"}
     >
-      <div className="mx-auto flex max-w-[1280px] items-center gap-2 px-2.5 sm:gap-3 sm:px-4 md:justify-between md:gap-3 md:px-6 lg:px-12">
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-2 px-2.5 sm:px-4 md:gap-3 md:px-6 lg:px-12">
         <BrandLogoLink
           variant="nav"
           showWordmark
-          className="min-w-0 flex-1 md:flex-none"
+          className="min-w-0 max-w-[calc(100%-5.75rem)] shrink md:max-w-none md:flex-none"
         />
 
         <ul className="hidden lg:flex items-center gap-0.5">
@@ -110,9 +110,8 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <div className="flex shrink-0 items-center gap-1 sm:gap-1.5 md:hidden">
-          <LocaleSwitcher variant="desktop" />
-          <SocialLinks variant="navbar" iconSize={14} className="gap-1 sm:gap-1.5" />
+        <div className="flex md:hidden shrink-0 items-center gap-1.5">
+          <LocaleSwitcher variant="compact" />
           <button
             type="button"
             onClick={() => setMobileOpen((o) => !o)}
