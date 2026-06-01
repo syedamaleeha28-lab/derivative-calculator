@@ -4,6 +4,10 @@ import type { TranslationDictionary } from "./dictionaries";
 export const dictEn: TranslationDictionary = {
   nav: {
     home: "Home",
+    calculator: "Derivative Calculator",
+    partialDerivatives: "Partial Derivative Calculator",
+    chainRule: "Chain Rule Calculator",
+    implicitDerivatives: "Implicit Differentiation",
     works: "How It Works",
     examples: "Examples",
     rules: "Rules",
@@ -49,7 +53,7 @@ export const dictEn: TranslationDictionary = {
       calculators: {
         title: "Calculators",
         links: [
-          { label: "Derivative Calculator", href: "/en/derivative-calculator" },
+          { label: "Derivative Calculator", href: "/en" },
           { label: "Product Rule", href: "/en/product-rule-calculator" },
           { label: "Quotient Rule", href: "/en/quotient-rule-calculator" },
           { label: "Partial Derivatives", href: "/en/partial-derivative-calculator" },

@@ -1,4 +1,4 @@
-import { EN_ROUTES } from "../en-routes";
+import { EN_MAIN_CALCULATOR_HREF, EN_ROUTES } from "../en-routes";
 import type { CalculatorPageConfig, FaqItem } from "../calculator-pages/types";
 
 export type EnFaqItem = FaqItem;
@@ -155,6 +155,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
   partialDerivativeCalculator: {
     slug: "partial-derivative-calculator",
     path: EN_ROUTES.partialDerivativeCalculator,
+    embedCalculator: true,
     breadcrumbHome: BREADCRUMB_HOME,
     h1: "Partial Derivative Calculator for Multivariable Functions",
     intro: [
@@ -222,7 +223,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
     relatedCalculators: [
       {
         label: "Derivative calculator",
-        href: EN_ROUTES.derivativeCalculator,
+        href: EN_MAIN_CALCULATOR_HREF,
         description: "Single-variable differentiation with full step breakdown.",
       },
       {
@@ -239,7 +240,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
     internalLinks: [
       { label: "Partial derivative examples", href: EN_ROUTES.partialDerivativeExamples },
       { label: "Derivative rules guide", href: EN_ROUTES.derivativeRules },
-      { label: "Try our main derivative calculator", href: EN_ROUTES.derivativeCalculator },
+      { label: "Try our main derivative calculator", href: EN_MAIN_CALCULATOR_HREF },
       ...SHARED_INTERNAL_LINKS,
     ],
     educationalSections: [
@@ -263,6 +264,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
   implicitDifferentiationCalculator: {
     slug: "implicit-differentiation-calculator",
     path: EN_ROUTES.implicitDifferentiationCalculator,
+    embedCalculator: true,
     breadcrumbHome: BREADCRUMB_HOME,
     h1: "Implicit Differentiation Calculator with Step-by-Step Solutions",
     intro: [
@@ -335,7 +337,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
       {
         label: "Derivative calculator",
-        href: EN_ROUTES.derivativeCalculator,
+        href: EN_MAIN_CALCULATOR_HREF,
         description: "Explicit functions and standard differentiation rules.",
       },
       {
@@ -438,7 +440,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
     relatedCalculators: [
       {
         label: "Derivative calculator",
-        href: EN_ROUTES.derivativeCalculator,
+        href: EN_MAIN_CALCULATOR_HREF,
         description: "First derivatives with complete step-by-step solutions.",
       },
       {
@@ -455,7 +457,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
     internalLinks: [
       { label: "Higher order derivatives", href: EN_ROUTES.higherOrderDerivativeCalculator },
       { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
-      { label: "Try our main derivative calculator", href: EN_ROUTES.derivativeCalculator },
+      { label: "Try our main derivative calculator", href: EN_MAIN_CALCULATOR_HREF },
       ...SHARED_INTERNAL_LINKS,
     ],
     educationalSections: [
@@ -479,6 +481,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
   chainRuleCalculator: {
     slug: "chain-rule-calculator",
     path: EN_ROUTES.chainRuleCalculator,
+    embedCalculator: true,
     breadcrumbHome: BREADCRUMB_HOME,
     h1: "Chain Rule Calculator — Composite Function Derivatives",
     intro: [
@@ -546,7 +549,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
     relatedCalculators: [
       {
         label: "Derivative calculator",
-        href: EN_ROUTES.derivativeCalculator,
+        href: EN_MAIN_CALCULATOR_HREF,
         description: "General-purpose differentiation for all function types.",
       },
       {
@@ -660,7 +663,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
       {
         label: "Derivative calculator",
-        href: EN_ROUTES.derivativeCalculator,
+        href: EN_MAIN_CALCULATOR_HREF,
         description: "General differentiation for any expression.",
       },
       {
@@ -767,7 +770,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
       {
         label: "Derivative calculator",
-        href: EN_ROUTES.derivativeCalculator,
+        href: EN_MAIN_CALCULATOR_HREF,
         description: "All rules in one tool.",
       },
       {
@@ -873,7 +876,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
       {
         label: "Derivative calculator",
-        href: EN_ROUTES.derivativeCalculator,
+        href: EN_MAIN_CALCULATOR_HREF,
         description: "First derivatives with full steps.",
       },
       {
@@ -974,7 +977,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
     relatedCalculators: [
       {
         label: "Derivative calculator",
-        href: EN_ROUTES.derivativeCalculator,
+        href: EN_MAIN_CALCULATOR_HREF,
         description: "Find f′(x) before evaluating at a point.",
       },
       {

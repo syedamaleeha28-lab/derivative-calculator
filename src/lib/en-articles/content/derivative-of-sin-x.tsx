@@ -10,6 +10,7 @@ import {
   RulesLinksBlock,
   renderMath,
   Link,
+  EN_MAIN_CALCULATOR_HREF,
   EN_ROUTES,
 } from "../helpers";
 
@@ -25,7 +26,7 @@ export function DerivativeOfSinXContent() {
           the definition of the derivative applied to sine, the main formula, a step-by-step derivation
           sketch, chain-rule extensions, worked examples, and answers to frequently asked questions. You can
           verify every line with our{" "}
-          <Link href={EN_ROUTES.derivativeCalculator} className="text-violet-600 font-semibold hover:underline">
+          <Link href={EN_MAIN_CALCULATOR_HREF} className="text-violet-600 font-semibold hover:underline">
             derivative calculator with steps
           </Link>
           .
@@ -305,7 +306,7 @@ export function DerivativeOfSinXContent() {
         </p>
       </section>
 
-      <CalcCTA label="Check your derivative of sin(x) problems" />
+      <CalcCTA />
       <RelatedCalculatorsBlock />
       <RulesLinksBlock />
       <InternalLinksBlock
@@ -325,3 +326,4 @@ export function DerivativeOfSinXContent() {
     </ArticleWrap>
   );
 }
+

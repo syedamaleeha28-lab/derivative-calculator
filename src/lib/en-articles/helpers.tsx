@@ -1,7 +1,7 @@
 import Link from "next/link";
 import katex from "katex";
 import { FormulaCard, TipCard, WarningCard, ExampleCard } from "@/components/EducationalArticle";
-import { EN_ROUTES } from "../en-routes";
+import { EN_MAIN_CALCULATOR_HREF, EN_ROUTES } from "../en-routes";
 import {
   EN_EXAMPLES_HUB_LINKS,
   EN_RULES_HUB_LINKS,
@@ -68,22 +68,23 @@ export function RelatedCalculatorsBlock() {
   );
 }
 
-export function CalcCTA({ label = "Try the calculator" }: { label?: string }) {
+export function CalcCTA() {
   return (
     <div className="my-10 rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-6 sm:p-8">
-      <h3 className="text-lg font-bold text-slate-900 mb-2">{label}</h3>
+      <h3 className="text-lg font-bold text-slate-900 mb-2">Need to solve your own derivative?</h3>
       <p className="text-slate-600 text-[0.95rem] leading-relaxed mb-4">
-        Open our{" "}
-        <Link href={EN_ROUTES.derivativeCalculator} className="text-violet-600 font-semibold hover:underline">
+        Use our free{" "}
+        <Link href={EN_MAIN_CALCULATOR_HREF} className="text-violet-600 font-semibold hover:underline">
           derivative calculator with steps
         </Link>{" "}
-        to check homework, review each algebraic step, and build confidence before your next exam.
+        on the homepage—enter any expression, pick your variable, and compare your work to the full
+        symbolic solution.
       </p>
       <Link
-        href={EN_ROUTES.derivativeCalculator}
+        href={EN_MAIN_CALCULATOR_HREF}
         className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-bold text-white hover:bg-violet-700 transition-colors"
       >
-        Calculate derivative now
+        Open Derivative Calculator
       </Link>
     </div>
   );
@@ -108,5 +109,6 @@ export {
   ExampleCard,
   Link,
   EN_ROUTES,
+  EN_MAIN_CALCULATOR_HREF,
   EN_STANDARD_CALCULATOR_LINKS,
 };

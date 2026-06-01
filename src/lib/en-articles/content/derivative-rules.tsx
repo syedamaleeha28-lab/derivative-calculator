@@ -10,6 +10,7 @@ import {
   ExamplesLinksBlock,
   renderMath,
   Link,
+  EN_MAIN_CALCULATOR_HREF,
   EN_ROUTES,
 } from "../helpers";
 
@@ -36,7 +37,7 @@ export function DerivativeRulesContent() {
             e^x
           </Link>
           . Keep our{" "}
-          <Link href={EN_ROUTES.derivativeCalculator} className="text-violet-600 font-semibold hover:underline">
+          <Link href={EN_MAIN_CALCULATOR_HREF} className="text-violet-600 font-semibold hover:underline">
             derivative calculator
           </Link>{" "}
           open while you study so you can name the rule at each step.
@@ -337,9 +338,10 @@ export function DerivativeRulesContent() {
         </p>
       </section>
 
-      <CalcCTA label="Apply any rule with step-by-step help" />
+      <CalcCTA />
       <RelatedCalculatorsBlock />
       <ExamplesLinksBlock />
     </ArticleWrap>
   );
 }
+

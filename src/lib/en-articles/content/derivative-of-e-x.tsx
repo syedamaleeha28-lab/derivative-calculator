@@ -10,6 +10,7 @@ import {
   RulesLinksBlock,
   renderMath,
   Link,
+  EN_MAIN_CALCULATOR_HREF,
   EN_ROUTES,
 } from "../helpers";
 
@@ -27,7 +28,7 @@ export function DerivativeOfEXContent() {
             ln(x)
           </Link>
           . Verify symbolic steps on our{" "}
-          <Link href={EN_ROUTES.derivativeCalculator} className="text-violet-600 font-semibold hover:underline">
+          <Link href={EN_MAIN_CALCULATOR_HREF} className="text-violet-600 font-semibold hover:underline">
             derivative calculator
           </Link>
           .
@@ -197,7 +198,7 @@ export function DerivativeOfEXContent() {
         </p>
       </section>
 
-      <CalcCTA label="Differentiate e^x and composites" />
+      <CalcCTA />
       <RelatedCalculatorsBlock />
       <RulesLinksBlock />
       <InternalLinksBlock
@@ -209,3 +210,4 @@ export function DerivativeOfEXContent() {
     </ArticleWrap>
   );
 }
+

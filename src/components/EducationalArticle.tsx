@@ -23,7 +23,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { dict } from "@/lib/dictionaries";
 import { dictEn } from "@/lib/dictionaries-en";
-import { EN_ROUTES } from "@/lib/en-routes";
+import { EN_MAIN_CALCULATOR_HREF, EN_ROUTES } from "@/lib/en-routes";
 import type { Locale } from "@/lib/locale";
 import { absoluteUrl, SITE_URL } from "@/lib/seo";
 import { ROUTES } from "@/lib/routes";
@@ -175,7 +175,7 @@ export default function ArticleLayout({
 
   const t = locale === "en" ? dictEn.article : dict.article;
   const calcHref =
-    calculatorHref ?? (locale === "en" ? EN_ROUTES.derivativeCalculator : "/#calculator");
+    calculatorHref ?? (locale === "en" ? EN_MAIN_CALCULATOR_HREF : "/#calculator");
 
   useEffect(() => {
     if (contentRef.current) {
@@ -307,7 +307,7 @@ export default function ArticleLayout({
     resourceLinks ??
     (locale === "en"
       ? [
-          { label: "Derivative Calculator", href: EN_ROUTES.derivativeCalculator, icon: <Calculator size={14} /> },
+          { label: "Derivative Calculator", href: EN_MAIN_CALCULATOR_HREF, icon: <Calculator size={14} /> },
           { label: "Derivative Rules", href: EN_ROUTES.derivativeRules, icon: <BookOpen size={14} /> },
           { label: "Derivative Examples", href: EN_ROUTES.derivativeExamples, icon: <CheckCircle2 size={14} /> },
           { label: "Partial Derivatives", href: EN_ROUTES.partialDerivativeCalculator, icon: <List size={14} /> },

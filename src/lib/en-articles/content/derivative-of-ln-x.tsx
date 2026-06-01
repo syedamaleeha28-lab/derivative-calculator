@@ -10,6 +10,7 @@ import {
   RulesLinksBlock,
   renderMath,
   Link,
+  EN_MAIN_CALCULATOR_HREF,
   EN_ROUTES,
 } from "../helpers";
 
@@ -27,7 +28,7 @@ export function DerivativeOfLnXContent() {
             e^x
           </Link>
           , whose derivative is itself. Cross-check every step with our{" "}
-          <Link href={EN_ROUTES.derivativeCalculator} className="text-violet-600 font-semibold hover:underline">
+          <Link href={EN_MAIN_CALCULATOR_HREF} className="text-violet-600 font-semibold hover:underline">
             derivative calculator
           </Link>{" "}
           and the broader{" "}
@@ -200,7 +201,7 @@ export function DerivativeOfLnXContent() {
         </p>
       </section>
 
-      <CalcCTA label="Check ln(x) and ln(g(x)) derivatives" />
+      <CalcCTA />
       <RelatedCalculatorsBlock />
       <RulesLinksBlock />
       <InternalLinksBlock
@@ -212,3 +213,4 @@ export function DerivativeOfLnXContent() {
     </ArticleWrap>
   );
 }
+

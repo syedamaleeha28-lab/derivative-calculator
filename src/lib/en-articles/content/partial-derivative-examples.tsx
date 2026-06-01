@@ -230,7 +230,7 @@ export function PartialDerivativeExamplesContent() {
         </p>
       </section>
 
-      <CalcCTA label="Compute partial derivatives with steps" />
+      <CalcCTA />
       <RelatedCalculatorsBlock />
       <RulesLinksBlock />
       <InternalLinksBlock
@@ -250,3 +250,4 @@ export function PartialDerivativeExamplesContent() {
     </ArticleWrap>
   );
 }
+

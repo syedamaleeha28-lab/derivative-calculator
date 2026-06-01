@@ -10,6 +10,7 @@ import {
   RulesLinksBlock,
   renderMath,
   Link,
+  EN_MAIN_CALCULATOR_HREF,
   EN_ROUTES,
 } from "../helpers";
 
@@ -213,7 +214,7 @@ export function DerivativeOfCosXContent() {
         <h2 id="practice">Study plan and verification</h2>
         <p>
           Practice cos(g(x)) with g linear, quadratic, and exponential. Check each result on the{" "}
-          <Link href={EN_ROUTES.derivativeCalculator} className="text-violet-600 font-semibold hover:underline">
+          <Link href={EN_MAIN_CALCULATOR_HREF} className="text-violet-600 font-semibold hover:underline">
             derivative calculator
           </Link>
           . Combine with problems from{" "}
@@ -232,7 +233,7 @@ export function DerivativeOfCosXContent() {
         </p>
       </section>
 
-      <CalcCTA label="Verify cos(x) derivatives step by step" />
+      <CalcCTA />
       <RelatedCalculatorsBlock />
       <RulesLinksBlock />
       <InternalLinksBlock
@@ -244,3 +245,4 @@ export function DerivativeOfCosXContent() {
     </ArticleWrap>
   );
 }
+

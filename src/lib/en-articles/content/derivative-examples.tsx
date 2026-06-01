@@ -10,6 +10,7 @@ import {
   RulesLinksBlock,
   renderMath,
   Link,
+  EN_MAIN_CALCULATOR_HREF,
   EN_ROUTES,
 } from "../helpers";
 
@@ -23,7 +24,7 @@ export function DerivativeExamplesContent() {
           organizes problems into beginner, intermediate, and advanced tiers, explains which rule each problem
           stresses, and ends with practice questions you can attempt before revealing the solution strategy. Use
           the{" "}
-          <Link href={EN_ROUTES.derivativeCalculator} className="text-violet-600 font-semibold hover:underline">
+          <Link href={EN_MAIN_CALCULATOR_HREF} className="text-violet-600 font-semibold hover:underline">
             derivative calculator with steps
           </Link>{" "}
           to verify algebra, and keep the{" "}
@@ -252,7 +253,7 @@ export function DerivativeExamplesContent() {
         </FormulaCard>
       </section>
 
-      <CalcCTA label="Solve today's practice with guided steps" />
+      <CalcCTA />
       <RelatedCalculatorsBlock />
       <RulesLinksBlock />
       <InternalLinksBlock
@@ -272,3 +273,4 @@ export function DerivativeExamplesContent() {
     </ArticleWrap>
   );
 }
+

@@ -11,6 +11,7 @@ import {
   ExamplesLinksBlock,
   renderMath,
   Link,
+  EN_MAIN_CALCULATOR_HREF,
   EN_ROUTES,
 } from "../helpers";
 
@@ -27,7 +28,7 @@ export function DerivativeOfXSquaredContent() {
             derivative rules
           </Link>{" "}
           guide. Use our{" "}
-          <Link href={EN_ROUTES.derivativeCalculator} className="text-violet-600 font-semibold hover:underline">
+          <Link href={EN_MAIN_CALCULATOR_HREF} className="text-violet-600 font-semibold hover:underline">
             derivative calculator
           </Link>{" "}
           to compare limit-based reasoning with fast symbolic rules.
@@ -203,10 +204,11 @@ export function DerivativeOfXSquaredContent() {
         </p>
       </section>
 
-      <CalcCTA label="Practice power rule on x² and beyond" />
+      <CalcCTA />
       <RelatedCalculatorsBlock />
       <RulesLinksBlock />
       <ExamplesLinksBlock />
     </ArticleWrap>
   );
 }
+

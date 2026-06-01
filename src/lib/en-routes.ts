@@ -1,5 +1,6 @@
 /** English public routes under /en (single source of truth). */
 export const EN_ROUTES = {
+  /** Primary English calculator experience (homepage). */
   home: "/en",
   derivativeCalculator: "/en/derivative-calculator",
   partialDerivativeCalculator: "/en/partial-derivative-calculator",
@@ -23,6 +24,16 @@ export const EN_ROUTES = {
   partialDerivativeExamples: "/en/partial-derivative-examples",
   implicitDifferentiationExamples: "/en/implicit-differentiation-examples",
 } as const;
+
+/** Anchor link to the embedded calculator on the English homepage. */
+export const EN_MAIN_CALCULATOR_HREF = `${EN_ROUTES.home}#calculator` as const;
+
+/** Calculator landings that embed the full widget (not educational-only). */
+export const EN_CALCULATOR_PAGES_WITH_WIDGET = [
+  EN_ROUTES.partialDerivativeCalculator,
+  EN_ROUTES.chainRuleCalculator,
+  EN_ROUTES.implicitDifferentiationCalculator,
+] as const;
 
 export const EN_CALCULATOR_PAGES = [
   EN_ROUTES.derivativeCalculator,
@@ -51,11 +62,11 @@ export const EN_ARTICLE_PAGES = [
 ] as const;
 
 export const EN_NAV_LINKS = [
-  { name: "Home", href: EN_ROUTES.home },
-  { name: "Derivative Calculator", href: EN_ROUTES.derivativeCalculator },
-  { name: "Derivative Rules", href: EN_ROUTES.derivativeRules },
-  { name: "Derivative Examples", href: EN_ROUTES.derivativeExamples },
-  { name: "Partial Derivatives", href: EN_ROUTES.partialDerivativeCalculator },
-  { name: "Chain Rule", href: EN_ROUTES.chainRuleCalculator },
+  { name: "Derivative Calculator", href: EN_ROUTES.home },
+  { name: "Partial Derivative Calculator", href: EN_ROUTES.partialDerivativeCalculator },
+  { name: "Chain Rule Calculator", href: EN_ROUTES.chainRuleCalculator },
   { name: "Implicit Differentiation", href: EN_ROUTES.implicitDifferentiationCalculator },
+  { name: "Derivative Rules", href: EN_ROUTES.derivativeRules },
+  { name: "Examples", href: EN_ROUTES.derivativeExamples },
+  { name: "Blog", href: "/blog" },
 ] as const;

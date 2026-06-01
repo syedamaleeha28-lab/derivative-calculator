@@ -215,7 +215,7 @@ export function DerivativeOfTanXContent() {
         </p>
       </section>
 
-      <CalcCTA label="Differentiate tan(x) with guided steps" />
+      <CalcCTA />
       <RelatedCalculatorsBlock />
       <RulesLinksBlock />
       <InternalLinksBlock
@@ -227,3 +227,4 @@ export function DerivativeOfTanXContent() {
     </ArticleWrap>
   );
 }
+

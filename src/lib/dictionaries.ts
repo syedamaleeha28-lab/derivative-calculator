@@ -3,6 +3,10 @@ import type { DeepStringify } from "./dictionary-types";
 const dictionaryData = {
     nav: {
       home: "Inicio",
+      calculator: "Calculadora de Derivadas",
+      partialDerivatives: "Derivadas Parciales",
+      chainRule: "Regla de la Cadena",
+      implicitDerivatives: "Derivadas Implícitas",
       works: "Cómo funciona",
       examples: "Ejemplos",
       rules: "Reglas",

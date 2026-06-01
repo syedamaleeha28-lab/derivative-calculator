@@ -1,10 +1,10 @@
-import { EN_ROUTES } from "./en-routes";
+import { EN_MAIN_CALCULATOR_HREF, EN_ROUTES } from "./en-routes";
 
 /** Required calculator links on every English SEO page. */
 export const EN_STANDARD_CALCULATOR_LINKS = [
   {
     label: "Derivative Calculator",
-    href: EN_ROUTES.derivativeCalculator,
+    href: EN_MAIN_CALCULATOR_HREF,
     desc: "Free step-by-step symbolic differentiation for any expression.",
   },
   {

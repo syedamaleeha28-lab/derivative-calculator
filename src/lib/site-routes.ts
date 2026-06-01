@@ -63,7 +63,7 @@ export const EN_SITEMAP_ROUTES: {
   ...EN_PAGE_LIST.map((page) => ({
     path: page.path,
     changeFrequency: "weekly" as const,
-    priority: page.path === EN_ROUTES.derivativeCalculator ? 0.9 : 0.86,
+    priority: page.path === EN_ROUTES.home ? 0.95 : 0.86,
   })),
   ...EN_ARTICLE_SITEMAP_ROUTES.map(({ path, changeFrequency, priority }) => ({
     path,

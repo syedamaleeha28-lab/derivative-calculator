@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const FEATURED_CALCULATORS = [
   {
     title: "Derivative Calculator",
-    href: EN_ROUTES.derivativeCalculator,
+    href: EN_ROUTES.home,
     desc: "General-purpose differentiation with step-by-step solutions.",
   },
   {

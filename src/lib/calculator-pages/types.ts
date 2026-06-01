@@ -32,4 +32,6 @@ export type CalculatorPageConfig = {
   internalLinks: { label: string; href: string }[];
   educationalSections: { h2: string; paragraphs: string[] }[];
   breadcrumbHome: { label: string; path: string };
+  /** When false, page is educational-only with CTA to the main calculator (default false). */
+  embedCalculator?: boolean;
 };

@@ -5,7 +5,7 @@ import {
   getAllEnArticleSlugs,
   getEnArticleBySlug,
 } from "@/lib/en-articles";
-import { EN_ROUTES } from "@/lib/en-routes";
+import { EN_MAIN_CALCULATOR_HREF } from "@/lib/en-routes";
 import { buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -64,7 +64,7 @@ export default async function EnArticlePage(props: { params: Promise<{ slug: str
       breadcrumbs={article.breadcrumbs}
       heroImageAlt={article.heroImageAlt}
       showArticleMeta
-      calculatorHref={EN_ROUTES.derivativeCalculator}
+      calculatorHref={EN_MAIN_CALCULATOR_HREF}
     />
   );
 }

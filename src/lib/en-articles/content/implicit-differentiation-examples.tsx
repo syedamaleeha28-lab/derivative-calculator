@@ -237,10 +237,11 @@ export function ImplicitDifferentiationExamplesContent() {
         </TipCard>
       </section>
 
-      <CalcCTA label="Run implicit differentiation with steps" />
+      <CalcCTA />
       <RelatedCalculatorsBlock />
       <RulesLinksBlock />
       <ExamplesLinksBlock />
     </ArticleWrap>
   );
 }
+

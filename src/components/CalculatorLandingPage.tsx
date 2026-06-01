@@ -4,6 +4,10 @@ import { ArrowRight, Calculator } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CalculatorLandingHero from "@/components/CalculatorLandingHero";
+import EducationalLandingHero from "@/components/EducationalLandingHero";
+import CalculatorCtaBanner from "@/components/CalculatorCtaBanner";
+import { EN_MAIN_CALCULATOR_HREF } from "@/lib/en-routes";
+import { ES_MAIN_CALCULATOR_HREF } from "@/lib/routes";
 import { CALCULATOR_PAGE_UI } from "@/lib/calculator-pages/ui-labels";
 import { buildCalculatorPageSchema } from "@/lib/calculator-pages/schema";
 import type { CalculatorPageConfig } from "@/lib/calculator-pages/types";
@@ -17,6 +21,8 @@ type Props = {
 export default function CalculatorLandingPage({ locale, page }: Props) {
   const ui = CALCULATOR_PAGE_UI[locale];
   const jsonLd = JSON.stringify(buildCalculatorPageSchema(page, locale)).replace(/</g, "\\u003c");
+  const embedCalculator = page.embedCalculator ?? locale === "es";
+  const mainCalcHref = locale === "en" ? EN_MAIN_CALCULATOR_HREF : ES_MAIN_CALCULATOR_HREF;
 
   return (
     <>
@@ -28,14 +34,23 @@ export default function CalculatorLandingPage({ locale, page }: Props) {
       />
       <main className="flex min-h-screen flex-col bg-white">
         <Navbar />
-        <CalculatorLandingHero
-          locale={locale}
-          h1={page.h1}
-          intro={page.intro[0]}
-          tag={page.tag}
-          defaultExamples={page.defaultExamples}
-          initialVariable={page.defaultVariable}
-        />
+        {embedCalculator ? (
+          <CalculatorLandingHero
+            locale={locale}
+            h1={page.h1}
+            intro={page.intro[0]}
+            tag={page.tag}
+            defaultExamples={page.defaultExamples}
+            initialVariable={page.defaultVariable}
+          />
+        ) : (
+          <EducationalLandingHero
+            locale={locale}
+            h1={page.h1}
+            intro={page.intro[0]}
+            tag={page.tag}
+          />
+        )}
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-14">
           {page.intro.slice(1).map((paragraph, i) => (
@@ -62,6 +77,8 @@ export default function CalculatorLandingPage({ locale, page }: Props) {
               ))}
             </section>
           ))}
+
+          {!embedCalculator && <CalculatorCtaBanner locale={locale} className="mb-4" />}
 
           <section aria-labelledby="worked-examples-heading">
             <h2
@@ -171,7 +188,7 @@ export default function CalculatorLandingPage({ locale, page }: Props) {
 
         <div className="fixed bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-xl border-t border-slate-200/50 md:hidden z-40 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] pb-[max(1rem,env(safe-area-inset-bottom))]">
           <a
-            href="#calculator"
+            href={embedCalculator ? "#calculator" : mainCalcHref}
             className="w-full bg-[#0f172a] text-white py-3.5 rounded-[14px] text-[0.9rem] font-black uppercase tracking-[0.05em] shadow-xl flex justify-center items-center gap-2"
           >
             <Calculator size={16} />

@@ -15,7 +15,6 @@ export const LANG_OPTIONS = [
 /** Paired routes for hreflang and language switching. */
 export const LOCALE_ROUTE_PAIRS: { es: string; en: string }[] = [
   { es: ROUTES.home, en: EN_ROUTES.home },
-  { es: ROUTES.home, en: EN_ROUTES.derivativeCalculator },
   {
     es: ES_CALCULATOR_ROUTES.partialDerivatives,
     en: EN_ROUTES.partialDerivativeCalculator,

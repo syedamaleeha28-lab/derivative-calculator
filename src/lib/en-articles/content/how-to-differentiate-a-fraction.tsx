@@ -200,7 +200,7 @@ export function HowToDifferentiateAFractionContent() {
         </p>
       </section>
 
-      <CalcCTA label="Differentiate fractions with quotient steps" />
+      <CalcCTA />
       <RelatedCalculatorsBlock />
       <RulesLinksBlock />
       <InternalLinksBlock
@@ -212,3 +212,4 @@ export function HowToDifferentiateAFractionContent() {
     </ArticleWrap>
   );
 }
+
