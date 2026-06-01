@@ -61,12 +61,5 @@ export const EN_ARTICLE_PAGES = [
   EN_ROUTES.implicitDifferentiationExamples,
 ] as const;
 
-export const EN_NAV_LINKS = [
-  { name: "Derivative Calculator", href: EN_ROUTES.home },
-  { name: "Partial Derivative Calculator", href: EN_ROUTES.partialDerivativeCalculator },
-  { name: "Chain Rule Calculator", href: EN_ROUTES.chainRuleCalculator },
-  { name: "Implicit Differentiation", href: EN_ROUTES.implicitDifferentiationCalculator },
-  { name: "Derivative Rules", href: EN_ROUTES.derivativeRules },
-  { name: "Examples", href: EN_ROUTES.derivativeExamples },
-  { name: "Blog", href: "/blog" },
-] as const;
+/** @deprecated Use EN_PRIMARY_NAV and EN_GUIDES_NAV from ./en-navigation */
+export { EN_PRIMARY_NAV as EN_NAV_LINKS } from "./en-navigation";

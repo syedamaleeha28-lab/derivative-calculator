@@ -4,15 +4,16 @@ import type { TranslationDictionary } from "./dictionaries";
 export const dictEn: TranslationDictionary = {
   nav: {
     home: "Home",
-    calculator: "Derivative Calculator",
-    partialDerivatives: "Partial Derivative Calculator",
-    chainRule: "Chain Rule Calculator",
-    implicitDerivatives: "Implicit Differentiation",
+    calculator: "Calculator",
+    partialDerivatives: "Partial Derivatives",
+    chainRule: "Chain Rule",
+    implicitDerivatives: "Implicit",
+    guides: "Guides",
     works: "How It Works",
     examples: "Examples",
     rules: "Rules",
     blog: "Blog",
-    calcNow: "Calculate Now",
+    calcNow: "Calculate",
     calculate: "Calculate",
   },
   hero: {

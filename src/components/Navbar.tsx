@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,14 +9,23 @@ import { BrandLogoLink } from "./BrandLogo";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { dict } from "@/lib/dictionaries";
 import { dictEn } from "@/lib/dictionaries-en";
-import { EN_NAV_LINKS, EN_ROUTES } from "@/lib/en-routes";
+import {
+  EN_BLOG_NAV,
+  EN_EXAMPLES_NAV,
+  EN_GUIDES_NAV,
+  EN_PRIMARY_NAV,
+  isEnGuidePath,
+} from "@/lib/en-navigation";
+import {
+  ES_BLOG_NAV_KEY,
+  ES_EXAMPLES_NAV_KEY,
+  ES_GUIDES_NAV,
+  ES_PRIMARY_NAV_KEYS,
+  isEsGuidePath,
+} from "@/lib/es-navigation";
+import { EN_MAIN_CALCULATOR_HREF, EN_ROUTES } from "@/lib/en-routes";
 import { getLocaleFromPathname } from "@/lib/locale";
-import { NAV_LINKS as NAV_ROUTE_LINKS, ROUTES } from "@/lib/routes";
-
-const SPANISH_NAV_LINKS = NAV_ROUTE_LINKS.map((link) => ({
-  name: dict.nav[link.nameKey],
-  href: link.href,
-}));
+import { ES_MAIN_CALCULATOR_HREF } from "@/lib/routes";
 
 function isNavLinkActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
@@ -24,30 +33,174 @@ function isNavLinkActive(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-function navLinkClassName(active: boolean, variant: "desktop" | "mobile"): string {
-  const base =
-    variant === "desktop"
-      ? "text-[0.9rem] font-medium px-3 py-2 rounded-lg transition-all"
-      : "block text-[1rem] font-medium py-2.5 transition-colors";
+const DESKTOP_LINK =
+  "inline-flex items-center whitespace-nowrap rounded-md px-2.5 py-2 text-[0.8125rem] font-medium leading-none tracking-tight transition-colors";
+const DESKTOP_LINK_ACTIVE = `${DESKTOP_LINK} text-violet-700 bg-violet-50 font-semibold`;
+const DESKTOP_LINK_IDLE = `${DESKTOP_LINK} text-slate-600 hover:bg-slate-100 hover:text-violet-700`;
 
-  if (active) {
-    return variant === "desktop"
-      ? `${base} text-violet-600 bg-violet-50 font-semibold`
-      : `${base} text-violet-600 font-semibold`;
+const MOBILE_LINK =
+  "block rounded-lg px-3 py-2.5 text-[0.95rem] font-medium transition-colors";
+const MOBILE_LINK_ACTIVE = `${MOBILE_LINK} bg-violet-50 text-violet-700 font-semibold`;
+const MOBILE_LINK_IDLE = `${MOBILE_LINK} text-slate-700 hover:bg-slate-50 hover:text-violet-700`;
+
+function desktopLinkClass(active: boolean) {
+  return active ? DESKTOP_LINK_ACTIVE : DESKTOP_LINK_IDLE;
+}
+
+function mobileLinkClass(active: boolean) {
+  return active ? MOBILE_LINK_ACTIVE : MOBILE_LINK_IDLE;
+}
+
+type GuidesDropdownProps = {
+  label: string;
+  items: readonly { name: string; href: string }[];
+  pathname: string;
+  isGuideActive: boolean;
+  variant: "desktop" | "mobile";
+  onNavigate?: () => void;
+};
+
+function GuidesDropdown({
+  label,
+  items,
+  pathname,
+  isGuideActive,
+  variant,
+  onNavigate,
+}: GuidesDropdownProps) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    if (variant !== "desktop" || !open) return;
+    const onPointerDown = (e: MouseEvent) => {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onPointerDown);
+    return () => document.removeEventListener("mousedown", onPointerDown);
+  }, [open, variant]);
+
+  if (variant === "desktop") {
+    return (
+      <li ref={rootRef} className="relative shrink-0">
+        <button
+          type="button"
+          onClick={() => setOpen((o) => !o)}
+          className={`${desktopLinkClass(isGuideActive)} gap-0.5`}
+          aria-expanded={open}
+          aria-haspopup="true"
+        >
+          {label}
+          <ChevronDown
+            size={14}
+            className={`shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
+            aria-hidden
+          />
+        </button>
+        <div
+          className={`absolute left-0 top-full z-50 pt-1.5 transition-all ${
+            open ? "visible opacity-100" : "invisible opacity-0 pointer-events-none"
+          }`}
+        >
+          <ul
+            role="menu"
+            className="max-h-[min(70vh,24rem)] w-56 overflow-y-auto rounded-xl border border-slate-200 bg-white py-1.5 shadow-xl"
+          >
+            {items.map((item) => {
+              const active = isNavLinkActive(pathname, item.href);
+              return (
+                <li key={item.href} role="none">
+                  <Link
+                    href={item.href}
+                    role="menuitem"
+                    onClick={() => setOpen(false)}
+                    className={`block px-3.5 py-2 text-[0.8125rem] leading-snug ${
+                      active
+                        ? "bg-violet-50 font-semibold text-violet-700"
+                        : "text-slate-600 hover:bg-slate-50 hover:text-violet-700"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </li>
+    );
   }
 
-  return variant === "desktop"
-    ? `${base} text-slate-600 hover:text-violet-600 hover:bg-slate-100`
-    : `${base} text-slate-700 hover:text-violet-600`;
+  return (
+    <li>
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        className={`${mobileLinkClass(isGuideActive)} flex w-full items-center justify-between`}
+        aria-expanded={open}
+      >
+        {label}
+        <ChevronDown
+          size={18}
+          className={`shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
+          aria-hidden
+        />
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.ul
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden pl-2"
+            role="list"
+          >
+            {items.map((item) => {
+              const active = isNavLinkActive(pathname, item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={onNavigate}
+                    className={`${mobileLinkClass(active)} text-[0.9rem]`}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            })}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </li>
+  );
 }
 
 export default function Navbar() {
   const pathname = usePathname();
   const locale = getLocaleFromPathname(pathname);
   const isEnglish = locale === "en";
-  const navLinks = isEnglish ? EN_NAV_LINKS : SPANISH_NAV_LINKS;
-  const calcHref = isEnglish ? `${EN_ROUTES.home}#calculator` : ROUTES.home;
+  const calcHref = isEnglish ? EN_MAIN_CALCULATOR_HREF : ES_MAIN_CALCULATOR_HREF;
   const t = isEnglish ? dictEn.nav : dict.nav;
+
+  const primaryLinks = isEnglish
+    ? EN_PRIMARY_NAV
+    : ES_PRIMARY_NAV_KEYS.map((item) => ({
+        name: dict.nav[item.nameKey],
+        href: item.href,
+      }));
+
+  const guidesLinks = isEnglish ? EN_GUIDES_NAV : ES_GUIDES_NAV;
+  const examplesLink = isEnglish
+    ? EN_EXAMPLES_NAV
+    : { name: dict.nav[ES_EXAMPLES_NAV_KEY.nameKey], href: ES_EXAMPLES_NAV_KEY.href };
+  const blogLink = isEnglish
+    ? EN_BLOG_NAV
+    : { name: dict.nav[ES_BLOG_NAV_KEY.nameKey], href: ES_BLOG_NAV_KEY.href };
+
+  const guidesActive = isEnglish ? isEnGuidePath(pathname) : isEsGuidePath(pathname);
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -60,7 +213,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
   if (!mounted) return null;
+
+  const closeMobile = () => setMobileOpen(false);
 
   return (
     <motion.nav
@@ -69,46 +228,73 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
       className={`w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "sticky top-0 bg-white/95 backdrop-blur-xl border-b border-slate-100 shadow-sm py-2"
+          ? "sticky top-0 border-b border-slate-100 bg-white/95 py-2 shadow-sm backdrop-blur-xl"
           : "relative py-3"
-      } md:relative md:bg-transparent md:border-none md:shadow-none md:py-4`}
+      } md:relative md:border-none md:bg-transparent md:py-3 md:shadow-none`}
       aria-label={isEnglish ? "Main navigation" : "Navegación principal"}
     >
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-2 px-2.5 sm:px-4 md:gap-3 md:px-6 lg:px-12">
+      <div className="mx-auto flex max-w-[1280px] items-center gap-2 px-3 sm:px-4 lg:gap-4 lg:px-6 xl:px-8">
         <BrandLogoLink
           variant="nav"
           showWordmark
-          className="min-w-0 max-w-[calc(100%-5.75rem)] shrink md:max-w-none md:flex-none"
+          className="min-w-0 shrink lg:max-w-[11rem] xl:max-w-none"
         />
 
-        <ul className="hidden lg:flex items-center gap-0.5">
-          {navLinks.map((link) => {
-            const active = isNavLinkActive(pathname, link.href);
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={navLinkClassName(active, "desktop")}
-                  aria-current={active ? "page" : undefined}
-                >
-                  {link.name}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="hidden min-w-0 flex-1 items-center justify-center lg:flex">
+          <ul className="flex max-w-full flex-nowrap items-center gap-0.5">
+            {primaryLinks.map((link) => {
+              const active = isNavLinkActive(pathname, link.href);
+              return (
+                <li key={link.href} className="shrink-0">
+                  <Link
+                    href={link.href}
+                    className={desktopLinkClass(active)}
+                    aria-current={active ? "page" : undefined}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              );
+            })}
+            <GuidesDropdown
+              label={t.guides}
+              items={guidesLinks}
+              pathname={pathname}
+              isGuideActive={guidesActive}
+              variant="desktop"
+            />
+            <li className="shrink-0">
+              <Link
+                href={examplesLink.href}
+                className={desktopLinkClass(isNavLinkActive(pathname, examplesLink.href))}
+                aria-current={isNavLinkActive(pathname, examplesLink.href) ? "page" : undefined}
+              >
+                {examplesLink.name}
+              </Link>
+            </li>
+            <li className="shrink-0">
+              <Link
+                href={blogLink.href}
+                className={desktopLinkClass(isNavLinkActive(pathname, blogLink.href))}
+                aria-current={isNavLinkActive(pathname, blogLink.href) ? "page" : undefined}
+              >
+                {blogLink.name}
+              </Link>
+            </li>
+          </ul>
+        </div>
 
-        <div className="hidden md:flex items-center gap-2 shrink-0">
+        <div className="hidden shrink-0 items-center gap-2 md:flex">
           <LocaleSwitcher variant="desktop" />
           <Link
             href={calcHref}
-            className="ml-0.5 bg-[#16213e] hover:bg-[#8b5cf6] text-white px-4 lg:px-5 py-2.5 rounded-lg text-[0.88rem] lg:text-[0.9rem] font-semibold transition-all shadow-md hover:shadow-lg active:scale-95 whitespace-nowrap"
+            className="whitespace-nowrap rounded-lg bg-[#16213e] px-4 py-2 text-[0.8125rem] font-semibold text-white shadow-md transition-all hover:bg-[#8b5cf6] hover:shadow-lg active:scale-95 lg:px-4"
           >
             {t.calculate}
           </Link>
         </div>
 
-        <div className="flex md:hidden shrink-0 items-center gap-1.5">
+        <div className="flex shrink-0 items-center gap-1.5 md:hidden">
           <LocaleSwitcher variant="compact" />
           <button
             type="button"
@@ -130,24 +316,17 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden absolute top-full left-0 w-full bg-white backdrop-blur-xl border-b border-slate-100 shadow-lg overflow-hidden"
+            className="absolute left-0 top-full w-full overflow-hidden border-b border-slate-100 bg-white shadow-lg md:hidden"
           >
-            <div className="px-6 pt-4 pb-3 border-b border-slate-100">
-              <BrandLogoLink
-                variant="mobile"
-                onNavigate={() => setMobileOpen(false)}
-                className="w-fit"
-              />
-            </div>
-            <ul className="flex flex-col px-6 py-5 gap-1" role="list">
-              {navLinks.map((link) => {
+            <ul className="flex flex-col gap-0.5 px-4 py-4" role="list">
+              {primaryLinks.map((link) => {
                 const active = isNavLinkActive(pathname, link.href);
                 return (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={navLinkClassName(active, "mobile")}
+                      onClick={closeMobile}
+                      className={mobileLinkClass(active)}
                       aria-current={active ? "page" : undefined}
                     >
                       {link.name}
@@ -155,13 +334,39 @@ export default function Navbar() {
                   </li>
                 );
               })}
-              <li className="pt-4 mt-2 border-t border-slate-100">
+              <GuidesDropdown
+                label={t.guides}
+                items={guidesLinks}
+                pathname={pathname}
+                isGuideActive={guidesActive}
+                variant="mobile"
+                onNavigate={closeMobile}
+              />
+              <li>
+                <Link
+                  href={examplesLink.href}
+                  onClick={closeMobile}
+                  className={mobileLinkClass(isNavLinkActive(pathname, examplesLink.href))}
+                >
+                  {examplesLink.name}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={blogLink.href}
+                  onClick={closeMobile}
+                  className={mobileLinkClass(isNavLinkActive(pathname, blogLink.href))}
+                >
+                  {blogLink.name}
+                </Link>
+              </li>
+              <li className="mt-3 border-t border-slate-100 pt-4">
                 <Link
                   href={calcHref}
-                  onClick={() => setMobileOpen(false)}
-                  className="flex justify-center w-full bg-[#16213e] hover:bg-[#8b5cf6] text-white py-3 rounded-xl font-semibold text-[0.95rem] shadow-md transition-all active:scale-95"
+                  onClick={closeMobile}
+                  className="flex w-full justify-center rounded-xl bg-[#16213e] py-3 text-[0.95rem] font-semibold text-white shadow-md transition-all hover:bg-[#8b5cf6] active:scale-95"
                 >
-                  {t.calcNow}
+                  {t.calculate}
                 </Link>
               </li>
             </ul>
