@@ -13,11 +13,38 @@
     --secondary: #8B5CF6;
     --accent: #A78BFA;
     --accent-glow: rgba(139, 92, 246, 0.15);
+    /* Scrollbar (Firefox uses solid thumb color; WebKit uses gradient) */
+    --scrollbar-size: 14px;
+    --scrollbar-track: #f3f4f6;
+    --scrollbar-thumb-fallback: #8b5cf6;
+    --scrollbar-thumb-border: #f3f4f6;
+    --scrollbar-thumb: linear-gradient(180deg, #8b5cf6 0%, #06b6d4 100%);
+    --scrollbar-thumb-hover: linear-gradient(180deg, #7c3aed 0%, #0891b2 100%);
     font-size: 16px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --scrollbar-track: #1e293b;
+      --scrollbar-thumb-fallback: #a78bfa;
+      --scrollbar-thumb-border: #1e293b;
+      --scrollbar-thumb: linear-gradient(180deg, #a78bfa 0%, #22d3ee 100%);
+      --scrollbar-thumb-hover: linear-gradient(180deg, #8b5cf6 0%, #06b6d4 100%);
+    }
+  }
+
+  .dark {
+    --scrollbar-track: #1e293b;
+    --scrollbar-thumb-fallback: #a78bfa;
+    --scrollbar-thumb-border: #1e293b;
+    --scrollbar-thumb: linear-gradient(180deg, #a78bfa 0%, #22d3ee 100%);
+    --scrollbar-thumb-hover: linear-gradient(180deg, #8b5cf6 0%, #06b6d4 100%);
   }
 
   html {
     -webkit-text-size-adjust: 100%;
+    scrollbar-width: auto;
+    scrollbar-color: var(--scrollbar-thumb-fallback) var(--scrollbar-track);
   }
 
   body {
@@ -37,10 +64,31 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  ::-webkit-scrollbar { width: 5px; height: 5px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.2); border-radius: 99px; }
-  ::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.4); }
+  /* Chrome, Edge, Safari — global; does not reserve extra gutter beyond native bar */
+  ::-webkit-scrollbar {
+    width: var(--scrollbar-size);
+    height: var(--scrollbar-size);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 10px;
+    border: 2px solid var(--scrollbar-thumb-border);
+    min-height: 48px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: var(--scrollbar-track);
+  }
 }
 
 @layer utilities {
@@ -155,9 +203,13 @@
     margin-bottom: 0.75rem;
   }
 
-  .scrollbar-hide {
+  .scrollbar-hide,
+  .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide::-webkit-scrollbar,
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
