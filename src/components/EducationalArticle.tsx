@@ -22,6 +22,9 @@ import Image from "next/image";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { dict } from "@/lib/dictionaries";
+import { dictEn } from "@/lib/dictionaries-en";
+import { EN_ROUTES } from "@/lib/en-routes";
+import type { Locale } from "@/lib/locale";
 import { absoluteUrl, SITE_URL } from "@/lib/seo";
 import { ROUTES } from "@/lib/routes";
 
@@ -67,6 +70,10 @@ interface ArticleProps {
   canonical?: string;
   /** Solo artículos del blog: muestra categoría, fecha y tiempo de lectura en el hero. */
   showArticleMeta?: boolean;
+  locale?: Locale;
+  /** Override sidebar resource links (e.g. English guides). */
+  resourceLinks?: readonly { label: string; href: string; icon?: React.ReactNode }[];
+  calculatorHref?: string;
 }
 
 // ─── Content Blocks ──────────────────────────────────────────────────────────
@@ -109,7 +116,7 @@ export const WarningCard = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-export const ExampleCard = ({ title, children, steps }: { title: string; children: React.ReactNode; steps?: readonly string[] }) => {
+export const ExampleCard = ({ title, children, steps }: { title: string; children?: React.ReactNode; steps?: readonly string[] }) => {
   const t = dict.article;
 
   return (
@@ -121,7 +128,7 @@ export const ExampleCard = ({ title, children, steps }: { title: string; childre
         <span className="text-[0.65rem] font-bold text-slate-400 uppercase tracking-widest">{t.exampleLabel}</span>
       </div>
       <div className="p-8">
-        <div className="mb-6">{children}</div>
+        {children ? <div className="mb-6">{children}</div> : null}
         {steps && (
           <div className="space-y-4 pt-6 border-t border-slate-50">
             {steps.map((step, i) => (
@@ -157,13 +164,18 @@ export default function ArticleLayout({
   heroImageAlt,
   canonical,
   showArticleMeta = false,
+  locale = "es",
+  resourceLinks,
+  calculatorHref,
 }: ArticleProps) {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const [isTocOpen, setIsTocOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const t = dict.article;
+  const t = locale === "en" ? dictEn.article : dict.article;
+  const calcHref =
+    calculatorHref ?? (locale === "en" ? EN_ROUTES.derivativeCalculator : "/#calculator");
 
   useEffect(() => {
     if (contentRef.current) {
@@ -217,12 +229,27 @@ export default function ArticleLayout({
     ? absoluteUrl(breadcrumbs.at(-1)!.href)
     : SITE_URL;
 
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": pageUrl,
+    url: pageUrl,
+    name: title,
+    description,
+    inLanguage: locale === "en" ? "en-US" : "es",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Calculadora Derivadas",
+      url: SITE_URL,
+    },
+  };
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: title,
     description,
-    inLanguage: "es",
+    inLanguage: locale === "en" ? "en-US" : "es",
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": pageUrl,
@@ -276,19 +303,36 @@ export default function ArticleLayout({
     })),
   };
 
-  const INTERNAL_LINKS = [
-    { label: "Calculadora de Derivadas", href: "/#calculator", icon: <Calculator size={14} /> },
-    { label: "Reglas de Derivación", href: ROUTES.reglas, icon: <BookOpen size={14} /> },
-    { label: "Fórmulas de Cálculo", href: ROUTES.reglas, icon: <List size={14} /> },
-    { label: "Ejemplos Resueltos", href: ROUTES.ejemplos, icon: <CheckCircle2 size={14} /> },
-    { label: "Conceptos Básicos", href: ROUTES.comoFunciona, icon: <HelpCircle size={14} /> },
-    { label: "Blog de Matemáticas", href: ROUTES.blog, icon: <ExternalLink size={14} /> },
-    { label: "Cómo Funciona", href: ROUTES.comoFunciona, icon: <List size={14} /> },
-  ];
+  const INTERNAL_LINKS =
+    resourceLinks ??
+    (locale === "en"
+      ? [
+          { label: "Derivative Calculator", href: EN_ROUTES.derivativeCalculator, icon: <Calculator size={14} /> },
+          { label: "Derivative Rules", href: EN_ROUTES.derivativeRules, icon: <BookOpen size={14} /> },
+          { label: "Derivative Examples", href: EN_ROUTES.derivativeExamples, icon: <CheckCircle2 size={14} /> },
+          { label: "Partial Derivatives", href: EN_ROUTES.partialDerivativeCalculator, icon: <List size={14} /> },
+          { label: "Chain Rule Calculator", href: EN_ROUTES.chainRuleCalculator, icon: <HelpCircle size={14} /> },
+          { label: "Implicit Differentiation", href: EN_ROUTES.implicitDifferentiationCalculator, icon: <ExternalLink size={14} /> },
+          { label: "Product Rule Calculator", href: EN_ROUTES.productRuleCalculator, icon: <List size={14} /> },
+        ]
+      : [
+          { label: "Calculadora de Derivadas", href: "/#calculator", icon: <Calculator size={14} /> },
+          { label: "Reglas de Derivación", href: ROUTES.reglas, icon: <BookOpen size={14} /> },
+          { label: "Fórmulas de Cálculo", href: ROUTES.reglas, icon: <List size={14} /> },
+          { label: "Ejemplos Resueltos", href: ROUTES.ejemplos, icon: <CheckCircle2 size={14} /> },
+          { label: "Conceptos Básicos", href: ROUTES.comoFunciona, icon: <HelpCircle size={14} /> },
+          { label: "Blog de Matemáticas", href: ROUTES.blog, icon: <ExternalLink size={14} /> },
+          { label: "Cómo Funciona", href: ROUTES.comoFunciona, icon: <List size={14} /> },
+        ]);
 
   return (
     <main className="flex min-h-screen flex-col bg-slate-50">
       {/* Schema Scripts */}
+      <script
+        id="webpage-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
       <script
         id="article-schema"
         type="application/ld+json"
@@ -525,7 +569,7 @@ export default function ArticleLayout({
                 <p className="text-[0.8rem] text-slate-500 mb-6 leading-relaxed relative z-10">
                   {t.usefulDesc}
                 </p>
-                <Link href="/#calculator" className="flex items-center justify-center w-full bg-secondary text-white py-3 rounded-xl font-bold text-[0.85rem] shadow-lg shadow-secondary/20 hover:scale-[1.02] transition-all relative z-10">
+                <Link href={calcHref} className="flex items-center justify-center w-full bg-secondary text-white py-3 rounded-xl font-bold text-[0.85rem] shadow-lg shadow-secondary/20 hover:scale-[1.02] transition-all relative z-10">
                   {t.useCalculator}
                 </Link>
               </div>
@@ -575,7 +619,7 @@ export default function ArticleLayout({
               </h2>
               {showArticleMeta && (
                 <Link
-                  href={ROUTES.blog}
+                  href={locale === "en" ? EN_ROUTES.derivativeRules : ROUTES.blog}
                   className="text-secondary font-bold text-[0.9rem] flex items-center gap-2 hover:gap-3 transition-all"
                 >
                   {t.viewAll} <ArrowRight size={18} />

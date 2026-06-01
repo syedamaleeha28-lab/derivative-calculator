@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { BLOG_POST_ENTRIES } from "./blog-posts";
+import { EN_ARTICLE_ENTRIES } from "./en-articles";
 import { EN_PAGE_LIST } from "./en-pages";
 import { ES_PAGE_LIST } from "./es-pages";
 import { EN_ROUTES } from "./en-routes";
@@ -41,17 +42,34 @@ export const ES_CALCULATOR_SITEMAP_ROUTES: {
   priority: 0.92,
 }));
 
+export const EN_ARTICLE_SITEMAP_ROUTES: {
+  path: string;
+  changeFrequency: NonNullable<MetadataRoute.Sitemap[0]["changeFrequency"]>;
+  priority: number;
+  lastModified?: string;
+}[] = EN_ARTICLE_ENTRIES.map((article) => ({
+  path: `/en/${article.slug}`,
+  changeFrequency: "monthly" as const,
+  priority: 0.8,
+  lastModified: article.dateIso,
+}));
+
 export const EN_SITEMAP_ROUTES: {
   path: string;
   changeFrequency: NonNullable<MetadataRoute.Sitemap[0]["changeFrequency"]>;
   priority: number;
 }[] = [
   { path: EN_ROUTES.home, changeFrequency: "weekly", priority: 0.95 },
-  { path: EN_ROUTES.derivativeCalculator, changeFrequency: "weekly", priority: 0.9 },
-  { path: EN_ROUTES.partialDerivativeCalculator, changeFrequency: "weekly", priority: 0.88 },
-  { path: EN_ROUTES.implicitDifferentiationCalculator, changeFrequency: "weekly", priority: 0.88 },
-  { path: EN_ROUTES.secondDerivativeCalculator, changeFrequency: "weekly", priority: 0.86 },
-  { path: EN_ROUTES.chainRuleCalculator, changeFrequency: "weekly", priority: 0.88 },
+  ...EN_PAGE_LIST.map((page) => ({
+    path: page.path,
+    changeFrequency: "weekly" as const,
+    priority: page.path === EN_ROUTES.derivativeCalculator ? 0.9 : 0.86,
+  })),
+  ...EN_ARTICLE_SITEMAP_ROUTES.map(({ path, changeFrequency, priority }) => ({
+    path,
+    changeFrequency,
+    priority,
+  })),
 ];
 
 function sitemapLanguageAlternates(path: string): Record<string, string> {
@@ -86,9 +104,10 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   }
 
   for (const route of EN_SITEMAP_ROUTES) {
+    const article = EN_ARTICLE_SITEMAP_ROUTES.find((a) => a.path === route.path);
     entries.push({
       url: absoluteUrl(route.path),
-      lastModified: now,
+      lastModified: article?.lastModified ? new Date(article.lastModified) : now,
       changeFrequency: route.changeFrequency,
       priority: route.priority,
       alternates: { languages: sitemapLanguageAlternates(route.path) },
@@ -115,6 +134,9 @@ export function getAllIndexablePaths(): string[] {
   }
   for (const route of EN_SITEMAP_ROUTES) {
     paths.push(route.path);
+  }
+  for (const route of EN_ARTICLE_SITEMAP_ROUTES) {
+    if (!paths.includes(route.path)) paths.push(route.path);
   }
   for (const post of BLOG_POSTS) {
     paths.push(`/blog/${post.slug}`);

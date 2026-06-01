@@ -7,9 +7,9 @@ export type EnCalculatorPageConfig = CalculatorPageConfig;
 const BREADCRUMB_HOME = { label: "Home", path: EN_ROUTES.home };
 
 const SHARED_INTERNAL_LINKS = [
-  { label: "View derivative examples (Spanish)", href: "/ejemplos" },
-  { label: "Learn derivation rules (Spanish)", href: "/reglas" },
-  { label: "Read our calculus blog (Spanish)", href: "/blog" },
+  { label: "Derivative rules (English guide)", href: EN_ROUTES.derivativeRules },
+  { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
+  { label: "Derivative of sin(x)", href: EN_ROUTES.derivativeOfSinX },
   { label: "Spanish homepage", href: "/" },
 ];
 
@@ -107,9 +107,14 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
     ],
     relatedCalculators: [
       {
-        label: "Partial derivative calculator",
-        href: EN_ROUTES.partialDerivativeCalculator,
-        description: "Differentiate multivariable functions with respect to x, y, or other variables.",
+        label: "Product rule calculator",
+        href: EN_ROUTES.productRuleCalculator,
+        description: "Differentiate products f·g with step-by-step product rule work.",
+      },
+      {
+        label: "Quotient rule calculator",
+        href: EN_ROUTES.quotientRuleCalculator,
+        description: "Handle fractions and rational expressions online.",
       },
       {
         label: "Chain rule derivative calculator",
@@ -123,9 +128,10 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
     ],
     internalLinks: [
-      { label: "Try our implicit derivative calculator", href: EN_ROUTES.implicitDifferentiationCalculator },
-      { label: "Learn chain rule differentiation", href: EN_ROUTES.chainRuleCalculator },
-      { label: "View derivative examples", href: "/ejemplos" },
+      { label: "Product rule calculator", href: EN_ROUTES.productRuleCalculator },
+      { label: "Quotient rule calculator", href: EN_ROUTES.quotientRuleCalculator },
+      { label: "Derivative rules guide", href: EN_ROUTES.derivativeRules },
+      { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
       ...SHARED_INTERNAL_LINKS,
     ],
     educationalSections: [
@@ -231,8 +237,8 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
     ],
     internalLinks: [
-      { label: "Multivariable examples (Spanish)", href: "/blog/derivadas-parciales-ejemplos" },
-      { label: "Derivation rules reference", href: "/reglas" },
+      { label: "Partial derivative examples", href: EN_ROUTES.partialDerivativeExamples },
+      { label: "Derivative rules guide", href: EN_ROUTES.derivativeRules },
       { label: "Try our main derivative calculator", href: EN_ROUTES.derivativeCalculator },
       ...SHARED_INTERNAL_LINKS,
     ],
@@ -339,9 +345,9 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
     ],
     internalLinks: [
-      { label: "Implicit derivatives guide (Spanish)", href: "/blog/derivadas-implicitas-paso-a-paso" },
+      { label: "Implicit differentiation examples", href: EN_ROUTES.implicitDifferentiationExamples },
       { label: "Learn chain rule differentiation", href: EN_ROUTES.chainRuleCalculator },
-      { label: "View derivative examples", href: "/ejemplos" },
+      { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
       ...SHARED_INTERNAL_LINKS,
     ],
     educationalSections: [
@@ -447,8 +453,8 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
     ],
     internalLinks: [
-      { label: "Derivation rules reference (Spanish)", href: "/reglas" },
-      { label: "View derivative examples", href: "/ejemplos" },
+      { label: "Higher order derivatives", href: EN_ROUTES.higherOrderDerivativeCalculator },
+      { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
       { label: "Try our main derivative calculator", href: EN_ROUTES.derivativeCalculator },
       ...SHARED_INTERNAL_LINKS,
     ],
@@ -555,10 +561,10 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       },
     ],
     internalLinks: [
-      { label: "Chain rule exercises (Spanish)", href: "/blog/regla-de-la-cadena-ejercicios" },
-      { label: "Understanding the chain rule (Spanish)", href: "/blog/entendiendo-regla-de-la-cadena" },
+      { label: "Derivative of sin(x)", href: EN_ROUTES.derivativeOfSinX },
+      { label: "Derivative rules guide", href: EN_ROUTES.derivativeRules },
       { label: "Try our implicit derivative calculator", href: EN_ROUTES.implicitDifferentiationCalculator },
-      { label: "View derivative examples", href: "/ejemplos" },
+      { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
       ...SHARED_INTERNAL_LINKS,
     ],
     educationalSections: [
@@ -574,6 +580,433 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
         paragraphs: [
           "Drill quick patterns: d/dx[sin(ax)] = a·cos(ax), d/dx[e^(kx)] = k·e^(kx), d/dx[ln(g(x))] = g′(x)/g(x).",
           "Use this chain rule derivative calculator to confirm your mental shortcuts during review sessions.",
+        ],
+      },
+    ],
+  },
+
+  productRuleCalculator: {
+    slug: "product-rule-calculator",
+    path: EN_ROUTES.productRuleCalculator,
+    breadcrumbHome: BREADCRUMB_HOME,
+    h1: "Product Rule Calculator — Differentiate Products Step by Step",
+    intro: [
+      "The product rule states that if h(x) = u(x)·v(x), then h′(x) = u′v + uv′. This product rule calculator applies that formula symbolically and shows each intermediate step—ideal when you are learning calculus or checking homework on expressions like x·sin(x) or e^x·ln(x).",
+      "Enter any product of two factors using standard notation. The engine recognizes polynomials, trigonometric functions, exponentials, and logarithms, then names the product rule explicitly in the solution trace.",
+    ],
+    meta: {
+      title: "Product Rule Calculator — uv′ + u′v with Steps Online",
+      description:
+        "Free product rule calculator with step-by-step solutions. Differentiate products such as x·sin(x) and e^x·cos(x). Built for calculus students.",
+      keywords:
+        "product rule calculator, product rule derivative, differentiate product of functions, uv rule calculator, calculus product rule online",
+    },
+    defaultExamples: ["x*sin(x)", "e^x*cos(x)", "x^2*ln(x)", "(x+1)*(x-2)"],
+    examples: [
+      {
+        title: "Polynomial times sine",
+        problem: "Find d/dx [x·sin(x)]",
+        steps: [
+          "Let u = x, v = sin(x). Then u′ = 1, v′ = cos(x).",
+          "Product rule: u′v + uv′ = 1·sin(x) + x·cos(x).",
+          "Result: sin(x) + x·cos(x).",
+        ],
+        result: "sin(x) + x·cos(x)",
+      },
+      {
+        title: "Exponential times cosine",
+        problem: "Differentiate e^x·cos(x)",
+        steps: [
+          "u = e^x, v = cos(x); u′ = e^x, v′ = −sin(x).",
+          "u′v + uv′ = e^x·cos(x) − e^x·sin(x).",
+          "Factor: e^x(cos x − sin x).",
+        ],
+        result: "e^x(cos(x) − sin(x))",
+      },
+      {
+        title: "Two linear factors",
+        problem: "Find the derivative of (x+1)(x−2)",
+        steps: [
+          "Expand mentally or apply product rule with u = x+1, v = x−2.",
+          "u′ = 1, v′ = 1 → (x−2) + (x+1) = 2x − 1.",
+          "Matches expanding to x² − x − 2 and using the power rule.",
+        ],
+        result: "2x − 1",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the product rule formula?",
+        a: "(uv)′ = u′v + uv′. You differentiate the first factor, leave the second, then add the first times the derivative of the second.",
+      },
+      {
+        q: "When should I use the product rule instead of expanding?",
+        a: "Use the product rule when expanding would be messy—e^x·sin(x), x·ln(x), or mixed transcendental products are classic cases.",
+      },
+      {
+        q: "Can the product rule combine with the chain rule?",
+        a: "Yes. Each factor may itself be composite; apply the chain rule inside u′ or v′ as needed.",
+      },
+      {
+        q: "Where can I read a full product rule lesson?",
+        a: "See our derivative rules guide and derivative examples pages linked below.",
+      },
+    ],
+    relatedCalculators: [
+      {
+        label: "Quotient rule calculator",
+        href: EN_ROUTES.quotientRuleCalculator,
+        description: "For fractions and rational expressions.",
+      },
+      {
+        label: "Derivative calculator",
+        href: EN_ROUTES.derivativeCalculator,
+        description: "General differentiation for any expression.",
+      },
+      {
+        label: "Chain rule calculator",
+        href: EN_ROUTES.chainRuleCalculator,
+        description: "When factors contain nested functions.",
+      },
+    ],
+    internalLinks: [
+      { label: "Derivative rules (full guide)", href: EN_ROUTES.derivativeRules },
+      { label: "Derivative of sin(x)", href: EN_ROUTES.derivativeOfSinX },
+      { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
+      ...SHARED_INTERNAL_LINKS,
+    ],
+    educationalSections: [
+      {
+        h2: "Product rule formula and notation",
+        paragraphs: [
+          "If h(x) = f(x)·g(x), then h′(x) = f′(x)g(x) + f(x)g′(x). A common mnemonic is “first d-second plus second d-first.”",
+          "Leibniz notation writes d/dx(uv) = (du/dx)v + u(dv/dx). Both forms describe the same operation.",
+        ],
+      },
+      {
+        h2: "Study tips for product rule problems",
+        paragraphs: [
+          "Label u and v before differentiating. Skipping this step causes sign errors and missing chain-rule factors.",
+          "After finding h′, simplify by factoring common terms—especially e^x or trig factors shared by both summands.",
+        ],
+      },
+    ],
+  },
+
+  quotientRuleCalculator: {
+    slug: "quotient-rule-calculator",
+    path: EN_ROUTES.quotientRuleCalculator,
+    breadcrumbHome: BREADCRUMB_HOME,
+    h1: "Quotient Rule Calculator — Differentiate Fractions Online",
+    intro: [
+      "The quotient rule handles derivatives of ratios u(x)/v(x). This quotient rule calculator computes the symbolic result and documents each algebraic step—perfect for rational functions, tangent-like ratios, and exam review.",
+      "Type the numerator and denominator as a single fraction or division expression. The tool applies (u′v − uv′)/v² and simplifies when possible.",
+    ],
+    meta: {
+      title: "Quotient Rule Calculator — Differentiate Fractions with Steps",
+      description:
+        "Free quotient rule calculator online. Differentiate u/v with step-by-step work. Practice rational functions and fraction derivatives for calculus.",
+      keywords:
+        "quotient rule calculator, quotient rule derivative, differentiate a fraction, u/v derivative calculator, rational function derivative",
+    },
+    defaultExamples: ["sin(x)/x", "e^x/x", "(x^2+1)/(x-1)", "ln(x)/x"],
+    examples: [
+      {
+        title: "Sine over x",
+        problem: "Find d/dx [sin(x)/x]",
+        steps: [
+          "u = sin(x), v = x; u′ = cos(x), v′ = 1.",
+          "Quotient rule: (cos(x)·x − sin(x)·1) / x².",
+          "Result: (x·cos(x) − sin(x)) / x².",
+        ],
+        result: "(x·cos(x) − sin(x)) / x²",
+      },
+      {
+        title: "Exponential over linear",
+        problem: "Differentiate e^x / x",
+        steps: [
+          "u′v − uv′ = e^x·x − e^x·1 = e^x(x − 1).",
+          "Divide by v² = x².",
+        ],
+        result: "e^x(x − 1) / x²",
+      },
+      {
+        title: "Rational polynomial",
+        problem: "Find d/dx [(x²+1)/(x−1)]",
+        steps: [
+          "u′ = 2x, v′ = 1.",
+          "Numerator: 2x(x−1) − (x²+1)·1 = 2x² − 2x − x² − 1 = x² − 2x − 1.",
+          "Denominator: (x−1)².",
+        ],
+        result: "(x² − 2x − 1) / (x−1)²",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the quotient rule formula?",
+        a: "For h = u/v, h′ = (u′v − uv′) / v². Remember the minus sign in the numerator.",
+      },
+      {
+        q: "How is the quotient rule related to the product rule?",
+        a: "Writing u/v as u·v⁻¹ and using the product and chain rules yields the same formula as the quotient rule.",
+      },
+      {
+        q: "Can I differentiate a fraction without the quotient rule?",
+        a: "Sometimes rewriting as u·v⁻¹ works, but the quotient rule is usually faster for true rational forms.",
+      },
+      {
+        q: "Where can I practice fraction derivatives?",
+        a: "Read our guide on how to differentiate a fraction and try the examples gallery.",
+      },
+    ],
+    relatedCalculators: [
+      {
+        label: "Product rule calculator",
+        href: EN_ROUTES.productRuleCalculator,
+        description: "For products instead of quotients.",
+      },
+      {
+        label: "Derivative calculator",
+        href: EN_ROUTES.derivativeCalculator,
+        description: "All rules in one tool.",
+      },
+      {
+        label: "How to differentiate a fraction (guide)",
+        href: EN_ROUTES.howToDifferentiateAFraction,
+        description: "Worked examples and common mistakes.",
+      },
+    ],
+    internalLinks: [
+      { label: "How to differentiate a fraction", href: EN_ROUTES.howToDifferentiateAFraction },
+      { label: "Derivative rules guide", href: EN_ROUTES.derivativeRules },
+      { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
+      ...SHARED_INTERNAL_LINKS,
+    ],
+    educationalSections: [
+      {
+        h2: "Quotient rule in Leibniz notation",
+        paragraphs: [
+          "If y = u/v, then dy/dx = (v·du/dx − u·dv/dx) / v². The order in the numerator matters: derivative of the top times the bottom minus top times derivative of bottom.",
+          "Always square the denominator last. Students often forget v² or use v instead.",
+        ],
+      },
+      {
+        h2: "Avoiding common quotient rule errors",
+        paragraphs: [
+          "Do not confuse u′v + uv′ (product rule) with u′v − uv′ (quotient rule). A quick check: the derivative of 1/x should be −1/x², which the quotient rule produces correctly.",
+          "Simplify the numerator before dividing when algebra allows—it reduces arithmetic mistakes on exams.",
+        ],
+      },
+    ],
+  },
+
+  higherOrderDerivativeCalculator: {
+    slug: "higher-order-derivative-calculator",
+    path: EN_ROUTES.higherOrderDerivativeCalculator,
+    breadcrumbHome: BREADCRUMB_HOME,
+    h1: "Higher Order Derivative Calculator — Third and Fourth Derivatives",
+    intro: [
+      "Higher-order derivatives repeat differentiation: f″(x) is the second derivative, f‴(x) the third, and so on. This higher order derivative calculator helps you compute successive derivatives with clear symbolic steps—useful for Taylor series, physics jerk, and advanced curve analysis.",
+      "Enter a function and differentiate repeatedly. Each pass applies the same rules (power, product, chain) to the previous result. Compare your manual work to the automated trace after each order.",
+    ],
+    meta: {
+      title: "Higher Order Derivative Calculator — f″, f‴ with Steps",
+      description:
+        "Free higher order derivative calculator online. Find second, third, and fourth derivatives with step-by-step symbolic work for calculus and engineering.",
+      keywords:
+        "higher order derivative calculator, third derivative calculator, fourth derivative, successive derivatives, f triple prime calculator",
+    },
+    defaultExamples: ["x^5", "sin(x)", "e^x", "x*exp(x)"],
+    examples: [
+      {
+        title: "Polynomial: derivatives collapse",
+        problem: "Find the first four derivatives of f(x) = x⁵",
+        steps: [
+          "f′(x) = 5x⁴, f″(x) = 20x³, f‴(x) = 60x².",
+          "Fourth derivative: f⁽⁴⁾(x) = 120x.",
+          "Fifth derivative is constant 120; sixth is 0.",
+        ],
+        result: "f⁽⁴⁾(x) = 120x",
+      },
+      {
+        title: "Sine cycles every four orders",
+        problem: "List f″ and f‴ for f(x) = sin(x)",
+        steps: [
+          "f′ = cos x, f″ = −sin x, f‴ = −cos x.",
+          "f⁽⁴⁾ = sin x, returning to the start.",
+        ],
+        result: "f‴(x) = −cos(x)",
+      },
+      {
+        title: "Exponential unchanged",
+        problem: "Any order derivative of e^x",
+        steps: [
+          "Every derivative of e^x equals e^x.",
+          "This property defines the exponential function in differential equations.",
+        ],
+        result: "f⁽ⁿ⁾(x) = e^x for all n",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is a higher-order derivative?",
+        a: "It is the derivative of a derivative. The second order measures concavity; the third can describe jerk in motion problems.",
+      },
+      {
+        q: "How do I compute a third derivative with this tool?",
+        a: "Differentiate three times in sequence, using each output as the input for the next pass, or re-enter simplified forms.",
+      },
+      {
+        q: "Is the second derivative calculator different?",
+        a: "Our second derivative page focuses on f″ and concavity; this page covers third, fourth, and general higher orders.",
+      },
+      {
+        q: "Do all functions have derivatives of every order?",
+        a: "Not always. Some functions are smooth for many orders but not all; piecewise definitions can break smoothness.",
+      },
+    ],
+    relatedCalculators: [
+      {
+        label: "Second derivative calculator",
+        href: EN_ROUTES.secondDerivativeCalculator,
+        description: "Concavity and the second derivative test.",
+      },
+      {
+        label: "Derivative calculator",
+        href: EN_ROUTES.derivativeCalculator,
+        description: "First derivatives with full steps.",
+      },
+      {
+        label: "Partial derivative calculator",
+        href: EN_ROUTES.partialDerivativeCalculator,
+        description: "Mixed partials in several variables.",
+      },
+    ],
+    internalLinks: [
+      { label: "Second derivative calculator", href: EN_ROUTES.secondDerivativeCalculator },
+      { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
+      { label: "Derivative rules", href: EN_ROUTES.derivativeRules },
+      ...SHARED_INTERNAL_LINKS,
+    ],
+    educationalSections: [
+      {
+        h2: "Notation for higher derivatives",
+        paragraphs: [
+          "Prime notation: f′, f″, f‴, then f⁽⁴⁾. Leibniz: d²y/dx², d³y/dx³. In physics, time derivatives use dots over variables.",
+          "For polynomials of degree n, the (n+1)st derivative is zero—an easy sanity check.",
+        ],
+      },
+      {
+        h2: "Applications beyond the classroom",
+        paragraphs: [
+          "Taylor polynomials need derivatives up to order n at a point. In kinematics, position → velocity → acceleration → jerk are successive time derivatives.",
+          "Use this calculator to verify coefficients when building a Taylor expansion by hand.",
+        ],
+      },
+    ],
+  },
+
+  tangentLineCalculator: {
+    slug: "tangent-line-calculator",
+    path: EN_ROUTES.tangentLineCalculator,
+    breadcrumbHome: BREADCRUMB_HOME,
+    h1: "Tangent Line Calculator — Slope from the Derivative",
+    intro: [
+      "The tangent line to y = f(x) at x = a has slope f′(a) and passes through (a, f(a)). This tangent line calculator page shows how to obtain the slope from the derivative, build the point-slope equation, and verify results with our step-by-step derivative engine.",
+      "While a dedicated tangent plotter is not required for learning, computing f′(x) symbolically is the essential step. Enter your function here, evaluate the derivative at your chosen point, and assemble the tangent equation.",
+    ],
+    meta: {
+      title: "Tangent Line Calculator — Find Slope f′(a) with Steps",
+      description:
+        "Use our derivative calculator to find tangent line slopes. Learn point-slope form, worked examples, and how f′(a) gives the tangent slope in calculus.",
+      keywords:
+        "tangent line calculator, equation of tangent line, slope of tangent, derivative at a point, tangent line calculus",
+    },
+    defaultExamples: ["x^2", "sin(x)", "ln(x)", "x^3 - 3*x"],
+    examples: [
+      {
+        title: "Parabola at x = 2",
+        problem: "Tangent to f(x) = x² at x = 2",
+        steps: [
+          "f′(x) = 2x, so slope m = f′(2) = 4.",
+          "Point on curve: (2, f(2)) = (2, 4).",
+          "Point-slope: y − 4 = 4(x − 2) → y = 4x − 4.",
+        ],
+        result: "y = 4x − 4",
+      },
+      {
+        title: "Sine at the origin",
+        problem: "Tangent to sin(x) at x = 0",
+        steps: [
+          "f′(x) = cos(x), m = cos(0) = 1.",
+          "Point (0, 0). Tangent: y = x.",
+        ],
+        result: "y = x",
+      },
+      {
+        title: "Logarithm at x = 1",
+        problem: "Tangent to ln(x) at x = 1",
+        steps: [
+          "f′(x) = 1/x, m = f′(1) = 1.",
+          "Point (1, 0). Equation: y = x − 1.",
+        ],
+        result: "y = x − 1",
+      },
+    ],
+    faqs: [
+      {
+        q: "How do you find the equation of a tangent line?",
+        a: "Compute f′(a) for the slope, evaluate f(a) for the point, then use y − f(a) = f′(a)(x − a).",
+      },
+      {
+        q: "Is the derivative the same as the tangent slope?",
+        a: "Yes. f′(a) equals the instantaneous rate of change and the slope of the tangent line at x = a.",
+      },
+      {
+        q: "What if f′(a) is undefined?",
+        a: "The tangent may be vertical (infinite slope) or the function may not be differentiable at a.",
+      },
+      {
+        q: "Can this tool graph the tangent?",
+        a: "The calculator focuses on symbolic derivatives and steps; use the derivative result to plot the tangent in your graphing tool.",
+      },
+    ],
+    relatedCalculators: [
+      {
+        label: "Derivative calculator",
+        href: EN_ROUTES.derivativeCalculator,
+        description: "Find f′(x) before evaluating at a point.",
+      },
+      {
+        label: "Implicit differentiation calculator",
+        href: EN_ROUTES.implicitDifferentiationCalculator,
+        description: "Tangent slopes on curves not written as y = f(x).",
+      },
+      {
+        label: "Second derivative calculator",
+        href: EN_ROUTES.secondDerivativeCalculator,
+        description: "Concavity near the point of tangency.",
+      },
+    ],
+    internalLinks: [
+      { label: "Derivative of x² guide", href: EN_ROUTES.derivativeOfXSquared },
+      { label: "Derivative rules", href: EN_ROUTES.derivativeRules },
+      { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
+      ...SHARED_INTERNAL_LINKS,
+    ],
+    educationalSections: [
+      {
+        h2: "Point-slope form recap",
+        paragraphs: [
+          "Given slope m through (x₀, y₀): y − y₀ = m(x − x₀). Replace m with f′(x₀) and y₀ with f(x₀) when the curve is y = f(x).",
+          "For implicit curves, find dy/dx from implicit differentiation and evaluate at the point on the curve.",
+        ],
+      },
+      {
+        h2: "Normal lines vs tangent lines",
+        paragraphs: [
+          "The normal line is perpendicular to the tangent. If m is the tangent slope (and m ≠ 0), the normal slope is −1/m.",
+          "Many exam problems ask for both lines; differentiate once, then use perpendicular slope rules.",
         ],
       },
     ],

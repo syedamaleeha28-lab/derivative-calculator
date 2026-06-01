@@ -31,6 +31,16 @@ const FEATURED_CALCULATORS = [
     desc: "General-purpose differentiation with step-by-step solutions.",
   },
   {
+    title: "Product Rule Calculator",
+    href: EN_ROUTES.productRuleCalculator,
+    desc: "Differentiate products u·v with full steps.",
+  },
+  {
+    title: "Quotient Rule Calculator",
+    href: EN_ROUTES.quotientRuleCalculator,
+    desc: "Fractions and rational functions online.",
+  },
+  {
     title: "Partial Derivative Calculator",
     href: EN_ROUTES.partialDerivativeCalculator,
     desc: "Multivariable functions and ∂f/∂x computations.",
@@ -50,6 +60,23 @@ const FEATURED_CALCULATORS = [
     href: EN_ROUTES.secondDerivativeCalculator,
     desc: "Concavity, inflection points, and f″(x).",
   },
+  {
+    title: "Higher Order Derivatives",
+    href: EN_ROUTES.higherOrderDerivativeCalculator,
+    desc: "Third, fourth, and successive derivatives.",
+  },
+  {
+    title: "Tangent Line Calculator",
+    href: EN_ROUTES.tangentLineCalculator,
+    desc: "Slope f′(a) and tangent equations.",
+  },
+];
+
+const FEATURED_GUIDES = [
+  { title: "Derivative Rules", href: EN_ROUTES.derivativeRules, desc: "Power, product, quotient, chain, trig, log, exp." },
+  { title: "Derivative Examples", href: EN_ROUTES.derivativeExamples, desc: "Beginner through advanced worked problems." },
+  { title: "Derivative of sin(x)", href: EN_ROUTES.derivativeOfSinX, desc: "Formula, proof sketch, and practice." },
+  { title: "Derivative of cos(x)", href: EN_ROUTES.derivativeOfCosX, desc: "−sin(x) and chain rule cases." },
 ];
 
 export default function EnglishHomePage() {
@@ -89,18 +116,38 @@ export default function EnglishHomePage() {
             ))}
           </ul>
 
+          <h2 className="heading-font text-2xl md:text-3xl text-slate-900 mb-3 text-center mt-16">
+            Calculus guides in English
+          </h2>
+          <p className="text-slate-600 text-center max-w-2xl mx-auto mb-10 leading-relaxed">
+            Deep dives on derivative rules, trig derivatives, fractions, implicit differentiation, and more.
+          </p>
+          <ul className="grid gap-4 sm:grid-cols-2">
+            {FEATURED_GUIDES.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="flex flex-col h-full rounded-2xl border border-slate-200 p-5 hover:border-violet-300 hover:shadow-md transition-all bg-slate-50"
+                >
+                  <span className="font-bold text-slate-900">{item.title}</span>
+                  <p className="text-sm text-slate-500 mt-2 flex-1">{item.desc}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+
           <p className="mt-12 text-center text-sm text-slate-500">
             Primary site in Spanish:{" "}
             <Link href="/" className="text-violet-600 font-medium hover:underline">
               calculadora-derivadas.org
             </Link>
             {" · "}
-            <Link href="/blog" className="text-violet-600 font-medium hover:underline">
-              Calculus blog (Spanish)
+            <Link href={EN_ROUTES.derivativeRules} className="text-violet-600 font-medium hover:underline">
+              Derivative rules
             </Link>
             {" · "}
-            <Link href="/ejemplos" className="text-violet-600 font-medium hover:underline">
-              View derivative examples
+            <Link href={EN_ROUTES.derivativeExamples} className="text-violet-600 font-medium hover:underline">
+              Derivative examples
             </Link>
           </p>
         </section>

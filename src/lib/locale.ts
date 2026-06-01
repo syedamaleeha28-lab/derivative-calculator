@@ -28,6 +28,17 @@ export const LOCALE_ROUTE_PAIRS: { es: string; en: string }[] = [
     es: ES_CALCULATOR_ROUTES.implicitDerivatives,
     en: EN_ROUTES.implicitDifferentiationCalculator,
   },
+  { es: "/blog/derivada-de-sin-x", en: EN_ROUTES.derivativeOfSinX },
+  { es: "/blog/derivada-de-cos-x", en: EN_ROUTES.derivativeOfCosX },
+  { es: "/blog/derivada-de-tan-x", en: EN_ROUTES.derivativeOfTanX },
+  { es: ROUTES.reglas, en: EN_ROUTES.derivativeRules },
+  { es: ROUTES.ejemplos, en: EN_ROUTES.derivativeExamples },
+  { es: "/blog/como-derivar-fracciones", en: EN_ROUTES.howToDifferentiateAFraction },
+  { es: "/blog/derivadas-parciales-ejemplos", en: EN_ROUTES.partialDerivativeExamples },
+  { es: "/blog/derivadas-implicitas-paso-a-paso", en: EN_ROUTES.implicitDifferentiationExamples },
+  { es: ROUTES.reglas, en: EN_ROUTES.derivativeOfLnX },
+  { es: ROUTES.reglas, en: EN_ROUTES.derivativeOfEX },
+  { es: ROUTES.ejemplos, en: EN_ROUTES.derivativeOfXSquared },
 ];
 
 function normalizePath(path: string): string {
