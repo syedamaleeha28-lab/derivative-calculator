@@ -6,6 +6,7 @@ import HomeEducationalCards from "@/components/HomeEducationalCards";
 import HomeLongFormSeo from "@/components/HomeLongFormSeo";
 import HomeFeaturedBlogLinks from "@/components/HomeFeaturedBlogLinks";
 import HomeRecentArticles from "@/components/HomeRecentArticles";
+import HomeExtensionPromo from "@/components/HomeExtensionPromo";
 import { Calculator } from "lucide-react";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
@@ -44,6 +45,7 @@ export default function Home() {
         <HomeFeaturedBlogLinks />
         <HomeRecentArticles />
         <HomeLongFormSeo />
+        <HomeExtensionPromo />
         <FAQ />
         <Footer />
 

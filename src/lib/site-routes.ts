@@ -30,6 +30,7 @@ export const SITEMAP_ROUTES: {
   { path: "/disclaimer", changeFrequency: "yearly", priority: 0.25 },
   { path: "/acerca-de", changeFrequency: "yearly", priority: 0.4 },
   { path: "/contacto", changeFrequency: "yearly", priority: 0.4 },
+  { path: "/extension-cromo-formulas-matematicas", changeFrequency: "monthly", priority: 0.75 },
 ];
 
 export const ES_CALCULATOR_SITEMAP_ROUTES: {

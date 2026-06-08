@@ -77,6 +77,7 @@ const dictionaryData = {
       disclaimer: "Aviso Legal",
       about: "Acerca de",
       contact: "Contacto",
+      mathFormulaHelperExtension: "Extensión Chrome Matemáticas",
       social: "Síguenos",
       cols: {
         calculators: {
@@ -752,7 +753,7 @@ const dictionaryData = {
           ],
           relatedLinks: [
             { label: "Reglas de derivación", href: "/reglas" },
-            { label: "Derivadas parciales (guía)", href: "/reglas" },
+            { label: "Derivadas parciales (guía)", href: "/calculadora-de-derivadas-parciales" },
           ],
         },
         {

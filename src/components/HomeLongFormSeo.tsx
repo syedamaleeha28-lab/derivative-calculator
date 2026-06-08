@@ -49,7 +49,7 @@ export default function HomeLongFormSeo() {
               <p className="text-sm text-slate-600 mt-4">
                 <span className="font-medium text-slate-800">Recursos relacionados: </span>
                 {section.relatedLinks.map((link, i) => (
-                  <span key={link.href}>
+                  <span key={`${section.id}-related-${i}-${link.label}`}>
                     {i > 0 && " · "}
                     <Link
                       href={link.href}
@@ -71,7 +71,7 @@ export default function HomeLongFormSeo() {
           <p className="text-sm font-semibold text-slate-900 mb-4">{t.linksTitle}</p>
           <ul className="flex flex-wrap gap-3">
             {t.links.map((link) => (
-              <li key={link.href}>
+              <li key={`${link.label}-${link.href}`}>
                 <Link
                   href={link.href}
                   className="inline-flex items-center rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-violet-300 hover:text-violet-600 transition-colors"

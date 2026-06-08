@@ -23,7 +23,7 @@ export default function InternalLinksSection({ title = "Guías relacionadas", li
       </h2>
       <ul className="grid gap-4 sm:grid-cols-2">
         {links.map((link) => (
-          <li key={link.href}>
+          <li key={link.anchor}>
             <Link
               href={link.href}
               className="group flex flex-col h-full rounded-2xl border border-slate-200 bg-white p-5 hover:border-secondary/40 hover:shadow-md transition-all"

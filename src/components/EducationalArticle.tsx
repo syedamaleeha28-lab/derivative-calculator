@@ -21,6 +21,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import JsonLd from "./JsonLd";
 import { dict } from "@/lib/dictionaries";
 import { dictEn } from "@/lib/dictionaries-en";
 import { EN_MAIN_CALCULATOR_HREF, EN_ROUTES } from "@/lib/en-routes";
@@ -322,33 +323,17 @@ export default function ArticleLayout({
           { label: "Ejemplos Resueltos", href: ROUTES.ejemplos, icon: <CheckCircle2 size={14} /> },
           { label: "Conceptos Básicos", href: ROUTES.comoFunciona, icon: <HelpCircle size={14} /> },
           { label: "Blog de Matemáticas", href: ROUTES.blog, icon: <ExternalLink size={14} /> },
-          { label: "Cómo Funciona", href: ROUTES.comoFunciona, icon: <List size={14} /> },
         ]);
 
   return (
     <main className="flex min-h-screen flex-col bg-slate-50">
-      {/* Schema Scripts */}
-      <script
-        id="webpage-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
-      <script
-        id="article-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      {faqSchema && (
-        <script
-          id="faq-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
-      <script
-        id="breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <JsonLd
+        data={[
+          webPageSchema,
+          articleSchema,
+          ...(faqSchema ? [faqSchema] : []),
+          breadcrumbSchema,
+        ]}
       />
 
       <Navbar />
@@ -547,7 +532,7 @@ export default function ArticleLayout({
                 <div className="flex flex-col gap-3">
                   {INTERNAL_LINKS.map((link) => (
                     <Link
-                      key={link.href}
+                      key={link.label}
                       href={link.href}
                       className="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-slate-100 hover:border-secondary/30 hover:shadow-md transition-all group"
                     >

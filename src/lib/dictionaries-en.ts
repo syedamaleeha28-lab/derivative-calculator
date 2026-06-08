@@ -49,6 +49,7 @@ export const dictEn: TranslationDictionary = {
     disclaimer: "Disclaimer",
     about: "About",
     contact: "Contact",
+    mathFormulaHelperExtension: "Math Formula Helper Extension",
     social: "Follow us",
     cols: {
       calculators: {

@@ -12,6 +12,7 @@ export const ROUTES = {
   privacy: "/privacy-policy",
   terms: "/terms-of-service",
   disclaimer: "/disclaimer",
+  extensionCromoFormulas: "/extension-cromo-formulas-matematicas",
 } as const;
 
 /** Primary Spanish calculator anchor on the homepage. */

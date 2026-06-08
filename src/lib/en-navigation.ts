@@ -1,4 +1,4 @@
-import { EN_ROUTES } from "./en-routes";
+import { EN_ROUTES } from "./en-route-constants";
 
 export type NavLink = { name: string; href: string };
 
@@ -35,6 +35,9 @@ export const EN_EXAMPLES_NAV: NavLink = {
 };
 
 export const EN_BLOG_NAV: NavLink = { name: "Blog", href: "/blog" };
+
+/** @deprecated Use EN_PRIMARY_NAV */
+export const EN_NAV_LINKS = EN_PRIMARY_NAV;
 
 export function isEnGuidePath(pathname: string): boolean {
   return EN_GUIDES_NAV.some(

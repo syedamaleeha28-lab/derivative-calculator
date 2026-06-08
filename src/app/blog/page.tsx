@@ -81,7 +81,7 @@ export default async function BlogPage() {
               { label: "Inicio", href: "/" },
             ].map((link) => (
               <Link
-                key={link.href}
+                key={link.label}
                 href={link.href}
                 className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-violet-300 hover:text-violet-600 transition-colors"
               >

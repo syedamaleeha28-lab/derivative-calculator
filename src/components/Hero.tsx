@@ -8,7 +8,7 @@ import CalculatorCard, { type CalculatorHandle } from "./CalculatorCard";
 import { dict } from "@/lib/dictionaries";
 import { ROUTES } from "@/lib/routes";
 
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 function TrustPill({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
