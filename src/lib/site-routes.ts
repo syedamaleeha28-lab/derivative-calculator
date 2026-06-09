@@ -3,6 +3,7 @@ import { BLOG_POST_ENTRIES } from "./blog-posts";
 import { EN_ARTICLE_ENTRIES } from "./en-articles";
 import { EN_PAGE_LIST } from "./en-pages";
 import { ES_PAGE_LIST } from "./es-pages";
+import { ES_AUTHORITY_ROUTE_LIST } from "./es-authority-routes";
 import { EN_ROUTES } from "./en-routes";
 import { getHreflangAlternates } from "./locale";
 import { absoluteUrl } from "./seo";
@@ -31,6 +32,11 @@ export const SITEMAP_ROUTES: {
   { path: "/acerca-de", changeFrequency: "yearly", priority: 0.4 },
   { path: "/contacto", changeFrequency: "yearly", priority: 0.4 },
   { path: "/extension-cromo-formulas-matematicas", changeFrequency: "monthly", priority: 0.75 },
+  ...ES_AUTHORITY_ROUTE_LIST.map((path) => ({
+    path,
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  })),
 ];
 
 export const ES_CALCULATOR_SITEMAP_ROUTES: {
@@ -61,6 +67,7 @@ export const EN_SITEMAP_ROUTES: {
   priority: number;
 }[] = [
   { path: EN_ROUTES.home, changeFrequency: "weekly", priority: 0.95 },
+  { path: EN_ROUTES.blog, changeFrequency: "weekly", priority: 0.85 },
   ...EN_PAGE_LIST.map((page) => ({
     path: page.path,
     changeFrequency: "weekly" as const,

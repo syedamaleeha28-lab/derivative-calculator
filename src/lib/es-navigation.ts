@@ -1,3 +1,4 @@
+import { ES_AUTHORITY_ROUTES } from "./es-authority-routes";
 import { ES_CALCULATOR_ROUTES } from "./es-routes";
 import { ROUTES } from "./routes";
 
@@ -18,6 +19,11 @@ export const ES_PRIMARY_NAV_KEYS: EsNavLinkKey[] = [
 
 export const ES_GUIDES_NAV: EsNavLink[] = [
   { name: "Reglas de derivación", href: ROUTES.reglas },
+  { name: "Guía de reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
+  { name: "Fórmulas de derivadas", href: ES_AUTHORITY_ROUTES.formulasDeDerivadas },
+  { name: "Tabla de derivadas", href: ES_AUTHORITY_ROUTES.tablaDeDerivadas },
+  { name: "Ejemplos de derivadas", href: ES_AUTHORITY_ROUTES.ejemplosDeDerivadas },
+  { name: "Ejercicios de derivadas", href: ES_AUTHORITY_ROUTES.ejerciciosDeDerivadas },
   { name: "Cómo funciona", href: ROUTES.comoFunciona },
   { name: "Derivada de sin(x)", href: "/blog/derivada-de-sin-x" },
   { name: "Derivada de cos(x)", href: "/blog/derivada-de-cos-x" },
@@ -25,6 +31,12 @@ export const ES_GUIDES_NAV: EsNavLink[] = [
   { name: "Cómo derivar fracciones", href: "/blog/como-derivar-fracciones" },
   { name: "Derivadas parciales (ejemplos)", href: "/blog/derivadas-parciales-ejemplos" },
   { name: "Derivadas implícitas", href: "/blog/derivadas-implicitas-paso-a-paso" },
+  { name: "Regla del producto", href: ES_CALCULATOR_ROUTES.productRule },
+  { name: "Regla del cociente", href: ES_CALCULATOR_ROUTES.quotientRule },
+  { name: "Segunda derivada", href: ES_CALCULATOR_ROUTES.secondDerivative },
+  { name: "Derivadas de orden superior", href: ES_CALCULATOR_ROUTES.higherOrderDerivative },
+  { name: "Recta tangente", href: ES_CALCULATOR_ROUTES.tangentLine },
+  { name: "Puntos críticos", href: ES_CALCULATOR_ROUTES.criticalPoints },
 ];
 
 export const ES_EXAMPLES_NAV_KEY = { nameKey: "examples" as const, href: ROUTES.ejemplos };

@@ -1,5 +1,9 @@
 import { dict } from "@/lib/dictionaries";
-import { NAV_LINKS } from "@/lib/routes";
+import {
+  ES_BLOG_NAV_KEY,
+  ES_EXAMPLES_NAV_KEY,
+  ES_PRIMARY_NAV_KEYS,
+} from "@/lib/es-navigation";
 import {
   FACEBOOK_URL,
   INSTAGRAM_URL,
@@ -135,7 +139,7 @@ export function buildHomePageSchemaGraph() {
     "@type": "ItemList",
     "@id": `${SITE_URL}/#navigation`,
     name: "Navegación principal",
-    itemListElement: NAV_LINKS.map((link, index) => ({
+    itemListElement: [...ES_PRIMARY_NAV_KEYS, ES_EXAMPLES_NAV_KEY, ES_BLOG_NAV_KEY].map((link, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: dict.nav[link.nameKey],

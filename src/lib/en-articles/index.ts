@@ -12,6 +12,9 @@ import { DerivativeExamplesContent } from "./content/derivative-examples";
 import { HowToDifferentiateAFractionContent } from "./content/how-to-differentiate-a-fraction";
 import { PartialDerivativeExamplesContent } from "./content/partial-derivative-examples";
 import { ImplicitDifferentiationExamplesContent } from "./content/implicit-differentiation-examples";
+import { DerivativeFormulasContent } from "./content/derivative-formulas";
+import { DerivativePracticeProblemsContent } from "./content/derivative-practice-problems";
+import { DerivativeCheatSheetContent } from "./content/derivative-cheat-sheet";
 
 const AUTHOR = {
   name: "Derivative Calculator Team",
@@ -281,6 +284,52 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
     Content: DerivativeRulesContent,
   }),
   entry({
+    slug: "derivative-formulas",
+    title: "Derivative Formulas: Complete Reference with Tables",
+    description:
+      "Every standard derivative formula in one place—power, product, quotient, chain, trig, log, exp, inverse, and application formulas—with tables and when-to-use guidance.",
+    date: "June 9, 2026",
+    dateIso: "2026-06-09",
+    readTime: "18 min",
+    category: "Reference",
+    tags: ["derivative formulas", "differentiation formulas", "calculus reference"],
+    author: AUTHOR,
+    heroImageAlt: "Comprehensive table of derivative formulas for calculus students",
+    spanishAlternate: "/formulas-de-derivadas",
+    faqs: [
+      {
+        question: "What is the most important derivative formula?",
+        answer: "The chain rule f′(g(x))·g′(x) appears inside nearly every non-polynomial problem.",
+      },
+      {
+        question: "What is the derivative of x^n?",
+        answer: "n·x^(n−1) by the power rule, with domain restrictions for some n.",
+      },
+      {
+        question: "What is the derivative of sin(x)?",
+        answer: "cos(x), provided x is measured in radians.",
+      },
+      {
+        question: "What is the derivative of ln(x)?",
+        answer: "1/x for x > 0.",
+      },
+      {
+        question: "What is the derivative of e^x?",
+        answer: "e^x—the exponential function is its own derivative.",
+      },
+      {
+        question: "When do I use the product rule versus the chain rule?",
+        answer: "Product rule for uv; chain rule for f(g(x)). If both apply, combine them.",
+      },
+    ],
+    relatedPosts: [
+      { title: "Derivative rules", slug: "derivative-rules" },
+      { title: "Derivative cheat sheet", slug: "derivative-cheat-sheet" },
+    ],
+    breadcrumbLabel: "Derivative formulas",
+    Content: DerivativeFormulasContent,
+  }),
+  entry({
     slug: "derivative-examples",
     title: "Derivative Examples: Beginner to Advanced Practice",
     description:
@@ -309,6 +358,98 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
     ],
     breadcrumbLabel: "Derivative examples",
     Content: DerivativeExamplesContent,
+  }),
+  entry({
+    slug: "derivative-practice-problems",
+    title: "Derivative Practice Problems: Beginner to Advanced Drills",
+    description:
+      "Structured derivative practice problems at three difficulty levels, application drills, self-tests, and a weekly study plan—with solution outlines and calculator links.",
+    date: "June 9, 2026",
+    dateIso: "2026-06-09",
+    readTime: "20 min",
+    category: "Practice",
+    tags: ["derivative practice problems", "differentiation drills", "calculus exercises"],
+    author: AUTHOR,
+    heroImageAlt: "Graduated set of derivative practice problems from basic to advanced",
+    spanishAlternate: "/ejercicios-de-derivadas",
+    faqs: [
+      {
+        question: "How many derivative practice problems should I do per day?",
+        answer: "Aim for 5–10 mixed problems daily, increasing difficulty as basics become automatic.",
+      },
+      {
+        question: "What rules should beginners practice first?",
+        answer: "Power rule and linearity before product, quotient, and chain rules.",
+      },
+      {
+        question: "How do I check my derivative practice answers?",
+        answer: "Use a step-by-step derivative calculator and compare each algebraic step.",
+      },
+      {
+        question: "What is a good intermediate practice problem?",
+        answer: "x²·e^x or sin(2x) stress product and chain rules in manageable form.",
+      },
+      {
+        question: "How do I prepare for derivative exams?",
+        answer: "Mix one beginner, one intermediate, and one advanced problem under timed conditions.",
+      },
+      {
+        question: "Should I memorize formulas or practice classification?",
+        answer: "Both—formulas tell you what; classifying the expression tells you which formula to use.",
+      },
+    ],
+    relatedPosts: [
+      { title: "Derivative examples", slug: "derivative-examples" },
+      { title: "Derivative rules", slug: "derivative-rules" },
+    ],
+    breadcrumbLabel: "Practice problems",
+    Content: DerivativePracticeProblemsContent,
+  }),
+  entry({
+    slug: "derivative-cheat-sheet",
+    title: "Derivative Cheat Sheet: Exam-Ready Quick Reference",
+    description:
+      "Printable derivative cheat sheet with core rules, trig and log tables, inverse trig rows, decision flow, common mistakes, and calculator links.",
+    date: "June 9, 2026",
+    dateIso: "2026-06-09",
+    readTime: "12 min",
+    category: "Reference",
+    tags: ["derivative cheat sheet", "differentiation cheat sheet", "calculus quick reference"],
+    author: AUTHOR,
+    heroImageAlt: "One-page derivative cheat sheet with rules and standard function derivatives",
+    spanishAlternate: "/tabla-de-derivadas",
+    faqs: [
+      {
+        question: "What should a derivative cheat sheet include?",
+        answer: "Power, product, quotient, chain rules plus trig, log, exp, and inverse trig rows.",
+      },
+      {
+        question: "Is a cheat sheet enough to learn derivatives?",
+        answer: "No—it is for review. Pair it with worked examples and deliberate practice.",
+      },
+      {
+        question: "What is the derivative of tan(x)?",
+        answer: "sec²(x), equivalently 1/cos²(x), where cos(x) ≠ 0.",
+      },
+      {
+        question: "What is the quotient rule formula?",
+        answer: "(u′v − uv′)/v² for a fraction u/v.",
+      },
+      {
+        question: "How fast should I classify a derivative problem?",
+        answer: "Under ten seconds to name the rule at exam fluency; use the five-second decision flow.",
+      },
+      {
+        question: "Can I use a calculator while studying with this cheat sheet?",
+        answer: "Yes—verify handwritten work with a step-by-step tool after attempting each problem first.",
+      },
+    ],
+    relatedPosts: [
+      { title: "Derivative formulas", slug: "derivative-formulas" },
+      { title: "Derivative rules", slug: "derivative-rules" },
+    ],
+    breadcrumbLabel: "Cheat sheet",
+    Content: DerivativeCheatSheetContent,
   }),
   entry({
     slug: "how-to-differentiate-a-fraction",

@@ -4,10 +4,10 @@ import type { TranslationDictionary } from "./dictionaries";
 export const dictEn: TranslationDictionary = {
   nav: {
     home: "Home",
-    calculator: "Calculator",
+    calculator: "Derivative Calculator",
     partialDerivatives: "Partial Derivatives",
     chainRule: "Chain Rule",
-    implicitDerivatives: "Implicit",
+    implicitDerivatives: "Implicit Differentiation",
     guides: "Guides",
     works: "How It Works",
     examples: "Examples",

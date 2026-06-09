@@ -1,4 +1,5 @@
 import { EN_ROUTES } from "./en-routes";
+import { ES_AUTHORITY_ROUTES } from "./es-authority-routes";
 import { ES_CALCULATOR_ROUTES } from "./es-routes";
 import { ROUTES } from "./routes";
 
@@ -27,6 +28,21 @@ export const LOCALE_ROUTE_PAIRS: { es: string; en: string }[] = [
     es: ES_CALCULATOR_ROUTES.implicitDerivatives,
     en: EN_ROUTES.implicitDifferentiationCalculator,
   },
+  { es: ES_CALCULATOR_ROUTES.productRule, en: EN_ROUTES.productRuleCalculator },
+  { es: ES_CALCULATOR_ROUTES.quotientRule, en: EN_ROUTES.quotientRuleCalculator },
+  { es: ES_CALCULATOR_ROUTES.secondDerivative, en: EN_ROUTES.secondDerivativeCalculator },
+  {
+    es: ES_CALCULATOR_ROUTES.higherOrderDerivative,
+    en: EN_ROUTES.higherOrderDerivativeCalculator,
+  },
+  { es: ES_CALCULATOR_ROUTES.tangentLine, en: EN_ROUTES.tangentLineCalculator },
+  { es: ES_CALCULATOR_ROUTES.criticalPoints, en: EN_ROUTES.criticalPointsCalculator },
+  { es: ES_AUTHORITY_ROUTES.formulasDeDerivadas, en: EN_ROUTES.derivativeFormulas },
+  {
+    es: ES_AUTHORITY_ROUTES.ejerciciosDeDerivadas,
+    en: EN_ROUTES.derivativePracticeProblems,
+  },
+  { es: ES_AUTHORITY_ROUTES.tablaDeDerivadas, en: EN_ROUTES.derivativeCheatSheet },
   { es: "/blog/derivada-de-sin-x", en: EN_ROUTES.derivativeOfSinX },
   { es: "/blog/derivada-de-cos-x", en: EN_ROUTES.derivativeOfCosX },
   { es: "/blog/derivada-de-tan-x", en: EN_ROUTES.derivativeOfTanX },
@@ -38,6 +54,11 @@ export const LOCALE_ROUTE_PAIRS: { es: string; en: string }[] = [
   { es: ROUTES.reglas, en: EN_ROUTES.derivativeOfLnX },
   { es: ROUTES.reglas, en: EN_ROUTES.derivativeOfEX },
   { es: ROUTES.ejemplos, en: EN_ROUTES.derivativeOfXSquared },
+  { es: ROUTES.blog, en: EN_ROUTES.blog },
+  // ES authority guides without a dedicated 1:1 EN page map to the closest
+  // EN equivalent. Listed last so the canonical pairs above win reverse lookups.
+  { es: ES_AUTHORITY_ROUTES.reglasDeDerivacion, en: EN_ROUTES.derivativeRules },
+  { es: ES_AUTHORITY_ROUTES.ejemplosDeDerivadas, en: EN_ROUTES.derivativeExamples },
 ];
 
 function normalizePath(path: string): string {

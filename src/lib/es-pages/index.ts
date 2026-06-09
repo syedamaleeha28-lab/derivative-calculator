@@ -2,6 +2,14 @@ import { ES_CALCULATOR_ROUTES } from "../es-routes";
 import { EN_ROUTES } from "../en-routes";
 import { ROUTES } from "../routes";
 import type { CalculatorPageConfig } from "../calculator-pages/types";
+import {
+  productRulePage,
+  quotientRulePage,
+  secondDerivativePage,
+  higherOrderDerivativePage,
+  tangentLinePage,
+  criticalPointsPage,
+} from "./expansion-calculators";
 
 const BREADCRUMB_HOME = { label: "Inicio", path: ROUTES.home };
 
@@ -337,6 +345,13 @@ export const ES_CALCULATOR_PAGES: Record<string, CalculatorPageConfig> = {
     ],
     breadcrumbHome: BREADCRUMB_HOME,
   },
+
+  productRule: productRulePage,
+  quotientRule: quotientRulePage,
+  secondDerivative: secondDerivativePage,
+  higherOrderDerivative: higherOrderDerivativePage,
+  tangentLine: tangentLinePage,
+  criticalPoints: criticalPointsPage,
 };
 
 export const ES_PAGE_LIST = Object.values(ES_CALCULATOR_PAGES);

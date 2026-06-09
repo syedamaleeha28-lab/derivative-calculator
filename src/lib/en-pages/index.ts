@@ -1,5 +1,14 @@
 import { EN_MAIN_CALCULATOR_HREF, EN_ROUTES } from "../en-routes";
 import type { CalculatorPageConfig, FaqItem } from "../calculator-pages/types";
+import { enStandardInternalLinks } from "../calculator-pages/standard-links";
+import {
+  productRuleExpandedSections,
+  quotientRuleExpandedSections,
+  secondDerivativeExpandedSections,
+  higherOrderDerivativeExpandedSections,
+  tangentLineExpandedSections,
+  criticalPointsCalculatorConfig,
+} from "./expansion-sections";
 
 export type EnFaqItem = FaqItem;
 export type EnCalculatorPageConfig = CalculatorPageConfig;
@@ -7,8 +16,12 @@ export type EnCalculatorPageConfig = CalculatorPageConfig;
 const BREADCRUMB_HOME = { label: "Home", path: EN_ROUTES.home };
 
 const SHARED_INTERNAL_LINKS = [
+  ...enStandardInternalLinks(),
   { label: "Derivative rules (English guide)", href: EN_ROUTES.derivativeRules },
+  { label: "Derivative formulas reference", href: EN_ROUTES.derivativeFormulas },
   { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
+  { label: "Derivative practice problems", href: EN_ROUTES.derivativePracticeProblems },
+  { label: "Derivative cheat sheet", href: EN_ROUTES.derivativeCheatSheet },
   { label: "Derivative of sin(x)", href: EN_ROUTES.derivativeOfSinX },
   { label: "Spanish homepage", href: "/" },
 ];
@@ -460,22 +473,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       { label: "Try our main derivative calculator", href: EN_MAIN_CALCULATOR_HREF },
       ...SHARED_INTERNAL_LINKS,
     ],
-    educationalSections: [
-      {
-        h2: "Concavity and the second derivative test",
-        paragraphs: [
-          "When f′(c) = 0, the second derivative test can classify critical points: f″(c) > 0 suggests a local minimum; f″(c) < 0 suggests a local maximum; f″(c) = 0 is inconclusive.",
-          "Always combine sign charts and first-derivative behavior for a complete picture—graphs can inflect without simple test outcomes.",
-        ],
-      },
-      {
-        h2: "Practice strategy for second derivatives",
-        paragraphs: [
-          "Pick three function families: pure polynomials, exponentials, and trig. Compute f″ for one example from each without looking, then verify here.",
-          "Pay attention to when the product rule fires twice—that is a common exam trap.",
-        ],
-      },
-    ],
+    educationalSections: secondDerivativeExpandedSections(),
   },
 
   chainRuleCalculator: {
@@ -678,22 +676,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
       ...SHARED_INTERNAL_LINKS,
     ],
-    educationalSections: [
-      {
-        h2: "Product rule formula and notation",
-        paragraphs: [
-          "If h(x) = f(x)·g(x), then h′(x) = f′(x)g(x) + f(x)g′(x). A common mnemonic is “first d-second plus second d-first.”",
-          "Leibniz notation writes d/dx(uv) = (du/dx)v + u(dv/dx). Both forms describe the same operation.",
-        ],
-      },
-      {
-        h2: "Study tips for product rule problems",
-        paragraphs: [
-          "Label u and v before differentiating. Skipping this step causes sign errors and missing chain-rule factors.",
-          "After finding h′, simplify by factoring common terms—especially e^x or trig factors shared by both summands.",
-        ],
-      },
-    ],
+    educationalSections: productRuleExpandedSections(),
   },
 
   quotientRuleCalculator: {
@@ -785,22 +768,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
       ...SHARED_INTERNAL_LINKS,
     ],
-    educationalSections: [
-      {
-        h2: "Quotient rule in Leibniz notation",
-        paragraphs: [
-          "If y = u/v, then dy/dx = (v·du/dx − u·dv/dx) / v². The order in the numerator matters: derivative of the top times the bottom minus top times derivative of bottom.",
-          "Always square the denominator last. Students often forget v² or use v instead.",
-        ],
-      },
-      {
-        h2: "Avoiding common quotient rule errors",
-        paragraphs: [
-          "Do not confuse u′v + uv′ (product rule) with u′v − uv′ (quotient rule). A quick check: the derivative of 1/x should be −1/x², which the quotient rule produces correctly.",
-          "Simplify the numerator before dividing when algebra allows—it reduces arithmetic mistakes on exams.",
-        ],
-      },
-    ],
+    educationalSections: quotientRuleExpandedSections(),
   },
 
   higherOrderDerivativeCalculator: {
@@ -891,22 +859,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       { label: "Derivative rules", href: EN_ROUTES.derivativeRules },
       ...SHARED_INTERNAL_LINKS,
     ],
-    educationalSections: [
-      {
-        h2: "Notation for higher derivatives",
-        paragraphs: [
-          "Prime notation: f′, f″, f‴, then f⁽⁴⁾. Leibniz: d²y/dx², d³y/dx³. In physics, time derivatives use dots over variables.",
-          "For polynomials of degree n, the (n+1)st derivative is zero—an easy sanity check.",
-        ],
-      },
-      {
-        h2: "Applications beyond the classroom",
-        paragraphs: [
-          "Taylor polynomials need derivatives up to order n at a point. In kinematics, position → velocity → acceleration → jerk are successive time derivatives.",
-          "Use this calculator to verify coefficients when building a Taylor expansion by hand.",
-        ],
-      },
-    ],
+    educationalSections: higherOrderDerivativeExpandedSections(),
   },
 
   tangentLineCalculator: {
@@ -997,23 +950,10 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       { label: "Derivative examples", href: EN_ROUTES.derivativeExamples },
       ...SHARED_INTERNAL_LINKS,
     ],
-    educationalSections: [
-      {
-        h2: "Point-slope form recap",
-        paragraphs: [
-          "Given slope m through (x₀, y₀): y − y₀ = m(x − x₀). Replace m with f′(x₀) and y₀ with f(x₀) when the curve is y = f(x).",
-          "For implicit curves, find dy/dx from implicit differentiation and evaluate at the point on the curve.",
-        ],
-      },
-      {
-        h2: "Normal lines vs tangent lines",
-        paragraphs: [
-          "The normal line is perpendicular to the tangent. If m is the tangent slope (and m ≠ 0), the normal slope is −1/m.",
-          "Many exam problems ask for both lines; differentiate once, then use perpendicular slope rules.",
-        ],
-      },
-    ],
+    educationalSections: tangentLineExpandedSections(),
   },
+
+  criticalPointsCalculator: criticalPointsCalculatorConfig,
 };
 
 export const EN_PAGE_LIST = Object.values(EN_CALCULATOR_PAGES);
