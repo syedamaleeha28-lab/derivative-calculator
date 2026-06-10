@@ -11,16 +11,20 @@ import { dict } from "@/lib/dictionaries";
 import { dictEn } from "@/lib/dictionaries-en";
 import {
   EN_BLOG_NAV,
+  EN_CALCULATORS_NAV,
   EN_EXAMPLES_NAV,
   EN_GUIDES_NAV,
   EN_PRIMARY_NAV,
+  isEnCalculatorPath,
   isEnGuidePath,
 } from "@/lib/en-navigation";
 import {
   ES_BLOG_NAV_KEY,
+  ES_CALCULATORS_NAV,
   ES_EXAMPLES_NAV_KEY,
   ES_GUIDES_NAV,
   ES_PRIMARY_NAV_KEYS,
+  isEsCalculatorPath,
   isEsGuidePath,
 } from "@/lib/es-navigation";
 import { EN_MAIN_CALCULATOR_HREF, EN_ROUTES } from "@/lib/en-routes";
@@ -192,6 +196,7 @@ export default function Navbar() {
         href: item.href,
       }));
 
+  const calculatorsLinks = isEnglish ? EN_CALCULATORS_NAV : ES_CALCULATORS_NAV;
   const guidesLinks = isEnglish ? EN_GUIDES_NAV : ES_GUIDES_NAV;
   const examplesLink = isEnglish
     ? EN_EXAMPLES_NAV
@@ -200,6 +205,9 @@ export default function Navbar() {
     ? EN_BLOG_NAV
     : { name: dict.nav[ES_BLOG_NAV_KEY.nameKey], href: ES_BLOG_NAV_KEY.href };
 
+  const calculatorsActive = isEnglish
+    ? isEnCalculatorPath(pathname)
+    : isEsCalculatorPath(pathname);
   const guidesActive = isEnglish ? isEnGuidePath(pathname) : isEsGuidePath(pathname);
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -256,6 +264,13 @@ export default function Navbar() {
                 </li>
               );
             })}
+            <GuidesDropdown
+              label={t.calculators}
+              items={calculatorsLinks}
+              pathname={pathname}
+              isGuideActive={calculatorsActive}
+              variant="desktop"
+            />
             <GuidesDropdown
               label={t.guides}
               items={guidesLinks}
@@ -334,6 +349,14 @@ export default function Navbar() {
                   </li>
                 );
               })}
+              <GuidesDropdown
+                label={t.calculators}
+                items={calculatorsLinks}
+                pathname={pathname}
+                isGuideActive={calculatorsActive}
+                variant="mobile"
+                onNavigate={closeMobile}
+              />
               <GuidesDropdown
                 label={t.guides}
                 items={guidesLinks}

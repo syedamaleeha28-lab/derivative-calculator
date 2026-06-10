@@ -1,6 +1,7 @@
 import { dict } from "@/lib/dictionaries";
 import {
   ES_BLOG_NAV_KEY,
+  ES_CALCULATORS_NAV,
   ES_EXAMPLES_NAV_KEY,
   ES_PRIMARY_NAV_KEYS,
 } from "@/lib/es-navigation";
@@ -139,10 +140,16 @@ export function buildHomePageSchemaGraph() {
     "@type": "ItemList",
     "@id": `${SITE_URL}/#navigation`,
     name: "Navegación principal",
-    itemListElement: [...ES_PRIMARY_NAV_KEYS, ES_EXAMPLES_NAV_KEY, ES_BLOG_NAV_KEY].map((link, index) => ({
+    itemListElement: [
+      ...[...ES_PRIMARY_NAV_KEYS, ES_EXAMPLES_NAV_KEY, ES_BLOG_NAV_KEY].map((link) => ({
+        name: dict.nav[link.nameKey],
+        href: link.href,
+      })),
+      ...ES_CALCULATORS_NAV.filter((link) => link.href !== "/"),
+    ].map((link, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: dict.nav[link.nameKey],
+      name: link.name,
       url: absoluteUrl(link.href),
     })),
   };

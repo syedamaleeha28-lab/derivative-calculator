@@ -70,11 +70,19 @@ const FEATURED_CALCULATORS = [
     href: EN_ROUTES.tangentLineCalculator,
     desc: "Slope f′(a) and tangent equations.",
   },
+  {
+    title: "Critical Points Calculator",
+    href: EN_ROUTES.criticalPointsCalculator,
+    desc: "Find maxima, minima, and where f′(x) = 0.",
+  },
 ];
 
 const FEATURED_GUIDES = [
   { title: "Derivative Rules", href: EN_ROUTES.derivativeRules, desc: "Power, product, quotient, chain, trig, log, exp." },
+  { title: "Derivative Formulas", href: EN_ROUTES.derivativeFormulas, desc: "Complete formula reference with tables." },
+  { title: "Derivative Cheat Sheet", href: EN_ROUTES.derivativeCheatSheet, desc: "Exam-ready quick reference, printable." },
   { title: "Derivative Examples", href: EN_ROUTES.derivativeExamples, desc: "Beginner through advanced worked problems." },
+  { title: "Derivative Practice Problems", href: EN_ROUTES.derivativePracticeProblems, desc: "Drills at three difficulty levels with solutions." },
   { title: "Derivative of sin(x)", href: EN_ROUTES.derivativeOfSinX, desc: "Formula, proof sketch, and practice." },
   { title: "Derivative of cos(x)", href: EN_ROUTES.derivativeOfCosX, desc: "−sin(x) and chain rule cases." },
 ];
@@ -94,7 +102,10 @@ export default function EnglishHomePage() {
         <Navbar />
         <EnglishCalculatorHero h1={t.h1} intro={t.desc} />
 
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+        <section
+          id="calculators"
+          className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 scroll-mt-24"
+        >
           <h2 className="heading-font text-2xl md:text-3xl text-slate-900 mb-3 text-center">
             Specialized derivative calculators
           </h2>

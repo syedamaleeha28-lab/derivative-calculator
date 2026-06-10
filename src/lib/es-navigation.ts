@@ -9,17 +9,29 @@ export type EsNavLinkKey = {
   href: string;
 };
 
-/** Resolved at render time via dictionary. */
+/** Resolved at render time via dictionary. Top bar keeps only the main calculator. */
 export const ES_PRIMARY_NAV_KEYS: EsNavLinkKey[] = [
   { nameKey: "calculator", href: ROUTES.home },
-  { nameKey: "partialDerivatives", href: ES_CALCULATOR_ROUTES.partialDerivatives },
-  { nameKey: "chainRule", href: ES_CALCULATOR_ROUTES.chainRule },
-  { nameKey: "implicitDerivatives", href: ES_CALCULATOR_ROUTES.implicitDerivatives },
 ];
 
+/** "Calculadoras" dropdown: every calculator tool. */
+export const ES_CALCULATORS_NAV: EsNavLink[] = [
+  { name: "Calculadora de derivadas", href: ROUTES.home },
+  { name: "Derivadas parciales", href: ES_CALCULATOR_ROUTES.partialDerivatives },
+  { name: "Regla de la cadena", href: ES_CALCULATOR_ROUTES.chainRule },
+  { name: "Derivadas implícitas", href: ES_CALCULATOR_ROUTES.implicitDerivatives },
+  { name: "Regla del producto", href: ES_CALCULATOR_ROUTES.productRule },
+  { name: "Regla del cociente", href: ES_CALCULATOR_ROUTES.quotientRule },
+  { name: "Segunda derivada", href: ES_CALCULATOR_ROUTES.secondDerivative },
+  { name: "Derivadas de orden superior", href: ES_CALCULATOR_ROUTES.higherOrderDerivative },
+  { name: "Recta tangente", href: ES_CALCULATOR_ROUTES.tangentLine },
+  { name: "Puntos críticos", href: ES_CALCULATOR_ROUTES.criticalPoints },
+];
+
+/** "Guías" dropdown: educational content only. */
 export const ES_GUIDES_NAV: EsNavLink[] = [
-  { name: "Reglas de derivación", href: ROUTES.reglas },
   { name: "Guía de reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
+  { name: "Reglas básicas", href: ROUTES.reglas },
   { name: "Fórmulas de derivadas", href: ES_AUTHORITY_ROUTES.formulasDeDerivadas },
   { name: "Tabla de derivadas", href: ES_AUTHORITY_ROUTES.tablaDeDerivadas },
   { name: "Ejemplos de derivadas", href: ES_AUTHORITY_ROUTES.ejemplosDeDerivadas },
@@ -31,12 +43,6 @@ export const ES_GUIDES_NAV: EsNavLink[] = [
   { name: "Cómo derivar fracciones", href: "/blog/como-derivar-fracciones" },
   { name: "Derivadas parciales (ejemplos)", href: "/blog/derivadas-parciales-ejemplos" },
   { name: "Derivadas implícitas", href: "/blog/derivadas-implicitas-paso-a-paso" },
-  { name: "Regla del producto", href: ES_CALCULATOR_ROUTES.productRule },
-  { name: "Regla del cociente", href: ES_CALCULATOR_ROUTES.quotientRule },
-  { name: "Segunda derivada", href: ES_CALCULATOR_ROUTES.secondDerivative },
-  { name: "Derivadas de orden superior", href: ES_CALCULATOR_ROUTES.higherOrderDerivative },
-  { name: "Recta tangente", href: ES_CALCULATOR_ROUTES.tangentLine },
-  { name: "Puntos críticos", href: ES_CALCULATOR_ROUTES.criticalPoints },
 ];
 
 export const ES_EXAMPLES_NAV_KEY = { nameKey: "examples" as const, href: ROUTES.ejemplos };
@@ -45,5 +51,11 @@ export const ES_BLOG_NAV_KEY = { nameKey: "blog" as const, href: ROUTES.blog };
 export function isEsGuidePath(pathname: string): boolean {
   return ES_GUIDES_NAV.some(
     (link) => pathname === link.href || pathname.startsWith(`${link.href}/`)
+  );
+}
+
+export function isEsCalculatorPath(pathname: string): boolean {
+  return ES_CALCULATORS_NAV.some(
+    (link) => link.href !== "/" && (pathname === link.href || pathname.startsWith(`${link.href}/`))
   );
 }

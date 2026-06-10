@@ -13,9 +13,13 @@ export type RelatedCalculator = {
   description: string;
 };
 
+import type { SpecializedCalculatorKind } from "@/lib/specialized-calculators/themes";
+
 export type CalculatorPageConfig = {
   slug: string;
   path: string;
+  /** When set (or inferred from slug), renders a themed specialized calculator instead of the generic widget. */
+  calculatorKind?: SpecializedCalculatorKind;
   h1: string;
   intro: string[];
   meta: {

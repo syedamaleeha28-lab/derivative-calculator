@@ -386,6 +386,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
   secondDerivativeCalculator: {
     slug: "second-derivative-calculator",
     path: EN_ROUTES.secondDerivativeCalculator,
+    embedCalculator: true,
     breadcrumbHome: BREADCRUMB_HOME,
     h1: "Second Derivative Calculator — Find f″(x) Online",
     intro: [
@@ -589,6 +590,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
   productRuleCalculator: {
     slug: "product-rule-calculator",
     path: EN_ROUTES.productRuleCalculator,
+    embedCalculator: true,
     breadcrumbHome: BREADCRUMB_HOME,
     h1: "Product Rule Calculator — Differentiate Products Step by Step",
     intro: [
@@ -682,6 +684,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
   quotientRuleCalculator: {
     slug: "quotient-rule-calculator",
     path: EN_ROUTES.quotientRuleCalculator,
+    embedCalculator: true,
     breadcrumbHome: BREADCRUMB_HOME,
     h1: "Quotient Rule Calculator — Differentiate Fractions Online",
     intro: [
@@ -774,6 +777,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
   higherOrderDerivativeCalculator: {
     slug: "higher-order-derivative-calculator",
     path: EN_ROUTES.higherOrderDerivativeCalculator,
+    embedCalculator: true,
     breadcrumbHome: BREADCRUMB_HOME,
     h1: "Higher Order Derivative Calculator — Third and Fourth Derivatives",
     intro: [
@@ -865,6 +869,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
   tangentLineCalculator: {
     slug: "tangent-line-calculator",
     path: EN_ROUTES.tangentLineCalculator,
+    embedCalculator: true,
     breadcrumbHome: BREADCRUMB_HOME,
     h1: "Tangent Line Calculator — Slope from the Derivative",
     intro: [

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import HomeCalculatorTools from "@/components/HomeCalculatorTools";
 import HomeEducationalCards from "@/components/HomeEducationalCards";
 import HomeLongFormSeo from "@/components/HomeLongFormSeo";
 import HomeFeaturedBlogLinks from "@/components/HomeFeaturedBlogLinks";
@@ -41,6 +42,7 @@ export default function Home() {
       <main className="flex min-h-screen flex-col bg-white">
         <Navbar />
         <Hero />
+        <HomeCalculatorTools />
         <HomeEducationalCards />
         <HomeFeaturedBlogLinks />
         <HomeRecentArticles />

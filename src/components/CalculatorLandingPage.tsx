@@ -1,10 +1,14 @@
 import Link from "next/link";
 import Script from "next/script";
-import { ArrowRight, Calculator } from "lucide-react";
+import { ArrowRight, Calculator, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CalculatorLandingHero from "@/components/CalculatorLandingHero";
+import SpecializedCalculatorHero from "@/components/SpecializedCalculatorHero";
 import EducationalLandingHero from "@/components/EducationalLandingHero";
+import { resolveCalculatorKind } from "@/lib/specialized-calculators/kinds";
+import { heroLabels } from "@/lib/specialized-calculators/hero-labels";
+import { THEMES } from "@/lib/specialized-calculators/themes";
 import CalculatorCtaBanner from "@/components/CalculatorCtaBanner";
 import { EN_MAIN_CALCULATOR_HREF } from "@/lib/en-routes";
 import { ES_MAIN_CALCULATOR_HREF } from "@/lib/routes";
@@ -22,7 +26,22 @@ export default function CalculatorLandingPage({ locale, page }: Props) {
   const ui = CALCULATOR_PAGE_UI[locale];
   const jsonLd = JSON.stringify(buildCalculatorPageSchema(page, locale)).replace(/</g, "\\u003c");
   const embedCalculator = page.embedCalculator ?? locale === "es";
+  const calculatorKind = embedCalculator ? resolveCalculatorKind(page) : null;
   const mainCalcHref = locale === "en" ? EN_MAIN_CALCULATOR_HREF : ES_MAIN_CALCULATOR_HREF;
+  const mobileCta =
+    calculatorKind != null
+      ? heroLabels(locale, calculatorKind).cta
+      : ui.calcNow;
+  const mobileBarClass =
+    calculatorKind != null
+      ? `${THEMES[calculatorKind].cta} text-white`
+      : "bg-[#0f172a] text-white";
+  // Visible trail mirroring the BreadcrumbList JSON-LD emitted in the schema.
+  const breadcrumbLabel = page.h1.split("—")[0].split("|")[0].trim();
+  const calculatorsCrumb =
+    locale === "es"
+      ? { label: "Calculadoras", href: "/#herramientas-calculo" }
+      : { label: "Calculators", href: "/en#calculators" };
 
   return (
     <>
@@ -34,7 +53,43 @@ export default function CalculatorLandingPage({ locale, page }: Props) {
       />
       <main className="flex min-h-screen flex-col bg-white">
         <Navbar />
-        {embedCalculator ? (
+        <nav
+          aria-label="Breadcrumb"
+          className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-4"
+        >
+          <ol className="flex flex-wrap items-center gap-2 text-[0.75rem] font-bold text-slate-400 uppercase tracking-widest">
+            <li className="flex items-center gap-2">
+              <Link
+                href={page.breadcrumbHome.path}
+                className="hover:text-violet-600 transition-colors"
+              >
+                {page.breadcrumbHome.label}
+              </Link>
+              <ChevronRight size={12} aria-hidden />
+            </li>
+            <li className="flex items-center gap-2">
+              <Link
+                href={calculatorsCrumb.href}
+                className="hover:text-violet-600 transition-colors"
+              >
+                {calculatorsCrumb.label}
+              </Link>
+              <ChevronRight size={12} aria-hidden />
+            </li>
+            <li aria-current="page" className="text-slate-600 normal-case tracking-normal">
+              {breadcrumbLabel}
+            </li>
+          </ol>
+        </nav>
+        {embedCalculator && calculatorKind ? (
+          <SpecializedCalculatorHero
+            locale={locale}
+            kind={calculatorKind}
+            h1={page.h1}
+            intro={page.intro[0]}
+            tag={page.tag}
+          />
+        ) : embedCalculator ? (
           <CalculatorLandingHero
             locale={locale}
             h1={page.h1}
@@ -189,10 +244,10 @@ export default function CalculatorLandingPage({ locale, page }: Props) {
         <div className="fixed bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-xl border-t border-slate-200/50 md:hidden z-40 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] pb-[max(1rem,env(safe-area-inset-bottom))]">
           <a
             href={embedCalculator ? "#calculator" : mainCalcHref}
-            className="w-full bg-[#0f172a] text-white py-3.5 rounded-[14px] text-[0.9rem] font-black uppercase tracking-[0.05em] shadow-xl flex justify-center items-center gap-2"
+            className={`w-full py-3.5 rounded-[14px] text-[0.9rem] font-black uppercase tracking-[0.05em] shadow-xl flex justify-center items-center gap-2 ${mobileBarClass}`}
           >
             <Calculator size={16} />
-            {ui.calcNow}
+            {mobileCta}
           </a>
         </div>
       </main>

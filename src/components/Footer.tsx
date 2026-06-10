@@ -4,10 +4,15 @@ import Link from "next/link";
 import SocialLinks from "@/components/SocialLinks";
 import { dict } from "@/lib/dictionaries";
 import { dictEn } from "@/lib/dictionaries-en";
+import { EN_CALCULATORS_NAV, EN_GUIDES_NAV } from "@/lib/en-navigation";
+import { ES_CALCULATORS_NAV, ES_GUIDES_NAV } from "@/lib/es-navigation";
 import { EXTENSION_CROMO_FORMULAS_PATH } from "@/lib/extension-cromo-formulas";
 import { MATH_FORMULA_HELPER_EXTENSION_PATH } from "@/lib/math-formula-helper-extension";
 import { FOOTER_LEGAL_PAGES, getLegalPath } from "@/lib/legal-routes";
 import type { Locale } from "@/lib/locale";
+
+/** Educational guide links only (first entries; blog articles stay out of the footer). */
+const FOOTER_GUIDE_COUNT = 6;
 
 const FOOTER_LABEL_KEY = {
   privacy: "privacy",
@@ -28,10 +33,51 @@ type FooterProps = {
 
 export default function Footer({ locale = "es" }: FooterProps) {
   const t = locale === "en" ? dictEn.footer : dict.footer;
+  const nav = locale === "en" ? dictEn.nav : dict.nav;
+  const calculators = locale === "en" ? EN_CALCULATORS_NAV : ES_CALCULATORS_NAV;
+  const guides = (locale === "en" ? EN_GUIDES_NAV : ES_GUIDES_NAV).slice(0, FOOTER_GUIDE_COUNT);
 
   return (
     <footer className="border-t border-slate-200 bg-white py-10 md:py-12">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
+        <div className="mb-10 grid gap-8 sm:grid-cols-2">
+          <nav aria-label={nav.calculators} className="flex min-w-0 flex-col gap-3">
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
+              {nav.calculators}
+            </p>
+            <ul className="grid gap-x-4 gap-y-2 text-sm text-slate-600 sm:grid-cols-2">
+              {calculators.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition-colors hover:text-violet-600 hover:underline"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label={nav.guides} className="flex min-w-0 flex-col gap-3">
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
+              {nav.guides}
+            </p>
+            <ul className="grid gap-x-4 gap-y-2 text-sm text-slate-600 sm:grid-cols-2">
+              {guides.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition-colors hover:text-violet-600 hover:underline"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex min-w-0 flex-col gap-8 sm:flex-row sm:gap-12">
             <nav aria-label={t.resources} className="flex min-w-0 flex-col gap-3">

@@ -8,6 +8,7 @@ export const dictEn: TranslationDictionary = {
     partialDerivatives: "Partial Derivatives",
     chainRule: "Chain Rule",
     implicitDerivatives: "Implicit Differentiation",
+    calculators: "Calculators",
     guides: "Guides",
     works: "How It Works",
     examples: "Examples",

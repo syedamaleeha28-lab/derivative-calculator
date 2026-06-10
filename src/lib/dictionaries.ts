@@ -7,6 +7,7 @@ const dictionaryData = {
       partialDerivatives: "Parciales",
       chainRule: "Cadena",
       implicitDerivatives: "Implícitas",
+      calculators: "Calculadoras",
       guides: "Guías",
       works: "Cómo funciona",
       examples: "Ejemplos",

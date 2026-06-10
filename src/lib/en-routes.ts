@@ -33,11 +33,17 @@ export const EN_ROUTES = {
 /** Anchor link to the embedded calculator on the English homepage. */
 export const EN_MAIN_CALCULATOR_HREF = `${EN_ROUTES.home}#calculator` as const;
 
-/** Calculator landings that embed the full widget (not educational-only). */
+/** Calculator landings that embed a specialized widget (not educational-only). */
 export const EN_CALCULATOR_PAGES_WITH_WIDGET = [
   EN_ROUTES.partialDerivativeCalculator,
   EN_ROUTES.chainRuleCalculator,
   EN_ROUTES.implicitDifferentiationCalculator,
+  EN_ROUTES.secondDerivativeCalculator,
+  EN_ROUTES.productRuleCalculator,
+  EN_ROUTES.quotientRuleCalculator,
+  EN_ROUTES.higherOrderDerivativeCalculator,
+  EN_ROUTES.tangentLineCalculator,
+  EN_ROUTES.criticalPointsCalculator,
 ] as const;
 
 export const EN_CALCULATOR_PAGES = [

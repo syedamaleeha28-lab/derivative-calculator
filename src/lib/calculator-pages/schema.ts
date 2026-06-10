@@ -82,6 +82,10 @@ export function buildCalculatorPageSchema(page: CalculatorPageConfig, locale: Lo
   const breadcrumb = buildBreadcrumbSchema(
     [
       { name: page.breadcrumbHome.label, path: page.breadcrumbHome.path },
+      {
+        name: locale === "es" ? "Calculadoras" : "Calculators",
+        path: locale === "es" ? "/#herramientas-calculo" : "/en#calculators",
+      },
       { name: breadcrumbLabel, path: page.path },
     ],
     pageUrl

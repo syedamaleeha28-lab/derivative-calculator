@@ -478,6 +478,7 @@ const BREADCRUMB_HOME = { label: "Home", path: EN_ROUTES.home };
 export const criticalPointsCalculatorConfig: CalculatorPageConfig = {
   slug: "critical-points-calculator",
   path: EN_ROUTES.criticalPointsCalculator,
+  embedCalculator: true,
   breadcrumbHome: BREADCRUMB_HOME,
   h1: "Critical Points Calculator — Find and Classify Extrema",
   intro: [
