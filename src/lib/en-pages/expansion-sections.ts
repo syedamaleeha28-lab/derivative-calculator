@@ -487,9 +487,9 @@ export const criticalPointsCalculatorConfig: CalculatorPageConfig = {
     "Whether you are sketching curves, solving optimization problems, or preparing for a calculus exam, systematic critical point analysis is essential. Combine the tools and guides here with your instructor's sign-chart method for rigorous justifications.",
   ],
   meta: {
-    title: "Critical Points Calculator — Find f′(x) = 0 with Steps",
+    title: "Critical Points Calculator with Steps Online Free",
     description:
-      "Free critical points calculator guide with step-by-step derivatives. Find critical numbers, classify max and min, and practice curve sketching for calculus.",
+      "Free critical points calculator with steps. Solve f′(x)=0, classify max and min, and sketch curves with worked examples. Try the tool free now.",
     keywords:
       "critical points calculator, find critical points, critical numbers calculus, relative max min calculator, f prime equals zero, critical point analysis",
   },

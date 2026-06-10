@@ -26,9 +26,9 @@ export const productRulePage: CalculatorPageConfig = {
     "Introduce tu función en notación estándar, pulsa calcular y compara el desglose automático con tu trabajo manual. La herramienta nombra explícitamente la regla del producto en la traza de la solución, lo que facilita detectar errores de signo o factores omitidos de la regla de la cadena.",
   ],
   meta: {
-    title: "Calculadora Regla del Producto con Pasos | uv′ + u′v Online Gratis",
+    title: "Calculadora Regla del Producto con Pasos Online Gratis",
     description:
-      "Calculadora regla del producto online gratis con pasos. Deriva x·sin(x), e^x·cos(x) y productos de funciones con explicación detallada para estudiantes de cálculo.",
+      "Calculadora regla del producto gratis con pasos. Deriva x·sin(x) y productos de funciones con explicación detallada. Calcula online ahora.",
     keywords:
       "calculadora regla del producto, regla del producto calculadora, derivar producto de funciones online, regla del producto paso a paso, uv más u prime v calculadora, cálculo diferencial regla producto",
   },
@@ -233,9 +233,9 @@ export const quotientRulePage: CalculatorPageConfig = {
     "Esta calculadora regla del cociente aplica (u′v − uv′)/v² de forma simbólica, simplifica cuando es posible y documenta cada transformación algebraica para que puedas contrastar tu procedimiento manual con el resultado automático.",
   ],
   meta: {
-    title: "Calculadora Regla del Cociente con Pasos | Derivar Fracciones Online",
+    title: "Calculadora Regla del Cociente con Pasos Online Gratis",
     description:
-      "Calculadora regla del cociente gratis con pasos. Deriva sin(x)/x, fracciones racionales y cocientes u/v con explicación paso a paso para estudiantes de cálculo.",
+      "Calculadora regla del cociente gratis con pasos. Deriva sin(x)/x, fracciones u/v y cocientes racionales online. Prueba la herramienta gratis.",
     keywords:
       "calculadora regla del cociente, regla del cociente calculadora, derivar fracciones online, regla del cociente paso a paso, derivada de u entre v, cómo derivar un cociente calculadora",
   },
@@ -440,9 +440,9 @@ export const secondDerivativePage: CalculatorPageConfig = {
     "Introduce tu función, obtén primero f′(x) en la traza y continúa hasta f″(x). Usa el resultado para estudiar concavidad, posibles puntos de inflexión y para verificar ejercicios de análisis de gráficas antes del examen.",
   ],
   meta: {
-    title: "Calculadora Segunda Derivada con Pasos | Concavidad y f″(x) Online",
+    title: "Calculadora Segunda Derivada con Pasos Online Gratis",
     description:
-      "Calculadora de segunda derivada gratis con pasos. Calcula f″(x), analiza concavidad e inflexión y comprueba ejercicios de cálculo diferencial online.",
+      "Calculadora segunda derivada gratis con pasos. Calcula f″(x), analiza concavidad e inflexión y comprueba ejercicios de cálculo online.",
     keywords:
       "calculadora segunda derivada, segunda derivada calculadora, f doble prima online, concavidad calculadora, criterio segunda derivada calculadora, derivar dos veces paso a paso",
   },
@@ -647,9 +647,9 @@ export const higherOrderDerivativePage: CalculatorPageConfig = {
     "Esta calculadora de derivadas de orden superior te ayuda a calcular f⁽ⁿ⁾(x) con trazas simbólicas claras. Deriva en secuencia, compara con tu trabajo manual y detecta en qué paso se introdujo un error algebraico.",
   ],
   meta: {
-    title: "Calculadora Derivadas Orden Superior | Tercera y Cuarta Derivada Online",
+    title: "Calculadora Derivadas Orden Superior Online Gratis",
     description:
-      "Calculadora de derivadas de orden superior gratis con pasos. Calcula tercera, cuarta y siguientes derivadas con trabajo simbólico detallado para cálculo y ingeniería.",
+      "Calculadora derivadas orden superior gratis con pasos. Calcula tercera, cuarta y n-ésimas derivadas con trabajo simbólico. Prueba online ahora.",
     keywords:
       "calculadora derivadas orden superior, tercera derivada calculadora, cuarta derivada online, derivadas sucesivas paso a paso, f triple prima calculadora, derivadas de orden n",
   },
@@ -854,9 +854,9 @@ export const tangentLinePage: CalculatorPageConfig = {
     "Desde parábolas x² hasta sin(x) o ln(x), la pendiente tangente cambia en cada punto. Practica reconocer cuándo f′(a) no existe —tangente vertical— y cuándo la curva admite también recta normal perpendicular.",
   ],
   meta: {
-    title: "Calculadora Recta Tangente con Pasos | Pendiente f′(a) Online",
+    title: "Calculadora Recta Tangente con Pasos Online Gratis",
     description:
-      "Calculadora de recta tangente online gratis. Obtén f′(a), aprende la forma punto-pendiente y resuelve ecuaciones de tangentes con pasos para cálculo diferencial.",
+      "Calculadora recta tangente gratis con pasos. Obtén f′(a), pendiente y ecuación punto-pendiente con ejemplos resueltos. Calcula online ahora.",
     keywords:
       "calculadora recta tangente, ecuación recta tangente calculadora, pendiente tangente online, derivada en un punto calculadora, recta tangente paso a paso, f prima en un punto",
   },
@@ -1060,9 +1060,9 @@ export const criticalPointsPage: CalculatorPageConfig = {
     "Desde polinomios cuadráticos hasta funciones racionales o con raíces, el procedimiento es el mismo en esqueleto: derivar, igualar a cero, filtrar soluciones válidas y decidir si cada candidato es máximo local, mínimo local o ninguno de los dos.",
   ],
   meta: {
-    title: "Calculadora Puntos Críticos con Pasos | Máximos y Mínimos Online",
+    title: "Calculadora Puntos Críticos con Pasos Online Gratis",
     description:
-      "Calculadora de puntos críticos gratis con pasos. Halla f′(x), identifica candidatos a máximos y mínimos y estudia optimización en cálculo diferencial.",
+      "Calculadora puntos críticos gratis con pasos. Halla f′(x)=0, clasifica máximos y mínimos y practica optimización. Empieza a calcular ahora.",
     keywords:
       "calculadora puntos críticos, puntos críticos calculadora, máximos y mínimos online, optimización cálculo diferencial, criterio segunda derivada calculadora, extremos locales paso a paso",
   },

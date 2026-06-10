@@ -51,9 +51,6 @@ export const LOCALE_ROUTE_PAIRS: { es: string; en: string }[] = [
   { es: "/blog/como-derivar-fracciones", en: EN_ROUTES.howToDifferentiateAFraction },
   { es: "/blog/derivadas-parciales-ejemplos", en: EN_ROUTES.partialDerivativeExamples },
   { es: "/blog/derivadas-implicitas-paso-a-paso", en: EN_ROUTES.implicitDifferentiationExamples },
-  { es: ROUTES.reglas, en: EN_ROUTES.derivativeOfLnX },
-  { es: ROUTES.reglas, en: EN_ROUTES.derivativeOfEX },
-  { es: ROUTES.ejemplos, en: EN_ROUTES.derivativeOfXSquared },
   { es: ROUTES.blog, en: EN_ROUTES.blog },
   // ES authority guides without a dedicated 1:1 EN page map to the closest
   // EN equivalent. Listed last so the canonical pairs above win reverse lookups.
@@ -98,8 +95,8 @@ export function getHreflangAlternates(path: string): Record<string, string> {
     locale === "en" ? normalized : getAlternatePath(normalized, "en");
 
   return {
-    es: esPath,
-    en: enPath,
+    "es-ES": esPath,
+    "en-US": enPath,
     "x-default": esPath,
   };
 }

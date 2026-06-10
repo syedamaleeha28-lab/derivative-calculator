@@ -30,9 +30,9 @@ export const dictEn: TranslationDictionary = {
   },
   metadata: {
     home: {
-      title: "Derivative Calculator with Steps Online Free | Partial & Implicit",
+      title: "Derivative Calculator with Steps Online Free",
       description:
-        "Free online derivative calculator with detailed steps. Solve trigonometric, partial, implicit, and logarithmic derivatives. A differential calculus tool built for students.",
+        "Free derivative calculator with step-by-step solutions. Differentiate trig, partial, implicit, and composite functions online. Try it free now.",
       keywords:
         "derivative calculator, derivative calculator with steps, free online derivative calculator, step by step derivatives, partial derivatives, implicit derivatives, solve derivatives online, differential calculator",
     },

@@ -29,10 +29,9 @@ const dictionaryData = {
     },
     metadata: {
       home: {
-        title:
-          "Calculadora de Derivadas con Pasos Online Gratis | Parciales e Implícitas",
+        title: "Calculadora de Derivadas con Pasos Online Gratis",
         description:
-          "Calculadora de derivadas online gratis con pasos detallados. Resuelve derivadas trigonométricas, parciales, implícitas y logarítmicas. Herramienta de cálculo diferencial para estudiantes.",
+          "Calculadora de derivadas online gratis con pasos detallados. Resuelve trigonométricas, parciales e implícitas. Prueba la herramienta ahora.",
         keywords:
           "calculadora de derivadas, calculadora de derivadas con pasos, calculadora de derivadas online gratis, derivadas paso a paso, derivadas parciales, derivadas implícitas, resolver derivadas online, calculadora diferencial",
       },

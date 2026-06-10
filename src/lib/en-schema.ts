@@ -1,7 +1,15 @@
-import { SITE_NAME, SITE_URL, absoluteUrl } from "./seo";
-import type { EnCalculatorPageConfig, EnFaqItem } from "./en-pages";
-
-const SCHEMA_CONTEXT = "https://schema.org";
+import { dictEn } from "./dictionaries-en";
+import { EN_HOME_FAQS } from "./en-pages";
+import {
+  SCHEMA_CONTEXT,
+  buildOrganizationNode,
+  buildSoftwareApplicationNode,
+  buildWebPageNode,
+  organizationRef,
+  schemaLanguage,
+} from "./calculator-pages/schema-shared";
+import { absoluteUrl, SITE_NAME, SITE_URL } from "./seo";
+import type { EnFaqItem } from "./en-pages";
 
 export function buildEnFaqSchema(faqs: EnFaqItem[], pageUrl: string) {
   if (faqs.length === 0) return null;
@@ -9,7 +17,8 @@ export function buildEnFaqSchema(faqs: EnFaqItem[], pageUrl: string) {
   return {
     "@type": "FAQPage",
     "@id": `${pageUrl}#faq`,
-    inLanguage: "en",
+    inLanguage: schemaLanguage("en"),
+    isPartOf: { "@id": `${pageUrl}#webpage` },
     mainEntity: faqs.map((item) => ({
       "@type": "Question",
       name: item.q,
@@ -37,80 +46,55 @@ export function buildEnBreadcrumbSchema(
   };
 }
 
-export function buildEnCalculatorPageSchema(page: EnCalculatorPageConfig) {
-  const pageUrl = absoluteUrl(page.path);
+export function buildEnHomeSchemaGraph(faqs: EnFaqItem[]) {
+  const meta = dictEn.metadata.home;
+  const pageUrl = absoluteUrl("/en");
+  const websiteId = `${pageUrl}#website`;
+  const softwareId = `${pageUrl}#software`;
+  const webPageId = `${pageUrl}#webpage`;
 
-  const softwareApplication = {
-    "@type": ["SoftwareApplication", "WebApplication"],
-    "@id": `${pageUrl}#software`,
-    name: page.h1,
-    applicationCategory: "EducationalApplication",
-    operatingSystem: "Web",
+  const website = {
+    "@type": "WebSite",
+    "@id": websiteId,
     url: pageUrl,
-    description: page.meta.description,
-    inLanguage: "en",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
-    provider: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: SITE_URL,
-    },
+    name: `${SITE_NAME} (English)`,
+    description: meta.description,
+    inLanguage: schemaLanguage("en"),
+    publisher: organizationRef(),
   };
+
+  const softwareApplication = buildSoftwareApplicationNode({
+    id: softwareId,
+    name: meta.title,
+    description: meta.description,
+    url: pageUrl,
+    locale: "en",
+    websiteId,
+  });
+
+  const webPage = buildWebPageNode({
+    id: webPageId,
+    url: pageUrl,
+    name: meta.title,
+    description: meta.description,
+    locale: "en",
+    websiteId,
+    mainEntityId: softwareId,
+    speakableSelectors: ["#hero-heading", "#faq"],
+  });
 
   const learningResource = {
     "@type": "LearningResource",
     "@id": `${pageUrl}#learning`,
-    name: page.h1,
-    description: page.meta.description,
-    inLanguage: "en",
+    name: meta.title,
+    description: meta.description,
+    inLanguage: schemaLanguage("en"),
     learningResourceType: "Interactive Resource",
     educationalLevel: "Secondary school and undergraduate",
     teaches: "Differential calculus and derivatives",
     url: pageUrl,
-  };
-
-  const breadcrumb = buildEnBreadcrumbSchema(
-    [
-      { name: "Home", path: "/en" },
-      { name: page.h1.split("—")[0].trim(), path: page.path },
-    ],
-    pageUrl
-  );
-
-  const faq = buildEnFaqSchema(page.faqs, pageUrl);
-
-  const graph: Record<string, unknown>[] = [
-    softwareApplication,
-    learningResource,
-    breadcrumb,
-    ...(faq ? [faq] : []),
-  ];
-
-  return {
-    "@context": SCHEMA_CONTEXT,
-    "@graph": graph,
-  };
-}
-
-export function buildEnHomeSchemaGraph(faqs: EnFaqItem[]) {
-  const pageUrl = absoluteUrl("/en");
-
-  const website = {
-    "@type": "WebSite",
-    "@id": `${pageUrl}#website`,
-    url: pageUrl,
-    name: `${SITE_NAME} (English)`,
-    inLanguage: "en",
-    publisher: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: SITE_URL,
-    },
+    isPartOf: { "@id": webPageId },
+    provider: organizationRef(),
   };
 
   const breadcrumb = buildEnBreadcrumbSchema([{ name: "Home", path: "/en" }], pageUrl);
@@ -118,6 +102,14 @@ export function buildEnHomeSchemaGraph(faqs: EnFaqItem[]) {
 
   return {
     "@context": SCHEMA_CONTEXT,
-    "@graph": [website, breadcrumb, ...(faq ? [faq] : [])],
+    "@graph": [
+      buildOrganizationNode(),
+      website,
+      webPage,
+      softwareApplication,
+      learningResource,
+      breadcrumb,
+      ...(faq ? [faq] : []),
+    ],
   };
 }

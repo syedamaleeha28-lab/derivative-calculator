@@ -31,9 +31,9 @@ export const ES_CALCULATOR_PAGES: Record<string, CalculatorPageConfig> = {
       "Introduce tu función, elige la variable de derivación en opciones avanzadas y obtén el resultado simbólico con el desglose paso a paso. Comprueba tus ejercicios de clase antes del examen.",
     ],
     meta: {
-      title: "Calculadora de Derivadas Parciales con Pasos | ∂f/∂x Online Gratis",
+      title: "Calculadora Derivadas Parciales con Pasos Online Gratis",
       description:
-        "Calculadora de derivadas parciales online gratis con pasos. Resuelve ∂f/∂x y ∂f/∂y en funciones multivariable. Herramienta para universidad e ingeniería.",
+        "Calculadora de derivadas parciales gratis con pasos. Resuelve ∂f/∂x y ∂f/∂y en funciones multivariable. Ideal para cálculo e ingeniería.",
       keywords:
         "calculadora de derivadas parciales, derivadas parciales calculadora, calculadora derivadas parciales online, ∂f/∂x calculadora, cálculo multivariable online",
     },
@@ -140,9 +140,9 @@ export const ES_CALCULATOR_PAGES: Record<string, CalculatorPageConfig> = {
       "Desde sin(3x) hasta ln(x²+1) o (2x+1)⁵, la mayoría de ejercicios avanzados de primer curso requieren reconocer capas externa e interna antes de derivar.",
     ],
     meta: {
-      title: "Calculadora Regla de la Cadena con Pasos | Funciones Compuestas",
+      title: "Calculadora Regla de la Cadena con Pasos Online Gratis",
       description:
-        "Calculadora regla de la cadena online gratis. Deriva sin(2x), ln(x²+1) y funciones anidadas con explicación paso a paso.",
+        "Calculadora regla de la cadena gratis con pasos. Deriva sin(2x), ln(x²+1) y funciones compuestas online. Prueba ejemplos y verifica resultados.",
       keywords:
         "calculadora regla de la cadena, regla de la cadena calculadora, derivar funciones compuestas online, regla de la cadena paso a paso, cálculo diferencial online",
     },
@@ -247,9 +247,9 @@ export const ES_CALCULATOR_PAGES: Record<string, CalculatorPageConfig> = {
       "En lugar de despejar y primero, deriva ambos lados respecto a x, trata y como y(x) y despeja dy/dx. La herramienta automatiza el álgebra simbólico y muestra el razonamiento.",
     ],
     meta: {
-      title: "Calculadora de Derivadas Implícitas con Pasos | dy/dx Online",
+      title: "Calculadora Derivadas Implícitas con Pasos Online Gratis",
       description:
-        "Calculadora de derivadas implícitas gratis. Deriva ecuaciones como x²+y²=r² y encuentra dy/dx con procedimiento paso a paso.",
+        "Calculadora de derivadas implícitas gratis con pasos. Deriva x²+y²=r² y encuentra dy/dx con procedimiento completo. Empieza a calcular ahora.",
       keywords:
         "calculadora de derivadas implícitas, derivadas implícitas calculadora, dy/dx implícita, derivación implícita online, calculadora derivadas implícitas paso a paso",
     },

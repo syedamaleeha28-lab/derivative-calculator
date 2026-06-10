@@ -9,12 +9,17 @@ import {
   FACEBOOK_URL,
   INSTAGRAM_URL,
   PINTEREST_URL,
-  SOCIAL_PROFILE_URLS,
   X_URL,
 } from "@/lib/social-links";
 import { SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/seo";
-
-const SCHEMA_CONTEXT = "https://schema.org";
+import {
+  SCHEMA_CONTEXT,
+  buildOrganizationNode,
+  buildSoftwareApplicationNode,
+  buildWebPageNode,
+  organizationRef,
+  schemaLanguage,
+} from "@/lib/calculator-pages/schema-shared";
 
 export type FaqItem = { q: string; a: string };
 
@@ -25,7 +30,8 @@ export function buildFaqPageSchema(faqs: FaqItem[]) {
   return {
     "@type": "FAQPage",
     "@id": `${SITE_URL}/#faq`,
-    inLanguage: "es",
+    inLanguage: schemaLanguage("es"),
+    isPartOf: { "@id": `${SITE_URL}/#webpage` },
     mainEntity: faqs.map((item) => ({
       "@type": "Question",
       name: item.q,
@@ -42,85 +48,54 @@ export function buildHomePageSchemaGraph() {
   const meta = dict.metadata.home;
   const faqs = dict.faqsPage.list;
   const canonical = `${SITE_URL}/`;
+  const websiteId = `${canonical}#website`;
+  const softwareId = `${canonical}#software`;
+  const webPageId = `${canonical}#webpage`;
 
-  const organization = {
-    "@type": "Organization",
-    "@id": `${SITE_URL}/#organization`,
-    name: SITE_NAME,
-    url: SITE_URL,
-    logo: {
-      "@type": "ImageObject",
-      url: absoluteUrl("/images/interfaz-calculadora-matematica.webp"),
-    },
-    sameAs: [...SOCIAL_PROFILE_URLS],
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "customer support",
-      availableLanguage: ["Spanish"],
-    },
-  };
+  const organization = buildOrganizationNode();
 
   const website = {
     "@type": "WebSite",
-    "@id": `${SITE_URL}/#website`,
+    "@id": websiteId,
     url: SITE_URL,
     name: SITE_NAME,
     description: meta.description,
-    inLanguage: "es",
-    publisher: { "@id": `${SITE_URL}/#organization` },
+    inLanguage: schemaLanguage("es"),
+    publisher: organizationRef(),
   };
 
-  const softwareApplication = {
-    "@type": ["SoftwareApplication", "WebApplication"],
-    "@id": `${SITE_URL}/#software`,
-    name: "Calculadora de Derivadas",
-    alternateName: SITE_NAME,
-    applicationCategory: "EducationalApplication",
-    applicationSubCategory: "MathematicsApplication",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Requires HTML5.",
+  const webPage = buildWebPageNode({
+    id: webPageId,
     url: canonical,
+    name: meta.title,
     description: meta.description,
-    inLanguage: "es",
-    image: absoluteUrl("/images/interfaz-calculadora-matematica.webp"),
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
-    audience: {
-      "@type": "EducationalAudience",
-      educationalRole: "student",
-    },
-    featureList: [
-      "Calculadora de derivadas con pasos",
-      "Calculadora de derivadas online gratis",
-      "Derivadas paso a paso",
-      "Derivadas parciales",
-      "Derivadas implícitas",
-      "Derivadas trigonométricas",
-      "Reglas de derivación",
-      "Resolver derivadas online",
-      "Calculadora de cálculo diferencial",
-      "Ejemplos de derivadas resueltas",
-    ],
-    publisher: { "@id": `${SITE_URL}/#organization` },
-    isPartOf: { "@id": `${SITE_URL}/#website` },
-  };
+    locale: "es",
+    websiteId,
+    mainEntityId: softwareId,
+    speakableSelectors: ["#hero-heading", "#faq"],
+  });
+
+  const softwareApplication = buildSoftwareApplicationNode({
+    id: softwareId,
+    name: meta.title,
+    description: meta.description,
+    url: canonical,
+    locale: "es",
+    websiteId,
+  });
 
   const learningResource = {
     "@type": "LearningResource",
     "@id": `${SITE_URL}/#learning-resource`,
     name: "Guía y calculadora de derivadas en español",
     description: meta.description,
-    inLanguage: "es",
+    inLanguage: schemaLanguage("es"),
     learningResourceType: "Interactive Resource",
     educationalLevel: "Secondary school and undergraduate",
     teaches: "Cálculo diferencial y derivadas",
     url: canonical,
-    isPartOf: { "@id": `${SITE_URL}/#website` },
-    provider: { "@id": `${SITE_URL}/#organization` },
+    isPartOf: { "@id": webPageId },
+    provider: organizationRef(),
   };
 
   const breadcrumbList = {
@@ -159,6 +134,7 @@ export function buildHomePageSchemaGraph() {
   const graph: Record<string, unknown>[] = [
     organization,
     website,
+    webPage,
     softwareApplication,
     learningResource,
     breadcrumbList,

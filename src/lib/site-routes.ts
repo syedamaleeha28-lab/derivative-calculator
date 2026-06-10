@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { BLOG_POST_ENTRIES } from "./blog-posts";
 import { EN_ARTICLE_ENTRIES } from "./en-articles";
-import { EN_PAGE_LIST } from "./en-pages";
+import { EN_INDEXABLE_CALCULATOR_PAGES } from "./en-pages";
 import { ES_PAGE_LIST } from "./es-pages";
 import { ES_AUTHORITY_ROUTE_LIST } from "./es-authority-routes";
 import { EN_ROUTES } from "./en-routes";
@@ -61,6 +61,16 @@ export const EN_ARTICLE_SITEMAP_ROUTES: {
   lastModified: article.dateIso,
 }));
 
+export const EN_CALCULATOR_SITEMAP_ROUTES: {
+  path: string;
+  changeFrequency: NonNullable<MetadataRoute.Sitemap[0]["changeFrequency"]>;
+  priority: number;
+}[] = EN_INDEXABLE_CALCULATOR_PAGES.map((page) => ({
+  path: page.path,
+  changeFrequency: "weekly" as const,
+  priority: 0.86,
+}));
+
 export const EN_SITEMAP_ROUTES: {
   path: string;
   changeFrequency: NonNullable<MetadataRoute.Sitemap[0]["changeFrequency"]>;
@@ -68,11 +78,7 @@ export const EN_SITEMAP_ROUTES: {
 }[] = [
   { path: EN_ROUTES.home, changeFrequency: "weekly", priority: 0.95 },
   { path: EN_ROUTES.blog, changeFrequency: "weekly", priority: 0.85 },
-  ...EN_PAGE_LIST.map((page) => ({
-    path: page.path,
-    changeFrequency: "weekly" as const,
-    priority: page.path === EN_ROUTES.home ? 0.95 : 0.86,
-  })),
+  ...EN_CALCULATOR_SITEMAP_ROUTES,
   ...EN_ARTICLE_SITEMAP_ROUTES.map(({ path, changeFrequency, priority }) => ({
     path,
     changeFrequency,
@@ -89,10 +95,17 @@ function sitemapLanguageAlternates(path: string): Record<string, string> {
 
 export function buildSitemapEntries(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
+  const seen = new Set<string>();
   const now = new Date();
 
+  const pushEntry = (entry: MetadataRoute.Sitemap[number]) => {
+    if (seen.has(entry.url)) return;
+    seen.add(entry.url);
+    entries.push(entry);
+  };
+
   for (const route of SITEMAP_ROUTES) {
-    entries.push({
+    pushEntry({
       url: absoluteUrl(route.path),
       lastModified: route.lastModified ? new Date(route.lastModified) : now,
       changeFrequency: route.changeFrequency,
@@ -102,7 +115,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   }
 
   for (const route of ES_CALCULATOR_SITEMAP_ROUTES) {
-    entries.push({
+    pushEntry({
       url: absoluteUrl(route.path),
       lastModified: now,
       changeFrequency: route.changeFrequency,
@@ -113,7 +126,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
 
   for (const route of EN_SITEMAP_ROUTES) {
     const article = EN_ARTICLE_SITEMAP_ROUTES.find((a) => a.path === route.path);
-    entries.push({
+    pushEntry({
       url: absoluteUrl(route.path),
       lastModified: article?.lastModified ? new Date(article.lastModified) : now,
       changeFrequency: route.changeFrequency,
@@ -123,7 +136,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   }
 
   for (const post of BLOG_POSTS) {
-    entries.push({
+    pushEntry({
       url: absoluteUrl(`/blog/${post.slug}`),
       lastModified: post.lastModified ? new Date(post.lastModified) : now,
       changeFrequency: "monthly",
@@ -152,4 +165,4 @@ export function getAllIndexablePaths(): string[] {
   return paths.sort();
 }
 
-export { EN_PAGE_LIST };
+export { EN_INDEXABLE_CALCULATOR_PAGES };

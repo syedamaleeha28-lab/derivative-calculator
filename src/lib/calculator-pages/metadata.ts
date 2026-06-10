@@ -13,5 +13,6 @@ export function buildCalculatorPageMetadata(
     description: page.meta.description,
     keywords: page.meta.keywords,
     ogLocale: locale === "es" ? "es_ES" : "en_US",
+    absoluteTitle: true,
   });
 }

@@ -12,6 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description: t.description,
     keywords: t.keywords,
     ogLocale: "en_US",
+    absoluteTitle: true,
   });
 }
 

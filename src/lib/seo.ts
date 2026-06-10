@@ -35,6 +35,8 @@ export type PageMetadataInput = {
   hreflang?: boolean;
   /** Manual hreflang map (path → locale code). Overrides auto-detection when set. */
   alternateLanguages?: Record<string, string>;
+  /** When true, use the title as-is (no root layout template suffix). */
+  absoluteTitle?: boolean;
 };
 
 /** Build Next.js Metadata with canonical, Open Graph, and Twitter cards. */
@@ -51,10 +53,17 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
     ogLocale = "es_ES",
     hreflang = true,
     alternateLanguages,
+    absoluteTitle = false,
   } = input;
 
   const canonical = absoluteUrl(path);
-  const ogTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+  const isEnglish = ogLocale === "en_US";
+  const ogTitle =
+    absoluteTitle || isEnglish
+      ? title
+      : title.includes(SITE_NAME)
+        ? title
+        : `${title} | ${SITE_NAME}`;
   const resolvedOgImage = ogImage ?? absoluteUrl(DEFAULT_OG_IMAGE);
   const ogImages = [
     {
@@ -74,7 +83,7 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
   : undefined;
 
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     ...(keywords ? { keywords } : {}),
     alternates: {

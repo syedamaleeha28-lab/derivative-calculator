@@ -176,9 +176,9 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       "Multivariable calculus appears in physics, economics, machine learning, and engineering. Use the variable selector to specify which variable you are differentiating with respect to.",
     ],
     meta: {
-      title: "Partial Derivative Calculator — Multivariable Step-by-Step",
+      title: "Partial Derivative Calculator with Steps Online Free",
       description:
-        "Free partial derivative calculator with steps. Compute ∂f/∂x and ∂f/∂y for multivariable functions. Ideal for calculus II and engineering students.",
+        "Free partial derivative calculator with steps. Compute ∂f/∂x and ∂f/∂y for multivariable functions. Built for calculus II—try it now.",
       keywords:
         "partial derivative calculator, multivariable derivative calculator, partial derivatives online, ∂f/∂x calculator, calculus partial derivative tool",
     },
@@ -285,9 +285,9 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       "Instead of solving for y first, differentiate both sides with respect to x, treat y as y(x), and solve for dy/dx. Our tool automates the symbolic work and shows the reasoning.",
     ],
     meta: {
-      title: "Implicit Differentiation Calculator — dy/dx Step-by-Step",
+      title: "Implicit Differentiation Calculator with Steps Free",
       description:
-        "Free implicit derivative calculator online. Differentiate equations like x²+y²=r² and find dy/dx with clear steps. Perfect for calculus I and II.",
+        "Free implicit differentiation calculator with steps. Find dy/dx for equations like x²+y²=r² with full algebraic work. Calculate online now.",
       keywords:
         "implicit derivative calculator, implicit differentiation calculator, dy/dx implicit, implicit derivatives online, calculus implicit differentiation",
     },
@@ -394,9 +394,9 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       "To use it, enter your function and calculate the first derivative mentally or with the tool, then run the result again—or enter f(x) and differentiate twice in sequence using the same engine.",
     ],
     meta: {
-      title: "Second Derivative Calculator — f″(x) with Steps Online",
+      title: "Second Derivative Calculator with Steps Online Free",
       description:
-        "Free second derivative calculator with step-by-step work. Find f″(x), analyze concavity, and check calculus homework online.",
+        "Free second derivative calculator with steps. Find f″(x), analyze concavity and inflection, and check homework online. Try the tool free now.",
       keywords:
         "second derivative calculator, f double prime calculator, second derivative with steps, concavity calculator, calculus second derivative",
     },
@@ -488,9 +488,9 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       "From sin(3x) to ln(x²+1) and (2x+1)⁵, most ‘hard’ first-semester problems involve the chain rule at least once. Practice recognizing the inner and outer layers before you differentiate.",
     ],
     meta: {
-      title: "Chain Rule Calculator — Composite Functions Online",
+      title: "Chain Rule Calculator with Steps Online Free",
       description:
-        "Free chain rule derivative calculator with steps. Differentiate sin(2x), ln(x²+1), and nested functions. Learn composite differentiation online.",
+        "Free chain rule calculator with steps. Differentiate sin(2x), ln(x²+1), and nested composite functions online. Practice with examples now.",
       keywords:
         "chain rule derivative calculator, chain rule calculator, composite function derivative, differentiate nested functions, chain rule steps",
     },
@@ -598,9 +598,9 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       "Enter any product of two factors using standard notation. The engine recognizes polynomials, trigonometric functions, exponentials, and logarithms, then names the product rule explicitly in the solution trace.",
     ],
     meta: {
-      title: "Product Rule Calculator — uv′ + u′v with Steps Online",
+      title: "Product Rule Calculator with Steps Online Free",
       description:
-        "Free product rule calculator with step-by-step solutions. Differentiate products such as x·sin(x) and e^x·cos(x). Built for calculus students.",
+        "Free product rule calculator with steps. Differentiate x·sin(x), e^x·cos(x), and function products online. Built for calculus—calculate now.",
       keywords:
         "product rule calculator, product rule derivative, differentiate product of functions, uv rule calculator, calculus product rule online",
     },
@@ -692,9 +692,9 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       "Type the numerator and denominator as a single fraction or division expression. The tool applies (u′v − uv′)/v² and simplifies when possible.",
     ],
     meta: {
-      title: "Quotient Rule Calculator — Differentiate Fractions with Steps",
+      title: "Quotient Rule Calculator with Steps Online Free",
       description:
-        "Free quotient rule calculator online. Differentiate u/v with step-by-step work. Practice rational functions and fraction derivatives for calculus.",
+        "Free quotient rule calculator with steps. Differentiate u/v fractions and rational functions with full symbolic work. Try it online free now.",
       keywords:
         "quotient rule calculator, quotient rule derivative, differentiate a fraction, u/v derivative calculator, rational function derivative",
     },
@@ -785,9 +785,9 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       "Enter a function and differentiate repeatedly. Each pass applies the same rules (power, product, chain) to the previous result. Compare your manual work to the automated trace after each order.",
     ],
     meta: {
-      title: "Higher Order Derivative Calculator — f″, f‴ with Steps",
+      title: "Higher Order Derivative Calculator with Steps Free",
       description:
-        "Free higher order derivative calculator online. Find second, third, and fourth derivatives with step-by-step symbolic work for calculus and engineering.",
+        "Free higher order derivative calculator with steps. Find second, third, and fourth derivatives with symbolic work for calculus and engineering.",
       keywords:
         "higher order derivative calculator, third derivative calculator, fourth derivative, successive derivatives, f triple prime calculator",
     },
@@ -877,9 +877,9 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       "While a dedicated tangent plotter is not required for learning, computing f′(x) symbolically is the essential step. Enter your function here, evaluate the derivative at your chosen point, and assemble the tangent equation.",
     ],
     meta: {
-      title: "Tangent Line Calculator — Find Slope f′(a) with Steps",
+      title: "Tangent Line Calculator with Steps Online Free",
       description:
-        "Use our derivative calculator to find tangent line slopes. Learn point-slope form, worked examples, and how f′(a) gives the tangent slope in calculus.",
+        "Free tangent line calculator with steps. Find slope f′(a), point-slope equation, and tangent overlays with worked examples. Calculate online now.",
       keywords:
         "tangent line calculator, equation of tangent line, slope of tangent, derivative at a point, tangent line calculus",
     },
@@ -962,6 +962,10 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
 };
 
 export const EN_PAGE_LIST = Object.values(EN_CALCULATOR_PAGES);
+
+export const EN_INDEXABLE_CALCULATOR_PAGES = EN_PAGE_LIST.filter(
+  (page) => page.path !== EN_ROUTES.derivativeCalculator
+);
 
 export function getEnPageByPath(path: string): EnCalculatorPageConfig | undefined {
   return EN_PAGE_LIST.find((p) => p.path === path);
