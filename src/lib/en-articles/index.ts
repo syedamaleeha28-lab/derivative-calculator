@@ -1,11 +1,16 @@
 import type { EnArticleEntry } from "./types";
 import { EN_ROUTES } from "../en-routes";
 import { enArticleBreadcrumbs } from "./helpers";
+import { enCommonFunctionBreadcrumbs } from "../common-derivative-functions/helpers";
+import { ES_COMMON_FUNCTION_ROUTES } from "../common-derivative-functions/routes";
+import {
+  buildNewCommonFunctionEnEntries,
+  COMMON_FUNCTIONS_HUB_EN_ENTRY,
+} from "./common-function-entries";
 import { DerivativeOfSinXContent } from "./content/derivative-of-sin-x";
 import { DerivativeOfCosXContent } from "./content/derivative-of-cos-x";
 import { DerivativeOfTanXContent } from "./content/derivative-of-tan-x";
 import { DerivativeOfLnXContent } from "./content/derivative-of-ln-x";
-import { DerivativeOfEXContent } from "./content/derivative-of-e-x";
 import { DerivativeOfXSquaredContent } from "./content/derivative-of-x-squared";
 import { DerivativeRulesContent } from "./content/derivative-rules";
 import { DerivativeExamplesContent } from "./content/derivative-examples";
@@ -25,12 +30,13 @@ function entry(
   meta: Omit<EnArticleEntry, "breadcrumbs" | "Content"> & {
     breadcrumbLabel: string;
     Content: EnArticleEntry["Content"];
+    breadcrumbs?: EnArticleEntry["breadcrumbs"];
   }
 ): EnArticleEntry {
-  const { breadcrumbLabel, Content, ...rest } = meta;
+  const { breadcrumbLabel, Content, breadcrumbs, ...rest } = meta;
   return {
     ...rest,
-    breadcrumbs: enArticleBreadcrumbs(rest.slug, breadcrumbLabel),
+    breadcrumbs: breadcrumbs ?? enArticleBreadcrumbs(rest.slug, breadcrumbLabel),
     Content,
   };
 }
@@ -48,7 +54,7 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
     tags: ["derivative of sin x", "trigonometric derivatives", "calculus"],
     author: AUTHOR,
     heroImageAlt: "Graph of sine and its derivative cosine illustrating slope",
-    spanishAlternate: "/blog/derivada-de-sin-x",
+    spanishAlternate: ES_COMMON_FUNCTION_ROUTES.derivadaDeSinX,
     faqs: [
       {
         question: "What is the derivative of sin(x)?",
@@ -76,6 +82,7 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
       { title: "Derivative rules (full guide)", slug: "derivative-rules" },
     ],
     breadcrumbLabel: "Derivative of sin(x)",
+    breadcrumbs: enCommonFunctionBreadcrumbs("derivative-of-sin-x", "Derivative of sin(x)"),
     Content: DerivativeOfSinXContent,
   }),
   entry({
@@ -90,7 +97,7 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
     tags: ["derivative of cos x", "trigonometric derivatives"],
     author: AUTHOR,
     heroImageAlt: "Cosine curve and tangent slopes explained for cos x derivative",
-    spanishAlternate: "/blog/derivada-de-cos-x",
+    spanishAlternate: ES_COMMON_FUNCTION_ROUTES.derivadaDeCosX,
     faqs: [
       {
         question: "What is the derivative of cos(x)?",
@@ -114,6 +121,7 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
       { title: "Derivative of tan(x)", slug: "derivative-of-tan-x" },
     ],
     breadcrumbLabel: "Derivative of cos(x)",
+    breadcrumbs: enCommonFunctionBreadcrumbs("derivative-of-cos-x", "Derivative of cos(x)"),
     Content: DerivativeOfCosXContent,
   }),
   entry({
@@ -128,7 +136,7 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
     tags: ["derivative of tan x", "secant squared"],
     author: AUTHOR,
     heroImageAlt: "Tangent function and secant squared as its derivative",
-    spanishAlternate: "/blog/derivada-de-tan-x",
+    spanishAlternate: ES_COMMON_FUNCTION_ROUTES.derivadaDeTanX,
     faqs: [
       {
         question: "What is the derivative of tan(x)?",
@@ -148,6 +156,7 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
       { title: "Derivative rules", slug: "derivative-rules" },
     ],
     breadcrumbLabel: "Derivative of tan(x)",
+    breadcrumbs: enCommonFunctionBreadcrumbs("derivative-of-tan-x", "Derivative of tan(x)"),
     Content: DerivativeOfTanXContent,
   }),
   entry({
@@ -162,6 +171,7 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
     tags: ["derivative of ln x", "natural log derivative"],
     author: AUTHOR,
     heroImageAlt: "Natural logarithm graph and reciprocal as derivative",
+    spanishAlternate: ES_COMMON_FUNCTION_ROUTES.derivadaDeLnX,
     faqs: [
       {
         question: "What is the derivative of ln(x)?",
@@ -177,44 +187,12 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
       },
     ],
     relatedPosts: [
-      { title: "Derivative of e^x", slug: "derivative-of-e-x" },
+      { title: "Derivative of e^x", slug: "derivative-of-e-to-the-x" },
       { title: "Derivative rules", slug: "derivative-rules" },
     ],
     breadcrumbLabel: "Derivative of ln(x)",
+    breadcrumbs: enCommonFunctionBreadcrumbs("derivative-of-ln-x", "Derivative of ln(x)"),
     Content: DerivativeOfLnXContent,
-  }),
-  entry({
-    slug: "derivative-of-e-x",
-    title: "Derivative of e^x: The Function That Is Its Own Derivative",
-    description:
-      "Why d/dx e^x = e^x, base e versus other bases, chain rule for e^(g(x)), and exponential growth interpretation.",
-    date: "June 1, 2026",
-    dateIso: "2026-06-01",
-    readTime: "12 min",
-    category: "Exponentials",
-    tags: ["derivative of e^x", "exponential derivatives"],
-    author: AUTHOR,
-    heroImageAlt: "Exponential curve e^x equal to its own slope field",
-    faqs: [
-      {
-        question: "What is the derivative of e^x?",
-        answer: "e^x. The exponential function is its own derivative.",
-      },
-      {
-        question: "What is the derivative of e^(3x)?",
-        answer: "3e^(3x) by the chain rule.",
-      },
-      {
-        question: "How is a^x different from e^x?",
-        answer: "d/dx a^x = a^x ln(a); only when a = e does the factor ln(a) equal 1.",
-      },
-    ],
-    relatedPosts: [
-      { title: "Derivative of ln(x)", slug: "derivative-of-ln-x" },
-      { title: "Chain rule calculator", slug: EN_ROUTES.chainRuleCalculator.replace("/en/", "") },
-    ],
-    breadcrumbLabel: "Derivative of e^x",
-    Content: DerivativeOfEXContent,
   }),
   entry({
     slug: "derivative-of-x-squared",
@@ -228,6 +206,7 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
     tags: ["derivative of x squared", "power rule"],
     author: AUTHOR,
     heroImageAlt: "Parabola x squared and linear derivative 2x",
+    spanishAlternate: ES_COMMON_FUNCTION_ROUTES.derivadaDeXCuadrado,
     faqs: [
       {
         question: "What is the derivative of x²?",
@@ -247,6 +226,7 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
       { title: "Derivative examples", slug: "derivative-examples" },
     ],
     breadcrumbLabel: "Derivative of x²",
+    breadcrumbs: enCommonFunctionBreadcrumbs("derivative-of-x-squared", "Derivative of x²"),
     Content: DerivativeOfXSquaredContent,
   }),
   entry({
@@ -261,7 +241,7 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
     tags: ["derivative rules", "differentiation rules", "calculus cheat sheet"],
     author: AUTHOR,
     heroImageAlt: "Summary table of differentiation rules for calculus students",
-    spanishAlternate: "/reglas",
+    spanishAlternate: "/reglas-de-derivacion",
     faqs: [
       {
         question: "What are the basic derivative rules?",
@@ -341,7 +321,7 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
     tags: ["derivative examples", "differentiation practice"],
     author: AUTHOR,
     heroImageAlt: "Collage of calculus derivative practice problems with solutions",
-    spanishAlternate: "/ejemplos",
+    spanishAlternate: "/ejemplos-de-derivadas",
     faqs: [
       {
         question: "How do I practice derivatives effectively?",
@@ -541,6 +521,8 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
     breadcrumbLabel: "Implicit differentiation",
     Content: ImplicitDifferentiationExamplesContent,
   }),
+  COMMON_FUNCTIONS_HUB_EN_ENTRY,
+  ...buildNewCommonFunctionEnEntries(),
 ];
 
 export function getAllEnArticleSlugs(): string[] {

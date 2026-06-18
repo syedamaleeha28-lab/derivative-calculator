@@ -11,7 +11,6 @@ import {
   ES_MAIN_CALCULATOR_HREF,
   ES_CALCULATOR_ROUTES,
   ES_AUTHORITY_ROUTES,
-  ROUTES,
   EN_ROUTES,
 } from "../helpers";
 
@@ -260,15 +259,11 @@ export function EjemplosDeDerivadasContent() {
           sin mirar la solución hasta intentarlo.
         </p>
         <p>
-          La página clásica{" "}
-          <Link href={ROUTES.ejemplos} className="text-violet-600 font-semibold hover:underline">
-            ejemplos de derivadas
-          </Link>{" "}
-          y el blog{" "}
+          El blog{" "}
           <Link href="/blog/ejemplos-de-derivadas-resueltas" className="text-violet-600 font-semibold hover:underline">
             ejemplos resueltos ampliados
           </Link>{" "}
-          complementan esta guía con más variedad.
+          complementa esta guía con más variedad.
         </p>
       </section>
 

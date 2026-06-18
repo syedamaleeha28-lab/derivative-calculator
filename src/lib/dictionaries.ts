@@ -87,16 +87,16 @@ const dictionaryData = {
             { label: "Derivadas Parciales", href: "/calculadora-de-derivadas-parciales" },
             { label: "Regla de la Cadena", href: "/calculadora-regla-de-la-cadena" },
             { label: "Derivadas Implícitas", href: "/calculadora-de-derivadas-implicitas" },
-            { label: "Reglas de Derivación", href: "/reglas" },
+            { label: "Reglas de Derivación", href: "/reglas-de-derivacion" },
           ]
         },
         learning: {
           title: "Aprendizaje",
           links: [
             { label: "Concepto de Derivada", href: "/como-funciona" },
-            { label: "Regla de la Cadena", href: "/reglas" },
-            { label: "Formulario de Derivadas", href: "/reglas" },
-            { label: "Ejercicios Resueltos", href: "/ejemplos" },
+            { label: "Regla de la Cadena", href: "/reglas-de-derivacion" },
+            { label: "Formulario de Derivadas", href: "/reglas-de-derivacion" },
+            { label: "Ejercicios Resueltos", href: "/ejemplos-de-derivadas" },
           ]
         },
         resources: {
@@ -355,8 +355,8 @@ const dictionaryData = {
       authorRole: "Departamento de Matemáticas",
       breadcrumbs: [
         { label: "Inicio", href: "/" },
-        { label: "Aprender", href: "/reglas" },
-        { label: "Reglas de Derivación", href: "/reglas" }
+        { label: "Aprender", href: "/reglas-de-derivacion" },
+        { label: "Reglas de Derivación", href: "/reglas-de-derivacion" }
       ],
       sections: {
         importance: {
@@ -391,8 +391,8 @@ const dictionaryData = {
       authorRole: "Docente de Cálculo",
       breadcrumbs: [
         { label: "Inicio", href: "/" },
-        { label: "Práctica", href: "/ejemplos" },
-        { label: "Ejemplos Resueltos", href: "/ejemplos" }
+        { label: "Práctica", href: "/ejemplos-de-derivadas" },
+        { label: "Ejemplos Resueltos", href: "/ejemplos-de-derivadas" }
       ],
       sections: {
         intro: {
@@ -424,8 +424,8 @@ const dictionaryData = {
       authorRole: "Educador de Calculadora Derivadas",
       breadcrumbs: [
         { label: "Inicio", href: "/" },
-        { label: "Formularios", href: "/reglas" },
-        { label: "Tabla de Fórmulas", href: "/reglas" }
+        { label: "Formularios", href: "/reglas-de-derivacion" },
+        { label: "Tabla de Fórmulas", href: "/reglas-de-derivacion" }
       ],
       sections: {
         intro: {
@@ -460,7 +460,7 @@ const dictionaryData = {
       authorRole: "Educador de Calculadora Derivadas",
       breadcrumbs: [
         { label: "Inicio", href: "/" },
-        { label: "Aprender", href: "/reglas" },
+        { label: "Aprender", href: "/reglas-de-derivacion" },
         { label: "¿Qué es una derivada?", href: "/como-funciona" }
       ],
       sections: {
@@ -524,8 +524,8 @@ const dictionaryData = {
       authorRole: "Experto en Análisis Matemático",
       breadcrumbs: [
         { label: "Inicio", href: "/" },
-        { label: "Avanzado", href: "/reglas" },
-        { label: "Derivadas Parciales", href: "/reglas" }
+        { label: "Avanzado", href: "/reglas-de-derivacion" },
+        { label: "Derivadas Parciales", href: "/reglas-de-derivacion" }
       ],
       sections: {
         intro: {
@@ -664,7 +664,7 @@ const dictionaryData = {
           title: "Reglas de Derivación",
           desc: "Potencia, producto, cociente y cadena explicadas para aplicar cada regla con seguridad.",
           link: "Estudiar reglas →",
-          href: "/reglas",
+          href: "/reglas-de-derivacion",
           image: "/images/reglas-de-derivacion.webp",
           imageAlt:
             "Reglas de derivación matemática: potencia, producto, cociente y regla de la cadena",
@@ -674,7 +674,7 @@ const dictionaryData = {
           title: "Ejemplos de Derivadas",
           desc: "Ejercicios resueltos desde polinomios básicos hasta funciones trigonométricas compuestas.",
           link: "Ver galería de ejemplos →",
-          href: "/ejemplos",
+          href: "/ejemplos-de-derivadas",
           image: "/images/ejemplos-de-derivadas-resueltas.webp",
           imageAlt:
             "Ejemplos de derivadas resueltas con procedimiento paso a paso",
@@ -684,7 +684,7 @@ const dictionaryData = {
           title: "Derivadas Parciales",
           desc: "Introducción al cálculo multivariable y derivación respecto a una variable manteniendo las demás fijas.",
           link: "Conceptos avanzados →",
-          href: "/reglas",
+          href: "/reglas-de-derivacion",
           image: "/images/derivadas-parciales.webp",
           imageAlt:
             "Calculadora de derivadas parciales y funciones de varias variables",
@@ -694,7 +694,7 @@ const dictionaryData = {
           title: "Fórmulas de Derivadas",
           desc: "Consulta tablas de derivadas y fórmulas trigonométricas para estudiar o verificar resultados.",
           link: "Ver formulario completo →",
-          href: "/reglas",
+          href: "/reglas-de-derivacion",
           image: "/images/formulas-de-derivadas.webp",
           imageAlt:
             "Fórmulas de derivadas y tabla de funciones trigonométricas para estudiar",
@@ -752,7 +752,7 @@ const dictionaryData = {
             "Resolver derivadas online con una herramienta educativa te ayuda a contrastar métodos: ordinarias, parciales básicas y composiciones con cadena, producto o cociente.",
           ],
           relatedLinks: [
-            { label: "Reglas de derivación", href: "/reglas" },
+            { label: "Reglas de derivación", href: "/reglas-de-derivacion" },
             { label: "Derivadas parciales (guía)", href: "/calculadora-de-derivadas-parciales" },
           ],
         },
@@ -773,7 +773,7 @@ const dictionaryData = {
             "Cada ejemplo refuerza un patrón distinto de las reglas de derivación. La galería de ejemplos de derivadas resueltas del sitio amplía esta práctica con enunciados comentados.",
           ],
           relatedLinks: [
-            { label: "Galería de ejemplos resueltos", href: "/ejemplos" },
+            { label: "Galería de ejemplos resueltos", href: "/ejemplos-de-derivadas" },
           ],
         },
         {
@@ -818,7 +818,7 @@ const dictionaryData = {
             },
           ],
           relatedLinks: [
-            { label: "Ejemplos de derivadas resueltas", href: "/ejemplos" },
+            { label: "Ejemplos de derivadas resueltas", href: "/ejemplos-de-derivadas" },
           ],
         },
         {
@@ -832,8 +832,8 @@ const dictionaryData = {
           relatedLinks: [
             { label: "Aprende la derivada de sin x paso a paso", href: "/blog/derivada-de-sin-x" },
             { label: "Derivada de cos x explicada", href: "/blog/derivada-de-cos-x" },
-            { label: "Reglas de derivación", href: "/reglas" },
-            { label: "Ejemplos trigonométricos", href: "/ejemplos" },
+            { label: "Reglas de derivación", href: "/reglas-de-derivacion" },
+            { label: "Ejemplos trigonométricos", href: "/ejemplos-de-derivadas" },
           ],
         },
         {
@@ -861,7 +861,7 @@ const dictionaryData = {
             },
           ],
           relatedLinks: [
-            { label: "Guía de reglas de derivación", href: "/reglas" },
+            { label: "Guía de reglas de derivación", href: "/reglas-de-derivacion" },
           ],
         },
         {
@@ -881,7 +881,7 @@ const dictionaryData = {
             "Resolver derivadas online con la herramienta y luego rehacer el mismo ejercicio sin mirar refuerza la memoria procedimental. Alterna dificultad: un ejercicio corto, uno medio y uno con cadena o producto por sesión de estudio.",
           ],
           relatedLinks: [
-            { label: "Ver derivadas resueltas", href: "/ejemplos" },
+            { label: "Ver derivadas resueltas", href: "/ejemplos-de-derivadas" },
             { label: "Artículos en el blog", href: "/blog" },
           ],
         },
@@ -911,8 +911,8 @@ const dictionaryData = {
       links: [
         { label: "Inicio", href: "/" },
         { label: "Cómo funciona", href: "/como-funciona" },
-        { label: "Ejemplos", href: "/ejemplos" },
-        { label: "Reglas", href: "/reglas" },
+        { label: "Ejemplos", href: "/ejemplos-de-derivadas" },
+        { label: "Reglas", href: "/reglas-de-derivacion" },
         { label: "Blog", href: "/blog" },
         { label: "Derivada de sin x paso a paso", href: "/blog/derivada-de-sin-x" },
         { label: "Derivada de cos x", href: "/blog/derivada-de-cos-x" },

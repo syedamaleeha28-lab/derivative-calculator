@@ -39,7 +39,7 @@ export function DerivadaDeCosXContent() {
         <p>
           Junto con sin′(x)=cos(x), forma el núcleo de las derivadas trigonométricas. Repasa la tabla
           en{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>{" "}
           antes de exámenes.
@@ -112,7 +112,7 @@ export function DerivadaDeCosXContent() {
             derivada de tan(x)
           </Link>{" "}
           y los{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejercicios de derivadas
           </Link>{" "}
           del sitio.
@@ -160,7 +160,7 @@ export function DerivadaDeCosXContent() {
         <p>
           La derivada de cos x encaja en un bloque que conviene tener a mano junto con seno y tangente.
           Repásala antes de parciales y combínala con la página de{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>
           .
@@ -284,7 +284,7 @@ export function DerivadaDeCosXContent() {
         <p>
           <strong>Día 3:</strong> producto y cociente (eˣ·cos x, cos/sin, x·cos x). <strong>Día 4:</strong>{" "}
           diez ejercicios variados en{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos de derivadas
           </Link>
           . <strong>Día 5:</strong> simulacro sin calculadora y verificación con pasos en la herramienta
@@ -318,7 +318,7 @@ export function DerivadaDeCosXContent() {
         <h3>¿Qué ejercicios hacer hoy mismo?</h3>
         <p>
           Deriva cos(5x), eˣ·cos x, cos(x)/sin x y x²·cos(x) sin mirar soluciones. Luego abre{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos de derivadas
           </Link>{" "}
           y elige tres problemas que mezclen cadena y producto. Si aciertas la estructura en los cuatro
@@ -343,7 +343,7 @@ export function DerivadaDeCosXContent() {
         links={[
           { href: "/blog/derivada-de-sin-x", label: "Derivada de sin(x)", desc: "El par natural con coseno" },
           { href: "/blog/entendiendo-regla-de-la-cadena", label: "Regla de la cadena", desc: "Composiciones cos(g(x))" },
-          { href: "/reglas", label: "Reglas de derivación", desc: "Tabla completa y referencia" },
+          { href: "/reglas-de-derivacion", label: "Reglas de derivación", desc: "Tabla completa y referencia" },
           { href: "/#calculator", label: "Calculadora de derivadas", desc: "Verificación paso a paso" },
         ]}
       />

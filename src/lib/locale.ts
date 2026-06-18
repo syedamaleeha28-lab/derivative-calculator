@@ -2,6 +2,9 @@ import { EN_ROUTES } from "./en-routes";
 import { ES_AUTHORITY_ROUTES } from "./es-authority-routes";
 import { ES_CALCULATOR_ROUTES } from "./es-routes";
 import { ROUTES } from "./routes";
+import {
+  ES_COMMON_FUNCTION_ROUTES,
+} from "./common-derivative-functions/routes";
 
 export type Locale = "es" | "en";
 
@@ -43,19 +46,23 @@ export const LOCALE_ROUTE_PAIRS: { es: string; en: string }[] = [
     en: EN_ROUTES.derivativePracticeProblems,
   },
   { es: ES_AUTHORITY_ROUTES.tablaDeDerivadas, en: EN_ROUTES.derivativeCheatSheet },
-  { es: "/blog/derivada-de-sin-x", en: EN_ROUTES.derivativeOfSinX },
-  { es: "/blog/derivada-de-cos-x", en: EN_ROUTES.derivativeOfCosX },
-  { es: "/blog/derivada-de-tan-x", en: EN_ROUTES.derivativeOfTanX },
-  { es: ROUTES.reglas, en: EN_ROUTES.derivativeRules },
-  { es: ROUTES.ejemplos, en: EN_ROUTES.derivativeExamples },
+  { es: ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes, en: EN_ROUTES.commonDerivativeFunctions },
+  { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeX, en: EN_ROUTES.derivativeOfX },
+  { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeXCuadrado, en: EN_ROUTES.derivativeOfXSquared },
+  { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeXCubo, en: EN_ROUTES.derivativeOfXCubed },
+  { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeRaizCuadradaDeX, en: EN_ROUTES.derivativeOfSquareRootX },
+  { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeEElevadoAX, en: EN_ROUTES.derivativeOfEToTheX },
+  { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeLnX, en: EN_ROUTES.derivativeOfLnX },
+  { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeLogX, en: EN_ROUTES.derivativeOfLogX },
+  { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeSinX, en: EN_ROUTES.derivativeOfSinX },
+  { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeCosX, en: EN_ROUTES.derivativeOfCosX },
+  { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeTanX, en: EN_ROUTES.derivativeOfTanX },
   { es: "/blog/como-derivar-fracciones", en: EN_ROUTES.howToDifferentiateAFraction },
   { es: "/blog/derivadas-parciales-ejemplos", en: EN_ROUTES.partialDerivativeExamples },
   { es: "/blog/derivadas-implicitas-paso-a-paso", en: EN_ROUTES.implicitDifferentiationExamples },
+  { es: ROUTES.reglas, en: EN_ROUTES.derivativeRules },
+  { es: ROUTES.ejemplos, en: EN_ROUTES.derivativeExamples },
   { es: ROUTES.blog, en: EN_ROUTES.blog },
-  // ES authority guides without a dedicated 1:1 EN page map to the closest
-  // EN equivalent. Listed last so the canonical pairs above win reverse lookups.
-  { es: ES_AUTHORITY_ROUTES.reglasDeDerivacion, en: EN_ROUTES.derivativeRules },
-  { es: ES_AUTHORITY_ROUTES.ejemplosDeDerivadas, en: EN_ROUTES.derivativeExamples },
 ];
 
 function normalizePath(path: string): string {

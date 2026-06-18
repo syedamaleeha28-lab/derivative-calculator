@@ -5,6 +5,7 @@ export const ES_AUTHORITY_ROUTES = {
   ejemplosDeDerivadas: "/ejemplos-de-derivadas",
   ejerciciosDeDerivadas: "/ejercicios-de-derivadas",
   tablaDeDerivadas: "/tabla-de-derivadas",
+  derivadasDeFuncionesComunes: "/derivadas-de-funciones-comunes",
 } as const;
 
 export const ES_AUTHORITY_ROUTE_LIST = Object.values(ES_AUTHORITY_ROUTES);

@@ -30,8 +30,8 @@ export const ES_CALCULATORS_NAV: EsNavLink[] = [
 
 /** "Guías" dropdown: educational content only. */
 export const ES_GUIDES_NAV: EsNavLink[] = [
-  { name: "Guía de reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
-  { name: "Reglas básicas", href: ROUTES.reglas },
+  { name: "Derivadas de funciones comunes", href: ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes },
+  { name: "Reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
   { name: "Fórmulas de derivadas", href: ES_AUTHORITY_ROUTES.formulasDeDerivadas },
   { name: "Tabla de derivadas", href: ES_AUTHORITY_ROUTES.tablaDeDerivadas },
   { name: "Ejemplos de derivadas", href: ES_AUTHORITY_ROUTES.ejemplosDeDerivadas },

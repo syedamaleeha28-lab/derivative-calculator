@@ -4,6 +4,7 @@ import { EN_ARTICLE_ENTRIES } from "./en-articles";
 import { EN_INDEXABLE_CALCULATOR_PAGES } from "./en-pages";
 import { ES_PAGE_LIST } from "./es-pages";
 import { ES_AUTHORITY_ROUTE_LIST } from "./es-authority-routes";
+import { ES_COMMON_FUNCTION_ROUTE_LIST } from "./common-derivative-functions/routes";
 import { EN_ROUTES } from "./en-routes";
 import { getHreflangAlternates } from "./locale";
 import { absoluteUrl } from "./seo";
@@ -23,8 +24,6 @@ export const SITEMAP_ROUTES: {
 }[] = [
   { path: "/", changeFrequency: "weekly", priority: 1 },
   { path: "/como-funciona", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/ejemplos", changeFrequency: "weekly", priority: 0.9 },
-  { path: "/reglas", changeFrequency: "weekly", priority: 0.95 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.85 },
   { path: "/privacy-policy", changeFrequency: "yearly", priority: 0.3 },
   { path: "/terms-of-service", changeFrequency: "yearly", priority: 0.3 },
@@ -35,7 +34,15 @@ export const SITEMAP_ROUTES: {
   ...ES_AUTHORITY_ROUTE_LIST.map((path) => ({
     path,
     changeFrequency: "weekly" as const,
-    priority: 0.9,
+    priority:
+      path === "/reglas-de-derivacion" || path === "/derivadas-de-funciones-comunes"
+        ? 0.95
+        : 0.9,
+  })),
+  ...ES_COMMON_FUNCTION_ROUTE_LIST.map((path) => ({
+    path,
+    changeFrequency: "weekly" as const,
+    priority: 0.88,
   })),
 ];
 

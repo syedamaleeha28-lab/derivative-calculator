@@ -55,13 +55,13 @@ export function ComoAprenderDerivadasDesdeCeroContent() {
             .
           </li>
           <li>
-            <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+            <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
               Reglas de derivación
             </Link>
             : producto, cociente, cadena.
           </li>
           <li>
-            <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+            <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
               Ejemplos resueltos
             </Link>
             .
@@ -86,7 +86,7 @@ export function ComoAprenderDerivadasDesdeCeroContent() {
         <h2 id="materiales">Materiales que debes tener a mano</h2>
         <p>
           Un cuaderno solo para derivadas, la tabla de{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>
           , y acceso a la calculadora de derivadas online. Evita dispersarte en videos sin practicar:
@@ -166,7 +166,7 @@ export function ComoAprenderDerivadasDesdeCeroContent() {
         links={[
           { href: "/blog/derivadas-para-principiantes", label: "Derivadas para principiantes", desc: "Ruta ampliada" },
           { href: "/blog/derivada-de-sin-x", label: "Derivada de sin(x)", desc: "Trigonometría básica" },
-          { href: "/ejemplos", label: "Ejemplos del sitio", desc: "Práctica guiada" },
+          { href: "/ejemplos-de-derivadas", label: "Ejemplos del sitio", desc: "Práctica guiada" },
           { href: "/#calculator", label: "Calculadora con pasos", desc: "Resolver derivadas online" },
         ]}
       />

@@ -2,11 +2,13 @@ import type { EsAuthorityEntry } from "./types";
 import { ES_AUTHORITY_ROUTES } from "../es-authority-routes";
 import { EN_ROUTES } from "../en-routes";
 import { esAuthorityBreadcrumbs } from "./helpers";
+import { esHubBreadcrumbs } from "../common-derivative-functions/helpers";
 import { ReglasDeDerivacionContent } from "./content/reglas-de-derivacion";
 import { FormulasDeDerivadasContent } from "./content/formulas-de-derivadas";
 import { EjemplosDeDerivadasContent } from "./content/ejemplos-de-derivadas";
 import { EjerciciosDeDerivadasContent } from "./content/ejercicios-de-derivadas";
 import { TablaDeDerivadasContent } from "./content/tabla-de-derivadas";
+import { CommonFunctionsHubContentEs } from "../common-derivative-functions/content-es";
 
 /**
  * Hreflang pairs (parent agent will update locale.ts):
@@ -22,6 +24,7 @@ export const ES_AUTHORITY_HREFLANG_PAIRS = {
   [ES_AUTHORITY_ROUTES.ejemplosDeDerivadas]: EN_ROUTES.derivativeExamples,
   [ES_AUTHORITY_ROUTES.ejerciciosDeDerivadas]: EN_ROUTES.derivativePracticeProblems,
   [ES_AUTHORITY_ROUTES.tablaDeDerivadas]: EN_ROUTES.derivativeCheatSheet,
+  [ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes]: EN_ROUTES.commonDerivativeFunctions,
 } as const;
 
 const AUTHOR = {
@@ -33,12 +36,13 @@ function entry(
   meta: Omit<EsAuthorityEntry, "breadcrumbs" | "Content"> & {
     breadcrumbLabel: string;
     Content: EsAuthorityEntry["Content"];
+    breadcrumbs?: EsAuthorityEntry["breadcrumbs"];
   }
 ): EsAuthorityEntry {
-  const { breadcrumbLabel, Content, ...rest } = meta;
+  const { breadcrumbLabel, Content, breadcrumbs, ...rest } = meta;
   return {
     ...rest,
-    breadcrumbs: esAuthorityBreadcrumbs(rest.route, breadcrumbLabel),
+    breadcrumbs: breadcrumbs ?? esAuthorityBreadcrumbs(rest.route, breadcrumbLabel),
     Content,
   };
 }
@@ -288,6 +292,51 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     breadcrumbLabel: "Tabla de derivadas",
     Content: TablaDeDerivadasContent,
+  }),
+  entry({
+    route: ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes,
+    title: "Derivadas de Funciones Comunes: Tabla Completa y Guías Paso a Paso",
+    description:
+      "Hub central de derivadas de funciones comunes: x, x², √x, e^x, ln x, sin x, cos x, tan x y más. Tabla de referencia completa con enlaces a cada guía.",
+    date: "18 de junio de 2026",
+    dateIso: "2026-06-18",
+    readTime: "20 min",
+    category: "Referencia",
+    tags: [
+      "derivadas de funciones comunes",
+      "tabla de derivadas",
+      "fórmulas de derivadas",
+      "funciones comunes",
+    ],
+    author: AUTHOR,
+    heroImageAlt: "Tabla completa de derivadas de funciones comunes",
+    englishAlternate: EN_ROUTES.commonDerivativeFunctions,
+    faqs: [
+      {
+        question: "¿Cuáles son las derivadas más comunes en cálculo?",
+        answer: "x, x², √x, e^x, ln x, sin x, cos x y tan x aparecen en casi todos los cursos.",
+      },
+      {
+        question: "¿Dónde encuentro la tabla completa?",
+        answer: "En esta página: algebraicas, trigonométricas, logarítmicas, exponenciales e inversas.",
+      },
+      {
+        question: "¿Cómo practico después de consultar la tabla?",
+        answer: "Abre la guía de cada función para ver un ejemplo resuelto y verifica en la calculadora.",
+      },
+      {
+        question: "¿Incluye funciones trigonométricas inversas?",
+        answer: "Sí: arcsin, arccos, arctan, arccot, arcsec y arccsc con sus fórmulas estándar.",
+      },
+    ],
+    relatedPosts: [
+      { title: "Derivada de x", href: "/derivada-de-x" },
+      { title: "Derivada de sin(x)", href: "/derivada-de-sin-x" },
+      { title: "Reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
+    ],
+    breadcrumbLabel: "Derivadas de funciones comunes",
+    breadcrumbs: esHubBreadcrumbs(),
+    Content: CommonFunctionsHubContentEs,
   }),
 ];
 

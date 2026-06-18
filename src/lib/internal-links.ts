@@ -166,7 +166,7 @@ export const BLOG_RELATED_BY_SLUG: Record<
     { slug: "derivada-de-sin-x", anchor: "Derivada de sin x paso a paso" },
     { slug: "regla-de-la-cadena-ejercicios", anchor: "Regla de la cadena" },
     { slug: "derivadas-para-principiantes", anchor: "Derivadas para principiantes" },
-    { slug: "/ejemplos", anchor: "Más ejemplos de derivadas en el sitio" },
+    { slug: "/ejemplos-de-derivadas", anchor: "Más ejemplos de derivadas en el sitio" },
   ],
   "derivadas-parciales-ejemplos": [
     { slug: "derivadas-implicitas-paso-a-paso", anchor: "Derivadas implícitas" },

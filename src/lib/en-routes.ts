@@ -18,7 +18,9 @@ export const EN_ROUTES = {
   derivativeOfCosX: "/en/derivative-of-cos-x",
   derivativeOfTanX: "/en/derivative-of-tan-x",
   derivativeOfLnX: "/en/derivative-of-ln-x",
-  derivativeOfEX: "/en/derivative-of-e-x",
+  derivativeOfEToTheX: "/en/derivative-of-e-to-the-x",
+  /** @deprecated Use derivativeOfEToTheX — kept for internal link aliases. */
+  derivativeOfEX: "/en/derivative-of-e-to-the-x",
   derivativeOfXSquared: "/en/derivative-of-x-squared",
   derivativeRules: "/en/derivative-rules",
   derivativeFormulas: "/en/derivative-formulas",
@@ -28,6 +30,11 @@ export const EN_ROUTES = {
   howToDifferentiateAFraction: "/en/how-to-differentiate-a-fraction",
   partialDerivativeExamples: "/en/partial-derivative-examples",
   implicitDifferentiationExamples: "/en/implicit-differentiation-examples",
+  commonDerivativeFunctions: "/en/common-derivative-functions",
+  derivativeOfX: "/en/derivative-of-x",
+  derivativeOfXCubed: "/en/derivative-of-x-cubed",
+  derivativeOfSquareRootX: "/en/derivative-of-square-root-x",
+  derivativeOfLogX: "/en/derivative-of-log-x",
 } as const;
 
 /** Anchor link to the embedded calculator on the English homepage. */
@@ -64,7 +71,6 @@ export const EN_ARTICLE_PAGES = [
   EN_ROUTES.derivativeOfCosX,
   EN_ROUTES.derivativeOfTanX,
   EN_ROUTES.derivativeOfLnX,
-  EN_ROUTES.derivativeOfEX,
   EN_ROUTES.derivativeOfXSquared,
   EN_ROUTES.derivativeRules,
   EN_ROUTES.derivativeFormulas,
@@ -74,4 +80,10 @@ export const EN_ARTICLE_PAGES = [
   EN_ROUTES.howToDifferentiateAFraction,
   EN_ROUTES.partialDerivativeExamples,
   EN_ROUTES.implicitDifferentiationExamples,
+  EN_ROUTES.commonDerivativeFunctions,
+  EN_ROUTES.derivativeOfX,
+  EN_ROUTES.derivativeOfXCubed,
+  EN_ROUTES.derivativeOfSquareRootX,
+  EN_ROUTES.derivativeOfEToTheX,
+  EN_ROUTES.derivativeOfLogX,
 ] as const;

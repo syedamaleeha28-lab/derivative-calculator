@@ -51,7 +51,7 @@ export function DerivadaDeTanXContent() {
           −sin(x), y tras simplificar obtienes sec²(x). Este razonamiento refuerza por qué las reglas de
           derivación deben elegirse según la estructura.
         </p>
-        <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+        <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
           Ver reglas de derivación completas →
         </Link>
       </section>
@@ -143,7 +143,7 @@ export function DerivadaDeTanXContent() {
         <p>
           Este desarrollo es el que más conviene reproducir en un examen si te piden «demostrar» la
           derivada de tan x. Refuerza que las{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>{" "}
           se eligen según cómo está escrita la función, no según su nombre.
@@ -201,7 +201,7 @@ export function DerivadaDeTanXContent() {
             regla de la cadena: ejercicios resueltos
           </Link>{" "}
           y la galería en{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos de derivadas
           </Link>
           .
@@ -268,7 +268,7 @@ export function DerivadaDeTanXContent() {
         </p>
         <p>
           <strong>Día 4:</strong> ejercicios mixtos en{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos resueltos
           </Link>
           ; incluye al menos dos con argumento cuadrático. <strong>Día 5:</strong> simulacro y
@@ -324,7 +324,7 @@ export function DerivadaDeTanXContent() {
           Como lista mínima para dominar el tema: (1) demuestra sec² con cociente; (2) deriva tan(2x) y
           tan(x²); (3) reescribe un resultado en forma 1+tan² si simplifica; (4) explica en una frase por qué
           tan no es derivable en x=π/2. Completa la lista con la calculadora y con al menos cinco ítems de{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos resueltos
           </Link>
           .
@@ -348,7 +348,7 @@ export function DerivadaDeTanXContent() {
         links={[
           { href: "/blog/derivada-de-cos-x", label: "Derivada de cos(x)", desc: "Base del cociente sin/cos" },
           { href: "/blog/entendiendo-regla-de-la-cadena", label: "Regla de la cadena", desc: "tan(g(x)) y composiciones" },
-          { href: "/reglas", label: "Reglas de derivación", desc: "Tabla trig y algebraicas" },
+          { href: "/reglas-de-derivacion", label: "Reglas de derivación", desc: "Tabla trig y algebraicas" },
           { href: "/#calculator", label: "Calculadora de derivadas", desc: "Pasos detallados en español" },
         ]}
       />

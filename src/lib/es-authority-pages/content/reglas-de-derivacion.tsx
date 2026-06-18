@@ -44,11 +44,7 @@ export function ReglasDeDerivacionContent() {
           antes de memorizar fórmulas.
         </p>
         <p>
-          Este clúster de guías en español complementa la página clásica de{" "}
-          <Link href={ROUTES.reglas} className="text-violet-600 font-semibold hover:underline">
-            reglas de derivación
-          </Link>{" "}
-          con contenido ampliado, ejemplos comentados y enlaces cruzados a{" "}
+          Este clúster de guías en español enlaza con{" "}
           <Link href={ES_AUTHORITY_ROUTES.formulasDeDerivadas} className="text-violet-600 font-semibold hover:underline">
             fórmulas de derivadas
           </Link>

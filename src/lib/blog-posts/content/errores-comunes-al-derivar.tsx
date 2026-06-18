@@ -23,7 +23,7 @@ export function ErroresComunesAlDerivarContent() {
             calculadora de derivadas con pasos
           </Link>
           . No sustituye estudiar las{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>
           , pero te ayuda a corregir patrones antes del examen.
@@ -33,7 +33,7 @@ export function ErroresComunesAlDerivarContent() {
           errores», la clave es nombrar la regla antes de calcular. Los párrafos siguientes están pensados como
           derivadas paso a paso en formato narrativo: lee el error, cierra la solución y vuelve a intentarlo en
           la galería de{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             /ejemplos
           </Link>
           .
@@ -224,7 +224,7 @@ export function ErroresComunesAlDerivarContent() {
         <h2 id="practica-correccion">Práctica dirigida: convierte errores en aciertos</h2>
         <p>
           Elige dos errores de la lista que te hayan pasado en el último mes. Busca en{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             /ejemplos
           </Link>{" "}
           un problema que active ese patrón (producto, cadena, etc.). Resuélvelo dos veces el mismo día: la

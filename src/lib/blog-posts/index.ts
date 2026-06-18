@@ -258,7 +258,7 @@ export const BLOG_POST_ENTRIES: BlogPostEntry[] = [
     faqs: [
       {
         question: "¿Dónde encuentro más ejemplos interactivos?",
-        answer: "En la página /ejemplos y en la calculadora de derivadas con pasos.",
+        answer: "En la página de ejemplos de derivadas y en la calculadora de derivadas con pasos.",
       },
     ],
     relatedPosts: [

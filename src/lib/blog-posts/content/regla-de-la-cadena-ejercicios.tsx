@@ -34,11 +34,11 @@ export function ReglaDeLaCadenaEjerciciosContent() {
             calculadora de derivadas con pasos
           </Link>
           . Antes de avanzar, repasa las reglas elementales en{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>{" "}
           y contrasta con la galería de{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos resueltos
           </Link>
           .
@@ -217,7 +217,7 @@ export function ReglaDeLaCadenaEjerciciosContent() {
         <p>
           Vale la pena tener referencias rápidas: (g(x))ⁿ → n(g(x))^(n−1)·g′(x); e^(g(x)) → e^(g(x))·g′(x);
           ln(g(x)) → g′(x)/g(x); sin(g(x)) → cos(g(x))·g′(x). No sustituyen la tabla oficial de{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas
           </Link>
           , pero aceleran el reconocimiento en exámenes cronometrados.
@@ -238,7 +238,7 @@ export function ReglaDeLaCadenaEjerciciosContent() {
         <p>
           Un ejercicio típico de examen: derivar x·ln(x²+1). Aquí u=x, v=ln(x²+1); en v′ entra la
           cadena con g(x)=x²+1. Practica variaciones en la sección de{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos de derivadas
           </Link>{" "}
           y valida el procedimiento en la calculadora.
@@ -324,7 +324,7 @@ export function ReglaDeLaCadenaEjerciciosContent() {
             blog de derivadas
           </Link>
           , vuelve a la tabla de{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas
           </Link>{" "}
           y usa el tutorial en{" "}

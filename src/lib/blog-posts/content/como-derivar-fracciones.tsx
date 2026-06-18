@@ -33,7 +33,7 @@ export function ComoDerivarFraccionesContent() {
             regla de la cadena
           </Link>{" "}
           dentro de u′ o v′. La tabla completa está en{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>
           .
@@ -214,7 +214,7 @@ export function ComoDerivarFraccionesContent() {
         </ul>
         <p className="mt-4">
           Contrasta tus pasos con la galería de{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos de derivadas
           </Link>{" "}
           y con el artículo de{" "}

@@ -43,7 +43,7 @@ export function DerivadaDeSinXContent() {
         </p>
         <TipCard>
           Memoriza el par sin → cos y cos → −sin. Repasa la tabla completa en nuestra página de{" "}
-          <Link href="/reglas" className="font-semibold text-violet-600 hover:underline">
+          <Link href="/reglas-de-derivacion" className="font-semibold text-violet-600 hover:underline">
             reglas de derivación
           </Link>
           .
@@ -102,7 +102,7 @@ export function DerivadaDeSinXContent() {
         <p>
           Si sin(x) se multiplica por otro factor, por ejemplo x·sin(x), aplica la regla del producto:
           la derivada del producto no es el producto de las derivadas. Consulta{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             regla del producto y del cociente
           </Link>{" "}
           antes de mezclar técnicas.
@@ -132,7 +132,7 @@ export function DerivadaDeSinXContent() {
             derivada de tan(x)
           </Link>{" "}
           y la galería de{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos de derivadas resueltas
           </Link>
           .
@@ -194,7 +194,7 @@ export function DerivadaDeSinXContent() {
             derivada de tan(x)
           </Link>
           . La tabla completa de reglas está en{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>
           .
@@ -225,7 +225,7 @@ export function DerivadaDeSinXContent() {
         <p>
           Día 1: derivada de sin(x) y cos(x). Día 2: regla de la cadena con sin(g(x)). Día 3: producto
           y cociente con trigonométricas. Día 4: diez ejercicios en{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos de derivadas resueltas
           </Link>
           . Día 5: simulacro con la calculadora de derivadas con pasos apagada, luego verificación.

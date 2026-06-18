@@ -2,8 +2,8 @@
 export const ROUTES = {
   home: "/",
   comoFunciona: "/como-funciona",
-  ejemplos: "/ejemplos",
-  reglas: "/reglas",
+  ejemplos: "/ejemplos-de-derivadas",
+  reglas: "/reglas-de-derivacion",
   blog: "/blog",
   contacto: "/contacto",
   acercaDe: "/acerca-de",

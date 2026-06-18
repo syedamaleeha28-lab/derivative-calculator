@@ -27,6 +27,11 @@ export function esAuthorityBreadcrumbs(route: string, label: string) {
 
 export const ES_AUTHORITY_HUB_LINKS = [
   {
+    href: ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes,
+    label: "Derivadas de funciones comunes",
+    desc: "Tabla completa y guías de x, e^x, ln x, sin x y más.",
+  },
+  {
     href: ES_AUTHORITY_ROUTES.reglasDeDerivacion,
     label: "Reglas de derivación",
     desc: "Potencia, producto, cociente, cadena y trigonométricas en una guía completa.",

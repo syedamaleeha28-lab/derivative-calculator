@@ -91,7 +91,7 @@ export function DerivadasParaPrincipiantesContent() {
         <p>
           Empezar por gráficas sencillas —f(x) = x², f(x) = x³— y estimar pendientes a mano antes de
           aplicar fórmulas ancla la intuición. Luego contrasta con la tabla en{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>
           .
@@ -142,7 +142,7 @@ export function DerivadasParaPrincipiantesContent() {
         <h3 id="semana2">Semana 2: producto y cociente</h3>
         <p>
           Productos simples x·sin x y cocientes x/(x+1). Verifica en{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos resueltos
           </Link>
           .

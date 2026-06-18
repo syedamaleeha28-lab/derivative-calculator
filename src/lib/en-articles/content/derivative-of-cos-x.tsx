@@ -13,10 +13,12 @@ import {
   EN_MAIN_CALCULATOR_HREF,
   EN_ROUTES,
 } from "../helpers";
+import { HubBackLink } from "@/lib/common-derivative-functions/helpers";
 
 export function DerivativeOfCosXContent() {
   return (
     <ArticleWrap>
+      <HubBackLink locale="en" />
       <section>
         <h2 id="overview">Overview: the derivative of cos(x)</h2>
         <p>

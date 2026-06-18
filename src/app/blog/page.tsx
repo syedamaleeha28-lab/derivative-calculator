@@ -56,11 +56,11 @@ export default async function BlogPage() {
                 calculadora de derivadas con pasos
               </Link>
               , consulta{" "}
-              <Link href="/reglas" className="text-violet-600 font-medium hover:underline">
+              <Link href="/reglas-de-derivacion" className="text-violet-600 font-medium hover:underline">
                 reglas de derivación
               </Link>{" "}
               y explora{" "}
-              <Link href="/ejemplos" className="text-violet-600 font-medium hover:underline">
+              <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-medium hover:underline">
                 ejemplos de derivadas resueltas
               </Link>
               .
@@ -76,8 +76,8 @@ export default async function BlogPage() {
             {[
               { label: "Calculadora", href: "/#calculator" },
               { label: "Cómo funciona", href: "/como-funciona" },
-              { label: "Reglas", href: "/reglas" },
-              { label: "Ejemplos", href: "/ejemplos" },
+              { label: "Reglas", href: "/reglas-de-derivacion" },
+              { label: "Ejemplos", href: "/ejemplos-de-derivadas" },
               { label: "Inicio", href: "/" },
             ].map((link) => (
               <Link

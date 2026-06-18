@@ -32,11 +32,11 @@ export function DerivadasParcialesEjemplosContent() {
         </p>
         <p>
           Antes de avanzar, repasa reglas básicas en{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>{" "}
           y la galería de{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos de derivadas resueltas
           </Link>{" "}
           para una variable; luego vuelve aquí con la notación parcial.

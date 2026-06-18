@@ -13,10 +13,12 @@ import {
   EN_MAIN_CALCULATOR_HREF,
   EN_ROUTES,
 } from "../helpers";
+import { HubBackLink } from "@/lib/common-derivative-functions/helpers";
 
 export function DerivativeOfLnXContent() {
   return (
     <ArticleWrap>
+      <HubBackLink locale="en" />
       <section>
         <h2 id="intro">Introduction: natural logarithm and 1/x</h2>
         <p>
@@ -24,7 +26,7 @@ export function DerivativeOfLnXContent() {
           in calculus—appearing inside chain-rule problems, logarithmic differentiation, and differential
           equations. This article explains why the slope of ln(x) is 1/x, how the chain rule extends to ln(g(x)),
           and how ln relates to{" "}
-          <Link href={EN_ROUTES.derivativeOfEX} className="text-violet-600 font-semibold hover:underline">
+          <Link href={EN_ROUTES.derivativeOfEToTheX} className="text-violet-600 font-semibold hover:underline">
             e^x
           </Link>
           , whose derivative is itself. Cross-check every step with our{" "}

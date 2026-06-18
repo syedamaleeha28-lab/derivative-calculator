@@ -12,10 +12,12 @@ import {
   Link,
   EN_ROUTES,
 } from "../helpers";
+import { HubBackLink } from "@/lib/common-derivative-functions/helpers";
 
 export function DerivativeOfTanXContent() {
   return (
     <ArticleWrap>
+      <HubBackLink locale="en" />
       <section>
         <h2 id="intro">Introduction: derivative of tan(x) and sec²(x)</h2>
         <p>

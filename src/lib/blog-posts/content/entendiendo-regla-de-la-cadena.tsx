@@ -74,7 +74,7 @@ export function EntendiendoReglaDeLaCadenaContent() {
             calculadora de derivadas online
           </Link>{" "}
           y contrasta cada paso con tus apuntes. Combina con{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>{" "}
           y{" "}
@@ -166,7 +166,7 @@ export function EntendiendoReglaDeLaCadenaContent() {
             regla de la cadena: ejercicios
           </Link>{" "}
           y en{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos de derivadas resueltas
           </Link>
           .
@@ -211,7 +211,7 @@ export function EntendiendoReglaDeLaCadenaContent() {
         </p>
         <p>
           Repasa la tabla en{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>{" "}
           y practica trigonométricas en{" "}
@@ -373,7 +373,7 @@ export function EntendiendoReglaDeLaCadenaContent() {
         links={[
           { href: "/blog/regla-de-la-cadena-ejercicios", label: "Cadena: ejercicios resueltos", desc: "Seis problemas guiados" },
           { href: "/blog/derivada-de-cos-x", label: "Derivada de cos(x)", desc: "Composiciones trig" },
-          { href: "/reglas", label: "Reglas de derivación", desc: "Referencia completa" },
+          { href: "/reglas-de-derivacion", label: "Reglas de derivación", desc: "Referencia completa" },
           { href: "/#calculator", label: "Calculadora de derivadas", desc: "Comprueba cada paso" },
         ]}
       />

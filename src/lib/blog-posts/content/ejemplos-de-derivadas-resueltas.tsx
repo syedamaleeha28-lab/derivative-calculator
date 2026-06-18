@@ -31,11 +31,11 @@ export function EjemplosDeDerivadasResueltasContent() {
         </p>
         <p>
           A lo largo del artículo enlazamos la{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             galería de ejemplos de derivadas
           </Link>
           , las{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>{" "}
           y artículos del blog que profundizan en técnicas concretas. El objetivo es que sepas qué bloque abrir
@@ -47,7 +47,7 @@ export function EjemplosDeDerivadasResueltasContent() {
         <h2 id="como-usar-galeria">Cómo usar la galería en /ejemplos</h2>
         <p>
           La página{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             /ejemplos
           </Link>{" "}
           está organizada en secciones con anclas: fundamentos, básicos y avanzados. Cada tarjeta muestra la
@@ -175,7 +175,7 @@ export function EjemplosDeDerivadasResueltasContent() {
         <h2 id="rutina-estudio">Rutina de estudio con ejercicios de derivadas</h2>
         <p>
           Una rutina de 45 minutos puede estructurarse así: diez minutos de repaso de reglas en{" "}
-          <Link href="/reglas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             /reglas
           </Link>
           , veinte minutos de ejercicios de derivadas tomados de la galería (sin mirar la solución), diez
@@ -268,7 +268,7 @@ export function EjemplosDeDerivadasResueltasContent() {
         <h2 id="practica-final">Práctica final y verificación</h2>
         <p>
           Cierra cada sesión con tres problemas elegidos al azar de distintas secciones de{" "}
-          <Link href="/ejemplos" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             /ejemplos
           </Link>
           . Cronometra el primer intento; en el segundo intento, al día siguiente, deberías necesitar menos pasos
