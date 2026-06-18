@@ -718,6 +718,14 @@ const dictionaryData = {
         },
       ],
     },
+    homeCommonFunctions: {
+      badge: "Clúster de autoridad",
+      title: "Funciones Derivadas Comunes",
+      lead:
+        "Consulta la derivada de las funciones más usadas en cálculo: potencias de x, logaritmo natural y trigonométricas. Cada guía incluye fórmula, ejemplo resuelto y enlace a la calculadora.",
+      readGuide: "Ver guía",
+      viewHub: "Explorar el hub completo",
+    },
     homeInternalLinks: {
       featuredBadge: "Blog educativo",
       featuredTitle: "Guías de derivadas paso a paso",

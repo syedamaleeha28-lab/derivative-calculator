@@ -3,6 +3,7 @@ import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import HomeCalculatorTools from "@/components/HomeCalculatorTools";
+import HomeCommonDerivativeFunctions from "@/components/HomeCommonDerivativeFunctions";
 import HomeEducationalCards from "@/components/HomeEducationalCards";
 import HomeLongFormSeo from "@/components/HomeLongFormSeo";
 import HomeFeaturedBlogLinks from "@/components/HomeFeaturedBlogLinks";
@@ -44,6 +45,7 @@ export default function Home() {
         <Navbar />
         <Hero />
         <HomeCalculatorTools />
+        <HomeCommonDerivativeFunctions />
         <HomeEducationalCards />
         <HomeFeaturedBlogLinks />
         <HomeRecentArticles />

@@ -1,3 +1,5 @@
+import { ES_AUTHORITY_ROUTES } from "./es-authority-routes";
+import { ES_COMMON_FUNCTION_ROUTES } from "./common-derivative-functions/routes";
 import { ROUTES } from "./routes";
 
 export type InternalLinkItem = {
@@ -5,6 +7,52 @@ export type InternalLinkItem = {
   anchor: string;
   description: string;
 };
+
+/** Homepage authority cluster: common derivative functions hub and leaf pages. */
+export const HOME_COMMON_DERIVATIVE_FUNCTION_LINKS: InternalLinkItem[] = [
+  {
+    href: ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes,
+    anchor: "Guía completa de derivadas de funciones comunes",
+    description:
+      "Hub central con x, x², e^x, ln x, sin x, cos x, tan x y más: fórmulas, tablas y enlaces a cada guía.",
+  },
+  {
+    href: ES_COMMON_FUNCTION_ROUTES.derivadaDeX,
+    anchor: "Derivada de x: fórmula (x)′ = 1 y ejemplo paso a paso",
+    description:
+      "El caso más simple de la regla de la potencia, con demostración por límites e interpretación geométrica.",
+  },
+  {
+    href: ES_COMMON_FUNCTION_ROUTES.derivadaDeXCuadrado,
+    anchor: "Derivada de x² con la regla de la potencia",
+    description:
+      "Aprende (x²)′ = 2x con cociente incremental, parábola y ejercicios para verificar en la calculadora.",
+  },
+  {
+    href: ES_COMMON_FUNCTION_ROUTES.derivadaDeSinX,
+    anchor: "Aprende la derivada de sin x paso a paso",
+    description:
+      "Fórmula cos(x), regla de la cadena con seno y ejemplos para practicar derivadas trigonométricas.",
+  },
+  {
+    href: ES_COMMON_FUNCTION_ROUTES.derivadaDeCosX,
+    anchor: "Derivada de cos x explicada con ejemplos",
+    description:
+      "Signo negativo −sin(x), composiciones cos(g(x)) y conexión con identidades trigonométricas.",
+  },
+  {
+    href: ES_COMMON_FUNCTION_ROUTES.derivadaDeTanX,
+    anchor: "Derivada de tan x: fórmula sec²(x) y demostración",
+    description:
+      "Deriva la tangente con la regla del cociente sin(x)/cos(x) y practica composiciones.",
+  },
+  {
+    href: ES_COMMON_FUNCTION_ROUTES.derivadaDeLnX,
+    anchor: "Derivada de ln x: fórmula (ln x)′ = 1/x",
+    description:
+      "Logaritmo natural, dominio x > 0, inversa de e^x y uso con regla de la cadena.",
+  },
+];
 
 /** Homepage featured blog links (keyword-rich anchors). */
 export const HOME_FEATURED_BLOG_LINKS: InternalLinkItem[] = [
