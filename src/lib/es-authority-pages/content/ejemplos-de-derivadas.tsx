@@ -85,7 +85,7 @@ export function EjemplosDeDerivadasContent() {
         />
         <p>
           Cuando estos salgan automáticos, añade trigonométricas básicas desde el blog:{" "}
-          <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
             derivada de sin x
           </Link>
           .

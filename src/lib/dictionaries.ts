@@ -701,7 +701,7 @@ const dictionaryData = {
           title: "Derivadas Parciales",
           desc: "Introducción al cálculo multivariable y derivación respecto a una variable manteniendo las demás fijas.",
           link: "Conceptos avanzados →",
-          href: "/reglas-de-derivacion",
+          href: "/calculadora-de-derivadas-parciales",
           image: "/images/derivadas-parciales.webp",
           imageAlt:
             "Calculadora de derivadas parciales y funciones de varias variables",
@@ -711,7 +711,7 @@ const dictionaryData = {
           title: "Fórmulas de Derivadas",
           desc: "Consulta tablas de derivadas y fórmulas trigonométricas para estudiar o verificar resultados.",
           link: "Ver formulario completo →",
-          href: "/reglas-de-derivacion",
+          href: "/formulas-de-derivadas",
           image: "/images/formulas-de-derivadas.webp",
           imageAlt:
             "Fórmulas de derivadas y tabla de funciones trigonométricas para estudiar",
@@ -745,6 +745,7 @@ const dictionaryData = {
           ],
           relatedLinks: [
             { label: "Derivada por definición (límite)", href: "/como-funciona#derivada-por-definicion" },
+            { label: "Glosario de términos", href: "/como-funciona#glosario" },
             { label: "Concepto y uso de la calculadora", href: "/como-funciona" },
           ],
         },
@@ -848,8 +849,8 @@ const dictionaryData = {
             "Para practicar variaciones, combina esta guía con ejercicios de la sección de ejemplos, donde verás funciones trigonométricas mezcladas con polinomios y productos.",
           ],
           relatedLinks: [
-            { label: "Aprende la derivada de sin x paso a paso", href: "/blog/derivada-de-sin-x" },
-            { label: "Derivada de cos x explicada", href: "/blog/derivada-de-cos-x" },
+            { label: "Aprende la derivada de sin x paso a paso", href: "/derivada-de-sin-x" },
+            { label: "Derivada de cos x explicada", href: "/derivada-de-cos-x" },
             { label: "Reglas de derivación", href: "/reglas-de-derivacion" },
             { label: "Ejemplos trigonométricos", href: "/ejemplos-de-derivadas" },
           ],
@@ -930,11 +931,12 @@ const dictionaryData = {
       links: [
         { label: "Inicio", href: "/" },
         { label: "Cómo funciona", href: "/como-funciona" },
+        { label: "Derivadas de funciones comunes", href: "/derivadas-de-funciones-comunes" },
         { label: "Ejemplos", href: "/ejemplos-de-derivadas" },
         { label: "Reglas", href: "/reglas-de-derivacion" },
         { label: "Blog", href: "/blog" },
-        { label: "Derivada de sin x paso a paso", href: "/blog/derivada-de-sin-x" },
-        { label: "Derivada de cos x", href: "/blog/derivada-de-cos-x" },
+        { label: "Derivada de sin x paso a paso", href: "/derivada-de-sin-x" },
+        { label: "Derivada de cos x", href: "/derivada-de-cos-x" },
         { label: "Regla de la cadena (ejercicios)", href: "/blog/regla-de-la-cadena-ejercicios" },
         { label: "Derivadas implícitas resueltas", href: "/blog/derivadas-implicitas-paso-a-paso" },
         { label: "Ejemplos de derivadas resueltas", href: "/blog/ejemplos-de-derivadas-resueltas" },

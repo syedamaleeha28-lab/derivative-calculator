@@ -28,6 +28,8 @@ import { EN_MAIN_CALCULATOR_HREF, EN_ROUTES } from "@/lib/en-routes";
 import type { Locale } from "@/lib/locale";
 import { absoluteUrl, SITE_URL } from "@/lib/seo";
 import { ROUTES } from "@/lib/routes";
+import { ES_AUTHORITY_ROUTES } from "@/lib/es-authority-routes";
+import { resolveBlogOrRootHref } from "@/lib/blog-migrations";
 
 interface Heading {
   id: string;
@@ -319,7 +321,7 @@ export default function ArticleLayout({
       : [
           { label: "Calculadora de Derivadas", href: "/#calculator", icon: <Calculator size={14} /> },
           { label: "Reglas de Derivación", href: ROUTES.reglas, icon: <BookOpen size={14} /> },
-          { label: "Fórmulas de Cálculo", href: ROUTES.reglas, icon: <List size={14} /> },
+          { label: "Fórmulas de Cálculo", href: ES_AUTHORITY_ROUTES.formulasDeDerivadas, icon: <List size={14} /> },
           { label: "Ejemplos Resueltos", href: ROUTES.ejemplos, icon: <CheckCircle2 size={14} /> },
           { label: "Conceptos Básicos", href: ROUTES.comoFunciona, icon: <HelpCircle size={14} /> },
           { label: "Blog de Matemáticas", href: ROUTES.blog, icon: <ExternalLink size={14} /> },
@@ -566,7 +568,7 @@ export default function ArticleLayout({
                     {relatedPosts.map((post, i) => (
                     <Link 
                       key={i} 
-                      href={post.slug.startsWith("/") ? post.slug : `/blog/${post.slug}`} 
+                      href={resolveBlogOrRootHref(post.slug)} 
                       className="group block"
                     >
                         <h5 className="text-[0.95rem] font-bold text-slate-900 leading-snug group-hover:text-secondary transition-colors">
@@ -615,7 +617,7 @@ export default function ArticleLayout({
               {relatedPosts.slice(0, 4).map((post, i) => (
                 <Link
                   key={i}
-                  href={post.slug.startsWith("/") ? post.slug : `/blog/${post.slug}`}
+                  href={resolveBlogOrRootHref(post.slug)}
                   className="group p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:border-secondary/30 transition-all h-full flex flex-col"
                 >
                   <h3 className="text-lg font-bold text-slate-900 leading-tight mb-3 group-hover:text-secondary transition-colors">

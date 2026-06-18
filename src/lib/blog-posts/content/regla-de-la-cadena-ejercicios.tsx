@@ -149,7 +149,7 @@ export function ReglaDeLaCadenaEjerciciosContent() {
         >
           <p className="mb-3">
             Repasa el caso base en{" "}
-            <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+            <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
               derivada de sin(x)
             </Link>
             .
@@ -181,11 +181,11 @@ export function ReglaDeLaCadenaEjerciciosContent() {
         >
           <p className="mb-3">
             Complementa con{" "}
-            <Link href="/blog/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
+            <Link href="/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
               derivada de cos(x)
             </Link>{" "}
             y{" "}
-            <Link href="/blog/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
+            <Link href="/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
               derivada de tan(x)
             </Link>
             .
@@ -281,11 +281,11 @@ export function ReglaDeLaCadenaEjerciciosContent() {
           (1 + tan x)⁵. En todos hay composición; algunos mezclan varias reglas. Si te bloqueas,
           escribe g(x) explícitamente en un margen y continúa. Después compara con la calculadora y
           con los artículos de{" "}
-          <Link href="/blog/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
             cos(x)
           </Link>{" "}
           y{" "}
-          <Link href="/blog/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
             tan(x)
           </Link>
           .

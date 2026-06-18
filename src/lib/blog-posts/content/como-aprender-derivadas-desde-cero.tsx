@@ -49,7 +49,7 @@ export function ComoAprenderDerivadasDesdeCeroContent() {
         <ol className="list-decimal pl-6 space-y-3">
           <li>Derivadas de potencias y constantes.</li>
           <li>
-            <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+            <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
               Derivadas trigonométricas
             </Link>
             .
@@ -165,7 +165,7 @@ export function ComoAprenderDerivadasDesdeCeroContent() {
       <InternalLinksBlock
         links={[
           { href: "/blog/derivadas-para-principiantes", label: "Derivadas para principiantes", desc: "Ruta ampliada" },
-          { href: "/blog/derivada-de-sin-x", label: "Derivada de sin(x)", desc: "Trigonometría básica" },
+          { href: "/derivada-de-sin-x", label: "Derivada de sin(x)", desc: "Trigonometría básica" },
           { href: "/ejemplos-de-derivadas", label: "Ejemplos del sitio", desc: "Práctica guiada" },
           { href: "/#calculator", label: "Calculadora con pasos", desc: "Resolver derivadas online" },
         ]}

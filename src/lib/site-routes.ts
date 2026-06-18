@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { BLOG_POST_ENTRIES } from "./blog-posts";
+import { isMigratedBlogSlug } from "./blog-migrations";
 import { EN_ARTICLE_ENTRIES } from "./en-articles";
 import { EN_INDEXABLE_CALCULATOR_PAGES } from "./en-pages";
 import { ES_PAGE_LIST } from "./es-pages";
@@ -12,9 +13,9 @@ import { absoluteUrl } from "./seo";
 export const NON_INDEXABLE_PREFIXES = ["/api/", "/_next/", "/icon", "/favicon"];
 
 /** Blog slugs for sitemap — synced from blog-posts registry. */
-export const BLOG_POSTS: { slug: string; lastModified?: string }[] = BLOG_POST_ENTRIES.map(
-  (p) => ({ slug: p.slug, lastModified: p.dateIso })
-);
+export const BLOG_POSTS: { slug: string; lastModified?: string }[] = BLOG_POST_ENTRIES.filter(
+  (p) => !isMigratedBlogSlug(p.slug)
+).map((p) => ({ slug: p.slug, lastModified: p.dateIso }));
 
 export const SITEMAP_ROUTES: {
   path: string;

@@ -9,13 +9,13 @@ export type InternalLinkItem = {
 /** Homepage featured blog links (keyword-rich anchors). */
 export const HOME_FEATURED_BLOG_LINKS: InternalLinkItem[] = [
   {
-    href: "/blog/derivada-de-sin-x",
+    href: "/derivada-de-sin-x",
     anchor: "Aprende la derivada de sin x paso a paso",
     description:
       "Fórmula cos(x), regla de la cadena con seno y ejemplos para verificar en la calculadora.",
   },
   {
-    href: "/blog/derivada-de-cos-x",
+    href: "/derivada-de-cos-x",
     anchor: "Derivada de cos x explicada con ejemplos",
     description:
       "Signo negativo, composiciones cos(g(x)) y práctica de derivadas trigonométricas.",
@@ -42,7 +42,7 @@ export const HOME_FEATURED_BLOG_LINKS: InternalLinkItem[] = [
 
 export const COMO_FUNCIONA_INTERNAL_LINKS: InternalLinkItem[] = [
   {
-    href: "/blog/derivada-de-sin-x",
+    href: "/derivada-de-sin-x",
     anchor: "Aprende la derivada de sin x paso a paso",
     description: "Guía trigonométrica esencial antes de usar sin() en la calculadora.",
   },
@@ -80,7 +80,7 @@ export const REGLAS_INTERNAL_LINKS: InternalLinkItem[] = [
     description: "Cocientes y funciones racionales paso a paso.",
   },
   {
-    href: "/blog/derivada-de-tan-x",
+    href: "/derivada-de-tan-x",
     anchor: "Derivada de tan x y sec²(x)",
     description: "Demostración con cociente y composiciones.",
   },
@@ -103,7 +103,7 @@ export const EJEMPLOS_INTERNAL_LINKS: InternalLinkItem[] = [
     description: "Guía ampliada con rutas de estudio y enlaces internos.",
   },
   {
-    href: "/blog/derivada-de-sin-x",
+    href: "/derivada-de-sin-x",
     anchor: "Derivada de sin x paso a paso",
     description: "Repasa la regla básica de las trigonométricas.",
   },

@@ -137,15 +137,15 @@ export function ErroresComunesAlDerivarContent() {
         </p>
         <p>
           Trigonométricas directas:{" "}
-          <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
             sin(x)
           </Link>
           ,{" "}
-          <Link href="/blog/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
             cos(x)
           </Link>
           ,{" "}
-          <Link href="/blog/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
             tan(x)
           </Link>
           .

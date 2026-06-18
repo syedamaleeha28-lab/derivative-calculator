@@ -124,11 +124,11 @@ export function DerivadaDeSinXContent() {
         </p>
         <p>
           Combina este artículo con{" "}
-          <Link href="/blog/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
             derivada de cos(x)
           </Link>
           ,{" "}
-          <Link href="/blog/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
             derivada de tan(x)
           </Link>{" "}
           y la galería de{" "}
@@ -186,11 +186,11 @@ export function DerivadaDeSinXContent() {
         </ul>
         <p className="mt-4">
           Profundiza en{" "}
-          <Link href="/blog/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
             derivada de cos(x)
           </Link>{" "}
           y{" "}
-          <Link href="/blog/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
             derivada de tan(x)
           </Link>
           . La tabla completa de reglas está en{" "}

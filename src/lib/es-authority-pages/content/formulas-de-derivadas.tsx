@@ -164,11 +164,11 @@ export function FormulasDeDerivadasContent() {
         <p>
           Recuerda que x debe estar en radianes en cálculo estándar. Para sin(3x), aplica cadena: 3cos(3x). Guías del
           blog:{" "}
-          <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
             derivada de sin x
           </Link>
           ,{" "}
-          <Link href="/blog/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
             derivada de cos x
           </Link>
           .

@@ -1,3 +1,4 @@
+import { resolveBlogOrRootHref } from "../blog-migrations";
 import { BLOG_RELATED_BY_SLUG, type InternalLinkItem } from "../internal-links";
 import { ROUTES } from "../routes";
 import { getBlogPostBySlug } from "./index";
@@ -34,8 +35,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
 };
 
 export function resolvePostHref(slug: string): string {
-  if (slug.startsWith("/")) return slug;
-  return `/blog/${slug}`;
+  return resolveBlogOrRootHref(slug);
 }
 
 export function internalLinksToRelated(

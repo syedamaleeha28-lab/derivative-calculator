@@ -126,7 +126,7 @@ export function DerivadasParcialesEjemplosContent() {
         </ExampleCard>
         <p>
           Enlaza con{" "}
-          <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
             derivada de sin(x)
           </Link>{" "}
           y{" "}

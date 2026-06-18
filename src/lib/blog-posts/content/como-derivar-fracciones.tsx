@@ -113,7 +113,7 @@ export function ComoDerivarFraccionesContent() {
         >
           <p className="mb-3">
             Relacionado con{" "}
-            <Link href="/blog/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
+            <Link href="/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
               derivada de tan(x)
             </Link>
             : el cociente sin/cos recupera sec²(x).
@@ -218,7 +218,7 @@ export function ComoDerivarFraccionesContent() {
             ejemplos de derivadas
           </Link>{" "}
           y con el artículo de{" "}
-          <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
             derivada de sin(x)
           </Link>{" "}
           si mezclas trigonometría en el cociente.

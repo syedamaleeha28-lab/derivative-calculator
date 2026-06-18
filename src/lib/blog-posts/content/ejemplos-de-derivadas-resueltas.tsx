@@ -115,15 +115,15 @@ export function EjemplosDeDerivadasResueltasContent() {
         <p>
           En la galería aparece {renderMath("4\\sin(x)")} porque separa dos ideas: la derivada de sin es cos, y
           la constante 4 «sobrevive». Enlaza con{" "}
-          <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
             derivada de sin(x)
           </Link>
           ,{" "}
-          <Link href="/blog/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
             derivada de cos(x)
           </Link>{" "}
           y{" "}
-          <Link href="/blog/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
             derivada de tan(x)
           </Link>{" "}
           para repasar la tabla antes de composiciones.

@@ -69,11 +69,11 @@ export function DerivadasParaPrincipiantesContent() {
         <p>
           Reconocer líneas, parábolas, seno y coseno ayuda a interpretar resultados. Cuando derives
           sin(x) o cos(x), consulta{" "}
-          <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
             derivada de sin(x)
           </Link>{" "}
           y{" "}
-          <Link href="/blog/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
             derivada de cos(x)
           </Link>
           .
@@ -150,7 +150,7 @@ export function DerivadasParaPrincipiantesContent() {
         <h3 id="semana3">Semana 3: cadena y trigonométricas</h3>
         <p>
           sin(2x), cos(x²), e^(3x). Artículos de sin, cos y{" "}
-          <Link href="/blog/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
             tan(x)
           </Link>
           .
@@ -179,7 +179,7 @@ export function DerivadasParaPrincipiantesContent() {
         <p>
           En trigonometría, confirma que trabajas en radianes: sin(π/2) y sin(90°) no son lo mismo
           para el motor simbólico. Los artículos de{" "}
-          <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
             sin(x)
           </Link>{" "}
           insisten en este punto porque es la fuente de discrepancias numéricas al verificar.

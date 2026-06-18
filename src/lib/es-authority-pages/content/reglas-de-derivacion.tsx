@@ -223,9 +223,9 @@ export function ReglasDeDerivacionContent() {
         <InternalLinksBlock
           heading="Profundiza en trigonometría"
           links={[
-            { href: "/blog/derivada-de-sin-x", label: "Derivada de sin(x)", desc: "Definición y regla de la cadena" },
-            { href: "/blog/derivada-de-cos-x", label: "Derivada de cos(x)", desc: "El signo menos y composiciones" },
-            { href: "/blog/derivada-de-tan-x", label: "Derivada de tan(x)", desc: "Demostración de sec²(x)" },
+            { href: "/derivada-de-sin-x", label: "Derivada de sin(x)", desc: "Definición y regla de la cadena" },
+            { href: "/derivada-de-cos-x", label: "Derivada de cos(x)", desc: "El signo menos y composiciones" },
+            { href: "/derivada-de-tan-x", label: "Derivada de tan(x)", desc: "Demostración de sec²(x)" },
           ]}
         />
       </section>

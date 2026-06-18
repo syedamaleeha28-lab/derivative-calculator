@@ -58,6 +58,11 @@ const CALCULATOR_TOOLS = [
 
 const AUTHORITY_GUIDES = [
   {
+    title: "Cómo funciona",
+    href: ROUTES.comoFunciona,
+    desc: "Glosario, derivada por definición y tutorial de la calculadora.",
+  },
+  {
     title: "Reglas de derivación",
     href: ES_AUTHORITY_ROUTES.reglasDeDerivacion,
     desc: "Guía completa: potencia, producto, cociente, cadena, trigonométricas y más.",

@@ -20,7 +20,7 @@ export function DerivadaDeCosXContent() {
           estudiantes, pero encaja con la idea de que el coseno alcanza su máximo cuando el seno
           deja de crecer. Dominar la derivada de cos x es imprescindible en cálculo diferencial y en
           cualquier curso que combine{" "}
-          <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
             derivada de sin(x)
           </Link>{" "}
           con otras reglas.
@@ -108,7 +108,7 @@ export function DerivadaDeCosXContent() {
         </p>
         <p>
           Sigue con{" "}
-          <Link href="/blog/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
             derivada de tan(x)
           </Link>{" "}
           y los{" "}
@@ -350,7 +350,7 @@ export function DerivadaDeCosXContent() {
 
       <InternalLinksBlock
         links={[
-          { href: "/blog/derivada-de-sin-x", label: "Derivada de sin(x)", desc: "El par natural con coseno" },
+          { href: "/derivada-de-sin-x", label: "Derivada de sin(x)", desc: "El par natural con coseno" },
           { href: "/blog/entendiendo-regla-de-la-cadena", label: "Regla de la cadena", desc: "Composiciones cos(g(x))" },
           { href: "/reglas-de-derivacion", label: "Reglas de derivación", desc: "Tabla completa y referencia" },
           { href: "/#calculator", label: "Calculadora de derivadas", desc: "Verificación paso a paso" },

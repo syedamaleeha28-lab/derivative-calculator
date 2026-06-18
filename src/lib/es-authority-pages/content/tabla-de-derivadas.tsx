@@ -119,7 +119,7 @@ export function TablaDeDerivadasContent() {
         </div>
         <p>
           x en radianes. Más contexto en{" "}
-          <Link href="/blog/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-tan-x" className="text-violet-600 font-semibold hover:underline">
             derivada de tan x
           </Link>
           .

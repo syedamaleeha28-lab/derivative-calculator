@@ -1,3 +1,4 @@
+import { isMigratedBlogSlug } from "../blog-migrations";
 import type { BlogPostEntry } from "./types";
 import { blogBreadcrumbs } from "./helpers";
 import { DerivadaDeSinXContent } from "./content/derivada-de-sin-x";
@@ -425,7 +426,7 @@ export function getAllBlogSlugs(): string[] {
 
 /** Hub listing (card previews) */
 export function getBlogListingPosts() {
-  return BLOG_POST_ENTRIES.map((p) => ({
+  return BLOG_POST_ENTRIES.filter((p) => !isMigratedBlogSlug(p.slug)).map((p) => ({
     title: p.title,
     slug: p.slug,
     desc: p.description,
@@ -438,6 +439,7 @@ export function getBlogListingPosts() {
 /** Recent posts for homepage (newest first). */
 export function getRecentBlogPosts(limit = 6) {
   return [...BLOG_POST_ENTRIES]
+    .filter((p) => !isMigratedBlogSlug(p.slug))
     .sort((a, b) => b.dateIso.localeCompare(a.dateIso))
     .slice(0, limit)
     .map((p) => ({

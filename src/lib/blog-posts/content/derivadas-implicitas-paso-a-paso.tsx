@@ -150,7 +150,7 @@ export function DerivadasImplicitasContent() {
         <p>
           Composición trigonométrica con producto en el argumento: se necesitan cadena y producto a la
           vez. Repasa{" "}
-          <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
             derivada de sin(x)
           </Link>{" "}
           antes de intentarlo.

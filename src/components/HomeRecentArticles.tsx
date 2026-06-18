@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
 import { getRecentBlogPosts } from "@/lib/blog-posts";
+import { resolveBlogOrRootHref } from "@/lib/blog-migrations";
 import { ROUTES } from "@/lib/routes";
 import { dict } from "@/lib/dictionaries";
 
@@ -38,7 +39,7 @@ export default function HomeRecentArticles() {
           {posts.map((post) => (
             <li key={post.slug}>
               <Link
-                href={`/blog/${post.slug}`}
+                href={resolveBlogOrRootHref(post.slug)}
                 className="group flex flex-col h-full rounded-2xl bg-white border border-slate-200 p-6 hover:border-violet-300 hover:shadow-md transition-all"
               >
                 <span className="text-[0.65rem] font-black uppercase tracking-widest text-violet-600 mb-2">

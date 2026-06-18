@@ -22,11 +22,11 @@ export function DerivadaDeTanXContent() {
         </p>
         <p>
           Si ya conoces la{" "}
-          <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
             derivada de sin(x)
           </Link>{" "}
           y la{" "}
-          <Link href="/blog/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
             derivada de cos(x)
           </Link>
           , tan(x) será un paso natural dentro de las derivadas trigonométricas.
@@ -355,7 +355,7 @@ export function DerivadaDeTanXContent() {
 
       <InternalLinksBlock
         links={[
-          { href: "/blog/derivada-de-cos-x", label: "Derivada de cos(x)", desc: "Base del cociente sin/cos" },
+          { href: "/derivada-de-cos-x", label: "Derivada de cos(x)", desc: "Base del cociente sin/cos" },
           { href: "/blog/entendiendo-regla-de-la-cadena", label: "Regla de la cadena", desc: "tan(g(x)) y composiciones" },
           { href: "/reglas-de-derivacion", label: "Reglas de derivación", desc: "Tabla trig y algebraicas" },
           { href: "/#calculator", label: "Calculadora de derivadas", desc: "Pasos detallados en español" },

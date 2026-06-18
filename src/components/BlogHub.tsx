@@ -4,14 +4,15 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Clock, ChevronRight, Star } from "lucide-react";
 import { BLOG_CATEGORIES } from "@/lib/blog-posts";
+import { resolveBlogOrRootHref } from "@/lib/blog-migrations";
 import type { getBlogListingPosts } from "@/lib/blog-posts";
 
 type Post = ReturnType<typeof getBlogListingPosts>[number];
 
 const FEATURED_SLUGS = [
-  "derivada-de-sin-x",
   "derivadas-para-principiantes",
   "regla-de-la-cadena-ejercicios",
+  "ejemplos-de-derivadas-resueltas",
 ];
 
 export default function BlogHub({
@@ -59,7 +60,7 @@ export default function BlogHub({
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featured.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`}>
+              <Link key={post.slug} href={resolveBlogOrRootHref(post.slug)}>
                 <article className="h-full rounded-2xl border-2 border-violet-200 bg-gradient-to-br from-violet-50/80 to-white p-6 hover:shadow-lg transition-all">
                   <span className="text-[0.65rem] font-bold uppercase text-violet-600">
                     {post.category}
@@ -77,7 +78,7 @@ export default function BlogHub({
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filtered.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`}>
+          <Link key={post.slug} href={resolveBlogOrRootHref(post.slug)}>
             <article className="h-full bg-white border border-slate-100 rounded-[2rem] p-8 hover:shadow-xl transition-all group cursor-pointer flex flex-col">
               <div className="flex items-center justify-between gap-2 mb-4">
                 <span className="text-[0.65rem] font-bold uppercase tracking-wide text-violet-600 bg-violet-50 px-2 py-0.5 rounded-full">

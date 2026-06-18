@@ -215,11 +215,11 @@ export function EntendiendoReglaDeLaCadenaContent() {
             reglas de derivación
           </Link>{" "}
           y practica trigonométricas en{" "}
-          <Link href="/blog/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-sin-x" className="text-violet-600 font-semibold hover:underline">
             derivada de sin(x)
           </Link>{" "}
           y{" "}
-          <Link href="/blog/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/derivada-de-cos-x" className="text-violet-600 font-semibold hover:underline">
             derivada de cos(x)
           </Link>
           .
@@ -372,7 +372,7 @@ export function EntendiendoReglaDeLaCadenaContent() {
       <InternalLinksBlock
         links={[
           { href: "/blog/regla-de-la-cadena-ejercicios", label: "Cadena: ejercicios resueltos", desc: "Seis problemas guiados" },
-          { href: "/blog/derivada-de-cos-x", label: "Derivada de cos(x)", desc: "Composiciones trig" },
+          { href: "/derivada-de-cos-x", label: "Derivada de cos(x)", desc: "Composiciones trig" },
           { href: "/reglas-de-derivacion", label: "Reglas de derivación", desc: "Referencia completa" },
           { href: "/#calculator", label: "Calculadora de derivadas", desc: "Comprueba cada paso" },
         ]}
