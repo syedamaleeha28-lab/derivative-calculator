@@ -7,7 +7,7 @@ const CALCULATOR_TOOLS = [
   {
     title: "Calculadora de derivadas",
     href: ES_MAIN_CALCULATOR_HREF,
-    desc: "Deriva cualquier función con pasos detallados y explicación de cada regla.",
+    desc: "Deriva cualquier función con pasos detallados; calcular derivadas online con explicación de cada regla.",
   },
   {
     title: "Calculadora de regla del producto",
@@ -47,12 +47,12 @@ const CALCULATOR_TOOLS = [
   {
     title: "Calculadora de recta tangente",
     href: ES_CALCULATOR_ROUTES.tangentLine,
-    desc: "Pendiente f′(a) y ecuación de la tangente en un punto.",
+    desc: "Pendiente f′(a), evaluar la derivada en un punto y ecuación de la tangente.",
   },
   {
     title: "Calculadora de puntos críticos",
     href: ES_CALCULATOR_ROUTES.criticalPoints,
-    desc: "Máximos, mínimos y dónde f′(x) = 0 para optimización.",
+    desc: "Máximos, mínimos y optimización: dónde f′(x) = 0.",
   },
 ] as const;
 
@@ -66,6 +66,11 @@ const AUTHORITY_GUIDES = [
     title: "Fórmulas de derivadas",
     href: ES_AUTHORITY_ROUTES.formulasDeDerivadas,
     desc: "Todas las fórmulas de derivación con tablas de referencia.",
+  },
+  {
+    title: "Derivadas de funciones comunes",
+    href: ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes,
+    desc: "x, x², e^x, ln x, sin x y más: guías paso a paso por función.",
   },
   {
     title: "Tabla de derivadas",
@@ -99,9 +104,17 @@ export default function HomeCalculatorTools() {
           Herramientas de Cálculo
         </h2>
         <p className="text-slate-600 text-center max-w-2xl mx-auto mb-10 leading-relaxed">
-          Calculadoras especializadas para cada técnica de derivación: regla del
+          Calculadoras especializadas para derivar y resolver derivadas con cada técnica: regla del
           producto, cociente, cadena, derivadas parciales, implícitas, segunda
-          derivada, recta tangente y puntos críticos.
+          derivada, recta tangente y puntos críticos. La{" "}
+          <Link href={`${ES_CALCULATOR_ROUTES.tangentLine}#evaluar-f-prima-en-un-punto`} className="text-violet-600 font-medium hover:underline">
+            recta tangente
+          </Link>{" "}
+          expone f′(a); los{" "}
+          <Link href={`${ES_CALCULATOR_ROUTES.criticalPoints}#aplicaciones-optimizacion`} className="text-violet-600 font-medium hover:underline">
+            puntos críticos
+          </Link>{" "}
+          conectan con optimización.
         </p>
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {CALCULATOR_TOOLS.map((item) => (

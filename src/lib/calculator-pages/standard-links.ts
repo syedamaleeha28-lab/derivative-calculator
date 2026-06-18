@@ -5,6 +5,7 @@ import { ROUTES } from "../routes";
 /** Required cluster links on every calculator landing (Spanish). */
 export const ES_STANDARD_CALCULATOR_LINKS = [
   { label: "Calculadora de derivadas", href: ROUTES.home },
+  { label: "Glosario de cálculo diferencial", href: "/como-funciona#glosario" },
   { label: "Calculadora de derivadas parciales", href: ES_CALCULATOR_ROUTES.partialDerivatives },
   { label: "Calculadora regla de la cadena", href: ES_CALCULATOR_ROUTES.chainRule },
   { label: "Calculadora derivadas implícitas", href: ES_CALCULATOR_ROUTES.implicitDerivatives },

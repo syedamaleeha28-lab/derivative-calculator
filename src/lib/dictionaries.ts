@@ -19,7 +19,7 @@ const dictionaryData = {
     hero: {
       tag: "Herramienta Académica Gratuita",
       h1: "Calculadora de Derivadas con Pasos Online",
-      desc: "Nuestra calculadora de derivadas online te ayuda a resolver funciones matemáticas con explicaciones paso a paso. Calcula derivadas trigonométricas, implícitas, parciales y logarítmicas de forma rápida y gratuita.",
+      desc: "Nuestra calculadora de derivadas online te ayuda a derivar y calcular derivadas con explicaciones paso a paso. Resuelve derivadas trigonométricas, implícitas, parciales y logarítmicas de forma rápida y gratuita.",
       calcBtn: "Calcular Ahora",
       howBtn: "Cómo funciona",
       trust1: "Precisión simbólica exacta",
@@ -342,7 +342,12 @@ const dictionaryData = {
       },
       faqs: [
         { question: "¿Es gratis?", answer: "Sí, Calculadora Derivadas es una herramienta totalmente gratuita para fines educativos." },
-        { question: "¿Puedo ver los pasos?", answer: "¡Por supuesto! Haz clic en el botón de solución detallada después de calcular." }
+        { question: "¿Puedo ver los pasos?", answer: "¡Por supuesto! Haz clic en el botón de solución detallada después de calcular." },
+        {
+          question: "¿Qué es la derivada por definición (límite)?",
+          answer:
+            "Es f′(x) = lim[h→0] (f(x+h)−f(x))/h. Mide la tasa de cambio instantánea y es la base de todas las reglas de derivación. Consulta la sección «Derivada por definición» en esta página.",
+        },
       ]
     },
     rulesPage: {
@@ -632,6 +637,18 @@ const dictionaryData = {
           q: "¿Es una herramienta matemática online segura para usar en clase?",
           a: "Funciona en HTTPS y no requiere registro. Es una herramienta matemática online orientada al estudio; no sustituye la demostración formal que pida tu docente.",
         },
+        {
+          q: "¿Qué es la derivada por definición (límite)?",
+          a: "Es el límite del cociente incremental [f(x+h)−f(x)]/h cuando h→0. Explica la pendiente de la tangente y fundamenta las reglas de derivación. Lee la explicación completa en nuestra guía de cómo funciona.",
+        },
+        {
+          q: "¿Cómo se calcula la derivada de e^x, 1/x o x²?",
+          a: "e^x se deriva a e^x; x² a 2x; 1/x es x^(−1) y su derivada es −1/x². La derivada de ln x es 1/x. Consulta la tabla de derivadas y las guías por función para ver cada caso con pasos.",
+        },
+        {
+          q: "¿En qué se diferencia esta calculadora de Symbolab?",
+          a: "Está orientada al aprendizaje en español: pasos educativos, guías de reglas y ejemplos del sitio. Symbolab es una suite más amplia; aquí el foco es dominar derivadas con contexto y enlaces a teoría.",
+        },
       ],
     },
     seoCards: {
@@ -644,7 +661,7 @@ const dictionaryData = {
           title: "¿Qué es una derivada?",
           desc: "Comprende la pendiente instantánea y el significado geométrico de la derivada en una función.",
           link: "Aprende el concepto base →",
-          href: "/como-funciona",
+          href: "/como-funciona#derivada-por-definicion",
           image: "/images/que-es-una-derivada.webp",
           imageAlt:
             "Gráfica educativa que explica qué es una derivada y la pendiente de la tangente",
@@ -724,9 +741,10 @@ const dictionaryData = {
           h2: "Qué es una derivada y por qué importa en cálculo diferencial",
           paragraphs: [
             "La derivada de una función describe cómo cambia esa función en un punto: geométricamente, coincide con la pendiente de la recta tangente. En física y economía representa velocidad instantánea, tasas marginales y sensibilidad de un modelo.",
-            "Comprender qué es una derivada es el primer paso antes de usar cualquier calculadora de derivadas: la herramienta acelera el cálculo, pero el aprendizaje real ocurre cuando relacionas el resultado con el concepto de límite y tasa de cambio.",
+            "Comprender qué es una derivada es el primer paso antes de derivar con cualquier calculadora: la herramienta acelera el cálculo, pero el aprendizaje real ocurre cuando relacionas el resultado con la definición por límite y la tasa de cambio.",
           ],
           relatedLinks: [
+            { label: "Derivada por definición (límite)", href: "/como-funciona#derivada-por-definicion" },
             { label: "Concepto y uso de la calculadora", href: "/como-funciona" },
           ],
         },
@@ -889,8 +907,8 @@ const dictionaryData = {
           id: "calculadora-matematica",
           h2: "Calculadora matemática orientada al aprendizaje",
           paragraphs: [
-            "Más que una calculadora matemática genérica, este recurso combina motor simbólico, interfaz didáctica y contenido en español. Está pensada para quien busca una calculadora de derivadas con explicaciones, no solo un número final.",
-            "Puedes usarla como complemento de clase, para preparar trabajos o para repasar antes de evaluaciones. La transparencia del procedimiento favorece la honestidad académica: entiendes el resultado y puedes explicarlo.",
+            "Más que una calculadora matemática genérica, este recurso combina motor simbólico, interfaz didáctica y contenido en español. Está pensada para quien busca derivar y calcular derivadas con explicaciones, no solo un número final.",
+            "Puedes usarla como complemento de clase, para preparar trabajos o para repasar antes de evaluaciones. Las derivadas online con procedimiento transparente favorecen la honestidad académica: entiendes el resultado y puedes explicarlo.",
           ],
         },
         {
@@ -899,10 +917,11 @@ const dictionaryData = {
           paragraphs: [
             "Para resolver derivadas online de forma fiable, verifica la sintaxis: paréntesis equilibrados, operadores explícitos (usa * entre factores), nombres de funciones correctos (sin, cos, ln, exp) y variable de derivación coherente con el enunciado.",
             "Tras obtener el resultado, recorre cada paso y pregúntate qué regla justifica la transición. Si un paso te sorprende, vuelve al tema en reglas o en el blog antes de pasar al siguiente ejercicio.",
-            "Mantén un cuaderno de errores típicos —signos, cadena incompleta, olvido de derivar el argumento interno— y revisa esa lista antes de cada práctica.",
+            "Si trabajas con aproximaciones lineales, repasa también los diferenciales en fórmulas de derivadas: dy = f′(x) dx conecta la derivada con estimaciones numéricas.",
           ],
           relatedLinks: [
             { label: "Tutorial: cómo funciona", href: "/como-funciona" },
+            { label: "Diferenciales (dy vs. dy/dx)", href: "/formulas-de-derivadas#diferenciales" },
             { label: "Preguntas frecuentes", href: "/#faq" },
           ],
         },

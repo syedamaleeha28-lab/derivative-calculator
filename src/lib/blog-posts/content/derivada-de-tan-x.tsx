@@ -345,6 +345,15 @@ export function DerivadaDeTanXContent() {
       </section>
 
       <InternalLinksBlock
+        heading="Más funciones elementales"
+        links={[
+          { href: "/tabla-de-derivadas#funciones-comunes", label: "Tabla: e^x, 1/x, x²", desc: "Derivadas de funciones comunes" },
+          { href: "/derivada-de-x-cuadrado", label: "Derivada de x²", desc: "Regla de la potencia" },
+          { href: "/derivada-de-raiz-cuadrada-de-x", label: "Derivada de √x", desc: "Potencia fraccionaria" },
+        ]}
+      />
+
+      <InternalLinksBlock
         links={[
           { href: "/blog/derivada-de-cos-x", label: "Derivada de cos(x)", desc: "Base del cociente sin/cos" },
           { href: "/blog/entendiendo-regla-de-la-cadena", label: "Regla de la cadena", desc: "tan(g(x)) y composiciones" },

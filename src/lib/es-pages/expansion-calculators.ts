@@ -922,6 +922,10 @@ export const tangentLinePage: CalculatorPageConfig = {
       a: "Comprueba que pasa por (a, f(a)) sustituyendo x = a, y que su pendiente coincide con f′(a). Ambas condiciones deben cumplirse.",
     },
     {
+      q: "¿Cómo evalúo f'(a) en un punto específico?",
+      a: "Calcula f′(x) simbólicamente, sustituye x = a y simplifica. Ese valor es la pendiente de la tangente y el coeficiente en la aproximación lineal f(a) + f′(a)(x − a).",
+    },
+    {
       q: "¿Para qué sirve la aproximación lineal?",
       a: "f(a) + f′(a)(x − a) aproxima f(x) cerca de a. Es la base del diferencial y de estimaciones rápidas en física e ingeniería.",
     },
@@ -944,8 +948,8 @@ export const tangentLinePage: CalculatorPageConfig = {
     },
     {
       label: "Calculadora puntos críticos",
-      href: ES_CALCULATOR_ROUTES.criticalPoints,
-      description: "Donde f′ = 0 la tangente es horizontal.",
+      href: `${ES_CALCULATOR_ROUTES.criticalPoints}#aplicaciones-optimizacion`,
+      description: "Optimización y máximos/mínimos a partir de f′ = 0.",
     },
   ],
   internalLinks: [
@@ -956,6 +960,15 @@ export const tangentLinePage: CalculatorPageConfig = {
     ...SITE_LINKS,
   ],
   educationalSections: [
+    {
+      id: "evaluar-f-prima-en-un-punto",
+      h2: "Evaluar f'(a) en un punto",
+      paragraphs: [
+        "Esta calculadora obtiene f′(x) de forma simbólica; evaluar en x = a es el paso que convierte la derivada general en pendiente tangente concreta. Sustituye a en la expresión simplificada de f′(x) para obtener f′(a).",
+        "Ejemplo: si f(x) = x², entonces f′(x) = 2x y f′(3) = 6. Ese 6 es la pendiente de la tangente en (3, 9) y aparece en y − 9 = 6(x − 3).",
+        "En la práctica, introduce la función, revisa f′(x) en los pasos y evalúa mentalmente o con álgebra en el punto del enunciado. Es el mismo cálculo que piden los problemas de «derivada en un punto» y de recta tangente.",
+      ],
+    },
     {
       h2: "¿Qué es la recta tangente?",
       paragraphs: [
@@ -1129,6 +1142,10 @@ export const criticalPointsPage: CalculatorPageConfig = {
       a: "Traduce el enunciado a f(x) en un dominio físico (longitudes positivas, etc.), halla críticos interiores, evalúa f en críticos y en fronteras del dominio, compara.",
     },
     {
+      q: "¿Para qué sirven los puntos críticos en problemas de optimización?",
+      a: "Los candidatos a máximo o mínimo suelen estar donde f′ = 0 o no existe. En optimización aplicada, comparas el valor de f en esos críticos y en las fronteras del dominio físico para elegir la mejor solución.",
+    },
+    {
       q: "¿Esta calculadora clasifica automáticamente los extremos?",
       a: "La herramienta obtiene f′(x) con pasos detallados. La clasificación (máximo/mínimo) la completas con f″ o tabla de signos usando los métodos de esta guía.",
     },
@@ -1163,6 +1180,15 @@ export const criticalPointsPage: CalculatorPageConfig = {
     ...SITE_LINKS,
   ],
   educationalSections: [
+    {
+      id: "aplicaciones-optimizacion",
+      h2: "Aplicaciones: optimización y problemas de máximos y mínimos",
+      paragraphs: [
+        "Los puntos críticos son el núcleo algebraico de la optimización: traducir un enunciado (área máxima, coste mínimo, beneficio óptimo) a una función f(x), hallar f′(x) = 0 y clasificar candidatos.",
+        "En problemas geométricos clásicos —caja sin tapa, cerca con postes, tiempo mínimo de viaje— el dominio físico (x > 0, longitudes admisibles) filtra soluciones espurias. Siempre evalúa f en críticos interiores y en fronteras.",
+        "La interpretación económica o física del resultado importa tanto como el cálculo: un crítico matemático puede ser irrelevante si viola restricciones del modelo. Combina esta guía con la calculadora de recta tangente para entender tasas marginales locales.",
+      ],
+    },
     {
       h2: "¿Qué son los puntos críticos?",
       paragraphs: [

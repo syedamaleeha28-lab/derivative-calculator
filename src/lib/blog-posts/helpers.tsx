@@ -22,12 +22,14 @@ export function blogBreadcrumbs(slug: string, label: string) {
 
 export function InternalLinksBlock({
   links,
+  heading = "Sigue aprendiendo",
 }: {
   links: readonly { href: string; label: string; desc?: string }[];
+  heading?: string;
 }) {
   return (
     <nav className="my-10 rounded-2xl border border-slate-200 bg-slate-50 p-6" aria-label="Artículos relacionados">
-      <h3 className="text-lg font-bold text-slate-900 mb-4">Sigue aprendiendo</h3>
+      <h3 className="text-lg font-bold text-slate-900 mb-4">{heading}</h3>
       <ul className="grid gap-3 sm:grid-cols-2">
         {links.map((link) => (
           <li key={link.href}>

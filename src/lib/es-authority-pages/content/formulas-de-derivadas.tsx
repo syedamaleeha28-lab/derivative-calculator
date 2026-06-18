@@ -200,8 +200,15 @@ export function FormulasDeDerivadasContent() {
         </FormulaCard>
         <p>
           La exponencial natural es la única (salvo escalar) cuya derivada coincide consigo misma. Para ln(g(x)), la
-          fórmula compacta es g′(x)/g(x). La derivación logarítmica extiende esto a productos y potencias con
-          exponente variable.
+          fórmula compacta es g′(x)/g(x). La{" "}
+          <Link href="/reglas-de-derivacion#derivacion-logaritmica" className="text-violet-600 font-semibold hover:underline">
+            derivación logarítmica
+          </Link>{" "}
+          extiende esto a productos y potencias con exponente variable. Fórmulas rápidas por función en la{" "}
+          <Link href={`${ES_AUTHORITY_ROUTES.tablaDeDerivadas}#derivada-de-ex`} className="text-violet-600 font-semibold hover:underline">
+            tabla: e^x, 1/x, x²
+          </Link>
+          .
         </p>
         <ExampleCard
           title="Derivar ln(x² + 1)"
@@ -273,6 +280,26 @@ export function FormulasDeDerivadasContent() {
             calculadora de derivadas parciales
           </Link>{" "}
           acepta expresiones en x, y, z y muestra el paso con la variable elegida.
+        </p>
+      </section>
+
+      <section>
+        <h2 id="diferenciales">Diferenciales (dy vs. dy/dx)</h2>
+        <p>
+          La derivada dy/dx es una razón de tasas de cambio. El diferencial dy = f′(x) dx es un cambio aproximado en y
+          cuando x varía un poco (dx). No son lo mismo: dy/dx es una función; dy depende también de cuánto mueves x.
+        </p>
+        <FormulaCard title="Aproximación lineal y diferencial">
+          {renderMath("dy = f'(x)\\,dx \\quad\\Leftrightarrow\\quad \\Delta y \\approx f'(x)\\,\\Delta x", true)}
+        </FormulaCard>
+        <p>
+          Ejemplo: si f(x) = x², entonces dy = 2x·dx. Cerca de x = 3, un incremento dx = 0.01 da dy ≈ 0.06, mientras
+          f(3.01) − f(3) ≈ 0.0601. Usa la calculadora de recta tangente para ver f′(a) como pendiente de esa
+          aproximación. Consulta también las entradas de funciones comunes en la{" "}
+          <Link href={`${ES_AUTHORITY_ROUTES.tablaDeDerivadas}#funciones-comunes`} className="text-violet-600 font-semibold hover:underline">
+            tabla de derivadas
+          </Link>
+          .
         </p>
       </section>
 

@@ -37,7 +37,11 @@ export function EjemplosDeDerivadasContent() {
           .
         </p>
         <p>
-          La práctica efectiva consiste en nombrar la regla en voz alta antes de escribir: «esto es un producto»,
+          Si empiezas desde cero, repasa primero la{" "}
+          <Link href="/como-funciona#derivada-por-definicion" className="text-violet-600 font-semibold hover:underline">
+            derivada por definición (límite)
+          </Link>
+          . La práctica efectiva consiste en nombrar la regla en voz alta antes de escribir: «esto es un producto»,
           «aquí hace falta la cadena dos veces», «cociente tras simplificar». Ese hábito se transfiere directamente a
           exámenes con tiempo limitado.
         </p>
@@ -64,6 +68,17 @@ export function EjemplosDeDerivadasContent() {
             "f′(x) = (1/2)x^(−1/2) = 1/(2√x) para x > 0.",
           ]}
         />
+        <p>
+          Más contexto en la{" "}
+          <Link href="/tabla-de-derivadas#derivada-de-raiz-x" className="text-violet-600 font-semibold hover:underline">
+            derivada de √x
+          </Link>{" "}
+          y en{" "}
+          <Link href="/tabla-de-derivadas#derivada-de-x2" className="text-violet-600 font-semibold hover:underline">
+            derivada de x²
+          </Link>
+          .
+        </p>
         <ExampleCard
           title="Básico 3: f(x) = 1/x² = x^(−2)"
           steps={["n = −2: f′(x) = −2x^(−3) = −2/x³.", "Dominio x ≠ 0."]}

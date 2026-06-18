@@ -57,6 +57,60 @@ export default async function ComoFuncionaPage() {
         </div>
       </section>
 
+      <section>
+        <h2 id="derivada-por-definicion">Derivada por definición (límite)</h2>
+        <p>
+          La definición formal de la derivada usa un límite: la tasa de cambio instantánea de f en x es
+          f′(x) = lim<sub>h→0</sub> [f(x+h) − f(x)] / h. Esa fórmula explica por qué la derivada de x es 1,
+          la de x² es 2x y, en general, por qué las reglas de derivación son atajos del mismo límite.
+        </p>
+        <p>
+          En la práctica rara vez calculas cada derivada desde cero con límites, pero entender la definición
+          conecta la pendiente de la tangente con el concepto de tasa de cambio. Practica el cociente incremental
+          en polinomios simples y luego contrasta con la{" "}
+          <Link href="/#calculator" className="text-secondary font-bold hover:underline">
+            calculadora de derivadas
+          </Link>{" "}
+          y las{" "}
+          <Link href="/reglas-de-derivacion" className="text-secondary font-bold hover:underline">
+            reglas de derivación
+          </Link>
+          .
+        </p>
+      </section>
+
+      <section>
+        <h2 id="glosario">Glosario de cálculo diferencial</h2>
+        <p className="mb-6">
+          Términos que aparecen en casi todos los capítulos de derivadas. Úsalos como referencia rápida al
+          estudiar calculadoras y guías del sitio.
+        </p>
+        <h3 id="continuidad" className="text-xl font-bold text-slate-900 mb-2">Continuidad</h3>
+        <p className="mb-6">
+          f es continua en a si lim<sub>x→a</sub> f(x) = f(a). Sin continuidad en un punto, no puede haber
+          derivabilidad allí (aunque la continuidad sola no garantiza derivada).
+        </p>
+        <h3 id="diferenciabilidad" className="text-xl font-bold text-slate-900 mb-2">Diferenciabilidad</h3>
+        <p className="mb-6">
+          f es derivable en a cuando el límite del cociente incremental existe y es finito. Geometricamente,
+          la gráfica admite tangente no vertical en ese punto.
+        </p>
+        <h3 id="notacion-leibniz-lagrange" className="text-xl font-bold text-slate-900 mb-2">Notación Leibniz y Lagrange</h3>
+        <p className="mb-6">
+          Lagrange escribe f′(x) o y′; Leibniz usa dy/dx. Ambas notaciones son equivalentes; dy/dx enfatiza
+          razones infinitesimales.
+        </p>
+        <h3 id="diferencial" className="text-xl font-bold text-slate-900 mb-2">Diferencial</h3>
+        <p>
+          El diferencial dy = f′(x) dx aproxima el cambio en y cuando x varía un poco. No es lo mismo que la
+          derivada dy/dx: consulta la sección de{" "}
+          <Link href="/formulas-de-derivadas#diferenciales" className="text-secondary font-bold hover:underline">
+            diferenciales
+          </Link>{" "}
+          en fórmulas de derivadas.
+        </p>
+      </section>
+
       {/* Notation */}
       <section>
         <h2 id="funciones">{t.sections.functions.title}</h2>
@@ -109,7 +163,7 @@ export default async function ComoFuncionaPage() {
         </WarningCard>
         <p className="mt-6">
           Después de practicar con la herramienta, revisa{" "}
-          <Link href="/blog/derivada-de-sin-x" className="text-secondary font-bold hover:underline">
+          <Link href="/derivada-de-sin-x" className="text-secondary font-bold hover:underline">
             aprende la derivada de sin x paso a paso
           </Link>{" "}
           o los{" "}

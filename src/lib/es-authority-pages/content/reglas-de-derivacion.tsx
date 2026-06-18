@@ -24,7 +24,11 @@ export function ReglasDeDerivacionContent() {
         <h2 id="vision-general">Visión general de las reglas de derivación</h2>
         <p>
           Las reglas de derivación son la gramática del cálculo diferencial: te indican cómo derivar combinaciones de
-          funciones sin volver a la definición por límites en cada problema. Esta guía reúne la regla de la potencia,
+          funciones sin volver a la{" "}
+          <Link href="/como-funciona#derivada-por-definicion" className="text-violet-600 font-semibold hover:underline">
+            definición por límites
+          </Link>{" "}
+          en cada problema. Esta guía reúne la regla de la potencia,
           la regla del producto, la regla del cociente, la regla de la cadena y las derivadas estándar de funciones
           trigonométricas, logarítmicas y exponenciales en un solo lugar, con tablas de referencia, consejos de cuándo
           usar cada técnica y enlaces a recursos especializados del blog. Mantén abierta nuestra{" "}
@@ -37,7 +41,11 @@ export function ReglasDeDerivacionContent() {
           Una estrategia exitosa es reconocer primero y algebraizar después: identifica la estructura externa (suma,
           producto, cociente, composición), aplica la regla correspondiente y simplifica. La mayoría de errores en
           exámenes provienen de una mala clasificación: tratar un producto como una composición, o olvidar el factor
-          interno de la cadena. Si aún no dominas el concepto, repasa{" "}
+          interno de la cadena.           Si aún no dominas el concepto, repasa{" "}
+          <Link href="/como-funciona#glosario" className="text-violet-600 font-semibold hover:underline">
+            el glosario de cálculo diferencial
+          </Link>{" "}
+          y{" "}
           <Link href={ROUTES.comoFunciona} className="text-violet-600 font-semibold hover:underline">
             cómo funciona una derivada
           </Link>{" "}
@@ -238,6 +246,35 @@ export function ReglasDeDerivacionContent() {
       </section>
 
       <section>
+        <h2 id="derivacion-logaritmica">Derivación logarítmica</h2>
+        <p>
+          La derivación logarítmica toma el logaritmo natural de ambos lados de una igualdad antes de derivar. Es útil
+          cuando la función mezcla productos, cocientes y exponentes variables —por ejemplo y = x^x o expresiones del
+          tipo (f(x))^(g(x))— porque ln convierte productos en sumas y exponentes en factores.
+        </p>
+        <ExampleCard
+          title="Ejemplo: derivar y = x^x con ln"
+          steps={[
+            "Toma ln de ambos lados: ln y = x ln x.",
+            "Deriva implícitamente: (1/y)·y′ = ln x + 1.",
+            "Despeja: y′ = y(ln x + 1) = x^x(ln x + 1).",
+          ]}
+        />
+        <p>
+          No sustituye la regla de la cadena en ln(g(x)) = g′/g, pero organiza problemas que de otro modo serían
+          engorrosos. Conecta con la{" "}
+          <Link href="/como-funciona#derivada-por-definicion" className="text-violet-600 font-semibold hover:underline">
+            definición formal de derivada
+          </Link>{" "}
+          y con las fórmulas de{" "}
+          <Link href={ES_AUTHORITY_ROUTES.formulasDeDerivadas} className="text-violet-600 font-semibold hover:underline">
+            fórmulas de derivadas
+          </Link>
+          .
+        </p>
+      </section>
+
+      <section>
         <h2 id="tabla-maestra">Tabla maestra de reglas</h2>
         <div className="overflow-x-auto my-6">
           <table className="w-full text-sm border-collapse border border-slate-200 rounded-xl overflow-hidden">
@@ -290,6 +327,17 @@ export function ReglasDeDerivacionContent() {
         <WarningCard>
           (fg)′ no es f′g′. (f/g)′ no es f′/g′. (f∘g)′ no es f′∘g′. Cada estructura tiene su propia regla.
         </WarningCard>
+        <p>
+          Si aún no dominas el concepto, repasa{" "}
+          <Link href="/como-funciona#glosario" className="text-violet-600 font-semibold hover:underline">
+            el glosario de cálculo diferencial
+          </Link>{" "}
+          y{" "}
+          <Link href={ROUTES.comoFunciona} className="text-violet-600 font-semibold hover:underline">
+            cómo funciona una derivada
+          </Link>{" "}
+          antes de memorizar fórmulas.
+        </p>
         <TipCard>
           Antes de aplicar la regla del cociente, pregúntate si la división larga o el factor común convierten la
           función en una suma de términos más simples; a menudo ahorra tiempo.
@@ -316,9 +364,12 @@ export function ReglasDeDerivacionContent() {
         <h2 id="implicita">Derivación implícita y logarítmica (resumen)</h2>
         <p>
           Cuando y está definida por F(x, y) = 0, la derivación implícita aplica la cadena a los términos en y y
-          despeja dy/dx. No es una fórmula mágica aparte, sino la cadena organizada para una y desconocida. La
-          derivación logarítmica toma ln de ambos lados cuando productos, cocientes y exponentes variables se mezclan;
-          tras expandir, las derivadas suelen simplificarse. Ambas técnicas aparecen en{" "}
+          despeja dy/dx. No es una fórmula mágica aparte, sino la cadena organizada para una y desconocida. Para
+          productos, cocientes y exponentes variables, la técnica dedicada está en la sección de{" "}
+          <Link href="#derivacion-logaritmica" className="text-violet-600 font-semibold hover:underline">
+            derivación logarítmica
+          </Link>
+          . Ambas técnicas aparecen en{" "}
           <Link href="/blog/derivadas-implicitas-paso-a-paso" className="text-violet-600 font-semibold hover:underline">
             derivadas implícitas paso a paso
           </Link>{" "}

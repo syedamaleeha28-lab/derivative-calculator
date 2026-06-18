@@ -91,6 +91,11 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
         answer:
           "En nuestra calculadora con pasos y en las guías de ejemplos y ejercicios de derivadas del mismo clúster.",
       },
+      {
+        question: "¿Qué es la derivación logarítmica y cuándo se usa?",
+        answer:
+          "Consiste en tomar ln de ambos lados antes de derivar. Sirve con productos, cocientes y exponentes variables, como y = x^x. Ver la sección dedicada en esta página.",
+      },
     ],
     relatedPosts: [
       { title: "Fórmulas de derivadas", href: ES_AUTHORITY_ROUTES.formulasDeDerivadas },
@@ -138,6 +143,11 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
       {
         question: "¿Dónde encuentro una tabla más compacta?",
         answer: "En nuestra guía de tabla de derivadas del mismo clúster temático.",
+      },
+      {
+        question: "¿Qué es un diferencial y en qué se distingue de una derivada?",
+        answer:
+          "dy/dx es la razón de cambio; dy = f′(x) dx es el cambio aproximado en y para un pequeño dx. La derivada es una función; el diferencial depende también del incremento elegido.",
       },
     ],
     relatedPosts: [
@@ -283,6 +293,14 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
       {
         question: "¿Cómo verifico una fila de la tabla?",
         answer: "Introduce la función en nuestra calculadora de derivadas con pasos.",
+      },
+      {
+        question: "¿Cuál es la derivada de e^x?",
+        answer: "e^x. Consulta la subsección #derivada-de-ex en esta página o la guía dedicada.",
+      },
+      {
+        question: "¿Cuál es la derivada de x²?",
+        answer: "2x. Ver la ancla #derivada-de-x2 y la guía paso a paso enlazada desde la tabla.",
       },
     ],
     relatedPosts: [

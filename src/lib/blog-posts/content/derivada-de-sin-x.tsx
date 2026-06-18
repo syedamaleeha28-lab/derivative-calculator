@@ -240,6 +240,15 @@ export function DerivadaDeSinXContent() {
       </section>
 
       <InternalLinksBlock
+        heading="Más funciones elementales"
+        links={[
+          { href: "/tabla-de-derivadas#funciones-comunes", label: "Tabla: e^x, 1/x, x²", desc: "Derivadas de funciones comunes" },
+          { href: "/derivada-de-e-elevado-a-x", label: "Derivada de e^x", desc: "Exponencial natural" },
+          { href: "/derivada-de-ln-x", label: "Derivada de ln x", desc: "Relacionada con 1/x" },
+        ]}
+      />
+
+      <InternalLinksBlock
         links={[
           { href: "/blog/regla-de-la-cadena-ejercicios", label: "Regla de la cadena: ejercicios", desc: "Seis problemas resueltos paso a paso" },
           { href: "/blog/ejemplos-de-derivadas-resueltas", label: "Ejemplos de derivadas resueltas", desc: "Galería de práctica" },

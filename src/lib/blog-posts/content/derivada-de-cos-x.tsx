@@ -340,6 +340,15 @@ export function DerivadaDeCosXContent() {
       </section>
 
       <InternalLinksBlock
+        heading="Más funciones elementales"
+        links={[
+          { href: "/tabla-de-derivadas#funciones-comunes", label: "Tabla: e^x, 1/x, x²", desc: "Derivadas de funciones comunes" },
+          { href: "/derivada-de-e-elevado-a-x", label: "Derivada de e^x", desc: "Exponencial natural" },
+          { href: "/derivada-de-ln-x", label: "Derivada de ln x", desc: "Relacionada con 1/x" },
+        ]}
+      />
+
+      <InternalLinksBlock
         links={[
           { href: "/blog/derivada-de-sin-x", label: "Derivada de sin(x)", desc: "El par natural con coseno" },
           { href: "/blog/entendiendo-regla-de-la-cadena", label: "Regla de la cadena", desc: "Composiciones cos(g(x))" },

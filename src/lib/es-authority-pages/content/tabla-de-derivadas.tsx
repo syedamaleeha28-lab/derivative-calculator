@@ -14,6 +14,7 @@ import {
   ROUTES,
   EN_ROUTES,
 } from "../helpers";
+import { ES_COMMON_FUNCTION_ROUTES } from "@/lib/common-derivative-functions/routes";
 
 export function TablaDeDerivadasContent() {
   return (
@@ -183,6 +184,63 @@ export function TablaDeDerivadasContent() {
             </tbody>
           </table>
         </div>
+      </section>
+
+      <section>
+        <h2 id="funciones-comunes">Derivadas de funciones comunes</h2>
+        <p>
+          Las consultas más frecuentes en cálculo introductorio reunidas con anclas rápidas. Cada subsección enlaza a
+          una guía paso a paso y a la calculadora para verificar.
+        </p>
+
+        <h3 id="derivada-de-ex" className="text-xl font-bold text-slate-900 mt-8 mb-2">Derivada de e^x</h3>
+        <p className="mb-6">
+          (e^x)′ = e^x. Es la única exponencial (salvo escalar) que coincide con su derivada.{" "}
+          <Link href={ES_COMMON_FUNCTION_ROUTES.derivadaDeEElevadoAX} className="text-violet-600 font-semibold hover:underline">
+            Guía completa: derivada de e^x
+          </Link>
+          .
+        </p>
+
+        <h3 id="derivada-de-1-x" className="text-xl font-bold text-slate-900 mb-2">Derivada de 1/x</h3>
+        <p className="mb-6">
+          Escribe 1/x = x^(−1): la derivada es −1/x² para x ≠ 0. Relacionada con ln x, cuya derivada es 1/x.{" "}
+          <Link href={ES_COMMON_FUNCTION_ROUTES.derivadaDeLnX} className="text-violet-600 font-semibold hover:underline">
+            Derivada de ln x
+          </Link>
+          .
+        </p>
+
+        <h3 id="derivada-de-x2" className="text-xl font-bold text-slate-900 mb-2">Derivada de x²</h3>
+        <p className="mb-6">
+          Regla de la potencia con n = 2: (x²)′ = 2x.{" "}
+          <Link href={ES_COMMON_FUNCTION_ROUTES.derivadaDeXCuadrado} className="text-violet-600 font-semibold hover:underline">
+            Ver derivada de x² paso a paso
+          </Link>
+          .
+        </p>
+
+        <h3 id="derivada-de-x3" className="text-xl font-bold text-slate-900 mb-2">Derivada de x³</h3>
+        <p className="mb-6">
+          (x³)′ = 3x². Patrón general: (x^n)′ = n·x^(n−1).{" "}
+          <Link href={ES_COMMON_FUNCTION_ROUTES.derivadaDeXCubo} className="text-violet-600 font-semibold hover:underline">
+            Guía: derivada de x³
+          </Link>
+          .
+        </p>
+
+        <h3 id="derivada-de-raiz-x" className="text-xl font-bold text-slate-900 mb-2">Derivada de √x</h3>
+        <p>
+          √x = x^(1/2), así ( √x )′ = 1/(2√x) para x &gt; 0.{" "}
+          <Link href={ES_COMMON_FUNCTION_ROUTES.derivadaDeRaizCuadradaDeX} className="text-violet-600 font-semibold hover:underline">
+            Derivada de la raíz cuadrada de x
+          </Link>
+          . Más funciones en{" "}
+          <Link href={ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes} className="text-violet-600 font-semibold hover:underline">
+            derivadas de funciones comunes
+          </Link>
+          .
+        </p>
       </section>
 
       <section>

@@ -114,13 +114,16 @@ export default function CalculatorLandingPage({ locale, page }: Props) {
             </p>
           ))}
 
-          {page.educationalSections.map((section) => (
+          {page.educationalSections.map((section) => {
+            const sectionId =
+              section.id ?? section.h2.replace(/\s+/g, "-").toLowerCase();
+            return (
             <section
-              key={section.h2}
-              aria-labelledby={section.h2.replace(/\s+/g, "-").toLowerCase()}
+              key={sectionId}
+              aria-labelledby={sectionId}
             >
               <h2
-                id={section.h2.replace(/\s+/g, "-").toLowerCase()}
+                id={sectionId}
                 className="heading-font text-2xl md:text-3xl text-slate-900 mb-4"
               >
                 {section.h2}
@@ -131,7 +134,8 @@ export default function CalculatorLandingPage({ locale, page }: Props) {
                 </p>
               ))}
             </section>
-          ))}
+          );
+          })}
 
           {!embedCalculator && <CalculatorCtaBanner locale={locale} className="mb-4" />}
 
