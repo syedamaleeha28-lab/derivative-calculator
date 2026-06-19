@@ -49,7 +49,7 @@ function buildIco(pngBySize) {
 const pngBySize = [];
 for (const size of sizes) {
   const png = await sharp(svg)
-    .resize(size, size, { fit: "contain", background: "#0f172a" })
+    .resize(size, size, { fit: "contain", background: "#A855F7" })
     .png({ compressionLevel: 9, palette: true, colors: 16 })
     .toBuffer();
   pngBySize.push({ size, png });
