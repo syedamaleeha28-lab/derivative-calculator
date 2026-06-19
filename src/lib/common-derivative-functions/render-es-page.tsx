@@ -33,6 +33,7 @@ export function buildEsCommonFunctionMetadata(route: string): Metadata {
     {
       ogType: "article",
       publishedTime: PAGE_META.dateIso,
+      absoluteTitle: true,
       alternateLanguages: {
         es: def.esRoute,
         en: `/en/${def.enSlug}`,

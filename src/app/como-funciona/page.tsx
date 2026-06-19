@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: m.title,
     description: m.description,
     keywords: m.keywords,
-  });
+  }, { absoluteTitle: true });
 }
 
 export default async function ComoFuncionaPage() {

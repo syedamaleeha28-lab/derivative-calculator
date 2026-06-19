@@ -18,6 +18,7 @@ export function buildEsAuthorityMetadata(entry: EsAuthorityEntry): Metadata {
     {
       ogType: "article",
       publishedTime: entry.dateIso,
+      absoluteTitle: true,
       alternateLanguages: {
         es: entry.route,
         en: entry.englishAlternate,

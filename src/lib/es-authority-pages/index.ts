@@ -50,7 +50,7 @@ function entry(
 export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
   entry({
     route: ES_AUTHORITY_ROUTES.reglasDeDerivacion,
-    title: "Reglas de Derivación: Guía Completa con Tabla de Referencia",
+    title: "Reglas de Derivación: Potencia, Producto y Cadena",
     description:
       "Reglas de derivación explicadas en español: potencia, producto, cociente, cadena, trigonométricas, logaritmos y exponenciales. Tablas, ejemplos y enlaces a calculadoras con pasos.",
     date: "9 de junio de 2026",
@@ -107,7 +107,7 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
   }),
   entry({
     route: ES_AUTHORITY_ROUTES.formulasDeDerivadas,
-    title: "Fórmulas de Derivadas: Referencia por Tipo de Función",
+    title: "Fórmulas de Derivadas: Referencia por Función",
     description:
       "Fórmulas de derivadas organizadas: algebraicas, trigonométricas, exponenciales, logarítmicas, inversas y reglas de combinación. Consulta rápida con ejemplos en español.",
     date: "9 de junio de 2026",
@@ -160,7 +160,7 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
   }),
   entry({
     route: ES_AUTHORITY_ROUTES.ejemplosDeDerivadas,
-    title: "Ejemplos de Derivadas Resueltos: De Básico a Avanzado",
+    title: "Ejemplos de Derivadas Resueltos Paso a Paso",
     description:
       "Ejemplos de derivadas resueltos paso a paso en español: polinomios, producto, cociente, cadena, implícitas y parciales. Práctica con pistas y calculadora de verificación.",
     date: "9 de junio de 2026",
@@ -313,9 +313,9 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
   }),
   entry({
     route: ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes,
-    title: "Derivadas de Funciones Comunes: Tabla Completa y Guías Paso a Paso",
+    title: "Derivadas de Funciones Comunes: Tabla y Guías",
     description:
-      "Hub central de derivadas de funciones comunes: x, x², √x, e^x, ln x, sin x, cos x, tan x y más. Tabla de referencia completa con enlaces a cada guía.",
+      "Consulta derivadas de x, e^x, ln x, sin x y más con tabla y guías paso a paso. Aprende cada fórmula y verifica tu procedimiento en la calculadora gratis.",
     date: "18 de junio de 2026",
     dateIso: "2026-06-18",
     readTime: "20 min",

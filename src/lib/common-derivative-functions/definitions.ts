@@ -444,9 +444,9 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
     enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfSinX,
     relatedIds: ["cos", "tan", "x"],
     es: {
-      title: "Derivada de sin(x): Fórmula cos(x) con Ejemplo Paso a Paso",
+      title: "Derivada de sin(x): cos(x) Explicada Paso a Paso",
       description:
-        "Derivada de seno paso a paso: (sin x)′ = cos x en radianes, regla de la cadena, ejemplo numérico y preguntas frecuentes.",
+        "Aprende (sin x)′ = cos x con explicación paso a paso, regla de la cadena y ejemplos. Consulta la guía y verifica tus derivadas en la calculadora gratis.",
       breadcrumbLabel: "Derivada de sin(x)",
       category: "Funciones trigonométricas",
       tags: ["derivada de sin x", "derivadas trigonométricas", "seno"],
@@ -504,9 +504,9 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
     enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfCosX,
     relatedIds: ["sin", "tan", "x"],
     es: {
-      title: "Derivada de cos(x): Fórmula −sin(x) Explicada Paso a Paso",
+      title: "Derivada de cos(x): -sin(x) Explicada Paso a Paso",
       description:
-        "Derivada de coseno: (cos x)′ = −sin x, por qué aparece el signo menos, regla de la cadena y ejemplo resuelto con FAQ.",
+        "Domina (cos x)′ = −sin x: fórmula, signo menos y cadena explicados paso a paso. Estudia la guía y comprueba tus resultados en la calculadora gratis.",
       breadcrumbLabel: "Derivada de cos(x)",
       category: "Funciones trigonométricas",
       tags: ["derivada de cos x", "derivadas trigonométricas", "coseno"],
