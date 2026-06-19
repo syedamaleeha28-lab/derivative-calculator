@@ -28,7 +28,14 @@ export const metadata: Metadata = {
     "Calculadora de derivadas online gratuita con procedimiento paso a paso. Funciones trigonométricas, exponenciales, logarítmicas y compuestas.",
   verification: { google: "wVep9l8xugGHDiilZfNgfEmpDNQp9IKMlQAuO3w4xe0" },
   manifest: "/manifest.json",
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
 };
 
 export default async function RootLayout({
