@@ -81,7 +81,7 @@ export const HOME_FEATURED_BLOG_LINKS: InternalLinkItem[] = [
       "Método para ecuaciones no despejadas y verificación con calculadora de derivadas.",
   },
   {
-    href: "/blog/ejemplos-de-derivadas-resueltas",
+    href: ROUTES.ejemplos,
     anchor: "Galería de ejemplos de derivadas resueltas",
     description:
       "Polinomios, trigonométricas, producto y cociente con enlaces a más recursos.",

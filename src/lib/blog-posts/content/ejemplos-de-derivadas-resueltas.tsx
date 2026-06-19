@@ -56,11 +56,11 @@ export function EjemplosDeDerivadasResueltasContent() {
         </p>
         <TipCard>
           Abre{" "}
-          <Link href="/ejemplos#basicos" className="font-semibold text-violet-600 hover:underline">
+          <Link href="/ejemplos-de-derivadas#basico" className="font-semibold text-violet-600 hover:underline">
             ejemplos básicos
           </Link>{" "}
           y{" "}
-          <Link href="/ejemplos#avanzados" className="font-semibold text-violet-600 hover:underline">
+          <Link href="/ejemplos-de-derivadas#combinadas" className="font-semibold text-violet-600 hover:underline">
             ejemplos avanzados
           </Link>{" "}
           en pestañas distintas. En una, estudia el procedimiento; en la otra, escribe tú mismo los pasos y solo
@@ -132,7 +132,7 @@ export function EjemplosDeDerivadasResueltasContent() {
         <h3 id="cadena-producto">Regla de la cadena y del producto</h3>
         <p>
           Los bloques avanzados de{" "}
-          <Link href="/ejemplos#avanzados" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas#combinadas" className="text-violet-600 font-semibold hover:underline">
             /ejemplos#avanzados
           </Link>{" "}
           mezclan potencias compuestas y productos. Un clásico es {renderMath("(2x+1)^5")}: aquí la capa

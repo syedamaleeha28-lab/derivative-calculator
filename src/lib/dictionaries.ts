@@ -360,7 +360,7 @@ const dictionaryData = {
       authorRole: "Departamento de Matemáticas",
       breadcrumbs: [
         { label: "Inicio", href: "/" },
-        { label: "Aprender", href: "/reglas-de-derivacion" },
+        { label: "Aprender", href: "/derivadas-de-funciones-comunes" },
         { label: "Reglas de Derivación", href: "/reglas-de-derivacion" }
       ],
       sections: {
@@ -396,7 +396,7 @@ const dictionaryData = {
       authorRole: "Docente de Cálculo",
       breadcrumbs: [
         { label: "Inicio", href: "/" },
-        { label: "Práctica", href: "/ejemplos-de-derivadas" },
+        { label: "Práctica", href: "/derivadas-de-funciones-comunes" },
         { label: "Ejemplos Resueltos", href: "/ejemplos-de-derivadas" }
       ],
       sections: {
@@ -947,7 +947,7 @@ const dictionaryData = {
         { label: "Derivada de cos x", href: "/derivada-de-cos-x" },
         { label: "Regla de la cadena (ejercicios)", href: "/blog/regla-de-la-cadena-ejercicios" },
         { label: "Derivadas implícitas resueltas", href: "/blog/derivadas-implicitas-paso-a-paso" },
-        { label: "Ejemplos de derivadas resueltas", href: "/blog/ejemplos-de-derivadas-resueltas" },
+        { label: "Ejemplos de derivadas resueltas", href: "/ejemplos-de-derivadas" },
       ],
     },
     aboutPage: {

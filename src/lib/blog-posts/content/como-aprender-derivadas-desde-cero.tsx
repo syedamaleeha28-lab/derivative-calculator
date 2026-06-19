@@ -136,7 +136,7 @@ export function ComoAprenderDerivadasDesdeCeroContent() {
         <p>
           Semana 1: límites y definición. Semana 2: potencias y polinomios. Semana 3: trigonométricas y
           regla de la cadena. Semana 4: producto, cociente y repaso con{" "}
-          <Link href="/blog/ejemplos-de-derivadas-resueltas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos de derivadas resueltas
           </Link>
           . Ajusta el ritmo si tu curso avanza más rápido, pero no omitas la cadena.

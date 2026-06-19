@@ -953,7 +953,6 @@ export const tangentLinePage: CalculatorPageConfig = {
     },
   ],
   internalLinks: [
-    { label: "Ejemplos de derivadas resueltas", href: "/blog/ejemplos-de-derivadas-resueltas" },
     { label: "Derivadas implícitas paso a paso", href: "/blog/derivadas-implicitas-paso-a-paso" },
     { label: "Tangent line calculator (English)", href: EN_ROUTES.tangentLineCalculator },
     ...esStandardInternalLinks(),
@@ -1174,7 +1173,6 @@ export const criticalPointsPage: CalculatorPageConfig = {
   ],
   internalLinks: [
     { label: "Segunda derivada y concavidad", href: ES_CALCULATOR_ROUTES.secondDerivative },
-    { label: "Ejemplos de derivadas resueltas", href: "/blog/ejemplos-de-derivadas-resueltas" },
     { label: "Critical points calculator (English)", href: EN_ROUTES.criticalPointsCalculator },
     ...esStandardInternalLinks(),
     ...SITE_LINKS,

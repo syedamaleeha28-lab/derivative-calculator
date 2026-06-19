@@ -335,6 +335,13 @@ export const dictEn: TranslationDictionary = {
     list: [],
   },
   seoCards: { title: "", subtitle: "", cards: [] },
+  homeCommonFunctions: {
+    badge: "",
+    title: "",
+    lead: "",
+    readGuide: "",
+    viewHub: "",
+  },
   homeInternalLinks: {
     featuredBadge: "",
     featuredTitle: "",

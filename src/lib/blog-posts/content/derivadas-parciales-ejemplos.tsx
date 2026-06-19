@@ -282,7 +282,7 @@ export function DerivadasParcialesEjemplosContent() {
         <p>
           Resuelve cada día dos funciones nuevas: una polinómica y una con trigonometría o exponencial. Calcula
           ambas parciales primero a mano, luego valida. Alterna con la galería univariable en{" "}
-          <Link href="/blog/ejemplos-de-derivadas-resueltas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas" className="text-violet-600 font-semibold hover:underline">
             ejemplos de derivadas resueltas: guía de práctica
           </Link>{" "}
           para no perder fluidez en reglas básicas.

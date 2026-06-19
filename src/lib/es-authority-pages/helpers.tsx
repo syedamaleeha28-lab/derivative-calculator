@@ -20,7 +20,7 @@ export function renderMath(tex: string, display = false) {
 export function esAuthorityBreadcrumbs(route: string, label: string) {
   return [
     { label: "Inicio", href: ROUTES.home },
-    { label: "Guías de derivadas", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
+    { label: "Guías de derivadas", href: ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes },
     { label, href: route },
   ] as const;
 }

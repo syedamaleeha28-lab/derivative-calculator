@@ -512,7 +512,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       tags: ["derivada de cos x", "derivadas trigonométricas", "coseno"],
       heroImageAlt: "Coseno y su derivada negativa del seno",
       intro:
-        "La derivada de cos(x) es −sin(x). El signo negativo refleja que el coseno decrece donde el seno creante positivo en la misma fase.",
+        "La derivada de cos(x) es −sin(x). El signo negativo refleja que el coseno decrece donde el seno crece en la misma fase.",
       formulaTitle: "Coseno en radianes",
       formulaLatex: "\\dfrac{d}{dx}\\,\\cos(x) = -\\sin(x)",
       formulaExplanation:

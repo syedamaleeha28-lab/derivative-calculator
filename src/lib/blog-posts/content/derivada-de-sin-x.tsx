@@ -251,7 +251,7 @@ export function DerivadaDeSinXContent() {
       <InternalLinksBlock
         links={[
           { href: "/blog/regla-de-la-cadena-ejercicios", label: "Regla de la cadena: ejercicios", desc: "Seis problemas resueltos paso a paso" },
-          { href: "/blog/ejemplos-de-derivadas-resueltas", label: "Ejemplos de derivadas resueltas", desc: "Galería de práctica" },
+          { href: "/ejemplos-de-derivadas", label: "Ejemplos de derivadas resueltas", desc: "Galería de práctica" },
           { href: "/#calculator", label: "Calculadora de derivadas", desc: "Derivadas online con pasos" },
           { href: "/como-funciona", label: "Cómo funciona la herramienta", desc: "Tutorial de sintaxis" },
         ]}

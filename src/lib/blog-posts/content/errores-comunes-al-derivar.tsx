@@ -68,7 +68,7 @@ export function ErroresComunesAlDerivarContent() {
         <p>
           Señal de alarma: tu resultado parece un solo término mezclando potencias y trigonométricas sin suma.
           Repasa{" "}
-          <Link href="/blog/ejemplos-de-derivadas-resueltas" className="text-violet-600 font-semibold hover:underline">
+          <Link href="/ejemplos-de-derivadas#intermedio" className="text-violet-600 font-semibold hover:underline">
             ejemplos de derivadas resueltas
           </Link>{" "}
           (sección producto).
