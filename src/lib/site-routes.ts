@@ -10,7 +10,7 @@ import { EN_ROUTES } from "./en-routes";
 import { getHreflangAlternates } from "./locale";
 import { absoluteUrl } from "./seo";
 
-export const NON_INDEXABLE_PREFIXES = ["/api/", "/_next/", "/icon", "/favicon"];
+export const NON_INDEXABLE_PREFIXES = ["/api/", "/_next/"];
 
 /** Blog slugs for sitemap — synced from blog-posts registry. */
 export const BLOG_POSTS: { slug: string; lastModified?: string }[] = BLOG_POST_ENTRIES.filter(
