@@ -104,7 +104,7 @@ export function getHreflangAlternates(path: string): Record<string, string> {
   return {
     "es-ES": esPath,
     "en-US": enPath,
-    "x-default": esPath,
+    "x-default": "/",
   };
 }
 
