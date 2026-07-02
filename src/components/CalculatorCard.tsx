@@ -71,7 +71,7 @@ function CalcBtn({ btn, onClick }: { btn: BtnDef; onClick: (b: BtnDef) => void }
   const v: Variant = btn.variant ?? "func";
   const len = btn.label.length;
   const font =
-    len > 4 ? "text-[0.68rem]" : len > 3 ? "text-[0.72rem]" : "text-[0.8rem]";
+    len > 4 ? "text-base" : len > 3 ? "text-base" : "text-base";
 
   return (
     <Tip tip={btn.tip}>
@@ -81,7 +81,8 @@ function CalcBtn({ btn, onClick }: { btn: BtnDef; onClick: (b: BtnDef) => void }
         whileTap={{ scale: 0.93 }}
         onClick={() => onClick(btn)}
         aria-label={btn.tip || btn.label}
-        className={`w-full h-[40px] sm:h-[44px] flex items-center justify-center select-none rounded-xl font-semibold border transition-all duration-150 ${COLOR[v]}`}
+        style={{ touchAction: "manipulation" }}
+        className={`w-full min-h-[44px] min-w-[44px] px-3 py-2.5 flex items-center justify-center select-none rounded-xl font-semibold border transition-all duration-150 ${COLOR[v]}`}
       >
         <span className={`${font} px-0.5 text-center leading-none truncate`}>{btn.label}</span>
       </motion.button>
@@ -417,7 +418,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
               placeholder={t.placeholder.replace("x", variable)}
-              className="w-full min-w-0 bg-transparent py-3 px-3 text-base sm:text-lg font-mono font-medium text-slate-900 outline-none placeholder:text-slate-400"
+              className="w-full min-w-0 bg-transparent py-3 px-3 text-base font-mono font-medium text-slate-900 outline-none placeholder:text-slate-400"
               onKeyDown={(e) => e.key === "Enter" && handleCalculate()}
               aria-label="Function to differentiate"
               aria-describedby="calc-field-help"
@@ -448,7 +449,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
                     setShowResult(false);
                     setError("");
                   }}
-                  className="whitespace-nowrap px-2 py-1 rounded-lg bg-white/90 border border-violet-100 text-[0.65rem] font-semibold text-slate-600 hover:border-cyan-300 hover:text-violet-700 hover:shadow-sm transition-all shrink-0"
+                  className="whitespace-nowrap min-h-[44px] min-w-[44px] px-3 py-2.5 rounded-lg bg-white/90 border border-violet-100 text-base font-semibold text-slate-600 hover:border-cyan-300 hover:text-violet-700 hover:shadow-sm transition-all shrink-0"
                 >
                   {ex}
                 </button>
