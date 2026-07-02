@@ -201,11 +201,15 @@ export const BLOG_POST_ENTRIES: BlogPostEntry[] = [
     faqs: [
       {
         question: "¿Qué es una derivada implícita?",
-        answer: "Derivar y respecto a x cuando la relación entre x e y no está despejada como y=f(x).",
+        answer: "Derivar y respecto a x cuando la relación entre x e y no está despejada como y=f(x). Se aplica derivando ambos lados de la ecuación e incluyendo y′ en cada término que contenga y.",
       },
       {
-        question: "¿Cómo derivo xy=1?",
-        answer: "Deriva ambos lados: y + x·y′ = 0, luego despeja y′ = −y/x.",
+        question: "¿Cuándo debo usar derivación implícita?",
+        answer: "Cuando la ecuación define y en función de x de forma incómoda o múltiple (círculos, elipses, folium, etc.) o cuando solo necesitas la pendiente dy/dx en un punto sin despejar y.",
+      },
+      {
+        question: "¿Cómo verifico mi resultado de derivación implícita?",
+        answer: "Despeja y si es razonable y deriva explícitamente para comparar, o usa la calculadora de derivadas implícitas del sitio. También puedes evaluar y′ en un punto (x₀, y₀) que cumpla la ecuación original.",
       },
     ],
     relatedPosts: [
