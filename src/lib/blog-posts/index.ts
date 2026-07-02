@@ -217,9 +217,9 @@ export const BLOG_POST_ENTRIES: BlogPostEntry[] = [
   }),
   entry({
     slug: "como-derivar-fracciones",
-    title: "Cómo derivar fracciones: regla del cociente y ejemplos",
+    title: "Derivada de una Fracción: Regla del Cociente Paso a Paso (6 Ejemplos)",
     description:
-      "Guía para derivar fracciones y funciones racionales con la regla del cociente. Seis ejemplos y dominio de la función.",
+      "Aprende a derivar fracciones con la regla del cociente. 6 ejemplos resueltos desde básico a avanzado, errores comunes y calculadora de derivadas gratis.",
     date: "14 de Mayo, 2026",
     dateIso: "2026-05-14",
     readTime: "16 min",
@@ -229,12 +229,16 @@ export const BLOG_POST_ENTRIES: BlogPostEntry[] = [
     heroImageAlt: "Regla del cociente para derivar fracciones algebraicas",
     faqs: [
       {
-        question: "¿Cuál es la regla del cociente?",
-        answer: "(u/v)′ = (u′v − uv′)/v², con v ≠ 0.",
+        question: "¿Cómo se deriva una fracción?",
+        answer: "Para derivar una fracción f(x) = u(x)/v(x), aplica la regla del cociente: (u/v)′ = (u′v − uv′)/v², siempre que v(x) ≠ 0.",
       },
       {
-        question: "¿Cómo derivo (x+1)/(x−2)?",
-        answer: "Aplica la regla del cociente o simplifica algebra antes si es posible.",
+        question: "¿Cuál es la regla del cociente?",
+        answer: "(u/v)′ = (u′v − uv′)/v², con v ≠ 0. Es la regla fundamental para derivar cocientes de funciones.",
+      },
+      {
+        question: "¿Cuáles son los errores más comunes al derivar fracciones?",
+        answer: "Los errores más frecuentes son: olvidar elevar v al cuadrado en el denominador, derivar solo el numerador, y no simplificar antes cuando el cociente se puede reducir algebraicamente.",
       },
     ],
     relatedPosts: [
