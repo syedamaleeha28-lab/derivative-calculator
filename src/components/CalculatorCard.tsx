@@ -93,7 +93,7 @@ function CalcBtn({ btn, onClick }: { btn: BtnDef; onClick: (b: BtnDef) => void }
 function buildKeypad(
   variable: string,
   tips: TranslationDictionary["calculator"]["tips"]
-): BtnDef[] {
+): { basic: BtnDef[]; advanced: BtnDef[] } {
   const fn = (label: string, insert: string, tip: string, variant: Variant = "func"): BtnDef => ({
     label,
     insert,
@@ -101,54 +101,57 @@ function buildKeypad(
     variant,
   });
 
-  return [
-    fn("sin", "sin()", tips.sin),
-    fn("cos", "cos()", tips.cos),
-    fn("tan", "tan()", tips.tan),
-    fn("ln", "ln()", tips.ln),
-    fn("log", "log()", tips.log),
-    fn("√", "sqrt()", tips.root, "special"),
+  return {
+    basic: [
+      fn("sin", "sin()", tips.sin),
+      fn("cos", "cos()", tips.cos),
+      fn("tan", "tan()", tips.tan),
+      fn("ln", "ln()", tips.ln),
+      fn("log", "log()", tips.log),
+      fn("√", "sqrt()", tips.root, "special"),
 
-    fn("asin", "asin()", tips.asin),
-    fn("acos", "acos()", tips.acos),
-    fn("atan", "atan()", tips.atan),
-    fn("sec", "sec()", tips.sec),
-    fn("csc", "csc()", tips.csc),
-    fn("cot", "cot()", tips.cot),
+      fn("eˣ", "e^()", tips.exp, "special"),
+      fn("xⁿ", "^", tips.power, "special"),
+      fn("π", "pi", tips.pi, "special"),
+      fn(variable, variable, tips.var, "special"),
+      fn("e", "e", tips.euler, "special"),
+      fn("(", "(", tips.openPar, "special"),
 
-    fn("sinh", "sinh()", tips.sinh),
-    fn("cosh", "cosh()", tips.cosh),
-    fn("tanh", "tanh()", tips.tanh),
-    fn("eˣ", "e^()", tips.exp, "special"),
-    fn("xⁿ", "^", tips.power, "special"),
-    fn("π", "pi", tips.pi, "special"),
+      fn(")", ")", tips.closePar, "special"),
+      fn("/", "/", tips.slash, "op"),
+      fn("AC", "__clear__", tips.clearAll, "clear"),
+      fn("7", "7", "", "num"),
 
-    fn(variable, variable, tips.var, "special"),
-    fn("e", "e", tips.euler, "special"),
-    fn("(", "(", tips.openPar, "special"),
-    fn(")", ")", tips.closePar, "special"),
-    fn("/", "/", tips.slash, "op"),
-    fn("AC", "__clear__", tips.clearAll, "clear"),
+      fn("8", "8", "", "num"),
+      fn("9", "9", "", "num"),
+      fn("+", "+", tips.sum, "op"),
+      fn("−", "-", tips.sub, "op"),
+      fn("⌫", "__del__", tips.delete, "op"),
 
-    fn("7", "7", "", "num"),
-    fn("8", "8", "", "num"),
-    fn("9", "9", "", "num"),
-    fn("+", "+", tips.sum, "op"),
-    fn("−", "-", tips.sub, "op"),
-    fn("⌫", "__del__", tips.delete, "op"),
+      fn("4", "4", "", "num"),
+      fn("5", "5", "", "num"),
+      fn("6", "6", "", "num"),
+      fn("×", "*", tips.mul, "op"),
+      fn("^", "^", tips.power, "op"),
+      fn(".", ".", tips.point, "num"),
 
-    fn("4", "4", "", "num"),
-    fn("5", "5", "", "num"),
-    fn("6", "6", "", "num"),
-    fn("×", "*", tips.mul, "op"),
-    fn("^", "^", tips.power, "op"),
-    fn(".", ".", tips.point, "num"),
-
-    fn("1", "1", "", "num"),
-    fn("2", "2", "", "num"),
-    fn("3", "3", "", "num"),
-    fn("0", "0", "", "num"),
-  ];
+      fn("1", "1", "", "num"),
+      fn("2", "2", "", "num"),
+      fn("3", "3", "", "num"),
+      fn("0", "0", "", "num"),
+    ],
+    advanced: [
+      fn("asin", "asin()", tips.asin),
+      fn("acos", "acos()", tips.acos),
+      fn("atan", "atan()", tips.atan),
+      fn("sec", "sec()", tips.sec),
+      fn("csc", "csc()", tips.csc),
+      fn("cot", "cot()", tips.cot),
+      fn("sinh", "sinh()", tips.sinh),
+      fn("cosh", "cosh()", tips.cosh),
+      fn("tanh", "tanh()", tips.tanh),
+    ],
+  };
 }
 
 function sanitize(expr: string): string {
@@ -223,6 +226,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
   const [showSteps, setShowSteps] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [showAdvancedKeypad, setShowAdvancedKeypad] = useState(false);
   const [simplify, setSimplify] = useState(true);
   const [variable, setVariable] = useState(initialVariable ?? "x");
 
@@ -528,9 +532,33 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
 
         {/* Unified keypad + calculate */}
         <div className="px-3 pb-4 pt-3 sm:px-4 sm:pb-5 sm:pt-3.5 bg-gradient-to-b from-indigo-50/40 via-violet-50/30 to-cyan-50/20">
-          <div className="grid grid-cols-6 gap-1.5 sm:gap-2">
-            {keypad.map((b) => (
+          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-1.5 sm:gap-2">
+            {keypad.basic.map((b) => (
               <CalcBtn key={`${b.label}-${b.insert}`} btn={b} onClick={handleBtn} />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setShowAdvancedKeypad((s) => !s)}
+            className="sm:hidden w-full mt-2 flex items-center justify-center gap-1 text-[0.7rem] font-bold text-violet-600 py-2 rounded-xl border border-violet-200/80 bg-white/70"
+            aria-expanded={showAdvancedKeypad}
+          >
+            {showAdvancedKeypad ? "Ocultar funciones avanzadas" : "Opciones avanzadas"}
+            <ChevronDown size={12} className={`transition-transform ${showAdvancedKeypad ? "rotate-180" : ""}`} />
+          </button>
+
+          {showAdvancedKeypad && (
+            <div className="grid grid-cols-4 gap-1.5 mt-2 sm:hidden">
+              {keypad.advanced.map((b) => (
+                <CalcBtn key={`adv-${b.label}-${b.insert}`} btn={b} onClick={handleBtn} />
+              ))}
+            </div>
+          )}
+
+          <div className="hidden sm:grid sm:grid-cols-5 md:grid-cols-6 gap-1.5 sm:gap-2 mt-2">
+            {keypad.advanced.map((b) => (
+              <CalcBtn key={`desk-${b.label}-${b.insert}`} btn={b} onClick={handleBtn} />
             ))}
           </div>
 
@@ -577,7 +605,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
             exit={{ opacity: 0, y: -8 }}
             className="w-full"
           >
-            <div className="bg-gradient-to-br from-white via-violet-50/30 to-cyan-50/20 border border-violet-100/80 rounded-3xl px-4 pt-5 pb-4 sm:px-5 shadow-[0_16px_40px_-12px_rgba(99,102,241,0.25)]">
+            <div className="bg-gradient-to-br from-white via-violet-50/30 to-cyan-50/20 border border-violet-100/80 rounded-3xl p-4 sm:px-5 sm:pt-5 sm:pb-4 shadow-[0_16px_40px_-12px_rgba(99,102,241,0.25)]">
               <div className="flex items-center justify-between mb-3">
                 <span
                   id="derivative-result-heading"
@@ -593,19 +621,19 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
                       setCopied(true);
                       setTimeout(() => setCopied(false), 2000);
                     }}
-                    className={`flex items-center gap-1 text-[0.6rem] font-bold px-2 py-0.5 rounded-full border transition-all ${
+                    className={`flex items-center gap-1 text-[0.65rem] sm:text-[0.6rem] font-bold px-2.5 py-1 rounded-full border transition-all ${
                       copied
                         ? "bg-emerald-50 text-emerald-600 border-emerald-200"
-                        : "bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100"
+                        : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
                     }`}
                   >
                     {copied ? (
                       <>
                         <CheckCircle2 size={10} />
-                        {t.copied}
+                        ¡Copiado!
                       </>
                     ) : (
-                      "COPY"
+                      "Copiar resultado"
                     )}
                   </button>
                   <span className="text-[0.55rem] font-bold bg-violet-50 text-violet-600 px-2 py-0.5 rounded-full border border-violet-100 uppercase">
@@ -619,7 +647,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
                   f&apos;({variable}) =
                 </span>
                 <div
-                  className="text-slate-900 text-lg sm:text-xl"
+                  className="text-slate-900 text-xl"
                   dangerouslySetInnerHTML={{
                     __html: katex.renderToString(latexResult || "", {
                       throwOnError: false,
@@ -659,13 +687,13 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
                         { t: t.steps.step2.t, d: t.steps.step2.d, f: latexResult },
                         { t: t.steps.step3.t, d: t.steps.step3.d, f: latexResult },
                       ].map((step, i) => (
-                        <div key={i} className="flex gap-3 items-start">
+                        <div key={i} className="flex gap-3 items-start pb-4 border-b border-slate-100 last:border-b-0 last:pb-0">
                           <div className="w-5 h-5 rounded-full bg-violet-100 flex items-center justify-center shrink-0 mt-0.5">
                             <CheckCircle2 size={11} className="text-violet-600" />
                           </div>
                           <div className="flex flex-col gap-1 min-w-0">
-                            <h4 className="font-bold text-slate-900 text-[0.8rem]">{step.t}</h4>
-                            <p className="text-[0.72rem] text-slate-500 leading-relaxed">{step.d}</p>
+                            <h4 className="font-bold text-slate-900 text-[0.85rem] sm:text-[0.8rem]">{step.t}</h4>
+                            <p className="text-[0.9375rem] sm:text-[0.72rem] text-slate-500 leading-relaxed">{step.d}</p>
                             <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 overflow-x-auto">
                               <div
                                 dangerouslySetInnerHTML={{
