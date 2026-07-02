@@ -32,7 +32,7 @@ export function buildNewCommonFunctionEnEntries(): EnArticleEntry[] {
 
 export const COMMON_FUNCTIONS_HUB_EN_ENTRY: EnArticleEntry = {
   slug: EN_COMMON_FUNCTIONS_HUB_SLUG,
-  title: "Common Derivative Functions: Complete Table and Step-by-Step Guides",
+  title: "Common Derivatives: Complete Reference Table",
   description:
     "Central hub for derivatives of x, x², √x, e^x, ln x, sin x, cos x, tan x, and more. Full reference table plus links to every function guide.",
   date: "June 18, 2026",

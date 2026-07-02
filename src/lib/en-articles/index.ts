@@ -87,7 +87,7 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
   }),
   entry({
     slug: "derivative-of-cos-x",
-    title: "Derivative of cos(x): Formula, Proof, and Examples",
+    title: "Derivative of cos(x): Formula and Examples",
     description:
       "The derivative of cos x is −sin(x). See why the minus sign appears, chain rule examples, product cases, and practice tips.",
     date: "June 1, 2026",
@@ -161,7 +161,7 @@ export const EN_ARTICLE_ENTRIES: EnArticleEntry[] = [
   }),
   entry({
     slug: "derivative-of-ln-x",
-    title: "Derivative of ln(x): 1/x and the Chain Rule",
+    title: "Derivative of ln(x): Formula, Proof, and Examples",
     description:
       "Understand why d/dx ln(x) = 1/x, natural logarithm domain, ln(g(x)) with the chain rule, and logarithmic differentiation preview.",
     date: "June 1, 2026",

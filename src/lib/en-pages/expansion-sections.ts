@@ -487,7 +487,7 @@ export const criticalPointsCalculatorConfig: CalculatorPageConfig = {
     "Whether you are sketching curves, solving optimization problems, or preparing for a calculus exam, systematic critical point analysis is essential. Combine the tools and guides here with your instructor's sign-chart method for rigorous justifications.",
   ],
   meta: {
-    title: "Critical Points Calculator with Steps Online Free",
+    title: "Critical Points Calculator — Free with Steps",
     description:
       "Free critical points calculator with steps. Solve f′(x)=0, classify max and min, and sketch curves with worked examples. Try the tool free now.",
     keywords:

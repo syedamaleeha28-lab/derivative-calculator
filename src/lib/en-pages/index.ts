@@ -60,7 +60,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
       "Enter any expression using standard math notation, pick your variable, and press Calculate. The engine applies the correct differentiation rules and presents a simplified final answer you can compare with your handwritten work.",
     ],
     meta: {
-      title: "Derivative Calculator with Steps — Free Online Tool",
+      title: "Derivative Calculator with Steps — Free Online",
       description:
         "Free derivative calculator with step-by-step solutions. Differentiate polynomials, trig, exponential, and composite functions online. Built for calculus students.",
       keywords:
