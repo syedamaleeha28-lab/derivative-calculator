@@ -38,7 +38,7 @@ export default function Hero() {
   return (
     <section
       id="calculator"
-      className="relative overflow-hidden pt-10 pb-12 md:pt-14 md:pb-16 scroll-mt-20 bg-gradient-to-b from-white via-indigo-50/30 to-violet-50/40 hero-mesh hero-mesh-animated"
+      className="relative overflow-hidden pt-4 pb-12 sm:pt-10 md:pt-14 md:pb-16 scroll-mt-20 bg-gradient-to-b from-white via-indigo-50/30 to-violet-50/40 hero-mesh hero-mesh-animated"
       aria-labelledby="hero-heading"
     >
       <motion.div
@@ -70,14 +70,14 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 xl:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14 items-start lg:items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="flex flex-col gap-5 sm:gap-6 lg:pr-2 xl:pr-6"
+            className="flex flex-col gap-3 sm:gap-5 lg:pr-2 xl:pr-6 order-2 lg:order-1"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-violet-200/80 text-violet-700 text-[0.65rem] sm:text-[0.7rem] font-bold tracking-widest uppercase w-fit shadow-sm backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-violet-200/80 text-violet-700 text-[0.65rem] sm:text-[0.7rem] font-bold tracking-widest uppercase w-fit shadow-sm backdrop-blur-sm max-sm:hidden">
               <span className="w-2 h-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 animate-pulse" />
               {t.tag}
             </div>
@@ -85,19 +85,19 @@ export default function Hero() {
             <div>
               <h1
                 id="hero-heading"
-                className="heading-font text-[2rem] sm:text-[2.5rem] lg:text-[2.85rem] xl:text-[3.1rem] leading-[1.08] text-slate-900 tracking-tight mb-4"
+                className="heading-font text-2xl sm:text-[2.5rem] lg:text-[2.85rem] xl:text-[3.1rem] leading-[1.08] text-slate-900 tracking-tight mb-3 sm:mb-4"
               >
                 {t.h1}
               </h1>
               <p
                 id="hero-description"
-                className="text-[1rem] sm:text-[1.05rem] lg:text-[1.1rem] text-slate-600 leading-relaxed max-w-xl"
+                className="text-[0.95rem] sm:text-[1.05rem] lg:text-[1.1rem] text-slate-600 leading-relaxed max-w-xl max-sm:hidden"
               >
                 {t.desc}
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="hidden sm:flex flex-wrap items-center gap-3">
               <motion.button
                 type="button"
                 onClick={handleCalculateClick}
@@ -117,7 +117,7 @@ export default function Hero() {
               </MotionLink>
             </div>
 
-            <div className="flex flex-col gap-2.5 pt-4 border-t border-violet-100/80">
+            <div className="hidden sm:flex flex-col gap-2.5 pt-4 border-t border-violet-100/80">
               <TrustPill icon={<Check size={14} />} text={t.trust1} />
               <TrustPill icon={<Zap size={14} />} text={t.trust2} />
               <TrustPill icon={<BookOpen size={14} />} text={t.trust3} />
@@ -128,7 +128,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut", delay: 0.08 }}
-            className="relative flex w-full justify-center lg:justify-end"
+            className="relative flex w-full justify-center lg:justify-end order-1 lg:order-2"
           >
             <motion.div
               className="pointer-events-none absolute inset-0 flex items-center justify-center"
