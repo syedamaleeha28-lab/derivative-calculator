@@ -20,6 +20,10 @@ import {
   organizationRef,
   schemaLanguage,
 } from "@/lib/calculator-pages/schema-shared";
+import {
+  DEFAULT_SOFTWARE_APPLICATION_DESCRIPTION,
+  HOMEPAGE_SOFTWARE_APPLICATION_NAME,
+} from "@/lib/software-application-schema";
 
 export type FaqItem = { q: string; a: string };
 
@@ -77,8 +81,8 @@ export function buildHomePageSchemaGraph() {
 
   const softwareApplication = buildSoftwareApplicationNode({
     id: softwareId,
-    name: meta.title,
-    description: meta.description,
+    name: HOMEPAGE_SOFTWARE_APPLICATION_NAME,
+    description: DEFAULT_SOFTWARE_APPLICATION_DESCRIPTION,
     url: canonical,
     locale: "es",
     websiteId,

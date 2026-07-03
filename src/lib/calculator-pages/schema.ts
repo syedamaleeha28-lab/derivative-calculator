@@ -11,6 +11,10 @@ import {
   organizationRef,
   schemaLanguage,
 } from "./schema-shared";
+import {
+  DEFAULT_SOFTWARE_APPLICATION_DESCRIPTION,
+  deriveSoftwareApplicationName,
+} from "../software-application-schema";
 
 const TEACHES_BY_KIND: Record<SpecializedCalculatorKind, { es: string; en: string }> = {
   "product-rule": {
@@ -135,8 +139,8 @@ export function buildCalculatorPageSchema(page: CalculatorPageConfig, locale: Lo
       }),
       buildSoftwareApplicationNode({
         id: softwareId,
-        name: title,
-        description,
+        name: deriveSoftwareApplicationName(page.h1),
+        description: DEFAULT_SOFTWARE_APPLICATION_DESCRIPTION,
         url: pageUrl,
         locale,
         websiteId,

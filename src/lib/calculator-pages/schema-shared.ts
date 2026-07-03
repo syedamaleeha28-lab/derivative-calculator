@@ -1,6 +1,7 @@
 import { SITE_NAME, SITE_URL, absoluteUrl } from "../seo";
 import { SOCIAL_PROFILE_URLS } from "../social-links";
 import type { Locale } from "../locale";
+import { buildSoftwareApplicationJsonLd } from "../software-application-schema";
 
 export const SCHEMA_CONTEXT = "https://schema.org";
 export const ORGANIZATION_ID = `${SITE_URL}/#organization` as const;
@@ -45,16 +46,19 @@ export function buildSoftwareApplicationNode(opts: {
   locale: Locale | "es" | "en";
   websiteId?: string;
 }) {
-  return {
-    "@type": ["SoftwareApplication", "WebApplication"] as const,
-    "@id": opts.id,
+  const { "@context": _context, ...core } = buildSoftwareApplicationJsonLd({
     name: opts.name,
-    applicationCategory: "EducationalApplication",
-    applicationSubCategory: "MathematicsApplication",
-    operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript. Requires HTML5.",
     url: opts.url,
     description: opts.description,
+    locale: opts.locale,
+  });
+
+  return {
+    ...core,
+    "@type": ["SoftwareApplication", "WebApplication"] as const,
+    "@id": opts.id,
+    applicationSubCategory: "MathematicsApplication",
+    browserRequirements: "Requires JavaScript. Requires HTML5.",
     inLanguage: schemaLanguage(opts.locale),
     image: DEFAULT_SCHEMA_IMAGE,
     offers: buildOfferNode(),
