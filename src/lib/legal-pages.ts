@@ -208,7 +208,8 @@ const es: Record<string, LegalPageContent> = {
   },
   about: {
     title: "Acerca de Nosotros",
-    subtitle: "Quiénes somos y por qué creamos esta calculadora de derivadas.",
+    subtitle:
+      "Conoce la misión, el método y el compromiso detrás de Calculadora Derivadas: una herramienta educativa gratuita para aprender cálculo diferencial en español.",
     lastUpdated: LAST_UPDATED,
     ctaLabel: "Usar la calculadora",
     relatedTitle: "Documentos legales",
@@ -217,29 +218,60 @@ const es: Record<string, LegalPageContent> = {
         id: "who",
         title: "Quiénes somos",
         paragraphs: [
-          "Calculadora Derivadas es un proyecto educativo dedicado a hacer el cálculo diferencial más accesible para estudiantes de secundaria, universidad y docentes.",
-          "Nuestro objetivo es combinar precisión simbólica con explicaciones claras, en español, inglés y portugués.",
+          "Calculadora Derivadas (calculadora-derivadas.org) es un proyecto educativo independiente dedicado a hacer el cálculo diferencial más accesible para estudiantes de bachillerato, universidad y docentes que buscan una referencia clara en español.",
+          "Combinamos una calculadora simbólica en línea con guías, reglas de derivación, ejemplos resueltos y artículos de blog. El sitio está disponible principalmente en español, con recursos complementarios en inglés para ampliar el alcance educativo.",
         ],
       },
       {
         id: "mission",
         title: "Nuestra misión",
         paragraphs: [
-          "Democratizar el acceso a herramientas de derivación paso a paso sin barreras de pago ni registro obligatorio.",
+          "Nuestra misión es democratizar el acceso a herramientas de derivación paso a paso sin barreras de pago ni registro obligatorio. Creemos que practicar con resultados exactos y explicaciones comprensibles acelera el aprendizaje y reduce la frustración en cursos de matemáticas e ingeniería.",
+          "Queremos que cualquier estudiante pueda comprobar su trabajo antes de un examen, que los docentes encuentren ejemplos listos para clase y que quien repasa por cuenta propia disponga de una guía fiable sin depender de software costoso.",
         ],
       },
       {
-        id: "offer",
-        title: "Qué ofrecemos",
+        id: "methodology",
+        title: "Metodología educativa",
         paragraphs: [
-          "Calculadora simbólica en línea, reglas de derivación, ejemplos resueltos, artículos de blog y páginas temáticas sobre funciones comunes (seno, coseno, logaritmos, etc.).",
+          "Diseñamos cada recurso con un enfoque progresivo: primero el concepto (qué es una derivada y para qué sirve), después las reglas y fórmulas, y finalmente la práctica con ejercicios y la calculadora.",
+          "Los artículos enlazan entre sí para formar rutas de estudio — desde funciones básicas como sin x o x² hasta temas avanzados como la regla de la cadena, derivadas implícitas o parciales. La calculadora complementa el estudio manual: no sustituye el razonamiento, sino que lo refuerza mostrando el resultado simbólico y una estructura de pasos que ayuda a identificar qué regla aplicar.",
+          "Priorizamos el español claro, ejemplos concretos y enlaces internos para que puedas profundizar sin perderte entre páginas aisladas.",
         ],
       },
       {
-        id: "standards",
-        title: "Compromiso editorial",
+        id: "accuracy",
+        title: "Precisión matemática",
         paragraphs: [
-          "Revisamos el contenido educativo con criterios de claridad matemática y coherencia pedagógica. Las actualizaciones se publican de forma periódica.",
+          "La calculadora utiliza un motor de álgebra simbólica para diferenciar expresiones escritas en notación estándar: funciones trigonométricas, logaritmos, exponenciales, potencias, productos, cocientes y composiciones.",
+          "Los resultados se presentan en forma simbólica exacta siempre que el motor puede simplificarlas de manera fiable. En expresiones muy complejas o ambiguas, el sistema puede devolver una forma equivalente distinta a la de tu libro de texto; por eso recomendamos contrastar con tus apuntes o con la guía de sintaxis de la página Cómo funciona.",
+          "El contenido educativo del sitio se redacta siguiendo definiciones y reglas ampliamente aceptadas en cálculo diferencial de nivel secundario y universitario.",
+        ],
+      },
+      {
+        id: "quality",
+        title: "Aseguramiento de calidad",
+        paragraphs: [
+          "Revisamos periódicamente las páginas de reglas, ejemplos y artículos del blog para mantener coherencia pedagógica, corregir erratas y actualizar enlaces internos.",
+          "Animamos a la comunidad a reportar discrepancias: si una expresión no se interpreta como esperas, indica la fórmula exacta que ingresaste y el resultado que obtuviste a través de nuestra página de contacto o redes sociales oficiales.",
+          "Las actualizaciones del sitio y de la calculadora se publican de forma continua; la fecha de última revisión de esta página figura al inicio del documento.",
+        ],
+      },
+      {
+        id: "calculator",
+        title: "Cómo funciona la calculadora",
+        paragraphs: [
+          "Escribes la función en el campo de entrada (por ejemplo sin(x), x^2/(x-1) o ln(x)), eliges la variable de derivación si es necesario y pulsas Calcular. El sistema devuelve la derivada simbólica y, si lo deseas, puedes desplegar una explicación paso a paso que describe la estructura de la solución.",
+          "También ofrecemos calculadoras especializadas para regla de la cadena, producto, cociente, derivadas implícitas, parciales y otros temas frecuentes en el currículo universitario. Todas comparten el mismo espíritu: gratuidad, uso sin cuenta y foco en el aprendizaje.",
+        ],
+      },
+      {
+        id: "students",
+        title: "Compromiso con los estudiantes",
+        paragraphs: [
+          "Calculadora Derivadas es y seguirá siendo gratuita para uso educativo. No vendemos tus datos personales: no exigimos registro para calcular derivadas.",
+          "Entendemos la presión de los exámenes y el estudio autónomo; por eso mantenemos la interfaz rápida en móvil y escritorio, con textos de ayuda en español y mensajes de error que orientan en lugar de confundir.",
+          "Si esta herramienta te ha ayudado en clase o en casa, compartirla con compañeros o enlazarla desde tu blog académico nos ayuda a llegar a más estudiantes que la necesitan.",
         ],
       },
     ],

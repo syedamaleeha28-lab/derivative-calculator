@@ -11,6 +11,13 @@ import {
 import { getLegalPageContent } from "@/lib/legal-pages";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/seo";
 import { ROUTES } from "@/lib/routes";
+import {
+  SCHEMA_CONTEXT,
+  buildOrganizationNode,
+  organizationRef,
+} from "@/lib/calculator-pages/schema-shared";
+
+const EDITORIAL_TEAM_ID = `${SITE_URL}/#editorial-team` as const;
 
 type LegalTrustPageProps = {
   pageId: LegalPageId;
@@ -30,27 +37,60 @@ export default function LegalTrustPage({ pageId }: LegalTrustPageProps) {
         ? "ContactPage"
         : "WebPage";
 
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": schemaType,
-      name: content.title,
-      description: content.subtitle,
-      url: canonical,
-      inLanguage: "es",
-      dateModified: content.lastUpdated,
-      isPartOf: {
-        "@type": "WebSite",
-        name: SITE_NAME,
-        url: SITE_URL,
-      },
-      publisher: {
-        "@type": "Organization",
-        name: SITE_NAME,
-        url: SITE_URL,
-      },
-    },
-  ];
+  const jsonLd =
+    pageId === "about"
+      ? {
+          "@context": SCHEMA_CONTEXT,
+          "@graph": [
+            buildOrganizationNode(),
+            {
+              "@type": "Person",
+              "@id": EDITORIAL_TEAM_ID,
+              name: "Equipo de Calculadora Derivadas",
+              jobTitle: "Equipo editorial y soporte educativo",
+              url: canonical,
+              worksFor: organizationRef(),
+            },
+            {
+              "@type": "AboutPage",
+              "@id": `${canonical}#webpage`,
+              name: content.title,
+              description: content.subtitle,
+              url: canonical,
+              inLanguage: "es",
+              dateModified: content.lastUpdated,
+              isPartOf: {
+                "@type": "WebSite",
+                name: SITE_NAME,
+                url: SITE_URL,
+              },
+              about: organizationRef(),
+              author: { "@id": EDITORIAL_TEAM_ID },
+              publisher: organizationRef(),
+            },
+          ],
+        }
+      : [
+          {
+            "@context": "https://schema.org",
+            "@type": schemaType,
+            name: content.title,
+            description: content.subtitle,
+            url: canonical,
+            inLanguage: "es",
+            dateModified: content.lastUpdated,
+            isPartOf: {
+              "@type": "WebSite",
+              name: SITE_NAME,
+              url: SITE_URL,
+            },
+            publisher: {
+              "@type": "Organization",
+              name: SITE_NAME,
+              url: SITE_URL,
+            },
+          },
+        ];
 
   const footerLabelKey = {
     privacy: "privacy",
