@@ -670,28 +670,6 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
                   {t.result}
                 </span>
                 <div className="flex items-center gap-1.5">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      navigator.clipboard.writeText(textResult);
-                      setCopied(true);
-                      setTimeout(() => setCopied(false), 2000);
-                    }}
-                    className={`flex items-center gap-1 text-[0.65rem] sm:text-[0.6rem] font-bold px-2.5 py-1 rounded-full border transition-all ${
-                      copied
-                        ? "bg-emerald-50 text-emerald-600 border-emerald-200"
-                        : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
-                    }`}
-                  >
-                    {copied ? (
-                      <>
-                        <CheckCircle2 size={10} />
-                        ¡Copiado!
-                      </>
-                    ) : (
-                      "Copiar resultado"
-                    )}
-                  </button>
                   <span className="text-[0.55rem] font-bold bg-violet-50 text-violet-600 px-2 py-0.5 rounded-full border border-violet-100 uppercase">
                     {simplify ? t.simplified : t.expanded}
                   </span>
@@ -711,6 +689,31 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
                     }),
                   }}
                 />
+              </div>
+
+              <div className="flex justify-center mt-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText(textResult);
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                  }}
+                  className={`inline-flex items-center justify-center gap-1.5 text-[0.75rem] font-semibold px-4 py-2 rounded-lg border transition-all ${
+                    copied
+                      ? "bg-emerald-50 text-emerald-600 border-emerald-200"
+                      : "bg-transparent text-slate-600 border-slate-300 hover:bg-slate-50 hover:border-slate-400"
+                  }`}
+                >
+                  {copied ? (
+                    <>
+                      <CheckCircle2 size={14} />
+                      {t.copied}
+                    </>
+                  ) : (
+                    "Copiar resultado"
+                  )}
+                </button>
               </div>
 
               <button
