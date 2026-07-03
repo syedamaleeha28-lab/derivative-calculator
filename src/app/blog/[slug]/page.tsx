@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import BlogPostingSchema from "@/components/BlogPostingSchema";
 import ArticleLayout from "@/components/EducationalArticle";
 import { getBlogPostBySlug, getAllBlogSlugs } from "@/lib/blog-posts";
 import { getRelatedArticlesForPost } from "@/lib/blog-posts/related";
@@ -34,20 +35,32 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
   const Content = post.Content;
 
   return (
-    <ArticleLayout
-      title={post.title}
-      description={post.description}
-      date={post.date}
-      readTime={post.readTime}
-      author={post.author}
-      category={post.category}
-      tags={post.tags}
-      content={<Content />}
-      faqs={post.faqs}
-      relatedPosts={getRelatedArticlesForPost(slug)}
-      breadcrumbs={post.breadcrumbs}
-      heroImageAlt={post.heroImageAlt}
-      showArticleMeta
-    />
+    <>
+      <BlogPostingSchema
+        id={`blog-posting-${slug}`}
+        path={`/blog/${slug}`}
+        headline={post.title}
+        description={post.description}
+        datePublished={post.dateIso}
+        authorName={post.author.name}
+        imageCaption={post.heroImageAlt}
+      />
+      <ArticleLayout
+        title={post.title}
+        description={post.description}
+        date={post.date}
+        readTime={post.readTime}
+        author={post.author}
+        category={post.category}
+        tags={post.tags}
+        content={<Content />}
+        faqs={post.faqs}
+        relatedPosts={getRelatedArticlesForPost(slug)}
+        breadcrumbs={post.breadcrumbs}
+        heroImageAlt={post.heroImageAlt}
+        showArticleMeta
+        omitArticleJsonLd
+      />
+    </>
   );
 }

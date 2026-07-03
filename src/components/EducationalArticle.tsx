@@ -78,6 +78,8 @@ interface ArticleProps {
   /** Override sidebar resource links (e.g. English guides). */
   resourceLinks?: readonly { label: string; href: string; icon?: React.ReactNode }[];
   calculatorHref?: string;
+  /** When true, skip Article JSON-LD (e.g. BlogPosting is rendered separately). */
+  omitArticleJsonLd?: boolean;
 }
 
 // ─── Content Blocks ──────────────────────────────────────────────────────────
@@ -171,6 +173,7 @@ export default function ArticleLayout({
   locale = "es",
   resourceLinks,
   calculatorHref,
+  omitArticleJsonLd = false,
 }: ArticleProps) {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
@@ -339,7 +342,7 @@ export default function ArticleLayout({
       <JsonLd
         data={[
           webPageSchema,
-          articleSchema,
+          ...(omitArticleJsonLd ? [] : [articleSchema]),
           ...(faqSchema ? [faqSchema] : []),
           breadcrumbSchema,
         ]}
