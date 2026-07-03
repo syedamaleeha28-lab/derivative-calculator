@@ -25,6 +25,54 @@ export default async function ComoFuncionaPage() {
 
   const content = (
     <div className="space-y-16">
+      <div className="rounded-2xl border border-violet-200/80 bg-violet-50/50 px-5 py-4 md:px-6 md:py-5">
+        <p className="text-[0.7rem] font-bold uppercase tracking-widest text-violet-600 mb-2">
+          TL;DR
+        </p>
+        <p className="text-slate-700 leading-relaxed text-[0.98rem]">
+          La <strong>derivada f′(x)</strong> mide cómo cambia una función en cada punto: es la{" "}
+          <strong>pendiente de la tangente</strong> a la gráfica en x. Esta guía explica cómo
+          calcularla paso a paso y cómo usar la{" "}
+          <Link href="/#calculator" className="text-secondary font-bold hover:underline">
+            calculadora gratuita
+          </Link>{" "}
+          para verificar tus resultados.
+        </p>
+      </div>
+
+      <section>
+        <h2 id="calcular-derivada-paso-a-paso">Cómo calcular una derivada paso a paso</h2>
+        <p className="mb-6">
+          Antes de usar la herramienta, conviene seguir un método claro. Estos pasos aplican a la
+          mayoría de ejercicios de cálculo diferencial:
+        </p>
+        <ol className="list-decimal pl-6 space-y-3 text-slate-700 leading-relaxed">
+          <li>
+            <strong>Identifica f(x)</strong> y la variable (normalmente x). Escribe la función con
+            paréntesis explícitos y usa <code className="font-mono text-sm">^</code> para potencias.
+          </li>
+          <li>
+            <strong>Clasifica la estructura</strong>: ¿es un polinomio, un producto, un cociente o una
+            composición? Así sabrás si necesitas la regla del producto, del cociente o de la cadena.
+          </li>
+          <li>
+            <strong>Aplica las reglas de derivación</strong> término a término (potencia, trigonométricas,
+            exponencial, logaritmo, etc.).
+          </li>
+          <li>
+            <strong>Simplifica el resultado</strong> combinando términos semejantes y factorizando si es
+            posible.
+          </li>
+          <li>
+            <strong>Verifica</strong> con la{" "}
+            <Link href="/#calculator" className="text-secondary font-bold hover:underline">
+              calculadora de derivadas
+            </Link>{" "}
+            o con un valor numérico de prueba.
+          </li>
+        </ol>
+      </section>
+
       {/* Step by Step */}
       <section>
         <h2 id="instrucciones">{t.sections.steps.title}</h2>

@@ -37,9 +37,9 @@ const dictionaryData = {
           "calculadora de derivadas, calculadora de derivadas con pasos, calculadora de derivadas online gratis, derivadas paso a paso, derivadas parciales, derivadas implícitas, resolver derivadas online, calculadora diferencial",
       },
       comoFunciona: {
-        title: "Cómo Usar la Calculadora de Derivadas (Paso a Paso)",
+        title: "Cómo Usar la Calculadora de Derivadas Online — Guía Gratis",
         description:
-          "Aprende a usar la calculadora paso a paso: sintaxis, notación e implícitas. Practica ejercicios y verifica tus resultados al instante.",
+          "Deriva en segundos: escribe f(x), pulsa Calcular y revisa f′(x) con pasos. Sintaxis, ejemplos y trucos gratis en español.",
         keywords:
           "cómo usar calculadora de derivadas, calculadora de derivadas con pasos, resolver derivadas online, tutorial cálculo diferencial, calculadora matemática online",
       },
@@ -306,8 +306,9 @@ const dictionaryData = {
       exampleLabel: "Ejemplo Práctico"
     },
     howItWorks: {
-      title: "Cómo funciona nuestra Calculadora de Derivadas",
-      description: "Guía completa sobre el uso de Calculadora Derivadas. Aprende a ingresar funciones, interpretar los pasos y dominar el cálculo diferencial online.",
+      title: "Cómo usar la calculadora de derivadas paso a paso",
+      description:
+        "Guía práctica para derivar online: qué es una derivada, cómo calcularla y cómo usar la calculadora con sintaxis correcta y ejemplos.",
       date: "10 de Mayo, 2026",
       readTime: "6 min",
       category: "Ayuda",
