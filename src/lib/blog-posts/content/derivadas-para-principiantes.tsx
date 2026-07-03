@@ -212,8 +212,11 @@ export function DerivadasParaPrincipiantesContent() {
         </p>
         <h3 id="faq-memoria">¿Debo memorizar todo?</h3>
         <p>
-          Memoriza el núcleo (potencias, sin, cos, e^x, ln x) y deriva el resto con reglas. La tabla en
-          /reglas es tu referencia, no un examen de memoria pura.
+          Memoriza el núcleo (potencias, sin, cos, e^x, ln x) y deriva el resto con reglas. La guía de{" "}
+          <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
+            reglas de derivación
+          </Link>{" "}
+          es tu referencia, no un examen de memoria pura.
         </p>
         <h3 id="faq-tiempo">¿Cuánto tiempo practicar?</h3>
         <p>

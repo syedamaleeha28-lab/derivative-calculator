@@ -314,6 +314,13 @@ export function ReglasDeDerivacionContent() {
             </tbody>
           </table>
         </div>
+        <p>
+          Para una lista más extensa, consulta nuestra{" "}
+          <Link href={ES_AUTHORITY_ROUTES.tablaDeDerivadas} className="text-violet-600 font-semibold hover:underline">
+            tabla de fórmulas completa
+          </Link>
+          .
+        </p>
       </section>
 
       <section>

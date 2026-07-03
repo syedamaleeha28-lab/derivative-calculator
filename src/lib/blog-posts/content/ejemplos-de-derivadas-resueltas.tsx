@@ -176,7 +176,7 @@ export function EjemplosDeDerivadasResueltasContent() {
         <p>
           Una rutina de 45 minutos puede estructurarse así: diez minutos de repaso de reglas en{" "}
           <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
-            /reglas
+            reglas de derivación
           </Link>
           , veinte minutos de ejercicios de derivadas tomados de la galería (sin mirar la solución), diez
           minutos de verificación con derivadas paso a paso en la calculadora y cinco minutos de anotar el error
