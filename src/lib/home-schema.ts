@@ -66,6 +66,11 @@ export function buildHomePageSchemaGraph() {
     description: meta.description,
     inLanguage: schemaLanguage("es"),
     publisher: organizationRef(),
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_URL}/?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
   };
 
   const webPage = buildWebPageNode({
