@@ -4,15 +4,12 @@ import Link from "next/link";
 import SocialLinks from "@/components/SocialLinks";
 import { dict } from "@/lib/dictionaries";
 import { dictEn } from "@/lib/dictionaries-en";
-import { EN_CALCULATORS_NAV, EN_GUIDES_NAV } from "@/lib/en-navigation";
-import { ES_CALCULATORS_NAV, ES_GUIDES_NAV } from "@/lib/es-navigation";
+import { EN_CALCULATORS_NAV, EN_FOOTER_GUIDES_NAV } from "@/lib/en-navigation";
+import { ES_CALCULATORS_NAV, ES_FOOTER_GUIDES_NAV } from "@/lib/es-navigation";
 import { EXTENSION_CROMO_FORMULAS_PATH } from "@/lib/extension-cromo-formulas";
 import { MATH_FORMULA_HELPER_EXTENSION_PATH } from "@/lib/math-formula-helper-extension";
 import { FOOTER_LEGAL_PAGES, getLegalPath } from "@/lib/legal-routes";
 import type { Locale } from "@/lib/locale";
-
-/** Educational guide links only (first entries; blog articles stay out of the footer). */
-const FOOTER_GUIDE_COUNT = 6;
 
 const FOOTER_LABEL_KEY = {
   privacy: "privacy",
@@ -35,7 +32,7 @@ export default function Footer({ locale = "es" }: FooterProps) {
   const t = locale === "en" ? dictEn.footer : dict.footer;
   const nav = locale === "en" ? dictEn.nav : dict.nav;
   const calculators = locale === "en" ? EN_CALCULATORS_NAV : ES_CALCULATORS_NAV;
-  const guides = (locale === "en" ? EN_GUIDES_NAV : ES_GUIDES_NAV).slice(0, FOOTER_GUIDE_COUNT);
+  const guides = locale === "en" ? EN_FOOTER_GUIDES_NAV : ES_FOOTER_GUIDES_NAV;
 
   return (
     <footer className="border-t border-slate-200 bg-white py-10 md:py-12">

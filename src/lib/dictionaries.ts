@@ -92,10 +92,10 @@ const dictionaryData = {
         learning: {
           title: "Aprendizaje",
           links: [
-            { label: "Concepto de Derivada", href: "/como-funciona" },
-            { label: "Regla de la Cadena", href: "/reglas-de-derivacion" },
-            { label: "Formulario de Derivadas", href: "/reglas-de-derivacion" },
-            { label: "Ejercicios Resueltos", href: "/ejemplos-de-derivadas" },
+            { label: "Derivadas de funciones comunes", href: "/derivadas-de-funciones-comunes" },
+            { label: "Reglas de derivación", href: "/reglas-de-derivacion" },
+            { label: "Fórmulas de derivadas", href: "/formulas-de-derivadas" },
+            { label: "Ejercicios resueltos", href: "/ejemplos-de-derivadas" },
           ]
         },
         resources: {

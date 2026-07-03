@@ -45,6 +45,16 @@ export const ES_GUIDES_NAV: EsNavLink[] = [
   { name: "Derivadas implícitas", href: "/blog/derivadas-implicitas-paso-a-paso" },
 ];
 
+/** Footer "Guías" column — single source of truth across all Spanish pages. */
+export const ES_FOOTER_GUIDES_NAV: EsNavLink[] = [
+  { name: "Derivadas de funciones comunes", href: ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes },
+  { name: "Reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
+  { name: "Fórmulas de derivadas", href: ES_AUTHORITY_ROUTES.formulasDeDerivadas },
+  { name: "Tabla de derivadas", href: ES_AUTHORITY_ROUTES.tablaDeDerivadas },
+  { name: "Ejemplos de derivadas", href: ES_AUTHORITY_ROUTES.ejemplosDeDerivadas },
+  { name: "Ejercicios de derivadas", href: ES_AUTHORITY_ROUTES.ejerciciosDeDerivadas },
+];
+
 export const ES_EXAMPLES_NAV_KEY = { nameKey: "examples" as const, href: ROUTES.ejemplos };
 export const ES_BLOG_NAV_KEY = { nameKey: "blog" as const, href: ROUTES.blog };
 

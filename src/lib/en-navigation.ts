@@ -23,6 +23,7 @@ export const EN_CALCULATORS_NAV: NavLink[] = [
 
 /** "Guides" dropdown: educational content only. */
 export const EN_GUIDES_NAV: NavLink[] = [
+  { name: "Common Derivative Functions", href: EN_ROUTES.commonDerivativeFunctions },
   { name: "Derivative Rules", href: EN_ROUTES.derivativeRules },
   { name: "Derivative Formulas", href: EN_ROUTES.derivativeFormulas },
   { name: "Derivative Examples", href: EN_ROUTES.derivativeExamples },
@@ -45,6 +46,16 @@ export const EN_EXAMPLES_NAV: NavLink = {
 };
 
 export const EN_BLOG_NAV: NavLink = { name: "Blog", href: EN_ROUTES.blog };
+
+/** Footer "Guides" column — single source of truth across all English pages. */
+export const EN_FOOTER_GUIDES_NAV: NavLink[] = [
+  { name: "Common Derivative Functions", href: EN_ROUTES.commonDerivativeFunctions },
+  { name: "Derivative Rules", href: EN_ROUTES.derivativeRules },
+  { name: "Derivative Formulas", href: EN_ROUTES.derivativeFormulas },
+  { name: "Derivative Examples", href: EN_ROUTES.derivativeExamples },
+  { name: "Derivative Practice Problems", href: EN_ROUTES.derivativePracticeProblems },
+  { name: "Derivative Cheat Sheet", href: EN_ROUTES.derivativeCheatSheet },
+];
 
 export function isEnGuidePath(pathname: string): boolean {
   return EN_GUIDES_NAV.some(
