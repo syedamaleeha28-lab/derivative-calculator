@@ -16,6 +16,7 @@ import {
   buildOrganizationNode,
   organizationRef,
 } from "@/lib/calculator-pages/schema-shared";
+import { buildBreadcrumbSchema } from "@/lib/calculator-pages/schema";
 
 const EDITORIAL_TEAM_ID = `${SITE_URL}/#editorial-team` as const;
 
@@ -37,12 +38,21 @@ export default function LegalTrustPage({ pageId }: LegalTrustPageProps) {
         ? "ContactPage"
         : "WebPage";
 
+  const breadcrumb = buildBreadcrumbSchema(
+    [
+      { name: home, path: ROUTES.home },
+      { name: content.title, path },
+    ],
+    canonical
+  );
+
   const jsonLd =
     pageId === "about"
       ? {
           "@context": SCHEMA_CONTEXT,
           "@graph": [
             buildOrganizationNode(),
+            breadcrumb,
             {
               "@type": "Person",
               "@id": EDITORIAL_TEAM_ID,
@@ -71,8 +81,9 @@ export default function LegalTrustPage({ pageId }: LegalTrustPageProps) {
           ],
         }
       : [
+          { "@context": SCHEMA_CONTEXT, ...breadcrumb },
           {
-            "@context": "https://schema.org",
+            "@context": SCHEMA_CONTEXT,
             "@type": schemaType,
             name: content.title,
             description: content.subtitle,
