@@ -1,4 +1,5 @@
 import type { TranslationDictionary } from "./dictionaries";
+import { CALCULATOR_INPUT_PLACEHOLDER } from "./calculator-placeholder";
 
 /** English UI strings for /en pages (calculator + navigation). */
 export const dictEn: TranslationDictionary = {
@@ -90,7 +91,7 @@ export const dictEn: TranslationDictionary = {
     madeWith: "Made with",
   },
   calculator: {
-    placeholder: "E.g. sin(x) * x^2",
+    placeholder: CALCULATOR_INPUT_PLACEHOLDER,
     calculate: "Calculate Derivative",
     advanced: "Advanced Options",
     variable: "Variable",

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { implicitDifferentiationWorkflow, sanitizeExpr } from "@/lib/calculator-math";
+import { CALCULATOR_INPUT_PLACEHOLDER } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { IMPLICIT_DIFF_THEME } from "@/lib/specialized-calculators/themes";
 import type { Locale } from "@/lib/locale";
@@ -56,7 +57,7 @@ export default function ImplicitDifferentiationCalculator({ locale }: { locale: 
             value={left}
             onChange={(e) => setLeft(e.target.value)}
             className={`mt-1 ${inputClass}`}
-            placeholder="x^2 + y^2"
+            placeholder={CALCULATOR_INPUT_PLACEHOLDER}
           />
         </label>
         <div
@@ -73,7 +74,7 @@ export default function ImplicitDifferentiationCalculator({ locale }: { locale: 
             value={right}
             onChange={(e) => setRight(e.target.value)}
             className={`mt-1 ${inputClass}`}
-            placeholder="25"
+            placeholder={CALCULATOR_INPUT_PLACEHOLDER}
           />
         </label>
       </div>

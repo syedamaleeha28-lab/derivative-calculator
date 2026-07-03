@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { secondDerivativeWorkflow, sanitizeExpr } from "@/lib/calculator-math";
+import { CALCULATOR_INPUT_PLACEHOLDER } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { SECOND_DERIVATIVE_THEME } from "@/lib/specialized-calculators/themes";
 import type { Locale } from "@/lib/locale";
@@ -59,7 +60,7 @@ export default function SecondDerivativeCalculator({ locale }: { locale: Locale 
           value={f}
           onChange={(e) => setF(e.target.value)}
           className={`mt-1.5 w-full rounded-xl border-2 px-3 py-2.5 font-mono ${theme.inputBg} ${theme.inputRing}`}
-          placeholder="x^4 - 3*x^2"
+          placeholder={CALCULATOR_INPUT_PLACEHOLDER}
         />
       </label>
 

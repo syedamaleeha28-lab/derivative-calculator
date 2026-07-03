@@ -1,4 +1,5 @@
 import type { DeepStringify } from "./dictionary-types";
+import { CALCULATOR_INPUT_PLACEHOLDER } from "./calculator-placeholder";
 
 const dictionaryData = {
     nav: {
@@ -112,7 +113,7 @@ const dictionaryData = {
       madeWith: "Hecho con"
     },
     calculator: {
-      placeholder: "Ej: sin(x) * x^2",
+      placeholder: CALCULATOR_INPUT_PLACEHOLDER,
       calculate: "Calcular Derivada",
       advanced: "Opciones Avanzadas",
       variable: "Variable",
