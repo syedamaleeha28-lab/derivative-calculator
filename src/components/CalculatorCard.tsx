@@ -12,6 +12,10 @@ import { dict } from "@/lib/dictionaries";
 import { trackCalculatorUsed } from "@/lib/gtag";
 import { evaluateDerivativeAtPoint } from "@/lib/calculator-math";
 import {
+  mapDerivativeError,
+  validateCalculatorInput,
+} from "@/lib/validate-calculator-input";
+import {
   PointEvalResultLine,
   PointEvaluationSection,
 } from "@/components/specialized-calculators/shared/PointEvaluationSection";
@@ -305,6 +309,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
   const inputRef = useRef<HTMLInputElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const resultRef = useRef<HTMLDivElement>(null);
+  const examplesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (showResult && !isCalculating) {
@@ -417,7 +422,15 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
   };
 
   const handleCalculate = () => {
-    if (!input.trim()) return;
+    const validationError = validateCalculatorInput(input, variable);
+    if (validationError) {
+      setError(validationError);
+      setShowResult(false);
+      setShowSteps(false);
+      setPointEvalResult(null);
+      return;
+    }
+
     trackCalculatorUsed(pathname, input);
     setIsCalculating(true);
     setShowResult(false);
@@ -436,8 +449,8 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
           setPointEvalResult(evaluated);
         }
         setShowResult(true);
-      } catch {
-        setError(t.invalidExpr);
+      } catch (error) {
+        setError(mapDerivativeError(error));
       } finally {
         setIsCalculating(false);
       }
@@ -514,6 +527,34 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
             )}
           </div>
 
+          <AnimatePresence>
+            {error && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="overflow-hidden"
+                role="alert"
+              >
+                <div className="mt-2 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2.5 flex items-start gap-2 text-[0.8rem] text-amber-900">
+                  <AlertCircle size={14} className="shrink-0 mt-0.5 text-amber-600" />
+                  <div className="min-w-0">
+                    <p className="leading-relaxed">{error}</p>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        examplesRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" })
+                      }
+                      className="mt-1.5 text-[0.72rem] font-bold text-violet-700 hover:text-violet-900 underline underline-offset-2"
+                    >
+                      Ejemplos
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {enablePointEval && (
             <PointEvaluationSection
               variable={variable}
@@ -528,7 +569,11 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
             />
           )}
 
-          <div className="flex items-center justify-between gap-2 mt-1.5">
+          <div
+            ref={examplesRef}
+            id="calc-examples"
+            className="flex items-center justify-between gap-2 mt-1.5 scroll-mt-4"
+          >
             <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide min-w-0 flex-1">
               <span className="text-[0.55rem] font-bold text-slate-400 uppercase tracking-wider shrink-0">
                 {t.examples}
@@ -604,20 +649,6 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
             )}
           </AnimatePresence>
         </div>
-
-        <AnimatePresence>
-          {error && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="bg-rose-50/90 px-4 py-2 border-b border-rose-100 flex items-center gap-1.5 text-[0.75rem] font-medium text-rose-600"
-            >
-              <AlertCircle size={12} />
-              {error}
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Unified keypad + calculate */}
         <div className="px-3 pb-4 pt-3 sm:px-4 sm:pb-5 sm:pt-3.5 bg-gradient-to-b from-indigo-50/40 via-violet-50/30 to-cyan-50/20 overflow-x-hidden min-w-0">
