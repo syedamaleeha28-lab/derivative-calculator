@@ -605,7 +605,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
             exit={{ opacity: 0, y: -8 }}
             className="w-full"
           >
-            <div className="bg-gradient-to-br from-white via-violet-50/30 to-cyan-50/20 border border-violet-100/80 rounded-3xl p-4 sm:px-5 sm:pt-5 sm:pb-4 shadow-[0_16px_40px_-12px_rgba(99,102,241,0.25)]">
+            <div className="bg-gradient-to-br from-white via-violet-50/30 to-cyan-50/20 border border-violet-100/80 rounded-3xl p-4 md:px-5 md:pt-5 md:pb-4 shadow-[0_16px_40px_-12px_rgba(99,102,241,0.25)]">
               <div className="flex items-center justify-between mb-3">
                 <span
                   id="derivative-result-heading"
@@ -642,12 +642,12 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
                 </div>
               </div>
 
-              <div className="bg-white/80 rounded-2xl border border-indigo-100/80 px-4 py-5 overflow-x-auto flex flex-col sm:flex-row items-center justify-center gap-2 min-h-[72px] shadow-inner">
+              <div className="bg-white/80 rounded-2xl border border-indigo-100/80 px-4 py-5 overflow-x-auto flex flex-col md:flex-row items-center justify-center gap-2 min-h-[72px] shadow-inner">
                 <span className="text-slate-400 font-serif italic text-base shrink-0 select-none">
                   f&apos;({variable}) =
                 </span>
                 <div
-                  className="text-slate-900 text-xl"
+                  className="text-slate-900 min-w-0 max-w-full overflow-x-auto max-md:text-xl md:text-lg [&_.katex-display]:overflow-x-auto [&_.katex]:max-w-none"
                   dangerouslySetInnerHTML={{
                     __html: katex.renderToString(latexResult || "", {
                       throwOnError: false,
@@ -687,15 +687,23 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
                         { t: t.steps.step2.t, d: t.steps.step2.d, f: latexResult },
                         { t: t.steps.step3.t, d: t.steps.step3.d, f: latexResult },
                       ].map((step, i) => (
-                        <div key={i} className="flex gap-3 items-start pb-4 border-b border-slate-100 last:border-b-0 last:pb-0">
+                        <div
+                          key={i}
+                          className="flex gap-3 items-start max-md:pb-4 max-md:border-b max-md:border-slate-200 md:pb-0 md:border-b-0 last:border-b-0 last:pb-0"
+                        >
                           <div className="w-5 h-5 rounded-full bg-violet-100 flex items-center justify-center shrink-0 mt-0.5">
                             <CheckCircle2 size={11} className="text-violet-600" />
                           </div>
-                          <div className="flex flex-col gap-1 min-w-0">
-                            <h4 className="font-bold text-slate-900 text-[0.85rem] sm:text-[0.8rem]">{step.t}</h4>
-                            <p className="text-[0.9375rem] sm:text-[0.72rem] text-slate-500 leading-relaxed">{step.d}</p>
-                            <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 overflow-x-auto">
+                          <div className="flex flex-col gap-1.5 min-w-0 flex-1">
+                            <h4 className="font-bold text-slate-900 max-md:text-[0.85rem] md:text-[0.8rem]">
+                              {step.t}
+                            </h4>
+                            <p className="max-md:text-[0.9375rem] md:text-[0.72rem] text-slate-500 leading-relaxed">
+                              {step.d}
+                            </p>
+                            <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 overflow-x-auto max-w-full">
                               <div
+                                className="min-w-0 max-w-full overflow-x-auto [&_.katex]:max-w-none"
                                 dangerouslySetInnerHTML={{
                                   __html: katex.renderToString(step.f, {
                                     throwOnError: false,
