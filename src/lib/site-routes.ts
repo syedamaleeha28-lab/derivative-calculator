@@ -7,6 +7,7 @@ import { ES_PAGE_LIST } from "./es-pages";
 import { ES_AUTHORITY_ROUTE_LIST } from "./es-authority-routes";
 import { ES_COMMON_FUNCTION_ROUTE_LIST } from "./common-derivative-functions/routes";
 import { EN_ROUTES } from "./en-routes";
+import { MATH_FORMULA_HELPER_EXTENSION_PATH } from "./math-formula-helper-extension";
 import { getHreflangAlternates } from "./locale";
 import { absoluteUrl } from "./seo";
 
@@ -32,6 +33,7 @@ export const SITEMAP_ROUTES: {
   { path: "/acerca-de", changeFrequency: "yearly", priority: 0.4 },
   { path: "/contacto", changeFrequency: "yearly", priority: 0.4 },
   { path: "/extension-cromo-formulas-matematicas", changeFrequency: "monthly", priority: 0.75 },
+  { path: MATH_FORMULA_HELPER_EXTENSION_PATH, changeFrequency: "monthly", priority: 0.75 },
   ...ES_AUTHORITY_ROUTE_LIST.map((path) => ({
     path,
     changeFrequency: "weekly" as const,
