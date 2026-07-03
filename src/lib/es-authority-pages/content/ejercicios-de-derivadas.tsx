@@ -15,6 +15,7 @@ import {
   ROUTES,
   EN_ROUTES,
 } from "../helpers";
+import RandomDerivativePractice from "@/components/RandomDerivativePractice";
 
 export function EjerciciosDeDerivadasContent() {
   return (
@@ -47,6 +48,8 @@ export function EjerciciosDeDerivadasContent() {
           .
         </p>
       </section>
+
+      <RandomDerivativePractice />
 
       <section>
         <h2 id="nivel-1">Nivel 1: polinomios y potencias</h2>
