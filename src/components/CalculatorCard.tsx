@@ -93,7 +93,7 @@ function CalcBtn({ btn, onClick }: { btn: BtnDef; onClick: (b: BtnDef) => void }
 function buildKeypad(
   variable: string,
   tips: TranslationDictionary["calculator"]["tips"]
-): { basic: BtnDef[]; advanced: BtnDef[] } {
+): { mobileBasic: BtnDef[]; mobileAdvanced: BtnDef[]; desktop: BtnDef[] } {
   const fn = (label: string, insert: string, tip: string, variant: Variant = "func"): BtnDef => ({
     label,
     insert,
@@ -101,57 +101,111 @@ function buildKeypad(
     variant,
   });
 
-  return {
-    basic: [
-      fn("sin", "sin()", tips.sin),
-      fn("cos", "cos()", tips.cos),
-      fn("tan", "tan()", tips.tan),
-      fn("ln", "ln()", tips.ln),
-      fn("log", "log()", tips.log),
-      fn("√", "sqrt()", tips.root, "special"),
+  const mobileBasic = [
+    fn("7", "7", "", "num"),
+    fn("8", "8", "", "num"),
+    fn("9", "9", "", "num"),
+    fn("+", "+", tips.sum, "op"),
 
-      fn("eˣ", "e^()", tips.exp, "special"),
-      fn("xⁿ", "^", tips.power, "special"),
-      fn("π", "pi", tips.pi, "special"),
-      fn(variable, variable, tips.var, "special"),
-      fn("e", "e", tips.euler, "special"),
-      fn("(", "(", tips.openPar, "special"),
+    fn("4", "4", "", "num"),
+    fn("5", "5", "", "num"),
+    fn("6", "6", "", "num"),
+    fn("−", "-", tips.sub, "op"),
 
-      fn(")", ")", tips.closePar, "special"),
-      fn("/", "/", tips.slash, "op"),
-      fn("AC", "__clear__", tips.clearAll, "clear"),
-      fn("7", "7", "", "num"),
+    fn("1", "1", "", "num"),
+    fn("2", "2", "", "num"),
+    fn("3", "3", "", "num"),
+    fn("×", "*", tips.mul, "op"),
 
-      fn("8", "8", "", "num"),
-      fn("9", "9", "", "num"),
-      fn("+", "+", tips.sum, "op"),
-      fn("−", "-", tips.sub, "op"),
-      fn("⌫", "__del__", tips.delete, "op"),
+    fn("0", "0", "", "num"),
+    fn(".", ".", tips.point, "num"),
+    fn("/", "/", tips.slash, "op"),
+    fn("^", "^", tips.power, "op"),
 
-      fn("4", "4", "", "num"),
-      fn("5", "5", "", "num"),
-      fn("6", "6", "", "num"),
-      fn("×", "*", tips.mul, "op"),
-      fn("^", "^", tips.power, "op"),
-      fn(".", ".", tips.point, "num"),
+    fn(variable, variable, tips.var, "special"),
+    fn("(", "(", tips.openPar, "special"),
+    fn(")", ")", tips.closePar, "special"),
+    fn("⌫", "__del__", tips.delete, "op"),
 
-      fn("1", "1", "", "num"),
-      fn("2", "2", "", "num"),
-      fn("3", "3", "", "num"),
-      fn("0", "0", "", "num"),
-    ],
-    advanced: [
-      fn("asin", "asin()", tips.asin),
-      fn("acos", "acos()", tips.acos),
-      fn("atan", "atan()", tips.atan),
-      fn("sec", "sec()", tips.sec),
-      fn("csc", "csc()", tips.csc),
-      fn("cot", "cot()", tips.cot),
-      fn("sinh", "sinh()", tips.sinh),
-      fn("cosh", "cosh()", tips.cosh),
-      fn("tanh", "tanh()", tips.tanh),
-    ],
-  };
+    fn("AC", "__clear__", tips.clearAll, "clear"),
+  ];
+
+  const mobileAdvanced = [
+    fn("sin", "sin()", tips.sin),
+    fn("cos", "cos()", tips.cos),
+    fn("tan", "tan()", tips.tan),
+    fn("ln", "ln()", tips.ln),
+
+    fn("log", "log()", tips.log),
+    fn("√", "sqrt()", tips.root, "special"),
+    fn("eˣ", "e^()", tips.exp, "special"),
+    fn("xⁿ", "^", tips.power, "special"),
+
+    fn("π", "pi", tips.pi, "special"),
+    fn("e", "e", tips.euler, "special"),
+    fn("asin", "asin()", tips.asin),
+    fn("acos", "acos()", tips.acos),
+
+    fn("atan", "atan()", tips.atan),
+    fn("sec", "sec()", tips.sec),
+    fn("csc", "csc()", tips.csc),
+    fn("cot", "cot()", tips.cot),
+
+    fn("sinh", "sinh()", tips.sinh),
+    fn("cosh", "cosh()", tips.cosh),
+    fn("tanh", "tanh()", tips.tanh),
+  ];
+
+  const desktop = [
+    fn("sin", "sin()", tips.sin),
+    fn("cos", "cos()", tips.cos),
+    fn("tan", "tan()", tips.tan),
+    fn("ln", "ln()", tips.ln),
+    fn("log", "log()", tips.log),
+    fn("√", "sqrt()", tips.root, "special"),
+
+    fn("asin", "asin()", tips.asin),
+    fn("acos", "acos()", tips.acos),
+    fn("atan", "atan()", tips.atan),
+    fn("sec", "sec()", tips.sec),
+    fn("csc", "csc()", tips.csc),
+    fn("cot", "cot()", tips.cot),
+
+    fn("sinh", "sinh()", tips.sinh),
+    fn("cosh", "cosh()", tips.cosh),
+    fn("tanh", "tanh()", tips.tanh),
+    fn("eˣ", "e^()", tips.exp, "special"),
+    fn("xⁿ", "^", tips.power, "special"),
+    fn("π", "pi", tips.pi, "special"),
+
+    fn(variable, variable, tips.var, "special"),
+    fn("e", "e", tips.euler, "special"),
+    fn("(", "(", tips.openPar, "special"),
+    fn(")", ")", tips.closePar, "special"),
+    fn("/", "/", tips.slash, "op"),
+    fn("AC", "__clear__", tips.clearAll, "clear"),
+
+    fn("7", "7", "", "num"),
+    fn("8", "8", "", "num"),
+    fn("9", "9", "", "num"),
+    fn("+", "+", tips.sum, "op"),
+    fn("−", "-", tips.sub, "op"),
+    fn("⌫", "__del__", tips.delete, "op"),
+
+    fn("4", "4", "", "num"),
+    fn("5", "5", "", "num"),
+    fn("6", "6", "", "num"),
+    fn("×", "*", tips.mul, "op"),
+    fn("^", "^", tips.power, "op"),
+    fn(".", ".", tips.point, "num"),
+
+    fn("1", "1", "", "num"),
+    fn("2", "2", "", "num"),
+    fn("3", "3", "", "num"),
+    fn("0", "0", "", "num"),
+  ];
+
+  return { mobileBasic, mobileAdvanced, desktop };
 }
 
 function sanitize(expr: string): string {
@@ -531,16 +585,17 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
         </AnimatePresence>
 
         {/* Unified keypad + calculate */}
-        <div className="px-3 pb-4 pt-3 sm:px-4 sm:pb-5 sm:pt-3.5 bg-gradient-to-b from-indigo-50/40 via-violet-50/30 to-cyan-50/20">
-          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-1.5 sm:gap-2">
-            {keypad.basic.map((b) => (
-              <CalcBtn key={`${b.label}-${b.insert}`} btn={b} onClick={handleBtn} />
+        <div className="px-3 pb-4 pt-3 sm:px-4 sm:pb-5 sm:pt-3.5 bg-gradient-to-b from-indigo-50/40 via-violet-50/30 to-cyan-50/20 overflow-x-hidden min-w-0">
+          <div className="grid grid-cols-4 gap-1.5 sm:hidden min-w-0">
+            {keypad.mobileBasic.map((b) => (
+              <CalcBtn key={`mob-${b.label}-${b.insert}`} btn={b} onClick={handleBtn} />
             ))}
           </div>
 
           <button
             type="button"
             onClick={() => setShowAdvancedKeypad((s) => !s)}
+            style={{ touchAction: "manipulation" }}
             className="sm:hidden w-full mt-2 flex items-center justify-center gap-1 text-[0.7rem] font-bold text-violet-600 py-2 rounded-xl border border-violet-200/80 bg-white/70"
             aria-expanded={showAdvancedKeypad}
           >
@@ -549,15 +604,15 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
           </button>
 
           {showAdvancedKeypad && (
-            <div className="grid grid-cols-4 gap-1.5 mt-2 sm:hidden">
-              {keypad.advanced.map((b) => (
+            <div className="grid grid-cols-4 gap-1.5 mt-2 sm:hidden min-w-0">
+              {keypad.mobileAdvanced.map((b) => (
                 <CalcBtn key={`adv-${b.label}-${b.insert}`} btn={b} onClick={handleBtn} />
               ))}
             </div>
           )}
 
-          <div className="hidden sm:grid sm:grid-cols-5 md:grid-cols-6 gap-1.5 sm:gap-2 mt-2">
-            {keypad.advanced.map((b) => (
+          <div className="hidden sm:grid sm:grid-cols-5 md:grid-cols-6 gap-1.5 sm:gap-2 min-w-0">
+            {keypad.desktop.map((b) => (
               <CalcBtn key={`desk-${b.label}-${b.insert}`} btn={b} onClick={handleBtn} />
             ))}
           </div>
@@ -568,6 +623,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
             whileTap={{ scale: 0.98 }}
             onClick={handleCalculate}
             disabled={!input.trim() || isCalculating}
+            style={{ touchAction: "manipulation" }}
             className="w-full h-[48px] sm:h-[52px] mt-3 sm:mt-3.5 rounded-2xl text-[0.9rem] font-bold tracking-wide flex items-center justify-center gap-2 text-white bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 shadow-[0_8px_24px_-4px_rgba(99,102,241,0.55)] hover:shadow-[0_12px_28px_-4px_rgba(139,92,246,0.65)] disabled:opacity-40 disabled:shadow-none transition-all"
           >
             {isCalculating ? (
