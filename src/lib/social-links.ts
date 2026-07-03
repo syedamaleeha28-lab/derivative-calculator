@@ -6,6 +6,9 @@ export const INSTAGRAM_URL =
 
 export const X_URL = "https://x.com/derivadas_dx";
 
+/** Twitter @handle for twitter:site metadata (no leading URL). */
+export const TWITTER_SITE_HANDLE = "@derivadas_dx";
+
 export const PINTEREST_URL =
   "https://www.pinterest.com/calculadoraderivadasdx/";
 

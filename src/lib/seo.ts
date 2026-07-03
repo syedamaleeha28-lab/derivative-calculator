@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getHreflangAlternates } from "./locale";
+import { TWITTER_SITE_HANDLE } from "./social-links";
 
 /** Canonical production origin (www). */
 export const SITE_URL = (
@@ -12,6 +13,46 @@ export const SITE_NAME = "Calculadora Derivadas";
 
 /** Default Open Graph image (absolute path under /public). */
 export const DEFAULT_OG_IMAGE = "/images/interfaz-calculadora-matematica.webp";
+
+/** Descriptive alt for the default social preview image (matches the calculator UI screenshot). */
+export const DEFAULT_OG_IMAGE_ALT = {
+  es: "Interfaz de la calculadora de derivadas online con teclado matemático, campo de expresión y panel de pasos detallados",
+  en: "Online derivative calculator interface with math keyboard, expression field, and step-by-step solution panel",
+} as const;
+
+const OG_IMAGE_ALT_MAX_LENGTH = 200;
+
+function truncateAlt(text: string, max = OG_IMAGE_ALT_MAX_LENGTH): string {
+  if (text.length <= max) return text;
+  return `${text.slice(0, max - 1).trimEnd()}…`;
+}
+
+function stripSiteSuffix(title: string): string {
+  return title
+    .replace(/\s*\|\s*Calculadora Derivadas.*$/i, "")
+    .replace(/\s*—\s*Calculadora.*$/i, "")
+    .trim();
+}
+
+/** Build accessible og:image / twitter:image alt from page context. */
+export function buildSocialImageAlt(
+  title: string,
+  options?: { locale?: string; override?: string }
+): string {
+  if (options?.override?.trim()) {
+    return truncateAlt(options.override.trim());
+  }
+
+  const isEnglish = options?.locale === "en_US";
+  const base = isEnglish ? DEFAULT_OG_IMAGE_ALT.en : DEFAULT_OG_IMAGE_ALT.es;
+  const topic = stripSiteSuffix(title);
+
+  const alt = isEnglish
+    ? `${base} — preview for ${topic}`
+    : `${base} — vista previa de ${topic}`;
+
+  return truncateAlt(alt);
+}
 
 /** Absolute canonical URL for a page. */
 export function absoluteUrl(path: string): string {
@@ -29,6 +70,8 @@ export type PageMetadataInput = {
   publishedTime?: string;
   noindex?: boolean;
   ogImage?: string;
+  /** Accessible description of the social preview image (og:image:alt / twitter:image:alt). */
+  ogImageAlt?: string;
   /** Open Graph locale override (defaults to es_ES). */
   ogLocale?: string;
   /** When false, skip automatic hreflang alternates. */
@@ -50,6 +93,7 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
     noindex = false,
     publishedTime,
     ogImage,
+    ogImageAlt,
     ogLocale = "es_ES",
     hreflang = true,
     alternateLanguages,
@@ -65,12 +109,16 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
         ? title
         : `${title} | ${SITE_NAME}`;
   const resolvedOgImage = ogImage ?? absoluteUrl(DEFAULT_OG_IMAGE);
+  const socialImageAlt = buildSocialImageAlt(title, {
+    locale: ogLocale,
+    override: ogImageAlt,
+  });
   const ogImages = [
     {
       url: resolvedOgImage.startsWith("http") ? resolvedOgImage : absoluteUrl(resolvedOgImage),
       width: 1200,
       height: 630,
-      alt: title,
+      alt: socialImageAlt,
     },
   ];
 
@@ -102,9 +150,15 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
     },
     twitter: {
       card: "summary_large_image",
+      site: TWITTER_SITE_HANDLE,
       title: ogTitle,
       description,
-      ...(ogImages ? { images: [ogImages[0].url] } : {}),
+      images: [
+        {
+          url: ogImages[0].url,
+          alt: socialImageAlt,
+        },
+      ],
     },
     robots: noindex
       ? { index: false, follow: false }
