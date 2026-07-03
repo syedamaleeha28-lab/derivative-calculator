@@ -91,6 +91,28 @@ export function evaluateAt(clean: string, variable: string, value: number): numb
   }
 }
 
+export function formatNumericResult(value: number): string {
+  const rounded = Math.round(value * 1e10) / 1e10;
+  return String(rounded);
+}
+
+export function evaluateDerivativeAtPoint(
+  derivativeExpr: string,
+  variable: string,
+  pointRaw: string
+): { value: number; displayPoint: string } | null {
+  const trimmed = pointRaw.trim();
+  if (!trimmed) return null;
+
+  const a = parseNumericSolution(sanitizeExpr(trimmed));
+  if (a === null) return null;
+
+  const value = evaluateAt(derivativeExpr, variable, a);
+  if (value === null || !Number.isFinite(value)) return null;
+
+  return { value, displayPoint: trimmed };
+}
+
 export function solveExprZeros(expr: string, variable: string): string[] {
   try {
     const solutions = nerdamer.solve(`(${expr})=0`, variable);

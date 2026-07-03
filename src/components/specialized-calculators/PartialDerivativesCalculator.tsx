@@ -2,13 +2,17 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { partialDerivativeWorkflow, sanitizeExpr } from "@/lib/calculator-math";
+import { evaluateDerivativeAtPoint, partialDerivativeWorkflow, sanitizeExpr } from "@/lib/calculator-math";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { PARTIAL_DERIVATIVE_THEME } from "@/lib/specialized-calculators/themes";
 import type { Locale } from "@/lib/locale";
 import CalculatorShell from "./shared/CalculatorShell";
 import MathBlock from "./shared/MathBlock";
 import StepTimeline from "./shared/StepTimeline";
+import {
+  PointEvalResultLine,
+  PointEvaluationSection,
+} from "./shared/PointEvaluationSection";
 
 const VARIABLES = ["x", "y", "z"] as const;
 const PRESETS = [
@@ -27,15 +31,28 @@ export default function PartialDerivativesCalculator({ locale }: { locale: Local
   const [result, setResult] = useState<ReturnType<typeof partialDerivativeWorkflow> | null>(
     null
   );
+  const [showPointEvalSection, setShowPointEvalSection] = useState(false);
+  const [evalPoint, setEvalPoint] = useState("");
+  const [pointEvalResult, setPointEvalResult] = useState<{
+    value: number;
+    displayPoint: string;
+  } | null>(null);
 
   const run = () => {
     try {
       sanitizeExpr(f);
-      setResult(partialDerivativeWorkflow(f, variable, locale));
+      const workflow = partialDerivativeWorkflow(f, variable, locale);
+      setResult(workflow);
+      setPointEvalResult(
+        evalPoint.trim()
+          ? evaluateDerivativeAtPoint(workflow.result, variable, evalPoint)
+          : null
+      );
       setError("");
     } catch {
       setError(t.error);
       setResult(null);
+      setPointEvalResult(null);
     }
   };
 
@@ -52,6 +69,18 @@ export default function PartialDerivativesCalculator({ locale }: { locale: Local
           placeholder="x^2*y + sin(y)*z"
         />
       </label>
+
+      <PointEvaluationSection
+        variable={variable}
+        locale={locale}
+        evalPoint={evalPoint}
+        onEvalPointChange={(value) => {
+          setEvalPoint(value);
+          setPointEvalResult(null);
+        }}
+        expanded={showPointEvalSection}
+        onToggle={() => setShowPointEvalSection((open) => !open)}
+      />
 
       <div>
         <span className={`text-xs font-bold uppercase ${theme.labelColor}`}>{t.variable}</span>
@@ -82,6 +111,7 @@ export default function PartialDerivativesCalculator({ locale }: { locale: Local
               setF(p.f);
               setVariable(p.v as (typeof VARIABLES)[number]);
               setResult(null);
+              setPointEvalResult(null);
             }}
             className="text-[0.7rem] px-2 py-1 rounded-lg border border-teal-100 bg-white"
           >
@@ -105,6 +135,14 @@ export default function PartialDerivativesCalculator({ locale }: { locale: Local
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
           <div className={`rounded-2xl border ${theme.resultBorder} ${theme.resultBg} p-4 text-center`}>
             <MathBlock latex={`\\frac{\\partial f}{\\partial ${variable}} = ${result.resultTeX}`} />
+            {pointEvalResult && (
+              <PointEvalResultLine
+                variable={variable}
+                displayPoint={pointEvalResult.displayPoint}
+                value={pointEvalResult.value}
+                partial
+              />
+            )}
           </div>
           <StepTimeline steps={result.steps} theme={theme} title={t.steps} />
         </motion.div>

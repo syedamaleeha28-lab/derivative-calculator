@@ -3,13 +3,17 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, X } from "lucide-react";
-import { chainRuleWorkflow, sanitizeExpr } from "@/lib/calculator-math";
+import { chainRuleWorkflow, evaluateDerivativeAtPoint, sanitizeExpr } from "@/lib/calculator-math";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { CHAIN_RULE_THEME } from "@/lib/specialized-calculators/themes";
 import type { Locale } from "@/lib/locale";
 import CalculatorShell from "./shared/CalculatorShell";
 import MathBlock from "./shared/MathBlock";
 import StepTimeline from "./shared/StepTimeline";
+import {
+  PointEvalResultLine,
+  PointEvaluationSection,
+} from "./shared/PointEvaluationSection";
 
 const PRESETS = [
   { outer: "sin(u)", inner: "3*x" },
@@ -25,6 +29,12 @@ export default function ChainRuleCalculator({ locale }: { locale: Locale }) {
   const [inner, setInner] = useState("3*x");
   const [error, setError] = useState("");
   const [result, setResult] = useState<ReturnType<typeof chainRuleWorkflow> | null>(null);
+  const [showPointEvalSection, setShowPointEvalSection] = useState(false);
+  const [evalPoint, setEvalPoint] = useState("");
+  const [pointEvalResult, setPointEvalResult] = useState<{
+    value: number;
+    displayPoint: string;
+  } | null>(null);
 
   const run = () => {
     try {
@@ -37,13 +47,21 @@ export default function ChainRuleCalculator({ locale }: { locale: Locale }) {
             : "Use u as the variable in the outer function (e.g. sin(u), u^2, ln(u))."
         );
         setResult(null);
+        setPointEvalResult(null);
         return;
       }
-      setResult(chainRuleWorkflow(outer, inner, locale));
+      const workflow = chainRuleWorkflow(outer, inner, locale);
+      setResult(workflow);
+      setPointEvalResult(
+        evalPoint.trim()
+          ? evaluateDerivativeAtPoint(workflow.result, "x", evalPoint)
+          : null
+      );
       setError("");
     } catch {
       setError(t.error);
       setResult(null);
+      setPointEvalResult(null);
     }
   };
 
@@ -86,6 +104,18 @@ export default function ChainRuleCalculator({ locale }: { locale: Locale }) {
         </label>
       </div>
 
+      <PointEvaluationSection
+        variable="x"
+        locale={locale}
+        evalPoint={evalPoint}
+        onEvalPointChange={(value) => {
+          setEvalPoint(value);
+          setPointEvalResult(null);
+        }}
+        expanded={showPointEvalSection}
+        onToggle={() => setShowPointEvalSection((open) => !open)}
+      />
+
       {/* Nested function builder */}
       <div
         className={`rounded-2xl border-2 border-dashed ${theme.shellBorder} p-4 bg-lime-50/30`}
@@ -120,6 +150,7 @@ export default function ChainRuleCalculator({ locale }: { locale: Locale }) {
               setOuter(p.outer);
               setInner(p.inner);
               setResult(null);
+              setPointEvalResult(null);
             }}
             className="text-[0.7rem] px-2 py-1 rounded-lg border border-lime-200 bg-white"
           >
@@ -172,6 +203,13 @@ export default function ChainRuleCalculator({ locale }: { locale: Locale }) {
               </p>
               <MathBlock latex={result.resultTeX} />
             </div>
+            {pointEvalResult && (
+              <PointEvalResultLine
+                variable="x"
+                displayPoint={pointEvalResult.displayPoint}
+                value={pointEvalResult.value}
+              />
+            )}
           </div>
 
           <StepTimeline steps={result.steps} theme={theme} title={t.steps} />

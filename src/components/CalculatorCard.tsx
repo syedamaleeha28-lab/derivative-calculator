@@ -10,6 +10,11 @@ import {
 } from "@/lib/calculator-events";
 import { dict } from "@/lib/dictionaries";
 import { trackCalculatorUsed } from "@/lib/gtag";
+import { evaluateDerivativeAtPoint } from "@/lib/calculator-math";
+import {
+  PointEvalResultLine,
+  PointEvaluationSection,
+} from "@/components/specialized-calculators/shared/PointEvaluationSection";
 import type { TranslationDictionary } from "@/lib/dictionaries";
 // @ts-ignore
 import nerdamer from "nerdamer/all.min";
@@ -24,6 +29,7 @@ export type CalculatorCardProps = {
   dictionary?: TranslationDictionary["calculator"];
   examplePresets?: string[];
   initialVariable?: string;
+  enablePointEval?: boolean;
 };
 
 const COLOR: Record<Variant, string> = {
@@ -267,7 +273,7 @@ export interface CalculatorHandle {
 }
 
 const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props, ref) => {
-  const { dictionary, examplePresets, initialVariable } = props;
+  const { dictionary, examplePresets, initialVariable, enablePointEval = false } = props;
   const pathname = usePathname();
   const [input, setInput] = useState("");
   const [latexPreview, setLatexPreview] = useState("");
@@ -281,11 +287,18 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
   const [showSettings, setShowSettings] = useState(false);
   const [copied, setCopied] = useState(false);
   const [showAdvancedKeypad, setShowAdvancedKeypad] = useState(false);
+  const [showPointEvalSection, setShowPointEvalSection] = useState(false);
+  const [evalPoint, setEvalPoint] = useState("");
+  const [pointEvalResult, setPointEvalResult] = useState<{
+    value: number;
+    displayPoint: string;
+  } | null>(null);
   const [simplify, setSimplify] = useState(true);
   const [variable, setVariable] = useState(initialVariable ?? "x");
 
   const t = dictionary ?? dict.calculator;
   const examples = examplePresets ?? DEFAULT_EXAMPLES;
+  const pointEvalLocale = dictionary ? "en" : "es";
 
   const keypad = useMemo(() => buildKeypad(variable, t.tips), [variable, t.tips]);
 
@@ -343,6 +356,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
     setShowResult(false);
     setError("");
     setLatexPreview("");
+    setPointEvalResult(null);
     inputRef.current?.focus();
   };
 
@@ -399,6 +413,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
     }
     setShowResult(false);
     setError("");
+    setPointEvalResult(null);
   };
 
   const handleCalculate = () => {
@@ -408,12 +423,18 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
     setShowResult(false);
     setShowSteps(false);
     setError("");
+    setPointEvalResult(null);
     setTimeout(() => {
       try {
         const clean = sanitize(input);
         const derivative = nerdamer(`diff(${clean}, ${variable})`);
+        const derivativeText = derivative.text();
         setLatexResult(toExactTeX(derivative));
-        setTextResult(derivative.text());
+        setTextResult(derivativeText);
+        if (enablePointEval && evalPoint.trim()) {
+          const evaluated = evaluateDerivativeAtPoint(derivativeText, variable, evalPoint);
+          setPointEvalResult(evaluated);
+        }
         setShowResult(true);
       } catch {
         setError(t.invalidExpr);
@@ -492,6 +513,20 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
               </button>
             )}
           </div>
+
+          {enablePointEval && (
+            <PointEvaluationSection
+              variable={variable}
+              locale={pointEvalLocale}
+              evalPoint={evalPoint}
+              onEvalPointChange={(value) => {
+                setEvalPoint(value);
+                setPointEvalResult(null);
+              }}
+              expanded={showPointEvalSection}
+              onToggle={() => setShowPointEvalSection((open) => !open)}
+            />
+          )}
 
           <div className="flex items-center justify-between gap-2 mt-1.5">
             <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide min-w-0 flex-1">
@@ -690,6 +725,14 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
                   }}
                 />
               </div>
+
+              {pointEvalResult && (
+                <PointEvalResultLine
+                  variable={variable}
+                  displayPoint={pointEvalResult.displayPoint}
+                  value={pointEvalResult.value}
+                />
+              )}
 
               <div className="flex justify-center mt-3">
                 <button

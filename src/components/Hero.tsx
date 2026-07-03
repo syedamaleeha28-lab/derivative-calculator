@@ -142,7 +142,7 @@ export default function Hero() {
             </motion.div>
 
             <div className="relative z-10 w-full max-w-[600px] lg:max-w-[580px]">
-              <CalculatorCard ref={calculatorRef} />
+              <CalculatorCard ref={calculatorRef} enablePointEval />
             </div>
           </motion.div>
         </div>
