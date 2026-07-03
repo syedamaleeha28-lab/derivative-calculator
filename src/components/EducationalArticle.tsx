@@ -19,6 +19,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import JsonLd from "./JsonLd";
@@ -306,9 +307,10 @@ export default function ArticleLayout({
     })),
   };
 
-  const INTERNAL_LINKS =
-    resourceLinks ??
-    (locale === "en"
+  const pathname = usePathname();
+
+  const defaultResourceLinks =
+    locale === "en"
       ? [
           { label: "Derivative Calculator", href: EN_MAIN_CALCULATOR_HREF, icon: <Calculator size={14} /> },
           { label: "Derivative Rules", href: EN_ROUTES.derivativeRules, icon: <BookOpen size={14} /> },
@@ -320,12 +322,17 @@ export default function ArticleLayout({
         ]
       : [
           { label: "Calculadora de Derivadas", href: "/#calculator", icon: <Calculator size={14} /> },
-          { label: "Reglas de Derivación", href: ROUTES.reglas, icon: <BookOpen size={14} /> },
+          { label: "Reglas de Derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion, icon: <BookOpen size={14} /> },
           { label: "Fórmulas de Cálculo", href: ES_AUTHORITY_ROUTES.formulasDeDerivadas, icon: <List size={14} /> },
-          { label: "Ejemplos Resueltos", href: ROUTES.ejemplos, icon: <CheckCircle2 size={14} /> },
+          { label: "Ejemplos Resueltos", href: ES_AUTHORITY_ROUTES.ejemplosDeDerivadas, icon: <CheckCircle2 size={14} /> },
           { label: "Conceptos Básicos", href: ROUTES.comoFunciona, icon: <HelpCircle size={14} /> },
           { label: "Blog de Matemáticas", href: ROUTES.blog, icon: <ExternalLink size={14} /> },
-        ]);
+        ];
+
+  const INTERNAL_LINKS = (resourceLinks ?? defaultResourceLinks).filter((link) => {
+    const path = link.href.split("#")[0];
+    return path !== pathname;
+  });
 
   return (
     <main className="flex min-h-screen flex-col bg-slate-50">
