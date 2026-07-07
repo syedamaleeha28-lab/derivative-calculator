@@ -72,4 +72,32 @@ export function ArticleWrap({ children }: { children: React.ReactNode }) {
   return <div className="space-y-12 text-slate-600 leading-relaxed">{children}</div>;
 }
 
+export function ArticleTldr({
+  tldr,
+  steps,
+}: {
+  tldr: React.ReactNode;
+  steps: readonly string[];
+}) {
+  return (
+    <div className="space-y-8">
+      <div className="rounded-2xl border border-violet-200/80 bg-violet-50/50 px-5 py-4 md:px-6 md:py-5">
+        <p className="text-[0.7rem] font-bold uppercase tracking-widest text-violet-600 mb-2">
+          TL;DR
+        </p>
+        <div className="text-slate-700 leading-relaxed text-[0.98rem]">{tldr}</div>
+      </div>
+
+      <section>
+        <h2 id="como-resolver-paso-a-paso">Cómo resolver paso a paso</h2>
+        <ol className="list-decimal pl-6 space-y-3 text-slate-700 leading-relaxed mt-4">
+          {steps.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+      </section>
+    </div>
+  );
+}
+
 export { FormulaCard, TipCard, WarningCard, ExampleCard, Link };

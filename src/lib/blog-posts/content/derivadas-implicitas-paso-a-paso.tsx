@@ -1,4 +1,5 @@
 import {
+  ArticleTldr,
   ArticleWrap,
   CalcCTA,
   ExampleCard,
@@ -12,6 +13,27 @@ import {
 export function DerivadasImplicitasContent() {
   return (
     <ArticleWrap>
+      <ArticleTldr
+        tldr={
+          <>
+            <p className="mb-3">
+              La derivación implícita obtiene dy/dx sin despejar y primero: deriva ambos lados de la
+              ecuación respecto a x y trata y como función de x.
+            </p>
+            <p>
+              Cada término que contiene y aporta un factor y&apos; al derivar; al final despejas: dy/dx
+              = −(términos con x) / (términos con y&apos;).
+            </p>
+          </>
+        }
+        steps={[
+          "Escribe la ecuación F(x, y) = 0 sin despejar y.",
+          "Deriva ambos lados respecto a x término a término.",
+          "En cada término con y, multiplica por dy/dx (o y') al derivar.",
+          "Agrupa los términos con y' y despeja dy/dx.",
+          "Comprueba sustituyendo un punto o con la calculadora de derivadas.",
+        ]}
+      />
       <section>
         <h2 id="introduccion">Derivación implícita: qué problema resuelve</h2>
         <p>

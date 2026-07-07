@@ -1,4 +1,5 @@
 import {
+  ArticleTldr,
   ArticleWrap,
   CalcCTA,
   ExampleCard,
@@ -12,6 +13,27 @@ import {
 export function ComoDerivarFraccionesContent() {
   return (
     <ArticleWrap>
+      <ArticleTldr
+        tldr={
+          <>
+            <p className="mb-3">
+              La derivada de una fracción u(x)/v(x) se calcula con la regla del cociente. La fórmula
+              es: (u&apos;v − uv&apos;) / v² — no divides u&apos; entre v&apos;.
+            </p>
+            <p>
+              Identifica numerador y denominador, deriva cada uno por separado y combina el resultado
+              en un solo cociente con v² abajo.
+            </p>
+          </>
+        }
+        steps={[
+          "Identifica u(x) como numerador y v(x) como denominador.",
+          "Calcula u'(x) y v'(x) con las reglas que correspondan.",
+          "Aplica (u'v − uv') / v² respetando el signo menos del medio.",
+          "Simplifica el numerador y comprueba que v(x) ≠ 0 en el dominio.",
+          "Verifica el resultado con la calculadora de derivadas gratis.",
+        ]}
+      />
       <section>
         <h2 id="intro">Cómo derivar fracciones: panorama general</h2>
         <p>

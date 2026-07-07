@@ -1,4 +1,5 @@
 import {
+  ArticleTldr,
   ArticleWrap,
   CalcCTA,
   ExampleCard,
@@ -13,6 +14,27 @@ import {
 export function DerivadaDeCosXContent() {
   return (
     <ArticleWrap>
+      <ArticleTldr
+        tldr={
+          <>
+            <p className="mb-3">
+              La derivada de cos(x) es <strong>−sin(x)</strong> cuando x está en radianes. La fórmula
+              en texto plano es: d/dx cos(x) = −sin(x).
+            </p>
+            <p>
+              Si el argumento es una función g(x), aplica la regla de la cadena: d/dx cos(g(x)) =
+              −sin(g(x)) · g&apos;(x).
+            </p>
+          </>
+        }
+        steps={[
+          "Identifica si derivas cos(x) simple o una composición cos(g(x)).",
+          "Aplica d/dx cos(x) = −sin(x) en el caso directo.",
+          "Si hay composición, deriva la capa externa y multiplica por g'(x).",
+          "Simplifica signos y factores comunes en el resultado.",
+          "Comprueba con un valor numérico o la calculadora de derivadas.",
+        ]}
+      />
       <section>
         <h2 id="intro">Derivada de cos(x): concepto clave</h2>
         <p>
