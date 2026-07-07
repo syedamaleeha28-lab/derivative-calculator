@@ -487,7 +487,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
           </AnimatePresence>
 
           <p id="calc-field-help" className="sr-only">
-            Enter a function of {variable}. Use sin, cos, ln, sqrt, and parentheses. Press Calculate or Enter.
+            {t.fieldHelp.replace("{variable}", variable)}
           </p>
 
           <div
@@ -512,7 +512,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
               placeholder={t.placeholder.replace("x", variable)}
               className="w-full min-w-0 bg-transparent py-3 px-3 text-base font-mono font-medium text-slate-900 outline-none placeholder:text-slate-400"
               onKeyDown={(e) => e.key === "Enter" && handleCalculate()}
-              aria-label="Function to differentiate"
+              aria-label={t.fieldLabel}
               aria-describedby="calc-field-help"
             />
             {input && (

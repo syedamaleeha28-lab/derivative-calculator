@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { productRuleWorkflow, sanitizeExpr } from "@/lib/calculator-math";
-import { CALCULATOR_INPUT_PLACEHOLDER } from "@/lib/calculator-placeholder";
+import { calculatorInputPlaceholder } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { PRODUCT_RULE_THEME } from "@/lib/specialized-calculators/themes";
 import type { Locale } from "@/lib/locale";
@@ -51,7 +51,7 @@ export default function ProductRuleCalculator({ locale }: { locale: Locale }) {
             value={f}
             onChange={(e) => setF(e.target.value)}
             className={`mt-1.5 ${inputClass}`}
-            placeholder={CALCULATOR_INPUT_PLACEHOLDER}
+            placeholder={calculatorInputPlaceholder(locale)}
             aria-label="u(x)"
           />
         </label>
@@ -63,7 +63,7 @@ export default function ProductRuleCalculator({ locale }: { locale: Locale }) {
             value={g}
             onChange={(e) => setG(e.target.value)}
             className={`mt-1.5 ${inputClass}`}
-            placeholder={CALCULATOR_INPUT_PLACEHOLDER}
+            placeholder={calculatorInputPlaceholder(locale)}
             aria-label="v(x)"
           />
         </label>

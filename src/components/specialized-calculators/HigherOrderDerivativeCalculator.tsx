@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { higherOrderWorkflow, sanitizeExpr } from "@/lib/calculator-math";
-import { CALCULATOR_INPUT_PLACEHOLDER } from "@/lib/calculator-placeholder";
+import { calculatorInputPlaceholder } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { HIGHER_ORDER_THEME } from "@/lib/specialized-calculators/themes";
 import type { Locale } from "@/lib/locale";
@@ -46,7 +46,7 @@ export default function HigherOrderDerivativeCalculator({ locale }: { locale: Lo
           value={f}
           onChange={(e) => setF(e.target.value)}
           className={`mt-1.5 w-full rounded-xl border-2 px-3 py-2.5 font-mono ${theme.inputBg} ${theme.inputRing}`}
-          placeholder={CALCULATOR_INPUT_PLACEHOLDER}
+          placeholder={calculatorInputPlaceholder(locale)}
         />
       </label>
 

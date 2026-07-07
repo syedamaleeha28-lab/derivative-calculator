@@ -1,5 +1,5 @@
 import type { DeepStringify } from "./dictionary-types";
-import { CALCULATOR_INPUT_PLACEHOLDER } from "./calculator-placeholder";
+import { CALCULATOR_INPUT_PLACEHOLDER_ES } from "./calculator-placeholder";
 
 const dictionaryData = {
     nav: {
@@ -113,7 +113,10 @@ const dictionaryData = {
       madeWith: "Hecho con"
     },
     calculator: {
-      placeholder: CALCULATOR_INPUT_PLACEHOLDER,
+      placeholder: CALCULATOR_INPUT_PLACEHOLDER_ES,
+      fieldHelp:
+        "Introduce una función de {variable}. Usa sin, cos, ln, sqrt y paréntesis. Pulsa Calcular o Enter.",
+      fieldLabel: "Función a derivar",
       calculate: "Calcular Derivada",
       advanced: "Opciones Avanzadas",
       variable: "Variable",
@@ -127,7 +130,7 @@ const dictionaryData = {
       result: "Resultado",
       simplified: "Simplificado",
       expanded: "Expandido",
-      showSteps: "VER SOLUCIÓN PASSO A PASSO",
+      showSteps: "VER SOLUCIÓN PASO A PASO",
       hideSteps: "OCULTAR PASSOS",
       steps: {
         step1: {

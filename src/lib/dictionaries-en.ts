@@ -1,5 +1,5 @@
 import type { TranslationDictionary } from "./dictionaries";
-import { CALCULATOR_INPUT_PLACEHOLDER } from "./calculator-placeholder";
+import { CALCULATOR_INPUT_PLACEHOLDER_EN } from "./calculator-placeholder";
 
 /** English UI strings for /en pages (calculator + navigation). */
 export const dictEn: TranslationDictionary = {
@@ -91,7 +91,10 @@ export const dictEn: TranslationDictionary = {
     madeWith: "Made with",
   },
   calculator: {
-    placeholder: CALCULATOR_INPUT_PLACEHOLDER,
+    placeholder: CALCULATOR_INPUT_PLACEHOLDER_EN,
+    fieldHelp:
+      "Enter a function of {variable}. Use sin, cos, ln, sqrt, and parentheses. Press Calculate or Enter.",
+    fieldLabel: "Function to differentiate",
     calculate: "Calculate Derivative",
     advanced: "Advanced Options",
     variable: "Variable",

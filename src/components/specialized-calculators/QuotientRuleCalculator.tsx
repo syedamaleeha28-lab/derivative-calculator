@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { quotientRuleWorkflow, sanitizeExpr } from "@/lib/calculator-math";
-import { CALCULATOR_INPUT_PLACEHOLDER } from "@/lib/calculator-placeholder";
+import { calculatorInputPlaceholder } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { QUOTIENT_RULE_THEME } from "@/lib/specialized-calculators/themes";
 import type { Locale } from "@/lib/locale";
@@ -46,12 +46,12 @@ export default function QuotientRuleCalculator({ locale }: { locale: Locale }) {
         <div className="space-y-3">
           <label className="block">
             <span className={`text-xs font-bold uppercase ${theme.labelColor}`}>{t.numerator}</span>
-            <input value={u} onChange={(e) => setU(e.target.value)} className={`mt-1 ${inputClass}`} placeholder={CALCULATOR_INPUT_PLACEHOLDER} />
+            <input value={u} onChange={(e) => setU(e.target.value)} className={`mt-1 ${inputClass}`} placeholder={calculatorInputPlaceholder(locale)} />
           </label>
           <div className="border-t-2 border-orange-400 mx-2" aria-hidden />
           <label className="block">
             <span className={`text-xs font-bold uppercase ${theme.labelColor}`}>{t.denominator}</span>
-            <input value={v} onChange={(e) => setV(e.target.value)} className={`mt-1 ${inputClass}`} placeholder={CALCULATOR_INPUT_PLACEHOLDER} />
+            <input value={v} onChange={(e) => setV(e.target.value)} className={`mt-1 ${inputClass}`} placeholder={calculatorInputPlaceholder(locale)} />
           </label>
         </div>
       </div>

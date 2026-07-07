@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, X } from "lucide-react";
 import { chainRuleWorkflow, evaluateDerivativeAtPoint, sanitizeExpr } from "@/lib/calculator-math";
-import { CALCULATOR_INPUT_PLACEHOLDER } from "@/lib/calculator-placeholder";
+import { calculatorInputPlaceholder } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { CHAIN_RULE_THEME } from "@/lib/specialized-calculators/themes";
 import type { Locale } from "@/lib/locale";
@@ -79,7 +79,7 @@ export default function ChainRuleCalculator({ locale }: { locale: Locale }) {
             value={outer}
             onChange={(e) => setOuter(e.target.value)}
             className={`mt-1.5 ${inputClass}`}
-            placeholder={CALCULATOR_INPUT_PLACEHOLDER}
+            placeholder={calculatorInputPlaceholder(locale)}
           />
         </label>
 
@@ -100,7 +100,7 @@ export default function ChainRuleCalculator({ locale }: { locale: Locale }) {
             value={inner}
             onChange={(e) => setInner(e.target.value)}
             className={`mt-1.5 ${inputClass}`}
-            placeholder={CALCULATOR_INPUT_PLACEHOLDER}
+            placeholder={calculatorInputPlaceholder(locale)}
           />
         </label>
       </div>
