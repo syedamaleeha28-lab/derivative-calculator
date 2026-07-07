@@ -2,13 +2,9 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowRight, Check, Zap, BookOpen } from "lucide-react";
+import { Check, Zap, BookOpen } from "lucide-react";
 import CalculatorCard, { type CalculatorHandle } from "./CalculatorCard";
 import { dict } from "@/lib/dictionaries";
-import { ROUTES } from "@/lib/routes";
-
-const MotionLink = motion.create(Link);
 
 function TrustPill({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
@@ -16,9 +12,9 @@ function TrustPill({ icon, text }: { icon: React.ReactNode; text: string }) {
       initial={{ opacity: 0, x: -8 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.35 }}
-      className="flex items-center gap-2 text-[0.8rem] sm:text-[0.85rem] font-medium text-slate-600"
+      className="inline-flex items-center gap-1.5 rounded-full border border-violet-200/80 bg-white/90 px-2.5 py-1 text-[0.68rem] sm:text-[0.75rem] font-semibold text-slate-700 shadow-sm"
     >
-      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-violet-100 to-cyan-50 text-violet-600 shadow-sm">
+      <span className="flex h-4 w-4 items-center justify-center text-violet-600">
         {icon}
       </span>
       {text}
@@ -28,12 +24,6 @@ function TrustPill({ icon, text }: { icon: React.ReactNode; text: string }) {
 
 export default function Hero() {
   const calculatorRef = useRef<CalculatorHandle>(null);
-  const t = dict.hero;
-
-  const handleCalculateClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    calculatorRef.current?.focusAndCalculate();
-  };
 
   return (
     <section
@@ -70,57 +60,32 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14 items-start lg:items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.7fr_1.3fr] gap-4 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14 items-start lg:items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="flex flex-col gap-3 sm:gap-5 lg:pr-2 xl:pr-6 order-2 lg:order-1"
+            className="flex flex-col gap-3 sm:gap-5 lg:pr-2 xl:pr-4 order-1 lg:order-1"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-violet-200/80 text-violet-700 text-[0.65rem] sm:text-[0.7rem] font-bold tracking-widest uppercase w-fit shadow-sm backdrop-blur-sm max-sm:hidden">
-              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 animate-pulse" />
-              {t.tag}
-            </div>
-
             <div>
               <h1
                 id="hero-heading"
-                className="heading-font text-2xl sm:text-[2.5rem] lg:text-[2.85rem] xl:text-[3.1rem] leading-[1.08] text-slate-900 tracking-tight mb-3 sm:mb-4"
+                className="heading-font text-2xl sm:text-[2.5rem] lg:text-[2.65rem] xl:text-[2.9rem] leading-[1.08] text-slate-900 tracking-tight mb-2 sm:mb-3"
               >
-                {t.h1}
+                Calculadora de derivadas con pasos
               </h1>
               <p
                 id="hero-description"
-                className="text-[0.95rem] sm:text-[1.05rem] lg:text-[1.1rem] text-slate-600 leading-relaxed max-w-xl max-sm:hidden"
+                className="text-[0.9rem] sm:text-[1rem] lg:text-[1.05rem] text-slate-600 leading-relaxed max-w-md"
               >
-                {t.desc}
+                Escribe f(x), calcula al instante y revisa cada paso con precision simbolica.
               </p>
             </div>
 
-            <div className="hidden sm:flex flex-wrap items-center gap-3">
-              <motion.button
-                type="button"
-                onClick={handleCalculateClick}
-                whileHover={{ scale: 1.03, y: -1 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl font-bold text-[0.82rem] uppercase tracking-wider text-white bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 shadow-[0_10px_30px_-6px_rgba(99,102,241,0.55)] hover:shadow-[0_14px_36px_-6px_rgba(139,92,246,0.65)] transition-shadow"
-              >
-                {t.calcBtn} <ArrowRight size={16} />
-              </motion.button>
-              <MotionLink
-                href={ROUTES.comoFunciona}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-2 bg-white/90 text-slate-800 border border-slate-200/90 hover:border-violet-300 px-6 py-3.5 rounded-2xl font-bold text-[0.82rem] uppercase tracking-wider hover:bg-violet-50/50 transition-colors shadow-sm backdrop-blur-sm"
-              >
-                <BookOpen size={15} className="text-violet-600 shrink-0" /> {t.howBtn}
-              </MotionLink>
-            </div>
-
-            <div className="hidden sm:flex flex-col gap-2.5 pt-4 border-t border-violet-100/80">
-              <TrustPill icon={<Check size={14} />} text={t.trust1} />
-              <TrustPill icon={<Zap size={14} />} text={t.trust2} />
-              <TrustPill icon={<BookOpen size={14} />} text={t.trust3} />
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              <TrustPill icon={<Check size={12} />} text="Gratis" />
+              <TrustPill icon={<BookOpen size={12} />} text="Paso a paso" />
+              <TrustPill icon={<Zap size={12} />} text="Precision simbolica" />
             </div>
           </motion.div>
 
@@ -128,7 +93,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut", delay: 0.08 }}
-            className="relative flex w-full justify-center lg:justify-end order-1 lg:order-2"
+            className="relative flex w-full justify-center lg:justify-end order-2 lg:order-2"
           >
             <motion.div
               className="pointer-events-none absolute inset-0 flex items-center justify-center"
@@ -141,7 +106,7 @@ export default function Hero() {
               />
             </motion.div>
 
-            <div className="relative z-10 w-full max-w-[600px] lg:max-w-[580px]">
+            <div className="relative z-10 w-full max-w-[620px] lg:max-w-[700px] xl:max-w-[740px]">
               <CalculatorCard ref={calculatorRef} enablePointEval />
             </div>
           </motion.div>
