@@ -32,7 +32,7 @@ const dictionaryData = {
       home: {
         title: "Calculadora de Derivadas con Pasos | Gratis en Español",
         description:
-          "Deriva online con solución paso a paso. Aprende, practica y verifica trigonométricas, implícitas y parciales gratis. Empieza ahora en la calculadora.",
+          "Calculadora de derivadas online gratis. Te permite calcular derivadas de cualquier función con solución paso a paso.",
         keywords:
           "calculadora de derivadas, calculadora de derivadas con pasos, calculadora de derivadas online gratis, derivadas paso a paso, derivadas parciales, derivadas implícitas, resolver derivadas online, calculadora diferencial",
       },

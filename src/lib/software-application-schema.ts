@@ -3,7 +3,7 @@ import type { Locale } from "./locale";
 
 /** Default SoftwareApplication description (homepage + calculator pages). */
 export const DEFAULT_SOFTWARE_APPLICATION_DESCRIPTION =
-  "Calculadora de derivadas online gratis con pasos detallados. Resuelve derivadas de funciones trigonométricas, parciales, implícitas y más.";
+  "Calculadora de derivadas online gratis. Te permite calcular derivadas de cualquier función con solución paso a paso.";
 
 export const HOMEPAGE_SOFTWARE_APPLICATION_NAME = "Calculadora de Derivadas";
 
