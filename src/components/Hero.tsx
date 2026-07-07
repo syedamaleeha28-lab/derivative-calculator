@@ -28,37 +28,9 @@ export default function Hero() {
   return (
     <section
       id="calculator"
-      className="relative overflow-hidden pt-4 pb-12 sm:pt-10 md:pt-14 md:pb-16 scroll-mt-20 bg-gradient-to-b from-white via-indigo-50/30 to-violet-50/40 hero-mesh hero-mesh-animated"
+      className="relative overflow-hidden pt-4 pb-12 sm:pt-10 md:pt-14 md:pb-16 scroll-mt-20 bg-gradient-to-b from-white to-indigo-50/40"
       aria-labelledby="hero-heading"
     >
-      <motion.div
-        className="pointer-events-none absolute -top-24 -left-20 h-[320px] w-[320px] rounded-full bg-violet-400/25 blur-[90px]"
-        animate={{ x: [0, 24, 0], y: [0, 16, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        aria-hidden
-      />
-      <motion.div
-        className="pointer-events-none absolute top-1/3 -right-16 h-[280px] w-[280px] rounded-full bg-cyan-400/20 blur-[80px]"
-        animate={{ x: [0, -20, 0], y: [0, 24, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        aria-hidden
-      />
-      <motion.div
-        className="pointer-events-none absolute bottom-0 left-1/3 h-[200px] w-[200px] rounded-full bg-indigo-400/15 blur-[70px]"
-        animate={{ scale: [1, 1.12, 1] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        aria-hidden
-      />
-
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.4]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 20% 30%, rgba(139,92,246,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(34,211,238,0.1) 0%, transparent 45%)",
-        }}
-        aria-hidden
-      />
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-[0.7fr_1.3fr] gap-4 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14 items-start lg:items-center">
           <motion.div
@@ -95,17 +67,6 @@ export default function Hero() {
             transition={{ duration: 0.55, ease: "easeOut", delay: 0.08 }}
             className="relative flex w-full justify-center lg:justify-end order-2 lg:order-2"
           >
-            <motion.div
-              className="pointer-events-none absolute inset-0 flex items-center justify-center"
-              aria-hidden
-            >
-              <motion.div
-                className="hero-calc-glow h-[min(88%,480px)] w-[min(100%,560px)] rounded-[2rem]"
-                animate={{ opacity: [0.55, 0.85, 0.55], scale: [0.98, 1.02, 0.98] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </motion.div>
-
             <div className="relative z-10 w-full max-w-[620px] lg:max-w-[700px] xl:max-w-[740px]">
               <CalculatorCard ref={calculatorRef} enablePointEval />
             </div>
