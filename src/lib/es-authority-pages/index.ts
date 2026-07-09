@@ -5,6 +5,7 @@ import { esAuthorityBreadcrumbs } from "./helpers";
 import { esHubBreadcrumbs } from "../common-derivative-functions/helpers";
 import { ReglasDeDerivacionContent } from "./content/reglas-de-derivacion";
 import { DerivadaPorDefinicionContent } from "./content/derivada-por-definicion";
+import { AplicacionesDeLaDerivadaContent } from "./content/aplicaciones-de-la-derivada";
 import { FormulasDeDerivadasContent } from "./content/formulas-de-derivadas";
 import { EjemplosDeDerivadasContent } from "./content/ejemplos-de-derivadas";
 import { EjerciciosDeDerivadasContent } from "./content/ejercicios-de-derivadas";
@@ -314,6 +315,65 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     breadcrumbLabel: "Ejercicios de derivadas",
     Content: EjerciciosDeDerivadasContent,
+  }),
+  entry({
+    route: ES_AUTHORITY_ROUTES.aplicacionesDeLaDerivada,
+    title: "Aplicaciones de la Derivada: Tangente, Extremos y Optimización",
+    description:
+      "Aplicaciones de la derivada explicadas: recta tangente, puntos críticos, máximos y mínimos, concavidad, optimización y movimiento. Con calculadoras paso a paso.",
+    date: "9 de julio de 2026",
+    dateIso: "2026-07-09",
+    readTime: "16 min",
+    category: "Referencia",
+    tags: [
+      "aplicaciones de la derivada",
+      "máximos y mínimos",
+      "optimización",
+      "recta tangente",
+      "concavidad",
+    ],
+    author: AUTHOR,
+    heroImageAlt: "Curva con recta tangente, extremos y puntos de inflexión señalados",
+    englishAlternate: EN_ROUTES.home,
+    faqs: [
+      {
+        question: "¿Cuáles son las aplicaciones principales de la derivada?",
+        answer:
+          "Recta tangente y aproximación lineal, máximos y mínimos (optimización), monotonía, concavidad y puntos de inflexión, y análisis del movimiento (velocidad y aceleración).",
+      },
+      {
+        question: "¿Cómo encuentro los máximos y mínimos de una función?",
+        answer:
+          "Resuelve f′(x) = 0 para hallar los puntos críticos y clasifícalos con el criterio de la primera derivada (cambio de signo de f′) o el de la segunda (signo de f″).",
+      },
+      {
+        question: "¿Qué indica la segunda derivada?",
+        answer:
+          "La concavidad: f″ > 0 significa cóncava hacia arriba y f″ < 0 hacia abajo. Donde f″ cambia de signo hay un punto de inflexión. También clasifica puntos críticos.",
+      },
+      {
+        question: "¿Cómo se calcula la recta tangente en un punto?",
+        answer:
+          "Con y = f(a) + f′(a)(x − a): evalúa la función en a para el punto de tangencia y la derivada en a para la pendiente.",
+      },
+      {
+        question: "¿Qué relación hay entre derivada y velocidad?",
+        answer:
+          "Si s(t) es la posición, v(t) = s′(t) es la velocidad instantánea y a(t) = s″(t) la aceleración. La derivada es exactamente la tasa de cambio instantánea.",
+      },
+      {
+        question: "¿Cómo resuelvo un problema de optimización paso a paso?",
+        answer:
+          "Expresa la magnitud a optimizar como función de una variable usando la restricción, deriva, resuelve f′ = 0, clasifica el punto crítico y responde en las unidades del problema.",
+      },
+    ],
+    relatedPosts: [
+      { title: "Calculadora de recta tangente", href: "/calculadora-recta-tangente" },
+      { title: "Calculadora de puntos críticos", href: "/calculadora-puntos-criticos" },
+      { title: "Calculadora de segunda derivada", href: "/calculadora-segunda-derivada" },
+    ],
+    breadcrumbLabel: "Aplicaciones de la derivada",
+    Content: AplicacionesDeLaDerivadaContent,
   }),
   entry({
     route: ES_AUTHORITY_ROUTES.tablaDeDerivadas,

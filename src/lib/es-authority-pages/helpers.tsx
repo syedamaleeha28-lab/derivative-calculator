@@ -42,6 +42,11 @@ export const ES_AUTHORITY_HUB_LINKS = [
     desc: "Primeros principios: cociente incremental, límite h→0 y ejemplos resueltos.",
   },
   {
+    href: ES_AUTHORITY_ROUTES.aplicacionesDeLaDerivada,
+    label: "Aplicaciones de la derivada",
+    desc: "Recta tangente, máximos y mínimos, concavidad, optimización y movimiento.",
+  },
+  {
     href: ES_AUTHORITY_ROUTES.formulasDeDerivadas,
     label: "Fórmulas de derivadas",
     desc: "Referencia organizada por tipo de función y regla.",
