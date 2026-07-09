@@ -29,6 +29,12 @@ export const HOME_COMMON_DERIVATIVE_FUNCTION_LINKS: InternalLinkItem[] = [
       "Aprende (x²)′ = 2x con cociente incremental, parábola y ejercicios para verificar en la calculadora.",
   },
   {
+    href: ES_COMMON_FUNCTION_ROUTES.derivadaDe1EntreX,
+    anchor: "Derivada de 1/x: fórmula −1/x² explicada",
+    description:
+      "Regla de la potencia con exponente −1, demostración por límites, errores comunes y ejemplos con la cadena.",
+  },
+  {
     href: ES_COMMON_FUNCTION_ROUTES.derivadaDeSinX,
     anchor: "Aprende la derivada de sin x paso a paso",
     description:

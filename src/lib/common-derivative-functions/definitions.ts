@@ -1,4 +1,6 @@
 import type { CommonFunctionPageDef } from "./types";
+import { ES_AUTHORITY_ROUTES } from "../es-authority-routes";
+import { EN_ROUTES } from "../en-routes";
 import {
   EN_COMMON_FUNCTION_SLUGS,
   ES_COMMON_FUNCTION_ROUTES,
@@ -259,6 +261,102 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
     },
   },
   {
+    id: "1-x",
+    esRoute: ES_COMMON_FUNCTION_ROUTES.derivadaDe1EntreX,
+    enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOf1OverX,
+    relatedIds: ["ln", "x-cuadrado", "raiz"],
+    es: {
+      title: "Derivada de 1/x: Fórmula −1/x² con Ejemplo Paso a Paso",
+      description:
+        "Derivada de 1/x explicada paso a paso: fórmula (1/x)′ = −1/x², regla de la potencia con exponente −1, dominio x ≠ 0, errores comunes y FAQ.",
+      breadcrumbLabel: "Derivada de 1/x",
+      category: "Funciones algebraicas",
+      tags: ["derivada de 1/x", "derivada de 1 entre x", "regla de la potencia"],
+      heroImageAlt: "Hipérbola 1/x y su pendiente −1/x²",
+      intro:
+        "La derivada de 1/x es −1/x² para x ≠ 0. Escribe 1/x como x^(−1) y aplica la regla de la potencia: el resultado siempre es negativo porque la hipérbola y = 1/x decrece en todo su dominio.",
+      formulaTitle: "Regla de la potencia (n = −1)",
+      formulaLatex: "\\dfrac{d}{dx}\\,\\dfrac{1}{x} = -\\dfrac{1}{x^2}, \\quad x \\neq 0",
+      formulaExplanation:
+        "Con 1/x = x^(−1), aplica d/dx x^n = n x^(n−1): baja −1 como coeficiente y el nuevo exponente es −1 − 1 = −2. Queda −x^(−2) = −1/x². El dominio excluye x = 0, donde ni la función ni su derivada están definidas.",
+      exampleTitle: "Ejemplo: definición por límites",
+      exampleSteps: [
+        "Escribe el cociente incremental: [1/(x+h) − 1/x] / h.",
+        "Combina las fracciones: (x − (x+h)) / (x(x+h)h) = −1/(x(x+h)).",
+        "Toma el límite h → 0: f′(x) = −1/x².",
+      ],
+      exampleLatex: "f'(x)=\\lim_{h\\to 0}\\dfrac{\\frac{1}{x+h}-\\frac{1}{x}}{h}=-\\dfrac{1}{x^2}",
+      extraSectionTitle: "Ejemplo adicional: derivada de 1/(2x+1)",
+      extraSectionBody:
+        "Para derivar 1/(2x+1), escribe (2x+1)^(−1) y aplica la regla de la cadena: −(2x+1)^(−2) · 2 = −2/(2x+1)². El mismo patrón sirve para cualquier cociente 1/u(x): su derivada es −u′(x)/u(x)². Compruébalo también con la regla del cociente y verifica el resultado en la calculadora.",
+      mistakesTitle: "Errores comunes al derivar 1/x",
+      mistakes: [
+        "Olvidar el signo negativo: la derivada es −1/x², no 1/x².",
+        "Confundirla con la derivada de ln x: (ln x)′ = 1/x, mientras que (1/x)′ = −1/x².",
+        "Aplicar mal la regla de la potencia: con n = −1 el nuevo exponente es −2, no 0.",
+        "Ignorar el dominio: ni 1/x ni su derivada están definidas en x = 0.",
+      ],
+      guideLinksTitle: "Guías relacionadas",
+      guideLinks: [
+        { label: "Tabla de derivadas", href: ES_AUTHORITY_ROUTES.tablaDeDerivadas },
+        { label: "Reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
+      ],
+      faqs: [
+        { question: "¿Cuál es la derivada de 1/x?", answer: "(1/x)′ = −1/x² para x ≠ 0." },
+        { question: "¿Cómo derivo 1/x²?", answer: "Escribe x^(−2) y aplica la potencia: −2x^(−3) = −2/x³." },
+        {
+          question: "¿Por qué la derivada de 1/x es negativa?",
+          answer: "Porque 1/x decrece tanto en (−∞, 0) como en (0, ∞); la pendiente negativa refleja ese decrecimiento.",
+        },
+      ],
+    },
+    en: {
+      title: "Derivative of 1/x: Formula −1/x² with Step-by-Step Example",
+      description:
+        "Derivative of 1/x explained step by step: (1/x)′ = −1/x², power rule with exponent −1, domain x ≠ 0, common mistakes, and FAQ.",
+      breadcrumbLabel: "Derivative of 1/x",
+      category: "Algebraic functions",
+      tags: ["derivative of 1/x", "derivative of 1 over x", "power rule"],
+      heroImageAlt: "Hyperbola 1/x and its slope −1/x²",
+      intro:
+        "The derivative of 1/x is −1/x² for x ≠ 0. Write 1/x as x^(−1) and apply the power rule: the result is always negative because the hyperbola y = 1/x decreases on its whole domain.",
+      formulaTitle: "Power rule (n = −1)",
+      formulaLatex: "\\dfrac{d}{dx}\\,\\dfrac{1}{x} = -\\dfrac{1}{x^2}, \\quad x \\neq 0",
+      formulaExplanation:
+        "With 1/x = x^(−1), apply d/dx x^n = n x^(n−1): bring down −1 as the coefficient and the new exponent is −1 − 1 = −2. That gives −x^(−2) = −1/x². The domain excludes x = 0, where neither the function nor its derivative is defined.",
+      exampleTitle: "Worked example: limit definition",
+      exampleSteps: [
+        "Write the difference quotient: [1/(x+h) − 1/x] / h.",
+        "Combine the fractions: (x − (x+h)) / (x(x+h)h) = −1/(x(x+h)).",
+        "Take the limit h → 0: f′(x) = −1/x².",
+      ],
+      exampleLatex: "f'(x)=\\lim_{h\\to 0}\\dfrac{\\frac{1}{x+h}-\\frac{1}{x}}{h}=-\\dfrac{1}{x^2}",
+      extraSectionTitle: "Extra example: derivative of 1/(2x+1)",
+      extraSectionBody:
+        "To differentiate 1/(2x+1), write (2x+1)^(−1) and apply the chain rule: −(2x+1)^(−2) · 2 = −2/(2x+1)². The same pattern works for any quotient 1/u(x): its derivative is −u′(x)/u(x)². You can confirm it with the quotient rule and verify the result in the calculator.",
+      mistakesTitle: "Common mistakes when differentiating 1/x",
+      mistakes: [
+        "Dropping the negative sign: the derivative is −1/x², not 1/x².",
+        "Mixing it up with the derivative of ln x: (ln x)′ = 1/x, while (1/x)′ = −1/x².",
+        "Misusing the power rule: with n = −1 the new exponent is −2, not 0.",
+        "Ignoring the domain: neither 1/x nor its derivative is defined at x = 0.",
+      ],
+      guideLinksTitle: "Related guides",
+      guideLinks: [
+        { label: "Derivative cheat sheet", href: EN_ROUTES.derivativeCheatSheet },
+        { label: "Derivative rules", href: EN_ROUTES.derivativeRules },
+      ],
+      faqs: [
+        { question: "What is the derivative of 1/x?", answer: "d/dx(1/x) = −1/x² for x ≠ 0." },
+        { question: "How do I differentiate 1/x²?", answer: "Write x^(−2) and apply the power rule: −2x^(−3) = −2/x³." },
+        {
+          question: "Why is the derivative of 1/x negative?",
+          answer: "Because 1/x decreases on both (−∞, 0) and (0, ∞); the negative slope reflects that decrease.",
+        },
+      ],
+    },
+  },
+  {
     id: "e-x",
     esRoute: ES_COMMON_FUNCTION_ROUTES.derivadaDeEElevadoAX,
     enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfEToTheX,
@@ -322,7 +420,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
     id: "ln",
     esRoute: ES_COMMON_FUNCTION_ROUTES.derivadaDeLnX,
     enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfLnX,
-    relatedIds: ["e-x", "log", "raiz"],
+    relatedIds: ["e-x", "log", "1-x"],
     es: {
       title: "Derivada de ln(x): Fórmula 1/x con Ejemplo Paso a Paso",
       description:

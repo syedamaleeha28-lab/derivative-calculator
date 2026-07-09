@@ -204,7 +204,11 @@ export function TablaDeDerivadasContent() {
 
         <h3 id="derivada-de-1-x" className="text-xl font-bold text-slate-900 mb-2">Derivada de 1/x</h3>
         <p className="mb-6">
-          Escribe 1/x = x^(−1): la derivada es −1/x² para x ≠ 0. Relacionada con ln x, cuya derivada es 1/x.{" "}
+          Escribe 1/x = x^(−1): la derivada es −1/x² para x ≠ 0.{" "}
+          <Link href={ES_COMMON_FUNCTION_ROUTES.derivadaDe1EntreX} className="text-violet-600 font-semibold hover:underline">
+            Guía completa: derivada de 1/x
+          </Link>
+          . Relacionada con ln x, cuya derivada es 1/x.{" "}
           <Link href={ES_COMMON_FUNCTION_ROUTES.derivadaDeLnX} className="text-violet-600 font-semibold hover:underline">
             Derivada de ln x
           </Link>

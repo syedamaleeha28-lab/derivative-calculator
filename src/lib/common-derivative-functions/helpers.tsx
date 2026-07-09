@@ -1,6 +1,6 @@
 import Link from "next/link";
 import katex from "katex";
-import { FormulaCard, TipCard, ExampleCard } from "@/components/EducationalArticle";
+import { FormulaCard, TipCard, WarningCard, ExampleCard } from "@/components/EducationalArticle";
 import { ES_CALCULATOR_ROUTES } from "../es-routes";
 import { EN_ROUTES } from "../en-routes";
 import { ES_MAIN_CALCULATOR_HREF, ROUTES } from "../routes";
@@ -200,6 +200,44 @@ export function FunctionPageBody({
           <h2 id="extra">{content.extraSectionTitle}</h2>
           <p>{content.extraSectionBody}</p>
         </section>
+      )}
+
+      {content.mistakes && content.mistakes.length > 0 && (
+        <section>
+          <h2 id="errores-comunes">
+            {content.mistakesTitle ?? (locale === "es" ? "Errores comunes" : "Common mistakes")}
+          </h2>
+          <WarningCard>
+            <ul className="list-disc pl-5 space-y-2">
+              {content.mistakes.map((mistake) => (
+                <li key={mistake}>{mistake}</li>
+              ))}
+            </ul>
+          </WarningCard>
+        </section>
+      )}
+
+      {content.guideLinks && content.guideLinks.length > 0 && (
+        <nav
+          className="my-10 rounded-2xl border border-slate-200 bg-slate-50 p-6"
+          aria-label={content.guideLinksTitle ?? (locale === "es" ? "Guías relacionadas" : "Related guides")}
+        >
+          <h3 className="text-lg font-bold text-slate-900 mb-4">
+            {content.guideLinksTitle ?? (locale === "es" ? "Guías relacionadas" : "Related guides")}
+          </h3>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {content.guideLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="block rounded-xl bg-white border border-slate-100 px-4 py-3 hover:border-violet-300 hover:shadow-sm transition-all font-semibold text-violet-600 text-sm"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       )}
 
       <CalculatorLinksBlock locale={locale} />

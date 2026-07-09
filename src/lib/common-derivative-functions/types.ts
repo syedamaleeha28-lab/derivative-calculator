@@ -18,6 +18,12 @@ export type CommonFunctionLocaleContent = {
   exampleLatex?: string;
   extraSectionTitle?: string;
   extraSectionBody?: string;
+  /** Optional "common mistakes" section (rendered as a warning list). */
+  mistakesTitle?: string;
+  mistakes?: readonly string[];
+  /** Optional contextual guide links (e.g. tabla / reglas de derivación). */
+  guideLinksTitle?: string;
+  guideLinks?: readonly { label: string; href: string }[];
   faqs: readonly CommonFunctionFaq[];
 };
 
