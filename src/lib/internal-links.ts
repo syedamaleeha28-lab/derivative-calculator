@@ -17,6 +17,12 @@ export const HOME_COMMON_DERIVATIVE_FUNCTION_LINKS: InternalLinkItem[] = [
       "Hub central con x, x², e^x, ln x, sin x, cos x, tan x y más: fórmulas, tablas y enlaces a cada guía.",
   },
   {
+    href: ES_COMMON_FUNCTION_ROUTES.derivadaDeUnaConstante,
+    anchor: "Derivada de una constante: por qué siempre es 0",
+    description:
+      "Regla de la constante con demostración por límites, diferencia con el múltiplo constante (5x) y ejemplos con π y e.",
+  },
+  {
     href: ES_COMMON_FUNCTION_ROUTES.derivadaDeX,
     anchor: "Derivada de x: fórmula (x)′ = 1 y ejemplo paso a paso",
     description:

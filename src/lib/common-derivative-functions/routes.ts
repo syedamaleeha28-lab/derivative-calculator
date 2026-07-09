@@ -5,6 +5,7 @@ export const EN_COMMON_FUNCTIONS_HUB_SLUG = "common-derivative-functions" as con
 
 /** Spanish top-level derivative-of-function pages. */
 export const ES_COMMON_FUNCTION_ROUTES = {
+  derivadaDeUnaConstante: "/derivada-de-una-constante",
   derivadaDeX: "/derivada-de-x",
   derivadaDeXCuadrado: "/derivada-de-x-cuadrado",
   derivadaDeXCubo: "/derivada-de-x-cubo",
@@ -20,6 +21,7 @@ export const ES_COMMON_FUNCTION_ROUTES = {
 
 /** English article slugs (under /en/). */
 export const EN_COMMON_FUNCTION_SLUGS = {
+  derivativeOfAConstant: "derivative-of-a-constant",
   derivativeOfX: "derivative-of-x",
   derivativeOfXSquared: "derivative-of-x-squared",
   derivativeOfXCubed: "derivative-of-x-cubed",

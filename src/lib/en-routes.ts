@@ -36,6 +36,7 @@ export const EN_ROUTES = {
   derivativeOfSquareRootX: "/en/derivative-of-square-root-x",
   derivativeOfLogX: "/en/derivative-of-log-x",
   derivativeOf1OverX: "/en/derivative-of-1-over-x",
+  derivativeOfAConstant: "/en/derivative-of-a-constant",
 } as const;
 
 /** Anchor link to the embedded calculator on the English homepage. */
@@ -88,4 +89,5 @@ export const EN_ARTICLE_PAGES = [
   EN_ROUTES.derivativeOfEToTheX,
   EN_ROUTES.derivativeOfLogX,
   EN_ROUTES.derivativeOf1OverX,
+  EN_ROUTES.derivativeOfAConstant,
 ] as const;

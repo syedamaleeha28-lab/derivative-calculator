@@ -16,6 +16,7 @@ import {
   ROUTES,
   EN_ROUTES,
 } from "../helpers";
+import { ES_COMMON_FUNCTION_ROUTES } from "../../common-derivative-functions/routes";
 
 export function ReglasDeDerivacionContent() {
   return (
@@ -78,9 +79,15 @@ export function ReglasDeDerivacionContent() {
           {renderMath("(f + g)' = f' + g', \\quad (cf)' = c f'", true)}
         </FormulaCard>
         <p>
-          La derivada de una suma es la suma de las derivadas. Las constantes se factorizan hacia fuera; la derivada de
-          una constante aislada es cero. Estas reglas permiten derivar polinomios término a término y dividir
-          expresiones complicadas en piezas manejables antes de aplicar producto o cociente.
+          La derivada de una suma es la suma de las derivadas. Las constantes se factorizan hacia fuera; la{" "}
+          <Link
+            href={ES_COMMON_FUNCTION_ROUTES.derivadaDeUnaConstante}
+            className="text-violet-600 font-semibold hover:underline"
+          >
+            derivada de una constante
+          </Link>{" "}
+          aislada es cero. Estas reglas permiten derivar polinomios término a término y dividir expresiones complicadas
+          en piezas manejables antes de aplicar producto o cociente.
         </p>
         <ExampleCard
           title="Ejemplo: 4x³ − 2x + 9"

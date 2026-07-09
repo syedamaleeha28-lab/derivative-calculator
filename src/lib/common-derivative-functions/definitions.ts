@@ -21,10 +21,102 @@ export const COMMON_FUNCTION_AUTHOR_EN = AUTHOR_EN;
 
 export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
   {
+    id: "constante",
+    esRoute: ES_COMMON_FUNCTION_ROUTES.derivadaDeUnaConstante,
+    enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfAConstant,
+    relatedIds: ["x", "x-cuadrado", "1-x"],
+    es: {
+      title: "Derivada de una Constante: Por Qué Siempre es 0 (Ejemplos)",
+      description:
+        "Derivada de una constante explicada paso a paso: (c)′ = 0, demostración por límites, diferencia con el múltiplo constante (5x), ejemplos con π y e, y FAQ.",
+      breadcrumbLabel: "Derivada de una constante",
+      category: "Funciones algebraicas",
+      tags: ["derivada de una constante", "derivada de un número", "regla de la constante"],
+      heroImageAlt: "Recta horizontal y = c con pendiente cero",
+      intro:
+        "La derivada de una constante es siempre 0. La gráfica de f(x) = c es una recta horizontal: no sube ni baja, así que su pendiente —la tasa de cambio— es cero en todos los puntos. Vale para cualquier número: 5, −3, π o e.",
+      formulaTitle: "Regla de la constante",
+      formulaLatex: "\\dfrac{d}{dx}\\,c = 0",
+      formulaExplanation:
+        "Una constante no depende de x: al variar x, el valor de f(x) = c no cambia. Por eso su tasa de cambio instantánea es 0 en todo ℝ. Es también el caso n = 0 de la regla de la potencia: c = c·x⁰ deriva a c·0·x⁻¹ = 0.",
+      exampleTitle: "Ejemplo: definición por límites",
+      exampleSteps: [
+        "Escribe f(x) = c, de modo que f(x+h) = c.",
+        "Forma el cociente incremental: [f(x+h) − f(x)] / h = (c − c)/h = 0.",
+        "Toma el límite cuando h → 0: f′(x) = 0.",
+      ],
+      exampleLatex: "f'(x)=\\lim_{h\\to 0}\\dfrac{c-c}{h}=0",
+      extraSectionTitle: "Ejemplos rápidos: 5, π y 7 en un polinomio",
+      extraSectionBody:
+        "La derivada de 5 es 0; la de π es 0 (π ≈ 3,1416 es un número fijo, no una variable); y en f(x) = 3x² + 7, el término constante 7 aporta 0, así que f′(x) = 6x. No confundas la constante aislada con el múltiplo constante: la derivada de 5x es 5, porque ahí la constante multiplica a x y se conserva por linealidad: (c·f)′ = c·f′.",
+      mistakesTitle: "Errores comunes con la regla de la constante",
+      mistakes: [
+        "Confundir constante aislada con múltiplo constante: (5)′ = 0, pero (5x)′ = 5.",
+        "Tratar π o e como variables: son números fijos, así que (π)′ = 0 y (e²)′ = 0.",
+        "Olvidar que el término constante de un polinomio desaparece: (x² + 7)′ = 2x, no 2x + 7.",
+        "Anular expresiones que sí dependen de x: e^x no es constante y su derivada es e^x, no 0.",
+      ],
+      guideLinksTitle: "Guías relacionadas",
+      guideLinks: [
+        { label: "Tabla de derivadas", href: ES_AUTHORITY_ROUTES.tablaDeDerivadas },
+        { label: "Reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
+      ],
+      faqs: [
+        { question: "¿Cuál es la derivada de una constante?", answer: "Siempre 0: si f(x) = c, entonces f′(x) = 0 en todo ℝ." },
+        { question: "¿Cuál es la derivada de 5?", answer: "0, porque 5 es una constante que no depende de x." },
+        { question: "¿La derivada de 5x también es 0?", answer: "No: (5x)′ = 5. La constante que multiplica a x se conserva; solo la constante aislada deriva a 0." },
+        { question: "¿Cuál es la derivada de π?", answer: "0. π es un número fijo (≈ 3,1416), no una variable, igual que e o cualquier otra constante." },
+      ],
+    },
+    en: {
+      title: "Derivative of a Constant: Why It Is Always 0 (Examples)",
+      description:
+        "Derivative of a constant explained step by step: (c)′ = 0, limit-definition proof, constant vs. constant multiple (5x), examples with π and e, and FAQ.",
+      breadcrumbLabel: "Derivative of a constant",
+      category: "Algebraic functions",
+      tags: ["derivative of a constant", "derivative of a number", "constant rule"],
+      heroImageAlt: "Horizontal line y = c with zero slope",
+      intro:
+        "The derivative of a constant is always 0. The graph of f(x) = c is a horizontal line: it never rises or falls, so its slope — the rate of change — is zero at every point. This holds for any number: 5, −3, π, or e.",
+      formulaTitle: "Constant rule",
+      formulaLatex: "\\dfrac{d}{dx}\\,c = 0",
+      formulaExplanation:
+        "A constant does not depend on x: as x changes, f(x) = c stays the same, so its instantaneous rate of change is 0 on all of ℝ. It is also the n = 0 case of the power rule: c = c·x⁰ differentiates to c·0·x⁻¹ = 0.",
+      exampleTitle: "Worked example: limit definition",
+      exampleSteps: [
+        "Let f(x) = c, so f(x+h) = c.",
+        "Difference quotient: [f(x+h) − f(x)] / h = (c − c)/h = 0.",
+        "Limit as h → 0: f′(x) = 0.",
+      ],
+      exampleLatex: "f'(x)=\\lim_{h\\to 0}\\dfrac{c-c}{h}=0",
+      extraSectionTitle: "Quick examples: 5, π, and 7 inside a polynomial",
+      extraSectionBody:
+        "The derivative of 5 is 0; the derivative of π is 0 (π ≈ 3.1416 is a fixed number, not a variable); and in f(x) = 3x² + 7, the constant term 7 contributes 0, so f′(x) = 6x. Don't confuse a lone constant with a constant multiple: the derivative of 5x is 5, because there the constant multiplies x and is kept by linearity: (c·f)′ = c·f′.",
+      mistakesTitle: "Common mistakes with the constant rule",
+      mistakes: [
+        "Confusing a lone constant with a constant multiple: (5)′ = 0, but (5x)′ = 5.",
+        "Treating π or e as variables: they are fixed numbers, so (π)′ = 0 and (e²)′ = 0.",
+        "Forgetting the constant term of a polynomial vanishes: (x² + 7)′ = 2x, not 2x + 7.",
+        "Zeroing out expressions that do depend on x: e^x is not constant and its derivative is e^x, not 0.",
+      ],
+      guideLinksTitle: "Related guides",
+      guideLinks: [
+        { label: "Derivative cheat sheet", href: EN_ROUTES.derivativeCheatSheet },
+        { label: "Derivative rules", href: EN_ROUTES.derivativeRules },
+      ],
+      faqs: [
+        { question: "What is the derivative of a constant?", answer: "Always 0: if f(x) = c, then f′(x) = 0 on all of ℝ." },
+        { question: "What is the derivative of 5?", answer: "0, because 5 is a constant that does not depend on x." },
+        { question: "Is the derivative of 5x also 0?", answer: "No: (5x)′ = 5. A constant multiplying x is kept; only a lone constant differentiates to 0." },
+        { question: "What is the derivative of π?", answer: "0. π is a fixed number (≈ 3.1416), not a variable — the same goes for e or any other constant." },
+      ],
+    },
+  },
+  {
     id: "x",
     esRoute: ES_COMMON_FUNCTION_ROUTES.derivadaDeX,
     enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfX,
-    relatedIds: ["x-cuadrado", "x-cubo", "raiz"],
+    relatedIds: ["constante", "x-cuadrado", "x-cubo"],
     es: {
       title: "Derivada de x: Fórmula, Ejemplo Paso a Paso y Explicación",
       description:

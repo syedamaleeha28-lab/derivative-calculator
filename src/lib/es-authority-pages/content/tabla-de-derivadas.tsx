@@ -193,7 +193,21 @@ export function TablaDeDerivadasContent() {
           una guía paso a paso y a la calculadora para verificar.
         </p>
 
-        <h3 id="derivada-de-ex" className="text-xl font-bold text-slate-900 mt-8 mb-2">Derivada de e^x</h3>
+        <h3 id="derivada-de-una-constante" className="text-xl font-bold text-slate-900 mt-8 mb-2">
+          Derivada de una constante
+        </h3>
+        <p className="mb-6">
+          (c)′ = 0 para cualquier número fijo: 5, −3, π o e. La gráfica de y = c es horizontal y su pendiente es cero.{" "}
+          <Link
+            href={ES_COMMON_FUNCTION_ROUTES.derivadaDeUnaConstante}
+            className="text-violet-600 font-semibold hover:underline"
+          >
+            Guía completa: derivada de una constante
+          </Link>
+          .
+        </p>
+
+        <h3 id="derivada-de-ex" className="text-xl font-bold text-slate-900 mb-2">Derivada de e^x</h3>
         <p className="mb-6">
           (e^x)′ = e^x. Es la única exponencial (salvo escalar) que coincide con su derivada.{" "}
           <Link href={ES_COMMON_FUNCTION_ROUTES.derivadaDeEElevadoAX} className="text-violet-600 font-semibold hover:underline">

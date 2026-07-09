@@ -15,6 +15,7 @@ const NEW_EN_SLUGS = new Set([
   "derivative-of-e-to-the-x",
   "derivative-of-log-x",
   "derivative-of-1-over-x",
+  "derivative-of-a-constant",
 ]);
 
 /** EN article entries for common-function pages not already in the main registry. */

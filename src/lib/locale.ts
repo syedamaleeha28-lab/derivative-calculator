@@ -52,6 +52,7 @@ export const LOCALE_ROUTE_PAIRS: { es: string; en: string }[] = [
   { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeXCubo, en: EN_ROUTES.derivativeOfXCubed },
   { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeRaizCuadradaDeX, en: EN_ROUTES.derivativeOfSquareRootX },
   { es: ES_COMMON_FUNCTION_ROUTES.derivadaDe1EntreX, en: EN_ROUTES.derivativeOf1OverX },
+  { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeUnaConstante, en: EN_ROUTES.derivativeOfAConstant },
   { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeEElevadoAX, en: EN_ROUTES.derivativeOfEToTheX },
   { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeLnX, en: EN_ROUTES.derivativeOfLnX },
   { es: ES_COMMON_FUNCTION_ROUTES.derivadaDeLogX, en: EN_ROUTES.derivativeOfLogX },
