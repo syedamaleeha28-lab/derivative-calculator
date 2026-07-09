@@ -7,6 +7,7 @@ import { ReglasDeDerivacionContent } from "./content/reglas-de-derivacion";
 import { DerivadaPorDefinicionContent } from "./content/derivada-por-definicion";
 import { AplicacionesDeLaDerivadaContent } from "./content/aplicaciones-de-la-derivada";
 import { ReglaDeLHopitalContent } from "./content/regla-de-l-hopital";
+import { DerivadasDeFuncionesTrigonometricasContent } from "./content/derivadas-de-funciones-trigonometricas";
 import { FormulasDeDerivadasContent } from "./content/formulas-de-derivadas";
 import { EjemplosDeDerivadasContent } from "./content/ejemplos-de-derivadas";
 import { EjerciciosDeDerivadasContent } from "./content/ejercicios-de-derivadas";
@@ -434,6 +435,64 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     breadcrumbLabel: "Regla de L'Hôpital",
     Content: ReglaDeLHopitalContent,
+  }),
+  entry({
+    route: ES_AUTHORITY_ROUTES.derivadasDeFuncionesTrigonometricas,
+    title: "Derivadas de Funciones Trigonométricas: Tabla y Guías",
+    description:
+      "Derivadas trigonométricas explicadas: sin, cos, tan, sec, csc y cot con tabla de fórmulas, demostraciones, regla de la cadena y resumen de las inversas (arcsin, arctan).",
+    date: "9 de julio de 2026",
+    dateIso: "2026-07-09",
+    readTime: "15 min",
+    category: "Referencia",
+    tags: [
+      "derivadas de funciones trigonométricas",
+      "derivadas trigonométricas",
+      "derivar funciones trigonométricas",
+      "derivada de seno coseno tangente",
+    ],
+    author: AUTHOR,
+    heroImageAlt: "Tabla de derivadas de las seis funciones trigonométricas",
+    englishAlternate: EN_ROUTES.home,
+    faqs: [
+      {
+        question: "¿Cuáles son las derivadas de las seis funciones trigonométricas?",
+        answer:
+          "(sin x)′ = cos x, (cos x)′ = −sin x, (tan x)′ = sec² x, (cot x)′ = −csc² x, (sec x)′ = sec x·tan x y (csc x)′ = −csc x·cot x, con x en radianes.",
+      },
+      {
+        question: "¿Por qué las derivadas trigonométricas requieren radianes?",
+        answer:
+          "Porque la demostración usa el límite lim h→0 de sin(h)/h = 1, que solo vale en radianes. En grados aparece el factor π/180.",
+      },
+      {
+        question: "¿Cómo se derivan sec, csc y cot?",
+        answer:
+          "Escribiéndolas como cocientes (sec = 1/cos, csc = 1/sin, cot = cos/sin) y aplicando la regla del cociente o la cadena sobre 1/u.",
+      },
+      {
+        question: "¿Qué funciones llevan signo negativo en su derivada?",
+        answer:
+          "Las tres «co»: coseno (−sin x), cotangente (−csc² x) y cosecante (−csc x·cot x). Es una regla mnemotécnica fiable.",
+      },
+      {
+        question: "¿Cuáles son las derivadas de las trigonométricas inversas?",
+        answer:
+          "(arcsin x)′ = 1/√(1−x²), (arctan x)′ = 1/(1+x²) y (arcsec x)′ = 1/(|x|√(x²−1)); sus cofunciones solo cambian el signo.",
+      },
+      {
+        question: "¿Cómo derivo composiciones como sin(3x) o cos(x²)?",
+        answer:
+          "Con la regla de la cadena: derivada exterior evaluada en el interior por la derivada interior. Por ejemplo, (cos(x²))′ = −2x·sin(x²).",
+      },
+    ],
+    relatedPosts: [
+      { title: "Derivada de sin(x)", href: "/derivada-de-sin-x" },
+      { title: "Derivada de cos(x)", href: "/derivada-de-cos-x" },
+      { title: "Derivada de tan(x)", href: "/derivada-de-tan-x" },
+    ],
+    breadcrumbLabel: "Derivadas de funciones trigonométricas",
+    Content: DerivadasDeFuncionesTrigonometricasContent,
   }),
   entry({
     route: ES_AUTHORITY_ROUTES.tablaDeDerivadas,

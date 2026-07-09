@@ -52,6 +52,11 @@ export const ES_AUTHORITY_HUB_LINKS = [
     desc: "Límites 0/0 e ∞/∞ resueltos con derivadas, ejemplos y errores comunes.",
   },
   {
+    href: ES_AUTHORITY_ROUTES.derivadasDeFuncionesTrigonometricas,
+    label: "Derivadas de funciones trigonométricas",
+    desc: "sin, cos, tan, sec, csc y cot con tabla, demostraciones e inversas.",
+  },
+  {
     href: ES_AUTHORITY_ROUTES.formulasDeDerivadas,
     label: "Fórmulas de derivadas",
     desc: "Referencia organizada por tipo de función y regla.",
