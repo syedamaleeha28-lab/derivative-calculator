@@ -47,6 +47,11 @@ export const ES_AUTHORITY_HUB_LINKS = [
     desc: "Recta tangente, máximos y mínimos, concavidad, optimización y movimiento.",
   },
   {
+    href: ES_AUTHORITY_ROUTES.reglaDeLHopital,
+    label: "Regla de L'Hôpital",
+    desc: "Límites 0/0 e ∞/∞ resueltos con derivadas, ejemplos y errores comunes.",
+  },
+  {
     href: ES_AUTHORITY_ROUTES.formulasDeDerivadas,
     label: "Fórmulas de derivadas",
     desc: "Referencia organizada por tipo de función y regla.",

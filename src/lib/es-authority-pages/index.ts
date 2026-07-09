@@ -6,6 +6,7 @@ import { esHubBreadcrumbs } from "../common-derivative-functions/helpers";
 import { ReglasDeDerivacionContent } from "./content/reglas-de-derivacion";
 import { DerivadaPorDefinicionContent } from "./content/derivada-por-definicion";
 import { AplicacionesDeLaDerivadaContent } from "./content/aplicaciones-de-la-derivada";
+import { ReglaDeLHopitalContent } from "./content/regla-de-l-hopital";
 import { FormulasDeDerivadasContent } from "./content/formulas-de-derivadas";
 import { EjemplosDeDerivadasContent } from "./content/ejemplos-de-derivadas";
 import { EjerciciosDeDerivadasContent } from "./content/ejercicios-de-derivadas";
@@ -374,6 +375,65 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     breadcrumbLabel: "Aplicaciones de la derivada",
     Content: AplicacionesDeLaDerivadaContent,
+  }),
+  entry({
+    route: ES_AUTHORITY_ROUTES.reglaDeLHopital,
+    title: "Regla de L'Hôpital: Límites 0/0 e ∞/∞ Paso a Paso",
+    description:
+      "Regla de L'Hôpital explicada: cuándo aplicarla, formas indeterminadas 0/0 e ∞/∞, ejemplos resueltos paso a paso, relación con la derivada y errores comunes.",
+    date: "9 de julio de 2026",
+    dateIso: "2026-07-09",
+    readTime: "14 min",
+    category: "Referencia",
+    tags: [
+      "regla de l'hôpital",
+      "regla de lhopital",
+      "límites indeterminados",
+      "límites 0/0",
+      "límites infinito entre infinito",
+    ],
+    author: AUTHOR,
+    heroImageAlt: "Límite indeterminado 0/0 resuelto con la regla de L'Hôpital",
+    englishAlternate: EN_ROUTES.home,
+    faqs: [
+      {
+        question: "¿Qué es la regla de L'Hôpital?",
+        answer:
+          "Un método para resolver límites con forma indeterminada 0/0 o ∞/∞: el límite de f(x)/g(x) es igual al límite de f′(x)/g′(x) cuando este último existe.",
+      },
+      {
+        question: "¿Cuándo se puede aplicar la regla de L'Hôpital?",
+        answer:
+          "Solo si la sustitución directa da 0/0 o ∞/∞, f y g son derivables cerca del punto con g′ ≠ 0, y el límite de f′/g′ existe o es infinito.",
+      },
+      {
+        question: "¿Se deriva con la regla del cociente?",
+        answer:
+          "No. Se derivan numerador y denominador por separado: f′(x)/g′(x), nunca la derivada del cociente (f/g)′.",
+      },
+      {
+        question: "¿Se puede aplicar L'Hôpital varias veces?",
+        answer:
+          "Sí, mientras cada nueva evaluación siga dando 0/0 o ∞/∞. Por ejemplo, (1 − cos x)/x² requiere dos aplicaciones y da 1/2.",
+      },
+      {
+        question: "¿Sirve para las formas 0·∞, ∞ − ∞ o 1^∞?",
+        answer:
+          "Sí, pero primero hay que reescribirlas como cociente 0/0 o ∞/∞, por ejemplo x·ln x = ln x / (1/x); en las exponenciales se toma logaritmo antes.",
+      },
+      {
+        question: "¿Qué pasa si el límite de f′/g′ no existe?",
+        answer:
+          "La regla no concluye nada: el límite original puede existir igualmente y hay que resolverlo por otra vía, como en (x + sin x)/x, que tiende a 1.",
+      },
+    ],
+    relatedPosts: [
+      { title: "Derivada por definición", href: ES_AUTHORITY_ROUTES.derivadaPorDefinicion },
+      { title: "Reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
+      { title: "Aplicaciones de la derivada", href: ES_AUTHORITY_ROUTES.aplicacionesDeLaDerivada },
+    ],
+    breadcrumbLabel: "Regla de L'Hôpital",
+    Content: ReglaDeLHopitalContent,
   }),
   entry({
     route: ES_AUTHORITY_ROUTES.tablaDeDerivadas,

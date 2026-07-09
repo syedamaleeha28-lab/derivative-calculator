@@ -8,6 +8,7 @@ export const ES_AUTHORITY_ROUTES = {
   tablaDeDerivadas: "/tabla-de-derivadas",
   derivadasDeFuncionesComunes: "/derivadas-de-funciones-comunes",
   aplicacionesDeLaDerivada: "/aplicaciones-de-la-derivada",
+  reglaDeLHopital: "/regla-de-l-hopital",
 } as const;
 
 export const ES_AUTHORITY_ROUTE_LIST = Object.values(ES_AUTHORITY_ROUTES);
