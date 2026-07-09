@@ -26,7 +26,7 @@ export function ReglasDeDerivacionContent() {
         <p>
           Las reglas de derivación son la gramática del cálculo diferencial: te indican cómo derivar combinaciones de
           funciones sin volver a la{" "}
-          <Link href="/como-funciona#derivada-por-definicion" className="text-violet-600 font-semibold hover:underline">
+          <Link href={ES_AUTHORITY_ROUTES.derivadaPorDefinicion} className="text-violet-600 font-semibold hover:underline">
             definición por límites
           </Link>{" "}
           en cada problema. Esta guía reúne la regla de la potencia,
@@ -270,7 +270,7 @@ export function ReglasDeDerivacionContent() {
         <p>
           No sustituye la regla de la cadena en ln(g(x)) = g′/g, pero organiza problemas que de otro modo serían
           engorrosos. Conecta con la{" "}
-          <Link href="/como-funciona#derivada-por-definicion" className="text-violet-600 font-semibold hover:underline">
+          <Link href={ES_AUTHORITY_ROUTES.derivadaPorDefinicion} className="text-violet-600 font-semibold hover:underline">
             definición formal de derivada
           </Link>{" "}
           y con las fórmulas de{" "}

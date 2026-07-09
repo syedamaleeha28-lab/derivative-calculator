@@ -4,6 +4,7 @@ import { EN_ROUTES } from "../en-routes";
 import { esAuthorityBreadcrumbs } from "./helpers";
 import { esHubBreadcrumbs } from "../common-derivative-functions/helpers";
 import { ReglasDeDerivacionContent } from "./content/reglas-de-derivacion";
+import { DerivadaPorDefinicionContent } from "./content/derivada-por-definicion";
 import { FormulasDeDerivadasContent } from "./content/formulas-de-derivadas";
 import { EjemplosDeDerivadasContent } from "./content/ejemplos-de-derivadas";
 import { EjerciciosDeDerivadasContent } from "./content/ejercicios-de-derivadas";
@@ -104,6 +105,65 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     breadcrumbLabel: "Reglas de derivación",
     Content: ReglasDeDerivacionContent,
+  }),
+  entry({
+    route: ES_AUTHORITY_ROUTES.derivadaPorDefinicion,
+    title: "Derivada por Definición: Límite del Cociente Incremental",
+    description:
+      "Derivada por definición explicada paso a paso: primeros principios, cociente incremental, límite h→0, método en 4 pasos y ejemplos resueltos con x², 1/x y √x.",
+    date: "9 de julio de 2026",
+    dateIso: "2026-07-09",
+    readTime: "15 min",
+    category: "Referencia",
+    tags: [
+      "derivada por definición",
+      "primeros principios",
+      "cociente incremental",
+      "definición de derivada",
+      "derivada por límites",
+    ],
+    author: AUTHOR,
+    heroImageAlt: "Recta secante aproximándose a la tangente cuando h tiende a cero",
+    englishAlternate: EN_ROUTES.home,
+    faqs: [
+      {
+        question: "¿Qué es la derivada por definición?",
+        answer:
+          "Es calcular f′(x) directamente con el límite del cociente incremental: f′(x) = lim h→0 [f(x+h) − f(x)] / h, sin usar reglas memorizadas.",
+      },
+      {
+        question: "¿Cuáles son los pasos para derivar por definición?",
+        answer:
+          "Cuatro: plantear f(x+h), restar f(x) y expandir, dividir entre h simplificando, y tomar el límite cuando h → 0.",
+      },
+      {
+        question: "¿Por qué no puedo sustituir h = 0 directamente?",
+        answer:
+          "Porque el cociente daría 0/0, una indeterminación. Primero simplifica algebraicamente hasta cancelar la h del denominador y luego evalúa el límite.",
+      },
+      {
+        question: "¿Qué hago si la función tiene una raíz cuadrada?",
+        answer:
+          "Multiplica numerador y denominador por el conjugado. Por ejemplo, con √x se obtiene f′(x) = 1/(2√x).",
+      },
+      {
+        question: "¿Toda función es derivable por definición?",
+        answer:
+          "No. Si los límites laterales del cociente incremental no coinciden (como |x| en 0) o son infinitos, la derivada no existe en ese punto.",
+      },
+      {
+        question: "¿Cuándo uso la definición y cuándo las reglas de derivación?",
+        answer:
+          "La definición se usa para entender el concepto, demostrar fórmulas y en ejercicios que la piden explícitamente; para derivar rápido se usan las reglas, que son atajos del mismo límite.",
+      },
+    ],
+    relatedPosts: [
+      { title: "Reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
+      { title: "Tabla de derivadas", href: ES_AUTHORITY_ROUTES.tablaDeDerivadas },
+      { title: "Derivadas de funciones comunes", href: ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes },
+    ],
+    breadcrumbLabel: "Derivada por definición",
+    Content: DerivadaPorDefinicionContent,
   }),
   entry({
     route: ES_AUTHORITY_ROUTES.formulasDeDerivadas,

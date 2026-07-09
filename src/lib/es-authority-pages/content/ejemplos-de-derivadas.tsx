@@ -38,7 +38,7 @@ export function EjemplosDeDerivadasContent() {
         </p>
         <p>
           Si empiezas desde cero, repasa primero la{" "}
-          <Link href="/como-funciona#derivada-por-definicion" className="text-violet-600 font-semibold hover:underline">
+          <Link href={ES_AUTHORITY_ROUTES.derivadaPorDefinicion} className="text-violet-600 font-semibold hover:underline">
             derivada por definición (límite)
           </Link>
           . La práctica efectiva consiste en nombrar la regla en voz alta antes de escribir: «esto es un producto»,

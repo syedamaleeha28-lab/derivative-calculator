@@ -37,6 +37,11 @@ export const ES_AUTHORITY_HUB_LINKS = [
     desc: "Potencia, producto, cociente, cadena y trigonométricas en una guía completa.",
   },
   {
+    href: ES_AUTHORITY_ROUTES.derivadaPorDefinicion,
+    label: "Derivada por definición",
+    desc: "Primeros principios: cociente incremental, límite h→0 y ejemplos resueltos.",
+  },
+  {
     href: ES_AUTHORITY_ROUTES.formulasDeDerivadas,
     label: "Fórmulas de derivadas",
     desc: "Referencia organizada por tipo de función y regla.",

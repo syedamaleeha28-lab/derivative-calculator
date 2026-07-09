@@ -665,7 +665,7 @@ const dictionaryData = {
           title: "¿Qué es una derivada?",
           desc: "Comprende la pendiente instantánea y el significado geométrico de la derivada en una función.",
           link: "Aprende el concepto base →",
-          href: "/como-funciona#derivada-por-definicion",
+          href: "/derivada-por-definicion",
           image: "/images/que-es-una-derivada.webp",
           imageAlt:
             "Gráfica educativa que explica qué es una derivada y la pendiente de la tangente",
@@ -756,7 +756,7 @@ const dictionaryData = {
             "Comprender qué es una derivada es el primer paso antes de derivar con cualquier calculadora: la herramienta acelera el cálculo, pero el aprendizaje real ocurre cuando relacionas el resultado con la definición por límite y la tasa de cambio.",
           ],
           relatedLinks: [
-            { label: "Derivada por definición (límite)", href: "/como-funciona#derivada-por-definicion" },
+            { label: "Derivada por definición (límite)", href: "/derivada-por-definicion" },
             { label: "Glosario de términos", href: "/como-funciona#glosario" },
             { label: "Concepto y uso de la calculadora", href: "/como-funciona" },
           ],

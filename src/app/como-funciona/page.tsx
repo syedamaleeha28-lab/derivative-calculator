@@ -114,8 +114,12 @@ export default async function ComoFuncionaPage() {
         </p>
         <p>
           En la práctica rara vez calculas cada derivada desde cero con límites, pero entender la definición
-          conecta la pendiente de la tangente con el concepto de tasa de cambio. Practica el cociente incremental
-          en polinomios simples y luego contrasta con la{" "}
+          conecta la pendiente de la tangente con el concepto de tasa de cambio. Tenemos una guía completa con el
+          método en cuatro pasos y ejemplos resueltos con x², 1/x y √x:{" "}
+          <Link href="/derivada-por-definicion" className="text-secondary font-bold hover:underline">
+            derivada por definición
+          </Link>
+          . Practica el cociente incremental en polinomios simples y luego contrasta con la{" "}
           <Link href="/#calculator" className="text-secondary font-bold hover:underline">
             calculadora de derivadas
           </Link>{" "}

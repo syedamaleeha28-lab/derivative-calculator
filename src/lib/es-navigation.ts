@@ -32,6 +32,7 @@ export const ES_CALCULATORS_NAV: EsNavLink[] = [
 export const ES_GUIDES_NAV: EsNavLink[] = [
   { name: "Derivadas de funciones comunes", href: ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes },
   { name: "Reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
+  { name: "Derivada por definición", href: ES_AUTHORITY_ROUTES.derivadaPorDefinicion },
   { name: "Fórmulas de derivadas", href: ES_AUTHORITY_ROUTES.formulasDeDerivadas },
   { name: "Tabla de derivadas", href: ES_AUTHORITY_ROUTES.tablaDeDerivadas },
   { name: "Ejemplos de derivadas", href: ES_AUTHORITY_ROUTES.ejemplosDeDerivadas },
@@ -49,6 +50,7 @@ export const ES_GUIDES_NAV: EsNavLink[] = [
 export const ES_FOOTER_GUIDES_NAV: EsNavLink[] = [
   { name: "Derivadas de funciones comunes", href: ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes },
   { name: "Reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
+  { name: "Derivada por definición", href: ES_AUTHORITY_ROUTES.derivadaPorDefinicion },
   { name: "Fórmulas de derivadas", href: ES_AUTHORITY_ROUTES.formulasDeDerivadas },
   { name: "Tabla de derivadas", href: ES_AUTHORITY_ROUTES.tablaDeDerivadas },
   { name: "Ejemplos de derivadas", href: ES_AUTHORITY_ROUTES.ejemplosDeDerivadas },
