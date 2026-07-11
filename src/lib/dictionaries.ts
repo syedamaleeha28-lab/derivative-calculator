@@ -571,11 +571,11 @@ const dictionaryData = {
         },
         {
           q: "¿Puedo calcular la derivada de sin(x) y otras trigonométricas?",
-          a: "Sí. Las derivadas trigonométricas como sin(x), cos(x) y tan(x) están soportadas. La derivada de sin(x) es cos(x); la herramienta aplica las reglas y muestra cada paso.",
+          a: "Sí. Las derivadas trigonométricas como sin(x), cos(x) y tan(x) están soportadas, con el desarrollo completo paso a paso en la calculadora.",
         },
         {
           q: "¿Cómo se obtiene la derivada de ln(x)?",
-          a: "La derivada de ln(x) es 1/x para x > 0. Si tu expresión combina logaritmos con otras funciones, se aplican la regla de la cadena y las reglas de derivación correspondientes.",
+          a: "Se resuelve aplicando la regla del logaritmo natural; si tu expresión combina logaritmos con otras funciones, entran también la regla de la cadena y las demás reglas de derivación. Consulta la guía de ln(x) para ver el desarrollo completo.",
         },
         {
           q: "¿Admite derivadas parciales?",
@@ -647,7 +647,7 @@ const dictionaryData = {
         },
         {
           q: "¿Cómo se calcula la derivada de e^x, 1/x o x²?",
-          a: "e^x se deriva a e^x; x² a 2x; 1/x es x^(−1) y su derivada es −1/x². La derivada de ln x es 1/x. Consulta la tabla de derivadas y las guías por función para ver cada caso con pasos.",
+          a: "Cada una sigue una regla distinta: la exponencial tiene una propiedad especial, x² usa la regla de la potencia y 1/x se reescribe antes de derivar. Consulta la tabla de derivadas y las guías por función para ver cada caso resuelto paso a paso.",
         },
         {
           q: "¿En qué se diferencia esta calculadora de Symbolab?",
@@ -958,6 +958,7 @@ const dictionaryData = {
       title: "Acerca de Calculadora Derivadas",
       subtitle: "Herramienta educativa gratuita para aprender cálculo diferencial.",
       sections: [
+        { title: "Quién está detrás", content: "Este sitio está mantenido por Marta Gómez, profesora de cálculo diferencial, junto con un equipo de revisión de contenido matemático. Cada guía y ejemplo se revisa antes de publicarse." },
         { title: "Nuestra misión", content: "Ofrecemos una calculadora de derivadas paso a paso para estudiantes y docentes que necesitan resultados exactos con explicaciones claras." },
         { title: "Qué ofrecemos", content: "Cálculo simbólico, reglas de derivación, ejemplos resueltos, blog educativo y recursos íntegramente en español." },
       ],

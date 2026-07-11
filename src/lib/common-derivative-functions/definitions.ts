@@ -7,13 +7,13 @@ import {
 } from "./routes";
 
 const AUTHOR_ES = {
-  name: "Calculadora Derivadas Team",
-  role: "Educación en cálculo diferencial",
+  name: "Marta Gómez",
+  role: "Profesora de Cálculo Diferencial",
 } as const;
 
 const AUTHOR_EN = {
-  name: "Derivative Calculator Team",
-  role: "Calculus education in English",
+  name: "Marta Gómez",
+  role: "Calculus Instructor",
 } as const;
 
 export const COMMON_FUNCTION_AUTHOR_ES = AUTHOR_ES;
@@ -238,7 +238,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
     enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfXCubed,
     relatedIds: ["x-cuadrado", "x", "raiz"],
     es: {
-      title: "Derivada de x³: Fórmula 3x² con Ejemplo Paso a Paso",
+      title: "Derivada de x³: Cómo Aplicar la Regla de la Potencia (Ejemplo)",
       description:
         "Derivada de x al cubo explicada: (x³)′ = 3x², ejemplo con regla de la potencia, aplicación en polinomios y preguntas frecuentes.",
       breadcrumbLabel: "Derivada de x³",
@@ -265,7 +265,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       ],
     },
     en: {
-      title: "Derivative of x³: Formula 3x² with Step-by-Step Example",
+      title: "Derivative of x³: Applying the Power Rule (Worked Example)",
       description:
         "Derivative of x cubed: (x³)′ = 3x², power-rule walkthrough, polynomial applications, and FAQ.",
       breadcrumbLabel: "Derivative of x³",
@@ -298,7 +298,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
     enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfSquareRootX,
     relatedIds: ["x-cuadrado", "x-cubo", "ln"],
     es: {
-      title: "Derivada de √x: Fórmula 1/(2√x) Explicada con Ejemplo",
+      title: "Derivada de √x: Guía Paso a Paso con la Regla de la Potencia",
       description:
         "Derivada de la raíz cuadrada de x paso a paso: (√x)′ = 1/(2√x), dominio x > 0, regla de la potencia con exponente 1/2 y FAQ.",
       breadcrumbLabel: "Derivada de √x",
@@ -325,7 +325,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       ],
     },
     en: {
-      title: "Derivative of √x: Formula 1/(2√x) with Step-by-Step Example",
+      title: "Derivative of √x: Step-by-Step Guide Using the Power Rule",
       description:
         "Derivative of square root of x: (√x)′ = 1/(2√x), domain x > 0, fractional power rule, and FAQ.",
       breadcrumbLabel: "Derivative of √x",
@@ -454,7 +454,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
     enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfEToTheX,
     relatedIds: ["ln", "x", "sin"],
     es: {
-      title: "Derivada de e^x: Por Qué es Igual a e^x (Ejemplo Resuelto)",
+      title: "Derivada de e^x: La Propiedad Única de la Exponencial (Ejemplo)",
       description:
         "Derivada de e elevado a x paso a paso: (e^x)′ = e^x, interpretación de crecimiento exponencial, regla de la cadena y FAQ.",
       breadcrumbLabel: "Derivada de e^x",
@@ -481,7 +481,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       ],
     },
     en: {
-      title: "Derivative of e^x: Why It Equals Itself (Step-by-Step Example)",
+      title: "Derivative of e^x: The Exponential's Unique Property (Example)",
       description:
         "Derivative of e to the x: (e^x)′ = e^x, exponential growth meaning, chain rule example, and FAQ.",
       breadcrumbLabel: "Derivative of e^x",
@@ -514,7 +514,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
     enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfLnX,
     relatedIds: ["e-x", "log", "1-x"],
     es: {
-      title: "Derivada de ln(x): Fórmula 1/x con Ejemplo Paso a Paso",
+      title: "Derivada de ln(x): Cómo Derivar el Logaritmo Natural (Guía)",
       description:
         "Derivada del logaritmo natural ln x: (ln x)′ = 1/x, dominio x > 0, derivación implícita inversa de e^x y preguntas frecuentes.",
       breadcrumbLabel: "Derivada de ln(x)",
@@ -541,7 +541,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       ],
     },
     en: {
-      title: "Derivative of ln(x): Formula 1/x with Step-by-Step Example",
+      title: "Derivative of ln(x): How to Differentiate the Natural Log",
       description:
         "Derivative of natural log ln x: (ln x)′ = 1/x, domain x > 0, inverse of e^x, chain-rule example, and FAQ.",
       breadcrumbLabel: "Derivative of ln(x)",
@@ -634,7 +634,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
     enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfSinX,
     relatedIds: ["cos", "tan", "x"],
     es: {
-      title: "Derivada de sin(x): cos(x) Explicada Paso a Paso",
+      title: "Derivada de sin(x): Guía Paso a Paso con Demostración",
       description:
         "Aprende (sin x)′ = cos x con explicación paso a paso, regla de la cadena y ejemplos. Consulta la guía y verifica tus derivadas en la calculadora gratis.",
       breadcrumbLabel: "Derivada de sin(x)",
@@ -661,7 +661,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       ],
     },
     en: {
-      title: "Derivative of sin(x): cos(x) Formula with Step-by-Step Example",
+      title: "Derivative of sin(x): Step-by-Step Guide with Proof",
       description:
         "Derivative of sine: (sin x)′ = cos x in radians, chain rule, worked example, and FAQ.",
       breadcrumbLabel: "Derivative of sin(x)",
@@ -694,7 +694,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
     enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfCosX,
     relatedIds: ["sin", "tan", "x"],
     es: {
-      title: "Derivada de cos(x): -sin(x) Explicada Paso a Paso",
+      title: "Derivada de cos(x): Guía Paso a Paso con Demostración",
       description:
         "Domina (cos x)′ = −sin x: fórmula, signo menos y cadena explicados paso a paso. Estudia la guía y comprueba tus resultados en la calculadora gratis.",
       breadcrumbLabel: "Derivada de cos(x)",
@@ -721,7 +721,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       ],
     },
     en: {
-      title: "Derivative of cos(x): −sin(x) Formula Step by Step",
+      title: "Derivative of cos(x): Step-by-Step Guide with Proof",
       description:
         "Derivative of cosine: (cos x)′ = −sin x, why the minus sign appears, chain rule example, and FAQ.",
       breadcrumbLabel: "Derivative of cos(x)",
@@ -754,7 +754,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
     enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfTanX,
     relatedIds: ["sin", "cos", "x"],
     es: {
-      title: "Derivada de tan(x): Fórmula sec²(x) con Ejemplo Resuelto",
+      title: "Derivada de tan(x): Cómo Derivarla Paso a Paso (Ejemplo)",
       description:
         "Derivada de tangente paso a paso: (tan x)′ = sec² x, demostración con cociente sin/cos, regla de la cadena y FAQ.",
       breadcrumbLabel: "Derivada de tan(x)",
@@ -781,7 +781,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       ],
     },
     en: {
-      title: "Derivative of tan(x): sec²(x) Formula with Worked Example",
+      title: "Derivative of tan(x): How to Differentiate Tangent Step by Step",
       description:
         "Derivative of tangent step by step: (tan x)′ = sec² x, quotient-rule proof from sin/cos, chain rule, and FAQ.",
       breadcrumbLabel: "Derivative of tan(x)",
