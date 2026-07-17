@@ -69,6 +69,11 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
       "guía de derivadas",
     ],
     author: AUTHOR,
+    learningResource: {
+      learningResourceType: "Study Guide",
+      educationalLevel: "Secondary school and undergraduate",
+      teaches: "Reglas de Derivación: Potencia, Producto y Cadena",
+    },
     heroImageAlt: "Tabla resumen de reglas de derivación para estudiantes de cálculo",
     englishAlternate: EN_ROUTES.derivativeRules,
     faqs: [
@@ -238,6 +243,11 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     author: AUTHOR,
     heroImageAlt: "Ejemplos de derivadas resueltos para estudiantes de cálculo",
+    learningResource: {
+      learningResourceType: "Worked Examples",
+      educationalLevel: "Secondary school and undergraduate",
+      teaches: "Ejemplos de Derivadas Resueltos Paso a Paso",
+    },
     englishAlternate: EN_ROUTES.derivativeExamples,
     faqs: [
       {
@@ -287,6 +297,11 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     author: AUTHOR,
     heroImageAlt: "Hoja de ejercicios de derivadas para preparación de exámenes",
+    learningResource: {
+      learningResourceType: "Exercise",
+      educationalLevel: "Secondary school and undergraduate",
+      teaches: "Ejercicios de Derivadas: Práctica por Niveles con Soluciones",
+    },
     englishAlternate: EN_ROUTES.derivativePracticeProblems,
     faqs: [
       {
@@ -335,6 +350,11 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
       "concavidad",
     ],
     author: AUTHOR,
+    learningResource: {
+      learningResourceType: "Study Guide",
+      educationalLevel: "Secondary school and undergraduate",
+      teaches: "Aplicaciones de la Derivada: Tangente, Extremos y Optimización",
+    },
     heroImageAlt: "Curva con recta tangente, extremos y puntos de inflexión señalados",
     englishAlternate: EN_ROUTES.home,
     faqs: [
@@ -394,6 +414,11 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
       "límites infinito entre infinito",
     ],
     author: AUTHOR,
+    learningResource: {
+      learningResourceType: "Study Guide",
+      educationalLevel: "Secondary school and undergraduate",
+      teaches: "Regla de L'Hôpital: Límites 0/0 e ∞/∞ Paso a Paso",
+    },
     heroImageAlt: "Límite indeterminado 0/0 resuelto con la regla de L'Hôpital",
     englishAlternate: EN_ROUTES.home,
     faqs: [
@@ -453,6 +478,11 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     author: AUTHOR,
     heroImageAlt: "Tabla de derivadas de las seis funciones trigonométricas",
+    learningResource: {
+      learningResourceType: "Reference",
+      educationalLevel: "Secondary school and undergraduate",
+      teaches: "Derivadas de Funciones Trigonométricas: Tabla y Guías",
+    },
     englishAlternate: EN_ROUTES.home,
     faqs: [
       {
@@ -511,6 +541,11 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     author: AUTHOR,
     heroImageAlt: "Tabla de derivadas compacta para consulta rápida",
+    learningResource: {
+      learningResourceType: "Reference",
+      educationalLevel: "Secondary school and undergraduate",
+      teaches: "Tabla de Derivadas: Hoja de Consulta Rápida",
+    },
     englishAlternate: EN_ROUTES.derivativeCheatSheet,
     faqs: [
       {

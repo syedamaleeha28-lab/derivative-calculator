@@ -69,6 +69,7 @@ export function renderEsCommonFunctionPage(route: string) {
         }))}
       breadcrumbs={[...esCommonFunctionBreadcrumbs(def.esRoute, def.es.breadcrumbLabel)]}
       heroImageAlt={def.es.heroImageAlt}
+      learningResource={def.es.learningResource}
       showArticleMeta
       calculatorHref={ES_MAIN_CALCULATOR_HREF}
     />

@@ -640,6 +640,11 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       breadcrumbLabel: "Derivada de sin(x)",
       category: "Funciones trigonométricas",
       tags: ["derivada de sin x", "derivadas trigonométricas", "seno"],
+      learningResource: {
+        learningResourceType: "Reference",
+        educationalLevel: "Secondary school and undergraduate",
+        teaches: "Derivada de sin(x): Guía Paso a Paso con Demostración",
+      },
       heroImageAlt: "Seno y coseno como derivada",
       intro:
         "La derivada de sin(x) es cos(x) cuando el ángulo está en radianes. Es la identidad trigonométrica más usada en cálculo y física.",
@@ -700,6 +705,11 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       breadcrumbLabel: "Derivada de cos(x)",
       category: "Funciones trigonométricas",
       tags: ["derivada de cos x", "derivadas trigonométricas", "coseno"],
+      learningResource: {
+        learningResourceType: "Reference",
+        educationalLevel: "Secondary school and undergraduate",
+        teaches: "Derivada de cos(x): Guía Paso a Paso con Demostración",
+      },
       heroImageAlt: "Coseno y su derivada negativa del seno",
       intro:
         "La derivada de cos(x) es −sin(x). El signo negativo refleja que el coseno decrece donde el seno crece en la misma fase.",

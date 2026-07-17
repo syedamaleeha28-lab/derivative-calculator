@@ -24,6 +24,12 @@ export type CommonFunctionLocaleContent = {
   /** Optional contextual guide links (e.g. tabla / reglas de derivación). */
   guideLinksTitle?: string;
   guideLinks?: readonly { label: string; href: string }[];
+  /** Optional LearningResource JSON-LD classification (opt-in per page). */
+  learningResource?: {
+    learningResourceType: string;
+    educationalLevel: string;
+    teaches: string;
+  };
   faqs: readonly CommonFunctionFaq[];
 };
 

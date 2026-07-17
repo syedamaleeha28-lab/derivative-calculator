@@ -13,6 +13,12 @@ export type EsAuthorityMeta = {
   tags: readonly string[];
   author: { name: string; role: string };
   heroImageAlt: string;
+  /** Optional LearningResource JSON-LD classification (opt-in per page). */
+  learningResource?: {
+    learningResourceType: string;
+    educationalLevel: string;
+    teaches: string;
+  };
   faqs: readonly EsAuthorityFaq[];
   relatedPosts: readonly { title: string; href: string; description?: string }[];
   /** English equivalent path for hreflang (parent will wire locale.ts). */

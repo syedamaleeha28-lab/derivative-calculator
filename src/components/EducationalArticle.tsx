@@ -80,6 +80,12 @@ interface ArticleProps {
   calculatorHref?: string;
   /** When true, skip Article JSON-LD (e.g. BlogPosting is rendered separately). */
   omitArticleJsonLd?: boolean;
+  /** Optional LearningResource JSON-LD classification (opt-in, only set for pages that should carry it). */
+  learningResource?: {
+    learningResourceType: string;
+    educationalLevel: string;
+    teaches: string;
+  };
 }
 
 // ─── Content Blocks ──────────────────────────────────────────────────────────
@@ -174,6 +180,7 @@ export default function ArticleLayout({
   resourceLinks,
   calculatorHref,
   omitArticleJsonLd = false,
+  learningResource,
 }: ArticleProps) {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
@@ -299,6 +306,29 @@ export default function ArticleLayout({
     }))
   } : null;
 
+  const learningResourceSchema = learningResource
+    ? {
+        "@context": "https://schema.org",
+        "@type": "LearningResource",
+        name: title,
+        description,
+        inLanguage: locale === "en" ? "en-US" : "es",
+        learningResourceType: learningResource.learningResourceType,
+        educationalLevel: learningResource.educationalLevel,
+        teaches: learningResource.teaches,
+        url: pageUrl,
+        isPartOf: {
+          "@type": "WebPage",
+          "@id": pageUrl,
+        },
+        provider: {
+          "@type": "Organization",
+          name: "Calculadora Derivadas",
+          url: SITE_URL,
+        },
+      }
+    : null;
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -344,6 +374,7 @@ export default function ArticleLayout({
           webPageSchema,
           ...(omitArticleJsonLd ? [] : [articleSchema]),
           ...(faqSchema ? [faqSchema] : []),
+          ...(learningResourceSchema ? [learningResourceSchema] : []),
           breadcrumbSchema,
         ]}
       />
