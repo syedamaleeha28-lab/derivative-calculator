@@ -244,6 +244,30 @@ export const BLOG_POST_ENTRIES: BlogPostEntry[] = [
         question: "¿Cuáles son los errores más comunes al derivar fracciones?",
         answer: "Los errores más frecuentes son: olvidar elevar v al cuadrado en el denominador, derivar solo el numerador, y no simplificar antes cuando el cociente se puede reducir algebraicamente.",
       },
+      {
+        question: "¿Cómo se deriva una fracción paso a paso?",
+        answer: "Identifica el numerador u(x) y el denominador v(x), calcula u′ y v′ por separado, forma (u′v − uv′)/v² respetando el signo menos del medio, simplifica el resultado y comprueba que v(x) ≠ 0 en el dominio.",
+      },
+      {
+        question: "¿Qué es derivar fracciones?",
+        answer: "Derivar fracciones es hallar la derivada de un cociente de funciones, f(x) = u(x)/v(x), mediante la regla del cociente (u′v − uv′)/v² en lugar de derivar numerador y denominador por separado y dividir.",
+      },
+      {
+        question: "¿Cómo derivar fracciones racionales?",
+        answer: "Las fracciones racionales (cocientes de polinomios) se derivan con la misma regla del cociente: (u′v − uv′)/v². Si el denominador divide al numerador, a menudo conviene simplificar primero y derivar término a término.",
+      },
+      {
+        question: "¿Cuál es la diferencia entre la regla del producto y la regla del cociente?",
+        answer: "La regla del producto deriva u·v como u′v + uv′. La regla del cociente deriva u/v como (u′v − uv′)/v²: cambia el signo del medio y divide por el cuadrado del denominador.",
+      },
+      {
+        question: "¿Se puede simplificar una fracción antes de derivarla?",
+        answer: "Sí. Si el denominador divide al numerador o la expresión se puede reescribir como suma de potencias, simplificar primero suele hacer la derivación más corta y con menos errores que aplicar el cociente completo.",
+      },
+      {
+        question: "¿Cómo se llama la derivada de una fracción?",
+        answer: "La regla que se usa para derivar una fracción (un cociente de funciones) se llama regla del cociente. El resultado es la derivada del cociente, (u/v)′.",
+      },
     ],
     relatedPosts: [
       { title: "Regla de la cadena: ejercicios", slug: "regla-de-la-cadena-ejercicios" },
