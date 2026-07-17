@@ -13,6 +13,12 @@ import {
 export function ComoDerivarFraccionesContent() {
   return (
     <ArticleWrap>
+      <p>
+        Para derivar una fracción f(x) = u(x)/v(x) se usa la regla del cociente:
+        (u/v)′ = (u′v − uv′)/v², siempre que el denominador v(x) no sea cero. No basta con derivar el
+        numerador y el denominador por separado y dividir; hay que combinar ambas derivadas en un solo
+        cociente con v² abajo.
+      </p>
       <ArticleTldr
         tldr={
           <>
