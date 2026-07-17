@@ -11,7 +11,12 @@ export type EsAuthorityMeta = {
   readTime: string;
   category: string;
   tags: readonly string[];
-  author: { name: string; role: string };
+  author: {
+    name: string;
+    role: string;
+    jobTitle?: string;
+    worksFor?: { "@type": "CollegeOrUniversity" | "Organization"; name: string };
+  };
   heroImageAlt: string;
   /** Optional LearningResource JSON-LD classification (opt-in per page). */
   learningResource?: {

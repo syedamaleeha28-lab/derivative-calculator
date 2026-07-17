@@ -1,6 +1,7 @@
 import type { EsAuthorityEntry } from "./types";
 import { ES_AUTHORITY_ROUTES } from "../es-authority-routes";
 import { EN_ROUTES } from "../en-routes";
+import { SITE_AUTHOR } from "../site-author";
 import { esAuthorityBreadcrumbs } from "./helpers";
 import { esHubBreadcrumbs } from "../common-derivative-functions/helpers";
 import { ReglasDeDerivacionContent } from "./content/reglas-de-derivacion";
@@ -31,10 +32,7 @@ export const ES_AUTHORITY_HREFLANG_PAIRS = {
   [ES_AUTHORITY_ROUTES.derivadasDeFuncionesComunes]: EN_ROUTES.commonDerivativeFunctions,
 } as const;
 
-const AUTHOR = {
-  name: "Equipo Calculadora Derivadas",
-  role: "Educación en cálculo diferencial",
-} as const;
+const AUTHOR = SITE_AUTHOR;
 
 function entry(
   meta: Omit<EsAuthorityEntry, "breadcrumbs" | "Content"> & {

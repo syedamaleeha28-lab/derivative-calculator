@@ -43,6 +43,8 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
         description={post.description}
         datePublished={post.dateIso}
         authorName={post.author.name}
+        authorJobTitle={post.author.jobTitle}
+        authorWorksForName={post.author.worksFor?.name}
         imageCaption={post.heroImageAlt}
       />
       <ArticleLayout

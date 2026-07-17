@@ -1,4 +1,5 @@
 import { isMigratedBlogSlug } from "../blog-migrations";
+import { SITE_AUTHOR } from "../site-author";
 import type { BlogPostEntry } from "./types";
 import { blogBreadcrumbs } from "./helpers";
 import { DerivadaDeSinXContent } from "./content/derivada-de-sin-x";
@@ -14,10 +15,7 @@ import { DerivadasParaPrincipiantesContent } from "./content/derivadas-para-prin
 import { ComoAprenderDerivadasDesdeCeroContent } from "./content/como-aprender-derivadas-desde-cero";
 import { EntendiendoReglaDeLaCadenaContent } from "./content/entendiendo-regla-de-la-cadena";
 
-const AUTHOR = {
-  name: "Equipo Calculadora Derivadas",
-  role: "Educación matemática en español",
-} as const;
+const AUTHOR = SITE_AUTHOR;
 
 function entry(
   meta: Omit<BlogPostEntry, "breadcrumbs" | "Content"> & {

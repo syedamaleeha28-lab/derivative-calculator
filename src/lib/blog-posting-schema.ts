@@ -4,6 +4,7 @@ import {
   SCHEMA_CONTEXT,
 } from "./calculator-pages/schema-shared";
 import { absoluteUrl, SITE_URL } from "./seo";
+import { SITE_AUTHOR } from "./site-author";
 
 export type BlogPostingSchemaInput = {
   path: string;
@@ -11,7 +12,10 @@ export type BlogPostingSchemaInput = {
   description: string;
   datePublished: string;
   dateModified?: string;
-  authorName: string;
+  /** Defaults to the site E-E-A-T author when omitted. */
+  authorName?: string;
+  authorJobTitle?: string;
+  authorWorksForName?: string;
   image?: string;
   imageCaption?: string;
   inLanguage?: string;
@@ -21,6 +25,10 @@ export type BlogPostingSchemaInput = {
 export function buildBlogPostingJsonLd(input: BlogPostingSchemaInput) {
   const url = absoluteUrl(input.path);
   const imageUrl = input.image ?? DEFAULT_SCHEMA_IMAGE;
+  const authorName = input.authorName ?? SITE_AUTHOR.name;
+  const authorJobTitle = input.authorJobTitle ?? SITE_AUTHOR.jobTitle;
+  const authorWorksForName =
+    input.authorWorksForName ?? SITE_AUTHOR.worksFor.name;
 
   return {
     "@context": SCHEMA_CONTEXT,
@@ -45,7 +53,12 @@ export function buildBlogPostingJsonLd(input: BlogPostingSchemaInput) {
     },
     author: {
       "@type": "Person",
-      name: input.authorName,
+      name: authorName,
+      jobTitle: authorJobTitle,
+      worksFor: {
+        "@type": "CollegeOrUniversity",
+        name: authorWorksForName,
+      },
     },
     publisher: {
       "@type": "Organization",

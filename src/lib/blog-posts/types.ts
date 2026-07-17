@@ -11,7 +11,12 @@ export type BlogPostMeta = {
   readTime: string;
   category: string;
   tags: readonly string[];
-  author: { name: string; role: string };
+  author: {
+    name: string;
+    role: string;
+    jobTitle?: string;
+    worksFor?: { "@type": "CollegeOrUniversity" | "Organization"; name: string };
+  };
   heroImageAlt: string;
   faqs: readonly BlogFaq[];
   relatedPosts: readonly { title: string; slug: string }[];

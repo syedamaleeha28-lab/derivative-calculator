@@ -52,6 +52,11 @@ interface ArticleProps {
     name: string;
     role: string;
     avatar?: string;
+    jobTitle?: string;
+    worksFor?: {
+      "@type": "CollegeOrUniversity" | "Organization";
+      name: string;
+    };
   };
   category: string;
   tags: readonly string[];
@@ -281,6 +286,8 @@ export default function ArticleLayout({
     author: {
       "@type": "Person",
       name: author.name,
+      ...(author.jobTitle ? { jobTitle: author.jobTitle } : {}),
+      ...(author.worksFor ? { worksFor: author.worksFor } : {}),
     },
     publisher: {
       "@type": "Organization",

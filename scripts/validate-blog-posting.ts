@@ -40,7 +40,6 @@ for (const slug of slugs) {
     headline: titleMatch[1],
     description: descriptionMatch[1],
     datePublished: dateIsoMatch[1],
-    authorName: "Equipo Calculadora Derivadas",
   });
 
   const errors = validateBlogPostingJsonLd(jsonLd);
