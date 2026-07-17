@@ -29,3 +29,26 @@ export function buildBlogCollectionSchema(
     },
   };
 }
+
+/** Blog index BreadcrumbList JSON-LD (Home > Blog). */
+export function buildBlogBreadcrumbSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${absoluteUrl("/blog")}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: absoluteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: absoluteUrl("/blog"),
+      },
+    ],
+  };
+}

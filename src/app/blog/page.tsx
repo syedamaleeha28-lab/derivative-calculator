@@ -6,7 +6,7 @@ import BlogHub from "@/components/BlogHub";
 import Link from "next/link";
 import { dict } from "@/lib/dictionaries";
 import { getBlogListingPosts } from "@/lib/blog-posts";
-import { buildBlogCollectionSchema } from "@/lib/blog-seo";
+import { buildBlogCollectionSchema, buildBlogBreadcrumbSchema } from "@/lib/blog-seo";
 import { metadataFromEntry } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -25,6 +25,10 @@ export default async function BlogPage() {
     /</g,
     "\\u003c"
   );
+  const blogBreadcrumbJsonLd = JSON.stringify(buildBlogBreadcrumbSchema()).replace(
+    /</g,
+    "\\u003c"
+  );
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
@@ -33,6 +37,12 @@ export default async function BlogPage() {
         type="application/ld+json"
         strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: blogJsonLd }}
+      />
+      <Script
+        id="blog-breadcrumb-jsonld"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: blogBreadcrumbJsonLd }}
       />
       <Navbar />
       <div className="pt-32 pb-24 bg-[#F8F6F2]">
