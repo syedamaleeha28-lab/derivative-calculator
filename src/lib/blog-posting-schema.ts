@@ -55,6 +55,8 @@ export function buildBlogPostingJsonLd(input: BlogPostingSchemaInput) {
       logo: {
         "@type": "ImageObject",
         url: absoluteUrl("/images/derivio-calculator-logo.webp"),
+        width: 512,
+        height: 512,
       },
     },
   };
