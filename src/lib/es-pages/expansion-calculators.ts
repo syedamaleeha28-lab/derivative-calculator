@@ -1,7 +1,6 @@
 import type { CalculatorPageConfig } from "../calculator-pages/types";
 import { esStandardInternalLinks } from "../calculator-pages/standard-links";
 import { ES_CALCULATOR_ROUTES } from "../es-routes";
-import { ES_AUTHORITY_ROUTES } from "../es-authority-routes";
 import { EN_ROUTES } from "../en-routes";
 import { ROUTES } from "../routes";
 
@@ -539,7 +538,6 @@ export const secondDerivativePage: CalculatorPageConfig = {
   internalLinks: [
     { label: "Derivadas de orden superior", href: ES_CALCULATOR_ROUTES.higherOrderDerivative },
     { label: "Puntos críticos y optimización", href: ES_CALCULATOR_ROUTES.criticalPoints },
-    { label: "Aplicaciones de la derivada (guía)", href: ES_AUTHORITY_ROUTES.aplicacionesDeLaDerivada },
     { label: "Second derivative calculator (English)", href: EN_ROUTES.secondDerivativeCalculator },
     ...esStandardInternalLinks(),
     ...SITE_LINKS,
@@ -746,7 +744,6 @@ export const higherOrderDerivativePage: CalculatorPageConfig = {
   ],
   internalLinks: [
     { label: "Calculadora segunda derivada", href: ES_CALCULATOR_ROUTES.secondDerivative },
-    { label: "Aplicaciones de la derivada (guía)", href: ES_AUTHORITY_ROUTES.aplicacionesDeLaDerivada },
     { label: "Series y aproximaciones en el blog", href: ROUTES.blog },
     { label: "Higher order derivative calculator (English)", href: EN_ROUTES.higherOrderDerivativeCalculator },
     ...esStandardInternalLinks(),
@@ -957,7 +954,6 @@ export const tangentLinePage: CalculatorPageConfig = {
   ],
   internalLinks: [
     { label: "Derivadas implícitas paso a paso", href: "/blog/derivadas-implicitas-paso-a-paso" },
-    { label: "Aplicaciones de la derivada (guía)", href: ES_AUTHORITY_ROUTES.aplicacionesDeLaDerivada },
     { label: "Tangent line calculator (English)", href: EN_ROUTES.tangentLineCalculator },
     ...esStandardInternalLinks(),
     ...SITE_LINKS,
@@ -1177,7 +1173,6 @@ export const criticalPointsPage: CalculatorPageConfig = {
   ],
   internalLinks: [
     { label: "Segunda derivada y concavidad", href: ES_CALCULATOR_ROUTES.secondDerivative },
-    { label: "Aplicaciones de la derivada (guía)", href: ES_AUTHORITY_ROUTES.aplicacionesDeLaDerivada },
     { label: "Critical points calculator (English)", href: EN_ROUTES.criticalPointsCalculator },
     ...esStandardInternalLinks(),
     ...SITE_LINKS,

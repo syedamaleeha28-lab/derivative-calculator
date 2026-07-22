@@ -665,7 +665,7 @@ const dictionaryData = {
           title: "¿Qué es una derivada?",
           desc: "Comprende la pendiente instantánea y el significado geométrico de la derivada en una función.",
           link: "Aprende el concepto base →",
-          href: "/derivada-por-definicion",
+          href: "/como-funciona#derivada-por-definicion",
           image: "/images/que-es-una-derivada.webp",
           imageAlt:
             "Gráfica educativa que explica qué es una derivada y la pendiente de la tangente",
@@ -756,7 +756,7 @@ const dictionaryData = {
             "Comprender qué es una derivada es el primer paso antes de derivar con cualquier calculadora: la herramienta acelera el cálculo, pero el aprendizaje real ocurre cuando relacionas el resultado con la definición por límite y la tasa de cambio.",
           ],
           relatedLinks: [
-            { label: "Derivada por definición (límite)", href: "/derivada-por-definicion" },
+            { label: "Derivada por definición (límite)", href: "/como-funciona#derivada-por-definicion" },
             { label: "Glosario de términos", href: "/como-funciona#glosario" },
             { label: "Concepto y uso de la calculadora", href: "/como-funciona" },
           ],
@@ -958,7 +958,7 @@ const dictionaryData = {
       title: "Acerca de Calculadora Derivadas",
       subtitle: "Herramienta educativa gratuita para aprender cálculo diferencial.",
       sections: [
-        { title: "Quién está detrás", content: "Este sitio está mantenido por Marta Gómez, profesora de cálculo diferencial, junto con un equipo de revisión de contenido matemático. Cada guía y ejemplo se revisa antes de publicarse." },
+        { title: "Quién está detrás", content: "Este sitio está mantenido por Iftikhar Ud Din, profesor de cálculo diferencial, junto con un equipo de revisión de contenido matemático. Cada guía y ejemplo se revisa antes de publicarse." },
         { title: "Nuestra misión", content: "Ofrecemos una calculadora de derivadas paso a paso para estudiantes y docentes que necesitan resultados exactos con explicaciones claras." },
         { title: "Qué ofrecemos", content: "Cálculo simbólico, reglas de derivación, ejemplos resueltos, blog educativo y recursos íntegramente en español." },
       ],
