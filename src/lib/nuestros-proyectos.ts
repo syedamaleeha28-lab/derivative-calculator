@@ -41,7 +41,7 @@ export const NUESTROS_PROYECTOS = [
   {
     id: "hibou-et-mots",
     name: "Hibou et Mots",
-    href: "https://hibouetmots.fr/",
+    href: "https://hibou-et-mots.com/",
     description:
       "Proyecto educativo dedicado a juegos de palabras y aprendizaje del idioma francés.",
     current: false,
