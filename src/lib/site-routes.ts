@@ -31,6 +31,7 @@ export const SITEMAP_ROUTES: {
   { path: "/terms-of-service", changeFrequency: "yearly", priority: 0.3 },
   { path: "/disclaimer", changeFrequency: "yearly", priority: 0.25 },
   { path: "/acerca-de", changeFrequency: "yearly", priority: 0.4 },
+  { path: "/nuestros-proyectos", changeFrequency: "yearly", priority: 0.35 },
   { path: "/contacto", changeFrequency: "yearly", priority: 0.4 },
   { path: "/extension-cromo-formulas-matematicas", changeFrequency: "monthly", priority: 0.75 },
   { path: MATH_FORMULA_HELPER_EXTENSION_PATH, changeFrequency: "monthly", priority: 0.75 },

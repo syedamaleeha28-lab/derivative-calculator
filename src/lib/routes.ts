@@ -7,6 +7,7 @@ export const ROUTES = {
   blog: "/blog",
   contacto: "/contacto",
   acercaDe: "/acerca-de",
+  nuestrosProyectos: "/nuestros-proyectos",
   privacy: "/privacy-policy",
   terms: "/terms-of-service",
   disclaimer: "/disclaimer",

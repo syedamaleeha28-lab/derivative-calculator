@@ -17,6 +17,7 @@ import {
   organizationRef,
 } from "@/lib/calculator-pages/schema-shared";
 import { buildBreadcrumbSchema } from "@/lib/calculator-pages/schema";
+import { NUESTROS_PROYECTOS_PATH } from "@/lib/nuestros-proyectos";
 
 const EDITORIAL_TEAM_ID = `${SITE_URL}/#editorial-team` as const;
 
@@ -165,6 +166,23 @@ export default function LegalTrustPage({ pageId }: LegalTrustPageProps) {
               </section>
             ))}
           </div>
+
+          {pageId === "about" && (
+            <section
+              id="otros-proyectos"
+              className="mt-10 rounded-2xl border border-slate-200/80 bg-white px-6 py-7 shadow-sm md:px-10"
+            >
+              <p className="text-slate-600 leading-relaxed text-[0.95rem] mb-5">
+                También desarrollamos otros proyectos digitales.
+              </p>
+              <Link
+                href={NUESTROS_PROYECTOS_PATH}
+                className="inline-flex justify-center items-center bg-secondary text-white px-8 py-3 rounded-xl font-semibold text-sm shadow-md hover:opacity-95 transition-opacity"
+              >
+                Ver nuestros proyectos
+              </Link>
+            </section>
+          )}
 
           <aside className="mt-10 rounded-2xl border border-slate-200/80 bg-white px-6 py-6 shadow-sm">
             <h2 className="text-sm font-bold uppercase tracking-wider text-slate-500 mb-4">
