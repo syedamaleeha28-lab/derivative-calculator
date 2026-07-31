@@ -1,4 +1,6 @@
 import type { CommonFunctionPageDef } from "./types";
+import { ES_AUTHORITY_ROUTES } from "../es-authority-routes";
+import { EN_ROUTES } from "../en-routes";
 import {
   EN_COMMON_FUNCTION_SLUGS,
   ES_COMMON_FUNCTION_ROUTES,
@@ -18,6 +20,98 @@ export const COMMON_FUNCTION_AUTHOR_ES = AUTHOR_ES;
 export const COMMON_FUNCTION_AUTHOR_EN = AUTHOR_EN;
 
 export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
+  {
+    id: "constante",
+    esRoute: ES_COMMON_FUNCTION_ROUTES.derivadaDeUnaConstante,
+    enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfAConstant,
+    relatedIds: ["x", "x-cuadrado", "1-x"],
+    es: {
+      title: "Derivada de una Constante: La Regla Más Fácil de Cálculo (Explicada)",
+      description:
+        "Derivada de una constante explicada paso a paso: (c)′ = 0, demostración por límites, diferencia con el múltiplo constante (5x), ejemplos con π y e, y FAQ.",
+      breadcrumbLabel: "Derivada de una constante",
+      category: "Funciones algebraicas",
+      tags: ["derivada de una constante", "derivada de un número", "regla de la constante"],
+      heroImageAlt: "Recta horizontal y = c con pendiente cero",
+      intro:
+        "La derivada de una constante es siempre 0. La gráfica de f(x) = c es una recta horizontal: no sube ni baja, así que su pendiente —la tasa de cambio— es cero en todos los puntos. Vale para cualquier número: 5, −3, π o e.",
+      formulaTitle: "Regla de la constante",
+      formulaLatex: "\\dfrac{d}{dx}\\,c = 0",
+      formulaExplanation:
+        "Una constante no depende de x: al variar x, el valor de f(x) = c no cambia. Por eso su tasa de cambio instantánea es 0 en todo ℝ. Es también el caso n = 0 de la regla de la potencia: c = c·x⁰ deriva a c·0·x⁻¹ = 0.",
+      exampleTitle: "Ejemplo: definición por límites",
+      exampleSteps: [
+        "Escribe f(x) = c, de modo que f(x+h) = c.",
+        "Forma el cociente incremental: [f(x+h) − f(x)] / h = (c − c)/h = 0.",
+        "Toma el límite cuando h → 0: f′(x) = 0.",
+      ],
+      exampleLatex: "f'(x)=\\lim_{h\\to 0}\\dfrac{c-c}{h}=0",
+      extraSectionTitle: "Ejemplos rápidos: 5, π y 7 en un polinomio",
+      extraSectionBody:
+        "La derivada de 5 es 0; la de π es 0 (π ≈ 3,1416 es un número fijo, no una variable); y en f(x) = 3x² + 7, el término constante 7 aporta 0, así que f′(x) = 6x. No confundas la constante aislada con el múltiplo constante: la derivada de 5x es 5, porque ahí la constante multiplica a x y se conserva por linealidad: (c·f)′ = c·f′.",
+      mistakesTitle: "Errores comunes con la regla de la constante",
+      mistakes: [
+        "Confundir constante aislada con múltiplo constante: (5)′ = 0, pero (5x)′ = 5.",
+        "Tratar π o e como variables: son números fijos, así que (π)′ = 0 y (e²)′ = 0.",
+        "Olvidar que el término constante de un polinomio desaparece: (x² + 7)′ = 2x, no 2x + 7.",
+        "Anular expresiones que sí dependen de x: e^x no es constante y su derivada es e^x, no 0.",
+      ],
+      guideLinksTitle: "Guías relacionadas",
+      guideLinks: [
+        { label: "Tabla de derivadas", href: ES_AUTHORITY_ROUTES.tablaDeDerivadas },
+        { label: "Reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
+      ],
+      faqs: [
+        { question: "¿Cuál es la derivada de una constante?", answer: "Siempre 0: si f(x) = c, entonces f′(x) = 0 en todo ℝ." },
+        { question: "¿Cuál es la derivada de 5?", answer: "0, porque 5 es una constante que no depende de x." },
+        { question: "¿La derivada de 5x también es 0?", answer: "No: (5x)′ = 5. La constante que multiplica a x se conserva; solo la constante aislada deriva a 0." },
+        { question: "¿Cuál es la derivada de π?", answer: "0. π es un número fijo (≈ 3,1416), no una variable, igual que e o cualquier otra constante." },
+      ],
+    },
+    en: {
+      title: "Derivative of a Constant: The Easiest Rule in Calculus (Explained)",
+      description:
+        "Derivative of a constant explained step by step: (c)′ = 0, limit-definition proof, constant vs. constant multiple (5x), examples with π and e, and FAQ.",
+      breadcrumbLabel: "Derivative of a constant",
+      category: "Algebraic functions",
+      tags: ["derivative of a constant", "derivative of a number", "constant rule"],
+      heroImageAlt: "Horizontal line y = c with zero slope",
+      intro:
+        "The derivative of a constant is always 0. The graph of f(x) = c is a horizontal line: it never rises or falls, so its slope — the rate of change — is zero at every point. This holds for any number: 5, −3, π, or e.",
+      formulaTitle: "Constant rule",
+      formulaLatex: "\\dfrac{d}{dx}\\,c = 0",
+      formulaExplanation:
+        "A constant does not depend on x: as x changes, f(x) = c stays the same, so its instantaneous rate of change is 0 on all of ℝ. It is also the n = 0 case of the power rule: c = c·x⁰ differentiates to c·0·x⁻¹ = 0.",
+      exampleTitle: "Worked example: limit definition",
+      exampleSteps: [
+        "Let f(x) = c, so f(x+h) = c.",
+        "Difference quotient: [f(x+h) − f(x)] / h = (c − c)/h = 0.",
+        "Limit as h → 0: f′(x) = 0.",
+      ],
+      exampleLatex: "f'(x)=\\lim_{h\\to 0}\\dfrac{c-c}{h}=0",
+      extraSectionTitle: "Quick examples: 5, π, and 7 inside a polynomial",
+      extraSectionBody:
+        "The derivative of 5 is 0; the derivative of π is 0 (π ≈ 3.1416 is a fixed number, not a variable); and in f(x) = 3x² + 7, the constant term 7 contributes 0, so f′(x) = 6x. Don't confuse a lone constant with a constant multiple: the derivative of 5x is 5, because there the constant multiplies x and is kept by linearity: (c·f)′ = c·f′.",
+      mistakesTitle: "Common mistakes with the constant rule",
+      mistakes: [
+        "Confusing a lone constant with a constant multiple: (5)′ = 0, but (5x)′ = 5.",
+        "Treating π or e as variables: they are fixed numbers, so (π)′ = 0 and (e²)′ = 0.",
+        "Forgetting the constant term of a polynomial vanishes: (x² + 7)′ = 2x, not 2x + 7.",
+        "Zeroing out expressions that do depend on x: e^x is not constant and its derivative is e^x, not 0.",
+      ],
+      guideLinksTitle: "Related guides",
+      guideLinks: [
+        { label: "Derivative cheat sheet", href: EN_ROUTES.derivativeCheatSheet },
+        { label: "Derivative rules", href: EN_ROUTES.derivativeRules },
+      ],
+      faqs: [
+        { question: "What is the derivative of a constant?", answer: "Always 0: if f(x) = c, then f′(x) = 0 on all of ℝ." },
+        { question: "What is the derivative of 5?", answer: "0, because 5 is a constant that does not depend on x." },
+        { question: "Is the derivative of 5x also 0?", answer: "No: (5x)′ = 5. A constant multiplying x is kept; only a lone constant differentiates to 0." },
+        { question: "What is the derivative of π?", answer: "0. π is a fixed number (≈ 3.1416), not a variable — the same goes for e or any other constant." },
+      ],
+    },
+  },
   {
     id: "x",
     esRoute: ES_COMMON_FUNCTION_ROUTES.derivadaDeX,
@@ -255,6 +349,102 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         { question: "What is the derivative of √x?", answer: "d/dx(√x) = 1/(2√x) for x > 0." },
         { question: "Why must x be positive?", answer: "Elementary √x is defined for x ≥ 0; the classical derivative uses x > 0." },
         { question: "How do I differentiate √(3x+1)?", answer: "Chain rule: (3/2)(3x+1)^(−1/2)." },
+      ],
+    },
+  },
+  {
+    id: "1-x",
+    esRoute: ES_COMMON_FUNCTION_ROUTES.derivadaDe1EntreX,
+    enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOf1OverX,
+    relatedIds: ["ln", "x-cuadrado", "raiz"],
+    es: {
+      title: "Derivada de 1/x: Cómo Derivarla Paso a Paso (Ejemplo)",
+      description:
+        "Derivada de 1/x explicada paso a paso: fórmula (1/x)′ = −1/x², regla de la potencia con exponente −1, dominio x ≠ 0, errores comunes y FAQ.",
+      breadcrumbLabel: "Derivada de 1/x",
+      category: "Funciones algebraicas",
+      tags: ["derivada de 1/x", "derivada de 1 entre x", "regla de la potencia"],
+      heroImageAlt: "Hipérbola 1/x y su pendiente −1/x²",
+      intro:
+        "La derivada de 1/x es −1/x² para x ≠ 0. Escribe 1/x como x^(−1) y aplica la regla de la potencia: el resultado siempre es negativo porque la hipérbola y = 1/x decrece en todo su dominio.",
+      formulaTitle: "Regla de la potencia (n = −1)",
+      formulaLatex: "\\dfrac{d}{dx}\\,\\dfrac{1}{x} = -\\dfrac{1}{x^2}, \\quad x \\neq 0",
+      formulaExplanation:
+        "Con 1/x = x^(−1), aplica d/dx x^n = n x^(n−1): baja −1 como coeficiente y el nuevo exponente es −1 − 1 = −2. Queda −x^(−2) = −1/x². El dominio excluye x = 0, donde ni la función ni su derivada están definidas.",
+      exampleTitle: "Ejemplo: definición por límites",
+      exampleSteps: [
+        "Escribe el cociente incremental: [1/(x+h) − 1/x] / h.",
+        "Combina las fracciones: (x − (x+h)) / (x(x+h)h) = −1/(x(x+h)).",
+        "Toma el límite h → 0: f′(x) = −1/x².",
+      ],
+      exampleLatex: "f'(x)=\\lim_{h\\to 0}\\dfrac{\\frac{1}{x+h}-\\frac{1}{x}}{h}=-\\dfrac{1}{x^2}",
+      extraSectionTitle: "Ejemplo adicional: derivada de 1/(2x+1)",
+      extraSectionBody:
+        "Para derivar 1/(2x+1), escribe (2x+1)^(−1) y aplica la regla de la cadena: −(2x+1)^(−2) · 2 = −2/(2x+1)². El mismo patrón sirve para cualquier cociente 1/u(x): su derivada es −u′(x)/u(x)². Compruébalo también con la regla del cociente y verifica el resultado en la calculadora.",
+      mistakesTitle: "Errores comunes al derivar 1/x",
+      mistakes: [
+        "Olvidar el signo negativo: la derivada es −1/x², no 1/x².",
+        "Confundirla con la derivada de ln x: (ln x)′ = 1/x, mientras que (1/x)′ = −1/x².",
+        "Aplicar mal la regla de la potencia: con n = −1 el nuevo exponente es −2, no 0.",
+        "Ignorar el dominio: ni 1/x ni su derivada están definidas en x = 0.",
+      ],
+      guideLinksTitle: "Guías relacionadas",
+      guideLinks: [
+        { label: "Tabla de derivadas", href: ES_AUTHORITY_ROUTES.tablaDeDerivadas },
+        { label: "Reglas de derivación", href: ES_AUTHORITY_ROUTES.reglasDeDerivacion },
+      ],
+      faqs: [
+        { question: "¿Cuál es la derivada de 1/x?", answer: "(1/x)′ = −1/x² para x ≠ 0." },
+        { question: "¿Cómo derivo 1/x²?", answer: "Escribe x^(−2) y aplica la potencia: −2x^(−3) = −2/x³." },
+        {
+          question: "¿Por qué la derivada de 1/x es negativa?",
+          answer: "Porque 1/x decrece tanto en (−∞, 0) como en (0, ∞); la pendiente negativa refleja ese decrecimiento.",
+        },
+      ],
+    },
+    en: {
+      title: "Derivative of 1/x: How to Differentiate It Step by Step (Example)",
+      description:
+        "Derivative of 1/x explained step by step: (1/x)′ = −1/x², power rule with exponent −1, domain x ≠ 0, common mistakes, and FAQ.",
+      breadcrumbLabel: "Derivative of 1/x",
+      category: "Algebraic functions",
+      tags: ["derivative of 1/x", "derivative of 1 over x", "power rule"],
+      heroImageAlt: "Hyperbola 1/x and its slope −1/x²",
+      intro:
+        "The derivative of 1/x is −1/x² for x ≠ 0. Write 1/x as x^(−1) and apply the power rule: the result is always negative because the hyperbola y = 1/x decreases on its whole domain.",
+      formulaTitle: "Power rule (n = −1)",
+      formulaLatex: "\\dfrac{d}{dx}\\,\\dfrac{1}{x} = -\\dfrac{1}{x^2}, \\quad x \\neq 0",
+      formulaExplanation:
+        "With 1/x = x^(−1), apply d/dx x^n = n x^(n−1): bring down −1 as the coefficient and the new exponent is −1 − 1 = −2. That gives −x^(−2) = −1/x². The domain excludes x = 0, where neither the function nor its derivative is defined.",
+      exampleTitle: "Worked example: limit definition",
+      exampleSteps: [
+        "Write the difference quotient: [1/(x+h) − 1/x] / h.",
+        "Combine the fractions: (x − (x+h)) / (x(x+h)h) = −1/(x(x+h)).",
+        "Take the limit h → 0: f′(x) = −1/x².",
+      ],
+      exampleLatex: "f'(x)=\\lim_{h\\to 0}\\dfrac{\\frac{1}{x+h}-\\frac{1}{x}}{h}=-\\dfrac{1}{x^2}",
+      extraSectionTitle: "Extra example: derivative of 1/(2x+1)",
+      extraSectionBody:
+        "To differentiate 1/(2x+1), write (2x+1)^(−1) and apply the chain rule: −(2x+1)^(−2) · 2 = −2/(2x+1)². The same pattern works for any quotient 1/u(x): its derivative is −u′(x)/u(x)². You can confirm it with the quotient rule and verify the result in the calculator.",
+      mistakesTitle: "Common mistakes when differentiating 1/x",
+      mistakes: [
+        "Dropping the negative sign: the derivative is −1/x², not 1/x².",
+        "Mixing it up with the derivative of ln x: (ln x)′ = 1/x, while (1/x)′ = −1/x².",
+        "Misusing the power rule: with n = −1 the new exponent is −2, not 0.",
+        "Ignoring the domain: neither 1/x nor its derivative is defined at x = 0.",
+      ],
+      guideLinksTitle: "Related guides",
+      guideLinks: [
+        { label: "Derivative cheat sheet", href: EN_ROUTES.derivativeCheatSheet },
+        { label: "Derivative rules", href: EN_ROUTES.derivativeRules },
+      ],
+      faqs: [
+        { question: "What is the derivative of 1/x?", answer: "d/dx(1/x) = −1/x² for x ≠ 0." },
+        { question: "How do I differentiate 1/x²?", answer: "Write x^(−2) and apply the power rule: −2x^(−3) = −2/x³." },
+        {
+          question: "Why is the derivative of 1/x negative?",
+          answer: "Because 1/x decreases on both (−∞, 0) and (0, ∞); the negative slope reflects that decrease.",
+        },
       ],
     },
   },
