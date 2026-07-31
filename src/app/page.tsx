@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import HomeTableOfContents from "@/components/HomeTableOfContents";
 import HomeCalculatorTools from "@/components/HomeCalculatorTools";
 import HomeCommonDerivativeFunctions from "@/components/HomeCommonDerivativeFunctions";
 import HomeEducationalCards from "@/components/HomeEducationalCards";
@@ -44,6 +45,7 @@ export default function Home() {
       <main className="flex min-h-screen flex-col bg-white">
         <Navbar />
         <Hero />
+        <HomeTableOfContents />
 
         <section aria-label="Explorar calculadoras">
           <HomeCalculatorTools />

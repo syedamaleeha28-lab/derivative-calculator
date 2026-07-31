@@ -20,7 +20,7 @@ export default function HomeEducationalCards() {
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-14">
           <h2
             id="educational-cards-heading"
-            className="heading-font text-2xl md:text-4xl text-slate-900 mb-4"
+            className="heading-font text-2xl md:text-4xl text-slate-900 mb-4 scroll-mt-24"
           >
             {t.title}
           </h2>

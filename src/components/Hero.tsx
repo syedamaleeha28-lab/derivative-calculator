@@ -37,7 +37,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="flex flex-col gap-3 sm:gap-5 lg:pr-2 xl:pr-4 order-1 lg:order-1"
+            className="flex flex-col gap-3 sm:gap-5 lg:pr-2 xl:pr-4 order-2 lg:order-1"
           >
             <div>
               <h1
@@ -65,7 +65,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut", delay: 0.08 }}
-            className="relative flex w-full justify-center lg:justify-end order-2 lg:order-2"
+            className="relative flex w-full justify-center lg:justify-end order-1 lg:order-2"
           >
             <div className="relative z-10 w-full max-w-[620px] lg:max-w-[700px] xl:max-w-[740px]">
               <CalculatorCard ref={calculatorRef} enablePointEval />

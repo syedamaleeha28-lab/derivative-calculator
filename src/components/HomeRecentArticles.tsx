@@ -22,7 +22,7 @@ export default function HomeRecentArticles() {
             </p>
             <h2
               id="home-recent-articles-heading"
-              className="heading-font text-2xl md:text-3xl text-slate-900"
+              className="heading-font text-2xl md:text-3xl text-slate-900 scroll-mt-24"
             >
               {t.recentTitle}
             </h2>

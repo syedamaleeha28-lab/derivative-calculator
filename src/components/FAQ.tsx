@@ -12,7 +12,7 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="py-16 md:py-24 pb-28 md:pb-24 bg-slate-50 border-t border-slate-100"
+      className="py-16 md:py-24 pb-28 md:pb-24 bg-slate-50 border-t border-slate-100 scroll-mt-24"
     >
       <div className="max-w-3xl mx-auto px-6">
 

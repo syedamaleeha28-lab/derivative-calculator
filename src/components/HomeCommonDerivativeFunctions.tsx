@@ -22,7 +22,7 @@ export default function HomeCommonDerivativeFunctions() {
         </div>
         <h2
           id="home-common-functions-heading"
-          className="heading-font text-2xl md:text-3xl lg:text-4xl text-slate-900 mb-3"
+          className="heading-font text-2xl md:text-3xl lg:text-4xl text-slate-900 mb-3 scroll-mt-24"
         >
           {t.title}
         </h2>

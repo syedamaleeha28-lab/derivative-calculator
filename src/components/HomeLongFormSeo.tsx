@@ -16,7 +16,7 @@ export default function HomeLongFormSeo() {
           </p>
           <h2
             id="home-longform-heading"
-            className="heading-font text-2xl md:text-3xl text-slate-900 tracking-tight mb-4"
+            className="heading-font text-2xl md:text-3xl text-slate-900 tracking-tight mb-4 scroll-mt-24"
           >
             {t.title}
           </h2>

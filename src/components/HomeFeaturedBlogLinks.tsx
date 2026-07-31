@@ -20,7 +20,7 @@ export default function HomeFeaturedBlogLinks() {
         </div>
         <h2
           id="home-featured-blog-heading"
-          className="heading-font text-2xl md:text-3xl text-slate-900 mb-3"
+          className="heading-font text-2xl md:text-3xl text-slate-900 mb-3 scroll-mt-24"
         >
           {t.featuredTitle}
         </h2>
