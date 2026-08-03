@@ -9,6 +9,7 @@ import { ES_CALCULATORS_NAV, ES_FOOTER_GUIDES_NAV } from "@/lib/es-navigation";
 import { EXTENSION_CROMO_FORMULAS_PATH } from "@/lib/extension-cromo-formulas";
 import { MATH_FORMULA_HELPER_EXTENSION_PATH } from "@/lib/math-formula-helper-extension";
 import { FOOTER_LEGAL_PAGES, getLegalPath } from "@/lib/legal-routes";
+import { NUESTROS_PROYECTOS_PATH } from "@/lib/nuestros-proyectos";
 import type { Locale } from "@/lib/locale";
 
 const FOOTER_LABEL_KEY = {
@@ -88,6 +89,14 @@ export default function Footer({ locale = "es" }: FooterProps) {
                     className="transition-colors hover:text-violet-600 hover:underline"
                   >
                     {t.mathFormulaHelperExtension}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={NUESTROS_PROYECTOS_PATH}
+                    className="transition-colors hover:text-violet-600 hover:underline"
+                  >
+                    Nuestros Proyectos
                   </Link>
                 </li>
               </ul>
