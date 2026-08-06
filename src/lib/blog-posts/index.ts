@@ -221,7 +221,7 @@ export const BLOG_POST_ENTRIES: BlogPostEntry[] = [
     slug: "como-derivar-fracciones",
     title: "Derivada de una Fracción: Regla del Cociente Paso a Paso (6 Ejemplos)",
     description:
-      "Derivada de una fracción con la regla del cociente (u'v − uv') / v². Ejemplos paso a paso y calculadora gratis.",
+      "Deriva fracciones con la regla del cociente explicada paso a paso. 6 ejemplos resueltos y calculadora gratis para verificar tu resultado.",
     date: "14 de Mayo, 2026",
     dateIso: "2026-05-14",
     readTime: "16 min",
