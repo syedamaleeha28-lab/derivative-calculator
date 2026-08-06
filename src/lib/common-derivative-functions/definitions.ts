@@ -125,6 +125,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       category: "Funciones algebraicas",
       tags: ["derivada de x", "derivada lineal", "cálculo diferencial"],
       heroImageAlt: "Recta y = x con pendiente constante 1",
+      image: "/images/derivada-x-recta-tangente.webp",
       intro:
         "La derivada de x respecto a x es 1. Es el caso más simple de la regla de la potencia y la base para entender por qué las rectas y = mx tienen pendiente constante m.",
       formulaTitle: "Fórmula principal",
@@ -185,6 +186,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       category: "Funciones algebraicas",
       tags: ["derivada de x cuadrado", "regla de la potencia", "derivada de x²"],
       heroImageAlt: "Parábola x² y su pendiente 2x",
+      image: "/images/derivada-x-cuadrado-parabola.webp",
       intro:
         "La derivada de x² es 2x. Es el ejemplo canónico de la regla de la potencia y conecta la geometría de la parábola con una función lineal de pendiente.",
       formulaTitle: "Regla de la potencia",
@@ -245,6 +247,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       category: "Funciones algebraicas",
       tags: ["derivada de x cubo", "derivada de x³", "regla de la potencia"],
       heroImageAlt: "Curva cúbica y pendiente 3x²",
+      image: "/images/derivada-x-cubo-curva.webp",
       intro:
         "La derivada de x³ es 3x². Aplicar la regla de la potencia con n = 3 es directo y prepara el terreno para derivar polinomios término a término.",
       formulaTitle: "Regla de la potencia (n = 3)",
@@ -305,6 +308,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       category: "Funciones algebraicas",
       tags: ["derivada de raíz cuadrada", "derivada de √x", "exponente fraccionario"],
       heroImageAlt: "Gráfica de √x y pendiente decreciente",
+      image: "/images/derivada-raiz-cuadrada-curva.webp",
       intro:
         "La derivada de √x es 1/(2√x) para x > 0. Escribe √x = x^(1/2) y aplica la regla de la potencia con exponente fraccionario.",
       formulaTitle: "Forma con exponente 1/2",
