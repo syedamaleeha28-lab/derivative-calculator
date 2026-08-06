@@ -73,6 +73,7 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
       teaches: "Reglas de Derivación: Potencia, Producto y Cadena",
     },
     heroImageAlt: "Tabla resumen de reglas de derivación para estudiantes de cálculo",
+    image: "/images/guia-reglas-derivacion-matematicas.svg",
     englishAlternate: EN_ROUTES.derivativeRules,
     faqs: [
       {
@@ -130,6 +131,7 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     author: AUTHOR,
     heroImageAlt: "Recta secante aproximándose a la tangente cuando h tiende a cero",
+    image: "/images/limite-secante-definicion-derivada.svg",
     englishAlternate: EN_ROUTES.home,
     faqs: [
       {
@@ -188,6 +190,7 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     author: AUTHOR,
     heroImageAlt: "Colección de fórmulas de derivadas para consulta académica",
+    image: "/images/formulas-calculo-diferencial.svg",
     englishAlternate: EN_ROUTES.derivativeFormulas,
     faqs: [
       {
@@ -241,6 +244,7 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     author: AUTHOR,
     heroImageAlt: "Ejemplos de derivadas resueltos para estudiantes de cálculo",
+    image: "/images/cuaderno-ejemplos-resueltos.svg",
     learningResource: {
       learningResourceType: "Worked Examples",
       educationalLevel: "Secondary school and undergraduate",
@@ -476,6 +480,7 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     author: AUTHOR,
     heroImageAlt: "Tabla de derivadas de las seis funciones trigonométricas",
+    image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
     learningResource: {
       learningResourceType: "Reference",
       educationalLevel: "Secondary school and undergraduate",
@@ -600,6 +605,7 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
     ],
     author: AUTHOR,
     heroImageAlt: "Tabla completa de derivadas de funciones comunes",
+    image: "/images/tipos-funciones-derivar-educativo.svg",
     englishAlternate: EN_ROUTES.commonDerivativeFunctions,
     faqs: [
       {

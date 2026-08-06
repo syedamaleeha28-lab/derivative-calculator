@@ -9,6 +9,8 @@ export type CommonFunctionLocaleContent = {
   category: string;
   tags: readonly string[];
   heroImageAlt: string;
+  /** Optional hero image path under /public (e.g. /images/....svg). */
+  image?: string;
   intro: string;
   formulaTitle: string;
   formulaLatex: string;

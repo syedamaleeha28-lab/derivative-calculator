@@ -13,6 +13,8 @@ export type EnArticleMeta = {
   tags: readonly string[];
   author: { name: string; role: string };
   heroImageAlt: string;
+  /** Optional hero image path under /public (e.g. /images/....svg). */
+  image?: string;
   faqs: readonly EnArticleFaq[];
   relatedPosts: readonly { title: string; slug: string; description?: string }[];
   /** Spanish equivalent path for hreflang (optional). */

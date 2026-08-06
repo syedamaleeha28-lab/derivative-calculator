@@ -18,6 +18,8 @@ export type EsAuthorityMeta = {
     worksFor?: { "@type": "CollegeOrUniversity" | "Organization"; name: string };
   };
   heroImageAlt: string;
+  /** Optional hero image path under /public (e.g. /images/....svg). */
+  image?: string;
   /** Optional LearningResource JSON-LD classification (opt-in per page). */
   learningResource?: {
     learningResourceType: string;

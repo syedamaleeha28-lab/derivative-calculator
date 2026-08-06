@@ -69,6 +69,7 @@ export function renderEsCommonFunctionPage(route: string) {
         }))}
       breadcrumbs={[...esCommonFunctionBreadcrumbs(def.esRoute, def.es.breadcrumbLabel)]}
       heroImageAlt={def.es.heroImageAlt}
+      image={def.es.image}
       learningResource={def.es.learningResource}
       showArticleMeta
       calculatorHref={ES_MAIN_CALCULATOR_HREF}
@@ -90,6 +91,7 @@ export function toEnArticleFields(def: (typeof COMMON_FUNCTION_PAGE_DEFS)[number
     tags: [...def.en.tags],
     author: COMMON_FUNCTION_AUTHOR_EN,
     heroImageAlt: def.en.heroImageAlt,
+    image: def.en.image,
     spanishAlternate: def.esRoute,
     faqs: [...def.en.faqs],
     relatedPosts: def.relatedIds

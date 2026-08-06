@@ -49,6 +49,7 @@ export function EsAuthorityPage({ entry }: { entry: EsAuthorityEntry }) {
       }))}
       breadcrumbs={[...entry.breadcrumbs]}
       heroImageAlt={entry.heroImageAlt}
+      image={entry.image}
       learningResource={entry.learningResource}
       showArticleMeta
       calculatorHref={ES_MAIN_CALCULATOR_HREF}

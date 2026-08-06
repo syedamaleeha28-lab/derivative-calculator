@@ -641,6 +641,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       category: "Funciones trigonométricas",
       tags: ["derivada de sin x", "derivadas trigonométricas", "seno"],
       heroImageAlt: "Seno y coseno como derivada",
+      image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
       intro:
         "La derivada de sin(x) es cos(x) cuando el ángulo está en radianes. Es la identidad trigonométrica más usada en cálculo y física.",
       formulaTitle: "Seno en radianes",
@@ -668,6 +669,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       category: "Trigonometric functions",
       tags: ["derivative of sin x", "trigonometric derivatives", "sine"],
       heroImageAlt: "Sine and cosine as derivative pair",
+      image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
       intro:
         "The derivative of sin(x) is cos(x) when angles are in radians—the most used trigonometric identity in calculus.",
       formulaTitle: "Sine in radians",
@@ -701,6 +703,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       category: "Funciones trigonométricas",
       tags: ["derivada de cos x", "derivadas trigonométricas", "coseno"],
       heroImageAlt: "Coseno y su derivada negativa del seno",
+      image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
       intro:
         "La derivada de cos(x) es −sin(x). El signo negativo refleja que el coseno decrece donde el seno crece en la misma fase.",
       formulaTitle: "Coseno en radianes",
@@ -728,6 +731,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       category: "Trigonometric functions",
       tags: ["derivative of cos x", "trigonometric derivatives", "cosine"],
       heroImageAlt: "Cosine and negative sine derivative",
+      image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
       intro:
         "The derivative of cos(x) is −sin(x). The minus sign reflects cosine decreasing where sine increases in the same phase.",
       formulaTitle: "Cosine in radians",
@@ -761,6 +765,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       category: "Funciones trigonométricas",
       tags: ["derivada de tan x", "secante al cuadrado", "tangente"],
       heroImageAlt: "Tangente y secante cuadrada como derivada",
+      image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
       intro:
         "La derivada de tan(x) es sec²(x), equivalente a 1/cos²(x). Se obtiene naturalmente aplicando la regla del cociente a sin(x)/cos(x).",
       formulaTitle: "Tangente",
@@ -788,6 +793,7 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       category: "Trigonometric functions",
       tags: ["derivative of tan x", "secant squared", "tangent"],
       heroImageAlt: "Tangent and secant squared derivative",
+      image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
       intro:
         "The derivative of tan(x) is sec²(x), or 1/cos²(x). It follows from the quotient rule on sin(x)/cos(x).",
       formulaTitle: "Tangent",

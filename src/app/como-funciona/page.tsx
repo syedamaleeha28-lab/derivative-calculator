@@ -254,6 +254,8 @@ export default async function ComoFuncionaPage() {
       content={content}
       faqs={t.faqs}
       relatedPosts={internalLinksToRelated(COMO_FUNCIONA_INTERNAL_LINKS)}
+      image="/images/interfaz-calculadora-matematica.svg"
+      heroImageAlt="Interfaz de la calculadora de derivadas con pasos"
     />
     </>
   );

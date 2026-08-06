@@ -63,6 +63,7 @@ export default async function EnArticlePage(props: { params: Promise<{ slug: str
       relatedPosts={relatedPosts}
       breadcrumbs={article.breadcrumbs}
       heroImageAlt={article.heroImageAlt}
+      image={article.image}
       showArticleMeta
       calculatorHref={EN_MAIN_CALCULATOR_HREF}
     />
