@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Check, Zap, BookOpen } from "lucide-react";
 import CalculatorCard, { type CalculatorHandle } from "./CalculatorCard";
@@ -40,6 +41,17 @@ export default function Hero() {
             className="flex flex-col gap-3 sm:gap-5 lg:pr-2 xl:pr-4 order-2 lg:order-1"
           >
             <div>
+              <div className="mb-2 w-full max-w-[11rem] sm:mb-3 sm:max-w-[14rem] lg:max-w-[18rem] xl:max-w-[20rem]">
+                <Image
+                  src="/images/curva-tangente-derivada-hero.webp"
+                  alt="Ilustración de una curva y su recta tangente representando la derivada f'(x)"
+                  width={900}
+                  height={900}
+                  loading="lazy"
+                  sizes="(max-width: 640px) 11rem, (max-width: 1024px) 14rem, 20rem"
+                  className="h-auto w-full max-h-[200px] object-contain object-left sm:max-h-[240px] lg:max-h-[300px] xl:max-h-[340px]"
+                />
+              </div>
               <h1
                 id="hero-heading"
                 className="heading-font text-2xl sm:text-[2.5rem] lg:text-[2.65rem] xl:text-[2.9rem] leading-[1.08] text-slate-900 tracking-tight mb-2 sm:mb-3"
