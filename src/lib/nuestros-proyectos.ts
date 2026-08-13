@@ -46,6 +46,14 @@ export const NUESTROS_PROYECTOS = [
       "Proyecto educativo dedicado a juegos de palabras y aprendizaje del idioma francés.",
     current: false,
   },
+  {
+    id: "calisma-saati-hesaplama",
+    name: "Çalışma Saati Hesaplama",
+    href: "https://hesaplaanaliz.com/calisma-saati-hesaplama/",
+    description:
+      "Calculadora de horas de trabajo que calcula la jornada neta a partir de la hora de entrada, salida y descanso.",
+    current: false,
+  },
 ] as const;
 
 export const NUESTROS_PROYECTOS_FILOSOFIA = {

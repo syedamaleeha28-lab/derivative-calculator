@@ -124,7 +124,7 @@ export default function NuestrosProyectosPage() {
                         <a
                           href={project.href}
                           target="_blank"
-                          rel="noopener noreferrer"
+                          rel="nofollow noopener noreferrer"
                           className="inline-flex items-center gap-2 text-secondary hover:underline"
                         >
                           {project.name}
