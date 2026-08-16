@@ -2,26 +2,56 @@ import { EN_ROUTES } from "./en-routes";
 
 export type NavLink = { name: string; href: string };
 
+export type NavGroup = { label: string; items: NavLink[] };
+
 /** Top-level English nav (single line on desktop). English routes only. */
 export const EN_PRIMARY_NAV: NavLink[] = [
   { name: "Home", href: EN_ROUTES.home },
 ];
 
-/** "Calculators" dropdown: every calculator tool. */
-export const EN_CALCULATORS_NAV: NavLink[] = [
-  { name: "Derivative Calculator", href: EN_ROUTES.derivativeCalculator },
-  { name: "Partial Derivative Calculator", href: EN_ROUTES.partialDerivativeCalculator },
-  { name: "Chain Rule Calculator", href: EN_ROUTES.chainRuleCalculator },
-  { name: "Implicit Differentiation Calculator", href: EN_ROUTES.implicitDifferentiationCalculator },
-  { name: "Product Rule Calculator", href: EN_ROUTES.productRuleCalculator },
-  { name: "Quotient Rule Calculator", href: EN_ROUTES.quotientRuleCalculator },
-  { name: "Second Derivative Calculator", href: EN_ROUTES.secondDerivativeCalculator },
-  { name: "Higher Order Derivative Calculator", href: EN_ROUTES.higherOrderDerivativeCalculator },
-  { name: "Tangent Line Calculator", href: EN_ROUTES.tangentLineCalculator },
-  { name: "Critical Points Calculator", href: EN_ROUTES.criticalPointsCalculator },
-  { name: "Limit Calculator", href: EN_ROUTES.limitCalculator },
-  { name: "Continuity Calculator", href: EN_ROUTES.continuityCalculator },
+/** "Calculators" dropdown: grouped tools. */
+export const EN_CALCULATORS_NAV_GROUPS: NavGroup[] = [
+  {
+    label: "Main",
+    items: [{ name: "Derivative Calculator", href: EN_ROUTES.derivativeCalculator }],
+  },
+  {
+    label: "Differentiation Rules",
+    items: [
+      { name: "Product Rule Calculator", href: EN_ROUTES.productRuleCalculator },
+      { name: "Quotient Rule Calculator", href: EN_ROUTES.quotientRuleCalculator },
+      { name: "Chain Rule Calculator", href: EN_ROUTES.chainRuleCalculator },
+      { name: "Implicit Differentiation Calculator", href: EN_ROUTES.implicitDifferentiationCalculator },
+    ],
+  },
+  {
+    label: "Advanced Derivatives",
+    items: [
+      { name: "Partial Derivative Calculator", href: EN_ROUTES.partialDerivativeCalculator },
+      { name: "Second Derivative Calculator", href: EN_ROUTES.secondDerivativeCalculator },
+      { name: "Higher Order Derivative Calculator", href: EN_ROUTES.higherOrderDerivativeCalculator },
+    ],
+  },
+  {
+    label: "Function Analysis",
+    items: [
+      { name: "Tangent Line Calculator", href: EN_ROUTES.tangentLineCalculator },
+      { name: "Critical Points Calculator", href: EN_ROUTES.criticalPointsCalculator },
+    ],
+  },
+  {
+    label: "Limits & Continuity",
+    items: [
+      { name: "Limit Calculator", href: EN_ROUTES.limitCalculator },
+      { name: "Continuity Calculator", href: EN_ROUTES.continuityCalculator },
+    ],
+  },
 ];
+
+/** Flat list for footer, schema, and active-path helpers. */
+export const EN_CALCULATORS_NAV: NavLink[] = EN_CALCULATORS_NAV_GROUPS.flatMap(
+  (group) => group.items
+);
 
 /** "Guides" dropdown: educational content only. */
 export const EN_GUIDES_NAV: NavLink[] = [

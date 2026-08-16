@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Fragment } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
@@ -11,7 +11,7 @@ import { dict } from "@/lib/dictionaries";
 import { dictEn } from "@/lib/dictionaries-en";
 import {
   EN_BLOG_NAV,
-  EN_CALCULATORS_NAV,
+  EN_CALCULATORS_NAV_GROUPS,
   EN_EXAMPLES_NAV,
   EN_GUIDES_NAV,
   EN_PRIMARY_NAV,
@@ -20,7 +20,7 @@ import {
 } from "@/lib/en-navigation";
 import {
   ES_BLOG_NAV_KEY,
-  ES_CALCULATORS_NAV,
+  ES_CALCULATORS_NAV_GROUPS,
   ES_EXAMPLES_NAV_KEY,
   ES_GUIDES_NAV,
   ES_PRIMARY_NAV_KEYS,
@@ -55,18 +55,28 @@ function mobileLinkClass(active: boolean) {
   return active ? MOBILE_LINK_ACTIVE : MOBILE_LINK_IDLE;
 }
 
+type NavDropdownItem = { name: string; href: string };
+
+type NavDropdownGroup = {
+  label?: string;
+  items: readonly NavDropdownItem[];
+};
+
 type GuidesDropdownProps = {
   label: string;
-  items: readonly { name: string; href: string }[];
+  groups: readonly NavDropdownGroup[];
   pathname: string;
   isGuideActive: boolean;
   variant: "desktop" | "mobile";
   onNavigate?: () => void;
 };
 
+const GROUP_LABEL_CLASS =
+  "text-[0.65rem] font-bold uppercase tracking-wider text-slate-400";
+
 function GuidesDropdown({
   label,
-  items,
+  groups,
   pathname,
   isGuideActive,
   variant,
@@ -74,6 +84,7 @@ function GuidesDropdown({
 }: GuidesDropdownProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLLIElement>(null);
+  const grouped = groups.some((group) => Boolean(group.label));
 
   useEffect(() => {
     if (variant !== "desktop" || !open) return;
@@ -85,6 +96,40 @@ function GuidesDropdown({
     document.addEventListener("mousedown", onPointerDown);
     return () => document.removeEventListener("mousedown", onPointerDown);
   }, [open, variant]);
+
+  const menuItems = (
+    onItemClick: () => void,
+    itemRole: "menuitem" | undefined,
+    itemClassName: (active: boolean) => string,
+    labelPadClass: string,
+  ) =>
+    groups.map((group, gi) => (
+      <Fragment key={group.label ?? `group-${gi}`}>
+        {gi > 0 ? (
+          <li role="separator" className="my-1 border-t border-slate-100" />
+        ) : null}
+        {group.label ? (
+          <li role="presentation">
+            <p className={`${GROUP_LABEL_CLASS} ${labelPadClass}`}>{group.label}</p>
+          </li>
+        ) : null}
+        {group.items.map((item) => {
+          const active = isNavLinkActive(pathname, item.href);
+          return (
+            <li key={item.href} role={itemRole === "menuitem" ? "none" : undefined}>
+              <Link
+                href={item.href}
+                role={itemRole}
+                onClick={onItemClick}
+                className={itemClassName(active)}
+              >
+                {item.name}
+              </Link>
+            </li>
+          );
+        })}
+      </Fragment>
+    ));
 
   if (variant === "desktop") {
     return (
@@ -110,27 +155,21 @@ function GuidesDropdown({
         >
           <ul
             role="menu"
-            className="max-h-[min(70vh,24rem)] w-56 overflow-y-auto rounded-xl border border-slate-200 bg-white py-1.5 shadow-xl"
+            className={`${
+              grouped ? "w-64" : "max-h-[min(70vh,24rem)] w-56 overflow-y-auto"
+            } rounded-xl border border-slate-200 bg-white py-1.5 shadow-xl`}
           >
-            {items.map((item) => {
-              const active = isNavLinkActive(pathname, item.href);
-              return (
-                <li key={item.href} role="none">
-                  <Link
-                    href={item.href}
-                    role="menuitem"
-                    onClick={() => setOpen(false)}
-                    className={`block px-3.5 py-2 text-[0.8125rem] leading-snug ${
-                      active
-                        ? "bg-violet-50 font-semibold text-violet-700"
-                        : "text-slate-600 hover:bg-slate-50 hover:text-violet-700"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              );
-            })}
+            {menuItems(
+              () => setOpen(false),
+              "menuitem",
+              (active) =>
+                `block px-3.5 py-2 text-[0.8125rem] leading-snug ${
+                  active
+                    ? "bg-violet-50 font-semibold text-violet-700"
+                    : "text-slate-600 hover:bg-slate-50 hover:text-violet-700"
+                }`,
+              "px-3.5 pt-2 pb-1",
+            )}
           </ul>
         </div>
       </li>
@@ -161,20 +200,12 @@ function GuidesDropdown({
             className="overflow-hidden pl-2"
             role="list"
           >
-            {items.map((item) => {
-              const active = isNavLinkActive(pathname, item.href);
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={onNavigate}
-                    className={`${mobileLinkClass(active)} text-[0.9rem]`}
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              );
-            })}
+            {menuItems(
+              () => onNavigate?.(),
+              undefined,
+              (active) => `${mobileLinkClass(active)} text-[0.9rem]`,
+              "px-3 pt-2.5 pb-1",
+            )}
           </motion.ul>
         )}
       </AnimatePresence>
@@ -196,8 +227,10 @@ export default function Navbar() {
         href: item.href,
       }));
 
-  const calculatorsLinks = isEnglish ? EN_CALCULATORS_NAV : ES_CALCULATORS_NAV;
-  const guidesLinks = isEnglish ? EN_GUIDES_NAV : ES_GUIDES_NAV;
+  const calculatorsGroups = isEnglish
+    ? EN_CALCULATORS_NAV_GROUPS
+    : ES_CALCULATORS_NAV_GROUPS;
+  const guidesGroups = [{ items: isEnglish ? EN_GUIDES_NAV : ES_GUIDES_NAV }];
   const examplesLink = isEnglish
     ? EN_EXAMPLES_NAV
     : { name: dict.nav[ES_EXAMPLES_NAV_KEY.nameKey], href: ES_EXAMPLES_NAV_KEY.href };
@@ -266,14 +299,14 @@ export default function Navbar() {
             })}
             <GuidesDropdown
               label={t.calculators}
-              items={calculatorsLinks}
+              groups={calculatorsGroups}
               pathname={pathname}
               isGuideActive={calculatorsActive}
               variant="desktop"
             />
             <GuidesDropdown
               label={t.guides}
-              items={guidesLinks}
+              groups={guidesGroups}
               pathname={pathname}
               isGuideActive={guidesActive}
               variant="desktop"
@@ -351,7 +384,7 @@ export default function Navbar() {
               })}
               <GuidesDropdown
                 label={t.calculators}
-                items={calculatorsLinks}
+                groups={calculatorsGroups}
                 pathname={pathname}
                 isGuideActive={calculatorsActive}
                 variant="mobile"
@@ -359,7 +392,7 @@ export default function Navbar() {
               />
               <GuidesDropdown
                 label={t.guides}
-                items={guidesLinks}
+                groups={guidesGroups}
                 pathname={pathname}
                 isGuideActive={guidesActive}
                 variant="mobile"

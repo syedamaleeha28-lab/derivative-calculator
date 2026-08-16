@@ -4,6 +4,8 @@ import { ROUTES } from "./routes";
 
 export type EsNavLink = { name: string; href: string };
 
+export type EsNavGroup = { label: string; items: EsNavLink[] };
+
 export type EsNavLinkKey = {
   nameKey: "calculator" | "partialDerivatives" | "chainRule" | "implicitDerivatives";
   href: string;
@@ -14,21 +16,49 @@ export const ES_PRIMARY_NAV_KEYS: EsNavLinkKey[] = [
   { nameKey: "calculator", href: ROUTES.home },
 ];
 
-/** "Calculadoras" dropdown: every calculator tool. */
-export const ES_CALCULATORS_NAV: EsNavLink[] = [
-  { name: "Calculadora de derivadas", href: ROUTES.home },
-  { name: "Derivadas parciales", href: ES_CALCULATOR_ROUTES.partialDerivatives },
-  { name: "Regla de la cadena", href: ES_CALCULATOR_ROUTES.chainRule },
-  { name: "Derivadas implícitas", href: ES_CALCULATOR_ROUTES.implicitDerivatives },
-  { name: "Regla del producto", href: ES_CALCULATOR_ROUTES.productRule },
-  { name: "Regla del cociente", href: ES_CALCULATOR_ROUTES.quotientRule },
-  { name: "Segunda derivada", href: ES_CALCULATOR_ROUTES.secondDerivative },
-  { name: "Derivadas de orden superior", href: ES_CALCULATOR_ROUTES.higherOrderDerivative },
-  { name: "Recta tangente", href: ES_CALCULATOR_ROUTES.tangentLine },
-  { name: "Puntos críticos", href: ES_CALCULATOR_ROUTES.criticalPoints },
-  { name: "Calculadora de Límites", href: ES_CALCULATOR_ROUTES.limits },
-  { name: "Continuidad de una función", href: ES_CALCULATOR_ROUTES.continuity },
+/** "Calculadoras" dropdown: grouped tools. */
+export const ES_CALCULATORS_NAV_GROUPS: EsNavGroup[] = [
+  {
+    label: "Principal",
+    items: [{ name: "Calculadora de derivadas", href: ROUTES.home }],
+  },
+  {
+    label: "Reglas de derivación",
+    items: [
+      { name: "Regla del producto", href: ES_CALCULATOR_ROUTES.productRule },
+      { name: "Regla del cociente", href: ES_CALCULATOR_ROUTES.quotientRule },
+      { name: "Regla de la cadena", href: ES_CALCULATOR_ROUTES.chainRule },
+      { name: "Derivadas implícitas", href: ES_CALCULATOR_ROUTES.implicitDerivatives },
+    ],
+  },
+  {
+    label: "Derivadas avanzadas",
+    items: [
+      { name: "Derivadas parciales", href: ES_CALCULATOR_ROUTES.partialDerivatives },
+      { name: "Segunda derivada", href: ES_CALCULATOR_ROUTES.secondDerivative },
+      { name: "Derivadas de orden superior", href: ES_CALCULATOR_ROUTES.higherOrderDerivative },
+    ],
+  },
+  {
+    label: "Análisis de funciones",
+    items: [
+      { name: "Recta tangente", href: ES_CALCULATOR_ROUTES.tangentLine },
+      { name: "Puntos críticos", href: ES_CALCULATOR_ROUTES.criticalPoints },
+    ],
+  },
+  {
+    label: "Límites y continuidad",
+    items: [
+      { name: "Calculadora de Límites", href: ES_CALCULATOR_ROUTES.limits },
+      { name: "Continuidad de una función", href: ES_CALCULATOR_ROUTES.continuity },
+    ],
+  },
 ];
+
+/** Flat list for footer, schema, and active-path helpers. */
+export const ES_CALCULATORS_NAV: EsNavLink[] = ES_CALCULATORS_NAV_GROUPS.flatMap(
+  (group) => group.items
+);
 
 /** "Guías" dropdown: educational content only. */
 export const ES_GUIDES_NAV: EsNavLink[] = [
