@@ -592,3 +592,128 @@ export const criticalPointsCalculatorConfig: CalculatorPageConfig = {
   ],
   educationalSections: criticalPointsExpandedSections(),
 };
+
+export const limitCalculatorConfig: CalculatorPageConfig = {
+  slug: "limit-calculator",
+  path: EN_ROUTES.limitCalculator,
+  embedCalculator: true,
+  calculatorKind: "limits",
+  breadcrumbHome: BREADCRUMB_HOME,
+  tag: "Free Academic Tool",
+  h1: "Limit Calculator — Solve Indeterminate Forms Instantly",
+  intro: [
+    "Find the limit of a function at an exact point, without getting stuck when direct substitution gives 0/0 — the case that trips up most students.",
+    "A limit is the foundation the entire derivative is built on. If you want to see that connection, the derivative by definition guide walks through exactly that idea.",
+  ],
+  meta: {
+    title: "Limit Calculator — Indeterminate Forms Instantly",
+    description:
+      "Calculate function limits step by step, including 0/0 indeterminate forms. Free, no signup required.",
+    keywords:
+      "limit calculator, calculate limits, solve limits, limits step by step, indeterminate forms 0/0",
+  },
+  defaultExamples: ["(x^2-4)/(x-2)", "sin(x)/x", "(1-cos(x))/x^2"],
+  examples: [
+    {
+      title: "Removable discontinuity",
+      problem: "Evaluate lim(x→2) (x² − 4)/(x − 2)",
+      steps: [
+        "Direct substitution: (4 − 4)/(2 − 2) = 0/0, an indeterminate form.",
+        "Factor the numerator: (x − 2)(x + 2)/(x − 2).",
+        "For x ≠ 2 cancel (x − 2) to get lim(x→2) (x + 2) = 4.",
+      ],
+      result: "4",
+    },
+    {
+      title: "Classic trigonometric limit",
+      problem: "Evaluate lim(x→0) sin(x)/x",
+      steps: [
+        "Direct substitution: sin(0)/0 = 0/0.",
+        "This is the standard calculus limit: lim(x→0) sin(x)/x = 1.",
+        "It appears in the proof that (sin x)′ = cos x.",
+      ],
+      result: "1",
+    },
+    {
+      title: "Indeterminate cosine form",
+      problem: "Evaluate lim(x→0) (1 − cos(x))/x²",
+      steps: [
+        "Substitution: (1 − 1)/0 = 0/0.",
+        "With L'Hôpital or the identity 1 − cos x = 2 sin²(x/2) the limit is 1/2.",
+        "Result: 1/2.",
+      ],
+      result: "1/2",
+    },
+  ],
+  faqs: [
+    {
+      q: "What is a limit in calculus?",
+      a: "It is the value a function approaches as the variable gets closer to a specific point, even if the function is not defined exactly at that point.",
+    },
+    {
+      q: "What is an indeterminate form?",
+      a: "It happens when direct substitution produces a mathematically meaningless result, such as 0/0. That does not mean the limit fails to exist — it means another method is needed to find it.",
+    },
+    {
+      q: "How are limits related to derivatives?",
+      a: "The derivative is defined formally using a limit. Understanding limits first makes differentiation rules feel less arbitrary — see the Spanish guide on the derivative by definition linked from the Spanish site.",
+    },
+    {
+      q: "Does this calculator solve limits at infinity or one-sided limits?",
+      a: "For now it is optimized for limits at a finite point. Support for limits at infinity and one-sided limits is still in development.",
+    },
+  ],
+  relatedCalculators: [
+    {
+      label: "Derivative calculator",
+      href: EN_MAIN_CALCULATOR_HREF,
+      description: "Differentiate after you understand the limit that defines the derivative.",
+    },
+    {
+      label: "Quotient rule calculator",
+      href: EN_ROUTES.quotientRuleCalculator,
+      description: "Many 0/0 forms come from quotients.",
+    },
+    {
+      label: "Chain rule calculator",
+      href: EN_ROUTES.chainRuleCalculator,
+      description: "Useful when the limit involves compositions.",
+    },
+    {
+      label: "Spanish limit calculator",
+      href: "/calculadora-de-limites",
+      description: "Same tool with Spanish content and FAQs.",
+    },
+  ],
+  internalLinks: [
+    // No English derivative-by-definition or L'Hôpital pages exist yet.
+    { label: "English homepage", href: EN_ROUTES.home },
+    { label: "Derivative rules guide", href: EN_ROUTES.derivativeRules },
+    { label: "Spanish: Derivada por definición", href: "/derivada-por-definicion" },
+    { label: "Spanish: Regla de L'Hôpital", href: "/regla-de-l-hopital" },
+    { label: "Spanish homepage", href: ROUTES.home },
+  ],
+  educationalSections: [
+    {
+      h2: "What a limit is and why 0/0 appears",
+      paragraphs: [
+        "A limit describes the value f(x) approaches as x approaches a. If f has a hole at a — such as (x² − 4)/(x − 2) at x = 2 — the limit can still exist even when f(a) is undefined.",
+        "The form 0/0 is not an answer: it signals that more algebraic work (or a tool like L'Hôpital) is required.",
+      ],
+    },
+    {
+      h2: "How to resolve indeterminate limits step by step",
+      paragraphs: [
+        "Substitute first. If you get a number and the function is continuous there, that is the limit. If you get 0/0 or ∞/∞, factor, cancel, rationalize, or use trigonometric identities.",
+        "For sin(x)/x and (1 − cos x)/x², memorize the standard limits or derive them once carefully and reuse them.",
+      ],
+    },
+    {
+      h2: "How to use this limit calculator",
+      paragraphs: [
+        "Enter an expression such as (x^2-4)/(x-2), choose a finite approach point (for example 2 or 0), and compare the result with your handwritten work.",
+        "Use the presets sin(x)/x and (1-cos(x))/x^2 to practice classic 0/0 exam cases. Limits at infinity are not enabled in the tool yet.",
+      ],
+    },
+  ],
+};

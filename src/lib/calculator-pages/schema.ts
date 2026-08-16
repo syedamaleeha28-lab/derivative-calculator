@@ -53,6 +53,10 @@ const TEACHES_BY_KIND: Record<SpecializedCalculatorKind, { es: string; en: strin
     es: "Derivación implícita y dy/dx",
     en: "Implicit differentiation and dy/dx",
   },
+  limits: {
+    es: "Límites de funciones y formas indeterminadas",
+    en: "Limits of functions and indeterminate forms",
+  },
 };
 
 function teachesForPage(page: CalculatorPageConfig, locale: Locale): string {

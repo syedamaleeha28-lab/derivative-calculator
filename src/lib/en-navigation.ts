@@ -19,6 +19,7 @@ export const EN_CALCULATORS_NAV: NavLink[] = [
   { name: "Higher Order Derivative Calculator", href: EN_ROUTES.higherOrderDerivativeCalculator },
   { name: "Tangent Line Calculator", href: EN_ROUTES.tangentLineCalculator },
   { name: "Critical Points Calculator", href: EN_ROUTES.criticalPointsCalculator },
+  { name: "Limit Calculator", href: EN_ROUTES.limitCalculator },
 ];
 
 /** "Guides" dropdown: educational content only. */

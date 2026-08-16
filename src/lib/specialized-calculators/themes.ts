@@ -9,6 +9,7 @@ import {
   Sigma,
   TrendingUp,
   Equal,
+  Goal,
 } from "lucide-react";
 
 export type CalculatorTheme = {
@@ -241,6 +242,29 @@ export const IMPLICIT_DIFF_THEME: CalculatorTheme = {
   markerOther: "#be123c",
 };
 
+export const LIMITS_THEME: CalculatorTheme = {
+  id: "limits",
+  icon: Goal,
+  heroGradient: "from-teal-50 via-cyan-50/70 to-slate-50/60",
+  shellBorder: "border-teal-200/80",
+  shellBg: "bg-gradient-to-br from-white via-teal-50/35 to-cyan-50/25",
+  badge: "bg-teal-100 text-teal-900 border-teal-200",
+  inputRing: "focus-within:border-teal-500 focus-within:ring-teal-200",
+  inputBg: "bg-white border-teal-100",
+  labelColor: "text-teal-900",
+  cta: "bg-gradient-to-r from-teal-600 to-cyan-600 shadow-teal-500/30",
+  ctaHover: "hover:from-teal-500 hover:to-cyan-500",
+  resultBorder: "border-teal-200",
+  resultBg: "bg-teal-50/50",
+  accentText: "text-teal-800",
+  stepBorder: "border-teal-100",
+  graphStroke: "#0d9488",
+  graphFill: "rgba(20, 184, 166, 0.08)",
+  markerMax: "#ef4444",
+  markerMin: "#22c55e",
+  markerOther: "#0891b2",
+};
+
 export const THEMES = {
   "product-rule": PRODUCT_RULE_THEME,
   "quotient-rule": QUOTIENT_RULE_THEME,
@@ -251,6 +275,7 @@ export const THEMES = {
   "second-derivative": SECOND_DERIVATIVE_THEME,
   "chain-rule": CHAIN_RULE_THEME,
   "implicit-differentiation": IMPLICIT_DIFF_THEME,
+  limits: LIMITS_THEME,
 } as const;
 
 export type SpecializedCalculatorKind = keyof typeof THEMES;

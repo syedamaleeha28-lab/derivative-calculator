@@ -642,3 +642,121 @@ export function implicitDifferentiationWorkflow(
 
   return { F, FTeX, FxTeX, FyTeX, result, resultTeX, steps };
 }
+
+/** Parse approach point for nerdamer limit. Finite points only for now. */
+export function parseLimitApproach(raw: string): string {
+  const t = sanitizeExpr(raw).toLowerCase().replace(/\s+/g, "");
+  if (!t) throw new Error("Missing approach point");
+  if (
+    t === "inf" ||
+    t === "+inf" ||
+    t === "infinity" ||
+    t === "+infinity" ||
+    t === "oo" ||
+    t === "+oo" ||
+    t === "∞" ||
+    t === "+∞" ||
+    t === "-inf" ||
+    t === "-infinity" ||
+    t === "-oo" ||
+    t === "-∞"
+  ) {
+    throw new Error("Infinity approach not supported");
+  }
+  return sanitizeExpr(raw);
+}
+
+export function formatLimitApproachTeX(point: string): string {
+  if (point === "Infinity") return "\\infty";
+  if (point === "-Infinity") return "-\\infty";
+  return exprToTeX(point);
+}
+
+export function limitWorkflow(
+  fRaw: string,
+  variable: string,
+  approachRaw: string,
+  locale: "es" | "en"
+): { result: string; resultTeX: string; approach: string; steps: CalcStep[] } {
+  const f = sanitizeExpr(fRaw);
+  if (!f) throw new Error("Empty expression");
+  const approach = parseLimitApproach(approachRaw);
+  const approachTeX = formatLimitApproachTeX(approach);
+  const fTeX = exprToTeX(f);
+
+  let directText = "";
+  let directTeX = "";
+  let looksIndeterminate = false;
+  try {
+    if (approach === "Infinity" || approach === "-Infinity") {
+      looksIndeterminate = true;
+      directText = locale === "es" ? "forma en el infinito" : "form at infinity";
+      directTeX = "\\cdots";
+    } else {
+      const aNum = parseFloat(approach);
+      if (Number.isFinite(aNum) && String(aNum) === approach.trim()) {
+        const y = evaluateAt(f, variable, aNum);
+        if (y === null || !Number.isFinite(y)) {
+          looksIndeterminate = true;
+          directText =
+            locale === "es" ? "indeterminada / no definida" : "indeterminate / undefined";
+          directTeX = "\\text{¿?}";
+        } else {
+          directText = formatNumericResult(y);
+          directTeX = exprToTeX(directText);
+        }
+      } else {
+        const sub = nerdamer(`subs(${variable}, ${approach}, ${f})`).evaluate();
+        directText = sub.text();
+        directTeX = toDisplayTeX(sub.toTeX());
+        const n = parseFloat(directText);
+        looksIndeterminate =
+          !Number.isFinite(n) ||
+          /nan|undefined|infinity/i.test(directText) ||
+          /subs\s*\(/i.test(directText);
+      }
+    }
+  } catch {
+    looksIndeterminate = true;
+    directText = locale === "es" ? "indeterminada / no definida" : "indeterminate / undefined";
+    directTeX = "\\text{¿?}";
+  }
+
+  const limitExpr = nerdamer(`limit(${f}, ${variable}, ${approach})`);
+  const result = limitExpr.text();
+  const resultTeX = toDisplayTeX(limitExpr.toTeX());
+
+  if (!result || /limit\s*\(/i.test(result)) {
+    throw new Error("Limit could not be computed");
+  }
+
+  const steps: CalcStep[] = [
+    {
+      label: locale === "es" ? "Expresión" : "Expression",
+      latex: `f(${variable}) = ${fTeX}`,
+    },
+    {
+      label: locale === "es" ? "Límite pedido" : "Requested limit",
+      latex: `\\lim_{${variable}\\to ${approachTeX}} ${fTeX}`,
+    },
+    {
+      label: locale === "es" ? "Sustitución directa" : "Direct substitution",
+      latex: looksIndeterminate
+        ? locale === "es"
+          ? `f(${approachTeX}) \\to \\text{forma indeterminada o indefinida}`
+          : `f(${approachTeX}) \\to \\text{indeterminate or undefined}`
+        : `f(${approachTeX}) = ${directTeX}`,
+      detail: looksIndeterminate
+        ? locale === "es"
+          ? "La sustitución directa no resuelve el límite; se aplica álgebra simbólica (p. ej. factorización o L'Hôpital cuando aplica)."
+          : "Direct substitution does not resolve the limit; symbolic algebra is applied (e.g. factoring or L'Hôpital when applicable)."
+        : undefined,
+    },
+    {
+      label: locale === "es" ? "Resultado" : "Result",
+      latex: `\\lim_{${variable}\\to ${approachTeX}} ${fTeX} = ${resultTeX}`,
+    },
+  ];
+
+  return { result, resultTeX, approach, steps };
+}

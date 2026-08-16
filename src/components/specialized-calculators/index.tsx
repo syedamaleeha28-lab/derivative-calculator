@@ -10,6 +10,7 @@ import HigherOrderDerivativeCalculator from "./HigherOrderDerivativeCalculator";
 import SecondDerivativeCalculator from "./SecondDerivativeCalculator";
 import ChainRuleCalculator from "./ChainRuleCalculator";
 import ImplicitDifferentiationCalculator from "./ImplicitDifferentiationCalculator";
+import LimitsCalculator from "./LimitsCalculator";
 
 type Props = { locale: Locale };
 
@@ -23,6 +24,7 @@ const REGISTRY: Record<SpecializedCalculatorKind, ComponentType<Props>> = {
   "second-derivative": SecondDerivativeCalculator,
   "chain-rule": ChainRuleCalculator,
   "implicit-differentiation": ImplicitDifferentiationCalculator,
+  limits: LimitsCalculator,
 };
 
 export function SpecializedCalculator({

@@ -1277,3 +1277,133 @@ export const criticalPointsPage: CalculatorPageConfig = {
     },
   ],
 };
+
+export const limitsPage: CalculatorPageConfig = {
+  slug: "calculadora-de-limites",
+  path: ES_CALCULATOR_ROUTES.limits,
+  breadcrumbHome: BREADCRUMB_HOME,
+  tag: TAG,
+  embedCalculator: true,
+  calculatorKind: "limits",
+  h1: "Calculadora de Límites — Resuelve Formas Indeterminadas al Instante",
+  intro: [
+    "Encuentra el límite de una función en un punto exacto, sin quedarte atascado cuando la sustitución directa da 0/0 — el caso que más confunde a los estudiantes.",
+    "Un límite es la base sobre la que se construye toda la derivada: antes de derivar, cualquier función pasa por este mismo concepto. Si quieres entender esa conexión, la guía de derivada por definición desarrolla exactamente esa idea.",
+  ],
+  meta: {
+    title: "Calculadora de Límites — Formas Indeterminadas al Instante",
+    description:
+      "Calcula límites de funciones paso a paso, incluyendo formas indeterminadas 0/0. Gratis, en español, sin registro.",
+    keywords:
+      "calculadora de limites, calcular limites, resolver limites, limites paso a paso",
+  },
+  defaultExamples: ["(x^2-4)/(x-2)", "sin(x)/x", "(1-cos(x))/x^2"],
+  examples: [
+    {
+      title: "Discontinuidad removable",
+      problem: "Calcular lim(x→2) (x² − 4)/(x − 2)",
+      steps: [
+        "Sustitución directa: (4 − 4)/(2 − 2) = 0/0, forma indeterminada.",
+        "Factoriza el numerador: (x − 2)(x + 2)/(x − 2).",
+        "Para x ≠ 2 cancela (x − 2) y queda lim(x→2) (x + 2) = 4.",
+      ],
+      result: "4",
+    },
+    {
+      title: "Límite trigonométrico clásico",
+      problem: "Calcular lim(x→0) sin(x)/x",
+      steps: [
+        "Sustitución directa: sin(0)/0 = 0/0.",
+        "Es el límite estándar del cálculo: lim(x→0) sin(x)/x = 1.",
+        "Aparece en la demostración de (sin x)′ = cos x.",
+      ],
+      result: "1",
+    },
+    {
+      title: "Indeterminada con coseno",
+      problem: "Calcular lim(x→0) (1 − cos(x))/x²",
+      steps: [
+        "Sustitución: (1 − 1)/0 = 0/0.",
+        "Con L'Hôpital o identidad 1 − cos x = 2 sin²(x/2) se obtiene 1/2.",
+        "Resultado: 1/2.",
+      ],
+      result: "1/2",
+    },
+  ],
+  faqs: [
+    {
+      q: "¿Qué es un límite en cálculo?",
+      a: "Es el valor al que se acerca una función a medida que la variable se aproxima a un punto específico, incluso si la función no está definida exactamente en ese punto.",
+    },
+    {
+      q: "¿Qué es una forma indeterminada?",
+      a: "Ocurre cuando sustituir directamente da un resultado sin sentido matemático, como 0/0. No significa que el límite no exista — significa que hace falta otro método para encontrarlo.",
+    },
+    {
+      q: "¿Cómo se relacionan los límites con las derivadas?",
+      a: "La derivada se define formalmente usando un límite. Entender límites primero hace que las reglas de derivación dejen de sentirse arbitrarias — consulta la guía de derivada por definición.",
+    },
+    {
+      q: "¿Esta calculadora resuelve límites en el infinito o laterales?",
+      a: "Por ahora está optimizada para límites en un punto finito. Soporte para límites al infinito y laterales está en desarrollo.",
+    },
+  ],
+  relatedCalculators: [
+    {
+      label: "Calculadora de derivadas",
+      href: ROUTES.home,
+      description: "Deriva con pasos tras dominar el concepto de límite.",
+    },
+    {
+      label: "Calculadora regla del cociente",
+      href: ES_CALCULATOR_ROUTES.quotientRule,
+      description: "Muchas indeterminadas 0/0 vienen de cocientes.",
+    },
+    {
+      label: "Calculadora regla de la cadena",
+      href: ES_CALCULATOR_ROUTES.chainRule,
+      description: "Útil cuando el límite involucra composiciones.",
+    },
+    {
+      label: "Calculadora segunda derivada",
+      href: ES_CALCULATOR_ROUTES.secondDerivative,
+      description: "L'Hôpital puede requerir derivar numerador y denominador.",
+    },
+  ],
+  internalLinks: [
+    { label: "Derivada por definición", href: "/derivada-por-definicion" },
+    { label: "Regla de L'Hôpital", href: "/regla-de-l-hopital" },
+    { label: "Calculadora de derivadas", href: ROUTES.home },
+    { label: "Limit calculator (English)", href: "/en/limit-calculator" },
+  ],
+  educationalSections: [
+    {
+      h2: "Qué es un límite y por qué aparece 0/0",
+      paragraphs: [
+        "Un límite describe el valor al que tiende f(x) cuando x se acerca a a. Si f está «agujereada» en a —como (x² − 4)/(x − 2) en x = 2—, el límite puede existir aunque f(a) no esté definida.",
+        "La forma 0/0 no es una respuesta: es una señal de que hace falta más trabajo algebraico o una regla avanzada como L'Hôpital.",
+      ],
+    },
+    {
+      h2: "Cómo resolver límites indeterminados paso a paso",
+      paragraphs: [
+        "Primero sustituye. Si obtienes un número, ese es el límite (si la función es continua ahí). Si obtienes 0/0 o ∞/∞, factoriza, cancela, racionaliza o aplica identidades trigonométricas.",
+        "Para (sin x)/x o (1 − cos x)/x² conviene memorizar los límites estándar o derivarlos una vez con rigor y reutilizarlos.",
+      ],
+    },
+    {
+      h2: "Límites y la definición de derivada",
+      paragraphs: [
+        "f′(a) = lim(h→0) [f(a+h) − f(a)]/h es otra indeterminada 0/0. Entender límites es entender por qué la derivada mide pendiente instantánea.",
+        "Nuestra guía de derivada por definición conecta exactamente ese puente entre límites y cálculo diferencial.",
+      ],
+    },
+    {
+      h2: "Cómo usar esta calculadora de límites",
+      paragraphs: [
+        "Introduce la expresión con sintaxis tipo (x^2-4)/(x-2), elige un punto finito (por ejemplo 2 o 0) y compara el resultado con tu procedimiento manual.",
+        "Usa los ejemplos sin(x)/x y (1-cos(x))/x^2 para comprobar formas 0/0 típicas de examen. Los límites al infinito aún no están habilitados en la herramienta.",
+      ],
+    },
+  ],
+};

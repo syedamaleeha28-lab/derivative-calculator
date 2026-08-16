@@ -13,6 +13,7 @@ export const EN_ROUTES = {
   higherOrderDerivativeCalculator: "/en/higher-order-derivative-calculator",
   tangentLineCalculator: "/en/tangent-line-calculator",
   criticalPointsCalculator: "/en/critical-points-calculator",
+  limitCalculator: "/en/limit-calculator",
   /** Educational guides */
   derivativeOfSinX: "/en/derivative-of-sin-x",
   derivativeOfCosX: "/en/derivative-of-cos-x",
@@ -53,6 +54,7 @@ export const EN_CALCULATOR_PAGES_WITH_WIDGET = [
   EN_ROUTES.higherOrderDerivativeCalculator,
   EN_ROUTES.tangentLineCalculator,
   EN_ROUTES.criticalPointsCalculator,
+  EN_ROUTES.limitCalculator,
 ] as const;
 
 export const EN_CALCULATOR_PAGES = [
@@ -66,6 +68,7 @@ export const EN_CALCULATOR_PAGES = [
   EN_ROUTES.higherOrderDerivativeCalculator,
   EN_ROUTES.tangentLineCalculator,
   EN_ROUTES.criticalPointsCalculator,
+  EN_ROUTES.limitCalculator,
 ] as const;
 
 export const EN_ARTICLE_PAGES = [

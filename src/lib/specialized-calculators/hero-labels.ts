@@ -63,6 +63,12 @@ const ES: Record<SpecializedCalculatorKind, HeroCopy> = {
     trust2: "Variables x e y",
     trust3: "Pasos algebraicos completos",
   },
+  limits: {
+    cta: "Calcular el límite ahora",
+    trust1: "Resuelve formas 0/0",
+    trust2: "Punto finito o ±∞",
+    trust3: "Pasos con sustitución directa",
+  },
 };
 
 const EN: Record<SpecializedCalculatorKind, HeroCopy> = {
@@ -119,6 +125,12 @@ const EN: Record<SpecializedCalculatorKind, HeroCopy> = {
     trust1: "Equation mode L = R",
     trust2: "Supports x and y variables",
     trust3: "Full algebraic step trace",
+  },
+  limits: {
+    cta: "Compute the limit now",
+    trust1: "Handles 0/0 forms",
+    trust2: "Finite point or ±∞",
+    trust3: "Steps with direct substitution",
   },
 };
 

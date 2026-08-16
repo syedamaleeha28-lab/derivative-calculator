@@ -20,6 +20,8 @@ const SLUG_TO_KIND: Record<string, SpecializedCalculatorKind> = {
   "chain-rule-calculator": "chain-rule",
   "calculadora-de-derivadas-implicitas": "implicit-differentiation",
   "implicit-differentiation-calculator": "implicit-differentiation",
+  "calculadora-de-limites": "limits",
+  "limit-calculator": "limits",
 };
 
 export function resolveCalculatorKind(

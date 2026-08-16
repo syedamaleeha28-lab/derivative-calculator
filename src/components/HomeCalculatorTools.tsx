@@ -65,6 +65,12 @@ const CALCULATOR_TOOLS = [
     desc: "Máximos, mínimos y optimización: dónde f′(x) = 0.",
     image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
   },
+  {
+    title: "Calculadora de Límites",
+    href: ES_CALCULATOR_ROUTES.limits,
+    desc: "Resuelve límites paso a paso, incluyendo formas indeterminadas 0/0.",
+    image: "/images/limite-secante-definicion-derivada.svg",
+  },
 ] as const;
 
 const AUTHORITY_GUIDES = [

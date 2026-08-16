@@ -9,6 +9,7 @@ export const ES_CALCULATOR_ROUTES = {
   higherOrderDerivative: "/calculadora-derivadas-orden-superior",
   tangentLine: "/calculadora-recta-tangente",
   criticalPoints: "/calculadora-puntos-criticos",
+  limits: "/calculadora-de-limites",
 } as const;
 
 export const ES_CALCULATOR_ROUTE_LIST = Object.values(ES_CALCULATOR_ROUTES);

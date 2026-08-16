@@ -40,6 +40,7 @@ export const LOCALE_ROUTE_PAIRS: { es: string; en: string }[] = [
   },
   { es: ES_CALCULATOR_ROUTES.tangentLine, en: EN_ROUTES.tangentLineCalculator },
   { es: ES_CALCULATOR_ROUTES.criticalPoints, en: EN_ROUTES.criticalPointsCalculator },
+  { es: ES_CALCULATOR_ROUTES.limits, en: EN_ROUTES.limitCalculator },
   { es: ES_AUTHORITY_ROUTES.formulasDeDerivadas, en: EN_ROUTES.derivativeFormulas },
   {
     es: ES_AUTHORITY_ROUTES.ejerciciosDeDerivadas,

@@ -11,6 +11,7 @@ import {
   Link,
   ES_MAIN_CALCULATOR_HREF,
   ES_AUTHORITY_ROUTES,
+  ES_CALCULATOR_ROUTES,
   ROUTES,
 } from "../helpers";
 import { ES_COMMON_FUNCTION_ROUTES } from "../../common-derivative-functions/routes";
@@ -97,6 +98,22 @@ export function DerivadaPorDefinicionContent() {
           Para la derivada en un punto concreto x = a también se usa la forma equivalente
           f′(a) = lim<sub>x→a</sub> [f(x) − f(a)] / (x − a), útil cuando el enunciado pide la pendiente en un punto
           específico en lugar de la función derivada completa.
+        </p>
+      </section>
+
+      <section>
+        <h2 id="limites-y-derivadas">Límites y derivadas: la misma idea</h2>
+        <p>
+          El cociente incremental es un límite como cualquier otro: a menudo aparece como forma indeterminada 0/0
+          hasta que simplificas. Si quieres practicar exactamente esa idea —resolver límites en un punto, incluyendo
+          casos 0/0— usa la{" "}
+          <Link
+            href={ES_CALCULATOR_ROUTES.limits}
+            className="text-violet-600 font-semibold hover:underline"
+          >
+            calculadora de límites
+          </Link>
+          . Dominar el límite del cociente incremental es el mismo músculo que usas al calcular f′(x) por definición.
         </p>
       </section>
 
