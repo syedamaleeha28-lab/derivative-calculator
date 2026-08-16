@@ -717,3 +717,111 @@ export const limitCalculatorConfig: CalculatorPageConfig = {
     },
   ],
 };
+
+export const continuityCalculatorConfig: CalculatorPageConfig = {
+  slug: "continuity-calculator",
+  path: EN_ROUTES.continuityCalculator,
+  embedCalculator: true,
+  calculatorKind: "continuity",
+  breadcrumbHome: BREADCRUMB_HOME,
+  tag: "Free Academic Tool",
+  h1: "Continuity of a Function — Check if It's Continuous at a Point",
+  intro: [
+    "A function is continuous at a point when its limit there matches the function's actual value at that same point. If they don't match, there's a discontinuity — and knowing how to spot it matters as much as knowing how to compute it.",
+    "This concept builds directly on limits: if you want to review how to compute a limit step by step first, the limit calculator is the place to start.",
+  ],
+  meta: {
+    title: "Function Continuity — Check a Point Instantly",
+    description:
+      "Check whether a function is continuous at an exact point, with the full step-by-step comparison. Free, no signup required.",
+    keywords:
+      "function continuity, continuous at a point, how to tell if a function is continuous, continuity calculator",
+  },
+  defaultExamples: ["(x^2-4)/(x-2)", "x^2", "1/x"],
+  examples: [
+    {
+      title: "Removable discontinuity",
+      problem: "Is f(x) = (x² − 4)/(x − 2) continuous at x = 2?",
+      steps: [
+        "The limit exists: lim(x→2) (x² − 4)/(x − 2) = 4 (factor and cancel x − 2).",
+        "f(2) is undefined: substitution gives 0/0, so the function has no actual value at that point.",
+        "Because the limit and f(2) cannot match, f is not continuous at x = 2 (a removable hole).",
+      ],
+      result: "Not continuous at x = 2",
+    },
+    {
+      title: "Continuous polynomial",
+      problem: "Is f(x) = x² continuous at x = 2?",
+      steps: [
+        "Direct substitution: f(2) = 4.",
+        "The limit matches: lim(x→2) x² = 4.",
+        "Since lim f(x) = f(2) = 4, the function is continuous at that point.",
+      ],
+      result: "Continuous at x = 2",
+    },
+    {
+      title: "Vertical asymptote",
+      problem: "Is f(x) = 1/x continuous at x = 0?",
+      steps: [
+        "f(0) is undefined: division by zero.",
+        "The two-sided limit at 0 is not a finite number (the one-sided limits diverge).",
+        "Without f(a) and a finite limit, f is not continuous at x = 0.",
+      ],
+      result: "Not continuous at x = 0",
+    },
+  ],
+  faqs: [
+    {
+      q: "What does it mean for a function to be continuous at a point?",
+      a: "It means there are no jumps, holes, or breaks there — the function's limit at that point equals its actual value.",
+    },
+    {
+      q: "How do you know if a function is continuous or discontinuous?",
+      a: "Compare the function's limit at the point to its value evaluated directly there. If they match, it's continuous; if not, it's discontinuous.",
+    },
+    {
+      q: "How are limits and continuity related?",
+      a: "Continuity is defined using limits — that's why it helps to master limits first before studying continuity.",
+    },
+  ],
+  relatedCalculators: [
+    {
+      label: "Limit calculator",
+      href: EN_ROUTES.limitCalculator,
+      description: "Compute the limit at a finite point, the first ingredient of continuity.",
+    },
+    {
+      label: "Derivative calculator",
+      href: EN_MAIN_CALCULATOR_HREF,
+      description: "Differentiate continuous functions (and more) with steps.",
+    },
+    {
+      label: "Spanish continuity checker",
+      href: "/continuidad-de-una-funcion",
+      description: "Same tool with Spanish content and FAQs.",
+    },
+  ],
+  internalLinks: [
+    { label: "Limit calculator", href: EN_ROUTES.limitCalculator },
+    { label: "English homepage", href: EN_ROUTES.home },
+    { label: "Spanish: Continuidad de una función", href: "/continuidad-de-una-funcion" },
+    { label: "Spanish: Derivada por definición", href: "/derivada-por-definicion" },
+    { label: "Spanish homepage", href: ROUTES.home },
+  ],
+  educationalSections: [
+    {
+      h2: "The definition of continuity at a point",
+      paragraphs: [
+        "f is continuous at a when three things hold at once: f(a) is defined, the limit lim(x→a) f(x) exists and is finite, and that limit equals f(a) exactly.",
+        "If any of the three fails, there is a discontinuity: a hole (such as (x² − 4)/(x − 2) at x = 2), a jump, or an asymptote (such as 1/x at x = 0).",
+      ],
+    },
+    {
+      h2: "How to check it step by step",
+      paragraphs: [
+        "First evaluate f(a). If it is undefined, the function is already not continuous there. Then compute the limit at a — the limit calculator covers that step, including 0/0 forms.",
+        "Finally compare the two values. If they match, the function does not break at that point; if they do not, you have found the type of discontinuity.",
+      ],
+    },
+  ],
+};

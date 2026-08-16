@@ -27,6 +27,7 @@ export const ES_CALCULATORS_NAV: EsNavLink[] = [
   { name: "Recta tangente", href: ES_CALCULATOR_ROUTES.tangentLine },
   { name: "Puntos críticos", href: ES_CALCULATOR_ROUTES.criticalPoints },
   { name: "Calculadora de Límites", href: ES_CALCULATOR_ROUTES.limits },
+  { name: "Continuidad de una función", href: ES_CALCULATOR_ROUTES.continuity },
 ];
 
 /** "Guías" dropdown: educational content only. */

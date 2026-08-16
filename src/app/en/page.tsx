@@ -76,6 +76,11 @@ const FEATURED_CALCULATORS = [
     href: EN_ROUTES.criticalPointsCalculator,
     desc: "Find maxima, minima, and where f′(x) = 0.",
   },
+  {
+    title: "Continuity Calculator",
+    href: EN_ROUTES.continuityCalculator,
+    desc: "Check whether a function is continuous at a finite point.",
+  },
 ];
 
 const FEATURED_GUIDES = [

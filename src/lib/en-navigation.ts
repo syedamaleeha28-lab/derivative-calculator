@@ -20,6 +20,7 @@ export const EN_CALCULATORS_NAV: NavLink[] = [
   { name: "Tangent Line Calculator", href: EN_ROUTES.tangentLineCalculator },
   { name: "Critical Points Calculator", href: EN_ROUTES.criticalPointsCalculator },
   { name: "Limit Calculator", href: EN_ROUTES.limitCalculator },
+  { name: "Continuity Calculator", href: EN_ROUTES.continuityCalculator },
 ];
 
 /** "Guides" dropdown: educational content only. */

@@ -9,6 +9,7 @@ import {
   tangentLineExpandedSections,
   criticalPointsCalculatorConfig,
   limitCalculatorConfig,
+  continuityCalculatorConfig,
 } from "./expansion-sections";
 
 export type EnFaqItem = FaqItem;
@@ -961,6 +962,7 @@ export const EN_CALCULATOR_PAGES: Record<string, EnCalculatorPageConfig> = {
 
   criticalPointsCalculator: criticalPointsCalculatorConfig,
   limitCalculator: limitCalculatorConfig,
+  continuityCalculator: continuityCalculatorConfig,
 };
 
 export const EN_PAGE_LIST = Object.values(EN_CALCULATOR_PAGES);

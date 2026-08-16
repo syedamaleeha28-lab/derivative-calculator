@@ -23,6 +23,7 @@ const SLUG_TO_KIND: Record<string, SpecializedCalculatorKind> = {
   "calculadora-de-limites": "limits",
   "limit-calculator": "limits",
   "continuidad-de-una-funcion": "continuity",
+  "continuity-calculator": "continuity",
 };
 
 export function resolveCalculatorKind(

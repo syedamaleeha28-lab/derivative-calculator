@@ -71,6 +71,12 @@ const CALCULATOR_TOOLS = [
     desc: "Resuelve límites paso a paso, incluyendo formas indeterminadas 0/0.",
     image: "/images/limite-secante-definicion-derivada.svg",
   },
+  {
+    title: "Continuidad de una función",
+    href: ES_CALCULATOR_ROUTES.continuity,
+    desc: "Comprueba si una función es continua en un punto finito, comparando el límite con f(a).",
+    image: "/images/limite-secante-definicion-derivada.svg",
+  },
 ] as const;
 
 const AUTHORITY_GUIDES = [

@@ -1495,6 +1495,7 @@ export const continuityPage: CalculatorPageConfig = {
     { label: "Calculadora de límites", href: ES_CALCULATOR_ROUTES.limits },
     { label: "Derivada por definición", href: "/derivada-por-definicion" },
     { label: "Calculadora de derivadas", href: ROUTES.home },
+    { label: "Continuity calculator (English)", href: EN_ROUTES.continuityCalculator },
   ],
   educationalSections: [
     {

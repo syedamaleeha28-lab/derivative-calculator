@@ -14,6 +14,7 @@ export const EN_ROUTES = {
   tangentLineCalculator: "/en/tangent-line-calculator",
   criticalPointsCalculator: "/en/critical-points-calculator",
   limitCalculator: "/en/limit-calculator",
+  continuityCalculator: "/en/continuity-calculator",
   /** Educational guides */
   derivativeOfSinX: "/en/derivative-of-sin-x",
   derivativeOfCosX: "/en/derivative-of-cos-x",
@@ -55,6 +56,7 @@ export const EN_CALCULATOR_PAGES_WITH_WIDGET = [
   EN_ROUTES.tangentLineCalculator,
   EN_ROUTES.criticalPointsCalculator,
   EN_ROUTES.limitCalculator,
+  EN_ROUTES.continuityCalculator,
 ] as const;
 
 export const EN_CALCULATOR_PAGES = [
@@ -69,6 +71,7 @@ export const EN_CALCULATOR_PAGES = [
   EN_ROUTES.tangentLineCalculator,
   EN_ROUTES.criticalPointsCalculator,
   EN_ROUTES.limitCalculator,
+  EN_ROUTES.continuityCalculator,
 ] as const;
 
 export const EN_ARTICLE_PAGES = [
