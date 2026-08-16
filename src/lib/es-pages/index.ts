@@ -10,6 +10,7 @@ import {
   tangentLinePage,
   criticalPointsPage,
   limitsPage,
+  continuityPage,
 } from "./expansion-calculators";
 
 const BREADCRUMB_HOME = { label: "Inicio", path: ROUTES.home };
@@ -354,6 +355,7 @@ export const ES_CALCULATOR_PAGES: Record<string, CalculatorPageConfig> = {
   tangentLine: tangentLinePage,
   criticalPoints: criticalPointsPage,
   limits: limitsPage,
+  continuity: continuityPage,
 };
 
 export const ES_PAGE_LIST = Object.values(ES_CALCULATOR_PAGES);

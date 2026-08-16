@@ -10,6 +10,7 @@ import {
   TrendingUp,
   Equal,
   Goal,
+  CircleDot,
 } from "lucide-react";
 
 export type CalculatorTheme = {
@@ -265,6 +266,29 @@ export const LIMITS_THEME: CalculatorTheme = {
   markerOther: "#0891b2",
 };
 
+export const CONTINUITY_THEME: CalculatorTheme = {
+  id: "continuity",
+  icon: CircleDot,
+  heroGradient: "from-indigo-50 via-sky-50/70 to-slate-50/50",
+  shellBorder: "border-indigo-200/80",
+  shellBg: "bg-gradient-to-br from-white via-indigo-50/35 to-sky-50/25",
+  badge: "bg-indigo-100 text-indigo-900 border-indigo-200",
+  inputRing: "focus-within:border-indigo-500 focus-within:ring-indigo-200",
+  inputBg: "bg-white border-indigo-100",
+  labelColor: "text-indigo-900",
+  cta: "bg-gradient-to-r from-indigo-600 to-sky-600 shadow-indigo-500/30",
+  ctaHover: "hover:from-indigo-500 hover:to-sky-500",
+  resultBorder: "border-indigo-200",
+  resultBg: "bg-indigo-50/50",
+  accentText: "text-indigo-800",
+  stepBorder: "border-indigo-100",
+  graphStroke: "#4f46e5",
+  graphFill: "rgba(79, 70, 229, 0.08)",
+  markerMax: "#ef4444",
+  markerMin: "#22c55e",
+  markerOther: "#0284c7",
+};
+
 export const THEMES = {
   "product-rule": PRODUCT_RULE_THEME,
   "quotient-rule": QUOTIENT_RULE_THEME,
@@ -276,6 +300,7 @@ export const THEMES = {
   "chain-rule": CHAIN_RULE_THEME,
   "implicit-differentiation": IMPLICIT_DIFF_THEME,
   limits: LIMITS_THEME,
+  continuity: CONTINUITY_THEME,
 } as const;
 
 export type SpecializedCalculatorKind = keyof typeof THEMES;

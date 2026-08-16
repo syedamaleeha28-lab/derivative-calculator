@@ -10,6 +10,7 @@ export const ES_CALCULATOR_ROUTES = {
   tangentLine: "/calculadora-recta-tangente",
   criticalPoints: "/calculadora-puntos-criticos",
   limits: "/calculadora-de-limites",
+  continuity: "/continuidad-de-una-funcion",
 } as const;
 
 export const ES_CALCULATOR_ROUTE_LIST = Object.values(ES_CALCULATOR_ROUTES);

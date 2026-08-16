@@ -760,3 +760,188 @@ export function limitWorkflow(
 
   return { result, resultTeX, approach, steps };
 }
+
+function looksInfiniteText(text: string): boolean {
+  return /infinity|∞/i.test(text);
+}
+
+/**
+ * Direct evaluation at a finite point. Uses nerdamer.evaluate({[var]: a})
+ * (with .sub() fallback). Do not use evaluateAt — its subs() API is broken.
+ */
+export function evaluateFunctionAtPoint(
+  clean: string,
+  variable: string,
+  approach: string
+): { defined: true; value: number; text: string; tex: string } | { defined: false } {
+  const aNum = parseNumericSolution(approach);
+  if (aNum === null) return { defined: false };
+
+  const read = (expr: { text: () => string; toTeX?: () => string }) => {
+    const text = expr.text();
+    if (!text || /nan|undefined/i.test(text) || looksInfiniteText(text)) {
+      return { defined: false as const };
+    }
+    const n = parseNumericSolution(text);
+    if (n === null || !Number.isFinite(n)) return { defined: false as const };
+    const tex = expr.toTeX ? toDisplayTeX(expr.toTeX()) : exprToTeX(text);
+    return {
+      defined: true as const,
+      value: n,
+      text: formatNumericResult(n),
+      tex,
+    };
+  };
+
+  try {
+    return read(nerdamer(clean).evaluate({ [variable]: aNum }));
+  } catch {
+    try {
+      const subbed = nerdamer(clean).sub(variable, aNum);
+      try {
+        return read(subbed.evaluate());
+      } catch {
+        return read(subbed);
+      }
+    } catch {
+      return { defined: false };
+    }
+  }
+}
+
+export type ContinuityKind = "continuous" | "removable" | "infinite" | "jump" | "undefined";
+
+export type ContinuityWorkflowResult = {
+  continuous: boolean;
+  kind: ContinuityKind;
+  verdict: string;
+  reason: string;
+  approach: string;
+  limit: string;
+  limitTeX: string;
+  fAtA: string;
+  fAtATeX: string;
+  steps: CalcStep[];
+};
+
+export function continuityWorkflow(
+  fRaw: string,
+  variable: string,
+  approachRaw: string,
+  locale: "es" | "en"
+): ContinuityWorkflowResult {
+  const es = locale === "es";
+  const f = sanitizeExpr(fRaw);
+  if (!f) throw new Error("Empty expression");
+  const approach = parseLimitApproach(approachRaw);
+  const approachTeX = formatLimitApproachTeX(approach);
+  const fTeX = exprToTeX(f);
+
+  const direct = evaluateFunctionAtPoint(f, variable, approach);
+
+  const limitExpr = nerdamer(`limit(${f}, ${variable}, ${approach})`);
+  const limit = limitExpr.text();
+  const limitTeX = toDisplayTeX(limitExpr.toTeX());
+
+  if (!limit || /limit\s*\(/i.test(limit)) {
+    throw new Error("Limit could not be computed");
+  }
+
+  const limitInfinite = looksInfiniteText(limit);
+  const limitNum = limitInfinite ? null : parseNumericSolution(limit);
+
+  let kind: ContinuityKind;
+  let continuous = false;
+  if (limitNum !== null && direct.defined && Math.abs(limitNum - direct.value) < 1e-8) {
+    kind = "continuous";
+    continuous = true;
+  } else if (limitNum !== null && !direct.defined) {
+    kind = "removable";
+  } else if (limitInfinite) {
+    kind = "infinite";
+  } else if (limitNum !== null && direct.defined) {
+    kind = "jump";
+  } else {
+    kind = "undefined";
+  }
+
+  const fAtA = direct.defined ? direct.text : es ? "no definida" : "undefined";
+  const fAtATeX = direct.defined ? direct.tex : "\\text{¿?}";
+  const limitDisplay = limitNum !== null ? formatNumericResult(limitNum) : limit;
+
+  const verdict = continuous
+    ? es
+      ? "Continua en este punto."
+      : "Continuous at this point."
+    : es
+      ? "No es continua en este punto."
+      : "Not continuous at this point.";
+
+  const reason = (() => {
+    if (kind === "continuous") {
+      return es
+        ? `El límite y f(${approach}) coinciden: ambos valen ${limitDisplay}.`
+        : `The limit and f(${approach}) match: both equal ${limitDisplay}.`;
+    }
+    if (kind === "removable") {
+      return es
+        ? `El límite existe y vale ${limitDisplay}, pero f(${approach}) no está definida. Discontinuidad removable (hueco).`
+        : `The limit exists and equals ${limitDisplay}, but f(${approach}) is undefined. Removable discontinuity (hole).`;
+    }
+    if (kind === "infinite") {
+      return es
+        ? `El límite no es un número finito (tiende a infinito). Discontinuidad infinita.`
+        : `The limit is not a finite number (it diverges to infinity). Infinite discontinuity.`;
+    }
+    if (kind === "jump") {
+      return es
+        ? `El límite vale ${limitDisplay} y f(${approach}) = ${fAtA}, y no coinciden.`
+        : `The limit is ${limitDisplay} and f(${approach}) = ${fAtA}, which do not match.`;
+    }
+    return es
+      ? `No hay un límite finito y f(${approach}) no está definida.`
+      : `There is no finite limit and f(${approach}) is undefined.`;
+  })();
+
+  const steps: CalcStep[] = [
+    {
+      label: es ? "Expresión" : "Expression",
+      latex: `f(${variable}) = ${fTeX}`,
+    },
+    {
+      label: es ? "Valor de la función" : "Function value",
+      latex: direct.defined
+        ? `f(${approachTeX}) = ${fAtATeX}`
+        : `f(${approachTeX}) \\to \\text{${es ? "no definida" : "undefined"}}`,
+      detail: direct.defined
+        ? undefined
+        : es
+          ? "La función no tiene un valor finito en este punto (p. ej. división por cero)."
+          : "The function has no finite value at this point (e.g. division by zero).",
+    },
+    {
+      label: es ? "Límite" : "Limit",
+      latex: `\\lim_{${variable}\\to ${approachTeX}} ${fTeX} = ${limitTeX}`,
+    },
+    {
+      label: es ? "Comparación" : "Comparison",
+      latex: continuous
+        ? `\\lim_{${variable}\\to ${approachTeX}} f(${variable}) = f(${approachTeX})`
+        : `\\lim_{${variable}\\to ${approachTeX}} f(${variable}) \\neq f(${approachTeX})`,
+      detail: reason,
+    },
+  ];
+
+  return {
+    continuous,
+    kind,
+    verdict,
+    reason,
+    approach,
+    limit,
+    limitTeX,
+    fAtA,
+    fAtATeX,
+    steps,
+  };
+}

@@ -57,6 +57,10 @@ const TEACHES_BY_KIND: Record<SpecializedCalculatorKind, { es: string; en: strin
     es: "Límites de funciones y formas indeterminadas",
     en: "Limits of functions and indeterminate forms",
   },
+  continuity: {
+    es: "Continuidad de una función en un punto finito",
+    en: "Continuity of a function at a finite point",
+  },
 };
 
 function teachesForPage(page: CalculatorPageConfig, locale: Locale): string {

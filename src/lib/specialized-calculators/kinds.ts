@@ -22,6 +22,7 @@ const SLUG_TO_KIND: Record<string, SpecializedCalculatorKind> = {
   "implicit-differentiation-calculator": "implicit-differentiation",
   "calculadora-de-limites": "limits",
   "limit-calculator": "limits",
+  "continuidad-de-una-funcion": "continuity",
 };
 
 export function resolveCalculatorKind(

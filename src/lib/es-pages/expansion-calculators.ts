@@ -1407,3 +1407,109 @@ export const limitsPage: CalculatorPageConfig = {
     },
   ],
 };
+
+export const continuityPage: CalculatorPageConfig = {
+  slug: "continuidad-de-una-funcion",
+  path: ES_CALCULATOR_ROUTES.continuity,
+  breadcrumbHome: BREADCRUMB_HOME,
+  tag: TAG,
+  embedCalculator: true,
+  calculatorKind: "continuity",
+  h1: "Continuidad de una Función — Verifica si es Continua en un Punto",
+  intro: [
+    "Una función es continua en un punto cuando su límite ahí coincide exactamente con el valor de la función en ese mismo punto. Si no coinciden, hay una discontinuidad — y saber identificarla es tan importante como saber calcularla.",
+    "Este concepto se apoya directamente en los límites: si quieres repasar primero cómo se calcula un límite paso a paso, la calculadora de límites es el punto de partida.",
+  ],
+  meta: {
+    title: "Continuidad de una Función — Verifica un Punto al Instante",
+    description:
+      "Comprueba si una función es continua en un punto exacto, con el procedimiento paso a paso. Gratis, en español, sin registro.",
+    keywords:
+      "continuidad de una funcion, como saber si una funcion es continua, continuidad en un punto, funcion continua",
+  },
+  defaultExamples: ["(x^2-4)/(x-2)", "x^2", "1/x"],
+  examples: [
+    {
+      title: "Discontinuidad removable",
+      problem: "¿Es continua f(x) = (x² − 4)/(x − 2) en x = 2?",
+      steps: [
+        "El límite existe: lim(x→2) (x² − 4)/(x − 2) = 4 (se factoriza y cancela x − 2).",
+        "f(2) no está definida: sustituir da 0/0, así que no hay valor real de la función en ese punto.",
+        "Como el límite y f(2) no pueden coincidir, f no es continua en x = 2 (hueco removable).",
+      ],
+      result: "No es continua en x = 2",
+    },
+    {
+      title: "Polinomio continuo",
+      problem: "¿Es continua f(x) = x² en x = 2?",
+      steps: [
+        "Sustitución directa: f(2) = 4.",
+        "El límite coincide: lim(x→2) x² = 4.",
+        "Como lim f(x) = f(2) = 4, la función es continua en ese punto.",
+      ],
+      result: "Es continua en x = 2",
+    },
+    {
+      title: "Asíntota vertical",
+      problem: "¿Es continua f(x) = 1/x en x = 0?",
+      steps: [
+        "f(0) no está definida: hay división por cero.",
+        "El límite bilateral en 0 no es un número finito (los laterales divergen).",
+        "Falta f(a) y un límite finito, así que f no es continua en x = 0.",
+      ],
+      result: "No es continua en x = 0",
+    },
+  ],
+  faqs: [
+    {
+      q: "¿Qué significa que una función sea continua en un punto?",
+      a: "Que no hay saltos, huecos ni interrupciones ahí — el límite de la función en ese punto es igual al valor real de la función.",
+    },
+    {
+      q: "¿Cómo saber si una función es continua o discontinua?",
+      a: "Compara el límite de la función en el punto con el valor de la función evaluada directamente ahí. Si coinciden, es continua; si no, es discontinua.",
+    },
+    {
+      q: "¿Qué relación hay entre límites y continuidad?",
+      a: "La continuidad se define usando límites — por eso conviene dominar primero cómo calcular un límite antes de estudiar continuidad.",
+    },
+  ],
+  relatedCalculators: [
+    {
+      label: "Calculadora de límites",
+      href: ES_CALCULATOR_ROUTES.limits,
+      description: "Calcula el límite en un punto finito, el primer ingrediente de la continuidad.",
+    },
+    {
+      label: "Derivada por definición",
+      href: "/derivada-por-definicion",
+      description: "La derivada exige que el límite del cociente incremental exista.",
+    },
+    {
+      label: "Calculadora de derivadas",
+      href: ROUTES.home,
+      description: "Deriva funciones continuas (y más) con pasos.",
+    },
+  ],
+  internalLinks: [
+    { label: "Calculadora de límites", href: ES_CALCULATOR_ROUTES.limits },
+    { label: "Derivada por definición", href: "/derivada-por-definicion" },
+    { label: "Calculadora de derivadas", href: ROUTES.home },
+  ],
+  educationalSections: [
+    {
+      h2: "La definición de continuidad en un punto",
+      paragraphs: [
+        "f es continua en a si se cumplen tres cosas a la vez: f(a) está definida, el límite lim(x→a) f(x) existe y es finito, y ese límite es exactamente igual a f(a).",
+        "Si falla cualquiera de las tres, hay una discontinuidad: un hueco (como (x² − 4)/(x − 2) en x = 2), un salto, o una asíntota (como 1/x en x = 0).",
+      ],
+    },
+    {
+      h2: "Cómo comprobarlo paso a paso",
+      paragraphs: [
+        "Primero evalúa f(a). Si no está definida, ya no es continua ahí. Luego calcula el límite en a — la calculadora de límites cubre ese paso, incluidas formas 0/0.",
+        "Por último compara ambos valores. Si coinciden, la función no se «rompe» en ese punto; si no, has encontrado el tipo de discontinuidad.",
+      ],
+    },
+  ],
+};

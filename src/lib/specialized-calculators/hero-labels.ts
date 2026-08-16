@@ -69,6 +69,12 @@ const ES: Record<SpecializedCalculatorKind, HeroCopy> = {
     trust2: "Punto finito (más soporte próximamente)",
     trust3: "Pasos con sustitución directa",
   },
+  continuity: {
+    cta: "Comprobar continuidad ahora",
+    trust1: "Compara el límite con f(a)",
+    trust2: "Punto finito (más soporte próximamente)",
+    trust3: "Identifica huecos y asíntotas",
+  },
 };
 
 const EN: Record<SpecializedCalculatorKind, HeroCopy> = {
@@ -131,6 +137,12 @@ const EN: Record<SpecializedCalculatorKind, HeroCopy> = {
     trust1: "Handles 0/0 forms",
     trust2: "Finite point (more support coming soon)",
     trust3: "Steps with direct substitution",
+  },
+  continuity: {
+    cta: "Check continuity now",
+    trust1: "Compares the limit with f(a)",
+    trust2: "Finite point (more support coming soon)",
+    trust3: "Flags holes and vertical asymptotes",
   },
 };
 
