@@ -258,6 +258,19 @@ export default function Navbar() {
     setMobileOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const html = document.documentElement;
+    const previousHtmlOverflow = html.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    html.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+    return () => {
+      html.style.overflow = previousHtmlOverflow;
+      document.body.style.overflow = previousBodyOverflow;
+    };
+  }, [mobileOpen]);
+
   if (!mounted) return null;
 
   const closeMobile = () => setMobileOpen(false);
@@ -361,12 +374,15 @@ export default function Navbar() {
         {mobileOpen && (
           <motion.div
             id="mobile-nav-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="absolute left-0 top-full w-full overflow-hidden border-b border-slate-100 bg-white shadow-lg md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute left-0 top-full z-50 max-h-[calc(100svh-100%)] w-full overflow-y-auto overscroll-contain border-b border-slate-100 bg-white shadow-lg md:hidden"
           >
-            <ul className="flex flex-col gap-0.5 px-4 py-4" role="list">
+            <ul
+              className="flex flex-col gap-0.5 px-4 pt-4 pb-[max(1.5rem,env(safe-area-inset-bottom))]"
+              role="list"
+            >
               {primaryLinks.map((link) => {
                 const active = isNavLinkActive(pathname, link.href);
                 return (
