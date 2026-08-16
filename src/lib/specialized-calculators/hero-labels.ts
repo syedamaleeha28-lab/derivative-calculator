@@ -66,7 +66,7 @@ const ES: Record<SpecializedCalculatorKind, HeroCopy> = {
   limits: {
     cta: "Calcular el límite ahora",
     trust1: "Resuelve formas 0/0",
-    trust2: "Punto finito o ±∞",
+    trust2: "Punto finito (más soporte próximamente)",
     trust3: "Pasos con sustitución directa",
   },
 };
@@ -129,7 +129,7 @@ const EN: Record<SpecializedCalculatorKind, HeroCopy> = {
   limits: {
     cta: "Compute the limit now",
     trust1: "Handles 0/0 forms",
-    trust2: "Finite point or ±∞",
+    trust2: "Finite point (more support coming soon)",
     trust3: "Steps with direct substitution",
   },
 };
