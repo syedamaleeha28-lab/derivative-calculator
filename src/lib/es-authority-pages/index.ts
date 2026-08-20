@@ -461,6 +461,8 @@ export const ES_AUTHORITY_ENTRIES: EsAuthorityEntry[] = [
       { title: "Aplicaciones de la derivada", href: ES_AUTHORITY_ROUTES.aplicacionesDeLaDerivada },
     ],
     breadcrumbLabel: "Regla de L'Hôpital",
+    embedCalculator: true,
+    calculatorKind: "lhopital",
     Content: ReglaDeLHopitalContent,
   }),
   entry({

@@ -12,6 +12,7 @@ import ChainRuleCalculator from "./ChainRuleCalculator";
 import ImplicitDifferentiationCalculator from "./ImplicitDifferentiationCalculator";
 import LimitsCalculator from "./LimitsCalculator";
 import ContinuityCalculator from "./ContinuityCalculator";
+import LHopitalCalculator from "./LHopitalCalculator";
 
 type Props = { locale: Locale };
 
@@ -27,6 +28,7 @@ const REGISTRY: Record<SpecializedCalculatorKind, ComponentType<Props>> = {
   "implicit-differentiation": ImplicitDifferentiationCalculator,
   limits: LimitsCalculator,
   continuity: ContinuityCalculator,
+  lhopital: LHopitalCalculator,
 };
 
 export function SpecializedCalculator({

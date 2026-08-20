@@ -24,6 +24,7 @@ const SLUG_TO_KIND: Record<string, SpecializedCalculatorKind> = {
   "limit-calculator": "limits",
   "continuidad-de-una-funcion": "continuity",
   "continuity-calculator": "continuity",
+  "regla-de-l-hopital": "lhopital",
 };
 
 export function resolveCalculatorKind(

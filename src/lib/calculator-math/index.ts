@@ -16,24 +16,78 @@ export type CriticalPointResult = {
   classificationLabel: string;
 };
 
+/**
+ * Rewrite e^x / e^(...) to exp(...) so nerdamer text() output (e.g. "e^x")
+ * round-trips through sanitize instead of becoming the identifier "expx".
+ */
+function rewriteNaturalExpCarets(expr: string): string {
+  let i = 0;
+  let out = "";
+  while (i < expr.length) {
+    const prev = i === 0 ? "" : expr[i - 1];
+    const atExp =
+      expr[i] === "e" && expr[i + 1] === "^" && (i === 0 || !/[A-Za-z_]/.test(prev));
+    if (!atExp) {
+      out += expr[i];
+      i += 1;
+      continue;
+    }
+
+    i += 2;
+    while (expr[i] === " " || expr[i] === "\t") i += 1;
+
+    if (expr[i] === "(") {
+      let depth = 0;
+      let j = i;
+      for (; j < expr.length; j += 1) {
+        if (expr[j] === "(") depth += 1;
+        else if (expr[j] === ")") {
+          depth -= 1;
+          if (depth === 0) {
+            out += `exp(${expr.slice(i + 1, j)})`;
+            i = j + 1;
+            break;
+          }
+        }
+      }
+      if (depth === 0) continue;
+    }
+
+    const unary = expr[i] === "-" ? "-" : "";
+    const atomStart = unary ? i + 1 : i;
+    const atom = expr.slice(atomStart).match(/^(?:[A-Za-z_]\w*|\d+\.?\d*|\.\d+)/);
+    if (atom) {
+      out += `exp(${unary}${atom[0]})`;
+      i = atomStart + atom[0].length;
+      continue;
+    }
+
+    out += "e^";
+  }
+  return out;
+}
+
 /** Normalize user input for nerdamer. */
 export function sanitizeExpr(expr: string): string {
-  return expr
-    .replace(/×/g, "*")
-    .replace(/÷/g, "/")
-    .replace(/−/g, "-")
-    .replace(/π/g, "pi")
-    .replace(/√/g, "sqrt")
-    .replace(/\blog10\s*\(/g, "§B10§(")
-    .replace(/\bln\s*\(/g, "§LN§(")
-    .replace(/\blog\s*\(/g, "§B10§(")
-    .replace(/§LN§\(/g, "log(")
-    .replace(/§B10§\(/g, "log10(")
-    .replace(/\basin\s*\(/g, "asin(")
-    .replace(/\bacos\s*\(/g, "acos(")
-    .replace(/\batan\s*\(/g, "atan(")
-    .replace(/e\^/g, "exp")
-    .trim();
+  return rewriteNaturalExpCarets(
+    expr
+      .replace(/×/g, "*")
+      .replace(/÷/g, "/")
+      .replace(/−/g, "-")
+      .replace(/π/g, "pi")
+      .replace(/√/g, "sqrt")
+      .replace(/\blog10\s*\(/g, "§B10§(")
+      .replace(/\bln\s*\(/g, "§LN§(")
+      .replace(/\blog\s*\(/g, "§B10§(")
+      .replace(/§LN§\(/g, "log(")
+      .replace(/§B10§\(/g, "log10(")
+      .replace(/\basin\s*\(/g, "asin(")
+      .replace(/\bacos\s*\(/g, "acos(")
+      .replace(/\batan\s*\(/g, "atan(")
+      .replace(/sin⁻¹/g, "asin")
+      .replace(/cos⁻¹/g, "acos")
+      .replace(/tan⁻¹/g, "atan")
+  ).trim();
 }
 
 function normalizeRmTrig(tex: string): string {
@@ -942,6 +996,263 @@ export function continuityWorkflow(
     limitTeX,
     fAtA,
     fAtATeX,
+    steps,
+  };
+}
+
+const LHOPITAL_ZERO = 1e-12;
+const LHOPITAL_MAX_APPLICATIONS = 5;
+
+function isNearZero(n: number): boolean {
+  return Math.abs(n) < LHOPITAL_ZERO;
+}
+
+type PointEval = ReturnType<typeof evaluateFunctionAtPoint>;
+
+function isZeroOverZero(n: PointEval, d: PointEval): boolean {
+  return n.defined && d.defined && isNearZero(n.value) && isNearZero(d.value);
+}
+
+function evalDisplay(ev: PointEval, es: boolean): { text: string; tex: string } {
+  if (ev.defined) return { text: ev.text, tex: ev.tex };
+  return { text: es ? "no definida" : "undefined", tex: "\\text{¿?}" };
+}
+
+function finiteRatio(
+  n: Extract<PointEval, { defined: true }>,
+  d: Extract<PointEval, { defined: true }>
+): { result: string; resultTeX: string } {
+  if (isNearZero(d.value)) {
+    return { result: "undefined", resultTeX: "\\text{¿?}" };
+  }
+  try {
+    const r = nerdamer(`(${n.text})/(${d.text})`);
+    return { result: r.text(), resultTeX: toDisplayTeX(r.toTeX()) };
+  } catch {
+    const q = formatNumericResult(n.value / d.value);
+    return { result: q, resultTeX: exprToTeX(q) };
+  }
+}
+
+function limitOfRatio(
+  num: string,
+  den: string,
+  variable: string,
+  approach: string
+): { result: string; resultTeX: string } | null {
+  try {
+    const limitExpr = nerdamer(`limit((${num})/(${den}), ${variable}, ${approach})`);
+    const result = limitExpr.text();
+    if (!result || /limit\s*\(/i.test(result)) return null;
+    return { result, resultTeX: toDisplayTeX(limitExpr.toTeX()) };
+  } catch {
+    return null;
+  }
+}
+
+export type LhopitalWorkflowResult = {
+  applies: boolean;
+  exhausted: boolean;
+  applications: number;
+  verdict: string;
+  reason: string;
+  approach: string;
+  result: string;
+  resultTeX: string;
+  fTeX: string;
+  gTeX: string;
+  steps: CalcStep[];
+};
+
+export function lhopitalWorkflow(
+  fRaw: string,
+  gRaw: string,
+  variable: string,
+  approachRaw: string,
+  locale: "es" | "en"
+): LhopitalWorkflowResult {
+  const es = locale === "es";
+  let f = sanitizeExpr(fRaw);
+  let g = sanitizeExpr(gRaw);
+  if (!f || !g) throw new Error("Empty expression");
+  if (!variable.trim()) throw new Error("Missing variable");
+  const v = variable.trim();
+  const approach = parseLimitApproach(approachRaw);
+  const approachTeX = formatLimitApproachTeX(approach);
+  const fTeX = exprToTeX(f);
+  const gTeX = exprToTeX(g);
+
+  const n0 = evaluateFunctionAtPoint(f, v, approach);
+  const d0 = evaluateFunctionAtPoint(g, v, approach);
+  const nDisp = evalDisplay(n0, es);
+  const dDisp = evalDisplay(d0, es);
+
+  const steps: CalcStep[] = [
+    {
+      label: es ? "Cociente" : "Quotient",
+      latex: `\\dfrac{f(${v})}{g(${v})} = \\dfrac{${fTeX}}{${gTeX}}`,
+    },
+    {
+      label: es ? "Sustitución directa (f y g por separado)" : "Direct substitution (f and g separately)",
+      latex: `f(${approachTeX}) = ${nDisp.tex},\\quad g(${approachTeX}) = ${dDisp.tex}`,
+      detail: es
+        ? "Se evalúa f(a) y g(a) por separado. Solo si ambos son 0 aplica L'Hôpital."
+        : "f(a) and g(a) are evaluated separately. L'Hôpital applies only if both are 0.",
+    },
+  ];
+
+  const emptyResult = {
+    approach,
+    result: "",
+    resultTeX: "",
+    fTeX,
+    gTeX,
+    steps,
+  };
+
+  if (!isZeroOverZero(n0, d0)) {
+    let result = "";
+    let resultTeX = "";
+    if (n0.defined && d0.defined) {
+      const ratio = finiteRatio(n0, d0);
+      result = ratio.result;
+      resultTeX = ratio.resultTeX;
+    } else {
+      result = es ? "no definida" : "undefined";
+      resultTeX = "\\text{¿?}";
+    }
+    const verdict = es ? "L'Hôpital no aplica aquí" : "L'Hôpital does not apply here";
+    const reason = es
+      ? "La sustitución directa no da 0/0. No se deriva el numerador ni el denominador."
+      : "Direct substitution is not 0/0. The numerator and denominator are not differentiated.";
+    steps.push({
+      label: verdict,
+      latex:
+        n0.defined && d0.defined && !isNearZero(d0.value)
+          ? `\\dfrac{f(${approachTeX})}{g(${approachTeX})} = ${resultTeX}`
+          : `\\dfrac{f(${approachTeX})}{g(${approachTeX})} \\to ${resultTeX}`,
+      detail: reason,
+    });
+    return {
+      applies: false,
+      exhausted: false,
+      applications: 0,
+      verdict,
+      reason,
+      ...emptyResult,
+      result,
+      resultTeX,
+      steps,
+    };
+  }
+
+  steps.push({
+    label: es ? "Forma 0/0" : "0/0 form",
+    latex: `f(${approachTeX})/g(${approachTeX}) \\to 0/0`,
+    detail: es
+      ? "L'Hôpital aplica: se derivan numerador y denominador por separado (no la regla del cociente)."
+      : "L'Hôpital applies: differentiate numerator and denominator separately (not the quotient rule).",
+  });
+
+  let applications = 0;
+  for (let i = 1; i <= LHOPITAL_MAX_APPLICATIONS; i += 1) {
+    const fPrime = sanitizeExpr(differentiate(f, v));
+    const gPrime = sanitizeExpr(differentiate(g, v));
+    const fPrimeTeX = exprToTeX(fPrime);
+    const gPrimeTeX = exprToTeX(gPrime);
+    applications = i;
+
+    const n = evaluateFunctionAtPoint(fPrime, v, approach);
+    const d = evaluateFunctionAtPoint(gPrime, v, approach);
+    const still = isZeroOverZero(n, d);
+
+    steps.push({
+      label: es
+        ? `Aplicación ${i}: f'(${v}) = ${fPrime}, g'(${v}) = ${gPrime}`
+        : `Application ${i}: f'(${v}) = ${fPrime}, g'(${v}) = ${gPrime}`,
+      latex: `\\dfrac{f'(${v})}{g'(${v})} = \\dfrac{${fPrimeTeX}}{${gPrimeTeX}}`,
+      detail: still
+        ? es
+          ? "Sigue siendo 0/0; se aplica L'Hôpital otra vez."
+          : "Still 0/0; apply L'Hôpital again."
+        : es
+          ? "Ya no es 0/0; se evalúa este cociente."
+          : "No longer 0/0; evaluate this ratio.",
+    });
+
+    if (still) {
+      f = fPrime;
+      g = gPrime;
+      continue;
+    }
+
+    const nD = evalDisplay(n, es);
+    const dD = evalDisplay(d, es);
+    steps.push({
+      label: es ? `Evaluación tras aplicación ${i}` : `Evaluation after application ${i}`,
+      latex: `f'(${approachTeX}) = ${nD.tex},\\quad g'(${approachTeX}) = ${dD.tex}`,
+    });
+
+    let result = "";
+    let resultTeX = "";
+    if (n.defined && d.defined) {
+      const fromLimit = limitOfRatio(fPrime, gPrime, v, approach);
+      if (fromLimit) {
+        result = fromLimit.result;
+        resultTeX = fromLimit.resultTeX;
+      } else {
+        const ratio = finiteRatio(n, d);
+        result = ratio.result;
+        resultTeX = ratio.resultTeX;
+      }
+    } else {
+      result = es ? "no definida" : "undefined";
+      resultTeX = "\\text{¿?}";
+    }
+
+    const verdict = es
+      ? `L'Hôpital resuelve el límite (${i} ${i === 1 ? "aplicación" : "aplicaciones"})`
+      : `L'Hôpital resolves the limit (${i} ${i === 1 ? "application" : "applications"})`;
+    steps.push({
+      label: es ? "Resultado" : "Result",
+      latex: `\\lim_{${v}\\to ${approachTeX}} \\dfrac{${exprToTeX(sanitizeExpr(fRaw))}}{${exprToTeX(sanitizeExpr(gRaw))}} = ${resultTeX}`,
+    });
+
+    return {
+      applies: true,
+      exhausted: false,
+      applications,
+      verdict,
+      reason: es
+        ? "Se derivó numerador y denominador por separado mientras la forma siguió siendo 0/0."
+        : "Numerator and denominator were differentiated separately while the form stayed 0/0.",
+      ...emptyResult,
+      result,
+      resultTeX,
+      steps,
+    };
+  }
+
+  const verdict = es
+    ? "Sigue siendo 0/0 tras 5 aplicaciones"
+    : "Still 0/0 after 5 applications";
+  steps.push({
+    label: verdict,
+    latex: "0/0",
+    detail: es
+      ? "Se detuvo al llegar al máximo de aplicaciones. El límite puede existir por otra vía."
+      : "Stopped at the application cap. The limit may still exist by another method.",
+  });
+
+  return {
+    applies: true,
+    exhausted: true,
+    applications,
+    verdict,
+    reason: verdict,
+    ...emptyResult,
+    result: "0/0",
+    resultTeX: "0/0",
     steps,
   };
 }

@@ -10,7 +10,7 @@ import {
 } from "@/lib/calculator-events";
 import { dict } from "@/lib/dictionaries";
 import { trackCalculatorUsed } from "@/lib/gtag";
-import { evaluateDerivativeAtPoint } from "@/lib/calculator-math";
+import { evaluateDerivativeAtPoint, sanitizeExpr } from "@/lib/calculator-math";
 import {
   mapDerivativeError,
   validateCalculatorInput,
@@ -218,28 +218,6 @@ function buildKeypad(
   return { mobileBasic, mobileAdvanced, desktop };
 }
 
-function sanitize(expr: string): string {
-  return expr
-    .replace(/×/g, "*")
-    .replace(/÷/g, "/")
-    .replace(/−/g, "-")
-    .replace(/π/g, "pi")
-    .replace(/√/g, "sqrt")
-    .replace(/\blog10\s*\(/g, "§B10§(")
-    .replace(/\bln\s*\(/g, "§LN§(")
-    .replace(/\blog\s*\(/g, "§B10§(")
-    .replace(/§LN§\(/g, "log(")
-    .replace(/§B10§\(/g, "log10(")
-    .replace(/\basin\s*\(/g, "asin(")
-    .replace(/\bacos\s*\(/g, "acos(")
-    .replace(/\batan\s*\(/g, "atan(")
-    .replace(/sin⁻¹/g, "asin")
-    .replace(/cos⁻¹/g, "acos")
-    .replace(/tan⁻¹/g, "atan")
-    .replace(/e\^/g, "exp")
-    .trim();
-}
-
 function toExactTeX(nerdamerObj: { toTeX(): string; text(): string }): string {
   return toDisplayTeX(nerdamerObj.toTeX());
 }
@@ -348,7 +326,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
       return;
     }
     try {
-      const clean = sanitize(input);
+      const clean = sanitizeExpr(input);
       const expr = nerdamer(clean);
       setLatexPreview(toDisplayTeX(expr.toTeX()));
     } catch {
@@ -439,7 +417,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
     setPointEvalResult(null);
     setTimeout(() => {
       try {
-        const clean = sanitize(input);
+        const clean = sanitizeExpr(input);
         const derivative = nerdamer(`diff(${clean}, ${variable})`);
         const derivativeText = derivative.text();
         setLatexResult(toExactTeX(derivative));

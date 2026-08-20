@@ -2,6 +2,7 @@ import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ArticleLayout from "@/components/EducationalArticle";
+import { SpecializedCalculator } from "@/components/specialized-calculators";
 import { metadataFromEntry } from "@/lib/seo";
 import { ES_MAIN_CALCULATOR_HREF } from "@/lib/routes";
 import { getEsAuthorityByRoute } from "./index";
@@ -30,6 +31,12 @@ export function buildEsAuthorityMetadata(entry: EsAuthorityEntry): Metadata {
 
 export function EsAuthorityPage({ entry }: { entry: EsAuthorityEntry }) {
   const Content = entry.Content;
+  const embedWidget =
+    entry.embedCalculator && entry.calculatorKind ? (
+      <div id="calculator" className="mb-10">
+        <SpecializedCalculator kind={entry.calculatorKind} locale="es" />
+      </div>
+    ) : null;
 
   return (
     <ArticleLayout
@@ -40,7 +47,12 @@ export function EsAuthorityPage({ entry }: { entry: EsAuthorityEntry }) {
       author={entry.author}
       category={entry.category}
       tags={[...entry.tags]}
-      content={<Content />}
+      content={
+        <>
+          {embedWidget}
+          <Content />
+        </>
+      }
       faqs={[...entry.faqs]}
       relatedPosts={entry.relatedPosts.map((p) => ({
         title: p.title,

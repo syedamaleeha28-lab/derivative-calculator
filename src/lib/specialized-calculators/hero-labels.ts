@@ -75,6 +75,12 @@ const ES: Record<SpecializedCalculatorKind, HeroCopy> = {
     trust2: "Punto finito (más soporte próximamente)",
     trust3: "Identifica huecos y asíntotas",
   },
+  lhopital: {
+    cta: "Aplicar L'Hôpital ahora",
+    trust1: "Solo formas 0/0 en un punto finito",
+    trust2: "Sin ∞ ni x→∞ (aún no es fiable)",
+    trust3: "Cada aplicación se muestra como un paso",
+  },
 };
 
 const EN: Record<SpecializedCalculatorKind, HeroCopy> = {
@@ -143,6 +149,12 @@ const EN: Record<SpecializedCalculatorKind, HeroCopy> = {
     trust1: "Compares the limit with f(a)",
     trust2: "Finite point (more support coming soon)",
     trust3: "Flags holes and vertical asymptotes",
+  },
+  lhopital: {
+    cta: "Apply L'Hôpital now",
+    trust1: "0/0 forms at a finite point only",
+    trust2: "No ∞ and no x→∞ (not reliable yet)",
+    trust3: "Each application is shown as a step",
   },
 };
 

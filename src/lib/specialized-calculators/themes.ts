@@ -11,6 +11,7 @@ import {
   Equal,
   Goal,
   CircleDot,
+  Repeat,
 } from "lucide-react";
 
 export type CalculatorTheme = {
@@ -289,6 +290,29 @@ export const CONTINUITY_THEME: CalculatorTheme = {
   markerOther: "#0284c7",
 };
 
+export const LHOPITAL_THEME: CalculatorTheme = {
+  id: "lhopital",
+  icon: Repeat,
+  heroGradient: "from-violet-50 via-fuchsia-50/60 to-slate-50/50",
+  shellBorder: "border-violet-200/80",
+  shellBg: "bg-gradient-to-br from-white via-violet-50/35 to-fuchsia-50/25",
+  badge: "bg-violet-100 text-violet-900 border-violet-200",
+  inputRing: "focus-within:border-violet-500 focus-within:ring-violet-200",
+  inputBg: "bg-white border-violet-100",
+  labelColor: "text-violet-900",
+  cta: "bg-gradient-to-r from-violet-600 to-fuchsia-600 shadow-violet-500/30",
+  ctaHover: "hover:from-violet-500 hover:to-fuchsia-500",
+  resultBorder: "border-violet-200",
+  resultBg: "bg-violet-50/50",
+  accentText: "text-violet-800",
+  stepBorder: "border-violet-100",
+  graphStroke: "#7c3aed",
+  graphFill: "rgba(124, 58, 237, 0.08)",
+  markerMax: "#ef4444",
+  markerMin: "#22c55e",
+  markerOther: "#c026d3",
+};
+
 export const THEMES = {
   "product-rule": PRODUCT_RULE_THEME,
   "quotient-rule": QUOTIENT_RULE_THEME,
@@ -301,6 +325,7 @@ export const THEMES = {
   "implicit-differentiation": IMPLICIT_DIFF_THEME,
   limits: LIMITS_THEME,
   continuity: CONTINUITY_THEME,
+  lhopital: LHOPITAL_THEME,
 } as const;
 
 export type SpecializedCalculatorKind = keyof typeof THEMES;

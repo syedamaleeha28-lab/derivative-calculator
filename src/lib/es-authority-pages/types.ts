@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { SpecializedCalculatorKind } from "@/lib/specialized-calculators/themes";
 
 export type EsAuthorityFaq = { question: string; answer: string };
 
@@ -30,6 +31,9 @@ export type EsAuthorityMeta = {
   relatedPosts: readonly { title: string; href: string; description?: string }[];
   /** English equivalent path for hreflang (parent will wire locale.ts). */
   englishAlternate: string;
+  /** When true and calculatorKind is set, embed a specialized calculator above the article body. */
+  embedCalculator?: boolean;
+  calculatorKind?: SpecializedCalculatorKind;
 };
 
 export type EsAuthorityEntry = EsAuthorityMeta & {

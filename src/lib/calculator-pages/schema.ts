@@ -61,6 +61,10 @@ const TEACHES_BY_KIND: Record<SpecializedCalculatorKind, { es: string; en: strin
     es: "Continuidad de una función en un punto finito",
     en: "Continuity of a function at a finite point",
   },
+  lhopital: {
+    es: "Regla de L'Hôpital para límites 0/0 en un punto finito",
+    en: "L'Hôpital's rule for 0/0 limits at a finite point",
+  },
 };
 
 function teachesForPage(page: CalculatorPageConfig, locale: Locale): string {
