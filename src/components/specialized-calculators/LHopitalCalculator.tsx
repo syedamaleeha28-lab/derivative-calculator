@@ -69,6 +69,11 @@ export default function LHopitalCalculator({ locale }: { locale: Locale }) {
       formula={locale === "es" ? "lim f/g = lim f′/g′  (0/0)" : "lim f/g = lim f′/g′  (0/0)"}
     >
       <div className="flex flex-col gap-1.5 rounded-xl border border-violet-100 bg-white/80 px-3 py-2.5 text-[0.75rem] text-slate-600">
+        <p className="text-[0.85rem] leading-relaxed text-slate-700">
+          {locale === "es"
+            ? "Esta calculadora resuelve casos 0/0 en un punto finito; los casos ∞/∞ se explican más abajo, pero aún no se calculan automáticamente."
+            : "This calculator solves 0/0 cases at a finite point; ∞/∞ cases are explained below, but they are not computed automatically yet."}
+        </p>
         <p>{copy.trust1}</p>
         <p>{copy.trust2}</p>
         <p>{copy.trust3}</p>
