@@ -7,13 +7,13 @@ export type EsNavLink = { name: string; href: string };
 export type EsNavGroup = { label: string; items: EsNavLink[] };
 
 export type EsNavLinkKey = {
-  nameKey: "calculator" | "partialDerivatives" | "chainRule" | "implicitDerivatives";
+  nameKey: "home" | "calculator" | "partialDerivatives" | "chainRule" | "implicitDerivatives";
   href: string;
 };
 
-/** Resolved at render time via dictionary. Top bar keeps only the main calculator. */
+/** Resolved at render time via dictionary. Top bar keeps a homepage link. */
 export const ES_PRIMARY_NAV_KEYS: EsNavLinkKey[] = [
-  { nameKey: "calculator", href: ROUTES.home },
+  { nameKey: "home", href: ROUTES.home },
 ];
 
 /** "Calculadoras" dropdown: grouped tools. */
