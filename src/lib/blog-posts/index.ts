@@ -14,6 +14,7 @@ import { ErroresComunesAlDerivarContent } from "./content/errores-comunes-al-der
 import { DerivadasParaPrincipiantesContent } from "./content/derivadas-para-principiantes";
 import { ComoAprenderDerivadasDesdeCeroContent } from "./content/como-aprender-derivadas-desde-cero";
 import { EntendiendoReglaDeLaCadenaContent } from "./content/entendiendo-regla-de-la-cadena";
+import { EjerciciosDeLimitesResueltosContent } from "./content/ejercicios-de-limites-resueltos";
 
 const AUTHOR = SITE_AUTHOR;
 
@@ -32,6 +33,47 @@ function entry(
 }
 
 export const BLOG_POST_ENTRIES: BlogPostEntry[] = [
+  entry({
+    slug: "ejercicios-de-limites-resueltos",
+    title: "Ejercicios de Límites Resueltos: De lo Básico a L'Hôpital",
+    description:
+      "Cuatro ejercicios de límites resueltos paso a paso, de menor a mayor dificultad, con el razonamiento completo en cada uno. En español.",
+    date: "30 de Agosto, 2026",
+    dateIso: "2026-08-30",
+    readTime: "10 min",
+    category: "Ejemplos",
+    tags: ["ejercicios de límites", "límites resueltos", "regla de L'Hôpital"],
+    author: AUTHOR,
+    heroImageAlt: "Ejercicios de límites resueltos paso a paso, de sustitución directa a L'Hôpital",
+    faqs: [
+      {
+        question: "¿Cuál es el primer método que debo probar en un límite?",
+        answer:
+          "Siempre prueba la sustitución directa primero. Si el denominador no se anula, no hay forma indeterminada y el valor del límite es el de la función en ese punto.",
+      },
+      {
+        question: "¿Qué hago si al sustituir obtengo 0/0?",
+        answer:
+          "0/0 es una forma indeterminada. Intenta factorizar (por ejemplo una diferencia de cubos o de cuadrados) y cancela el factor común antes de recurrir a un método más avanzado.",
+      },
+      {
+        question: "¿Cuándo debo usar la regla de L'Hôpital?",
+        answer:
+          "Cuando la sustitución da 0/0 (o ∞/∞) y factorizar no es viable, como en límites trigonométricos o con logaritmos. Entonces derivas numerador y denominador por separado.",
+      },
+      {
+        question: "¿Cómo verifico un ejercicio de límites?",
+        answer:
+          "Reproduce el procedimiento en papel y contrástalo con la calculadora de límites del sitio, que muestra cada paso y no solo el resultado final.",
+      },
+    ],
+    relatedPosts: [
+      { title: "Regla de L'Hôpital: Límites 0/0 e ∞/∞ Paso a Paso", slug: "/regla-de-l-hopital" },
+      { title: "Derivada por Definición: Límite del Cociente Incremental", slug: "/derivada-por-definicion" },
+    ],
+    breadcrumbLabel: "Ejercicios de límites",
+    Content: EjerciciosDeLimitesResueltosContent,
+  }),
   entry({
     slug: "derivada-de-sin-x",
     title: "Derivada de sin(x): fórmula, ejemplos y regla de la cadena",

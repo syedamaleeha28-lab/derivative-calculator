@@ -32,6 +32,14 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: "Calculadora de derivadas",
     description: "Calcula cualquier derivada con procedimiento paso a paso.",
   },
+  "/regla-de-l-hopital": {
+    title: "Regla de L'Hôpital: Límites 0/0 e ∞/∞ Paso a Paso",
+    description: "Cuándo aplicar L'Hôpital en formas 0/0 e ∞/∞, con ejemplos en español.",
+  },
+  "/derivada-por-definicion": {
+    title: "Derivada por Definición: Límite del Cociente Incremental",
+    description: "La derivada como límite del cociente incremental, con método y ejemplos.",
+  },
 };
 
 export function resolvePostHref(slug: string): string {
