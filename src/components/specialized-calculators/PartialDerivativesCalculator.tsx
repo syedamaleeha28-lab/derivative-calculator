@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { evaluateDerivativeAtPoint, partialDerivativeWorkflow, sanitizeExpr } from "@/lib/calculator-math";
+import { sanitizeExpr } from "@/lib/calculator-math/sanitize";
+import { loadEngine } from "@/lib/calculator-math/load-engine";
 import { calculatorInputPlaceholder } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { PARTIAL_DERIVATIVE_THEME } from "@/lib/specialized-calculators/themes";
@@ -14,6 +15,15 @@ import {
   PointEvalResultLine,
   PointEvaluationSection,
 } from "./shared/PointEvaluationSection";
+
+type PartialResult = ReturnType<
+  typeof import("@/lib/calculator-math").partialDerivativeWorkflow
+>;
+
+function prefetchMath() {
+  void loadEngine();
+  void import("@/lib/calculator-math");
+}
 
 const VARIABLES = ["x", "y", "z"] as const;
 const PRESETS = [
@@ -29,9 +39,7 @@ export default function PartialDerivativesCalculator({ locale }: { locale: Local
   const [f, setF] = useState("x^2*y + y^2");
   const [variable, setVariable] = useState<(typeof VARIABLES)[number]>("x");
   const [error, setError] = useState("");
-  const [result, setResult] = useState<ReturnType<typeof partialDerivativeWorkflow> | null>(
-    null
-  );
+  const [result, setResult] = useState<PartialResult | null>(null);
   const [showPointEvalSection, setShowPointEvalSection] = useState(false);
   const [evalPoint, setEvalPoint] = useState("");
   const [pointEvalResult, setPointEvalResult] = useState<{
@@ -40,21 +48,26 @@ export default function PartialDerivativesCalculator({ locale }: { locale: Local
   } | null>(null);
 
   const run = () => {
-    try {
-      sanitizeExpr(f);
-      const workflow = partialDerivativeWorkflow(f, variable, locale);
-      setResult(workflow);
-      setPointEvalResult(
-        evalPoint.trim()
-          ? evaluateDerivativeAtPoint(workflow.result, variable, evalPoint)
-          : null
-      );
-      setError("");
-    } catch {
-      setError(t.error);
-      setResult(null);
-      setPointEvalResult(null);
-    }
+    void (async () => {
+      try {
+        sanitizeExpr(f);
+        const { partialDerivativeWorkflow, evaluateDerivativeAtPoint } = await import(
+          "@/lib/calculator-math"
+        );
+        const workflow = partialDerivativeWorkflow(f, variable, locale);
+        setResult(workflow);
+        setPointEvalResult(
+          evalPoint.trim()
+            ? evaluateDerivativeAtPoint(workflow.result, variable, evalPoint)
+            : null
+        );
+        setError("");
+      } catch {
+        setError(t.error);
+        setResult(null);
+        setPointEvalResult(null);
+      }
+    })();
   };
 
   return (
@@ -66,6 +79,7 @@ export default function PartialDerivativesCalculator({ locale }: { locale: Local
         <input
           value={f}
           onChange={(e) => setF(e.target.value)}
+          onFocus={prefetchMath}
           className={`mt-1.5 w-full rounded-xl border-2 px-3 py-2.5 font-mono ${theme.inputBg} ${theme.inputRing}`}
           placeholder={calculatorInputPlaceholder(locale)}
         />

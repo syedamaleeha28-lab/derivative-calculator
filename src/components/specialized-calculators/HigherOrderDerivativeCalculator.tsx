@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { higherOrderWorkflow, sanitizeExpr } from "@/lib/calculator-math";
+import { sanitizeExpr } from "@/lib/calculator-math/sanitize";
+import { loadEngine } from "@/lib/calculator-math/load-engine";
 import { calculatorInputPlaceholder } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { HIGHER_ORDER_THEME } from "@/lib/specialized-calculators/themes";
@@ -10,6 +11,15 @@ import type { Locale } from "@/lib/locale";
 import CalculatorShell from "./shared/CalculatorShell";
 import MathBlock from "./shared/MathBlock";
 import StepTimeline from "./shared/StepTimeline";
+
+type HigherOrderResult = ReturnType<
+  typeof import("@/lib/calculator-math").higherOrderWorkflow
+>;
+
+function prefetchMath() {
+  void loadEngine();
+  void import("@/lib/calculator-math");
+}
 
 const PRESETS = [
   { f: "x^5", n: 3 },
@@ -25,17 +35,20 @@ export default function HigherOrderDerivativeCalculator({ locale }: { locale: Lo
   const [f, setF] = useState("x^5");
   const [order, setOrder] = useState(3);
   const [error, setError] = useState("");
-  const [result, setResult] = useState<ReturnType<typeof higherOrderWorkflow> | null>(null);
+  const [result, setResult] = useState<HigherOrderResult | null>(null);
 
   const run = () => {
-    try {
-      sanitizeExpr(f);
-      setResult(higherOrderWorkflow(f, "x", order, locale));
-      setError("");
-    } catch {
-      setError(t.error);
-      setResult(null);
-    }
+    void (async () => {
+      try {
+        sanitizeExpr(f);
+        const { higherOrderWorkflow } = await import("@/lib/calculator-math");
+        setResult(higherOrderWorkflow(f, "x", order, locale));
+        setError("");
+      } catch {
+        setError(t.error);
+        setResult(null);
+      }
+    })();
   };
 
   return (
@@ -45,6 +58,7 @@ export default function HigherOrderDerivativeCalculator({ locale }: { locale: Lo
         <input
           value={f}
           onChange={(e) => setF(e.target.value)}
+          onFocus={prefetchMath}
           className={`mt-1.5 w-full rounded-xl border-2 px-3 py-2.5 font-mono ${theme.inputBg} ${theme.inputRing}`}
           placeholder={calculatorInputPlaceholder(locale)}
         />

@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { secondDerivativeWorkflow, sanitizeExpr } from "@/lib/calculator-math";
+import { sanitizeExpr } from "@/lib/calculator-math/sanitize";
+import { loadEngine } from "@/lib/calculator-math/load-engine";
 import { calculatorInputPlaceholder } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { SECOND_DERIVATIVE_THEME } from "@/lib/specialized-calculators/themes";
@@ -11,6 +12,15 @@ import CalculatorShell from "./shared/CalculatorShell";
 import MathBlock from "./shared/MathBlock";
 import StepTimeline from "./shared/StepTimeline";
 import DerivativeChainViz from "./shared/DerivativeChainViz";
+
+type SecondDerivativeResult = ReturnType<
+  typeof import("@/lib/calculator-math").secondDerivativeWorkflow
+>;
+
+function prefetchMath() {
+  void loadEngine();
+  void import("@/lib/calculator-math");
+}
 
 const PRESETS = [
   { f: "x^4 - 3*x^2", order: 2 },
@@ -29,20 +39,23 @@ export default function SecondDerivativeCalculator({ locale }: { locale: Locale 
   const [nthOrder, setNthOrder] = useState(4);
   const [activeChain, setActiveChain] = useState<number | undefined>(2);
   const [error, setError] = useState("");
-  const [result, setResult] = useState<ReturnType<typeof secondDerivativeWorkflow> | null>(null);
+  const [result, setResult] = useState<SecondDerivativeResult | null>(null);
 
   const order = orderMode === "nth" ? nthOrder : orderMode;
 
   const run = () => {
-    try {
-      sanitizeExpr(f);
-      setResult(secondDerivativeWorkflow(f, "x", order, locale));
-      setActiveChain(order);
-      setError("");
-    } catch {
-      setError(t.error);
-      setResult(null);
-    }
+    void (async () => {
+      try {
+        sanitizeExpr(f);
+        const { secondDerivativeWorkflow } = await import("@/lib/calculator-math");
+        setResult(secondDerivativeWorkflow(f, "x", order, locale));
+        setActiveChain(order);
+        setError("");
+      } catch {
+        setError(t.error);
+        setResult(null);
+      }
+    })();
   };
 
   const orderButtons: { mode: OrderMode; label: string }[] = [
@@ -59,6 +72,7 @@ export default function SecondDerivativeCalculator({ locale }: { locale: Locale 
         <input
           value={f}
           onChange={(e) => setF(e.target.value)}
+          onFocus={prefetchMath}
           className={`mt-1.5 w-full rounded-xl border-2 px-3 py-2.5 font-mono ${theme.inputBg} ${theme.inputRing}`}
           placeholder={calculatorInputPlaceholder(locale)}
         />
