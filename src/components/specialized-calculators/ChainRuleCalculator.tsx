@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, X } from "lucide-react";
-import { chainRuleWorkflow, evaluateDerivativeAtPoint, sanitizeExpr } from "@/lib/calculator-math";
+import { sanitizeExpr } from "@/lib/calculator-math/sanitize";
+import { loadEngine } from "@/lib/calculator-math/load-engine";
 import { calculatorInputPlaceholder } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { CHAIN_RULE_THEME } from "@/lib/specialized-calculators/themes";
@@ -15,6 +16,15 @@ import {
   PointEvalResultLine,
   PointEvaluationSection,
 } from "./shared/PointEvaluationSection";
+
+type ChainRuleResult = ReturnType<
+  typeof import("@/lib/calculator-math").chainRuleWorkflow
+>;
+
+function prefetchMath() {
+  void loadEngine();
+  void import("@/lib/calculator-math");
+}
 
 const PRESETS = [
   { outer: "sin(u)", inner: "3*x" },
@@ -29,7 +39,7 @@ export default function ChainRuleCalculator({ locale }: { locale: Locale }) {
   const [outer, setOuter] = useState("sin(u)");
   const [inner, setInner] = useState("3*x");
   const [error, setError] = useState("");
-  const [result, setResult] = useState<ReturnType<typeof chainRuleWorkflow> | null>(null);
+  const [result, setResult] = useState<ChainRuleResult | null>(null);
   const [showPointEvalSection, setShowPointEvalSection] = useState(false);
   const [evalPoint, setEvalPoint] = useState("");
   const [pointEvalResult, setPointEvalResult] = useState<{
@@ -38,32 +48,37 @@ export default function ChainRuleCalculator({ locale }: { locale: Locale }) {
   } | null>(null);
 
   const run = () => {
-    try {
-      sanitizeExpr(outer);
-      sanitizeExpr(inner);
-      if (!/\bu\b/.test(outer)) {
-        setError(
-          locale === "es"
-            ? "Usa u como variable en la función exterior (ej. sin(u), u^2, ln(u))."
-            : "Use u as the variable in the outer function (e.g. sin(u), u^2, ln(u))."
+    void (async () => {
+      try {
+        sanitizeExpr(outer);
+        sanitizeExpr(inner);
+        if (!/\bu\b/.test(outer)) {
+          setError(
+            locale === "es"
+              ? "Usa u como variable en la función exterior (ej. sin(u), u^2, ln(u))."
+              : "Use u as the variable in the outer function (e.g. sin(u), u^2, ln(u))."
+          );
+          setResult(null);
+          setPointEvalResult(null);
+          return;
+        }
+        const { chainRuleWorkflow, evaluateDerivativeAtPoint } = await import(
+          "@/lib/calculator-math"
         );
+        const workflow = chainRuleWorkflow(outer, inner, locale);
+        setResult(workflow);
+        setPointEvalResult(
+          evalPoint.trim()
+            ? evaluateDerivativeAtPoint(workflow.result, "x", evalPoint)
+            : null
+        );
+        setError("");
+      } catch {
+        setError(t.error);
         setResult(null);
         setPointEvalResult(null);
-        return;
       }
-      const workflow = chainRuleWorkflow(outer, inner, locale);
-      setResult(workflow);
-      setPointEvalResult(
-        evalPoint.trim()
-          ? evaluateDerivativeAtPoint(workflow.result, "x", evalPoint)
-          : null
-      );
-      setError("");
-    } catch {
-      setError(t.error);
-      setResult(null);
-      setPointEvalResult(null);
-    }
+    })();
   };
 
   const inputClass = `w-full rounded-xl border-2 px-3 py-2.5 font-mono ${theme.inputBg} ${theme.inputRing}`;
@@ -78,6 +93,7 @@ export default function ChainRuleCalculator({ locale }: { locale: Locale }) {
           <input
             value={outer}
             onChange={(e) => setOuter(e.target.value)}
+            onFocus={prefetchMath}
             className={`mt-1.5 ${inputClass}`}
             placeholder={calculatorInputPlaceholder(locale)}
           />
@@ -99,6 +115,7 @@ export default function ChainRuleCalculator({ locale }: { locale: Locale }) {
           <input
             value={inner}
             onChange={(e) => setInner(e.target.value)}
+            onFocus={prefetchMath}
             className={`mt-1.5 ${inputClass}`}
             placeholder={calculatorInputPlaceholder(locale)}
           />

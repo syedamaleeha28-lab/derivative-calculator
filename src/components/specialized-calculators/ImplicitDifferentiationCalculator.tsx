@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { implicitDifferentiationWorkflow, sanitizeExpr } from "@/lib/calculator-math";
+import { sanitizeExpr } from "@/lib/calculator-math/sanitize";
+import { loadEngine } from "@/lib/calculator-math/load-engine";
 import { calculatorInputPlaceholder } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { IMPLICIT_DIFF_THEME } from "@/lib/specialized-calculators/themes";
@@ -10,6 +11,15 @@ import type { Locale } from "@/lib/locale";
 import CalculatorShell from "./shared/CalculatorShell";
 import MathBlock from "./shared/MathBlock";
 import StepTimeline from "./shared/StepTimeline";
+
+type ImplicitResult = ReturnType<
+  typeof import("@/lib/calculator-math").implicitDifferentiationWorkflow
+>;
+
+function prefetchMath() {
+  void loadEngine();
+  void import("@/lib/calculator-math");
+}
 
 const PRESETS = [
   { left: "x^2 + y^2", right: "25" },
@@ -24,20 +34,21 @@ export default function ImplicitDifferentiationCalculator({ locale }: { locale: 
   const [left, setLeft] = useState("x^2 + y^2");
   const [right, setRight] = useState("25");
   const [error, setError] = useState("");
-  const [result, setResult] = useState<ReturnType<typeof implicitDifferentiationWorkflow> | null>(
-    null
-  );
+  const [result, setResult] = useState<ImplicitResult | null>(null);
 
   const run = () => {
-    try {
-      sanitizeExpr(left);
-      sanitizeExpr(right);
-      setResult(implicitDifferentiationWorkflow(left, right, locale));
-      setError("");
-    } catch {
-      setError(t.error);
-      setResult(null);
-    }
+    void (async () => {
+      try {
+        sanitizeExpr(left);
+        sanitizeExpr(right);
+        const { implicitDifferentiationWorkflow } = await import("@/lib/calculator-math");
+        setResult(implicitDifferentiationWorkflow(left, right, locale));
+        setError("");
+      } catch {
+        setError(t.error);
+        setResult(null);
+      }
+    })();
   };
 
   const inputClass = `w-full rounded-xl border-2 px-3 py-2.5 font-mono ${theme.inputBg} ${theme.inputRing}`;
@@ -56,6 +67,7 @@ export default function ImplicitDifferentiationCalculator({ locale }: { locale: 
           <input
             value={left}
             onChange={(e) => setLeft(e.target.value)}
+            onFocus={prefetchMath}
             className={`mt-1 ${inputClass}`}
             placeholder={calculatorInputPlaceholder(locale)}
           />
@@ -73,6 +85,7 @@ export default function ImplicitDifferentiationCalculator({ locale }: { locale: 
           <input
             value={right}
             onChange={(e) => setRight(e.target.value)}
+            onFocus={prefetchMath}
             className={`mt-1 ${inputClass}`}
             placeholder={calculatorInputPlaceholder(locale)}
           />
