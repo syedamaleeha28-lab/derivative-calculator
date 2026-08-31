@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { productRuleWorkflow, sanitizeExpr } from "@/lib/calculator-math";
+import { sanitizeExpr } from "@/lib/calculator-math/sanitize";
+import { loadEngine } from "@/lib/calculator-math/load-engine";
 import { calculatorInputPlaceholder } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { PRODUCT_RULE_THEME } from "@/lib/specialized-calculators/themes";
@@ -10,6 +11,15 @@ import type { Locale } from "@/lib/locale";
 import CalculatorShell from "./shared/CalculatorShell";
 import MathBlock from "./shared/MathBlock";
 import StepTimeline from "./shared/StepTimeline";
+
+type ProductRuleResult = ReturnType<
+  typeof import("@/lib/calculator-math").productRuleWorkflow
+>;
+
+function prefetchMath() {
+  void loadEngine();
+  void import("@/lib/calculator-math");
+}
 
 const PRESETS = [
   { f: "x^2", g: "sin(x)" },
@@ -24,18 +34,21 @@ export default function ProductRuleCalculator({ locale }: { locale: Locale }) {
   const [f, setF] = useState("x^2");
   const [g, setG] = useState("sin(x)");
   const [error, setError] = useState("");
-  const [result, setResult] = useState<ReturnType<typeof productRuleWorkflow> | null>(null);
+  const [result, setResult] = useState<ProductRuleResult | null>(null);
 
   const run = () => {
-    try {
-      sanitizeExpr(f);
-      sanitizeExpr(g);
-      setResult(productRuleWorkflow(f, g, "x"));
-      setError("");
-    } catch {
-      setError(t.error);
-      setResult(null);
-    }
+    void (async () => {
+      try {
+        sanitizeExpr(f);
+        sanitizeExpr(g);
+        const { productRuleWorkflow } = await import("@/lib/calculator-math");
+        setResult(productRuleWorkflow(f, g, "x"));
+        setError("");
+      } catch {
+        setError(t.error);
+        setResult(null);
+      }
+    })();
   };
 
   const inputClass = `w-full rounded-xl border-2 px-3 py-2.5 font-mono text-base outline-none transition-all ${theme.inputBg} ${theme.inputRing}`;
@@ -50,6 +63,7 @@ export default function ProductRuleCalculator({ locale }: { locale: Locale }) {
           <input
             value={f}
             onChange={(e) => setF(e.target.value)}
+            onFocus={prefetchMath}
             className={`mt-1.5 ${inputClass}`}
             placeholder={calculatorInputPlaceholder(locale)}
             aria-label="u(x)"
@@ -62,6 +76,7 @@ export default function ProductRuleCalculator({ locale }: { locale: Locale }) {
           <input
             value={g}
             onChange={(e) => setG(e.target.value)}
+            onFocus={prefetchMath}
             className={`mt-1.5 ${inputClass}`}
             placeholder={calculatorInputPlaceholder(locale)}
             aria-label="v(x)"

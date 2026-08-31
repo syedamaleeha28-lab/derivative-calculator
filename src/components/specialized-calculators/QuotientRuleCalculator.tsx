@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { quotientRuleWorkflow, sanitizeExpr } from "@/lib/calculator-math";
+import { sanitizeExpr } from "@/lib/calculator-math/sanitize";
+import { loadEngine } from "@/lib/calculator-math/load-engine";
 import { calculatorInputPlaceholder } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { QUOTIENT_RULE_THEME } from "@/lib/specialized-calculators/themes";
@@ -10,6 +11,15 @@ import type { Locale } from "@/lib/locale";
 import CalculatorShell from "./shared/CalculatorShell";
 import MathBlock from "./shared/MathBlock";
 import StepTimeline from "./shared/StepTimeline";
+
+type QuotientRuleResult = ReturnType<
+  typeof import("@/lib/calculator-math").quotientRuleWorkflow
+>;
+
+function prefetchMath() {
+  void loadEngine();
+  void import("@/lib/calculator-math");
+}
 
 const PRESETS = [
   { u: "sin(x)", v: "x" },
@@ -24,18 +34,21 @@ export default function QuotientRuleCalculator({ locale }: { locale: Locale }) {
   const [u, setU] = useState("sin(x)");
   const [v, setV] = useState("x");
   const [error, setError] = useState("");
-  const [result, setResult] = useState<ReturnType<typeof quotientRuleWorkflow> | null>(null);
+  const [result, setResult] = useState<QuotientRuleResult | null>(null);
 
   const run = () => {
-    try {
-      sanitizeExpr(u);
-      sanitizeExpr(v);
-      setResult(quotientRuleWorkflow(u, v, "x"));
-      setError("");
-    } catch {
-      setError(t.error);
-      setResult(null);
-    }
+    void (async () => {
+      try {
+        sanitizeExpr(u);
+        sanitizeExpr(v);
+        const { quotientRuleWorkflow } = await import("@/lib/calculator-math");
+        setResult(quotientRuleWorkflow(u, v, "x"));
+        setError("");
+      } catch {
+        setError(t.error);
+        setResult(null);
+      }
+    })();
   };
 
   const inputClass = `w-full rounded-xl border-2 px-3 py-2.5 font-mono text-base outline-none ${theme.inputBg} ${theme.inputRing}`;
@@ -46,12 +59,12 @@ export default function QuotientRuleCalculator({ locale }: { locale: Locale }) {
         <div className="space-y-3">
           <label className="block">
             <span className={`text-xs font-bold uppercase ${theme.labelColor}`}>{t.numerator}</span>
-            <input value={u} onChange={(e) => setU(e.target.value)} className={`mt-1 ${inputClass}`} placeholder={calculatorInputPlaceholder(locale)} />
+            <input value={u} onChange={(e) => setU(e.target.value)} onFocus={prefetchMath} className={`mt-1 ${inputClass}`} placeholder={calculatorInputPlaceholder(locale)} />
           </label>
           <div className="border-t-2 border-orange-400 mx-2" aria-hidden />
           <label className="block">
             <span className={`text-xs font-bold uppercase ${theme.labelColor}`}>{t.denominator}</span>
-            <input value={v} onChange={(e) => setV(e.target.value)} className={`mt-1 ${inputClass}`} placeholder={calculatorInputPlaceholder(locale)} />
+            <input value={v} onChange={(e) => setV(e.target.value)} onFocus={prefetchMath} className={`mt-1 ${inputClass}`} placeholder={calculatorInputPlaceholder(locale)} />
           </label>
         </div>
       </div>

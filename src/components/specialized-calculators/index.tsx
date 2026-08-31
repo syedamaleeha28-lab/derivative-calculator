@@ -1,34 +1,25 @@
+"use client";
+
+import dynamic from "next/dynamic";
 import type { ComponentType } from "react";
 import type { Locale } from "@/lib/locale";
 import type { SpecializedCalculatorKind } from "@/lib/specialized-calculators/themes";
-import ProductRuleCalculator from "./ProductRuleCalculator";
-import QuotientRuleCalculator from "./QuotientRuleCalculator";
-import CriticalPointsCalculator from "./CriticalPointsCalculator";
-import TangentLineCalculator from "./TangentLineCalculator";
-import PartialDerivativesCalculator from "./PartialDerivativesCalculator";
-import HigherOrderDerivativeCalculator from "./HigherOrderDerivativeCalculator";
-import SecondDerivativeCalculator from "./SecondDerivativeCalculator";
-import ChainRuleCalculator from "./ChainRuleCalculator";
-import ImplicitDifferentiationCalculator from "./ImplicitDifferentiationCalculator";
-import LimitsCalculator from "./LimitsCalculator";
-import ContinuityCalculator from "./ContinuityCalculator";
-import LHopitalCalculator from "./LHopitalCalculator";
 
 type Props = { locale: Locale };
 
 const REGISTRY: Record<SpecializedCalculatorKind, ComponentType<Props>> = {
-  "product-rule": ProductRuleCalculator,
-  "quotient-rule": QuotientRuleCalculator,
-  "critical-points": CriticalPointsCalculator,
-  "tangent-line": TangentLineCalculator,
-  "partial-derivatives": PartialDerivativesCalculator,
-  "higher-order": HigherOrderDerivativeCalculator,
-  "second-derivative": SecondDerivativeCalculator,
-  "chain-rule": ChainRuleCalculator,
-  "implicit-differentiation": ImplicitDifferentiationCalculator,
-  limits: LimitsCalculator,
-  continuity: ContinuityCalculator,
-  lhopital: LHopitalCalculator,
+  "product-rule": dynamic(() => import("./ProductRuleCalculator")),
+  "quotient-rule": dynamic(() => import("./QuotientRuleCalculator")),
+  "critical-points": dynamic(() => import("./CriticalPointsCalculator")),
+  "tangent-line": dynamic(() => import("./TangentLineCalculator")),
+  "partial-derivatives": dynamic(() => import("./PartialDerivativesCalculator")),
+  "higher-order": dynamic(() => import("./HigherOrderDerivativeCalculator")),
+  "second-derivative": dynamic(() => import("./SecondDerivativeCalculator")),
+  "chain-rule": dynamic(() => import("./ChainRuleCalculator")),
+  "implicit-differentiation": dynamic(() => import("./ImplicitDifferentiationCalculator")),
+  limits: dynamic(() => import("./LimitsCalculator")),
+  continuity: dynamic(() => import("./ContinuityCalculator")),
+  lhopital: dynamic(() => import("./LHopitalCalculator")),
 };
 
 export function SpecializedCalculator({
