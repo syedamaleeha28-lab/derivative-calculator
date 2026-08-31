@@ -34,44 +34,46 @@ export default function Hero() {
     >
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-[0.7fr_1.3fr] gap-4 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14 items-start lg:items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="flex flex-col gap-3 sm:gap-5 lg:pr-2 xl:pr-4 order-2 lg:order-1"
-          >
-            <div>
-              <div className="mb-2 w-full max-w-[11rem] sm:mb-3 sm:max-w-[14rem] lg:max-w-[18rem] xl:max-w-[20rem]">
-                <Image
-                  src="/images/curva-tangente-derivada-hero.webp"
-                  alt="Ilustración de una curva y su recta tangente representando la derivada f'(x)"
-                  width={900}
-                  height={900}
-                  loading="lazy"
-                  sizes="(max-width: 640px) 11rem, (max-width: 1024px) 14rem, 20rem"
-                  className="h-auto w-full max-h-[200px] object-contain object-left sm:max-h-[240px] lg:max-h-[300px] xl:max-h-[340px]"
-                />
+          <div className="flex flex-col lg:pr-2 xl:pr-4 order-2 lg:order-1">
+            <div className="mb-2 w-full max-w-[11rem] sm:mb-3 sm:max-w-[14rem] lg:max-w-[18rem] xl:max-w-[20rem]">
+              <Image
+                src="/images/curva-tangente-derivada-hero.webp"
+                alt="Ilustración de una curva y su recta tangente representando la derivada f'(x)"
+                width={900}
+                height={900}
+                priority
+                fetchPriority="high"
+                sizes="(max-width: 640px) 11rem, (max-width: 1024px) 14rem, 20rem"
+                className="h-auto w-full max-h-[200px] object-contain object-left sm:max-h-[240px] lg:max-h-[300px] xl:max-h-[340px]"
+              />
+            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="flex flex-col gap-3 sm:gap-5"
+            >
+              <div>
+                <h1
+                  id="hero-heading"
+                  className="heading-font text-2xl sm:text-[2.5rem] lg:text-[2.65rem] xl:text-[2.9rem] leading-[1.08] text-slate-900 tracking-tight mb-2 sm:mb-3"
+                >
+                  Calculadora de derivadas con pasos
+                </h1>
+                <p
+                  id="hero-description"
+                  className="text-[0.9rem] sm:text-[1rem] lg:text-[1.05rem] text-slate-600 leading-relaxed max-w-md"
+                >
+                  Escribe f(x), calcula al instante y revisa cada paso con precision simbolica.
+                </p>
               </div>
-              <h1
-                id="hero-heading"
-                className="heading-font text-2xl sm:text-[2.5rem] lg:text-[2.65rem] xl:text-[2.9rem] leading-[1.08] text-slate-900 tracking-tight mb-2 sm:mb-3"
-              >
-                Calculadora de derivadas con pasos
-              </h1>
-              <p
-                id="hero-description"
-                className="text-[0.9rem] sm:text-[1rem] lg:text-[1.05rem] text-slate-600 leading-relaxed max-w-md"
-              >
-                Escribe f(x), calcula al instante y revisa cada paso con precision simbolica.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-2 pt-1">
-              <TrustPill icon={<Check size={12} />} text="Gratis" />
-              <TrustPill icon={<BookOpen size={12} />} text="Paso a paso" />
-              <TrustPill icon={<Zap size={12} />} text="Precision simbolica" />
-            </div>
-          </motion.div>
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                <TrustPill icon={<Check size={12} />} text="Gratis" />
+                <TrustPill icon={<BookOpen size={12} />} text="Paso a paso" />
+                <TrustPill icon={<Zap size={12} />} text="Precision simbolica" />
+              </div>
+            </motion.div>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
