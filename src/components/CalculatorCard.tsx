@@ -10,7 +10,8 @@ import {
 } from "@/lib/calculator-events";
 import { dict } from "@/lib/dictionaries";
 import { trackCalculatorUsed } from "@/lib/gtag";
-import { evaluateDerivativeAtPoint, sanitizeExpr } from "@/lib/calculator-math";
+import { sanitizeExpr } from "@/lib/calculator-math/sanitize";
+import { loadEngine } from "@/lib/calculator-math/load-engine";
 import {
   mapDerivativeError,
   validateCalculatorInput,
@@ -20,9 +21,6 @@ import {
   PointEvaluationSection,
 } from "@/components/specialized-calculators/shared/PointEvaluationSection";
 import type { TranslationDictionary } from "@/lib/dictionaries";
-// @ts-ignore
-import nerdamer from "nerdamer/all.min";
-import katex from "katex";
 
 type Variant = "func" | "op" | "num" | "special" | "clear";
 type BtnDef = { label: string; insert: string; tip: string; variant?: Variant };
@@ -250,6 +248,45 @@ function toDisplayTeX(tex: string): string {
   return s;
 }
 
+function KatexHtml({
+  tex,
+  display = false,
+  className,
+}: {
+  tex: string;
+  display?: boolean;
+  className?: string;
+}) {
+  const [html, setHtml] = useState("");
+
+  useEffect(() => {
+    if (!tex) {
+      setHtml("");
+      return;
+    }
+    let cancelled = false;
+    loadEngine()
+      .then(({ katex }) => {
+        if (cancelled) return;
+        setHtml(
+          katex.renderToString(tex, {
+            throwOnError: false,
+            displayMode: display,
+          })
+        );
+      })
+      .catch(() => {
+        if (!cancelled) setHtml("");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [tex, display]);
+
+  if (!html) return null;
+  return <div className={className} dangerouslySetInnerHTML={{ __html: html }} />;
+}
+
 export interface CalculatorHandle {
   focusAndCalculate: () => void;
 }
@@ -325,13 +362,24 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
       setLatexPreview("");
       return;
     }
-    try {
-      const clean = sanitizeExpr(input);
-      const expr = nerdamer(clean);
-      setLatexPreview(toDisplayTeX(expr.toTeX()));
-    } catch {
-      setLatexPreview("");
-    }
+    let cancelled = false;
+    loadEngine()
+      .then(({ nerdamer }) => {
+        if (cancelled) return;
+        try {
+          const clean = sanitizeExpr(input);
+          const expr = nerdamer(clean);
+          setLatexPreview(toDisplayTeX(expr.toTeX()));
+        } catch {
+          setLatexPreview("");
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setLatexPreview("");
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [input]);
 
   const clearAll = () => {
@@ -415,14 +463,22 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
     setShowSteps(false);
     setError("");
     setPointEvalResult(null);
-    setTimeout(() => {
+
+    const started = Date.now();
+    void (async () => {
       try {
+        const { nerdamer } = await loadEngine();
+        const remaining = Math.max(0, 280 - (Date.now() - started));
+        if (remaining > 0) {
+          await new Promise((resolve) => setTimeout(resolve, remaining));
+        }
         const clean = sanitizeExpr(input);
         const derivative = nerdamer(`diff(${clean}, ${variable})`);
         const derivativeText = derivative.text();
         setLatexResult(toExactTeX(derivative));
         setTextResult(derivativeText);
         if (enablePointEval && evalPoint.trim()) {
+          const { evaluateDerivativeAtPoint } = await import("@/lib/calculator-math");
           const evaluated = evaluateDerivativeAtPoint(derivativeText, variable, evalPoint);
           setPointEvalResult(evaluated);
         }
@@ -432,7 +488,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
       } finally {
         setIsCalculating(false);
       }
-    }, 280);
+    })();
   };
 
   return (
@@ -451,15 +507,7 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
                 exit={{ opacity: 0, height: 0 }}
                 className="mb-1.5 px-2 py-1 bg-slate-50 rounded-lg border border-slate-100 overflow-x-auto text-center"
               >
-                <div
-                  className="text-slate-500 text-sm"
-                  dangerouslySetInnerHTML={{
-                    __html: katex.renderToString(latexPreview, {
-                      throwOnError: false,
-                      displayMode: false,
-                    }),
-                  }}
-                />
+                <KatexHtml tex={latexPreview} className="text-slate-500 text-sm" />
               </motion.div>
             )}
           </AnimatePresence>
@@ -485,7 +533,10 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
                 setShowResult(false);
                 setError("");
               }}
-              onFocus={() => setIsFocused(true)}
+              onFocus={() => {
+                setIsFocused(true);
+                void loadEngine();
+              }}
               onBlur={() => setIsFocused(false)}
               placeholder={t.placeholder.replace("x", variable)}
               className="w-full min-w-0 bg-transparent py-3 px-3 text-base font-mono font-medium text-slate-900 outline-none placeholder:text-slate-400"
@@ -724,14 +775,10 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
                 <span className="text-slate-400 font-serif italic text-base shrink-0 select-none">
                   f&apos;({variable}) =
                 </span>
-                <div
+                <KatexHtml
+                  tex={latexResult}
+                  display
                   className="text-slate-900 min-w-0 max-w-full overflow-x-auto max-md:text-xl md:text-lg [&_.katex-display]:overflow-x-auto [&_.katex]:max-w-none"
-                  dangerouslySetInnerHTML={{
-                    __html: katex.renderToString(latexResult || "", {
-                      throwOnError: false,
-                      displayMode: true,
-                    }),
-                  }}
                 />
               </div>
 
@@ -813,14 +860,9 @@ const CalculatorCard = forwardRef<CalculatorHandle, CalculatorCardProps>((props,
                               {step.d}
                             </p>
                             <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 overflow-x-auto max-w-full">
-                              <div
+                              <KatexHtml
+                                tex={step.f}
                                 className="min-w-0 max-w-full overflow-x-auto [&_.katex]:max-w-none"
-                                dangerouslySetInnerHTML={{
-                                  __html: katex.renderToString(step.f, {
-                                    throwOnError: false,
-                                    displayMode: false,
-                                  }),
-                                }}
                               />
                             </div>
                           </div>

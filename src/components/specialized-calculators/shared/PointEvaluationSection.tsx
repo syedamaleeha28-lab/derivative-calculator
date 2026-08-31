@@ -2,7 +2,7 @@
 
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { formatNumericResult } from "@/lib/calculator-math";
+import { formatNumericResult } from "@/lib/calculator-math/sanitize";
 
 type PointEvaluationSectionProps = {
   variable: string;
