@@ -40,7 +40,7 @@ const ES: Record<SpecializedCalculatorKind, HeroCopy> = {
     trust3: "Mantiene las demás variables fijas",
   },
   "higher-order": {
-    cta: "Calcular derivada de orden n",
+    cta: "Ir a la calculadora",
     trust1: "Selector de orden del 1 al 5",
     trust2: "Cadena visual f, f′, f″…",
     trust3: "Modo oscuro para sesiones largas",
