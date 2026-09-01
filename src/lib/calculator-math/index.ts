@@ -66,7 +66,7 @@ export function differentiateTeX(clean: string, variable: string, order = 1): st
 
 export function evaluateAt(clean: string, variable: string, value: number): number | null {
   try {
-    const sub = nerdamer(`subs(${variable}, ${value}, ${clean})`);
+    const sub = nerdamer(clean).sub(variable, value);
     const n = parseFloat(sub.evaluate().text());
     return Number.isFinite(n) ? n : null;
   } catch {
@@ -91,16 +91,44 @@ export function evaluateDerivativeAtPoint(
   return { value, displayPoint: trimmed };
 }
 
+function solutionToken(s: unknown): string {
+  if (s && typeof s === "object" && typeof (s as { text?: () => string }).text === "function") {
+    return (s as { text: () => string }).text();
+  }
+  return String(s);
+}
+
+function flattenSolutionTokens(tokens: string[]): string[] {
+  const out: string[] = [];
+  for (const raw of tokens) {
+    const t = raw.trim();
+    if (!t || t === "false" || t === "true") continue;
+    if (t.startsWith("[") && t.endsWith("]") && !t.slice(1, -1).includes("[")) {
+      for (const part of t.slice(1, -1).split(",")) {
+        const p = part.trim();
+        if (p) out.push(p);
+      }
+    } else {
+      out.push(t);
+    }
+  }
+  return out;
+}
+
 export function solveExprZeros(expr: string, variable: string): string[] {
   try {
-    const solutions = nerdamer.solve(`(${expr})=0`, variable);
+    const solutions = nerdamer.solve(`(${expr})=0`, variable) as {
+      each?: (cb: (s: unknown) => void) => void;
+    };
     if (!solutions) return [];
-    const arr = Array.isArray(solutions) ? solutions : [solutions];
-    return arr
-      .map((s: { text?: () => string; toString?: () => string }) =>
-        typeof s.text === "function" ? s.text() : String(s)
-      )
-      .filter((s) => s && s !== "false" && s !== "true");
+    const tokens: string[] = [];
+    if (typeof solutions.each === "function") {
+      solutions.each((s) => tokens.push(solutionToken(s)));
+    } else {
+      const arr = Array.isArray(solutions) ? solutions : [solutions];
+      for (const s of arr) tokens.push(solutionToken(s));
+    }
+    return flattenSolutionTokens(tokens);
   } catch {
     return [];
   }
