@@ -712,14 +712,19 @@ export function limitWorkflow(
           directTeX = exprToTeX(directText);
         }
       } else {
-        const sub = nerdamer(`subs(${variable}, ${approach}, ${f})`).evaluate();
+        const subbed = nerdamer(f).sub(variable, approach);
+        let sub = subbed;
+        try {
+          sub = subbed.evaluate();
+        } catch {
+          // Keep the substituted (possibly symbolic) expression.
+        }
         directText = sub.text();
         directTeX = toDisplayTeX(sub.toTeX());
         const n = parseFloat(directText);
         looksIndeterminate =
           !Number.isFinite(n) ||
-          /nan|undefined|infinity/i.test(directText) ||
-          /subs\s*\(/i.test(directText);
+          /nan|undefined|infinity/i.test(directText);
       }
     }
   } catch {
@@ -772,8 +777,8 @@ function looksInfiniteText(text: string): boolean {
 }
 
 /**
- * Direct evaluation at a finite point. Uses nerdamer.evaluate({[var]: a})
- * (with .sub() fallback). Do not use evaluateAt — its subs() API is broken.
+ * Direct evaluation at a finite point. Prefers nerdamer.evaluate({[var]: a})
+ * and falls back to nerdamer(expr).sub(variable, a), same API as evaluateAt.
  */
 export function evaluateFunctionAtPoint(
   clean: string,
