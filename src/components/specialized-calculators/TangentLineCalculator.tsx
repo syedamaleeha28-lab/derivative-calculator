@@ -1,12 +1,9 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  sampleCurve,
-  sanitizeExpr,
-  tangentLineWorkflow,
-} from "@/lib/calculator-math";
+import { sanitizeExpr } from "@/lib/calculator-math/sanitize";
+import { loadEngine } from "@/lib/calculator-math/load-engine";
 import { calculatorInputPlaceholder } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { TANGENT_LINE_THEME } from "@/lib/specialized-calculators/themes";
@@ -15,6 +12,17 @@ import CalculatorShell from "./shared/CalculatorShell";
 import FunctionPlot from "./shared/FunctionPlot";
 import MathBlock from "./shared/MathBlock";
 import StepTimeline from "./shared/StepTimeline";
+
+type TangentLineResult = ReturnType<
+  typeof import("@/lib/calculator-math").tangentLineWorkflow
+>;
+
+type CurvePoint = { x: number; y: number };
+
+function prefetchMath() {
+  void loadEngine();
+  void import("@/lib/calculator-math");
+}
 
 const PRESETS = [
   { f: "x^2", a: "2" },
@@ -29,15 +37,8 @@ export default function TangentLineCalculator({ locale }: { locale: Locale }) {
   const [f, setF] = useState("x^2");
   const [point, setPoint] = useState("2");
   const [error, setError] = useState("");
-  const [result, setResult] = useState<ReturnType<typeof tangentLineWorkflow> | null>(null);
-
-  const curve = useMemo(() => {
-    try {
-      return sampleCurve(sanitizeExpr(f), "x", -4, 4);
-    } catch {
-      return [];
-    }
-  }, [f]);
+  const [result, setResult] = useState<TangentLineResult | null>(null);
+  const [curve, setCurve] = useState<CurvePoint[]>([]);
 
   const tangentLine = useMemo(() => {
     if (!result || result.slope === null || result.y0 === null) return undefined;
@@ -47,14 +48,19 @@ export default function TangentLineCalculator({ locale }: { locale: Locale }) {
   }, [result, point]);
 
   const run = () => {
-    try {
-      sanitizeExpr(f);
-      setResult(tangentLineWorkflow(f, "x", point, locale));
-      setError("");
-    } catch {
-      setError(t.error);
-      setResult(null);
-    }
+    void (async () => {
+      try {
+        const clean = sanitizeExpr(f);
+        const { tangentLineWorkflow, sampleCurve } = await import("@/lib/calculator-math");
+        setResult(tangentLineWorkflow(f, "x", point, locale));
+        setCurve(sampleCurve(clean, "x", -4, 4));
+        setError("");
+      } catch {
+        setError(t.error);
+        setResult(null);
+        setCurve([]);
+      }
+    })();
   };
 
   return (
@@ -65,6 +71,7 @@ export default function TangentLineCalculator({ locale }: { locale: Locale }) {
           <input
             value={f}
             onChange={(e) => setF(e.target.value)}
+            onFocus={prefetchMath}
             className={`mt-1.5 w-full rounded-xl border-2 px-3 py-2.5 font-mono ${theme.inputBg} ${theme.inputRing}`}
             placeholder={calculatorInputPlaceholder(locale)}
           />
@@ -74,6 +81,7 @@ export default function TangentLineCalculator({ locale }: { locale: Locale }) {
           <input
             value={point}
             onChange={(e) => setPoint(e.target.value)}
+            onFocus={prefetchMath}
             className={`mt-1.5 w-full rounded-xl border-2 px-3 py-2.5 font-mono text-center ${theme.inputBg} ${theme.inputRing}`}
           />
         </label>
@@ -88,6 +96,7 @@ export default function TangentLineCalculator({ locale }: { locale: Locale }) {
               setF(p.f);
               setPoint(p.a);
               setResult(null);
+              setCurve([]);
             }}
             className="text-[0.7rem] px-2 py-1 rounded-lg border border-violet-100 bg-white"
           >

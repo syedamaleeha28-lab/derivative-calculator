@@ -1,12 +1,9 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  criticalPointsWorkflow,
-  sampleCurve,
-  sanitizeExpr,
-} from "@/lib/calculator-math";
+import { sanitizeExpr } from "@/lib/calculator-math/sanitize";
+import { loadEngine } from "@/lib/calculator-math/load-engine";
 import { calculatorInputPlaceholder } from "@/lib/calculator-placeholder";
 import { calcLabels } from "@/lib/specialized-calculators/labels";
 import { CRITICAL_POINTS_THEME } from "@/lib/specialized-calculators/themes";
@@ -15,6 +12,17 @@ import CalculatorShell from "./shared/CalculatorShell";
 import FunctionPlot from "./shared/FunctionPlot";
 import StepTimeline from "./shared/StepTimeline";
 
+type CriticalPointsResult = ReturnType<
+  typeof import("@/lib/calculator-math").criticalPointsWorkflow
+>;
+
+type CurvePoint = { x: number; y: number };
+
+function prefetchMath() {
+  void loadEngine();
+  void import("@/lib/calculator-math");
+}
+
 const PRESETS = ["x^3 - 3*x", "x^4 - 4*x^2", "x*exp(-x)", "x^2/(x+1)"];
 
 export default function CriticalPointsCalculator({ locale }: { locale: Locale }) {
@@ -22,16 +30,8 @@ export default function CriticalPointsCalculator({ locale }: { locale: Locale })
   const theme = CRITICAL_POINTS_THEME;
   const [f, setF] = useState("x^3 - 3*x");
   const [error, setError] = useState("");
-  const [result, setResult] = useState<ReturnType<typeof criticalPointsWorkflow> | null>(null);
-
-  const curve = useMemo(() => {
-    if (!result) return [];
-    try {
-      return sampleCurve(sanitizeExpr(f), "x", -4, 4);
-    } catch {
-      return [];
-    }
-  }, [f, result]);
+  const [result, setResult] = useState<CriticalPointsResult | null>(null);
+  const [curve, setCurve] = useState<CurvePoint[]>([]);
 
   const markers = useMemo(
     () =>
@@ -49,14 +49,19 @@ export default function CriticalPointsCalculator({ locale }: { locale: Locale })
   );
 
   const run = () => {
-    try {
-      sanitizeExpr(f);
-      setResult(criticalPointsWorkflow(f, "x", locale));
-      setError("");
-    } catch {
-      setError(t.error);
-      setResult(null);
-    }
+    void (async () => {
+      try {
+        const clean = sanitizeExpr(f);
+        const { criticalPointsWorkflow, sampleCurve } = await import("@/lib/calculator-math");
+        setResult(criticalPointsWorkflow(f, "x", locale));
+        setCurve(sampleCurve(clean, "x", -4, 4));
+        setError("");
+      } catch {
+        setError(t.error);
+        setResult(null);
+        setCurve([]);
+      }
+    })();
   };
 
   return (
@@ -66,6 +71,7 @@ export default function CriticalPointsCalculator({ locale }: { locale: Locale })
         <input
           value={f}
           onChange={(e) => setF(e.target.value)}
+          onFocus={prefetchMath}
           className={`mt-1.5 w-full rounded-xl border-2 px-3 py-2.5 font-mono ${theme.inputBg} ${theme.inputRing}`}
           placeholder={calculatorInputPlaceholder(locale)}
         />
@@ -79,6 +85,7 @@ export default function CriticalPointsCalculator({ locale }: { locale: Locale })
             onClick={() => {
               setF(ex);
               setResult(null);
+              setCurve([]);
             }}
             className="text-[0.7rem] px-2 py-1 rounded-lg border border-emerald-100 bg-white"
           >
