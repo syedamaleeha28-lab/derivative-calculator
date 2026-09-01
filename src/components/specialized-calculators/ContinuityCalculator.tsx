@@ -2,11 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  formatLimitApproachTeX,
-  exprToTeX,
-  sanitizeExpr,
-} from "@/lib/calculator-math";
+import { sanitizeExpr } from "@/lib/calculator-math/sanitize";
+import { loadEngine } from "@/lib/calculator-math/load-engine";
 import {
   runContinuityWorkflowWithTimeout,
   type ContinuityWorkflowResult,
@@ -18,6 +15,13 @@ import type { Locale } from "@/lib/locale";
 import CalculatorShell from "./shared/CalculatorShell";
 import MathBlock from "./shared/MathBlock";
 import StepTimeline from "./shared/StepTimeline";
+
+type ContinuityResult = ContinuityWorkflowResult;
+
+function prefetchMath() {
+  void loadEngine();
+  void import("@/lib/calculator-math");
+}
 
 const PRESETS = [
   { f: "(x^2-4)/(x-2)", a: "2" },
@@ -36,20 +40,26 @@ export default function ContinuityCalculator({ locale }: { locale: Locale }) {
   const [variable, setVariable] = useState("x");
   const [error, setError] = useState("");
   const [isCalculating, setIsCalculating] = useState(false);
-  const [result, setResult] = useState<ContinuityWorkflowResult | null>(null);
+  const [result, setResult] = useState<ContinuityResult | null>(null);
+  const [limitLineTeX, setLimitLineTeX] = useState("");
+  const [fAtALineTeX, setFAtALineTeX] = useState("");
 
   const run = async () => {
     setIsCalculating(true);
     setError("");
     setResult(null);
+    setLimitLineTeX("");
+    setFAtALineTeX("");
     try {
-      sanitizeExpr(f);
-      const workflow = await runContinuityWorkflowWithTimeout(
-        f,
-        variable.trim() || "x",
-        approach,
-        locale
+      const clean = sanitizeExpr(f);
+      const v = variable.trim() || "x";
+      const workflow = await runContinuityWorkflowWithTimeout(f, v, approach, locale);
+      const { formatLimitApproachTeX, exprToTeX } = await import("@/lib/calculator-math");
+      const aTeX = formatLimitApproachTeX(workflow.approach);
+      setLimitLineTeX(
+        `\\lim_{${v}\\to ${aTeX}} ${exprToTeX(clean)} = ${workflow.limitTeX}`
       );
+      setFAtALineTeX(`f(${aTeX}) = ${workflow.fAtATeX}`);
       setResult(workflow);
     } catch {
       setError(locale === "es" ? ERROR_ES : ERROR_EN);
@@ -74,6 +84,7 @@ export default function ContinuityCalculator({ locale }: { locale: Locale }) {
             setF(e.target.value);
             setResult(null);
           }}
+          onFocus={prefetchMath}
           className={inputClass}
           placeholder={calculatorInputPlaceholder(locale)}
         />
@@ -90,6 +101,7 @@ export default function ContinuityCalculator({ locale }: { locale: Locale }) {
               setVariable(e.target.value);
               setResult(null);
             }}
+            onFocus={prefetchMath}
             className={inputClass}
             placeholder="x"
           />
@@ -104,6 +116,7 @@ export default function ContinuityCalculator({ locale }: { locale: Locale }) {
               setApproach(e.target.value);
               setResult(null);
             }}
+            onFocus={prefetchMath}
             className={inputClass}
             placeholder={locale === "es" ? "ej. 2, 0, -1" : "e.g. 2, 0, -1"}
           />
@@ -120,6 +133,8 @@ export default function ContinuityCalculator({ locale }: { locale: Locale }) {
               setApproach(p.a);
               setVariable("x");
               setResult(null);
+              setLimitLineTeX("");
+              setFAtALineTeX("");
             }}
             className="text-[0.7rem] px-2 py-1 rounded-lg border border-indigo-100 bg-white text-indigo-900"
           >
@@ -169,12 +184,8 @@ export default function ContinuityCalculator({ locale }: { locale: Locale }) {
             </p>
             <p className="mt-2 text-sm text-slate-600 leading-relaxed">{result.reason}</p>
             <div className="mt-3 space-y-2">
-              <MathBlock
-                latex={`\\lim_{${variable}\\to ${formatLimitApproachTeX(result.approach)}} ${exprToTeX(sanitizeExpr(f))} = ${result.limitTeX}`}
-              />
-              <MathBlock
-                latex={`f(${formatLimitApproachTeX(result.approach)}) = ${result.fAtATeX}`}
-              />
+              <MathBlock latex={limitLineTeX} />
+              <MathBlock latex={fAtALineTeX} />
             </div>
           </div>
 

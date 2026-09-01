@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { exprToTeX, sanitizeExpr } from "@/lib/calculator-math";
+import { sanitizeExpr } from "@/lib/calculator-math/sanitize";
+import { loadEngine } from "@/lib/calculator-math/load-engine";
 import {
   runLhopitalWorkflowWithTimeout,
   type LhopitalWorkflowResult,
@@ -15,6 +16,13 @@ import type { Locale } from "@/lib/locale";
 import CalculatorShell from "./shared/CalculatorShell";
 import MathBlock from "./shared/MathBlock";
 import StepTimeline from "./shared/StepTimeline";
+
+type LhopitalResult = LhopitalWorkflowResult;
+
+function prefetchMath() {
+  void loadEngine();
+  void import("@/lib/calculator-math");
+}
 
 const PRESETS = [
   { f: "sin(x)", g: "x", a: "0" },
@@ -36,21 +44,22 @@ export default function LHopitalCalculator({ locale }: { locale: Locale }) {
   const [variable, setVariable] = useState("x");
   const [error, setError] = useState("");
   const [isCalculating, setIsCalculating] = useState(false);
-  const [result, setResult] = useState<LhopitalWorkflowResult | null>(null);
+  const [result, setResult] = useState<LhopitalResult | null>(null);
+  const [headlineTeX, setHeadlineTeX] = useState("");
 
   const run = async () => {
     setIsCalculating(true);
     setError("");
     setResult(null);
+    setHeadlineTeX("");
     try {
-      sanitizeExpr(f);
-      sanitizeExpr(g);
-      const workflow = await runLhopitalWorkflowWithTimeout(
-        f,
-        g,
-        variable.trim() || "x",
-        approach,
-        locale
+      const cleanF = sanitizeExpr(f);
+      const cleanG = sanitizeExpr(g);
+      const v = variable.trim() || "x";
+      const workflow = await runLhopitalWorkflowWithTimeout(f, g, v, approach, locale);
+      const { exprToTeX } = await import("@/lib/calculator-math");
+      setHeadlineTeX(
+        `\\lim_{${v}\\to ${workflow.approach}} \\dfrac{${exprToTeX(cleanF)}}{${exprToTeX(cleanG)}} = ${workflow.resultTeX || "\\text{¿?}"}`
       );
       setResult(workflow);
     } catch {
@@ -91,6 +100,7 @@ export default function LHopitalCalculator({ locale }: { locale: Locale }) {
                 setF(e.target.value);
                 setResult(null);
               }}
+              onFocus={prefetchMath}
               className={inputClass}
               placeholder={calculatorInputPlaceholder(locale)}
             />
@@ -106,6 +116,7 @@ export default function LHopitalCalculator({ locale }: { locale: Locale }) {
                 setG(e.target.value);
                 setResult(null);
               }}
+              onFocus={prefetchMath}
               className={inputClass}
               placeholder={calculatorInputPlaceholder(locale)}
             />
@@ -122,6 +133,7 @@ export default function LHopitalCalculator({ locale }: { locale: Locale }) {
               setVariable(e.target.value);
               setResult(null);
             }}
+            onFocus={prefetchMath}
             className={inputClass}
             placeholder="x"
           />
@@ -136,6 +148,7 @@ export default function LHopitalCalculator({ locale }: { locale: Locale }) {
               setApproach(e.target.value);
               setResult(null);
             }}
+            onFocus={prefetchMath}
             className={inputClass}
             placeholder={locale === "es" ? "ej. 0, 1, -1" : "e.g. 0, 1, -1"}
           />
@@ -153,6 +166,7 @@ export default function LHopitalCalculator({ locale }: { locale: Locale }) {
               setApproach(p.a);
               setVariable("x");
               setResult(null);
+              setHeadlineTeX("");
             }}
             className="text-[0.7rem] px-2 py-1 rounded-lg border border-violet-100 bg-white text-violet-900"
           >
@@ -201,9 +215,7 @@ export default function LHopitalCalculator({ locale }: { locale: Locale }) {
             </p>
             <p className="mt-2 text-sm text-slate-600 leading-relaxed">{result.reason}</p>
             <div className="mt-3 space-y-2">
-              <MathBlock
-                latex={`\\lim_{${variable}\\to ${result.approach}} \\dfrac{${exprToTeX(sanitizeExpr(f))}}{${exprToTeX(sanitizeExpr(g))}} = ${result.resultTeX || "\\text{¿?}"}`}
-              />
+              <MathBlock latex={headlineTeX} />
             </div>
             {result.result ? (
               <p data-testid="lhopital-result" className="mt-3 font-mono text-sm text-slate-700 break-all">

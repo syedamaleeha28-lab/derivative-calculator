@@ -2,11 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  formatLimitApproachTeX,
-  exprToTeX,
-  sanitizeExpr,
-} from "@/lib/calculator-math";
+import { sanitizeExpr } from "@/lib/calculator-math/sanitize";
+import { loadEngine } from "@/lib/calculator-math/load-engine";
 import {
   runLimitWorkflowWithTimeout,
   type LimitWorkflowResult,
@@ -18,6 +15,13 @@ import type { Locale } from "@/lib/locale";
 import CalculatorShell from "./shared/CalculatorShell";
 import MathBlock from "./shared/MathBlock";
 import StepTimeline from "./shared/StepTimeline";
+
+type LimitResult = LimitWorkflowResult;
+
+function prefetchMath() {
+  void loadEngine();
+  void import("@/lib/calculator-math");
+}
 
 const PRESETS = [
   { f: "(x^2-4)/(x-2)", a: "2" },
@@ -36,19 +40,21 @@ export default function LimitsCalculator({ locale }: { locale: Locale }) {
   const [variable, setVariable] = useState("x");
   const [error, setError] = useState("");
   const [isCalculating, setIsCalculating] = useState(false);
-  const [result, setResult] = useState<LimitWorkflowResult | null>(null);
+  const [result, setResult] = useState<LimitResult | null>(null);
+  const [headlineTeX, setHeadlineTeX] = useState("");
 
   const run = async () => {
     setIsCalculating(true);
     setError("");
     setResult(null);
+    setHeadlineTeX("");
     try {
-      sanitizeExpr(f);
-      const workflow = await runLimitWorkflowWithTimeout(
-        f,
-        variable.trim() || "x",
-        approach,
-        locale
+      const clean = sanitizeExpr(f);
+      const v = variable.trim() || "x";
+      const workflow = await runLimitWorkflowWithTimeout(f, v, approach, locale);
+      const { formatLimitApproachTeX, exprToTeX } = await import("@/lib/calculator-math");
+      setHeadlineTeX(
+        `\\lim_{${v}\\to ${formatLimitApproachTeX(workflow.approach)}} ${exprToTeX(clean)} = ${workflow.resultTeX}`
       );
       setResult(workflow);
     } catch {
@@ -74,6 +80,7 @@ export default function LimitsCalculator({ locale }: { locale: Locale }) {
             setF(e.target.value);
             setResult(null);
           }}
+          onFocus={prefetchMath}
           className={inputClass}
           placeholder={calculatorInputPlaceholder(locale)}
         />
@@ -90,6 +97,7 @@ export default function LimitsCalculator({ locale }: { locale: Locale }) {
               setVariable(e.target.value);
               setResult(null);
             }}
+            onFocus={prefetchMath}
             className={inputClass}
             placeholder="x"
           />
@@ -104,6 +112,7 @@ export default function LimitsCalculator({ locale }: { locale: Locale }) {
               setApproach(e.target.value);
               setResult(null);
             }}
+            onFocus={prefetchMath}
             className={inputClass}
             placeholder={locale === "es" ? "ej. 2, 0, -1" : "e.g. 2, 0, -1"}
           />
@@ -120,6 +129,7 @@ export default function LimitsCalculator({ locale }: { locale: Locale }) {
               setApproach(p.a);
               setVariable("x");
               setResult(null);
+              setHeadlineTeX("");
             }}
             className="text-[0.7rem] px-2 py-1 rounded-lg border border-teal-100 bg-white text-teal-900"
           >
@@ -152,9 +162,7 @@ export default function LimitsCalculator({ locale }: { locale: Locale }) {
             <p className={`text-[0.65rem] font-bold uppercase mb-2 ${theme.accentText}`}>
               {t.result}
             </p>
-            <MathBlock
-              latex={`\\lim_{${variable}\\to ${formatLimitApproachTeX(result.approach)}} ${exprToTeX(sanitizeExpr(f))} = ${result.resultTeX}`}
-            />
+            <MathBlock latex={headlineTeX} />
             <p className="mt-3 font-mono text-sm text-slate-700 break-all">{result.result}</p>
           </div>
 
