@@ -818,6 +818,192 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       ],
     },
   },
+  {
+    id: "arctan",
+    esRoute: ES_COMMON_FUNCTION_ROUTES.derivadaDeArcotangente,
+    enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfArctan,
+    relatedIds: ["tan", "arcsin", "sin"],
+    es: {
+      title: "Derivada de Arcotangente (arctan x): Guía Paso a Paso",
+      description:
+        "Aprende a derivar arctan(x) paso a paso, con demostración y ejemplos resueltos. Verifica tu resultado en la calculadora de derivadas gratis.",
+      breadcrumbLabel: "Derivada de arcotangente",
+      category: "Funciones trigonométricas",
+      tags: ["derivada de arctan", "arcotangente", "tangente inversa"],
+      heroImageAlt: "Arcotangente y su derivada racional 1/(1+x²)",
+      image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
+      intro:
+        "La función arcotangente (arctan x, también escrita como tan⁻¹x) es la inversa de la tangente, y su derivada aparece constantemente en integrales, física y problemas de ángulos. A diferencia de sin(x) o cos(x), su derivada no es otra función trigonométrica — es una función racional. Esta guía muestra el procedimiento completo para derivarla, junto con ejemplos donde arctan(x) aparece dentro de una función compuesta, el caso donde más se cometen errores.",
+      formulaTitle: "Arcotangente",
+      formulaLatex: "\\dfrac{d}{dx}\\,\\arctan(x) = \\dfrac{1}{1+x^2}",
+      formulaExplanation:
+        "Si y = arctan(x), entonces tan(y) = x. Derivando implícitamente: sec²(y)·y′ = 1, así que y′ = 1/sec²(y) = 1/(1+tan²(y)) = 1/(1+x²).",
+      exampleTitle: "Ejemplo: arctan(2x)",
+      exampleSteps: [
+        "f(x) = arctan(2x); exterior arctan(u), u = 2x.",
+        "Derivada: 1/(1+u²) · u′.",
+        "f′(x) = 2 / (1+(2x)²) = 2/(1+4x²).",
+      ],
+      exampleLatex: "\\dfrac{d}{dx}\\arctan(2x)=\\dfrac{2}{1+4x^2}",
+      faqs: [
+        { question: "¿Cuál es la derivada de arctan(x)?", answer: "Se deriva usando la regla de la función inversa, aplicada a la tangente. Consulta la demostración completa arriba para ver el resultado paso a paso." },
+        { question: "¿Por qué la derivada de arctan(x) no es otra función trigonométrica?", answer: "Porque arctan(x) es la inversa de tan(x), no la función misma. Las derivadas de funciones trigonométricas inversas se obtienen con un método distinto (derivación implícita), y el resultado siempre es una expresión racional, no trigonométrica." },
+        { question: "¿Cómo derivo arctan(x) dentro de una función compuesta, como arctan(2x)?", answer: "Aplica la regla de la cadena: deriva arctan de la parte externa, y multiplica por la derivada de lo que está adentro (2x en este caso)." },
+      ],
+    },
+    en: {
+      title: "Derivative of Arctan (Inverse Tangent): Step-by-Step Guide",
+      description:
+        "Learn to differentiate arctan(x) step by step, with proof and worked examples. Verify your result with the free derivative calculator.",
+      breadcrumbLabel: "Derivative of arctan",
+      category: "Trigonometric functions",
+      tags: ["derivative of arctan", "inverse tangent", "arctan"],
+      heroImageAlt: "Arctangent and its rational derivative 1/(1+x²)",
+      image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
+      intro:
+        "The arctangent function (arctan x, also written tan⁻¹x) is the inverse of tangent, and its derivative shows up constantly in integrals, physics, and angle problems. Unlike sin(x) or cos(x), its derivative isn't another trig function — it's a rational function. This guide walks through the full derivation, plus examples where arctan(x) appears inside a composite function — the case where most errors happen.",
+      formulaTitle: "Arctangent",
+      formulaLatex: "\\dfrac{d}{dx}\\,\\arctan(x) = \\dfrac{1}{1+x^2}",
+      formulaExplanation:
+        "If y = arctan(x), then tan(y) = x. Implicit differentiation: sec²(y)·y′ = 1, so y′ = 1/sec²(y) = 1/(1+tan²(y)) = 1/(1+x²).",
+      exampleTitle: "Worked example: arctan(2x)",
+      exampleSteps: [
+        "f(x) = arctan(2x); outer arctan(u), u = 2x.",
+        "Derivative: 1/(1+u²) · u′.",
+        "f′(x) = 2/(1+4x²).",
+      ],
+      exampleLatex: "\\dfrac{d}{dx}\\arctan(2x)=\\dfrac{2}{1+4x^2}",
+      faqs: [
+        { question: "What is the derivative of arctan(x)?", answer: "It is obtained with the inverse-function rule applied to tangent. See the full proof above for the step-by-step result." },
+        { question: "Why isn't the derivative of arctan(x) another trigonometric function?", answer: "Because arctan(x) is the inverse of tan(x), not the function itself. Inverse trig derivatives come from implicit differentiation, and the result is always a rational expression, not a trig function." },
+        { question: "How do I differentiate arctan(x) inside a composite function, like arctan(2x)?", answer: "Use the chain rule: differentiate the outer arctan, then multiply by the derivative of the inner expression (2x in this case)." },
+      ],
+    },
+  },
+  {
+    id: "sec",
+    esRoute: ES_COMMON_FUNCTION_ROUTES.derivadaDeSecante,
+    enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfSecant,
+    relatedIds: ["tan", "cos", "sin"],
+    es: {
+      title: "Derivada de la Secante (sec x): Cómo Derivarla Paso a Paso",
+      description:
+        "Aprende a derivar sec(x) paso a paso, con demostración usando la regla del cociente y ejemplos resueltos en español.",
+      breadcrumbLabel: "Derivada de sec(x)",
+      category: "Funciones trigonométricas",
+      tags: ["derivada de sec x", "secante", "regla del cociente"],
+      heroImageAlt: "Secante y su derivada sec(x) tan(x)",
+      image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
+      intro:
+        "La secante (sec x) se define como 1/cos(x), así que su derivada se obtiene aplicando la regla del cociente — no es una fórmula que debas memorizar aislada, sino una consecuencia directa de algo que ya sabes derivar. Esta guía muestra la demostración completa partiendo de esa definición, para que entiendas de dónde sale el resultado en vez de memorizarlo sin contexto.",
+      formulaTitle: "Secante",
+      formulaLatex: "\\dfrac{d}{dx}\\,\\sec(x) = \\sec(x)\\tan(x)",
+      formulaExplanation:
+        "Con sec = 1/cos, la regla del cociente da (0·cos − 1·(−sin))/cos² = sin/cos² = (1/cos)·(sin/cos) = sec tan.",
+      exampleTitle: "Ejemplo: sec(3x)",
+      exampleSteps: [
+        "f(x) = sec(3x); exterior sec(u), u = 3x.",
+        "Derivada: sec(u) tan(u) · u′.",
+        "f′(x) = 3 sec(3x) tan(3x).",
+      ],
+      exampleLatex: "\\dfrac{d}{dx}\\sec(3x)=3\\sec(3x)\\tan(3x)",
+      faqs: [
+        { question: "¿Cuál es la derivada de sec(x)?", answer: "Se obtiene aplicando la regla del cociente a 1/cos(x). Consulta la demostración completa arriba para ver el desarrollo paso a paso." },
+        { question: "¿Necesito memorizar la derivada de sec(x) por separado?", answer: "No es indispensable — si recuerdas que sec(x) = 1/cos(x), puedes derivarla en el momento con la regla del cociente, igual que cualquier otra fracción." },
+        { question: "¿Cómo se deriva sec(x) dentro de una función compuesta?", answer: "Aplica la regla de la cadena: deriva la secante de la parte externa, y multiplica por la derivada de la expresión interna." },
+      ],
+    },
+    en: {
+      title: "Derivative of Secant (sec x): Step-by-Step Guide",
+      description:
+        "Learn to differentiate sec(x) step by step, using the quotient rule and worked examples.",
+      breadcrumbLabel: "Derivative of sec(x)",
+      category: "Trigonometric functions",
+      tags: ["derivative of sec x", "secant", "quotient rule"],
+      heroImageAlt: "Secant and its derivative sec(x) tan(x)",
+      image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
+      intro:
+        "Secant (sec x) is defined as 1/cos(x), so its derivative comes directly from applying the quotient rule — it's not a formula to memorize in isolation, it's a direct consequence of something you already know how to differentiate. This guide shows the full derivation starting from that definition, so you understand where the result comes from instead of memorizing it without context.",
+      formulaTitle: "Secant",
+      formulaLatex: "\\dfrac{d}{dx}\\,\\sec(x) = \\sec(x)\\tan(x)",
+      formulaExplanation:
+        "With sec = 1/cos, the quotient rule gives sin/cos² = (1/cos)·(sin/cos) = sec tan.",
+      exampleTitle: "Worked example: sec(3x)",
+      exampleSteps: [
+        "f(x) = sec(3x); outer sec(u), u = 3x.",
+        "Derivative: sec(u) tan(u) · u′.",
+        "f′(x) = 3 sec(3x) tan(3x).",
+      ],
+      exampleLatex: "\\dfrac{d}{dx}\\sec(3x)=3\\sec(3x)\\tan(3x)",
+      faqs: [
+        { question: "What is the derivative of sec(x)?", answer: "It comes from applying the quotient rule to 1/cos(x). See the full proof above for the step-by-step derivation." },
+        { question: "Do I need to memorize the derivative of sec(x) separately?", answer: "No — if you remember that sec(x) = 1/cos(x), you can differentiate it on the spot with the quotient rule, like any other fraction." },
+        { question: "How do I differentiate sec(x) inside a composite function?", answer: "Use the chain rule: differentiate the outer secant, then multiply by the derivative of the inner expression." },
+      ],
+    },
+  },
+  {
+    id: "arcsin",
+    esRoute: ES_COMMON_FUNCTION_ROUTES.derivadaDeArcoseno,
+    enSlug: EN_COMMON_FUNCTION_SLUGS.derivativeOfArcsin,
+    relatedIds: ["sin", "arctan", "cos"],
+    es: {
+      title: "Derivada de Arcoseno (arcsen x): Guía Paso a Paso",
+      description:
+        "Aprende a derivar arcoseno (arcsen x) paso a paso, con demostración y ejemplos resueltos en español.",
+      breadcrumbLabel: "Derivada de arcoseno",
+      category: "Funciones trigonométricas",
+      tags: ["derivada de arcsin", "arcoseno", "seno inverso"],
+      heroImageAlt: "Arcoseno y su derivada 1/√(1−x²)",
+      image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
+      intro:
+        "La función arcoseno (arcsen x, también escrita como sin⁻¹x) es la inversa del seno, y al igual que arcotangente, su derivada no es otra función trigonométrica sino una expresión con raíz cuadrada. Esta guía muestra la demostración completa por derivación implícita, además de ejemplos con funciones compuestas.",
+      formulaTitle: "Arcoseno",
+      formulaLatex: "\\dfrac{d}{dx}\\,\\arcsin(x) = \\dfrac{1}{\\sqrt{1-x^2}}",
+      formulaExplanation:
+        "Si y = arcsin(x), entonces sin(y) = x. Derivando implícitamente: cos(y)·y′ = 1, y con cos(y) = √(1−sin²(y)) = √(1−x²) se obtiene y′ = 1/√(1−x²).",
+      exampleTitle: "Ejemplo: arcsin(x/2)",
+      exampleSteps: [
+        "f(x) = arcsin(x/2); exterior arcsin(u), u = x/2.",
+        "Derivada: 1/√(1−u²) · u′.",
+        "f′(x) = (1/2) / √(1−(x/2)²) = 1 / √(4−x²).",
+      ],
+      exampleLatex: "\\dfrac{d}{dx}\\arcsin(x/2)=\\dfrac{1}{\\sqrt{4-x^2}}",
+      faqs: [
+        { question: "¿Cuál es la derivada de arcsen(x)?", answer: "Se obtiene por derivación implícita a partir de la relación entre arcoseno y seno. Consulta la demostración completa arriba para ver el resultado paso a paso." },
+        { question: "¿Por qué la derivada de arcoseno tiene una raíz cuadrada?", answer: "Porque surge de aplicar la identidad pitagórica al derivar implícitamente — el resultado incluye 1 menos x al cuadrado dentro de una raíz, como consecuencia directa de esa identidad." },
+        { question: "¿Cuál es el dominio de esta derivada?", answer: "Al igual que arcsen(x), su derivada solo está definida para valores de x entre -1 y 1 (sin incluir los extremos), ya que fuera de ese rango la expresión bajo la raíz se vuelve negativa." },
+      ],
+    },
+    en: {
+      title: "Derivative of Arcsin (Inverse Sine): Step-by-Step Guide",
+      description:
+        "Learn to differentiate arcsin(x) step by step, with proof and worked examples in a clear format.",
+      breadcrumbLabel: "Derivative of arcsin",
+      category: "Trigonometric functions",
+      tags: ["derivative of arcsin", "inverse sine", "arcsin"],
+      heroImageAlt: "Arcsine and its derivative 1/√(1−x²)",
+      image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
+      intro:
+        "The arcsine function (arcsin x, also written sin⁻¹x) is the inverse of sine, and like arctangent, its derivative isn't another trig function — it's an expression involving a square root. This guide shows the full implicit-differentiation proof, plus examples with composite functions.",
+      formulaTitle: "Arcsine",
+      formulaLatex: "\\dfrac{d}{dx}\\,\\arcsin(x) = \\dfrac{1}{\\sqrt{1-x^2}}",
+      formulaExplanation:
+        "If y = arcsin(x), then sin(y) = x. Implicit differentiation: cos(y)·y′ = 1, and with cos(y) = √(1−sin²(y)) = √(1−x²) you get y′ = 1/√(1−x²).",
+      exampleTitle: "Worked example: arcsin(x/2)",
+      exampleSteps: [
+        "f(x) = arcsin(x/2); outer arcsin(u), u = x/2.",
+        "Derivative: 1/√(1−u²) · u′.",
+        "f′(x) = 1/√(4−x²).",
+      ],
+      exampleLatex: "\\dfrac{d}{dx}\\arcsin(x/2)=\\dfrac{1}{\\sqrt{4-x^2}}",
+      faqs: [
+        { question: "What is the derivative of arcsin(x)?", answer: "It comes from implicit differentiation using the relationship between arcsine and sine. See the full proof above for the step-by-step result." },
+        { question: "Why does the derivative of arcsin have a square root?", answer: "Because it comes from the Pythagorean identity during implicit differentiation — the result includes 1 minus x squared under a root, as a direct consequence of that identity." },
+        { question: "What is the domain of this derivative?", answer: "Like arcsin(x), its derivative is only defined for x between −1 and 1 (excluding the endpoints), because outside that range the expression under the root becomes negative." },
+      ],
+    },
+  },
 ];
 
 export function getCommonFunctionDefByEsRoute(route: string): CommonFunctionPageDef | undefined {

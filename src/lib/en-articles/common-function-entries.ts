@@ -16,6 +16,9 @@ const NEW_EN_SLUGS = new Set([
   "derivative-of-log-x",
   "derivative-of-1-over-x",
   "derivative-of-a-constant",
+  "derivative-of-arctan",
+  "derivative-of-secant",
+  "derivative-of-arcsin",
 ]);
 
 /** EN article entries for common-function pages not already in the main registry. */

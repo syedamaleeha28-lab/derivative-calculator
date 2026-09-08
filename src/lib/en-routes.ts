@@ -19,6 +19,9 @@ export const EN_ROUTES = {
   derivativeOfSinX: "/en/derivative-of-sin-x",
   derivativeOfCosX: "/en/derivative-of-cos-x",
   derivativeOfTanX: "/en/derivative-of-tan-x",
+  derivativeOfArctan: "/en/derivative-of-arctan",
+  derivativeOfSecant: "/en/derivative-of-secant",
+  derivativeOfArcsin: "/en/derivative-of-arcsin",
   derivativeOfLnX: "/en/derivative-of-ln-x",
   derivativeOfEToTheX: "/en/derivative-of-e-to-the-x",
   /** @deprecated Use derivativeOfEToTheX — kept for internal link aliases. */
@@ -96,4 +99,7 @@ export const EN_ARTICLE_PAGES = [
   EN_ROUTES.derivativeOfLogX,
   EN_ROUTES.derivativeOf1OverX,
   EN_ROUTES.derivativeOfAConstant,
+  EN_ROUTES.derivativeOfArctan,
+  EN_ROUTES.derivativeOfSecant,
+  EN_ROUTES.derivativeOfArcsin,
 ] as const;

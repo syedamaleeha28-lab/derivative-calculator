@@ -17,6 +17,9 @@ export const ES_COMMON_FUNCTION_ROUTES = {
   derivadaDeSinX: "/derivada-de-sin-x",
   derivadaDeCosX: "/derivada-de-cos-x",
   derivadaDeTanX: "/derivada-de-tan-x",
+  derivadaDeArcotangente: "/derivada-de-arcotangente",
+  derivadaDeSecante: "/derivada-de-secante",
+  derivadaDeArcoseno: "/derivada-de-arcoseno",
 } as const;
 
 /** English article slugs (under /en/). */
@@ -33,6 +36,9 @@ export const EN_COMMON_FUNCTION_SLUGS = {
   derivativeOfSinX: "derivative-of-sin-x",
   derivativeOfCosX: "derivative-of-cos-x",
   derivativeOfTanX: "derivative-of-tan-x",
+  derivativeOfArctan: "derivative-of-arctan",
+  derivativeOfSecant: "derivative-of-secant",
+  derivativeOfArcsin: "derivative-of-arcsin",
 } as const;
 
 export const ES_COMMON_FUNCTION_ROUTE_LIST = Object.values(ES_COMMON_FUNCTION_ROUTES);
