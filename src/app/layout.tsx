@@ -50,6 +50,13 @@ export default async function RootLayout({
       className={`${inter.variable} ${dmSerif.variable} h-full scroll-smooth`}
       data-scroll-behavior="smooth"
     >
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4540685883116257"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="min-h-full flex flex-col font-sans antialiased bg-white text-slate-900">
         <GoogleAnalytics />
         {children}
