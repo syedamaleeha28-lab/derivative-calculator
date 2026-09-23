@@ -68,6 +68,11 @@ export function buildSoftwareApplicationNode(opts: {
   };
 }
 
+export type SchemaThing = {
+  "@type": "Thing";
+  name: string;
+};
+
 export function buildWebPageNode(opts: {
   id: string;
   url: string;
@@ -77,6 +82,8 @@ export function buildWebPageNode(opts: {
   websiteId?: string;
   mainEntityId?: string;
   speakableSelectors?: string[];
+  /** Optional topical entities (schema.org Thing). Omitted when unset. */
+  about?: SchemaThing[];
 }) {
   return {
     "@type": "WebPage" as const,
@@ -87,6 +94,7 @@ export function buildWebPageNode(opts: {
     inLanguage: schemaLanguage(opts.locale),
     ...(opts.websiteId ? { isPartOf: { "@id": opts.websiteId } } : {}),
     ...(opts.mainEntityId ? { mainEntity: { "@id": opts.mainEntityId } } : {}),
+    ...(opts.about?.length ? { about: opts.about } : {}),
     ...(opts.speakableSelectors?.length
       ? {
           speakable: {

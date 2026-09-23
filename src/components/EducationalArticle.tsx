@@ -91,6 +91,8 @@ interface ArticleProps {
     educationalLevel: string;
     teaches: string;
   };
+  /** Optional WebPage.about Thing entities (opt-in per page; e.g. L'Hôpital). */
+  schemaAbout?: readonly { "@type": "Thing"; name: string }[];
 }
 
 // ─── Content Blocks ──────────────────────────────────────────────────────────
@@ -186,6 +188,7 @@ export default function ArticleLayout({
   calculatorHref,
   omitArticleJsonLd = false,
   learningResource,
+  schemaAbout,
 }: ArticleProps) {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
@@ -261,6 +264,7 @@ export default function ArticleLayout({
       name: "Calculadora Derivadas",
       url: SITE_URL,
     },
+    ...(schemaAbout?.length ? { about: [...schemaAbout] } : {}),
   };
 
   const articleSchema = {

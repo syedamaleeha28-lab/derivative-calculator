@@ -82,6 +82,11 @@ export function buildHomePageSchemaGraph() {
     websiteId,
     mainEntityId: softwareId,
     speakableSelectors: ["#hero-heading", "#faq"],
+    about: [
+      { "@type": "Thing", name: "Derivada" },
+      { "@type": "Thing", name: "Differential calculus" },
+      { "@type": "Thing", name: "Differentiation rules" },
+    ],
   });
 
   const softwareApplication = buildSoftwareApplicationNode({

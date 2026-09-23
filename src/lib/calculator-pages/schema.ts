@@ -10,11 +10,27 @@ import {
   buildWebPageNode,
   organizationRef,
   schemaLanguage,
+  type SchemaThing,
 } from "./schema-shared";
 import {
   DEFAULT_SOFTWARE_APPLICATION_DESCRIPTION,
   deriveSoftwareApplicationName,
 } from "../software-application-schema";
+import { ES_CALCULATOR_ROUTES } from "../es-routes";
+
+/** Topical WebPage.about entities — only for specific calculator paths. */
+const ABOUT_BY_PATH: Partial<Record<string, SchemaThing[]>> = {
+  [ES_CALCULATOR_ROUTES.limits]: [
+    { "@type": "Thing", name: "Límite (matemática)" },
+    { "@type": "Thing", name: "Derivada" },
+    { "@type": "Thing", name: "Limit (mathematics)" },
+  ],
+  [ES_CALCULATOR_ROUTES.continuity]: [
+    { "@type": "Thing", name: "Función continua" },
+    { "@type": "Thing", name: "Continuous function" },
+    { "@type": "Thing", name: "Classification of discontinuities" },
+  ],
+};
 
 const TEACHES_BY_KIND: Record<SpecializedCalculatorKind, { es: string; en: string }> = {
   "product-rule": {
@@ -131,6 +147,7 @@ export function buildCalculatorPageSchema(page: CalculatorPageConfig, locale: Lo
   );
 
   const faq = buildFaqSchema(page.faqs, pageUrl, locale);
+  const about = ABOUT_BY_PATH[page.path];
 
   const graph: Record<string, unknown>[] = [buildOrganizationNode(), breadcrumb];
 
@@ -148,6 +165,7 @@ export function buildCalculatorPageSchema(page: CalculatorPageConfig, locale: Lo
         websiteId,
         mainEntityId: softwareId,
         speakableSelectors: ["#hero-heading", "#faq"],
+        about,
       }),
       buildSoftwareApplicationNode({
         id: softwareId,
@@ -181,6 +199,7 @@ export function buildCalculatorPageSchema(page: CalculatorPageConfig, locale: Lo
         locale,
         websiteId,
         speakableSelectors: ["#hero-heading", "#faq"],
+        about,
       })
     );
   }

@@ -5,6 +5,7 @@ import ArticleLayout from "@/components/EducationalArticle";
 import { SpecializedCalculator } from "@/components/specialized-calculators";
 import { metadataFromEntry } from "@/lib/seo";
 import { ES_MAIN_CALCULATOR_HREF } from "@/lib/routes";
+import { ES_AUTHORITY_ROUTES } from "@/lib/es-authority-routes";
 import { getEsAuthorityByRoute } from "./index";
 import type { EsAuthorityEntry } from "./types";
 
@@ -38,6 +39,15 @@ export function EsAuthorityPage({ entry }: { entry: EsAuthorityEntry }) {
       </div>
     ) : null;
 
+  const schemaAbout =
+    entry.route === ES_AUTHORITY_ROUTES.reglaDeLHopital
+      ? ([
+          { "@type": "Thing" as const, name: "Regla de l'Hôpital" },
+          { "@type": "Thing" as const, name: "Indeterminate form" },
+          { "@type": "Thing" as const, name: "L'Hôpital's rule" },
+        ] as const)
+      : undefined;
+
   return (
     <ArticleLayout
       title={entry.title}
@@ -63,6 +73,7 @@ export function EsAuthorityPage({ entry }: { entry: EsAuthorityEntry }) {
       heroImageAlt={entry.heroImageAlt}
       image={entry.image}
       learningResource={entry.learningResource}
+      schemaAbout={schemaAbout}
       showArticleMeta
       calculatorHref={ES_MAIN_CALCULATOR_HREF}
     />
