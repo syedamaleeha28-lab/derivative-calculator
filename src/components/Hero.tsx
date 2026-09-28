@@ -64,13 +64,13 @@ export default function Hero() {
                   id="hero-description"
                   className="text-[0.9rem] sm:text-[1rem] lg:text-[1.05rem] text-slate-600 leading-relaxed max-w-md"
                 >
-                  Escribe f(x), calcula al instante y revisa cada paso con precision simbolica.
+                  Escribe f(x), calcula al instante y revisa cada paso con precisión simbólica.
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-2 pt-1">
                 <TrustPill icon={<Check size={12} />} text="Gratis" />
                 <TrustPill icon={<BookOpen size={12} />} text="Paso a paso" />
-                <TrustPill icon={<Zap size={12} />} text="Precision simbolica" />
+                <TrustPill icon={<Zap size={12} />} text="Precisión simbólica" />
               </div>
             </motion.div>
           </div>

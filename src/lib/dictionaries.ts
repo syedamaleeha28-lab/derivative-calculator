@@ -566,6 +566,10 @@ const dictionaryData = {
           a: "Escribe la función en el campo principal (por ejemplo sin(x)*x^2 o ln(x)), elige la variable y pulsa Calcular. Luego revisa las derivadas paso a paso que muestra el motor simbólico.",
         },
         {
+          q: "¿Por qué 3/2x y 3/(2*x) no coinciden?",
+          a: "Porque el motor no las lee igual. 3/2x se interpreta como 3/2*x: las dos son (3/2)·x, o sea (3x)/2, y la derivada es 3/2. En cambio 3/(2*x) es 3/(2x), y la derivada es −3/(2x²). Para dejar la x en el denominador, escribe todo el denominador entre paréntesis: 3/(2*x).",
+        },
+        {
           q: "¿La calculadora de derivadas es gratuita?",
           a: "Sí. Es una calculadora matemática gratuita orientada al aprendizaje, accesible desde navegador sin instalar programas.",
         },
@@ -811,7 +815,7 @@ const dictionaryData = {
           id: "online",
           h2: "Por qué usar una calculadora de derivadas online",
           paragraphs: [
-            "Una calculadora de derivadas online concentra en un solo lugar el cálculo simbólico, la simplificación algebraica y la presentación ordenada del resultado. A diferencia de hojas de cálculo genéricas, está pensada para notación matemática habitual en bachillerato y universidad: potencias, fracciones, funciones compuestas y constantes con nombre.",
+            "Una calculadora de derivadas online concentra en un solo lugar el cálculo simbólico, la simplificación algebraica y la presentación ordenada del resultado. A diferencia de hojas de cálculo genéricas, está pensada para notación matemática habitual en bachillerato o secundaria, y en la universidad: potencias, fracciones, funciones compuestas y constantes con nombre.",
             "Las derivadas online son especialmente útiles cuando el tiempo de estudio es limitado: puedes contrastar un ejercicio en segundos y dedicar el resto del bloque a entender por qué se aplicó cada regla. Eso refuerza el cálculo diferencial de forma activa, no pasiva.",
             "Nuestra plataforma prioriza la claridad en español, sin barreras de idioma ni rutas alternativas que dispersen al estudiante. Todo el recorrido —desde la introducción de la función hasta el resultado— permanece en un flujo coherente.",
           ],
@@ -900,7 +904,7 @@ const dictionaryData = {
           h2: "Derivadas parciales en funciones de varias variables",
           paragraphs: [
             "Las derivadas parciales miden la tasa de cambio respecto a una variable manteniendo las demás fijas. La notación ∂f/∂x o f_x es estándar en libros de cálculo multivariable.",
-            "En aplicaciones reales —mapas de calor, elasticidad en economía, gradientes— las derivadas parciales conectan modelos simples con fenómenos multidimensionales. La calculadora ayuda a verificar resultados cuando la algebra se extiende.",
+            "En aplicaciones reales —mapas de calor, elasticidad en economía, gradientes— las derivadas parciales conectan modelos simples con fenómenos multidimensionales. La calculadora ayuda a verificar resultados cuando el álgebra se extiende.",
             "Si tu asignatura aún no cubre varias variables, puedes posponer este bloque y centrarte en derivadas ordinarias con los ejemplos básicos.",
           ],
         },

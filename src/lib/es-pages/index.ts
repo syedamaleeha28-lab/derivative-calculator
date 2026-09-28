@@ -29,7 +29,7 @@ export const ES_CALCULATOR_PAGES: Record<string, CalculatorPageConfig> = {
     h1: "Calculadora de Derivadas Parciales con Pasos Online",
     tag: "Herramienta Académica Gratuita",
     intro: [
-      "Esta calculadora de derivadas parciales te permite calcular ∂f/∂x, ∂f/∂y y otras derivadas respecto a una variable, manteniendo las demás constantes. Es ideal para cálculo multivariable, ingeniería y modelos con más de una incógnita.",
+      "Esta calculadora de derivadas parciales te permite calcular ∂f/∂x, ∂f/∂y y otras derivadas respecto a una variable, manteniendo las demás constantes. La variable se elige con los botones ∂/∂x, ∂/∂y o ∂/∂z, por ejemplo en materias como Análisis Matemático II. Es ideal para cálculo multivariable, ingeniería y modelos con más de una incógnita.",
       "Introduce tu función, elige la variable de derivación en opciones avanzadas y obtén el resultado simbólico con el desglose paso a paso. Comprueba tus ejercicios de clase antes del examen.",
     ],
     meta: {
@@ -246,7 +246,7 @@ export const ES_CALCULATOR_PAGES: Record<string, CalculatorPageConfig> = {
     tag: "Herramienta Académica Gratuita",
     intro: [
       "La derivación implícita permite hallar dy/dx cuando y no está despejada explícitamente, como en círculos x² + y² = r² o relaciones trigonométricas mixtas. Esta calculadora de derivadas implícitas aplica la regla de la cadena en cada término con y.",
-      "En lugar de despejar y primero, deriva ambos lados respecto a x, trata y como y(x) y despeja dy/dx. La herramienta automatiza el álgebra simbólico y muestra el razonamiento.",
+      "En lugar de despejar y primero, deriva ambos lados respecto a x, trata y como y(x) y despeja dy/dx. La herramienta automatiza el álgebra simbólica y muestra el razonamiento.",
     ],
     meta: {
       title: "Calculadora de Derivadas Implícitas — Halla dy/dx sin Despejar",

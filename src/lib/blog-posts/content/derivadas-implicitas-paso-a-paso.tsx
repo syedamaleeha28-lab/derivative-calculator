@@ -217,7 +217,7 @@ export function DerivadasImplicitasContent() {
           en una línea, válida en cada rama donde y ≠ 0. Esa economía es la razón práctica del método.
         </p>
         <p>
-          En ecuaciones de grado superior en y, despejar puede introducir raíces extranas o
+          En ecuaciones de grado superior en y, despejar puede introducir raíces extrañas o
           expresiones enormes. El método implícito mantiene la ecuación original como referencia,
           lo que reduce errores algebraicos en problemas de tangente y normal.
         </p>

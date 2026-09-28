@@ -220,6 +220,14 @@ export function AplicacionesDeLaDerivadaContent() {
             "Aceleración: a(t) = s″(t) = 6t − 12; a(1) = −6 m/s² y a(3) = 6 m/s².",
           ]}
         />
+        <ExampleCard
+          title="Velocidad en un instante"
+          steps={[
+            "Sea s(t) = t² + 4t la posición en metros, con t en segundos.",
+            "De 0 a 2 segundos el desplazamiento es s(2) − s(0) = 12 metros, así que la velocidad media es 12/2 = 6 m/s.",
+            "La velocidad instantánea es v(t) = s′(t) = 2t + 4. En t = 2 s vale v(2) = 8 m/s, distinta de la media del intervalo.",
+          ]}
+        />
         <p>
           Para derivadas sucesivas de la posición (incluida la tercera derivada o «jerk»), usa la{" "}
           <Link

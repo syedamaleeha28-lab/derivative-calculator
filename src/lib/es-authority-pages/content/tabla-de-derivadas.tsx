@@ -22,8 +22,8 @@ export function TablaDeDerivadasContent() {
       <section>
         <h2 id="intro">Tabla de derivadas: consulta rápida</h2>
         <p>
-          Esta tabla de derivadas reúne las fórmulas más usadas en bachillerato y cálculo introductorio. Úsala para
-          repasar antes de un examen, como chuleta de estudio (mejor si la reconstruyes de memoria) o como índice
+          Esta tabla de derivadas reúne las fórmulas más usadas en bachillerato o secundaria, y en cálculo introductorio. Úsala para
+          repasar antes de un examen, un parcial o un final, como chuleta de estudio (mejor si la reconstruyes de memoria) o como índice
           hacia guías más profundas del sitio. Cada fila enlaza conceptualmente con las{" "}
           <Link href={ES_AUTHORITY_ROUTES.reglasDeDerivacion} className="text-violet-600 font-semibold hover:underline">
             reglas de derivación

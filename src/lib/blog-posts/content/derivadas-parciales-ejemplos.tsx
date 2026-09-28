@@ -206,7 +206,7 @@ export function DerivadasParcialesEjemplosContent() {
         <p>
           El vector {renderMath("\\nabla f = (f_x, f_y)")} apunta en la dirección de máximo crecimiento local.
           En optimización sin restricciones, los candidatos a extremos libres suelen satisfacer {renderMath("f_x=0")}
-          y {renderMath("f_y=0")} simultáneamente. Resolver ese sistema es algebra, no magia: iguala cada parcial
+          y {renderMath("f_y=0")} simultáneamente. Resolver ese sistema es álgebra, no magia: iguala cada parcial
           a cero y despeja.
         </p>
         <p>

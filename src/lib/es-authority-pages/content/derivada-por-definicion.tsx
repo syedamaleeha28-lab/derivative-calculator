@@ -63,6 +63,16 @@ export function DerivadaPorDefinicionContent() {
       </section>
 
       <section>
+        <h2 id="velocidad-media-e-instantanea">Velocidad media y velocidad instantánea</h2>
+        <p>
+          Si un móvil recorre 30 metros en 6 segundos, la velocidad media es 30/6 = 5 m/s: un solo número para todo
+          el tramo. La velocidad instantánea pregunta qué pasa en un instante. Se toma un incremento de tiempo h, se
+          arma el cociente [s(t+h) − s(t)] / h y se hace tender h a 0. Ese cociente es la pendiente de la recta
+          secante; el límite es la pendiente de la tangente, y ese valor es s′(t).
+        </p>
+      </section>
+
+      <section>
         <h2 id="cociente-incremental">El cociente incremental</h2>
         <FormulaCard title="Cociente incremental (pendiente de la secante)">
           {renderMath("\\dfrac{\\Delta y}{\\Delta x} = \\dfrac{f(x+h) - f(x)}{h}", true)}

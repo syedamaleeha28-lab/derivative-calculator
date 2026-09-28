@@ -22,7 +22,7 @@ export const productRulePage: CalculatorPageConfig = {
   h1: "Calculadora Regla del Producto con Pasos Online",
   intro: [
     "La regla del producto resuelve una situación cotidiana del cálculo: derivar dos funciones multiplicadas entre sí. Si h(x) = u(x)·v(x), no basta con derivar cada factor por separado; hay que sumar el producto de la derivada del primero por el segundo más el primero por la derivada del segundo. Esta calculadora regla del producto aplica esa fórmula de forma simbólica y muestra cada paso intermedio.",
-    "Expresiones como x·sin(x), e^x·cos(x) o x²·ln(x) aparecen en prácticamente todo curso de cálculo diferencial. Antes de expandir algebraicamente, conviene reconocer la estructura de producto: dos factores claramente identificables, cada uno con su propia regla de derivación interna.",
+    "Expresiones como x·sin(x), e^x·cos(x) o x²·ln(x) aparecen en prácticamente todo curso de cálculo diferencial, como Análisis Matemático I. Antes de expandir algebraicamente, conviene reconocer la estructura de producto: dos factores claramente identificables, cada uno con su propia regla de derivación interna.",
     "Introduce tu función en notación estándar, pulsa calcular y compara el desglose automático con tu trabajo manual. La herramienta nombra explícitamente la regla del producto en la traza de la solución, lo que facilita detectar errores de signo o factores omitidos de la regla de la cadena.",
   ],
   meta: {
@@ -435,9 +435,9 @@ export const secondDerivativePage: CalculatorPageConfig = {
   embedCalculator: true,
   h1: "Calculadora de Segunda Derivada con Pasos Online",
   intro: [
-    "La segunda derivada f″(x) mide cómo cambia la pendiente de una función: si la curva se curva hacia arriba (cóncava hacia arriba) o hacia abajo, y si un punto crítico corresponde a un máximo o un mínimo local. Es el siguiente paso natural después de calcular f′(x).",
+    "La segunda derivada f″(x) mide cómo cambia la pendiente de una función: si la curva se curva hacia arriba (cóncava hacia arriba) o hacia abajo, y si un punto crítico corresponde a un máximo o un mínimo local. La segunda derivada es la derivada de la derivada: se obtiene derivando f′(x). Es el siguiente paso natural después de calcular f′(x).",
     "En física, si s(t) es la posición, la segunda derivada respecto al tiempo es la aceleración. En economía y optimización, f″ ayuda a clasificar extremos mediante el criterio de la segunda derivada. Esta calculadora de segunda derivada deriva dos veces y muestra cada etapa del proceso.",
-    "Introduce tu función, obtén primero f′(x) en la traza y continúa hasta f″(x). Usa el resultado para estudiar concavidad, posibles puntos de inflexión y para verificar ejercicios de análisis de gráficas antes del examen.",
+    "Introduce tu función, obtén primero f′(x) en la traza y continúa hasta f″(x). Usa el resultado para estudiar concavidad, posibles puntos de inflexión y para verificar ejercicios de análisis de gráficas antes del examen, sea un parcial, un final o un trabajo práctico (TP).",
   ],
   meta: {
     title: "Calculadora de Segunda Derivada — Concavidad al Instante",
@@ -643,7 +643,7 @@ export const higherOrderDerivativePage: CalculatorPageConfig = {
   h1: "Calculadora de Derivadas de Orden Superior con Pasos",
   intro: [
     "Las derivadas de orden superior son las que se obtienen al derivar repetidamente: la tercera derivada f‴(x) describe cómo cambia la concavidad; la cuarta y siguientes aparecen en series de Taylor, ecuaciones diferenciales y análisis de movimiento (jerk, snap).",
-    "Cada orden aplica las mismas reglas —potencia, producto, cociente, cadena— sobre el resultado del orden anterior. La complejidad crece, pero los patrones en polinomios, senos, cosenos y exponenciales son predecibles y merecen estudio sistemático.",
+    "Cada orden aplica las mismas reglas —potencia, producto, cociente, cadena— sobre el resultado del orden anterior. La segunda derivada es la derivada de la derivada: se obtiene derivando f′(x). La complejidad crece, pero los patrones en polinomios, senos, cosenos y exponenciales son predecibles y merecen estudio sistemático.",
     "Esta calculadora de derivadas de orden superior te ayuda a calcular f⁽ⁿ⁾(x) con trazas simbólicas claras. Deriva en secuencia, compara con tu trabajo manual y detecta en qué paso se introdujo un error algebraico.",
   ],
   meta: {
@@ -770,7 +770,7 @@ export const higherOrderDerivativePage: CalculatorPageConfig = {
       h2: "Patrones en funciones elementales",
       paragraphs: [
         "Polinomio de grado n: la (n+1)-ésima derivada es 0. Ejemplo: x⁵ → quinta derivada 120, sexta 0. Es una comprobación rápida de coherencia.",
-        "e^x: toda derivada es e^x. e^(kx): cada orden introduce factor k acumulado: f⁽ⁿ⁾(x) = k^n e^(kx).",
+        "e^x: toda derivada es e^x. e^(kx): cada orden introduce un factor k acumulado: f⁽ⁿ⁾(x) = k^n e^(kx).",
         "sin(x) y cos(x): ciclo de longitud 4. sin → cos → −sin → −cos → sin. Memorizar el ciclo evita recomputar desde cero.",
       ],
     },

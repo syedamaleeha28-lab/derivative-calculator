@@ -44,7 +44,7 @@ export function ErroresComunesAlDerivarContent() {
         <h2 id="lista-errores">Los diez errores que más aparecen en exámenes</h2>
         <p>
           Cada apartado tiene un identificador para la tabla de contenidos. Marca en tu cuaderno los que
-          reconozcas; repásalos el día antes del parcial con problemas tomados al azar.
+          reconozcas; repásalos el día antes del parcial o del final con problemas tomados al azar de tu guía de ejercicios.
         </p>
 
         <h3 id="error-producto">Error 1: derivar un producto factor a factor</h3>

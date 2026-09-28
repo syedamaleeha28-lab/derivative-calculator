@@ -91,7 +91,7 @@ export function ComoDerivarFraccionesContent() {
 
       <section>
         <h2 id="estrategia">Estrategia antes de derivar</h2>
-        <h3 id="simplificar">Simplificar algebraica mente</h3>
+        <h3 id="simplificar">Simplificar algebraicamente</h3>
         <p>
           Si el denominador divide al numerador (polinomios), la división larga o la factorización pueden
           convertir la fracción en suma de polinomios más restos. Derivar sumas es más estable que un

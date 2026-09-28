@@ -228,7 +228,7 @@ const es: Record<string, LegalPageContent> = {
         id: "who",
         title: "Quiénes somos",
         paragraphs: [
-          "Calculadora Derivadas (calculadora-derivadas.org) es un proyecto educativo independiente dedicado a hacer el cálculo diferencial más accesible para estudiantes de bachillerato, universidad y docentes que buscan una referencia clara en español.",
+          "Calculadora Derivadas (calculadora-derivadas.org) es un proyecto educativo independiente dedicado a hacer el cálculo diferencial más accesible para estudiantes de bachillerato o secundaria, de universidad y docentes que buscan una referencia clara en español.",
           "Combinamos una calculadora simbólica en línea con guías, reglas de derivación, ejemplos resueltos y artículos de blog. El sitio está disponible principalmente en español, con recursos complementarios en inglés para ampliar el alcance educativo.",
         ],
       },

@@ -103,7 +103,7 @@ export function FormulasDeDerivadasContent() {
           muestran u, v y sus derivadas paso a paso.
         </p>
         <WarningCard>
-          Nunca confundas (uv)′ con u′v′ ni (u/v)′ con u′/v′. Son errores entre los más frecuentes en bachillerato y
+          Nunca confundas (uv)′ con u′v′ ni (u/v)′ con u′/v′. Son errores entre los más frecuentes en bachillerato o secundaria, y en
           primer curso universitario.
         </WarningCard>
       </section>
@@ -185,7 +185,7 @@ export function FormulasDeDerivadasContent() {
         </FormulaCard>
         <p>
           Los dominios importan: arcsin y arccos requieren |x| &lt; 1 en la fórmula estándar. Con argumento compuesto
-          g(x), multiplica por g′(x). Estas fórmulas suelen aparecer en cursos avanzados de bachillerato o primer
+          g(x), multiplica por g′(x). Estas fórmulas suelen aparecer en cursos avanzados de bachillerato o de secundaria, o en el primer
           semestre universitario.
         </p>
       </section>

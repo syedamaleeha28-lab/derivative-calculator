@@ -181,7 +181,7 @@ export function DerivadaDeCosXContent() {
         <h2 id="tabla-trig">Tabla de derivadas trigonométricas</h2>
         <p>
           La derivada de cos x encaja en un bloque que conviene tener a mano junto con seno y tangente.
-          Repásala antes de parciales y combínala con la página de{" "}
+          Repásala antes de parciales, y al resolver un trabajo práctico (TP), y combínala con la página de{" "}
           <Link href="/reglas-de-derivacion" className="text-violet-600 font-semibold hover:underline">
             reglas de derivación
           </Link>
