@@ -15,6 +15,7 @@ import { DerivadasParaPrincipiantesContent } from "./content/derivadas-para-prin
 import { ComoAprenderDerivadasDesdeCeroContent } from "./content/como-aprender-derivadas-desde-cero";
 import { EntendiendoReglaDeLaCadenaContent } from "./content/entendiendo-regla-de-la-cadena";
 import { EjerciciosDeLimitesResueltosContent } from "./content/ejercicios-de-limites-resueltos";
+import { ComprobarDerivadaConCalculadoraCientificaContent } from "./content/comprobar-derivada-con-calculadora-cientifica";
 
 const AUTHOR = SITE_AUTHOR;
 
@@ -33,6 +34,46 @@ function entry(
 }
 
 export const BLOG_POST_ENTRIES: BlogPostEntry[] = [
+  entry({
+    slug: "comprobar-derivada-con-calculadora-cientifica",
+    title: "Cómo comprobar una derivada con una calculadora científica",
+    description:
+      "Aprende un método de cuatro pasos para verificar tus derivadas con la tecla d/dx de una calculadora científica, y qué errores evitar antes de un parcial.",
+    date: "28 de Septiembre, 2026",
+    dateIso: "2026-09-28",
+    readTime: "6 min",
+    category: "Ejemplos",
+    tags: ["comprobar derivada", "calculadora científica", "tecla d/dx"],
+    author: AUTHOR,
+    heroImageAlt: "Comprobar el valor numérico de una derivada con la tecla d/dx de una calculadora científica",
+    faqs: [
+      {
+        question: "¿La calculadora científica me da la derivada como fórmula?",
+        answer:
+          "No. Da el valor numérico de la derivada en un punto que tú eliges. Por eso sirve para comprobar, no para resolver.",
+      },
+      {
+        question: "¿Cuántos valores de x conviene probar?",
+        answer:
+          "Al menos dos. Un solo punto puede coincidir por casualidad aunque la fórmula tenga un error.",
+      },
+      {
+        question: "¿Por qué me da un resultado casi igual pero no exacto?",
+        answer:
+          "Porque calcula la derivada de forma numérica, como una aproximación. Una diferencia mínima es normal.",
+      },
+      {
+        question: "¿Sirve para funciones trigonométricas?",
+        answer: "Sí, siempre que la calculadora esté en modo radianes.",
+      },
+    ],
+    relatedPosts: [
+      { title: "Errores comunes al derivar", slug: "errores-comunes-al-derivar" },
+      { title: "Ejemplos de derivadas resueltas", slug: "ejemplos-de-derivadas-resueltas" },
+    ],
+    breadcrumbLabel: "Comprobar con calculadora",
+    Content: ComprobarDerivadaConCalculadoraCientificaContent,
+  }),
   entry({
     slug: "ejercicios-de-limites-resueltos",
     title: "Ejercicios de Límites Resueltos: De lo Básico a L'Hôpital",
