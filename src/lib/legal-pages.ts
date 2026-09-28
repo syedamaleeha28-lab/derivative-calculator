@@ -16,6 +16,8 @@ export type LegalPageContent = {
 
 const LAST_UPDATED = "2026-05-17";
 
+export const CONTACT_EMAIL = "calculadora.derivadas.dx@gmail.com";
+
 const es: Record<string, LegalPageContent> = {
   privacy: {
     title: "Política de Privacidad",
@@ -91,7 +93,7 @@ const es: Record<string, LegalPageContent> = {
         id: "contact",
         title: "9. Contacto",
         paragraphs: [
-          "Para preguntas sobre privacidad, visita nuestra página de contacto o escríbenos a través de las redes sociales oficiales enlazadas en el sitio.",
+          `Para preguntas sobre privacidad, escríbenos a ${CONTACT_EMAIL} o visita nuestra página de contacto. También puedes usar las redes sociales oficiales enlazadas en el sitio.`,
         ],
       },
     ],
@@ -287,7 +289,8 @@ const es: Record<string, LegalPageContent> = {
         id: "reach",
         title: "Cómo contactarnos",
         paragraphs: [
-          "Puedes escribirnos a través de nuestra página de Facebook oficial (enlace en el pie de página) o dejar comentarios en publicaciones del blog educativo.",
+          `La forma más directa de contactarnos es por correo: ${CONTACT_EMAIL}.`,
+          "También puedes escribirnos a través de nuestra página de Facebook oficial (enlace en el pie de página) o dejar comentarios en publicaciones del blog educativo.",
           "Para consultas sobre privacidad o datos personales, indica «Privacidad» en el asunto de tu mensaje.",
         ],
       },

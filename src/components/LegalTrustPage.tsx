@@ -1,8 +1,10 @@
+import { Fragment } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import Link from "next/link";
 import { dict } from "@/lib/dictionaries";
+import { CONTACT_EMAIL } from "@/lib/legal-pages";
 import {
   FOOTER_LEGAL_PAGES,
   getLegalPath,
@@ -20,6 +22,25 @@ import { buildBreadcrumbSchema } from "@/lib/calculator-pages/schema";
 import { NUESTROS_PROYECTOS_PATH } from "@/lib/nuestros-proyectos";
 
 const EDITORIAL_TEAM_ID = `${SITE_URL}/#editorial-team` as const;
+
+function renderParagraph(paragraph: string) {
+  if (!paragraph.includes(CONTACT_EMAIL)) return paragraph;
+
+  const parts = paragraph.split(CONTACT_EMAIL);
+  return parts.map((part, index) => (
+    <Fragment key={index}>
+      {part}
+      {index < parts.length - 1 ? (
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          className="font-medium text-secondary hover:underline"
+        >
+          {CONTACT_EMAIL}
+        </a>
+      ) : null}
+    </Fragment>
+  ));
+}
 
 type LegalTrustPageProps = {
   pageId: LegalPageId;
@@ -160,7 +181,7 @@ export default function LegalTrustPage({ pageId }: LegalTrustPageProps) {
                 <h2 className="text-xl font-bold text-slate-900 mb-3">{section.title}</h2>
                 <div className="space-y-3 text-slate-600 leading-relaxed text-[0.95rem]">
                   {section.paragraphs.map((paragraph, i) => (
-                    <p key={i}>{paragraph}</p>
+                    <p key={i}>{renderParagraph(paragraph)}</p>
                   ))}
                 </div>
               </section>
