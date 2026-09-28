@@ -15,6 +15,7 @@ export type LegalPageContent = {
 };
 
 const LAST_UPDATED = "2026-05-17";
+const CONTENT_UPDATED = "2026-09-28";
 
 export const CONTACT_EMAIL = "calculadora.derivadas.dx@gmail.com";
 
@@ -23,7 +24,7 @@ const es: Record<string, LegalPageContent> = {
     title: "Política de Privacidad",
     subtitle:
       "Transparencia sobre cómo tratamos la información cuando utilizas Calculadora Derivadas.",
-    lastUpdated: LAST_UPDATED,
+    lastUpdated: CONTENT_UPDATED,
     ctaLabel: "Volver al inicio",
     relatedTitle: "Documentos legales",
     sections: [
@@ -212,10 +213,17 @@ const es: Record<string, LegalPageContent> = {
     title: "Acerca de Nosotros",
     subtitle:
       "Conoce la misión, el método y el compromiso detrás de Calculadora Derivadas: una herramienta educativa gratuita para aprender cálculo diferencial en español.",
-    lastUpdated: LAST_UPDATED,
+    lastUpdated: CONTENT_UPDATED,
     ctaLabel: "Usar la calculadora",
     relatedTitle: "Documentos legales",
     sections: [
+      {
+        id: "behind",
+        title: "Quién está detrás",
+        paragraphs: [
+          "Iftikhar ud din, profesor de matemáticas en la Punjab University, Pakistán.",
+        ],
+      },
       {
         id: "who",
         title: "Quiénes somos",
@@ -281,7 +289,7 @@ const es: Record<string, LegalPageContent> = {
   contact: {
     title: "Contacto",
     subtitle: "Estamos disponibles para consultas, sugerencias y asuntos de privacidad.",
-    lastUpdated: LAST_UPDATED,
+    lastUpdated: CONTENT_UPDATED,
     ctaLabel: "Volver al inicio",
     relatedTitle: "Documentos legales",
     sections: [
