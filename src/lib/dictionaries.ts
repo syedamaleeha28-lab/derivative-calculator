@@ -657,6 +657,14 @@ const dictionaryData = {
           q: "¿En qué se diferencia esta calculadora de Symbolab?",
           a: "Está orientada al aprendizaje en español: pasos educativos, guías de reglas y ejemplos del sitio. Symbolab es una suite más amplia; aquí el foco es dominar derivadas con contexto y enlaces a teoría.",
         },
+        {
+          q: "¿Cuál es la calculadora de derivadas más recomendada para estudiantes universitarios?",
+          a: "No podemos decir cuál es 'la mejor' para todos, pero para estudiantes universitarios conviene priorizar una calculadora que muestre el procedimiento paso a paso (no solo el resultado), permita elegir la variable de derivación para cálculo multivariable, y sea gratuita sin necesidad de registro. Esta calculadora cumple esos tres puntos y está pensada específicamente para el vocabulario y las materias de cálculo en español.",
+        },
+        {
+          q: "¿Hay un sitio web para calcular derivadas paso a paso gratis?",
+          a: "Sí. Esta calculadora es exactamente eso: un sitio web gratuito, sin registro, que muestra la derivada de tu función junto con el desarrollo completo paso a paso. Funciona en el navegador desde celular o computadora, sin instalar nada.",
+        },
       ],
     },
     seoCards: {

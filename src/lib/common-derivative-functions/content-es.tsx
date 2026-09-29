@@ -53,6 +53,13 @@ export function CommonFunctionsHubContentEs() {
           </Link>
           .
         </p>
+        <p>
+          Estas funciones no son piezas aisladas: forman un sistema conectado por reglas de derivación. Las potencias de
+          x (x, x², x³, √x, 1/x) comparten la regla de la potencia con distinto exponente. La exponencial eˣ y el
+          logaritmo natural ln(x) son funciones inversas entre sí, del mismo modo que cada función trigonométrica tiene
+          su inversa correspondiente, como arcoseno para el seno y arcotangente para la tangente. Reconocer a qué
+          familia pertenece una función ayuda a anticipar qué regla aplicar antes de derivarla.
+        </p>
       </section>
 
       <section>
