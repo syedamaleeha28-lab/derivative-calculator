@@ -12,12 +12,18 @@ export type CommonFunctionLocaleContent = {
   /** Optional hero image path under /public (e.g. /images/....svg). */
   image?: string;
   intro: string;
+  /** Optional paragraph rendered after the intro and before the formula section. */
+  introAfter?: string;
   formulaTitle: string;
   formulaLatex: string;
   formulaExplanation: string;
   exampleTitle: string;
   exampleSteps: readonly string[];
   exampleLatex?: string;
+  /** Optional second worked example, rendered after the first ExampleCard. */
+  secondExampleTitle?: string;
+  secondExampleSteps?: readonly string[];
+  secondExampleLatex?: string;
   extraSectionTitle?: string;
   extraSectionBody?: string;
   /** Optional "common mistakes" section (rendered as a warning list). */

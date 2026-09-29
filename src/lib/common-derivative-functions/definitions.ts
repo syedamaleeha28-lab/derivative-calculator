@@ -189,6 +189,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       image: "/images/derivada-x-cuadrado-parabola.webp",
       intro:
         "La derivada de x² es 2x. Es el ejemplo canónico de la regla de la potencia y conecta la geometría de la parábola con una función lineal de pendiente.",
+      introAfter:
+        "Esta es probablemente la primera derivada no trivial que se calcula en un curso de cálculo, porque aparece en el área de un cuadrado, la energía cinética (proporcional a v²) y en cualquier parábola. Entender su demostración por límites es la base para las reglas de derivación que vienen después.",
       formulaTitle: "Regla de la potencia",
       formulaLatex: "\\dfrac{d}{dx}\\,x^2 = 2x",
       formulaExplanation:
@@ -200,6 +202,16 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "Haz h → 0 para obtener f′(x) = 2x.",
       ],
       exampleLatex: "\\lim_{h\\to 0}\\dfrac{(x+h)^2-x^2}{h}=2x",
+      secondExampleTitle: "Ejemplo: (3x−4)² con la regla de la cadena",
+      secondExampleSteps: [
+        "Sea f(x) = (3x−4)². Exterior u², interior u = 3x−4.",
+        "La derivada exterior es 2u; la interior es u′ = 3.",
+        "Resultado: f′(x) = 2(3x−4) · 3 = 6(3x−4).",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}(3x-4)^2=6(3x-4)",
+      mistakes: [
+        "Olvidar multiplicar por la derivada interior cuando el interior no es solo x.",
+      ],
       faqs: [
         { question: "¿Cuál es la derivada de x²?", answer: "(x²)′ = 2x." },
         { question: "¿Cómo se usa la regla de la potencia?", answer: "Para x^n, multiplica por n y resta 1 al exponente: n·x^(n−1)." },
@@ -250,6 +262,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       image: "/images/derivada-x-cubo-curva.webp",
       intro:
         "La derivada de x³ es 3x². Aplicar la regla de la potencia con n = 3 es directo y prepara el terreno para derivar polinomios término a término.",
+      introAfter:
+        "El crecimiento en volumen de un cubo respecto a su lado, o la razón de cambio de un costo que depende del cubo de una cantidad, son ejemplos donde aparece esta derivada. La regla de la potencia para x³ se generaliza directamente a x^n para cualquier exponente entero.",
       formulaTitle: "Regla de la potencia (n = 3)",
       formulaLatex: "\\dfrac{d}{dx}\\,x^3 = 3x^2",
       formulaExplanation:
@@ -261,6 +275,16 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "Límite h → 0: f′(x) = 3x².",
       ],
       exampleLatex: "\\dfrac{d}{dx}x^3 = 3x^2",
+      secondExampleTitle: "Ejemplo: (2x+1)³ con la regla de la cadena",
+      secondExampleSteps: [
+        "Sea f(x) = (2x+1)³. Exterior u³, interior u = 2x+1.",
+        "La derivada exterior es 3u²; la interior es u′ = 2.",
+        "Resultado: f′(x) = 3(2x+1)² · 2 = 6(2x+1)².",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}(2x+1)^3=6(2x+1)^2",
+      mistakes: [
+        "Olvidar el coeficiente 3 de la regla de la potencia y escribir la derivada solo como x².",
+      ],
       faqs: [
         { question: "¿Cuál es la derivada de x³?", answer: "(x³)′ = 3x²." },
         { question: "¿Cómo derivo x⁴?", answer: "(x⁴)′ = 4x³ con la misma regla." },
@@ -311,6 +335,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       image: "/images/derivada-raiz-cuadrada-curva.webp",
       intro:
         "La derivada de √x es 1/(2√x) para x > 0. Escribe √x = x^(1/2) y aplica la regla de la potencia con exponente fraccionario.",
+      introAfter:
+        "La raíz cuadrada aparece en fórmulas de distancia, en desviación estándar y en la velocidad de escape en física. Escribirla como exponente fraccionario (x^(1/2)) es lo que permite aplicar la regla de la potencia en lugar de memorizar una fórmula aparte.",
       formulaTitle: "Forma con exponente 1/2",
       formulaLatex: "\\dfrac{d}{dx}\\,\\sqrt{x} = \\dfrac{1}{2\\sqrt{x}}, \\quad x > 0",
       formulaExplanation:
@@ -322,6 +348,16 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "Obtén (1/2) x^(−1/2) = 1/(2√x).",
       ],
       exampleLatex: "\\dfrac{d}{dx}x^{1/2}=\\tfrac{1}{2}x^{-1/2}",
+      secondExampleTitle: "Ejemplo: √(4x+1) con la regla de la cadena",
+      secondExampleSteps: [
+        "Sea f(x) = √(4x+1) = (4x+1)^(1/2). Exterior u^(1/2), interior u = 4x+1.",
+        "La derivada exterior es (1/2)u^(−1/2); la interior es u′ = 4.",
+        "Resultado: f′(x) = (1/2)(4x+1)^(−1/2) · 4 = 2/√(4x+1).",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}\\sqrt{4x+1}=\\dfrac{2}{\\sqrt{4x+1}}",
+      mistakes: [
+        "No reconocer que √x = x^(1/2), y que el dominio exige x > 0.",
+      ],
       faqs: [
         { question: "¿Cuál es la derivada de √x?", answer: "1/(2√x) para x > 0." },
         { question: "¿Por qué x debe ser positivo?", answer: "√x en cálculo elemental se define en x ≥ 0; la derivada clásica usa x > 0." },
@@ -527,6 +563,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       heroImageAlt: "Curva ln x y pendiente 1/x",
       intro:
         "La derivada de ln(x) es 1/x para x > 0. Es el par inverso de e^x y aparece en casi todos los problemas con regla de la cadena y diferenciación logarítmica.",
+      introAfter:
+        "El logaritmo natural aparece en crecimiento poblacional, interés compuesto continuo y en la escala de Richter. Su derivada, 1/x, es notablemente simple comparada con la de otras funciones trigonométricas o exponenciales, y es clave para la derivación logarítmica de expresiones complejas.",
       formulaTitle: "Logaritmo natural",
       formulaLatex: "\\dfrac{d}{dx}\\,\\ln(x) = \\dfrac{1}{x}, \\quad x > 0",
       formulaExplanation:
@@ -538,6 +576,16 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "f′(x) = 1/x. (También: cadena con u = 2x → (2)/(2x) = 1/x.)",
       ],
       exampleLatex: "\\dfrac{d}{dx}\\ln(2x)=\\dfrac{1}{x}",
+      secondExampleTitle: "Ejemplo: ln(5x−2) con la regla de la cadena",
+      secondExampleSteps: [
+        "Sea f(x) = ln(5x−2). Exterior ln(u), interior u = 5x−2.",
+        "La derivada exterior es 1/u; la interior es u′ = 5.",
+        "Resultado: f′(x) = 5/(5x−2).",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}\\ln(5x-2)=\\dfrac{5}{5x-2}",
+      mistakes: [
+        "Confundir la derivada de ln(x) con la del logaritmo en base 10, que es 1/(x·ln 10).",
+      ],
       faqs: [
         { question: "¿Cuál es la derivada de ln(x)?", answer: "1/x para x > 0." },
         { question: "¿Cómo derivo ln(x²)?", answer: "2/x usando la cadena o propiedades del logaritmo." },
@@ -772,6 +820,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
       intro:
         "La derivada de tan(x) es sec²(x), equivalente a 1/cos²(x). Se obtiene naturalmente aplicando la regla del cociente a sin(x)/cos(x).",
+      introAfter:
+        "La tangente aparece en pendientes de rectas, ángulos de elevación y problemas de razones relacionadas. A diferencia de sin(x) y cos(x), su derivada no es otra función trigonométrica simple, sino sec²(x), lo que sorprende a muchos estudiantes la primera vez.",
       formulaTitle: "Tangente",
       formulaLatex: "\\dfrac{d}{dx}\\,\\tan(x) = \\sec^2(x) = \\dfrac{1}{\\cos^2(x)}",
       formulaExplanation:
@@ -783,6 +833,16 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "f′(x) = sec²(x²) · 2x = 2x sec²(x²).",
       ],
       exampleLatex: "\\dfrac{d}{dx}\\tan(x^2)=2x\\sec^2(x^2)",
+      secondExampleTitle: "Ejemplo: tan(3x) con la regla de la cadena",
+      secondExampleSteps: [
+        "Sea f(x) = tan(3x). Exterior tan(u), interior u = 3x.",
+        "La derivada exterior es sec²(u); la interior es u′ = 3.",
+        "Resultado: f′(x) = sec²(3x) · 3 = 3 sec²(3x).",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}\\tan(3x)=3\\sec^2(3x)",
+      mistakes: [
+        "tan(x) no está definida en x = π/2 + kπ, así que la derivada tampoco existe ahí.",
+      ],
       faqs: [
         { question: "¿Cuál es la derivada de tan(x)?", answer: "sec²(x) o 1/cos²(x) donde está definida." },
         { question: "¿Dónde no es derivable tan(x)?", answer: "En x = π/2 + kπ donde cos(x) = 0." },

@@ -179,6 +179,7 @@ export function FunctionPageBody({
       <section>
         <h2 id="intro">{locale === "es" ? "Introducción" : "Introduction"}</h2>
         <p>{content.intro}</p>
+        {content.introAfter ? <p>{content.introAfter}</p> : null}
       </section>
 
       <section>
@@ -193,6 +194,11 @@ export function FunctionPageBody({
         <ExampleCard title={content.exampleTitle} steps={[...content.exampleSteps]}>
           {content.exampleLatex ? renderMath(content.exampleLatex, true) : null}
         </ExampleCard>
+        {content.secondExampleTitle && content.secondExampleSteps && (
+          <ExampleCard title={content.secondExampleTitle} steps={[...content.secondExampleSteps]}>
+            {content.secondExampleLatex ? renderMath(content.secondExampleLatex, true) : null}
+          </ExampleCard>
+        )}
       </section>
 
       {content.extraSectionTitle && content.extraSectionBody && (
