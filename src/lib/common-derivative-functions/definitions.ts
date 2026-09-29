@@ -128,6 +128,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       image: "/images/derivada-x-recta-tangente.webp",
       intro:
         "La derivada de x respecto a x es 1. Es el caso más simple de la regla de la potencia y la base para entender por qué las rectas y = mx tienen pendiente constante m.",
+      introAfter:
+        "Que la derivada de x sea 1 es el caso base sobre el que se construyen la regla de la potencia y la linealidad: derivar 5x da 5 porque la constante simplemente multiplica el resultado, y derivar una constante sola da 0.",
       formulaTitle: "Fórmula principal",
       formulaLatex: "\\dfrac{d}{dx}\\,x = 1",
       formulaExplanation:
@@ -139,6 +141,13 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "Toma el límite cuando h → 0: el cociente ya es 1, así que f′(x) = 1.",
       ],
       exampleLatex: "f'(x)=\\lim_{h\\to 0}\\dfrac{(x+h)-x}{h}=1",
+      secondExampleTitle: "Ejemplo: 5x + 3",
+      secondExampleSteps: [
+        "Sea f(x) = 5x + 3.",
+        "La constante 5 multiplica la derivada de x, que es 1, así que (5x)′ = 5.",
+        "La constante 3 deriva a 0. Resultado: f′(x) = 5.",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}(5x+3)=5",
       faqs: [
         { question: "¿Cuál es la derivada de x?", answer: "La derivada de x es 1 en todo el dominio ℝ." },
         { question: "¿Por qué la derivada de x es 1?", answer: "Porque la pendiente de la recta y = x es 1 en todos los puntos." },
@@ -503,6 +512,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       heroImageAlt: "Curva exponencial e^x y su pendiente",
       intro:
         "La derivada de e^x es ella misma: e^x. Esa propiedad define al número e y hace que las exponenciales naturales sean centrales en ecuaciones diferenciales y modelos de crecimiento.",
+      introAfter:
+        "La función e^x modela el crecimiento exponencial continuo, la desintegración radiactiva y la carga de un capacitor en un circuito RC. Es la única función elemental que es igual a su propia derivada, lo que la hace central en ecuaciones diferenciales.",
       formulaTitle: "Exponencial natural",
       formulaLatex: "\\dfrac{d}{dx}\\,e^x = e^x",
       formulaExplanation:
@@ -514,6 +525,13 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "Resultado: g′(x) = e^(3x) · 3 = 3e^(3x).",
       ],
       exampleLatex: "\\dfrac{d}{dx}e^{3x}=3e^{3x}",
+      secondExampleTitle: "Ejemplo: e^(3x−1) con la regla de la cadena",
+      secondExampleSteps: [
+        "Sea f(x) = e^(3x−1). Exterior e^u, interior u = 3x−1.",
+        "La derivada exterior es e^u; la interior es u′ = 3.",
+        "Resultado: f′(x) = e^(3x−1) · 3 = 3e^(3x−1).",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}e^{3x-1}=3e^{3x-1}",
       faqs: [
         { question: "¿Cuál es la derivada de e^x?", answer: "(e^x)′ = e^x para todo x real." },
         { question: "¿Cómo derivo e^(2x)?", answer: "2e^(2x) por la regla de la cadena." },
@@ -635,6 +653,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       heroImageAlt: "Logaritmo base 10 y su derivada",
       intro:
         "La derivada de log₁₀(x) es 1/(x ln 10). En general, log_a(x) deriva a 1/(x ln a). Conecta logaritmos en cualquier base con el logaritmo natural.",
+      introAfter:
+        "El logaritmo base 10 es la base literal de la escala de pH y de los decibelios, ambos definidos como logaritmos en base 10 de una razón. A diferencia de ln(x), su derivada incluye el factor ln(10) en el denominador, algo que conviene recordar al compararlo con el logaritmo natural.",
       formulaTitle: "Logaritmo base a",
       formulaLatex: "\\dfrac{d}{dx}\\,\\log_a(x) = \\dfrac{1}{x\\ln a}, \\quad x > 0",
       formulaExplanation:
@@ -646,6 +666,13 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "Con cadena directa: (1/(5x ln 10))·5 = 1/(x ln 10).",
       ],
       exampleLatex: "\\dfrac{d}{dx}\\log_{10}(x)=\\dfrac{1}{x\\ln 10}",
+      secondExampleTitle: "Ejemplo: log₁₀(3x+2) con la regla de la cadena",
+      secondExampleSteps: [
+        "Sea f(x) = log₁₀(3x+2). Exterior log₁₀(u), interior u = 3x+2.",
+        "La derivada exterior es 1/(u ln 10); la interior es u′ = 3.",
+        "Resultado: f′(x) = 3/((3x+2) ln 10).",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}\\log_{10}(3x+2)=\\dfrac{3}{(3x+2)\\ln 10}",
       faqs: [
         { question: "¿Cuál es la derivada de log₁₀(x)?", answer: "1/(x ln 10) para x > 0." },
         { question: "¿En qué se diferencia de ln(x)?", answer: "ln(x) deriva a 1/x; otros logs incluyen el factor 1/ln(a)." },
@@ -696,6 +723,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
       intro:
         "La derivada de sin(x) es cos(x) cuando el ángulo está en radianes. Es la identidad trigonométrica más usada en cálculo y física.",
+      introAfter:
+        "El seno modela ondas de sonido y señales eléctricas alternas. Junto con el coseno, forma el par de funciones cuyas derivadas se repiten en un ciclo de cuatro pasos: sin, cos, -sin, -cos, lo que facilita calcular derivadas de orden superior.",
       formulaTitle: "Seno en radianes",
       formulaLatex: "\\dfrac{d}{dx}\\,\\sin(x) = \\cos(x)",
       formulaExplanation:
@@ -707,6 +736,13 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "Resultado: cos(2x) · 2 = 2cos(2x).",
       ],
       exampleLatex: "\\dfrac{d}{dx}\\sin(2x)=2\\cos(2x)",
+      secondExampleTitle: "Ejemplo: sin(2x+1) con la regla de la cadena",
+      secondExampleSteps: [
+        "Sea f(x) = sin(2x+1). Exterior sin(u), interior u = 2x+1.",
+        "La derivada exterior es cos(u); la interior es u′ = 2.",
+        "Resultado: f′(x) = cos(2x+1) · 2 = 2cos(2x+1).",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}\\sin(2x+1)=2\\cos(2x+1)",
       faqs: [
         { question: "¿Cuál es la derivada de sin(x)?", answer: "Sigue el patrón de las funciones trigonométricas; consulta la demostración completa arriba." },
         { question: "¿Por qué importan los radianes?", answer: "La identidad (sin x)′ = cos x se demuestra con medida en radianes." },
@@ -758,6 +794,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
       intro:
         "La derivada de cos(x) es −sin(x). El signo negativo refleja que el coseno decrece donde el seno crece en la misma fase.",
+      introAfter:
+        "El coseno aparece en el movimiento armónico simple, en ecuaciones de ondas y en el voltaje de corriente alterna. Su derivada, -sin(x), tiene signo opuesto al de la derivada del seno, un detalle que suele causar errores de signo en los ejercicios.",
       formulaTitle: "Coseno en radianes",
       formulaLatex: "\\dfrac{d}{dx}\\,\\cos(x) = -\\sin(x)",
       formulaExplanation:
@@ -769,6 +807,13 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "f′(x) = −sin(3x) · 3 = −3sin(3x).",
       ],
       exampleLatex: "\\dfrac{d}{dx}\\cos(3x)=-3\\sin(3x)",
+      secondExampleTitle: "Ejemplo: cos(4x) con la regla de la cadena",
+      secondExampleSteps: [
+        "Sea f(x) = cos(4x). Exterior cos(u), interior u = 4x.",
+        "La derivada exterior es −sin(u); la interior es u′ = 4.",
+        "Resultado: f′(x) = −sin(4x) · 4 = −4sin(4x).",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}\\cos(4x)=-4\\sin(4x)",
       faqs: [
         { question: "¿Cuál es la derivada de cos(x)?", answer: "Sigue el patrón de las funciones trigonométricas; consulta la demostración completa arriba." },
         { question: "¿Por qué hay un signo menos?", answer: "La tasa de cambio del coseno es opuesta al seno en la misma fase." },
