@@ -35,6 +35,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       heroImageAlt: "Recta horizontal y = c con pendiente cero",
       intro:
         "La derivada de una constante es siempre 0. La gráfica de f(x) = c es una recta horizontal: no sube ni baja, así que su pendiente —la tasa de cambio— es cero en todos los puntos. Vale para cualquier número: 5, −3, π o e.",
+      introAfter:
+        "Que la derivada de una constante sea 0 es la razón por la que, al derivar una suma como 7 + 3x², el 7 simplemente desaparece: solo los términos que dependen de x contribuyen a la derivada. Esta regla es la base de la regla de la suma y aparece implícitamente cada vez que se deriva un polinomio.",
       formulaTitle: "Regla de la constante",
       formulaLatex: "\\dfrac{d}{dx}\\,c = 0",
       formulaExplanation:
@@ -46,6 +48,13 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "Toma el límite cuando h → 0: f′(x) = 0.",
       ],
       exampleLatex: "f'(x)=\\lim_{h\\to 0}\\dfrac{c-c}{h}=0",
+      secondExampleTitle: "Ejemplo: 7 + 3x²",
+      secondExampleSteps: [
+        "Sea f(x) = 7 + 3x².",
+        "La constante 7 deriva a 0 y desaparece al sumar.",
+        "El término 3x² deriva a 6x. Resultado: f′(x) = 6x.",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}(7+3x^2)=6x",
       extraSectionTitle: "Ejemplos rápidos: 5, π y 7 en un polinomio",
       extraSectionBody:
         "La derivada de 5 es 0; la de π es 0 (π ≈ 3,1416 es un número fijo, no una variable); y en f(x) = 3x² + 7, el término constante 7 aporta 0, así que f′(x) = 6x. No confundas la constante aislada con el múltiplo constante: la derivada de 5x es 5, porque ahí la constante multiplica a x y se conserva por linealidad: (c·f)′ = c·f′.",
@@ -416,6 +425,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       heroImageAlt: "Hipérbola 1/x y su pendiente −1/x²",
       intro:
         "La derivada de 1/x es −1/x² para x ≠ 0. Escribe 1/x como x^(−1) y aplica la regla de la potencia: el resultado siempre es negativo porque la hipérbola y = 1/x decrece en todo su dominio.",
+      introAfter:
+        "La función 1/x aparece en la ley de Boyle en física (la presión de un gas es inversamente proporcional a su volumen) y en la resistencia equivalente de resistores en paralelo. Su derivada negativa refleja que, al aumentar x, el valor de la función siempre disminuye.",
       formulaTitle: "Regla de la potencia (n = −1)",
       formulaLatex: "\\dfrac{d}{dx}\\,\\dfrac{1}{x} = -\\dfrac{1}{x^2}, \\quad x \\neq 0",
       formulaExplanation:
@@ -427,6 +438,13 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "Toma el límite h → 0: f′(x) = −1/x².",
       ],
       exampleLatex: "f'(x)=\\lim_{h\\to 0}\\dfrac{\\frac{1}{x+h}-\\frac{1}{x}}{h}=-\\dfrac{1}{x^2}",
+      secondExampleTitle: "Ejemplo: 1/(3x+2) con la regla de la cadena",
+      secondExampleSteps: [
+        "Sea f(x) = 1/(3x+2) = (3x+2)^(−1). Exterior u^(−1), interior u = 3x+2.",
+        "La derivada exterior es −u^(−2); la interior es u′ = 3.",
+        "Resultado: f′(x) = −(3x+2)^(−2) · 3 = −3/(3x+2)².",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}\\dfrac{1}{3x+2}=-\\dfrac{3}{(3x+2)^2}",
       extraSectionTitle: "Ejemplo adicional: derivada de 1/(2x+1)",
       extraSectionBody:
         "Para derivar 1/(2x+1), escribe (2x+1)^(−1) y aplica la regla de la cadena: −(2x+1)^(−2) · 2 = −2/(2x+1)². El mismo patrón sirve para cualquier cociente 1/u(x): su derivada es −u′(x)/u(x)². Compruébalo también con la regla del cociente y verifica el resultado en la calculadora.",
@@ -939,6 +957,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
       intro:
         "La función arcotangente (arctan x, también escrita como tan⁻¹x) es la inversa de la tangente, y su derivada aparece constantemente en integrales, física y problemas de ángulos. A diferencia de sin(x) o cos(x), su derivada no es otra función trigonométrica — es una función racional. Esta guía muestra el procedimiento completo para derivarla, junto con ejemplos donde arctan(x) aparece dentro de una función compuesta, el caso donde más se cometen errores.",
+      introAfter:
+        "La arcotangente se usa para hallar un ángulo a partir de una pendiente, como en robótica y gráficos por computadora al calcular la orientación de un vector, o en electrónica al determinar el ángulo de fase entre corriente y voltaje.",
       formulaTitle: "Arcotangente",
       formulaLatex: "\\dfrac{d}{dx}\\,\\arctan(x) = \\dfrac{1}{1+x^2}",
       formulaExplanation:
@@ -950,6 +970,13 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "f′(x) = 2 / (1+(2x)²) = 2/(1+4x²).",
       ],
       exampleLatex: "\\dfrac{d}{dx}\\arctan(2x)=\\dfrac{2}{1+4x^2}",
+      secondExampleTitle: "Ejemplo: arctan(x/2) con la regla de la cadena",
+      secondExampleSteps: [
+        "Sea f(x) = arctan(x/2). Exterior arctan(u), interior u = x/2.",
+        "La derivada exterior es 1/(1+u²); la interior es u′ = 1/2.",
+        "Resultado: f′(x) = (1/2) / (1+(x/2)²) = 2/(4+x²).",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}\\arctan(x/2)=\\dfrac{2}{4+x^2}",
       faqs: [
         { question: "¿Cuál es la derivada de arctan(x)?", answer: "Se deriva usando la regla de la función inversa, aplicada a la tangente. Consulta la demostración completa arriba para ver el resultado paso a paso." },
         { question: "¿Por qué la derivada de arctan(x) no es otra función trigonométrica?", answer: "Porque arctan(x) es la inversa de tan(x), no la función misma. Las derivadas de funciones trigonométricas inversas se obtienen con un método distinto (derivación implícita), y el resultado siempre es una expresión racional, no trigonométrica." },
@@ -1001,6 +1028,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
       intro:
         "La secante (sec x) se define como 1/cos(x), así que su derivada se obtiene aplicando la regla del cociente — no es una fórmula que debas memorizar aislada, sino una consecuencia directa de algo que ya sabes derivar. Esta guía muestra la demostración completa partiendo de esa definición, para que entiendas de dónde sale el resultado en vez de memorizarlo sin contexto.",
+      introAfter:
+        "La secante aparece en problemas de trigonometría aplicada, como el cálculo de la longitud de una rampa o un cable tensor dado un ángulo, y en óptica al describir ciertas trayectorias de luz. Al ser la recíproca del coseno, hereda una discontinuidad exactamente donde cos(x) = 0.",
       formulaTitle: "Secante",
       formulaLatex: "\\dfrac{d}{dx}\\,\\sec(x) = \\sec(x)\\tan(x)",
       formulaExplanation:
@@ -1012,6 +1041,13 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "f′(x) = 3 sec(3x) tan(3x).",
       ],
       exampleLatex: "\\dfrac{d}{dx}\\sec(3x)=3\\sec(3x)\\tan(3x)",
+      secondExampleTitle: "Ejemplo: sec(2x) con la regla de la cadena",
+      secondExampleSteps: [
+        "Sea f(x) = sec(2x). Exterior sec(u), interior u = 2x.",
+        "La derivada exterior es sec(u) tan(u); la interior es u′ = 2.",
+        "Resultado: f′(x) = sec(2x) tan(2x) · 2 = 2 sec(2x) tan(2x).",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}\\sec(2x)=2\\sec(2x)\\tan(2x)",
       faqs: [
         { question: "¿Cuál es la derivada de sec(x)?", answer: "Se obtiene aplicando la regla del cociente a 1/cos(x). Consulta la demostración completa arriba para ver el desarrollo paso a paso." },
         { question: "¿Necesito memorizar la derivada de sec(x) por separado?", answer: "No es indispensable — si recuerdas que sec(x) = 1/cos(x), puedes derivarla en el momento con la regla del cociente, igual que cualquier otra fracción." },
@@ -1063,6 +1099,8 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
       image: "/images/circulo-trigonometria-derivadas-seno-coseno.svg",
       intro:
         "La función arcoseno (arcsen x, también escrita como sin⁻¹x) es la inversa del seno, y al igual que arcotangente, su derivada no es otra función trigonométrica sino una expresión con raíz cuadrada. Esta guía muestra la demostración completa por derivación implícita, además de ejemplos con funciones compuestas.",
+      introAfter:
+        "El arcoseno se usa para hallar un ángulo cuando se conoce el cociente entre el cateto opuesto y la hipotenusa, por ejemplo al calcular el ángulo de lanzamiento de un proyectil o la inclinación de una rampa dada su altura y longitud.",
       formulaTitle: "Arcoseno",
       formulaLatex: "\\dfrac{d}{dx}\\,\\arcsin(x) = \\dfrac{1}{\\sqrt{1-x^2}}",
       formulaExplanation:
@@ -1074,6 +1112,13 @@ export const COMMON_FUNCTION_PAGE_DEFS: CommonFunctionPageDef[] = [
         "f′(x) = (1/2) / √(1−(x/2)²) = 1 / √(4−x²).",
       ],
       exampleLatex: "\\dfrac{d}{dx}\\arcsin(x/2)=\\dfrac{1}{\\sqrt{4-x^2}}",
+      secondExampleTitle: "Ejemplo: arcsin(x/3) con la regla de la cadena",
+      secondExampleSteps: [
+        "Sea f(x) = arcsin(x/3). Exterior arcsin(u), interior u = x/3.",
+        "La derivada exterior es 1/√(1−u²); la interior es u′ = 1/3.",
+        "Resultado: f′(x) = (1/3) / √(1−(x/3)²) = 1/√(9−x²).",
+      ],
+      secondExampleLatex: "\\dfrac{d}{dx}\\arcsin(x/3)=\\dfrac{1}{\\sqrt{9-x^2}}",
       faqs: [
         { question: "¿Cuál es la derivada de arcsen(x)?", answer: "Se obtiene por derivación implícita a partir de la relación entre arcoseno y seno. Consulta la demostración completa arriba para ver el resultado paso a paso." },
         { question: "¿Por qué la derivada de arcoseno tiene una raíz cuadrada?", answer: "Porque surge de aplicar la identidad pitagórica al derivar implícitamente — el resultado incluye 1 menos x al cuadrado dentro de una raíz, como consecuencia directa de esa identidad." },
