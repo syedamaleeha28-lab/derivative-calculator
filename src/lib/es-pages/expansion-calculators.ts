@@ -1419,6 +1419,7 @@ export const continuityPage: CalculatorPageConfig = {
   intro: [
     "Una función es continua en un punto cuando su límite ahí coincide exactamente con el valor de la función en ese mismo punto. Si no coinciden, hay una discontinuidad — y saber identificarla es tan importante como saber calcularla.",
     "Este concepto se apoya directamente en los límites: si quieres repasar primero cómo se calcula un límite paso a paso, la calculadora de límites es el punto de partida.",
+    "Las discontinuidades de salto aparecen en funciones por tramos del mundo real, como tarifas de envío que suben abruptamente al superar un peso límite, o tramos impositivos donde la tasa cambia en un umbral exacto. A diferencia del hueco removable o la asíntota vertical, aquí los límites laterales izquierdo y derecho existen pero son distintos entre sí.",
   ],
   meta: {
     title: "Continuidad de una Función — Verifica un Punto al Instante",
@@ -1458,6 +1459,17 @@ export const continuityPage: CalculatorPageConfig = {
         "Falta f(a) y un límite finito, así que f no es continua en x = 0.",
       ],
       result: "No es continua en x = 0",
+    },
+    {
+      title: "Discontinuidad de salto",
+      problem: "¿Es continua f(x) = x + 1 si x < 1, y f(x) = 3 si x ≥ 1, en x = 1?",
+      steps: [
+        "Límite por la izquierda: lim(x→1⁻) (x + 1) = 2.",
+        "Límite por la derecha: lim(x→1⁺) 3 = 3, y f(1) = 3.",
+        "Los límites laterales existen pero son distintos (2 ≠ 3), así que el límite bilateral no existe.",
+        "Como el límite no existe, f no es continua en x = 1 (discontinuidad de salto).",
+      ],
+      result: "No es continua en x = 1",
     },
   ],
   faqs: [

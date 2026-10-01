@@ -31,6 +31,7 @@ export const ES_CALCULATOR_PAGES: Record<string, CalculatorPageConfig> = {
     intro: [
       "Esta calculadora de derivadas parciales te permite calcular ∂f/∂x, ∂f/∂y y otras derivadas respecto a una variable, manteniendo las demás constantes. La variable se elige con los botones ∂/∂x, ∂/∂y o ∂/∂z, por ejemplo en materias como Análisis Matemático II. Es ideal para cálculo multivariable, ingeniería y modelos con más de una incógnita.",
       "Introduce tu función, elige la variable de derivación en opciones avanzadas y obtén el resultado simbólico con el desglose paso a paso. Comprueba tus ejercicios de clase antes del examen.",
+      "El vector gradiente ∇f = (f_x, f_y, f_z) agrupa las tres derivadas parciales y señala la dirección de mayor crecimiento de la función. Aparece en optimización con varias variables, en economía al calcular utilidades marginales para distintos bienes, y en física al describir campos como la temperatura o el potencial eléctrico en el espacio.",
     ],
     meta: {
       title: "Calculadora de Derivadas Parciales — ∂f/∂x y ∂f/∂y con Pasos",
@@ -70,6 +71,16 @@ export const ES_CALCULATOR_PAGES: Record<string, CalculatorPageConfig> = {
           "∂/∂x[x] = 1, entonces queda e^y.",
         ],
         result: "e^y",
+      },
+      {
+        title: "Producto en tres variables",
+        problem: "Calcular ∂/∂z [x²·y·z]",
+        steps: [
+          "Al derivar respecto a z, tratamos x e y como constantes.",
+          "x²·y no depende de z.",
+          "∂/∂z[x²·y·z] = x²·y.",
+        ],
+        result: "x²y",
       },
     ],
     faqs: [
@@ -140,6 +151,7 @@ export const ES_CALCULATOR_PAGES: Record<string, CalculatorPageConfig> = {
     intro: [
       "La regla de la cadena es esencial para derivar funciones compuestas: aquellas formadas por una función exterior aplicada a una interior. Esta calculadora regla de la cadena identifica la estructura anidada y aplica el procedimiento automáticamente.",
       "Desde sin(3x) hasta ln(x²+1) o (2x+1)⁵, la mayoría de ejercicios avanzados de primer curso requieren reconocer capas externa e interna antes de derivar.",
+      "La regla de la cadena no se limita a dos niveles de anidamiento: funciones como cos(ln(x²+1)) o √(sin(3x)) tienen tres capas, y el mismo principio se aplica multiplicando cada derivada local en cascada. Este encadenamiento es exactamente lo que ocurre en razones relacionadas (related rates), donde una cantidad depende de otra que a su vez depende del tiempo.",
     ],
     meta: {
       title: "Calculadora Regla de la Cadena — Funciones Compuestas Fácil",
@@ -177,6 +189,16 @@ export const ES_CALCULATOR_PAGES: Record<string, CalculatorPageConfig> = {
           "4(2x−5)³ · 2 = 8(2x−5)³.",
         ],
         result: "8(2x−5)³",
+      },
+      {
+        title: "Tangente con argumento cuadrático",
+        problem: "Derivar f(x) = tan(x²)",
+        steps: [
+          "Función exterior: tan(u). Derivada exterior: sec²(u).",
+          "Función interior: u = x². Derivada interior: u′ = 2x.",
+          "Producto: sec²(x²)·2x = 2x·sec²(x²).",
+        ],
+        result: "2x·sec²(x²)",
       },
     ],
     faqs: [
@@ -247,6 +269,7 @@ export const ES_CALCULATOR_PAGES: Record<string, CalculatorPageConfig> = {
     intro: [
       "La derivación implícita permite hallar dy/dx cuando y no está despejada explícitamente, como en círculos x² + y² = r² o relaciones trigonométricas mixtas. Esta calculadora de derivadas implícitas aplica la regla de la cadena en cada término con y.",
       "En lugar de despejar y primero, deriva ambos lados respecto a x, trata y como y(x) y despeja dy/dx. La herramienta automatiza el álgebra simbólica y muestra el razonamiento.",
+      "La derivación implícita es indispensable para curvas de nivel y secciones cónicas en general — elipses, hipérbolas — donde despejar y explícitamente sería más complicado o imposible en una sola rama. También aparece en economía, al analizar curvas de indiferencia donde dos variables dependen mutuamente una de la otra.",
     ],
     meta: {
       title: "Calculadora de Derivadas Implícitas — Halla dy/dx sin Despejar",
@@ -286,6 +309,16 @@ export const ES_CALCULATOR_PAGES: Record<string, CalculatorPageConfig> = {
           "Igualar a 1 y despejar dy/dx.",
         ],
         result: "(1 − y·cos(xy)) / (x·cos(xy))",
+      },
+      {
+        title: "Elipse",
+        problem: "Dada x²/4 + y²/9 = 1, hallar dy/dx",
+        steps: [
+          "Derivamos ambos lados respecto a x.",
+          "(2x)/4 + (2y/9)·dy/dx = 0, es decir x/2 + (2y/9)·dy/dx = 0.",
+          "Despejamos: dy/dx = −9x/(4y).",
+        ],
+        result: "−9x/(4y)",
       },
     ],
     faqs: [
