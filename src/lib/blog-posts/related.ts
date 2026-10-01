@@ -40,6 +40,11 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: "Derivada por Definición: Límite del Cociente Incremental",
     description: "La derivada como límite del cociente incremental, con método y ejemplos.",
   },
+  "/continuidad-de-una-funcion": {
+    title: "Continuidad de una Función — Verifica si es Continua en un Punto",
+    description:
+      "Comprueba si una función es continua en un punto exacto, con el procedimiento paso a paso.",
+  },
 };
 
 export function resolvePostHref(slug: string): string {

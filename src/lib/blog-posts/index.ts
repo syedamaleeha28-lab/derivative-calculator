@@ -15,6 +15,7 @@ import { DerivadasParaPrincipiantesContent } from "./content/derivadas-para-prin
 import { ComoAprenderDerivadasDesdeCeroContent } from "./content/como-aprender-derivadas-desde-cero";
 import { EntendiendoReglaDeLaCadenaContent } from "./content/entendiendo-regla-de-la-cadena";
 import { EjerciciosDeLimitesResueltosContent } from "./content/ejercicios-de-limites-resueltos";
+import { EjerciciosDeContinuidadResueltosContent } from "./content/ejercicios-de-continuidad-resueltos";
 import { ComprobarDerivadaConCalculadoraCientificaContent } from "./content/comprobar-derivada-con-calculadora-cientifica";
 
 const AUTHOR = SITE_AUTHOR;
@@ -34,6 +35,54 @@ function entry(
 }
 
 export const BLOG_POST_ENTRIES: BlogPostEntry[] = [
+  entry({
+    slug: "ejercicios-de-continuidad-resueltos",
+    title: "Ejercicios de Continuidad Resueltos: De lo Básico al Parámetro Desconocido",
+    description:
+      "Cinco ejercicios de continuidad resueltos paso a paso: discontinuidad removable, de salto, infinita, y cómo hallar un parámetro para que una función sea continua.",
+    date: "1 de Octubre, 2026",
+    dateIso: "2026-10-01",
+    readTime: "8 min",
+    category: "Ejercicios",
+    tags: ["ejercicios de continuidad", "continuidad resueltos", "discontinuidad"],
+    author: AUTHOR,
+    heroImageAlt:
+      "Ejercicios de continuidad resueltos paso a paso, de la función continua al parámetro desconocido",
+    faqs: [
+      {
+        question: "¿Cuál es la diferencia entre discontinuidad removable y de salto?",
+        answer:
+          "En la removable, el límite existe como un único número; solo falta que la función esté definida ahí con ese mismo valor. En la de salto, los límites laterales existen pero son diferentes entre sí, así que no hay un único límite que \"arreglar\".",
+      },
+      {
+        question: "¿Una función puede tener más de una discontinuidad?",
+        answer:
+          "Sí, como se ve en el ejercicio 4. Es buena práctica factorizar completamente antes de concluir que solo hay un punto problemático.",
+      },
+      {
+        question: "¿Cómo sé qué rama usar al calcular f(a) en una función por partes?",
+        answer:
+          "Usa la rama cuya condición incluye exactamente el valor a. Si la condición es x ≤ 1 y a = 1, usas esa rama tanto para f(1) como para el límite por la izquierda.",
+      },
+      {
+        question: "¿Siempre hay un único valor de k que hace continua una función por partes?",
+        answer:
+          "En los casos típicos de examen, sí: una ecuación con una incógnita suele tener una sola solución. Pero si ambas ramas no son funciones simples (por ejemplo, si una tiene su propia discontinuidad), el análisis puede requerir más de una condición.",
+      },
+    ],
+    relatedPosts: [
+      {
+        title: "Ejercicios de Límites Resueltos: De lo Básico a L'Hôpital",
+        slug: "ejercicios-de-limites-resueltos",
+      },
+      {
+        title: "Continuidad de una Función — Verifica si es Continua en un Punto",
+        slug: "/continuidad-de-una-funcion",
+      },
+    ],
+    breadcrumbLabel: "Ejercicios de continuidad",
+    Content: EjerciciosDeContinuidadResueltosContent,
+  }),
   entry({
     slug: "comprobar-derivada-con-calculadora-cientifica",
     title: "Cómo comprobar una derivada con una calculadora científica",
@@ -571,6 +620,7 @@ export const BLOG_CATEGORIES = [
   "Reglas",
   "Guías",
   "Ejemplos",
+  "Ejercicios",
   "Avanzado",
   "Consejos",
 ] as const;
